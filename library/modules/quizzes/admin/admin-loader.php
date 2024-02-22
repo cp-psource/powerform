@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0
  */
 class Powerform_Quizz_Admin extends Powerform_Admin_Module {
+	protected $module;
+    protected $page_edit_nowrong;
+    protected $page_edit_knowledge;
 
 	/**
 	 * Initialize

@@ -76,7 +76,16 @@ abstract class Powerform_Field {
 	 *
 	 * @var array
 	 */
+
 	public $validation_message = array();
+
+
+	/**
+	 * Autofill Settings
+	 *
+	 * @var array
+	 */
+	public $autofill_settings = array();
 
 	/**
 	 * Activated Autofill Providers for this field based @see autofill_settings

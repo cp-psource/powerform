@@ -232,7 +232,7 @@ abstract class Powerform_Admin_Page {
 	/*protected function render_footer() {
 		$hide_footer = false;
 		$footer_text = sprintf(
-				__( 'Made with %s by WPMU DEV', 'psource' ),
+				__( 'Made with %s by PSOURCE', 'psource' ),
 			' <i class="sui-icon-heart"></i>'
 		);
 		if ( Powerform::is_psource_member() ) {
@@ -511,7 +511,7 @@ abstract class Powerform_Admin_Page {
 	}
 
 	/**
-	 * Generates the admin body class required for WPMU DEV Shared UI
+	 * Generates the admin body class required for PSOURCE Shared UI
 	 *
 	 * @since 1.0.2
 	 * @return string $sui_body_class

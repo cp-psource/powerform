@@ -28,7 +28,7 @@ function powerform_get_pro_addon_list() {
 			'_title'                  => 'Mailchimp',
 			'_short_title'            => 'Mailchimp',
 			'_version'                => '1.0',
-			'_description'            => __( 'Unlock this as part of a WPMU DEV Membership', Powerform::DOMAIN ),
+			'_description'            => __( 'Unlock this as part of a PSOURCE Membership', Powerform::DOMAIN ),
 			'_min_powerform_version' => POWERFORM_VERSION,
 		),
 		'zapier'    => array(
@@ -37,7 +37,7 @@ function powerform_get_pro_addon_list() {
 			'_title'                  => 'Zapier',
 			'_short_title'            => 'Zapier',
 			'_version'                => '1.0',
-			'_description'            => __( 'Unlock this as part of a WPMU DEV Membership', Powerform::DOMAIN ),
+			'_description'            => __( 'Unlock this as part of a PSOURCE Membership', Powerform::DOMAIN ),
 			'_min_powerform_version' => POWERFORM_VERSION,
 		),
 	);

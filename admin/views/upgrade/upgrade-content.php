@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<p><?php esc_html_e( 'Get premium form fields, 24/7 live WordPress support, and early access to new features with Powerform Pro.', Powerform::DOMAIN ); ?></p>
 
-					<p><?php esc_html_e( 'Plus - you\'ll get a WPMU DEV membership, which includes our award-winning Smush Pro image optimization plugin, white label reporting, unlimited usage of all our premium plugins, managed hosting credits, and more.', Powerform::DOMAIN ); ?></p>
+					<p><?php esc_html_e( 'Plus - you\'ll get a PSOURCE membership, which includes our award-winning Smush Pro image optimization plugin, white label reporting, unlimited usage of all our premium plugins, managed hosting credits, and more.', Powerform::DOMAIN ); ?></p>
 
                     <a href="https://n3rds.work/project/powerform-pro/?utm_source=powerform&utm_medium=plugin&utm_campaign=powerform_propage_topbutton" target="_blank" class="sui-button sui-button-lg sui-button-purple">
 						<?php esc_html_e( 'Try Powerform Pro for Free Today', Powerform::DOMAIN ); ?>
@@ -90,8 +90,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
                 <div class="sui-upgrade-page-features__item">
                     <i class="sui-icon-psource-logo" aria-hidden="true"></i>
-                    <h3><?php esc_html_e( 'The WPMU DEV Guarantee', Powerform::DOMAIN ); ?></h3>
-                    <p><?php esc_html_e( 'You\'ll be delighted with Powerform Pro and everything else included in your membership 😁 You can trial the plugin first with a WPMU DEV Membership, and if you continue but change your mind, you can cancel any time.', Powerform::DOMAIN ); ?></p>
+                    <h3><?php esc_html_e( 'The PSOURCE Guarantee', Powerform::DOMAIN ); ?></h3>
+                    <p><?php esc_html_e( 'You\'ll be delighted with Powerform Pro and everything else included in your membership 😁 You can trial the plugin first with a PSOURCE Membership, and if you continue but change your mind, you can cancel any time.', Powerform::DOMAIN ); ?></p>
                 </div>
             </div>
 		</div>
@@ -99,7 +99,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="sui-upgrade-page-cta">
             <div class="sui-upgrade-page-cta__inner">
                 <h2><?php esc_html_e( 'Join 771,093 Happy Members', Powerform::DOMAIN ); ?></h2>
-                <p><?php esc_html_e( '97% of customers are happy with WPMU DEV\'s service, and it\'s a great time to join them: as a Powerform user you\'ll get a free trial period, so you can see what all the fuss is about. ', Powerform::DOMAIN ); ?></p>
+                <p><?php esc_html_e( '97% of customers are happy with PSOURCE\'s service, and it\'s a great time to join them: as a Powerform user you\'ll get a free trial period, so you can see what all the fuss is about. ', Powerform::DOMAIN ); ?></p>
                 <a href="https://n3rds.work/project/powerform-pro/?utm_source=powerform&utm_medium=plugin&utm_campaign=powerform_propage_bottombutton" class="sui-button sui-button-lg sui-button-purple" style="color: white;" target="_blank">
 					<?php esc_html_e( 'Get Powerform Pro, and get a better WordPress', Powerform::DOMAIN ); ?>
                 </a>

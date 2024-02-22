@@ -882,14 +882,14 @@ Perfect for appointment and hotel bookings - Powerform’s Date Picker Limits fe
 * First public release
 
 == About Us ==
-WPMU DEV is a premium supplier of quality WordPress plugins, services and support. Join here:
+PSOURCE is a premium supplier of quality WordPress plugins, services and support. Join here:
 [https://n3rds.work/](https://n3rds.work/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=powerform-readme&utm_content=wpmu_dev_link)
 
 Don't forget to stay up to date on everything WordPress from the Internet's number one resource:
-[WPMU DEV Blog](https://n3rds.work/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=powerform-readme&utm_content=wpmu_dev_blog_link)
+[PSOURCE Blog](https://n3rds.work/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=powerform-readme&utm_content=wpmu_dev_blog_link)
 
 Hey, one more thing... we hope you [enjoy our free offerings](http://profiles.wordpress.org/PSOURCE/) as much as we've loved making them for you!
 
 == Contact and Credits ==
 
-[WPMU DEV](https://n3rds.work/)
+[PSOURCE](https://n3rds.work/)

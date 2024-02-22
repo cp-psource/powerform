@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 abstract class Powerform_Template {
+	protected $fields = array();
+    protected $settings = array();
 
 	/*
 	 * Template fields

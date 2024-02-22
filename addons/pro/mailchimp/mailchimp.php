@@ -4,7 +4,7 @@
  * Version: 1.0
  * Plugin URI:  https://n3rds.work/
  * Description: Integrate Powerform Custom Forms with Mailchimp email list easily
- * Author: WPMU DEV
+ * Author: PSOURCE
  * Author URI: http://premium.psource.org
  */
 

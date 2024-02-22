@@ -5,7 +5,7 @@
  * Version: 1.0
  * Plugin URI:  https://n3rds.work/
  * Description: Integrate Powerform Custom Forms with Zapier to execute various action you like
- * Author: WPMU DEV
+ * Author: PSOURCE
  * Author URI: http://premium.psource.org
  */
 

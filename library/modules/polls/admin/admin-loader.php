@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0
  */
 class Powerform_Poll_Admin extends Powerform_Admin_Module {
+	protected $module;
 
 	/**
 	 * Init

@@ -5,7 +5,7 @@
  * Version: 1.0
  * Plugin URI:  https://n3rds.work/
  * Description: Gutenberg blocks for Powerform
- * Author: WPMU DEV
+ * Author: PSOURCE
  * Author URI: http://premium.psource.org
  */
 

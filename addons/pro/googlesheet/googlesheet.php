@@ -5,7 +5,7 @@
  * Version: 1.1
  * Plugin URI:  https://n3rds.work/
  * Description: Integrate Powerform Custom Forms and Polls with Google Sheets to get notified in real time.
- * Author: WPMU DEV
+ * Author: PSOURCE
  * Author URI: http://premium.psource.org
  */
 
