@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Manager extends Powerform_Google_Service
+class Google_Service_Manager extends Google_Service
 {
   /** View and manage your applications deployed on Google App Engine. */
   const APPENGINE_ADMIN =
@@ -53,14 +53,14 @@ class Powerform_Google_Service_Manager extends Powerform_Google_Service
 
   public $deployments;
   public $templates;
-  
+
 
   /**
    * Constructs the internal representation of the Manager service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -68,7 +68,7 @@ class Powerform_Google_Service_Manager extends Powerform_Google_Service
     $this->version = 'v1beta2';
     $this->serviceName = 'manager';
 
-    $this->deployments = new Powerform_Google_Service_Manager_Deployments_Resource(
+    $this->deployments = new Google_Service_Manager_Deployments_Resource(
         $this,
         $this->serviceName,
         'deployments',
@@ -156,7 +156,7 @@ class Powerform_Google_Service_Manager extends Powerform_Google_Service
           )
         )
     );
-    $this->templates = new Powerform_Google_Service_Manager_Templates_Resource(
+    $this->templates = new Google_Service_Manager_Templates_Resource(
         $this,
         $this->serviceName,
         'templates',
@@ -232,11 +232,11 @@ class Powerform_Google_Service_Manager extends Powerform_Google_Service
  * The "deployments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $managerService = new Powerform_Google_Service_Manager(...);
+ *   $managerService = new Google_Service_Manager(...);
  *   $deployments = $managerService->deployments;
  *  </code>
  */
-class Powerform_Google_Service_Manager_Deployments_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Manager_Deployments_Resource extends Google_Service_Resource
 {
 
   /**
@@ -261,13 +261,13 @@ class Powerform_Google_Service_Manager_Deployments_Resource extends Powerform_Go
    * @param string $region
    * @param string $deploymentName
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Manager_Deployment
+   * @return Google_Service_Manager_Deployment
    */
   public function get($projectId, $region, $deploymentName, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'region' => $region, 'deploymentName' => $deploymentName);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Manager_Deployment");
+    return $this->call('get', array($params), "Google_Service_Manager_Deployment");
   }
 
   /**
@@ -275,15 +275,15 @@ class Powerform_Google_Service_Manager_Deployments_Resource extends Powerform_Go
    *
    * @param string $projectId
    * @param string $region
-   * @param Powerform_Google_Deployment $postBody
+   * @param Google_Deployment $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Manager_Deployment
+   * @return Google_Service_Manager_Deployment
    */
-  public function insert($projectId, $region, Powerform_Google_Service_Manager_Deployment $postBody, $optParams = array())
+  public function insert($projectId, $region, Google_Service_Manager_Deployment $postBody, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'region' => $region, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Manager_Deployment");
+    return $this->call('insert', array($params), "Google_Service_Manager_Deployment");
   }
 
   /**
@@ -298,13 +298,13 @@ class Powerform_Google_Service_Manager_Deployments_Resource extends Powerform_Go
    * @opt_param string pageToken Specifies a nextPageToken returned by a previous
    * list request. This token can be used to request the next page of results from
    * a previous list request.
-   * @return Powerform_Google_Service_Manager_DeploymentsListResponse
+   * @return Google_Service_Manager_DeploymentsListResponse
    */
   public function listDeployments($projectId, $region, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'region' => $region);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Manager_DeploymentsListResponse");
+    return $this->call('list', array($params), "Google_Service_Manager_DeploymentsListResponse");
   }
 }
 
@@ -312,11 +312,11 @@ class Powerform_Google_Service_Manager_Deployments_Resource extends Powerform_Go
  * The "templates" collection of methods.
  * Typical usage is:
  *  <code>
- *   $managerService = new Powerform_Google_Service_Manager(...);
+ *   $managerService = new Google_Service_Manager(...);
  *   $templates = $managerService->templates;
  *  </code>
  */
-class Powerform_Google_Service_Manager_Templates_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Manager_Templates_Resource extends Google_Service_Resource
 {
 
   /**
@@ -339,28 +339,28 @@ class Powerform_Google_Service_Manager_Templates_Resource extends Powerform_Goog
    * @param string $projectId
    * @param string $templateName
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Manager_Template
+   * @return Google_Service_Manager_Template
    */
   public function get($projectId, $templateName, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'templateName' => $templateName);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Manager_Template");
+    return $this->call('get', array($params), "Google_Service_Manager_Template");
   }
 
   /**
    * (templates.insert)
    *
    * @param string $projectId
-   * @param Powerform_Google_Template $postBody
+   * @param Google_Template $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Manager_Template
+   * @return Google_Service_Manager_Template
    */
-  public function insert($projectId, Powerform_Google_Service_Manager_Template $postBody, $optParams = array())
+  public function insert($projectId, Google_Service_Manager_Template $postBody, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Manager_Template");
+    return $this->call('insert', array($params), "Google_Service_Manager_Template");
   }
 
   /**
@@ -374,20 +374,20 @@ class Powerform_Google_Service_Manager_Templates_Resource extends Powerform_Goog
    * @opt_param string pageToken Specifies a nextPageToken returned by a previous
    * list request. This token can be used to request the next page of results from
    * a previous list request.
-   * @return Powerform_Google_Service_Manager_TemplatesListResponse
+   * @return Google_Service_Manager_TemplatesListResponse
    */
   public function listTemplates($projectId, $optParams = array())
   {
     $params = array('projectId' => $projectId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Manager_TemplatesListResponse");
+    return $this->call('list', array($params), "Google_Service_Manager_TemplatesListResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Manager_AccessConfig extends Powerform_Google_Model
+class Google_Service_Manager_AccessConfig extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -422,7 +422,7 @@ class Powerform_Google_Service_Manager_AccessConfig extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Manager_Action extends Powerform_Google_Collection
+class Google_Service_Manager_Action extends Google_Collection
 {
   protected $collection_key = 'commands';
   protected $internal_gapi_mappings = array(
@@ -449,7 +449,7 @@ class Powerform_Google_Service_Manager_Action extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Manager_AllowedRule extends Powerform_Google_Collection
+class Google_Service_Manager_AllowedRule extends Google_Collection
 {
   protected $collection_key = 'ports';
   protected $internal_gapi_mappings = array(
@@ -477,7 +477,7 @@ class Powerform_Google_Service_Manager_AllowedRule extends Powerform_Google_Coll
   }
 }
 
-class Powerform_Google_Service_Manager_AutoscalingModule extends Powerform_Google_Model
+class Google_Service_Manager_AutoscalingModule extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -548,7 +548,7 @@ class Powerform_Google_Service_Manager_AutoscalingModule extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Manager_AutoscalingModuleStatus extends Powerform_Google_Model
+class Google_Service_Manager_AutoscalingModuleStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -565,7 +565,7 @@ class Powerform_Google_Service_Manager_AutoscalingModuleStatus extends Powerform
   }
 }
 
-class Powerform_Google_Service_Manager_DeployState extends Powerform_Google_Model
+class Google_Service_Manager_DeployState extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -591,19 +591,19 @@ class Powerform_Google_Service_Manager_DeployState extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Manager_Deployment extends Powerform_Google_Collection
+class Google_Service_Manager_Deployment extends Google_Collection
 {
   protected $collection_key = 'overrides';
   protected $internal_gapi_mappings = array(
   );
   public $creationDate;
   public $description;
-  protected $modulesType = 'Powerform_Google_Service_Manager_ModuleStatus';
+  protected $modulesType = 'Google_Service_Manager_ModuleStatus';
   protected $modulesDataType = 'map';
   public $name;
-  protected $overridesType = 'Powerform_Google_Service_Manager_ParamOverride';
+  protected $overridesType = 'Google_Service_Manager_ParamOverride';
   protected $overridesDataType = 'array';
-  protected $stateType = 'Powerform_Google_Service_Manager_DeployState';
+  protected $stateType = 'Google_Service_Manager_DeployState';
   protected $stateDataType = '';
   public $templateName;
 
@@ -648,7 +648,7 @@ class Powerform_Google_Service_Manager_Deployment extends Powerform_Google_Colle
   {
     return $this->overrides;
   }
-  public function setState(Powerform_Google_Service_Manager_DeployState $state)
+  public function setState(Google_Service_Manager_DeployState $state)
   {
     $this->state = $state;
   }
@@ -666,13 +666,13 @@ class Powerform_Google_Service_Manager_Deployment extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Manager_DeploymentsListResponse extends Powerform_Google_Collection
+class Google_Service_Manager_DeploymentsListResponse extends Google_Collection
 {
   protected $collection_key = 'resources';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $resourcesType = 'Powerform_Google_Service_Manager_Deployment';
+  protected $resourcesType = 'Google_Service_Manager_Deployment';
   protected $resourcesDataType = 'array';
 
 
@@ -694,7 +694,7 @@ class Powerform_Google_Service_Manager_DeploymentsListResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Manager_DiskAttachment extends Powerform_Google_Model
+class Google_Service_Manager_DiskAttachment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -720,7 +720,7 @@ class Powerform_Google_Service_Manager_DiskAttachment extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Manager_EnvVariable extends Powerform_Google_Model
+class Google_Service_Manager_EnvVariable extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -746,16 +746,16 @@ class Powerform_Google_Service_Manager_EnvVariable extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Manager_ExistingDisk extends Powerform_Google_Model
+class Google_Service_Manager_ExistingDisk extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $attachmentType = 'Powerform_Google_Service_Manager_DiskAttachment';
+  protected $attachmentType = 'Google_Service_Manager_DiskAttachment';
   protected $attachmentDataType = '';
   public $source;
 
 
-  public function setAttachment(Powerform_Google_Service_Manager_DiskAttachment $attachment)
+  public function setAttachment(Google_Service_Manager_DiskAttachment $attachment)
   {
     $this->attachment = $attachment;
   }
@@ -773,12 +773,12 @@ class Powerform_Google_Service_Manager_ExistingDisk extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Manager_FirewallModule extends Powerform_Google_Collection
+class Google_Service_Manager_FirewallModule extends Google_Collection
 {
   protected $collection_key = 'targetTags';
   protected $internal_gapi_mappings = array(
   );
-  protected $allowedType = 'Powerform_Google_Service_Manager_AllowedRule';
+  protected $allowedType = 'Google_Service_Manager_AllowedRule';
   protected $allowedDataType = 'array';
   public $description;
   public $network;
@@ -837,7 +837,7 @@ class Powerform_Google_Service_Manager_FirewallModule extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Manager_FirewallModuleStatus extends Powerform_Google_Model
+class Google_Service_Manager_FirewallModuleStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -854,7 +854,7 @@ class Powerform_Google_Service_Manager_FirewallModuleStatus extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Manager_HealthCheckModule extends Powerform_Google_Model
+class Google_Service_Manager_HealthCheckModule extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -934,7 +934,7 @@ class Powerform_Google_Service_Manager_HealthCheckModule extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Manager_HealthCheckModuleStatus extends Powerform_Google_Model
+class Google_Service_Manager_HealthCheckModuleStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -951,7 +951,7 @@ class Powerform_Google_Service_Manager_HealthCheckModuleStatus extends Powerform
   }
 }
 
-class Powerform_Google_Service_Manager_LbModule extends Powerform_Google_Collection
+class Google_Service_Manager_LbModule extends Google_Collection
 {
   protected $collection_key = 'targetModules';
   protected $internal_gapi_mappings = array(
@@ -1023,7 +1023,7 @@ class Powerform_Google_Service_Manager_LbModule extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Manager_LbModuleStatus extends Powerform_Google_Model
+class Google_Service_Manager_LbModuleStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1049,13 +1049,13 @@ class Powerform_Google_Service_Manager_LbModuleStatus extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Manager_Metadata extends Powerform_Google_Collection
+class Google_Service_Manager_Metadata extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $fingerPrint;
-  protected $itemsType = 'Powerform_Google_Service_Manager_MetadataItem';
+  protected $itemsType = 'Google_Service_Manager_MetadataItem';
   protected $itemsDataType = 'array';
 
 
@@ -1077,7 +1077,7 @@ class Powerform_Google_Service_Manager_Metadata extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Manager_MetadataItem extends Powerform_Google_Model
+class Google_Service_Manager_MetadataItem extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1103,26 +1103,26 @@ class Powerform_Google_Service_Manager_MetadataItem extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Manager_Module extends Powerform_Google_Model
+class Google_Service_Manager_Module extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $autoscalingModuleType = 'Powerform_Google_Service_Manager_AutoscalingModule';
+  protected $autoscalingModuleType = 'Google_Service_Manager_AutoscalingModule';
   protected $autoscalingModuleDataType = '';
-  protected $firewallModuleType = 'Powerform_Google_Service_Manager_FirewallModule';
+  protected $firewallModuleType = 'Google_Service_Manager_FirewallModule';
   protected $firewallModuleDataType = '';
-  protected $healthCheckModuleType = 'Powerform_Google_Service_Manager_HealthCheckModule';
+  protected $healthCheckModuleType = 'Google_Service_Manager_HealthCheckModule';
   protected $healthCheckModuleDataType = '';
-  protected $lbModuleType = 'Powerform_Google_Service_Manager_LbModule';
+  protected $lbModuleType = 'Google_Service_Manager_LbModule';
   protected $lbModuleDataType = '';
-  protected $networkModuleType = 'Powerform_Google_Service_Manager_NetworkModule';
+  protected $networkModuleType = 'Google_Service_Manager_NetworkModule';
   protected $networkModuleDataType = '';
-  protected $replicaPoolModuleType = 'Powerform_Google_Service_Manager_ReplicaPoolModule';
+  protected $replicaPoolModuleType = 'Google_Service_Manager_ReplicaPoolModule';
   protected $replicaPoolModuleDataType = '';
   public $type;
 
 
-  public function setAutoscalingModule(Powerform_Google_Service_Manager_AutoscalingModule $autoscalingModule)
+  public function setAutoscalingModule(Google_Service_Manager_AutoscalingModule $autoscalingModule)
   {
     $this->autoscalingModule = $autoscalingModule;
   }
@@ -1130,7 +1130,7 @@ class Powerform_Google_Service_Manager_Module extends Powerform_Google_Model
   {
     return $this->autoscalingModule;
   }
-  public function setFirewallModule(Powerform_Google_Service_Manager_FirewallModule $firewallModule)
+  public function setFirewallModule(Google_Service_Manager_FirewallModule $firewallModule)
   {
     $this->firewallModule = $firewallModule;
   }
@@ -1138,7 +1138,7 @@ class Powerform_Google_Service_Manager_Module extends Powerform_Google_Model
   {
     return $this->firewallModule;
   }
-  public function setHealthCheckModule(Powerform_Google_Service_Manager_HealthCheckModule $healthCheckModule)
+  public function setHealthCheckModule(Google_Service_Manager_HealthCheckModule $healthCheckModule)
   {
     $this->healthCheckModule = $healthCheckModule;
   }
@@ -1146,7 +1146,7 @@ class Powerform_Google_Service_Manager_Module extends Powerform_Google_Model
   {
     return $this->healthCheckModule;
   }
-  public function setLbModule(Powerform_Google_Service_Manager_LbModule $lbModule)
+  public function setLbModule(Google_Service_Manager_LbModule $lbModule)
   {
     $this->lbModule = $lbModule;
   }
@@ -1154,7 +1154,7 @@ class Powerform_Google_Service_Manager_Module extends Powerform_Google_Model
   {
     return $this->lbModule;
   }
-  public function setNetworkModule(Powerform_Google_Service_Manager_NetworkModule $networkModule)
+  public function setNetworkModule(Google_Service_Manager_NetworkModule $networkModule)
   {
     $this->networkModule = $networkModule;
   }
@@ -1162,7 +1162,7 @@ class Powerform_Google_Service_Manager_Module extends Powerform_Google_Model
   {
     return $this->networkModule;
   }
-  public function setReplicaPoolModule(Powerform_Google_Service_Manager_ReplicaPoolModule $replicaPoolModule)
+  public function setReplicaPoolModule(Google_Service_Manager_ReplicaPoolModule $replicaPoolModule)
   {
     $this->replicaPoolModule = $replicaPoolModule;
   }
@@ -1180,28 +1180,28 @@ class Powerform_Google_Service_Manager_Module extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Manager_ModuleStatus extends Powerform_Google_Model
+class Google_Service_Manager_ModuleStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $autoscalingModuleStatusType = 'Powerform_Google_Service_Manager_AutoscalingModuleStatus';
+  protected $autoscalingModuleStatusType = 'Google_Service_Manager_AutoscalingModuleStatus';
   protected $autoscalingModuleStatusDataType = '';
-  protected $firewallModuleStatusType = 'Powerform_Google_Service_Manager_FirewallModuleStatus';
+  protected $firewallModuleStatusType = 'Google_Service_Manager_FirewallModuleStatus';
   protected $firewallModuleStatusDataType = '';
-  protected $healthCheckModuleStatusType = 'Powerform_Google_Service_Manager_HealthCheckModuleStatus';
+  protected $healthCheckModuleStatusType = 'Google_Service_Manager_HealthCheckModuleStatus';
   protected $healthCheckModuleStatusDataType = '';
-  protected $lbModuleStatusType = 'Powerform_Google_Service_Manager_LbModuleStatus';
+  protected $lbModuleStatusType = 'Google_Service_Manager_LbModuleStatus';
   protected $lbModuleStatusDataType = '';
-  protected $networkModuleStatusType = 'Powerform_Google_Service_Manager_NetworkModuleStatus';
+  protected $networkModuleStatusType = 'Google_Service_Manager_NetworkModuleStatus';
   protected $networkModuleStatusDataType = '';
-  protected $replicaPoolModuleStatusType = 'Powerform_Google_Service_Manager_ReplicaPoolModuleStatus';
+  protected $replicaPoolModuleStatusType = 'Google_Service_Manager_ReplicaPoolModuleStatus';
   protected $replicaPoolModuleStatusDataType = '';
-  protected $stateType = 'Powerform_Google_Service_Manager_DeployState';
+  protected $stateType = 'Google_Service_Manager_DeployState';
   protected $stateDataType = '';
   public $type;
 
 
-  public function setAutoscalingModuleStatus(Powerform_Google_Service_Manager_AutoscalingModuleStatus $autoscalingModuleStatus)
+  public function setAutoscalingModuleStatus(Google_Service_Manager_AutoscalingModuleStatus $autoscalingModuleStatus)
   {
     $this->autoscalingModuleStatus = $autoscalingModuleStatus;
   }
@@ -1209,7 +1209,7 @@ class Powerform_Google_Service_Manager_ModuleStatus extends Powerform_Google_Mod
   {
     return $this->autoscalingModuleStatus;
   }
-  public function setFirewallModuleStatus(Powerform_Google_Service_Manager_FirewallModuleStatus $firewallModuleStatus)
+  public function setFirewallModuleStatus(Google_Service_Manager_FirewallModuleStatus $firewallModuleStatus)
   {
     $this->firewallModuleStatus = $firewallModuleStatus;
   }
@@ -1217,7 +1217,7 @@ class Powerform_Google_Service_Manager_ModuleStatus extends Powerform_Google_Mod
   {
     return $this->firewallModuleStatus;
   }
-  public function setHealthCheckModuleStatus(Powerform_Google_Service_Manager_HealthCheckModuleStatus $healthCheckModuleStatus)
+  public function setHealthCheckModuleStatus(Google_Service_Manager_HealthCheckModuleStatus $healthCheckModuleStatus)
   {
     $this->healthCheckModuleStatus = $healthCheckModuleStatus;
   }
@@ -1225,7 +1225,7 @@ class Powerform_Google_Service_Manager_ModuleStatus extends Powerform_Google_Mod
   {
     return $this->healthCheckModuleStatus;
   }
-  public function setLbModuleStatus(Powerform_Google_Service_Manager_LbModuleStatus $lbModuleStatus)
+  public function setLbModuleStatus(Google_Service_Manager_LbModuleStatus $lbModuleStatus)
   {
     $this->lbModuleStatus = $lbModuleStatus;
   }
@@ -1233,7 +1233,7 @@ class Powerform_Google_Service_Manager_ModuleStatus extends Powerform_Google_Mod
   {
     return $this->lbModuleStatus;
   }
-  public function setNetworkModuleStatus(Powerform_Google_Service_Manager_NetworkModuleStatus $networkModuleStatus)
+  public function setNetworkModuleStatus(Google_Service_Manager_NetworkModuleStatus $networkModuleStatus)
   {
     $this->networkModuleStatus = $networkModuleStatus;
   }
@@ -1241,7 +1241,7 @@ class Powerform_Google_Service_Manager_ModuleStatus extends Powerform_Google_Mod
   {
     return $this->networkModuleStatus;
   }
-  public function setReplicaPoolModuleStatus(Powerform_Google_Service_Manager_ReplicaPoolModuleStatus $replicaPoolModuleStatus)
+  public function setReplicaPoolModuleStatus(Google_Service_Manager_ReplicaPoolModuleStatus $replicaPoolModuleStatus)
   {
     $this->replicaPoolModuleStatus = $replicaPoolModuleStatus;
   }
@@ -1249,7 +1249,7 @@ class Powerform_Google_Service_Manager_ModuleStatus extends Powerform_Google_Mod
   {
     return $this->replicaPoolModuleStatus;
   }
-  public function setState(Powerform_Google_Service_Manager_DeployState $state)
+  public function setState(Google_Service_Manager_DeployState $state)
   {
     $this->state = $state;
   }
@@ -1267,12 +1267,12 @@ class Powerform_Google_Service_Manager_ModuleStatus extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Manager_NetworkInterface extends Powerform_Google_Collection
+class Google_Service_Manager_NetworkInterface extends Google_Collection
 {
   protected $collection_key = 'accessConfigs';
   protected $internal_gapi_mappings = array(
   );
-  protected $accessConfigsType = 'Powerform_Google_Service_Manager_AccessConfig';
+  protected $accessConfigsType = 'Google_Service_Manager_AccessConfig';
   protected $accessConfigsDataType = 'array';
   public $name;
   public $network;
@@ -1313,7 +1313,7 @@ class Powerform_Google_Service_Manager_NetworkInterface extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Manager_NetworkModule extends Powerform_Google_Model
+class Google_Service_Manager_NetworkModule extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "iPv4Range" => "IPv4Range",
@@ -1349,7 +1349,7 @@ class Powerform_Google_Service_Manager_NetworkModule extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Manager_NetworkModuleStatus extends Powerform_Google_Model
+class Google_Service_Manager_NetworkModuleStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1366,19 +1366,19 @@ class Powerform_Google_Service_Manager_NetworkModuleStatus extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Manager_NewDisk extends Powerform_Google_Model
+class Google_Service_Manager_NewDisk extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $attachmentType = 'Powerform_Google_Service_Manager_DiskAttachment';
+  protected $attachmentType = 'Google_Service_Manager_DiskAttachment';
   protected $attachmentDataType = '';
   public $autoDelete;
   public $boot;
-  protected $initializeParamsType = 'Powerform_Google_Service_Manager_NewDiskInitializeParams';
+  protected $initializeParamsType = 'Google_Service_Manager_NewDiskInitializeParams';
   protected $initializeParamsDataType = '';
 
 
-  public function setAttachment(Powerform_Google_Service_Manager_DiskAttachment $attachment)
+  public function setAttachment(Google_Service_Manager_DiskAttachment $attachment)
   {
     $this->attachment = $attachment;
   }
@@ -1402,7 +1402,7 @@ class Powerform_Google_Service_Manager_NewDisk extends Powerform_Google_Model
   {
     return $this->boot;
   }
-  public function setInitializeParams(Powerform_Google_Service_Manager_NewDiskInitializeParams $initializeParams)
+  public function setInitializeParams(Google_Service_Manager_NewDiskInitializeParams $initializeParams)
   {
     $this->initializeParams = $initializeParams;
   }
@@ -1412,7 +1412,7 @@ class Powerform_Google_Service_Manager_NewDisk extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Manager_NewDiskInitializeParams extends Powerform_Google_Model
+class Google_Service_Manager_NewDiskInitializeParams extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1447,7 +1447,7 @@ class Powerform_Google_Service_Manager_NewDiskInitializeParams extends Powerform
   }
 }
 
-class Powerform_Google_Service_Manager_ParamOverride extends Powerform_Google_Model
+class Google_Service_Manager_ParamOverride extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1473,16 +1473,16 @@ class Powerform_Google_Service_Manager_ParamOverride extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Manager_ReplicaPoolModule extends Powerform_Google_Collection
+class Google_Service_Manager_ReplicaPoolModule extends Google_Collection
 {
   protected $collection_key = 'healthChecks';
   protected $internal_gapi_mappings = array(
   );
-  protected $envVariablesType = 'Powerform_Google_Service_Manager_EnvVariable';
+  protected $envVariablesType = 'Google_Service_Manager_EnvVariable';
   protected $envVariablesDataType = 'map';
   public $healthChecks;
   public $numReplicas;
-  protected $replicaPoolParamsType = 'Powerform_Google_Service_Manager_ReplicaPoolParams';
+  protected $replicaPoolParamsType = 'Google_Service_Manager_ReplicaPoolParams';
   protected $replicaPoolParamsDataType = '';
   public $resourceView;
 
@@ -1511,7 +1511,7 @@ class Powerform_Google_Service_Manager_ReplicaPoolModule extends Powerform_Googl
   {
     return $this->numReplicas;
   }
-  public function setReplicaPoolParams(Powerform_Google_Service_Manager_ReplicaPoolParams $replicaPoolParams)
+  public function setReplicaPoolParams(Google_Service_Manager_ReplicaPoolParams $replicaPoolParams)
   {
     $this->replicaPoolParams = $replicaPoolParams;
   }
@@ -1529,7 +1529,7 @@ class Powerform_Google_Service_Manager_ReplicaPoolModule extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Manager_ReplicaPoolModuleStatus extends Powerform_Google_Model
+class Google_Service_Manager_ReplicaPoolModuleStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1555,15 +1555,15 @@ class Powerform_Google_Service_Manager_ReplicaPoolModuleStatus extends Powerform
   }
 }
 
-class Powerform_Google_Service_Manager_ReplicaPoolParams extends Powerform_Google_Model
+class Google_Service_Manager_ReplicaPoolParams extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $v1beta1Type = 'Powerform_Google_Service_Manager_ReplicaPoolParamsV1Beta1';
+  protected $v1beta1Type = 'Google_Service_Manager_ReplicaPoolParamsV1Beta1';
   protected $v1beta1DataType = '';
 
 
-  public function setV1beta1(Powerform_Google_Service_Manager_ReplicaPoolParamsV1Beta1 $v1beta1)
+  public function setV1beta1(Google_Service_Manager_ReplicaPoolParamsV1Beta1 $v1beta1)
   {
     $this->v1beta1 = $v1beta1;
   }
@@ -1573,7 +1573,7 @@ class Powerform_Google_Service_Manager_ReplicaPoolParams extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Manager_ReplicaPoolParamsV1Beta1 extends Powerform_Google_Collection
+class Google_Service_Manager_ReplicaPoolParamsV1Beta1 extends Google_Collection
 {
   protected $collection_key = 'serviceAccounts';
   protected $internal_gapi_mappings = array(
@@ -1582,20 +1582,20 @@ class Powerform_Google_Service_Manager_ReplicaPoolParamsV1Beta1 extends Powerfor
   public $baseInstanceName;
   public $canIpForward;
   public $description;
-  protected $disksToAttachType = 'Powerform_Google_Service_Manager_ExistingDisk';
+  protected $disksToAttachType = 'Google_Service_Manager_ExistingDisk';
   protected $disksToAttachDataType = 'array';
-  protected $disksToCreateType = 'Powerform_Google_Service_Manager_NewDisk';
+  protected $disksToCreateType = 'Google_Service_Manager_NewDisk';
   protected $disksToCreateDataType = 'array';
   public $initAction;
   public $machineType;
-  protected $metadataType = 'Powerform_Google_Service_Manager_Metadata';
+  protected $metadataType = 'Google_Service_Manager_Metadata';
   protected $metadataDataType = '';
-  protected $networkInterfacesType = 'Powerform_Google_Service_Manager_NetworkInterface';
+  protected $networkInterfacesType = 'Google_Service_Manager_NetworkInterface';
   protected $networkInterfacesDataType = 'array';
   public $onHostMaintenance;
-  protected $serviceAccountsType = 'Powerform_Google_Service_Manager_ServiceAccount';
+  protected $serviceAccountsType = 'Google_Service_Manager_ServiceAccount';
   protected $serviceAccountsDataType = 'array';
-  protected $tagsType = 'Powerform_Google_Service_Manager_Tag';
+  protected $tagsType = 'Google_Service_Manager_Tag';
   protected $tagsDataType = '';
   public $zone;
 
@@ -1664,7 +1664,7 @@ class Powerform_Google_Service_Manager_ReplicaPoolParamsV1Beta1 extends Powerfor
   {
     return $this->machineType;
   }
-  public function setMetadata(Powerform_Google_Service_Manager_Metadata $metadata)
+  public function setMetadata(Google_Service_Manager_Metadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1696,7 +1696,7 @@ class Powerform_Google_Service_Manager_ReplicaPoolParamsV1Beta1 extends Powerfor
   {
     return $this->serviceAccounts;
   }
-  public function setTags(Powerform_Google_Service_Manager_Tag $tags)
+  public function setTags(Google_Service_Manager_Tag $tags)
   {
     $this->tags = $tags;
   }
@@ -1714,7 +1714,7 @@ class Powerform_Google_Service_Manager_ReplicaPoolParamsV1Beta1 extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Manager_ServiceAccount extends Powerform_Google_Collection
+class Google_Service_Manager_ServiceAccount extends Google_Collection
 {
   protected $collection_key = 'scopes';
   protected $internal_gapi_mappings = array(
@@ -1741,7 +1741,7 @@ class Powerform_Google_Service_Manager_ServiceAccount extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Manager_Tag extends Powerform_Google_Collection
+class Google_Service_Manager_Tag extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
@@ -1768,14 +1768,14 @@ class Powerform_Google_Service_Manager_Tag extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Manager_Template extends Powerform_Google_Model
+class Google_Service_Manager_Template extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $actionsType = 'Powerform_Google_Service_Manager_Action';
+  protected $actionsType = 'Google_Service_Manager_Action';
   protected $actionsDataType = 'map';
   public $description;
-  protected $modulesType = 'Powerform_Google_Service_Manager_Module';
+  protected $modulesType = 'Google_Service_Manager_Module';
   protected $modulesDataType = 'map';
   public $name;
 
@@ -1814,13 +1814,13 @@ class Powerform_Google_Service_Manager_Template extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Manager_TemplatesListResponse extends Powerform_Google_Collection
+class Google_Service_Manager_TemplatesListResponse extends Google_Collection
 {
   protected $collection_key = 'resources';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $resourcesType = 'Powerform_Google_Service_Manager_Template';
+  protected $resourcesType = 'Google_Service_Manager_Template';
   protected $resourcesDataType = 'array';
 
 

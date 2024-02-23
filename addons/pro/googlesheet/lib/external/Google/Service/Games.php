@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Games extends Powerform_Google_Service
+class Google_Service_Games extends Google_Service
 {
   /** View and manage its own configuration data in your Google Drive. */
   const DRIVE_APPDATA =
@@ -53,14 +53,14 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
   public $scores;
   public $snapshots;
   public $turnBasedMatches;
-  
+
 
   /**
    * Constructs the internal representation of the Games service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -68,7 +68,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'games';
 
-    $this->achievementDefinitions = new Powerform_Google_Service_Games_AchievementDefinitions_Resource(
+    $this->achievementDefinitions = new Google_Service_Games_AchievementDefinitions_Resource(
         $this,
         $this->serviceName,
         'achievementDefinitions',
@@ -95,7 +95,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->achievements = new Powerform_Google_Service_Games_Achievements_Resource(
+    $this->achievements = new Google_Service_Games_Achievements_Resource(
         $this,
         $this->serviceName,
         'achievements',
@@ -189,7 +189,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->applications = new Powerform_Google_Service_Games_Applications_Resource(
+    $this->applications = new Google_Service_Games_Applications_Resource(
         $this,
         $this->serviceName,
         'applications',
@@ -231,7 +231,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->events = new Powerform_Google_Service_Games_Events_Resource(
+    $this->events = new Google_Service_Games_Events_Resource(
         $this,
         $this->serviceName,
         'events',
@@ -284,7 +284,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->leaderboards = new Powerform_Google_Service_Games_Leaderboards_Resource(
+    $this->leaderboards = new Google_Service_Games_Leaderboards_Resource(
         $this,
         $this->serviceName,
         'leaderboards',
@@ -325,7 +325,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->metagame = new Powerform_Google_Service_Games_Metagame_Resource(
+    $this->metagame = new Google_Service_Games_Metagame_Resource(
         $this,
         $this->serviceName,
         'metagame',
@@ -366,7 +366,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->players = new Powerform_Google_Service_Games_Players_Resource(
+    $this->players = new Google_Service_Games_Players_Resource(
         $this,
         $this->serviceName,
         'players',
@@ -412,7 +412,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->pushtokens = new Powerform_Google_Service_Games_Pushtokens_Resource(
+    $this->pushtokens = new Google_Service_Games_Pushtokens_Resource(
         $this,
         $this->serviceName,
         'pushtokens',
@@ -430,7 +430,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->questMilestones = new Powerform_Google_Service_Games_QuestMilestones_Resource(
+    $this->questMilestones = new Google_Service_Games_QuestMilestones_Resource(
         $this,
         $this->serviceName,
         'questMilestones',
@@ -460,7 +460,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->quests = new Powerform_Google_Service_Games_Quests_Resource(
+    $this->quests = new Google_Service_Games_Quests_Resource(
         $this,
         $this->serviceName,
         'quests',
@@ -506,7 +506,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->revisions = new Powerform_Google_Service_Games_Revisions_Resource(
+    $this->revisions = new Google_Service_Games_Revisions_Resource(
         $this,
         $this->serviceName,
         'revisions',
@@ -526,7 +526,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->rooms = new Powerform_Google_Service_Games_Rooms_Resource(
+    $this->rooms = new Google_Service_Games_Rooms_Resource(
         $this,
         $this->serviceName,
         'rooms',
@@ -642,7 +642,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->scores = new Powerform_Google_Service_Games_Scores_Resource(
+    $this->scores = new Google_Service_Games_Scores_Resource(
         $this,
         $this->serviceName,
         'scores',
@@ -792,7 +792,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->snapshots = new Powerform_Google_Service_Games_Snapshots_Resource(
+    $this->snapshots = new Google_Service_Games_Snapshots_Resource(
         $this,
         $this->serviceName,
         'snapshots',
@@ -838,7 +838,7 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
           )
         )
     );
-    $this->turnBasedMatches = new Powerform_Google_Service_Games_TurnBasedMatches_Resource(
+    $this->turnBasedMatches = new Google_Service_Games_TurnBasedMatches_Resource(
         $this,
         $this->serviceName,
         'turnBasedMatches',
@@ -1064,11 +1064,11 @@ class Powerform_Google_Service_Games extends Powerform_Google_Service
  * The "achievementDefinitions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $achievementDefinitions = $gamesService->achievementDefinitions;
  *  </code>
  */
-class Powerform_Google_Service_Games_AchievementDefinitions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_AchievementDefinitions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1083,13 +1083,13 @@ class Powerform_Google_Service_Games_AchievementDefinitions_Resource extends Pow
    * return in the response, used for paging. For any response, the actual number
    * of achievement resources returned may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_AchievementDefinitionsListResponse
+   * @return Google_Service_Games_AchievementDefinitionsListResponse
    */
   public function listAchievementDefinitions($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Games_AchievementDefinitionsListResponse");
+    return $this->call('list', array($params), "Google_Service_Games_AchievementDefinitionsListResponse");
   }
 }
 
@@ -1097,11 +1097,11 @@ class Powerform_Google_Service_Games_AchievementDefinitions_Resource extends Pow
  * The "achievements" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $achievements = $gamesService->achievements;
  *  </code>
  */
-class Powerform_Google_Service_Games_Achievements_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Achievements_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1115,13 +1115,13 @@ class Powerform_Google_Service_Games_Achievements_Resource extends Powerform_Goo
    * @opt_param string requestId A randomly generated numeric ID for each request
    * specified by the caller. This number is used at the server to ensure that the
    * request is handled correctly across retries.
-   * @return Powerform_Google_Service_Games_AchievementIncrementResponse
+   * @return Google_Service_Games_AchievementIncrementResponse
    */
   public function increment($achievementId, $stepsToIncrement, $optParams = array())
   {
     $params = array('achievementId' => $achievementId, 'stepsToIncrement' => $stepsToIncrement);
     $params = array_merge($params, $optParams);
-    return $this->call('increment', array($params), "Powerform_Google_Service_Games_AchievementIncrementResponse");
+    return $this->call('increment', array($params), "Google_Service_Games_AchievementIncrementResponse");
   }
 
   /**
@@ -1141,13 +1141,13 @@ class Powerform_Google_Service_Games_Achievements_Resource extends Powerform_Goo
    * @opt_param string state Tells the server to return only achievements with the
    * specified state. If this parameter isn't specified, all achievements are
    * returned.
-   * @return Powerform_Google_Service_Games_PlayerAchievementListResponse
+   * @return Google_Service_Games_PlayerAchievementListResponse
    */
   public function listAchievements($playerId, $optParams = array())
   {
     $params = array('playerId' => $playerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Games_PlayerAchievementListResponse");
+    return $this->call('list', array($params), "Google_Service_Games_PlayerAchievementListResponse");
   }
 
   /**
@@ -1156,13 +1156,13 @@ class Powerform_Google_Service_Games_Achievements_Resource extends Powerform_Goo
    *
    * @param string $achievementId The ID of the achievement used by this method.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Games_AchievementRevealResponse
+   * @return Google_Service_Games_AchievementRevealResponse
    */
   public function reveal($achievementId, $optParams = array())
   {
     $params = array('achievementId' => $achievementId);
     $params = array_merge($params, $optParams);
-    return $this->call('reveal', array($params), "Powerform_Google_Service_Games_AchievementRevealResponse");
+    return $this->call('reveal', array($params), "Google_Service_Games_AchievementRevealResponse");
   }
 
   /**
@@ -1174,13 +1174,13 @@ class Powerform_Google_Service_Games_Achievements_Resource extends Powerform_Goo
    * @param string $achievementId The ID of the achievement used by this method.
    * @param int $steps The minimum value to set the steps to.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Games_AchievementSetStepsAtLeastResponse
+   * @return Google_Service_Games_AchievementSetStepsAtLeastResponse
    */
   public function setStepsAtLeast($achievementId, $steps, $optParams = array())
   {
     $params = array('achievementId' => $achievementId, 'steps' => $steps);
     $params = array_merge($params, $optParams);
-    return $this->call('setStepsAtLeast', array($params), "Powerform_Google_Service_Games_AchievementSetStepsAtLeastResponse");
+    return $this->call('setStepsAtLeast', array($params), "Google_Service_Games_AchievementSetStepsAtLeastResponse");
   }
 
   /**
@@ -1189,28 +1189,28 @@ class Powerform_Google_Service_Games_Achievements_Resource extends Powerform_Goo
    *
    * @param string $achievementId The ID of the achievement used by this method.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Games_AchievementUnlockResponse
+   * @return Google_Service_Games_AchievementUnlockResponse
    */
   public function unlock($achievementId, $optParams = array())
   {
     $params = array('achievementId' => $achievementId);
     $params = array_merge($params, $optParams);
-    return $this->call('unlock', array($params), "Powerform_Google_Service_Games_AchievementUnlockResponse");
+    return $this->call('unlock', array($params), "Google_Service_Games_AchievementUnlockResponse");
   }
 
   /**
    * Updates multiple achievements for the currently authenticated player.
    * (achievements.updateMultiple)
    *
-   * @param Powerform_Google_AchievementUpdateMultipleRequest $postBody
+   * @param Google_AchievementUpdateMultipleRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Games_AchievementUpdateMultipleResponse
+   * @return Google_Service_Games_AchievementUpdateMultipleResponse
    */
-  public function updateMultiple(Powerform_Google_Service_Games_AchievementUpdateMultipleRequest $postBody, $optParams = array())
+  public function updateMultiple(Google_Service_Games_AchievementUpdateMultipleRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('updateMultiple', array($params), "Powerform_Google_Service_Games_AchievementUpdateMultipleResponse");
+    return $this->call('updateMultiple', array($params), "Google_Service_Games_AchievementUpdateMultipleResponse");
   }
 }
 
@@ -1218,11 +1218,11 @@ class Powerform_Google_Service_Games_Achievements_Resource extends Powerform_Goo
  * The "applications" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $applications = $gamesService->applications;
  *  </code>
  */
-class Powerform_Google_Service_Games_Applications_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Applications_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1238,13 +1238,13 @@ class Powerform_Google_Service_Games_Applications_Resource extends Powerform_Goo
    * by this method.
    * @opt_param string platformType Restrict application details returned to the
    * specific platform.
-   * @return Powerform_Google_Service_Games_Application
+   * @return Google_Service_Games_Application
    */
   public function get($applicationId, $optParams = array())
   {
     $params = array('applicationId' => $applicationId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Games_Application");
+    return $this->call('get', array($params), "Google_Service_Games_Application");
   }
 
   /**
@@ -1268,13 +1268,13 @@ class Powerform_Google_Service_Games_Applications_Resource extends Powerform_Goo
    * @param string $applicationId The application ID from the Google Play
    * developer console.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Games_ApplicationVerifyResponse
+   * @return Google_Service_Games_ApplicationVerifyResponse
    */
   public function verify($applicationId, $optParams = array())
   {
     $params = array('applicationId' => $applicationId);
     $params = array_merge($params, $optParams);
-    return $this->call('verify', array($params), "Powerform_Google_Service_Games_ApplicationVerifyResponse");
+    return $this->call('verify', array($params), "Google_Service_Games_ApplicationVerifyResponse");
   }
 }
 
@@ -1282,11 +1282,11 @@ class Powerform_Google_Service_Games_Applications_Resource extends Powerform_Goo
  * The "events" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $events = $gamesService->events;
  *  </code>
  */
-class Powerform_Google_Service_Games_Events_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Events_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1301,13 +1301,13 @@ class Powerform_Google_Service_Games_Events_Resource extends Powerform_Google_Se
    * response, used for paging. For any response, the actual number of events to
    * return may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_PlayerEventListResponse
+   * @return Google_Service_Games_PlayerEventListResponse
    */
   public function listByPlayer($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('listByPlayer', array($params), "Powerform_Google_Service_Games_PlayerEventListResponse");
+    return $this->call('listByPlayer', array($params), "Google_Service_Games_PlayerEventListResponse");
   }
 
   /**
@@ -1322,31 +1322,31 @@ class Powerform_Google_Service_Games_Events_Resource extends Powerform_Google_Se
    * in the response, used for paging. For any response, the actual number of
    * event definitions to return may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_EventDefinitionListResponse
+   * @return Google_Service_Games_EventDefinitionListResponse
    */
   public function listDefinitions($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('listDefinitions', array($params), "Powerform_Google_Service_Games_EventDefinitionListResponse");
+    return $this->call('listDefinitions', array($params), "Google_Service_Games_EventDefinitionListResponse");
   }
 
   /**
    * Records a batch of changes to the number of times events have occurred for
    * the currently authenticated user of this application. (events.record)
    *
-   * @param Powerform_Google_EventRecordRequest $postBody
+   * @param Google_EventRecordRequest $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_EventUpdateResponse
+   * @return Google_Service_Games_EventUpdateResponse
    */
-  public function record(Powerform_Google_Service_Games_EventRecordRequest $postBody, $optParams = array())
+  public function record(Google_Service_Games_EventRecordRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('record', array($params), "Powerform_Google_Service_Games_EventUpdateResponse");
+    return $this->call('record', array($params), "Google_Service_Games_EventUpdateResponse");
   }
 }
 
@@ -1354,11 +1354,11 @@ class Powerform_Google_Service_Games_Events_Resource extends Powerform_Google_Se
  * The "leaderboards" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $leaderboards = $gamesService->leaderboards;
  *  </code>
  */
-class Powerform_Google_Service_Games_Leaderboards_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Leaderboards_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1370,13 +1370,13 @@ class Powerform_Google_Service_Games_Leaderboards_Resource extends Powerform_Goo
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_Leaderboard
+   * @return Google_Service_Games_Leaderboard
    */
   public function get($leaderboardId, $optParams = array())
   {
     $params = array('leaderboardId' => $leaderboardId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Games_Leaderboard");
+    return $this->call('get', array($params), "Google_Service_Games_Leaderboard");
   }
 
   /**
@@ -1391,13 +1391,13 @@ class Powerform_Google_Service_Games_Leaderboards_Resource extends Powerform_Goo
    * response. For any response, the actual number of leaderboards returned may be
    * less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_LeaderboardListResponse
+   * @return Google_Service_Games_LeaderboardListResponse
    */
   public function listLeaderboards($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Games_LeaderboardListResponse");
+    return $this->call('list', array($params), "Google_Service_Games_LeaderboardListResponse");
   }
 }
 
@@ -1405,11 +1405,11 @@ class Powerform_Google_Service_Games_Leaderboards_Resource extends Powerform_Goo
  * The "metagame" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $metagame = $gamesService->metagame;
  *  </code>
  */
-class Powerform_Google_Service_Games_Metagame_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Metagame_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1417,13 +1417,13 @@ class Powerform_Google_Service_Games_Metagame_Resource extends Powerform_Google_
    * (metagame.getMetagameConfig)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Games_MetagameConfig
+   * @return Google_Service_Games_MetagameConfig
    */
   public function getMetagameConfig($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('getMetagameConfig', array($params), "Powerform_Google_Service_Games_MetagameConfig");
+    return $this->call('getMetagameConfig', array($params), "Google_Service_Games_MetagameConfig");
   }
 
   /**
@@ -1442,13 +1442,13 @@ class Powerform_Google_Service_Games_Metagame_Resource extends Powerform_Google_
    * in the response, used for paging. For any response, the actual number of
    * category resources returned may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_CategoryListResponse
+   * @return Google_Service_Games_CategoryListResponse
    */
   public function listCategoriesByPlayer($playerId, $collection, $optParams = array())
   {
     $params = array('playerId' => $playerId, 'collection' => $collection);
     $params = array_merge($params, $optParams);
-    return $this->call('listCategoriesByPlayer', array($params), "Powerform_Google_Service_Games_CategoryListResponse");
+    return $this->call('listCategoriesByPlayer', array($params), "Google_Service_Games_CategoryListResponse");
   }
 }
 
@@ -1456,11 +1456,11 @@ class Powerform_Google_Service_Games_Metagame_Resource extends Powerform_Google_
  * The "players" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $players = $gamesService->players;
  *  </code>
  */
-class Powerform_Google_Service_Games_Players_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Players_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1473,13 +1473,13 @@ class Powerform_Google_Service_Games_Players_Resource extends Powerform_Google_S
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_Player
+   * @return Google_Service_Games_Player
    */
   public function get($playerId, $optParams = array())
   {
     $params = array('playerId' => $playerId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Games_Player");
+    return $this->call('get', array($params), "Google_Service_Games_Player");
   }
 
   /**
@@ -1495,13 +1495,13 @@ class Powerform_Google_Service_Games_Players_Resource extends Powerform_Google_S
    * the response, used for paging. For any response, the actual number of player
    * resources returned may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_PlayerListResponse
+   * @return Google_Service_Games_PlayerListResponse
    */
   public function listPlayers($collection, $optParams = array())
   {
     $params = array('collection' => $collection);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Games_PlayerListResponse");
+    return $this->call('list', array($params), "Google_Service_Games_PlayerListResponse");
   }
 }
 
@@ -1509,21 +1509,21 @@ class Powerform_Google_Service_Games_Players_Resource extends Powerform_Google_S
  * The "pushtokens" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $pushtokens = $gamesService->pushtokens;
  *  </code>
  */
-class Powerform_Google_Service_Games_Pushtokens_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Pushtokens_Resource extends Google_Service_Resource
 {
 
   /**
    * Removes a push token for the current user and application. Removing a non-
    * existent push token will report success. (pushtokens.remove)
    *
-   * @param Powerform_Google_PushTokenId $postBody
+   * @param Google_PushTokenId $postBody
    * @param array $optParams Optional parameters.
    */
-  public function remove(Powerform_Google_Service_Games_PushTokenId $postBody, $optParams = array())
+  public function remove(Google_Service_Games_PushTokenId $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -1534,10 +1534,10 @@ class Powerform_Google_Service_Games_Pushtokens_Resource extends Powerform_Googl
    * Registers a push token for the current user and application.
    * (pushtokens.update)
    *
-   * @param Powerform_Google_PushToken $postBody
+   * @param Google_PushToken $postBody
    * @param array $optParams Optional parameters.
    */
-  public function update(Powerform_Google_Service_Games_PushToken $postBody, $optParams = array())
+  public function update(Google_Service_Games_PushToken $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -1549,11 +1549,11 @@ class Powerform_Google_Service_Games_Pushtokens_Resource extends Powerform_Googl
  * The "questMilestones" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $questMilestones = $gamesService->questMilestones;
  *  </code>
  */
-class Powerform_Google_Service_Games_QuestMilestones_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_QuestMilestones_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1580,11 +1580,11 @@ class Powerform_Google_Service_Games_QuestMilestones_Resource extends Powerform_
  * The "quests" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $quests = $gamesService->quests;
  *  </code>
  */
-class Powerform_Google_Service_Games_Quests_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Quests_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1596,13 +1596,13 @@ class Powerform_Google_Service_Games_Quests_Resource extends Powerform_Google_Se
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_Quest
+   * @return Google_Service_Games_Quest
    */
   public function accept($questId, $optParams = array())
   {
     $params = array('questId' => $questId);
     $params = array_merge($params, $optParams);
-    return $this->call('accept', array($params), "Powerform_Google_Service_Games_Quest");
+    return $this->call('accept', array($params), "Google_Service_Games_Quest");
   }
 
   /**
@@ -1620,13 +1620,13 @@ class Powerform_Google_Service_Games_Quests_Resource extends Powerform_Google_Se
    * resources returned may be less than the specified maxResults. Acceptable
    * values are 1 to 50, inclusive. (Default: 50).
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_QuestListResponse
+   * @return Google_Service_Games_QuestListResponse
    */
   public function listQuests($playerId, $optParams = array())
   {
     $params = array('playerId' => $playerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Games_QuestListResponse");
+    return $this->call('list', array($params), "Google_Service_Games_QuestListResponse");
   }
 }
 
@@ -1634,11 +1634,11 @@ class Powerform_Google_Service_Games_Quests_Resource extends Powerform_Google_Se
  * The "revisions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $revisions = $gamesService->revisions;
  *  </code>
  */
-class Powerform_Google_Service_Games_Revisions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Revisions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1650,13 +1650,13 @@ class Powerform_Google_Service_Games_Revisions_Resource extends Powerform_Google
    * "IOS" - Client is running the iOS SDK.  - "WEB_APP" - Client is running as a
    * Web App.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Games_RevisionCheckResponse
+   * @return Google_Service_Games_RevisionCheckResponse
    */
   public function check($clientRevision, $optParams = array())
   {
     $params = array('clientRevision' => $clientRevision);
     $params = array_merge($params, $optParams);
-    return $this->call('check', array($params), "Powerform_Google_Service_Games_RevisionCheckResponse");
+    return $this->call('check', array($params), "Google_Service_Games_RevisionCheckResponse");
   }
 }
 
@@ -1664,29 +1664,29 @@ class Powerform_Google_Service_Games_Revisions_Resource extends Powerform_Google
  * The "rooms" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $rooms = $gamesService->rooms;
  *  </code>
  */
-class Powerform_Google_Service_Games_Rooms_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Rooms_Resource extends Google_Service_Resource
 {
 
   /**
    * Create a room. For internal use by the Games SDK only. Calling this method
    * directly is unsupported. (rooms.create)
    *
-   * @param Powerform_Google_RoomCreateRequest $postBody
+   * @param Google_RoomCreateRequest $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_Room
+   * @return Google_Service_Games_Room
    */
-  public function create(Powerform_Google_Service_Games_RoomCreateRequest $postBody, $optParams = array())
+  public function create(Google_Service_Games_RoomCreateRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Games_Room");
+    return $this->call('create', array($params), "Google_Service_Games_Room");
   }
 
   /**
@@ -1698,13 +1698,13 @@ class Powerform_Google_Service_Games_Rooms_Resource extends Powerform_Google_Ser
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_Room
+   * @return Google_Service_Games_Room
    */
   public function decline($roomId, $optParams = array())
   {
     $params = array('roomId' => $roomId);
     $params = array_merge($params, $optParams);
-    return $this->call('decline', array($params), "Powerform_Google_Service_Games_Room");
+    return $this->call('decline', array($params), "Google_Service_Games_Room");
   }
 
   /**
@@ -1729,13 +1729,13 @@ class Powerform_Google_Service_Games_Rooms_Resource extends Powerform_Google_Ser
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_Room
+   * @return Google_Service_Games_Room
    */
   public function get($roomId, $optParams = array())
   {
     $params = array('roomId' => $roomId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Games_Room");
+    return $this->call('get', array($params), "Google_Service_Games_Room");
   }
 
   /**
@@ -1743,18 +1743,18 @@ class Powerform_Google_Service_Games_Rooms_Resource extends Powerform_Google_Ser
    * directly is unsupported. (rooms.join)
    *
    * @param string $roomId The ID of the room.
-   * @param Powerform_Google_RoomJoinRequest $postBody
+   * @param Google_RoomJoinRequest $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_Room
+   * @return Google_Service_Games_Room
    */
-  public function join($roomId, Powerform_Google_Service_Games_RoomJoinRequest $postBody, $optParams = array())
+  public function join($roomId, Google_Service_Games_RoomJoinRequest $postBody, $optParams = array())
   {
     $params = array('roomId' => $roomId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('join', array($params), "Powerform_Google_Service_Games_Room");
+    return $this->call('join', array($params), "Google_Service_Games_Room");
   }
 
   /**
@@ -1762,18 +1762,18 @@ class Powerform_Google_Service_Games_Rooms_Resource extends Powerform_Google_Ser
    * directly is unsupported. (rooms.leave)
    *
    * @param string $roomId The ID of the room.
-   * @param Powerform_Google_RoomLeaveRequest $postBody
+   * @param Google_RoomLeaveRequest $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_Room
+   * @return Google_Service_Games_Room
    */
-  public function leave($roomId, Powerform_Google_Service_Games_RoomLeaveRequest $postBody, $optParams = array())
+  public function leave($roomId, Google_Service_Games_RoomLeaveRequest $postBody, $optParams = array())
   {
     $params = array('roomId' => $roomId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('leave', array($params), "Powerform_Google_Service_Games_Room");
+    return $this->call('leave', array($params), "Google_Service_Games_Room");
   }
 
   /**
@@ -1787,13 +1787,13 @@ class Powerform_Google_Service_Games_Rooms_Resource extends Powerform_Google_Ser
    * response, used for paging. For any response, the actual number of rooms to
    * return may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_RoomList
+   * @return Google_Service_Games_RoomList
    */
   public function listRooms($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Games_RoomList");
+    return $this->call('list', array($params), "Google_Service_Games_RoomList");
   }
 
   /**
@@ -1802,18 +1802,18 @@ class Powerform_Google_Service_Games_Rooms_Resource extends Powerform_Google_Ser
    * unsupported. (rooms.reportStatus)
    *
    * @param string $roomId The ID of the room.
-   * @param Powerform_Google_RoomP2PStatuses $postBody
+   * @param Google_RoomP2PStatuses $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_RoomStatus
+   * @return Google_Service_Games_RoomStatus
    */
-  public function reportStatus($roomId, Powerform_Google_Service_Games_RoomP2PStatuses $postBody, $optParams = array())
+  public function reportStatus($roomId, Google_Service_Games_RoomP2PStatuses $postBody, $optParams = array())
   {
     $params = array('roomId' => $roomId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('reportStatus', array($params), "Powerform_Google_Service_Games_RoomStatus");
+    return $this->call('reportStatus', array($params), "Google_Service_Games_RoomStatus");
   }
 }
 
@@ -1821,11 +1821,11 @@ class Powerform_Google_Service_Games_Rooms_Resource extends Powerform_Google_Ser
  * The "scores" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $scores = $gamesService->scores;
  *  </code>
  */
-class Powerform_Google_Service_Games_Scores_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Scores_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1851,13 +1851,13 @@ class Powerform_Google_Service_Games_Scores_Resource extends Powerform_Google_Se
    * in the response. For any response, the actual number of leaderboard scores
    * returned may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_PlayerLeaderboardScoreListResponse
+   * @return Google_Service_Games_PlayerLeaderboardScoreListResponse
    */
   public function get($playerId, $leaderboardId, $timeSpan, $optParams = array())
   {
     $params = array('playerId' => $playerId, 'leaderboardId' => $leaderboardId, 'timeSpan' => $timeSpan);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Games_PlayerLeaderboardScoreListResponse");
+    return $this->call('get', array($params), "Google_Service_Games_PlayerLeaderboardScoreListResponse");
   }
 
   /**
@@ -1875,13 +1875,13 @@ class Powerform_Google_Service_Games_Scores_Resource extends Powerform_Google_Se
    * in the response. For any response, the actual number of leaderboard scores
    * returned may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_LeaderboardScores
+   * @return Google_Service_Games_LeaderboardScores
    */
   public function listScores($leaderboardId, $collection, $timeSpan, $optParams = array())
   {
     $params = array('leaderboardId' => $leaderboardId, 'collection' => $collection, 'timeSpan' => $timeSpan);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Games_LeaderboardScores");
+    return $this->call('list', array($params), "Google_Service_Games_LeaderboardScores");
   }
 
   /**
@@ -1906,13 +1906,13 @@ class Powerform_Google_Service_Games_Scores_Resource extends Powerform_Google_Se
    * Must be less than or equal to maxResults.
    * @opt_param bool returnTopIfAbsent True if the top scores should be returned
    * when the player is not in the leaderboard. Defaults to true.
-   * @return Powerform_Google_Service_Games_LeaderboardScores
+   * @return Google_Service_Games_LeaderboardScores
    */
   public function listWindow($leaderboardId, $collection, $timeSpan, $optParams = array())
   {
     $params = array('leaderboardId' => $leaderboardId, 'collection' => $collection, 'timeSpan' => $timeSpan);
     $params = array_merge($params, $optParams);
-    return $this->call('listWindow', array($params), "Powerform_Google_Service_Games_LeaderboardScores");
+    return $this->call('listWindow', array($params), "Google_Service_Games_LeaderboardScores");
   }
 
   /**
@@ -1932,30 +1932,30 @@ class Powerform_Google_Service_Games_Scores_Resource extends Powerform_Google_Se
    * @opt_param string scoreTag Additional information about the score you're
    * submitting. Values must contain no more than 64 URI-safe characters as
    * defined by section 2.3 of RFC 3986.
-   * @return Powerform_Google_Service_Games_PlayerScoreResponse
+   * @return Google_Service_Games_PlayerScoreResponse
    */
   public function submit($leaderboardId, $score, $optParams = array())
   {
     $params = array('leaderboardId' => $leaderboardId, 'score' => $score);
     $params = array_merge($params, $optParams);
-    return $this->call('submit', array($params), "Powerform_Google_Service_Games_PlayerScoreResponse");
+    return $this->call('submit', array($params), "Google_Service_Games_PlayerScoreResponse");
   }
 
   /**
    * Submits multiple scores to leaderboards. (scores.submitMultiple)
    *
-   * @param Powerform_Google_PlayerScoreSubmissionList $postBody
+   * @param Google_PlayerScoreSubmissionList $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_PlayerScoreListResponse
+   * @return Google_Service_Games_PlayerScoreListResponse
    */
-  public function submitMultiple(Powerform_Google_Service_Games_PlayerScoreSubmissionList $postBody, $optParams = array())
+  public function submitMultiple(Google_Service_Games_PlayerScoreSubmissionList $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('submitMultiple', array($params), "Powerform_Google_Service_Games_PlayerScoreListResponse");
+    return $this->call('submitMultiple', array($params), "Google_Service_Games_PlayerScoreListResponse");
   }
 }
 
@@ -1963,11 +1963,11 @@ class Powerform_Google_Service_Games_Scores_Resource extends Powerform_Google_Se
  * The "snapshots" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $snapshots = $gamesService->snapshots;
  *  </code>
  */
-class Powerform_Google_Service_Games_Snapshots_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_Snapshots_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1978,13 +1978,13 @@ class Powerform_Google_Service_Games_Snapshots_Resource extends Powerform_Google
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_Snapshot
+   * @return Google_Service_Games_Snapshot
    */
   public function get($snapshotId, $optParams = array())
   {
     $params = array('snapshotId' => $snapshotId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Games_Snapshot");
+    return $this->call('get', array($params), "Google_Service_Games_Snapshot");
   }
 
   /**
@@ -2001,13 +2001,13 @@ class Powerform_Google_Service_Games_Snapshots_Resource extends Powerform_Google
    * in the response, used for paging. For any response, the actual number of
    * snapshot resources returned may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_SnapshotListResponse
+   * @return Google_Service_Games_SnapshotListResponse
    */
   public function listSnapshots($playerId, $optParams = array())
   {
     $params = array('playerId' => $playerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Games_SnapshotListResponse");
+    return $this->call('list', array($params), "Google_Service_Games_SnapshotListResponse");
   }
 }
 
@@ -2015,11 +2015,11 @@ class Powerform_Google_Service_Games_Snapshots_Resource extends Powerform_Google
  * The "turnBasedMatches" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesService = new Powerform_Google_Service_Games(...);
+ *   $gamesService = new Google_Service_Games(...);
  *   $turnBasedMatches = $gamesService->turnBasedMatches;
  *  </code>
  */
-class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Games_TurnBasedMatches_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2038,18 +2038,18 @@ class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform
   /**
    * Create a turn-based match. (turnBasedMatches.create)
    *
-   * @param Powerform_Google_TurnBasedMatchCreateRequest $postBody
+   * @param Google_TurnBasedMatchCreateRequest $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_TurnBasedMatch
+   * @return Google_Service_Games_TurnBasedMatch
    */
-  public function create(Powerform_Google_Service_Games_TurnBasedMatchCreateRequest $postBody, $optParams = array())
+  public function create(Google_Service_Games_TurnBasedMatchCreateRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Games_TurnBasedMatch");
+    return $this->call('create', array($params), "Google_Service_Games_TurnBasedMatch");
   }
 
   /**
@@ -2060,13 +2060,13 @@ class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_TurnBasedMatch
+   * @return Google_Service_Games_TurnBasedMatch
    */
   public function decline($matchId, $optParams = array())
   {
     $params = array('matchId' => $matchId);
     $params = array_merge($params, $optParams);
-    return $this->call('decline', array($params), "Powerform_Google_Service_Games_TurnBasedMatch");
+    return $this->call('decline', array($params), "Google_Service_Games_TurnBasedMatch");
   }
 
   /**
@@ -2090,18 +2090,18 @@ class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform
    * Finish, and can pass in the final match state. (turnBasedMatches.finish)
    *
    * @param string $matchId The ID of the match.
-   * @param Powerform_Google_TurnBasedMatchResults $postBody
+   * @param Google_TurnBasedMatchResults $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_TurnBasedMatch
+   * @return Google_Service_Games_TurnBasedMatch
    */
-  public function finish($matchId, Powerform_Google_Service_Games_TurnBasedMatchResults $postBody, $optParams = array())
+  public function finish($matchId, Google_Service_Games_TurnBasedMatchResults $postBody, $optParams = array())
   {
     $params = array('matchId' => $matchId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('finish', array($params), "Powerform_Google_Service_Games_TurnBasedMatch");
+    return $this->call('finish', array($params), "Google_Service_Games_TurnBasedMatch");
   }
 
   /**
@@ -2113,13 +2113,13 @@ class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform
    * @opt_param bool includeMatchData Get match data along with metadata.
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_TurnBasedMatch
+   * @return Google_Service_Games_TurnBasedMatch
    */
   public function get($matchId, $optParams = array())
   {
     $params = array('matchId' => $matchId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Games_TurnBasedMatch");
+    return $this->call('get', array($params), "Google_Service_Games_TurnBasedMatch");
   }
 
   /**
@@ -2130,13 +2130,13 @@ class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_TurnBasedMatch
+   * @return Google_Service_Games_TurnBasedMatch
    */
   public function join($matchId, $optParams = array())
   {
     $params = array('matchId' => $matchId);
     $params = array_merge($params, $optParams);
-    return $this->call('join', array($params), "Powerform_Google_Service_Games_TurnBasedMatch");
+    return $this->call('join', array($params), "Google_Service_Games_TurnBasedMatch");
   }
 
   /**
@@ -2148,13 +2148,13 @@ class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_TurnBasedMatch
+   * @return Google_Service_Games_TurnBasedMatch
    */
   public function leave($matchId, $optParams = array())
   {
     $params = array('matchId' => $matchId);
     $params = array_merge($params, $optParams);
-    return $this->call('leave', array($params), "Powerform_Google_Service_Games_TurnBasedMatch");
+    return $this->call('leave', array($params), "Google_Service_Games_TurnBasedMatch");
   }
 
   /**
@@ -2171,13 +2171,13 @@ class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform
    * should take their turn next. If not set, the match will wait for other
    * player(s) to join via automatching; this is only valid if automatch criteria
    * is set on the match with remaining slots for automatched players.
-   * @return Powerform_Google_Service_Games_TurnBasedMatch
+   * @return Google_Service_Games_TurnBasedMatch
    */
   public function leaveTurn($matchId, $matchVersion, $optParams = array())
   {
     $params = array('matchId' => $matchId, 'matchVersion' => $matchVersion);
     $params = array_merge($params, $optParams);
-    return $this->call('leaveTurn', array($params), "Powerform_Google_Service_Games_TurnBasedMatch");
+    return $this->call('leaveTurn', array($params), "Google_Service_Games_TurnBasedMatch");
   }
 
   /**
@@ -2200,13 +2200,13 @@ class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform
    * response, used for paging. For any response, the actual number of matches to
    * return may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_TurnBasedMatchList
+   * @return Google_Service_Games_TurnBasedMatchList
    */
   public function listTurnBasedMatches($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Games_TurnBasedMatchList");
+    return $this->call('list', array($params), "Google_Service_Games_TurnBasedMatchList");
   }
 
   /**
@@ -2223,13 +2223,13 @@ class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform
    * @opt_param string requestId A randomly generated numeric ID for each request
    * specified by the caller. This number is used at the server to ensure that the
    * request is handled correctly across retries.
-   * @return Powerform_Google_Service_Games_TurnBasedMatchRematch
+   * @return Google_Service_Games_TurnBasedMatchRematch
    */
   public function rematch($matchId, $optParams = array())
   {
     $params = array('matchId' => $matchId);
     $params = array_merge($params, $optParams);
-    return $this->call('rematch', array($params), "Powerform_Google_Service_Games_TurnBasedMatchRematch");
+    return $this->call('rematch', array($params), "Google_Service_Games_TurnBasedMatchRematch");
   }
 
   /**
@@ -2254,38 +2254,38 @@ class Powerform_Google_Service_Games_TurnBasedMatches_Resource extends Powerform
    * response, used for paging. For any response, the actual number of matches to
    * return may be less than the specified maxResults.
    * @opt_param string pageToken The token returned by the previous request.
-   * @return Powerform_Google_Service_Games_TurnBasedMatchSync
+   * @return Google_Service_Games_TurnBasedMatchSync
    */
   public function sync($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('sync', array($params), "Powerform_Google_Service_Games_TurnBasedMatchSync");
+    return $this->call('sync', array($params), "Google_Service_Games_TurnBasedMatchSync");
   }
 
   /**
    * Commit the results of a player turn. (turnBasedMatches.takeTurn)
    *
    * @param string $matchId The ID of the match.
-   * @param Powerform_Google_TurnBasedMatchTurn $postBody
+   * @param Google_TurnBasedMatchTurn $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string language The preferred language to use for strings returned
    * by this method.
-   * @return Powerform_Google_Service_Games_TurnBasedMatch
+   * @return Google_Service_Games_TurnBasedMatch
    */
-  public function takeTurn($matchId, Powerform_Google_Service_Games_TurnBasedMatchTurn $postBody, $optParams = array())
+  public function takeTurn($matchId, Google_Service_Games_TurnBasedMatchTurn $postBody, $optParams = array())
   {
     $params = array('matchId' => $matchId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('takeTurn', array($params), "Powerform_Google_Service_Games_TurnBasedMatch");
+    return $this->call('takeTurn', array($params), "Google_Service_Games_TurnBasedMatch");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Games_AchievementDefinition extends Powerform_Google_Model
+class Google_Service_Games_AchievementDefinition extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2410,12 +2410,12 @@ class Powerform_Google_Service_Games_AchievementDefinition extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Games_AchievementDefinitionsListResponse extends Powerform_Google_Collection
+class Google_Service_Games_AchievementDefinitionsListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_AchievementDefinition';
+  protected $itemsType = 'Google_Service_Games_AchievementDefinition';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2447,7 +2447,7 @@ class Powerform_Google_Service_Games_AchievementDefinitionsListResponse extends 
   }
 }
 
-class Powerform_Google_Service_Games_AchievementIncrementResponse extends Powerform_Google_Model
+class Google_Service_Games_AchievementIncrementResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2482,7 +2482,7 @@ class Powerform_Google_Service_Games_AchievementIncrementResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_Games_AchievementRevealResponse extends Powerform_Google_Model
+class Google_Service_Games_AchievementRevealResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2508,7 +2508,7 @@ class Powerform_Google_Service_Games_AchievementRevealResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Games_AchievementSetStepsAtLeastResponse extends Powerform_Google_Model
+class Google_Service_Games_AchievementSetStepsAtLeastResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2543,7 +2543,7 @@ class Powerform_Google_Service_Games_AchievementSetStepsAtLeastResponse extends 
   }
 }
 
-class Powerform_Google_Service_Games_AchievementUnlockResponse extends Powerform_Google_Model
+class Google_Service_Games_AchievementUnlockResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2569,13 +2569,13 @@ class Powerform_Google_Service_Games_AchievementUnlockResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Games_AchievementUpdateMultipleRequest extends Powerform_Google_Collection
+class Google_Service_Games_AchievementUpdateMultipleRequest extends Google_Collection
 {
   protected $collection_key = 'updates';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $updatesType = 'Powerform_Google_Service_Games_AchievementUpdateRequest';
+  protected $updatesType = 'Google_Service_Games_AchievementUpdateRequest';
   protected $updatesDataType = 'array';
 
 
@@ -2597,13 +2597,13 @@ class Powerform_Google_Service_Games_AchievementUpdateMultipleRequest extends Po
   }
 }
 
-class Powerform_Google_Service_Games_AchievementUpdateMultipleResponse extends Powerform_Google_Collection
+class Google_Service_Games_AchievementUpdateMultipleResponse extends Google_Collection
 {
   protected $collection_key = 'updatedAchievements';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $updatedAchievementsType = 'Powerform_Google_Service_Games_AchievementUpdateResponse';
+  protected $updatedAchievementsType = 'Google_Service_Games_AchievementUpdateResponse';
   protected $updatedAchievementsDataType = 'array';
 
 
@@ -2625,15 +2625,15 @@ class Powerform_Google_Service_Games_AchievementUpdateMultipleResponse extends P
   }
 }
 
-class Powerform_Google_Service_Games_AchievementUpdateRequest extends Powerform_Google_Model
+class Google_Service_Games_AchievementUpdateRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $achievementId;
-  protected $incrementPayloadType = 'Powerform_Google_Service_Games_GamesAchievementIncrement';
+  protected $incrementPayloadType = 'Google_Service_Games_GamesAchievementIncrement';
   protected $incrementPayloadDataType = '';
   public $kind;
-  protected $setStepsAtLeastPayloadType = 'Powerform_Google_Service_Games_GamesAchievementSetStepsAtLeast';
+  protected $setStepsAtLeastPayloadType = 'Google_Service_Games_GamesAchievementSetStepsAtLeast';
   protected $setStepsAtLeastPayloadDataType = '';
   public $updateType;
 
@@ -2646,7 +2646,7 @@ class Powerform_Google_Service_Games_AchievementUpdateRequest extends Powerform_
   {
     return $this->achievementId;
   }
-  public function setIncrementPayload(Powerform_Google_Service_Games_GamesAchievementIncrement $incrementPayload)
+  public function setIncrementPayload(Google_Service_Games_GamesAchievementIncrement $incrementPayload)
   {
     $this->incrementPayload = $incrementPayload;
   }
@@ -2662,7 +2662,7 @@ class Powerform_Google_Service_Games_AchievementUpdateRequest extends Powerform_
   {
     return $this->kind;
   }
-  public function setSetStepsAtLeastPayload(Powerform_Google_Service_Games_GamesAchievementSetStepsAtLeast $setStepsAtLeastPayload)
+  public function setSetStepsAtLeastPayload(Google_Service_Games_GamesAchievementSetStepsAtLeast $setStepsAtLeastPayload)
   {
     $this->setStepsAtLeastPayload = $setStepsAtLeastPayload;
   }
@@ -2680,7 +2680,7 @@ class Powerform_Google_Service_Games_AchievementUpdateRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Games_AchievementUpdateResponse extends Powerform_Google_Model
+class Google_Service_Games_AchievementUpdateResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2742,7 +2742,7 @@ class Powerform_Google_Service_Games_AchievementUpdateResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Games_AggregateStats extends Powerform_Google_Model
+class Google_Service_Games_AggregateStats extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2795,7 +2795,7 @@ class Powerform_Google_Service_Games_AggregateStats extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Games_AnonymousPlayer extends Powerform_Google_Model
+class Google_Service_Games_AnonymousPlayer extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2830,7 +2830,7 @@ class Powerform_Google_Service_Games_AnonymousPlayer extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Games_Application extends Powerform_Google_Collection
+class Google_Service_Games_Application extends Google_Collection
 {
   protected $collection_key = 'instances';
   protected $internal_gapi_mappings = array(
@@ -2838,15 +2838,15 @@ class Powerform_Google_Service_Games_Application extends Powerform_Google_Collec
         "leaderboardCount" => "leaderboard_count",
   );
   public $achievementCount;
-  protected $assetsType = 'Powerform_Google_Service_Games_ImageAsset';
+  protected $assetsType = 'Google_Service_Games_ImageAsset';
   protected $assetsDataType = 'array';
   public $author;
-  protected $categoryType = 'Powerform_Google_Service_Games_ApplicationCategory';
+  protected $categoryType = 'Google_Service_Games_ApplicationCategory';
   protected $categoryDataType = '';
   public $description;
   public $enabledFeatures;
   public $id;
-  protected $instancesType = 'Powerform_Google_Service_Games_Instance';
+  protected $instancesType = 'Google_Service_Games_Instance';
   protected $instancesDataType = 'array';
   public $kind;
   public $lastUpdatedTimestamp;
@@ -2879,7 +2879,7 @@ class Powerform_Google_Service_Games_Application extends Powerform_Google_Collec
   {
     return $this->author;
   }
-  public function setCategory(Powerform_Google_Service_Games_ApplicationCategory $category)
+  public function setCategory(Google_Service_Games_ApplicationCategory $category)
   {
     $this->category = $category;
   }
@@ -2961,7 +2961,7 @@ class Powerform_Google_Service_Games_Application extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Games_ApplicationCategory extends Powerform_Google_Model
+class Google_Service_Games_ApplicationCategory extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2996,7 +2996,7 @@ class Powerform_Google_Service_Games_ApplicationCategory extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Games_ApplicationVerifyResponse extends Powerform_Google_Model
+class Google_Service_Games_ApplicationVerifyResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "playerId" => "player_id",
@@ -3023,7 +3023,7 @@ class Powerform_Google_Service_Games_ApplicationVerifyResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Games_Category extends Powerform_Google_Model
+class Google_Service_Games_Category extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3058,12 +3058,12 @@ class Powerform_Google_Service_Games_Category extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_CategoryListResponse extends Powerform_Google_Collection
+class Google_Service_Games_CategoryListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_Category';
+  protected $itemsType = 'Google_Service_Games_Category';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3095,13 +3095,13 @@ class Powerform_Google_Service_Games_CategoryListResponse extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Games_EventBatchRecordFailure extends Powerform_Google_Model
+class Google_Service_Games_EventBatchRecordFailure extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $failureCause;
   public $kind;
-  protected $rangeType = 'Powerform_Google_Service_Games_EventPeriodRange';
+  protected $rangeType = 'Google_Service_Games_EventPeriodRange';
   protected $rangeDataType = '';
 
 
@@ -3121,7 +3121,7 @@ class Powerform_Google_Service_Games_EventBatchRecordFailure extends Powerform_G
   {
     return $this->kind;
   }
-  public function setRange(Powerform_Google_Service_Games_EventPeriodRange $range)
+  public function setRange(Google_Service_Games_EventPeriodRange $range)
   {
     $this->range = $range;
   }
@@ -3131,7 +3131,7 @@ class Powerform_Google_Service_Games_EventBatchRecordFailure extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Games_EventChild extends Powerform_Google_Model
+class Google_Service_Games_EventChild extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3157,12 +3157,12 @@ class Powerform_Google_Service_Games_EventChild extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_EventDefinition extends Powerform_Google_Collection
+class Google_Service_Games_EventDefinition extends Google_Collection
 {
   protected $collection_key = 'childEvents';
   protected $internal_gapi_mappings = array(
   );
-  protected $childEventsType = 'Powerform_Google_Service_Games_EventChild';
+  protected $childEventsType = 'Google_Service_Games_EventChild';
   protected $childEventsDataType = 'array';
   public $description;
   public $displayName;
@@ -3239,12 +3239,12 @@ class Powerform_Google_Service_Games_EventDefinition extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Games_EventDefinitionListResponse extends Powerform_Google_Collection
+class Google_Service_Games_EventDefinitionListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_EventDefinition';
+  protected $itemsType = 'Google_Service_Games_EventDefinition';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3276,7 +3276,7 @@ class Powerform_Google_Service_Games_EventDefinitionListResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Games_EventPeriodRange extends Powerform_Google_Model
+class Google_Service_Games_EventPeriodRange extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3311,15 +3311,15 @@ class Powerform_Google_Service_Games_EventPeriodRange extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Games_EventPeriodUpdate extends Powerform_Google_Collection
+class Google_Service_Games_EventPeriodUpdate extends Google_Collection
 {
   protected $collection_key = 'updates';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $timePeriodType = 'Powerform_Google_Service_Games_EventPeriodRange';
+  protected $timePeriodType = 'Google_Service_Games_EventPeriodRange';
   protected $timePeriodDataType = '';
-  protected $updatesType = 'Powerform_Google_Service_Games_EventUpdateRequest';
+  protected $updatesType = 'Google_Service_Games_EventUpdateRequest';
   protected $updatesDataType = 'array';
 
 
@@ -3331,7 +3331,7 @@ class Powerform_Google_Service_Games_EventPeriodUpdate extends Powerform_Google_
   {
     return $this->kind;
   }
-  public function setTimePeriod(Powerform_Google_Service_Games_EventPeriodRange $timePeriod)
+  public function setTimePeriod(Google_Service_Games_EventPeriodRange $timePeriod)
   {
     $this->timePeriod = $timePeriod;
   }
@@ -3349,7 +3349,7 @@ class Powerform_Google_Service_Games_EventPeriodUpdate extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Games_EventRecordFailure extends Powerform_Google_Model
+class Google_Service_Games_EventRecordFailure extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3384,7 +3384,7 @@ class Powerform_Google_Service_Games_EventRecordFailure extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Games_EventRecordRequest extends Powerform_Google_Collection
+class Google_Service_Games_EventRecordRequest extends Google_Collection
 {
   protected $collection_key = 'timePeriods';
   protected $internal_gapi_mappings = array(
@@ -3392,7 +3392,7 @@ class Powerform_Google_Service_Games_EventRecordRequest extends Powerform_Google
   public $currentTimeMillis;
   public $kind;
   public $requestId;
-  protected $timePeriodsType = 'Powerform_Google_Service_Games_EventPeriodUpdate';
+  protected $timePeriodsType = 'Google_Service_Games_EventPeriodUpdate';
   protected $timePeriodsDataType = 'array';
 
 
@@ -3430,7 +3430,7 @@ class Powerform_Google_Service_Games_EventRecordRequest extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Games_EventUpdateRequest extends Powerform_Google_Model
+class Google_Service_Games_EventUpdateRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3465,17 +3465,17 @@ class Powerform_Google_Service_Games_EventUpdateRequest extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Games_EventUpdateResponse extends Powerform_Google_Collection
+class Google_Service_Games_EventUpdateResponse extends Google_Collection
 {
   protected $collection_key = 'playerEvents';
   protected $internal_gapi_mappings = array(
   );
-  protected $batchFailuresType = 'Powerform_Google_Service_Games_EventBatchRecordFailure';
+  protected $batchFailuresType = 'Google_Service_Games_EventBatchRecordFailure';
   protected $batchFailuresDataType = 'array';
-  protected $eventFailuresType = 'Powerform_Google_Service_Games_EventRecordFailure';
+  protected $eventFailuresType = 'Google_Service_Games_EventRecordFailure';
   protected $eventFailuresDataType = 'array';
   public $kind;
-  protected $playerEventsType = 'Powerform_Google_Service_Games_PlayerEvent';
+  protected $playerEventsType = 'Google_Service_Games_PlayerEvent';
   protected $playerEventsDataType = 'array';
 
 
@@ -3513,7 +3513,7 @@ class Powerform_Google_Service_Games_EventUpdateResponse extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Games_GamesAchievementIncrement extends Powerform_Google_Model
+class Google_Service_Games_GamesAchievementIncrement extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3548,7 +3548,7 @@ class Powerform_Google_Service_Games_GamesAchievementIncrement extends Powerform
   }
 }
 
-class Powerform_Google_Service_Games_GamesAchievementSetStepsAtLeast extends Powerform_Google_Model
+class Google_Service_Games_GamesAchievementSetStepsAtLeast extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3574,7 +3574,7 @@ class Powerform_Google_Service_Games_GamesAchievementSetStepsAtLeast extends Pow
   }
 }
 
-class Powerform_Google_Service_Games_ImageAsset extends Powerform_Google_Model
+class Google_Service_Games_ImageAsset extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3627,21 +3627,21 @@ class Powerform_Google_Service_Games_ImageAsset extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_Instance extends Powerform_Google_Model
+class Google_Service_Games_Instance extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $acquisitionUri;
-  protected $androidInstanceType = 'Powerform_Google_Service_Games_InstanceAndroidDetails';
+  protected $androidInstanceType = 'Google_Service_Games_InstanceAndroidDetails';
   protected $androidInstanceDataType = '';
-  protected $iosInstanceType = 'Powerform_Google_Service_Games_InstanceIosDetails';
+  protected $iosInstanceType = 'Google_Service_Games_InstanceIosDetails';
   protected $iosInstanceDataType = '';
   public $kind;
   public $name;
   public $platformType;
   public $realtimePlay;
   public $turnBasedPlay;
-  protected $webInstanceType = 'Powerform_Google_Service_Games_InstanceWebDetails';
+  protected $webInstanceType = 'Google_Service_Games_InstanceWebDetails';
   protected $webInstanceDataType = '';
 
 
@@ -3653,7 +3653,7 @@ class Powerform_Google_Service_Games_Instance extends Powerform_Google_Model
   {
     return $this->acquisitionUri;
   }
-  public function setAndroidInstance(Powerform_Google_Service_Games_InstanceAndroidDetails $androidInstance)
+  public function setAndroidInstance(Google_Service_Games_InstanceAndroidDetails $androidInstance)
   {
     $this->androidInstance = $androidInstance;
   }
@@ -3661,7 +3661,7 @@ class Powerform_Google_Service_Games_Instance extends Powerform_Google_Model
   {
     return $this->androidInstance;
   }
-  public function setIosInstance(Powerform_Google_Service_Games_InstanceIosDetails $iosInstance)
+  public function setIosInstance(Google_Service_Games_InstanceIosDetails $iosInstance)
   {
     $this->iosInstance = $iosInstance;
   }
@@ -3709,7 +3709,7 @@ class Powerform_Google_Service_Games_Instance extends Powerform_Google_Model
   {
     return $this->turnBasedPlay;
   }
-  public function setWebInstance(Powerform_Google_Service_Games_InstanceWebDetails $webInstance)
+  public function setWebInstance(Google_Service_Games_InstanceWebDetails $webInstance)
   {
     $this->webInstance = $webInstance;
   }
@@ -3719,7 +3719,7 @@ class Powerform_Google_Service_Games_Instance extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_InstanceAndroidDetails extends Powerform_Google_Model
+class Google_Service_Games_InstanceAndroidDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3763,7 +3763,7 @@ class Powerform_Google_Service_Games_InstanceAndroidDetails extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Games_InstanceIosDetails extends Powerform_Google_Model
+class Google_Service_Games_InstanceIosDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3834,7 +3834,7 @@ class Powerform_Google_Service_Games_InstanceIosDetails extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Games_InstanceWebDetails extends Powerform_Google_Model
+class Google_Service_Games_InstanceWebDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3869,7 +3869,7 @@ class Powerform_Google_Service_Games_InstanceWebDetails extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Games_Leaderboard extends Powerform_Google_Model
+class Google_Service_Games_Leaderboard extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3931,14 +3931,14 @@ class Powerform_Google_Service_Games_Leaderboard extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_LeaderboardEntry extends Powerform_Google_Model
+class Google_Service_Games_LeaderboardEntry extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $formattedScore;
   public $formattedScoreRank;
   public $kind;
-  protected $playerType = 'Powerform_Google_Service_Games_Player';
+  protected $playerType = 'Google_Service_Games_Player';
   protected $playerDataType = '';
   public $scoreRank;
   public $scoreTag;
@@ -3971,7 +3971,7 @@ class Powerform_Google_Service_Games_LeaderboardEntry extends Powerform_Google_M
   {
     return $this->kind;
   }
-  public function setPlayer(Powerform_Google_Service_Games_Player $player)
+  public function setPlayer(Google_Service_Games_Player $player)
   {
     $this->player = $player;
   }
@@ -4021,12 +4021,12 @@ class Powerform_Google_Service_Games_LeaderboardEntry extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Games_LeaderboardListResponse extends Powerform_Google_Collection
+class Google_Service_Games_LeaderboardListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_Leaderboard';
+  protected $itemsType = 'Google_Service_Games_Leaderboard';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -4058,7 +4058,7 @@ class Powerform_Google_Service_Games_LeaderboardListResponse extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Games_LeaderboardScoreRank extends Powerform_Google_Model
+class Google_Service_Games_LeaderboardScoreRank extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4111,17 +4111,17 @@ class Powerform_Google_Service_Games_LeaderboardScoreRank extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Games_LeaderboardScores extends Powerform_Google_Collection
+class Google_Service_Games_LeaderboardScores extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_LeaderboardEntry';
+  protected $itemsType = 'Google_Service_Games_LeaderboardEntry';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
   public $numScores;
-  protected $playerScoreType = 'Powerform_Google_Service_Games_LeaderboardEntry';
+  protected $playerScoreType = 'Google_Service_Games_LeaderboardEntry';
   protected $playerScoreDataType = '';
   public $prevPageToken;
 
@@ -4158,7 +4158,7 @@ class Powerform_Google_Service_Games_LeaderboardScores extends Powerform_Google_
   {
     return $this->numScores;
   }
-  public function setPlayerScore(Powerform_Google_Service_Games_LeaderboardEntry $playerScore)
+  public function setPlayerScore(Google_Service_Games_LeaderboardEntry $playerScore)
   {
     $this->playerScore = $playerScore;
   }
@@ -4176,14 +4176,14 @@ class Powerform_Google_Service_Games_LeaderboardScores extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Games_MetagameConfig extends Powerform_Google_Collection
+class Google_Service_Games_MetagameConfig extends Google_Collection
 {
   protected $collection_key = 'playerLevels';
   protected $internal_gapi_mappings = array(
   );
   public $currentVersion;
   public $kind;
-  protected $playerLevelsType = 'Powerform_Google_Service_Games_PlayerLevel';
+  protected $playerLevelsType = 'Google_Service_Games_PlayerLevel';
   protected $playerLevelsDataType = 'array';
 
 
@@ -4213,7 +4213,7 @@ class Powerform_Google_Service_Games_MetagameConfig extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Games_NetworkDiagnostics extends Powerform_Google_Model
+class Google_Service_Games_NetworkDiagnostics extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4284,7 +4284,7 @@ class Powerform_Google_Service_Games_NetworkDiagnostics extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Games_ParticipantResult extends Powerform_Google_Model
+class Google_Service_Games_ParticipantResult extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4328,24 +4328,24 @@ class Powerform_Google_Service_Games_ParticipantResult extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Games_PeerChannelDiagnostics extends Powerform_Google_Model
+class Google_Service_Games_PeerChannelDiagnostics extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $bytesReceivedType = 'Powerform_Google_Service_Games_AggregateStats';
+  protected $bytesReceivedType = 'Google_Service_Games_AggregateStats';
   protected $bytesReceivedDataType = '';
-  protected $bytesSentType = 'Powerform_Google_Service_Games_AggregateStats';
+  protected $bytesSentType = 'Google_Service_Games_AggregateStats';
   protected $bytesSentDataType = '';
   public $kind;
   public $numMessagesLost;
   public $numMessagesReceived;
   public $numMessagesSent;
   public $numSendFailures;
-  protected $roundtripLatencyMillisType = 'Powerform_Google_Service_Games_AggregateStats';
+  protected $roundtripLatencyMillisType = 'Google_Service_Games_AggregateStats';
   protected $roundtripLatencyMillisDataType = '';
 
 
-  public function setBytesReceived(Powerform_Google_Service_Games_AggregateStats $bytesReceived)
+  public function setBytesReceived(Google_Service_Games_AggregateStats $bytesReceived)
   {
     $this->bytesReceived = $bytesReceived;
   }
@@ -4353,7 +4353,7 @@ class Powerform_Google_Service_Games_PeerChannelDiagnostics extends Powerform_Go
   {
     return $this->bytesReceived;
   }
-  public function setBytesSent(Powerform_Google_Service_Games_AggregateStats $bytesSent)
+  public function setBytesSent(Google_Service_Games_AggregateStats $bytesSent)
   {
     $this->bytesSent = $bytesSent;
   }
@@ -4401,7 +4401,7 @@ class Powerform_Google_Service_Games_PeerChannelDiagnostics extends Powerform_Go
   {
     return $this->numSendFailures;
   }
-  public function setRoundtripLatencyMillis(Powerform_Google_Service_Games_AggregateStats $roundtripLatencyMillis)
+  public function setRoundtripLatencyMillis(Google_Service_Games_AggregateStats $roundtripLatencyMillis)
   {
     $this->roundtripLatencyMillis = $roundtripLatencyMillis;
   }
@@ -4411,16 +4411,16 @@ class Powerform_Google_Service_Games_PeerChannelDiagnostics extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Games_PeerSessionDiagnostics extends Powerform_Google_Model
+class Google_Service_Games_PeerSessionDiagnostics extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $connectedTimestampMillis;
   public $kind;
   public $participantId;
-  protected $reliableChannelType = 'Powerform_Google_Service_Games_PeerChannelDiagnostics';
+  protected $reliableChannelType = 'Google_Service_Games_PeerChannelDiagnostics';
   protected $reliableChannelDataType = '';
-  protected $unreliableChannelType = 'Powerform_Google_Service_Games_PeerChannelDiagnostics';
+  protected $unreliableChannelType = 'Google_Service_Games_PeerChannelDiagnostics';
   protected $unreliableChannelDataType = '';
 
 
@@ -4448,7 +4448,7 @@ class Powerform_Google_Service_Games_PeerSessionDiagnostics extends Powerform_Go
   {
     return $this->participantId;
   }
-  public function setReliableChannel(Powerform_Google_Service_Games_PeerChannelDiagnostics $reliableChannel)
+  public function setReliableChannel(Google_Service_Games_PeerChannelDiagnostics $reliableChannel)
   {
     $this->reliableChannel = $reliableChannel;
   }
@@ -4456,7 +4456,7 @@ class Powerform_Google_Service_Games_PeerSessionDiagnostics extends Powerform_Go
   {
     return $this->reliableChannel;
   }
-  public function setUnreliableChannel(Powerform_Google_Service_Games_PeerChannelDiagnostics $unreliableChannel)
+  public function setUnreliableChannel(Google_Service_Games_PeerChannelDiagnostics $unreliableChannel)
   {
     $this->unreliableChannel = $unreliableChannel;
   }
@@ -4466,7 +4466,7 @@ class Powerform_Google_Service_Games_PeerSessionDiagnostics extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Games_Played extends Powerform_Google_Model
+class Google_Service_Games_Played extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4501,7 +4501,7 @@ class Powerform_Google_Service_Games_Played extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_Player extends Powerform_Google_Model
+class Google_Service_Games_Player extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4509,12 +4509,12 @@ class Powerform_Google_Service_Games_Player extends Powerform_Google_Model
   public $bannerUrlLandscape;
   public $bannerUrlPortrait;
   public $displayName;
-  protected $experienceInfoType = 'Powerform_Google_Service_Games_PlayerExperienceInfo';
+  protected $experienceInfoType = 'Google_Service_Games_PlayerExperienceInfo';
   protected $experienceInfoDataType = '';
   public $kind;
-  protected $lastPlayedWithType = 'Powerform_Google_Service_Games_Played';
+  protected $lastPlayedWithType = 'Google_Service_Games_Played';
   protected $lastPlayedWithDataType = '';
-  protected $nameType = 'Powerform_Google_Service_Games_PlayerName';
+  protected $nameType = 'Google_Service_Games_PlayerName';
   protected $nameDataType = '';
   public $originalPlayerId;
   public $playerId;
@@ -4553,7 +4553,7 @@ class Powerform_Google_Service_Games_Player extends Powerform_Google_Model
   {
     return $this->displayName;
   }
-  public function setExperienceInfo(Powerform_Google_Service_Games_PlayerExperienceInfo $experienceInfo)
+  public function setExperienceInfo(Google_Service_Games_PlayerExperienceInfo $experienceInfo)
   {
     $this->experienceInfo = $experienceInfo;
   }
@@ -4569,7 +4569,7 @@ class Powerform_Google_Service_Games_Player extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setLastPlayedWith(Powerform_Google_Service_Games_Played $lastPlayedWith)
+  public function setLastPlayedWith(Google_Service_Games_Played $lastPlayedWith)
   {
     $this->lastPlayedWith = $lastPlayedWith;
   }
@@ -4577,7 +4577,7 @@ class Powerform_Google_Service_Games_Player extends Powerform_Google_Model
   {
     return $this->lastPlayedWith;
   }
-  public function setName(Powerform_Google_Service_Games_PlayerName $name)
+  public function setName(Google_Service_Games_PlayerName $name)
   {
     $this->name = $name;
   }
@@ -4611,7 +4611,7 @@ class Powerform_Google_Service_Games_Player extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_PlayerAchievement extends Powerform_Google_Model
+class Google_Service_Games_PlayerAchievement extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4682,12 +4682,12 @@ class Powerform_Google_Service_Games_PlayerAchievement extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Games_PlayerAchievementListResponse extends Powerform_Google_Collection
+class Google_Service_Games_PlayerAchievementListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_PlayerAchievement';
+  protected $itemsType = 'Google_Service_Games_PlayerAchievement';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -4719,7 +4719,7 @@ class Powerform_Google_Service_Games_PlayerAchievementListResponse extends Power
   }
 }
 
-class Powerform_Google_Service_Games_PlayerEvent extends Powerform_Google_Model
+class Google_Service_Games_PlayerEvent extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4772,12 +4772,12 @@ class Powerform_Google_Service_Games_PlayerEvent extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_PlayerEventListResponse extends Powerform_Google_Collection
+class Google_Service_Games_PlayerEventListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_PlayerEvent';
+  protected $itemsType = 'Google_Service_Games_PlayerEvent';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -4809,16 +4809,16 @@ class Powerform_Google_Service_Games_PlayerEventListResponse extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Games_PlayerExperienceInfo extends Powerform_Google_Model
+class Google_Service_Games_PlayerExperienceInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $currentExperiencePoints;
-  protected $currentLevelType = 'Powerform_Google_Service_Games_PlayerLevel';
+  protected $currentLevelType = 'Google_Service_Games_PlayerLevel';
   protected $currentLevelDataType = '';
   public $kind;
   public $lastLevelUpTimestampMillis;
-  protected $nextLevelType = 'Powerform_Google_Service_Games_PlayerLevel';
+  protected $nextLevelType = 'Google_Service_Games_PlayerLevel';
   protected $nextLevelDataType = '';
 
 
@@ -4830,7 +4830,7 @@ class Powerform_Google_Service_Games_PlayerExperienceInfo extends Powerform_Goog
   {
     return $this->currentExperiencePoints;
   }
-  public function setCurrentLevel(Powerform_Google_Service_Games_PlayerLevel $currentLevel)
+  public function setCurrentLevel(Google_Service_Games_PlayerLevel $currentLevel)
   {
     $this->currentLevel = $currentLevel;
   }
@@ -4854,7 +4854,7 @@ class Powerform_Google_Service_Games_PlayerExperienceInfo extends Powerform_Goog
   {
     return $this->lastLevelUpTimestampMillis;
   }
-  public function setNextLevel(Powerform_Google_Service_Games_PlayerLevel $nextLevel)
+  public function setNextLevel(Google_Service_Games_PlayerLevel $nextLevel)
   {
     $this->nextLevel = $nextLevel;
   }
@@ -4864,19 +4864,19 @@ class Powerform_Google_Service_Games_PlayerExperienceInfo extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Games_PlayerLeaderboardScore extends Powerform_Google_Model
+class Google_Service_Games_PlayerLeaderboardScore extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "leaderboardId" => "leaderboard_id",
   );
   public $kind;
   public $leaderboardId;
-  protected $publicRankType = 'Powerform_Google_Service_Games_LeaderboardScoreRank';
+  protected $publicRankType = 'Google_Service_Games_LeaderboardScoreRank';
   protected $publicRankDataType = '';
   public $scoreString;
   public $scoreTag;
   public $scoreValue;
-  protected $socialRankType = 'Powerform_Google_Service_Games_LeaderboardScoreRank';
+  protected $socialRankType = 'Google_Service_Games_LeaderboardScoreRank';
   protected $socialRankDataType = '';
   public $timeSpan;
   public $writeTimestamp;
@@ -4898,7 +4898,7 @@ class Powerform_Google_Service_Games_PlayerLeaderboardScore extends Powerform_Go
   {
     return $this->leaderboardId;
   }
-  public function setPublicRank(Powerform_Google_Service_Games_LeaderboardScoreRank $publicRank)
+  public function setPublicRank(Google_Service_Games_LeaderboardScoreRank $publicRank)
   {
     $this->publicRank = $publicRank;
   }
@@ -4930,7 +4930,7 @@ class Powerform_Google_Service_Games_PlayerLeaderboardScore extends Powerform_Go
   {
     return $this->scoreValue;
   }
-  public function setSocialRank(Powerform_Google_Service_Games_LeaderboardScoreRank $socialRank)
+  public function setSocialRank(Google_Service_Games_LeaderboardScoreRank $socialRank)
   {
     $this->socialRank = $socialRank;
   }
@@ -4956,16 +4956,16 @@ class Powerform_Google_Service_Games_PlayerLeaderboardScore extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Games_PlayerLeaderboardScoreListResponse extends Powerform_Google_Collection
+class Google_Service_Games_PlayerLeaderboardScoreListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_PlayerLeaderboardScore';
+  protected $itemsType = 'Google_Service_Games_PlayerLeaderboardScore';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $playerType = 'Powerform_Google_Service_Games_Player';
+  protected $playerType = 'Google_Service_Games_Player';
   protected $playerDataType = '';
 
 
@@ -4993,7 +4993,7 @@ class Powerform_Google_Service_Games_PlayerLeaderboardScoreListResponse extends 
   {
     return $this->nextPageToken;
   }
-  public function setPlayer(Powerform_Google_Service_Games_Player $player)
+  public function setPlayer(Google_Service_Games_Player $player)
   {
     $this->player = $player;
   }
@@ -5003,7 +5003,7 @@ class Powerform_Google_Service_Games_PlayerLeaderboardScoreListResponse extends 
   }
 }
 
-class Powerform_Google_Service_Games_PlayerLevel extends Powerform_Google_Model
+class Google_Service_Games_PlayerLevel extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5047,12 +5047,12 @@ class Powerform_Google_Service_Games_PlayerLevel extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_PlayerListResponse extends Powerform_Google_Collection
+class Google_Service_Games_PlayerListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_Player';
+  protected $itemsType = 'Google_Service_Games_Player';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -5084,7 +5084,7 @@ class Powerform_Google_Service_Games_PlayerListResponse extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Games_PlayerName extends Powerform_Google_Model
+class Google_Service_Games_PlayerName extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5110,7 +5110,7 @@ class Powerform_Google_Service_Games_PlayerName extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_PlayerScore extends Powerform_Google_Model
+class Google_Service_Games_PlayerScore extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5163,13 +5163,13 @@ class Powerform_Google_Service_Games_PlayerScore extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_PlayerScoreListResponse extends Powerform_Google_Collection
+class Google_Service_Games_PlayerScoreListResponse extends Google_Collection
 {
   protected $collection_key = 'submittedScores';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $submittedScoresType = 'Powerform_Google_Service_Games_PlayerScoreResponse';
+  protected $submittedScoresType = 'Google_Service_Games_PlayerScoreResponse';
   protected $submittedScoresDataType = 'array';
 
 
@@ -5191,7 +5191,7 @@ class Powerform_Google_Service_Games_PlayerScoreListResponse extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Games_PlayerScoreResponse extends Powerform_Google_Collection
+class Google_Service_Games_PlayerScoreResponse extends Google_Collection
 {
   protected $collection_key = 'unbeatenScores';
   protected $internal_gapi_mappings = array(
@@ -5201,7 +5201,7 @@ class Powerform_Google_Service_Games_PlayerScoreResponse extends Powerform_Googl
   public $kind;
   public $leaderboardId;
   public $scoreTag;
-  protected $unbeatenScoresType = 'Powerform_Google_Service_Games_PlayerScore';
+  protected $unbeatenScoresType = 'Google_Service_Games_PlayerScore';
   protected $unbeatenScoresDataType = 'array';
 
 
@@ -5255,13 +5255,13 @@ class Powerform_Google_Service_Games_PlayerScoreResponse extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Games_PlayerScoreSubmissionList extends Powerform_Google_Collection
+class Google_Service_Games_PlayerScoreSubmissionList extends Google_Collection
 {
   protected $collection_key = 'scores';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $scoresType = 'Powerform_Google_Service_Games_ScoreSubmission';
+  protected $scoresType = 'Google_Service_Games_ScoreSubmission';
   protected $scoresDataType = 'array';
 
 
@@ -5283,12 +5283,12 @@ class Powerform_Google_Service_Games_PlayerScoreSubmissionList extends Powerform
   }
 }
 
-class Powerform_Google_Service_Games_PushToken extends Powerform_Google_Model
+class Google_Service_Games_PushToken extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $clientRevision;
-  protected $idType = 'Powerform_Google_Service_Games_PushTokenId';
+  protected $idType = 'Google_Service_Games_PushTokenId';
   protected $idDataType = '';
   public $kind;
   public $language;
@@ -5302,7 +5302,7 @@ class Powerform_Google_Service_Games_PushToken extends Powerform_Google_Model
   {
     return $this->clientRevision;
   }
-  public function setId(Powerform_Google_Service_Games_PushTokenId $id)
+  public function setId(Google_Service_Games_PushTokenId $id)
   {
     $this->id = $id;
   }
@@ -5328,16 +5328,16 @@ class Powerform_Google_Service_Games_PushToken extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_PushTokenId extends Powerform_Google_Model
+class Google_Service_Games_PushTokenId extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $iosType = 'Powerform_Google_Service_Games_PushTokenIdIos';
+  protected $iosType = 'Google_Service_Games_PushTokenIdIos';
   protected $iosDataType = '';
   public $kind;
 
 
-  public function setIos(Powerform_Google_Service_Games_PushTokenIdIos $ios)
+  public function setIos(Google_Service_Games_PushTokenIdIos $ios)
   {
     $this->ios = $ios;
   }
@@ -5355,7 +5355,7 @@ class Powerform_Google_Service_Games_PushTokenId extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_PushTokenIdIos extends Powerform_Google_Model
+class Google_Service_Games_PushTokenIdIos extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "apnsDeviceToken" => "apns_device_token",
@@ -5383,7 +5383,7 @@ class Powerform_Google_Service_Games_PushTokenIdIos extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Games_Quest extends Powerform_Google_Collection
+class Google_Service_Games_Quest extends Google_Collection
 {
   protected $collection_key = 'milestones';
   protected $internal_gapi_mappings = array(
@@ -5399,7 +5399,7 @@ class Powerform_Google_Service_Games_Quest extends Powerform_Google_Collection
   public $isDefaultIconUrl;
   public $kind;
   public $lastUpdatedTimestampMillis;
-  protected $milestonesType = 'Powerform_Google_Service_Games_QuestMilestone';
+  protected $milestonesType = 'Google_Service_Games_QuestMilestone';
   protected $milestonesDataType = 'array';
   public $name;
   public $notifyTimestampMillis;
@@ -5537,7 +5537,7 @@ class Powerform_Google_Service_Games_Quest extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Games_QuestContribution extends Powerform_Google_Model
+class Google_Service_Games_QuestContribution extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5572,21 +5572,21 @@ class Powerform_Google_Service_Games_QuestContribution extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Games_QuestCriterion extends Powerform_Google_Model
+class Google_Service_Games_QuestCriterion extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $completionContributionType = 'Powerform_Google_Service_Games_QuestContribution';
+  protected $completionContributionType = 'Google_Service_Games_QuestContribution';
   protected $completionContributionDataType = '';
-  protected $currentContributionType = 'Powerform_Google_Service_Games_QuestContribution';
+  protected $currentContributionType = 'Google_Service_Games_QuestContribution';
   protected $currentContributionDataType = '';
   public $eventId;
-  protected $initialPlayerProgressType = 'Powerform_Google_Service_Games_QuestContribution';
+  protected $initialPlayerProgressType = 'Google_Service_Games_QuestContribution';
   protected $initialPlayerProgressDataType = '';
   public $kind;
 
 
-  public function setCompletionContribution(Powerform_Google_Service_Games_QuestContribution $completionContribution)
+  public function setCompletionContribution(Google_Service_Games_QuestContribution $completionContribution)
   {
     $this->completionContribution = $completionContribution;
   }
@@ -5594,7 +5594,7 @@ class Powerform_Google_Service_Games_QuestCriterion extends Powerform_Google_Mod
   {
     return $this->completionContribution;
   }
-  public function setCurrentContribution(Powerform_Google_Service_Games_QuestContribution $currentContribution)
+  public function setCurrentContribution(Google_Service_Games_QuestContribution $currentContribution)
   {
     $this->currentContribution = $currentContribution;
   }
@@ -5610,7 +5610,7 @@ class Powerform_Google_Service_Games_QuestCriterion extends Powerform_Google_Mod
   {
     return $this->eventId;
   }
-  public function setInitialPlayerProgress(Powerform_Google_Service_Games_QuestContribution $initialPlayerProgress)
+  public function setInitialPlayerProgress(Google_Service_Games_QuestContribution $initialPlayerProgress)
   {
     $this->initialPlayerProgress = $initialPlayerProgress;
   }
@@ -5628,12 +5628,12 @@ class Powerform_Google_Service_Games_QuestCriterion extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Games_QuestListResponse extends Powerform_Google_Collection
+class Google_Service_Games_QuestListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_Quest';
+  protected $itemsType = 'Google_Service_Games_Quest';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -5665,13 +5665,13 @@ class Powerform_Google_Service_Games_QuestListResponse extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Games_QuestMilestone extends Powerform_Google_Collection
+class Google_Service_Games_QuestMilestone extends Google_Collection
 {
   protected $collection_key = 'criteria';
   protected $internal_gapi_mappings = array(
   );
   public $completionRewardData;
-  protected $criteriaType = 'Powerform_Google_Service_Games_QuestCriterion';
+  protected $criteriaType = 'Google_Service_Games_QuestCriterion';
   protected $criteriaDataType = 'array';
   public $id;
   public $kind;
@@ -5720,7 +5720,7 @@ class Powerform_Google_Service_Games_QuestMilestone extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Games_RevisionCheckResponse extends Powerform_Google_Model
+class Google_Service_Games_RevisionCheckResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5755,24 +5755,24 @@ class Powerform_Google_Service_Games_RevisionCheckResponse extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Games_Room extends Powerform_Google_Collection
+class Google_Service_Games_Room extends Google_Collection
 {
   protected $collection_key = 'participants';
   protected $internal_gapi_mappings = array(
   );
   public $applicationId;
-  protected $autoMatchingCriteriaType = 'Powerform_Google_Service_Games_RoomAutoMatchingCriteria';
+  protected $autoMatchingCriteriaType = 'Google_Service_Games_RoomAutoMatchingCriteria';
   protected $autoMatchingCriteriaDataType = '';
-  protected $autoMatchingStatusType = 'Powerform_Google_Service_Games_RoomAutoMatchStatus';
+  protected $autoMatchingStatusType = 'Google_Service_Games_RoomAutoMatchStatus';
   protected $autoMatchingStatusDataType = '';
-  protected $creationDetailsType = 'Powerform_Google_Service_Games_RoomModification';
+  protected $creationDetailsType = 'Google_Service_Games_RoomModification';
   protected $creationDetailsDataType = '';
   public $description;
   public $inviterId;
   public $kind;
-  protected $lastUpdateDetailsType = 'Powerform_Google_Service_Games_RoomModification';
+  protected $lastUpdateDetailsType = 'Google_Service_Games_RoomModification';
   protected $lastUpdateDetailsDataType = '';
-  protected $participantsType = 'Powerform_Google_Service_Games_RoomParticipant';
+  protected $participantsType = 'Google_Service_Games_RoomParticipant';
   protected $participantsDataType = 'array';
   public $roomId;
   public $roomStatusVersion;
@@ -5788,7 +5788,7 @@ class Powerform_Google_Service_Games_Room extends Powerform_Google_Collection
   {
     return $this->applicationId;
   }
-  public function setAutoMatchingCriteria(Powerform_Google_Service_Games_RoomAutoMatchingCriteria $autoMatchingCriteria)
+  public function setAutoMatchingCriteria(Google_Service_Games_RoomAutoMatchingCriteria $autoMatchingCriteria)
   {
     $this->autoMatchingCriteria = $autoMatchingCriteria;
   }
@@ -5796,7 +5796,7 @@ class Powerform_Google_Service_Games_Room extends Powerform_Google_Collection
   {
     return $this->autoMatchingCriteria;
   }
-  public function setAutoMatchingStatus(Powerform_Google_Service_Games_RoomAutoMatchStatus $autoMatchingStatus)
+  public function setAutoMatchingStatus(Google_Service_Games_RoomAutoMatchStatus $autoMatchingStatus)
   {
     $this->autoMatchingStatus = $autoMatchingStatus;
   }
@@ -5804,7 +5804,7 @@ class Powerform_Google_Service_Games_Room extends Powerform_Google_Collection
   {
     return $this->autoMatchingStatus;
   }
-  public function setCreationDetails(Powerform_Google_Service_Games_RoomModification $creationDetails)
+  public function setCreationDetails(Google_Service_Games_RoomModification $creationDetails)
   {
     $this->creationDetails = $creationDetails;
   }
@@ -5836,7 +5836,7 @@ class Powerform_Google_Service_Games_Room extends Powerform_Google_Collection
   {
     return $this->kind;
   }
-  public function setLastUpdateDetails(Powerform_Google_Service_Games_RoomModification $lastUpdateDetails)
+  public function setLastUpdateDetails(Google_Service_Games_RoomModification $lastUpdateDetails)
   {
     $this->lastUpdateDetails = $lastUpdateDetails;
   }
@@ -5886,7 +5886,7 @@ class Powerform_Google_Service_Games_Room extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Games_RoomAutoMatchStatus extends Powerform_Google_Model
+class Google_Service_Games_RoomAutoMatchStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5912,7 +5912,7 @@ class Powerform_Google_Service_Games_RoomAutoMatchStatus extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Games_RoomAutoMatchingCriteria extends Powerform_Google_Model
+class Google_Service_Games_RoomAutoMatchingCriteria extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5956,7 +5956,7 @@ class Powerform_Google_Service_Games_RoomAutoMatchingCriteria extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Games_RoomClientAddress extends Powerform_Google_Model
+class Google_Service_Games_RoomClientAddress extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5982,25 +5982,25 @@ class Powerform_Google_Service_Games_RoomClientAddress extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Games_RoomCreateRequest extends Powerform_Google_Collection
+class Google_Service_Games_RoomCreateRequest extends Google_Collection
 {
   protected $collection_key = 'invitedPlayerIds';
   protected $internal_gapi_mappings = array(
   );
-  protected $autoMatchingCriteriaType = 'Powerform_Google_Service_Games_RoomAutoMatchingCriteria';
+  protected $autoMatchingCriteriaType = 'Google_Service_Games_RoomAutoMatchingCriteria';
   protected $autoMatchingCriteriaDataType = '';
   public $capabilities;
-  protected $clientAddressType = 'Powerform_Google_Service_Games_RoomClientAddress';
+  protected $clientAddressType = 'Google_Service_Games_RoomClientAddress';
   protected $clientAddressDataType = '';
   public $invitedPlayerIds;
   public $kind;
-  protected $networkDiagnosticsType = 'Powerform_Google_Service_Games_NetworkDiagnostics';
+  protected $networkDiagnosticsType = 'Google_Service_Games_NetworkDiagnostics';
   protected $networkDiagnosticsDataType = '';
   public $requestId;
   public $variant;
 
 
-  public function setAutoMatchingCriteria(Powerform_Google_Service_Games_RoomAutoMatchingCriteria $autoMatchingCriteria)
+  public function setAutoMatchingCriteria(Google_Service_Games_RoomAutoMatchingCriteria $autoMatchingCriteria)
   {
     $this->autoMatchingCriteria = $autoMatchingCriteria;
   }
@@ -6016,7 +6016,7 @@ class Powerform_Google_Service_Games_RoomCreateRequest extends Powerform_Google_
   {
     return $this->capabilities;
   }
-  public function setClientAddress(Powerform_Google_Service_Games_RoomClientAddress $clientAddress)
+  public function setClientAddress(Google_Service_Games_RoomClientAddress $clientAddress)
   {
     $this->clientAddress = $clientAddress;
   }
@@ -6040,7 +6040,7 @@ class Powerform_Google_Service_Games_RoomCreateRequest extends Powerform_Google_
   {
     return $this->kind;
   }
-  public function setNetworkDiagnostics(Powerform_Google_Service_Games_NetworkDiagnostics $networkDiagnostics)
+  public function setNetworkDiagnostics(Google_Service_Games_NetworkDiagnostics $networkDiagnostics)
   {
     $this->networkDiagnostics = $networkDiagnostics;
   }
@@ -6066,16 +6066,16 @@ class Powerform_Google_Service_Games_RoomCreateRequest extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Games_RoomJoinRequest extends Powerform_Google_Collection
+class Google_Service_Games_RoomJoinRequest extends Google_Collection
 {
   protected $collection_key = 'capabilities';
   protected $internal_gapi_mappings = array(
   );
   public $capabilities;
-  protected $clientAddressType = 'Powerform_Google_Service_Games_RoomClientAddress';
+  protected $clientAddressType = 'Google_Service_Games_RoomClientAddress';
   protected $clientAddressDataType = '';
   public $kind;
-  protected $networkDiagnosticsType = 'Powerform_Google_Service_Games_NetworkDiagnostics';
+  protected $networkDiagnosticsType = 'Google_Service_Games_NetworkDiagnostics';
   protected $networkDiagnosticsDataType = '';
 
 
@@ -6087,7 +6087,7 @@ class Powerform_Google_Service_Games_RoomJoinRequest extends Powerform_Google_Co
   {
     return $this->capabilities;
   }
-  public function setClientAddress(Powerform_Google_Service_Games_RoomClientAddress $clientAddress)
+  public function setClientAddress(Google_Service_Games_RoomClientAddress $clientAddress)
   {
     $this->clientAddress = $clientAddress;
   }
@@ -6103,7 +6103,7 @@ class Powerform_Google_Service_Games_RoomJoinRequest extends Powerform_Google_Co
   {
     return $this->kind;
   }
-  public function setNetworkDiagnostics(Powerform_Google_Service_Games_NetworkDiagnostics $networkDiagnostics)
+  public function setNetworkDiagnostics(Google_Service_Games_NetworkDiagnostics $networkDiagnostics)
   {
     $this->networkDiagnostics = $networkDiagnostics;
   }
@@ -6113,7 +6113,7 @@ class Powerform_Google_Service_Games_RoomJoinRequest extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Games_RoomLeaveDiagnostics extends Powerform_Google_Collection
+class Google_Service_Games_RoomLeaveDiagnostics extends Google_Collection
 {
   protected $collection_key = 'peerSession';
   protected $internal_gapi_mappings = array(
@@ -6124,7 +6124,7 @@ class Powerform_Google_Service_Games_RoomLeaveDiagnostics extends Powerform_Goog
   public $kind;
   public $networkOperatorCode;
   public $networkOperatorName;
-  protected $peerSessionType = 'Powerform_Google_Service_Games_PeerSessionDiagnostics';
+  protected $peerSessionType = 'Google_Service_Games_PeerSessionDiagnostics';
   protected $peerSessionDataType = 'array';
   public $socketsUsed;
 
@@ -6195,12 +6195,12 @@ class Powerform_Google_Service_Games_RoomLeaveDiagnostics extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Games_RoomLeaveRequest extends Powerform_Google_Model
+class Google_Service_Games_RoomLeaveRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $leaveDiagnosticsType = 'Powerform_Google_Service_Games_RoomLeaveDiagnostics';
+  protected $leaveDiagnosticsType = 'Google_Service_Games_RoomLeaveDiagnostics';
   protected $leaveDiagnosticsDataType = '';
   public $reason;
 
@@ -6213,7 +6213,7 @@ class Powerform_Google_Service_Games_RoomLeaveRequest extends Powerform_Google_M
   {
     return $this->kind;
   }
-  public function setLeaveDiagnostics(Powerform_Google_Service_Games_RoomLeaveDiagnostics $leaveDiagnostics)
+  public function setLeaveDiagnostics(Google_Service_Games_RoomLeaveDiagnostics $leaveDiagnostics)
   {
     $this->leaveDiagnostics = $leaveDiagnostics;
   }
@@ -6231,12 +6231,12 @@ class Powerform_Google_Service_Games_RoomLeaveRequest extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Games_RoomList extends Powerform_Google_Collection
+class Google_Service_Games_RoomList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_Room';
+  protected $itemsType = 'Google_Service_Games_Room';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -6268,7 +6268,7 @@ class Powerform_Google_Service_Games_RoomList extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Games_RoomModification extends Powerform_Google_Model
+class Google_Service_Games_RoomModification extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6303,7 +6303,7 @@ class Powerform_Google_Service_Games_RoomModification extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Games_RoomP2PStatus extends Powerform_Google_Model
+class Google_Service_Games_RoomP2PStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "errorReason" => "error_reason",
@@ -6375,13 +6375,13 @@ class Powerform_Google_Service_Games_RoomP2PStatus extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Games_RoomP2PStatuses extends Powerform_Google_Collection
+class Google_Service_Games_RoomP2PStatuses extends Google_Collection
 {
   protected $collection_key = 'updates';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $updatesType = 'Powerform_Google_Service_Games_RoomP2PStatus';
+  protected $updatesType = 'Google_Service_Games_RoomP2PStatus';
   protected $updatesDataType = 'array';
 
 
@@ -6403,22 +6403,22 @@ class Powerform_Google_Service_Games_RoomP2PStatuses extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Games_RoomParticipant extends Powerform_Google_Collection
+class Google_Service_Games_RoomParticipant extends Google_Collection
 {
   protected $collection_key = 'capabilities';
   protected $internal_gapi_mappings = array(
   );
   public $autoMatched;
-  protected $autoMatchedPlayerType = 'Powerform_Google_Service_Games_AnonymousPlayer';
+  protected $autoMatchedPlayerType = 'Google_Service_Games_AnonymousPlayer';
   protected $autoMatchedPlayerDataType = '';
   public $capabilities;
-  protected $clientAddressType = 'Powerform_Google_Service_Games_RoomClientAddress';
+  protected $clientAddressType = 'Google_Service_Games_RoomClientAddress';
   protected $clientAddressDataType = '';
   public $connected;
   public $id;
   public $kind;
   public $leaveReason;
-  protected $playerType = 'Powerform_Google_Service_Games_Player';
+  protected $playerType = 'Google_Service_Games_Player';
   protected $playerDataType = '';
   public $status;
 
@@ -6431,7 +6431,7 @@ class Powerform_Google_Service_Games_RoomParticipant extends Powerform_Google_Co
   {
     return $this->autoMatched;
   }
-  public function setAutoMatchedPlayer(Powerform_Google_Service_Games_AnonymousPlayer $autoMatchedPlayer)
+  public function setAutoMatchedPlayer(Google_Service_Games_AnonymousPlayer $autoMatchedPlayer)
   {
     $this->autoMatchedPlayer = $autoMatchedPlayer;
   }
@@ -6447,7 +6447,7 @@ class Powerform_Google_Service_Games_RoomParticipant extends Powerform_Google_Co
   {
     return $this->capabilities;
   }
-  public function setClientAddress(Powerform_Google_Service_Games_RoomClientAddress $clientAddress)
+  public function setClientAddress(Google_Service_Games_RoomClientAddress $clientAddress)
   {
     $this->clientAddress = $clientAddress;
   }
@@ -6487,7 +6487,7 @@ class Powerform_Google_Service_Games_RoomParticipant extends Powerform_Google_Co
   {
     return $this->leaveReason;
   }
-  public function setPlayer(Powerform_Google_Service_Games_Player $player)
+  public function setPlayer(Google_Service_Games_Player $player)
   {
     $this->player = $player;
   }
@@ -6505,22 +6505,22 @@ class Powerform_Google_Service_Games_RoomParticipant extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Games_RoomStatus extends Powerform_Google_Collection
+class Google_Service_Games_RoomStatus extends Google_Collection
 {
   protected $collection_key = 'participants';
   protected $internal_gapi_mappings = array(
   );
-  protected $autoMatchingStatusType = 'Powerform_Google_Service_Games_RoomAutoMatchStatus';
+  protected $autoMatchingStatusType = 'Google_Service_Games_RoomAutoMatchStatus';
   protected $autoMatchingStatusDataType = '';
   public $kind;
-  protected $participantsType = 'Powerform_Google_Service_Games_RoomParticipant';
+  protected $participantsType = 'Google_Service_Games_RoomParticipant';
   protected $participantsDataType = 'array';
   public $roomId;
   public $status;
   public $statusVersion;
 
 
-  public function setAutoMatchingStatus(Powerform_Google_Service_Games_RoomAutoMatchStatus $autoMatchingStatus)
+  public function setAutoMatchingStatus(Google_Service_Games_RoomAutoMatchStatus $autoMatchingStatus)
   {
     $this->autoMatchingStatus = $autoMatchingStatus;
   }
@@ -6570,7 +6570,7 @@ class Powerform_Google_Service_Games_RoomStatus extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Games_ScoreSubmission extends Powerform_Google_Model
+class Google_Service_Games_ScoreSubmission extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6623,11 +6623,11 @@ class Powerform_Google_Service_Games_ScoreSubmission extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Games_Snapshot extends Powerform_Google_Model
+class Google_Service_Games_Snapshot extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $coverImageType = 'Powerform_Google_Service_Games_SnapshotImage';
+  protected $coverImageType = 'Google_Service_Games_SnapshotImage';
   protected $coverImageDataType = '';
   public $description;
   public $driveId;
@@ -6641,7 +6641,7 @@ class Powerform_Google_Service_Games_Snapshot extends Powerform_Google_Model
   public $uniqueName;
 
 
-  public function setCoverImage(Powerform_Google_Service_Games_SnapshotImage $coverImage)
+  public function setCoverImage(Google_Service_Games_SnapshotImage $coverImage)
   {
     $this->coverImage = $coverImage;
   }
@@ -6731,7 +6731,7 @@ class Powerform_Google_Service_Games_Snapshot extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Games_SnapshotImage extends Powerform_Google_Model
+class Google_Service_Games_SnapshotImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "mimeType" => "mime_type",
@@ -6785,12 +6785,12 @@ class Powerform_Google_Service_Games_SnapshotImage extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Games_SnapshotListResponse extends Powerform_Google_Collection
+class Google_Service_Games_SnapshotListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_Snapshot';
+  protected $itemsType = 'Google_Service_Games_Snapshot';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -6822,7 +6822,7 @@ class Powerform_Google_Service_Games_SnapshotListResponse extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedAutoMatchingCriteria extends Powerform_Google_Model
+class Google_Service_Games_TurnBasedAutoMatchingCriteria extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6866,33 +6866,33 @@ class Powerform_Google_Service_Games_TurnBasedAutoMatchingCriteria extends Power
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatch extends Powerform_Google_Collection
+class Google_Service_Games_TurnBasedMatch extends Google_Collection
 {
   protected $collection_key = 'results';
   protected $internal_gapi_mappings = array(
   );
   public $applicationId;
-  protected $autoMatchingCriteriaType = 'Powerform_Google_Service_Games_TurnBasedAutoMatchingCriteria';
+  protected $autoMatchingCriteriaType = 'Google_Service_Games_TurnBasedAutoMatchingCriteria';
   protected $autoMatchingCriteriaDataType = '';
-  protected $creationDetailsType = 'Powerform_Google_Service_Games_TurnBasedMatchModification';
+  protected $creationDetailsType = 'Google_Service_Games_TurnBasedMatchModification';
   protected $creationDetailsDataType = '';
-  protected $dataType = 'Powerform_Google_Service_Games_TurnBasedMatchData';
+  protected $dataType = 'Google_Service_Games_TurnBasedMatchData';
   protected $dataDataType = '';
   public $description;
   public $inviterId;
   public $kind;
-  protected $lastUpdateDetailsType = 'Powerform_Google_Service_Games_TurnBasedMatchModification';
+  protected $lastUpdateDetailsType = 'Google_Service_Games_TurnBasedMatchModification';
   protected $lastUpdateDetailsDataType = '';
   public $matchId;
   public $matchNumber;
   public $matchVersion;
-  protected $participantsType = 'Powerform_Google_Service_Games_TurnBasedMatchParticipant';
+  protected $participantsType = 'Google_Service_Games_TurnBasedMatchParticipant';
   protected $participantsDataType = 'array';
   public $pendingParticipantId;
-  protected $previousMatchDataType = 'Powerform_Google_Service_Games_TurnBasedMatchData';
+  protected $previousMatchDataType = 'Google_Service_Games_TurnBasedMatchData';
   protected $previousMatchDataDataType = '';
   public $rematchId;
-  protected $resultsType = 'Powerform_Google_Service_Games_ParticipantResult';
+  protected $resultsType = 'Google_Service_Games_ParticipantResult';
   protected $resultsDataType = 'array';
   public $status;
   public $userMatchStatus;
@@ -6908,7 +6908,7 @@ class Powerform_Google_Service_Games_TurnBasedMatch extends Powerform_Google_Col
   {
     return $this->applicationId;
   }
-  public function setAutoMatchingCriteria(Powerform_Google_Service_Games_TurnBasedAutoMatchingCriteria $autoMatchingCriteria)
+  public function setAutoMatchingCriteria(Google_Service_Games_TurnBasedAutoMatchingCriteria $autoMatchingCriteria)
   {
     $this->autoMatchingCriteria = $autoMatchingCriteria;
   }
@@ -6916,7 +6916,7 @@ class Powerform_Google_Service_Games_TurnBasedMatch extends Powerform_Google_Col
   {
     return $this->autoMatchingCriteria;
   }
-  public function setCreationDetails(Powerform_Google_Service_Games_TurnBasedMatchModification $creationDetails)
+  public function setCreationDetails(Google_Service_Games_TurnBasedMatchModification $creationDetails)
   {
     $this->creationDetails = $creationDetails;
   }
@@ -6924,7 +6924,7 @@ class Powerform_Google_Service_Games_TurnBasedMatch extends Powerform_Google_Col
   {
     return $this->creationDetails;
   }
-  public function setData(Powerform_Google_Service_Games_TurnBasedMatchData $data)
+  public function setData(Google_Service_Games_TurnBasedMatchData $data)
   {
     $this->data = $data;
   }
@@ -6956,7 +6956,7 @@ class Powerform_Google_Service_Games_TurnBasedMatch extends Powerform_Google_Col
   {
     return $this->kind;
   }
-  public function setLastUpdateDetails(Powerform_Google_Service_Games_TurnBasedMatchModification $lastUpdateDetails)
+  public function setLastUpdateDetails(Google_Service_Games_TurnBasedMatchModification $lastUpdateDetails)
   {
     $this->lastUpdateDetails = $lastUpdateDetails;
   }
@@ -7004,7 +7004,7 @@ class Powerform_Google_Service_Games_TurnBasedMatch extends Powerform_Google_Col
   {
     return $this->pendingParticipantId;
   }
-  public function setPreviousMatchData(Powerform_Google_Service_Games_TurnBasedMatchData $previousMatchData)
+  public function setPreviousMatchData(Google_Service_Games_TurnBasedMatchData $previousMatchData)
   {
     $this->previousMatchData = $previousMatchData;
   }
@@ -7062,12 +7062,12 @@ class Powerform_Google_Service_Games_TurnBasedMatch extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatchCreateRequest extends Powerform_Google_Collection
+class Google_Service_Games_TurnBasedMatchCreateRequest extends Google_Collection
 {
   protected $collection_key = 'invitedPlayerIds';
   protected $internal_gapi_mappings = array(
   );
-  protected $autoMatchingCriteriaType = 'Powerform_Google_Service_Games_TurnBasedAutoMatchingCriteria';
+  protected $autoMatchingCriteriaType = 'Google_Service_Games_TurnBasedAutoMatchingCriteria';
   protected $autoMatchingCriteriaDataType = '';
   public $invitedPlayerIds;
   public $kind;
@@ -7075,7 +7075,7 @@ class Powerform_Google_Service_Games_TurnBasedMatchCreateRequest extends Powerfo
   public $variant;
 
 
-  public function setAutoMatchingCriteria(Powerform_Google_Service_Games_TurnBasedAutoMatchingCriteria $autoMatchingCriteria)
+  public function setAutoMatchingCriteria(Google_Service_Games_TurnBasedAutoMatchingCriteria $autoMatchingCriteria)
   {
     $this->autoMatchingCriteria = $autoMatchingCriteria;
   }
@@ -7117,7 +7117,7 @@ class Powerform_Google_Service_Games_TurnBasedMatchCreateRequest extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatchData extends Powerform_Google_Model
+class Google_Service_Games_TurnBasedMatchData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7152,7 +7152,7 @@ class Powerform_Google_Service_Games_TurnBasedMatchData extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatchDataRequest extends Powerform_Google_Model
+class Google_Service_Games_TurnBasedMatchDataRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7178,12 +7178,12 @@ class Powerform_Google_Service_Games_TurnBasedMatchDataRequest extends Powerform
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatchList extends Powerform_Google_Collection
+class Google_Service_Games_TurnBasedMatchList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_TurnBasedMatch';
+  protected $itemsType = 'Google_Service_Games_TurnBasedMatch';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -7215,7 +7215,7 @@ class Powerform_Google_Service_Games_TurnBasedMatchList extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatchModification extends Powerform_Google_Model
+class Google_Service_Games_TurnBasedMatchModification extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7250,16 +7250,16 @@ class Powerform_Google_Service_Games_TurnBasedMatchModification extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatchParticipant extends Powerform_Google_Model
+class Google_Service_Games_TurnBasedMatchParticipant extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $autoMatched;
-  protected $autoMatchedPlayerType = 'Powerform_Google_Service_Games_AnonymousPlayer';
+  protected $autoMatchedPlayerType = 'Google_Service_Games_AnonymousPlayer';
   protected $autoMatchedPlayerDataType = '';
   public $id;
   public $kind;
-  protected $playerType = 'Powerform_Google_Service_Games_Player';
+  protected $playerType = 'Google_Service_Games_Player';
   protected $playerDataType = '';
   public $status;
 
@@ -7272,7 +7272,7 @@ class Powerform_Google_Service_Games_TurnBasedMatchParticipant extends Powerform
   {
     return $this->autoMatched;
   }
-  public function setAutoMatchedPlayer(Powerform_Google_Service_Games_AnonymousPlayer $autoMatchedPlayer)
+  public function setAutoMatchedPlayer(Google_Service_Games_AnonymousPlayer $autoMatchedPlayer)
   {
     $this->autoMatchedPlayer = $autoMatchedPlayer;
   }
@@ -7296,7 +7296,7 @@ class Powerform_Google_Service_Games_TurnBasedMatchParticipant extends Powerform
   {
     return $this->kind;
   }
-  public function setPlayer(Powerform_Google_Service_Games_Player $player)
+  public function setPlayer(Google_Service_Games_Player $player)
   {
     $this->player = $player;
   }
@@ -7314,14 +7314,14 @@ class Powerform_Google_Service_Games_TurnBasedMatchParticipant extends Powerform
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatchRematch extends Powerform_Google_Model
+class Google_Service_Games_TurnBasedMatchRematch extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $previousMatchType = 'Powerform_Google_Service_Games_TurnBasedMatch';
+  protected $previousMatchType = 'Google_Service_Games_TurnBasedMatch';
   protected $previousMatchDataType = '';
-  protected $rematchType = 'Powerform_Google_Service_Games_TurnBasedMatch';
+  protected $rematchType = 'Google_Service_Games_TurnBasedMatch';
   protected $rematchDataType = '';
 
 
@@ -7333,7 +7333,7 @@ class Powerform_Google_Service_Games_TurnBasedMatchRematch extends Powerform_Goo
   {
     return $this->kind;
   }
-  public function setPreviousMatch(Powerform_Google_Service_Games_TurnBasedMatch $previousMatch)
+  public function setPreviousMatch(Google_Service_Games_TurnBasedMatch $previousMatch)
   {
     $this->previousMatch = $previousMatch;
   }
@@ -7341,7 +7341,7 @@ class Powerform_Google_Service_Games_TurnBasedMatchRematch extends Powerform_Goo
   {
     return $this->previousMatch;
   }
-  public function setRematch(Powerform_Google_Service_Games_TurnBasedMatch $rematch)
+  public function setRematch(Google_Service_Games_TurnBasedMatch $rematch)
   {
     $this->rematch = $rematch;
   }
@@ -7351,20 +7351,20 @@ class Powerform_Google_Service_Games_TurnBasedMatchRematch extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatchResults extends Powerform_Google_Collection
+class Google_Service_Games_TurnBasedMatchResults extends Google_Collection
 {
   protected $collection_key = 'results';
   protected $internal_gapi_mappings = array(
   );
-  protected $dataType = 'Powerform_Google_Service_Games_TurnBasedMatchDataRequest';
+  protected $dataType = 'Google_Service_Games_TurnBasedMatchDataRequest';
   protected $dataDataType = '';
   public $kind;
   public $matchVersion;
-  protected $resultsType = 'Powerform_Google_Service_Games_ParticipantResult';
+  protected $resultsType = 'Google_Service_Games_ParticipantResult';
   protected $resultsDataType = 'array';
 
 
-  public function setData(Powerform_Google_Service_Games_TurnBasedMatchDataRequest $data)
+  public function setData(Google_Service_Games_TurnBasedMatchDataRequest $data)
   {
     $this->data = $data;
   }
@@ -7398,12 +7398,12 @@ class Powerform_Google_Service_Games_TurnBasedMatchResults extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatchSync extends Powerform_Google_Collection
+class Google_Service_Games_TurnBasedMatchSync extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Games_TurnBasedMatch';
+  protected $itemsType = 'Google_Service_Games_TurnBasedMatch';
   protected $itemsDataType = 'array';
   public $kind;
   public $moreAvailable;
@@ -7444,21 +7444,21 @@ class Powerform_Google_Service_Games_TurnBasedMatchSync extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Games_TurnBasedMatchTurn extends Powerform_Google_Collection
+class Google_Service_Games_TurnBasedMatchTurn extends Google_Collection
 {
   protected $collection_key = 'results';
   protected $internal_gapi_mappings = array(
   );
-  protected $dataType = 'Powerform_Google_Service_Games_TurnBasedMatchDataRequest';
+  protected $dataType = 'Google_Service_Games_TurnBasedMatchDataRequest';
   protected $dataDataType = '';
   public $kind;
   public $matchVersion;
   public $pendingParticipantId;
-  protected $resultsType = 'Powerform_Google_Service_Games_ParticipantResult';
+  protected $resultsType = 'Google_Service_Games_ParticipantResult';
   protected $resultsDataType = 'array';
 
 
-  public function setData(Powerform_Google_Service_Games_TurnBasedMatchDataRequest $data)
+  public function setData(Google_Service_Games_TurnBasedMatchDataRequest $data)
   {
     $this->data = $data;
   }

@@ -1,5 +1,6 @@
 <?php
-$section = isset( $_GET['section'] ) ? sanitize_text_field( $_GET['section'] ) : 'dashboard';
+$section = isset( $_GET['section'] ) ? $_GET['section'] : 'dashboard'; // wpcs csrf ok.
+
 $nonce                 = wp_create_nonce( 'powerform_save_accessibility_settings' );
 $accessibility_enabled = get_option( 'powerform_enable_accessibility', false );
 $accessibility_enabled = filter_var( $accessibility_enabled, FILTER_VALIDATE_BOOLEAN );
@@ -16,13 +17,13 @@ $accessibility_enabled = filter_var( $accessibility_enabled, FILTER_VALIDATE_BOO
 
 		<div class="sui-box-body">
 
-			<div class="sui-box-settings-row">
-				<p><?php esc_html_e( 'Aktivieren Sie die Unterstützung für alle Verbesserungen der Barrierefreiheit, die in der Plugin-Oberfläche verfügbar sind.', Powerform::DOMAIN ); ?></p>
-			</div>
+            <div class="sui-box-settings-row">
+			    <p><?php esc_html_e( 'Aktiviere die Unterstützung für alle Barrierefreiheitsverbesserungen, die in der Plugin-Benutzeroberfläche verfügbar sind.', Powerform::DOMAIN ); ?></p>
+            </div>
 			<div class="sui-box-settings-row">
 
 				<div class="sui-box-settings-col-1">
-					<span class="sui-settings-label"><?php esc_html_e( 'Kontrastreicher Modus', Powerform::DOMAIN ); ?></span>
+					<span class="sui-settings-label"><?php esc_html_e( 'Modus mit hohem Kontrast', Powerform::DOMAIN ); ?></span>
 					<span class="sui-description"><?php esc_html_e( 'Erhöhe die Sichtbarkeit und Zugänglichkeit von Elementen und Komponenten, um die WCAG AAA-Anforderungen zu erfüllen.', Powerform::DOMAIN ); ?></span>
 				</div>
 
@@ -32,13 +33,13 @@ $accessibility_enabled = filter_var( $accessibility_enabled, FILTER_VALIDATE_BOO
 
 						<label for="powerform-color-accessibility" class="sui-toggle">
 							<input type="checkbox"
-								name="enable_accessibility"
-								value="true"
-								id="powerform-color-accessibility" <?php checked( $accessibility_enabled ); ?>/>
+							       name="enable_accessibility"
+							       value="true"
+							       id="powerform-color-accessibility" <?php checked( $accessibility_enabled ); ?>/>
 							<span class="sui-toggle-slider" aria-hidden="true"></span>
 						</label>
 
-						<label for="powerform-color-accessibility"><?php esc_html_e( 'Aktiviere den kontrastreichen Modus', Powerform::DOMAIN ); ?></label>
+						<label for="powerform-color-accessibility"><?php esc_html_e( 'Hochkontrastmodus aktivieren', Powerform::DOMAIN ); ?></label>
 
 					</div>
 
@@ -52,11 +53,11 @@ $accessibility_enabled = filter_var( $accessibility_enabled, FILTER_VALIDATE_BOO
 
 			<div class="sui-actions-right">
 
-				<button class="sui-button sui-button-blue psource-action-done"
-						data-title="<?php esc_attr_e( 'Barrierefreiheit Einstellungen', Powerform::DOMAIN ); ?>"
-						data-action="accessibility_settings"
-						data-nonce="<?php echo esc_attr( $nonce ); ?>"
-						data-is-reload="true">
+				<button class="sui-button sui-button-blue wpmudev-action-done"
+				        data-title="<?php esc_attr_e( "Einstellungen für die Barrierefreiheit", Powerform::DOMAIN ); ?>"
+				        data-action="accessibility_settings"
+				        data-nonce="<?php echo esc_attr( $nonce ); ?>"
+				        data-is-reload="true">
 					<span class="sui-loading-text"><?php esc_html_e( 'Einstellungen speichern', Powerform::DOMAIN ); ?></span>
 					<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>
 				</button>

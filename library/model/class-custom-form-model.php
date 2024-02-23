@@ -151,68 +151,13 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 				$field_object->import(
 					array(
 						'cols' => $cols,
-					)
-				);
+					) );
 			}
 
 			return true;
 		}
 
 		return false;
-	}
-
-	/**
-	 * Count all form types
-	 *
-	 * @since 1.14
-	 *
-	 * @param string $status
-	 *
-	 * @return int
-	 */
-	public function count_all( $status = '', $db = false ) {
-		if ( ! $db ) {
-			global $wpdb;
-			$db = $wpdb;
-		}
-
-		if ( empty( $status ) ) {
-			$cache_key     = 'powerform_form_total_entries';
-			$cache_group   = 'powerform_form_total_entries';
-		} else {
-			$cache_key     = 'powerform_form_total_entries_' . $status;
-			$cache_group   = 'powerform_form_total_entries_' . $status;
-		}
-		$entries_cache = wp_cache_get( $cache_group, $cache_key );
-
-		if ( $entries_cache ) {
-			return $entries_cache;
-		} else {
-			$like = $wpdb->esc_like( 'form-type";s:5:"leads"' );
-			$like = '%' . $like . '%';
-
-			if ( empty( $status ) ) {
-				$status = "AND ( p.post_status = 'publish' OR p.post_status = 'draft' )";
-			} else {
-				$status = "AND p.post_status = '" . $status . "'";
-			}
-
-			$sql = "SELECT count(DISTINCT pm.post_id)
-				FROM $wpdb->postmeta pm
-				JOIN $wpdb->posts p ON (p.ID = pm.post_id)
-				WHERE pm.meta_key = 'powerform_form_meta'
-				AND pm.meta_value NOT LIKE %s
-				AND p.post_type = 'powerform_forms'
-				" . $status . "
-			";
-
-			$entries = $db->get_var( $db->prepare( $sql, $like ) );
-
-			wp_cache_set( $cache_group, $entries, $cache_key );
-
-			return $entries;
-		}
-
 	}
 
 	/**
@@ -274,14 +219,14 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 		$form_settings = $this->settings;
 		$can_show      = array(
 			'can_submit' => true,
-			'error'      => '',
+			'error'      => ''
 		);
 
 		if ( isset( $form_settings['logged-users'] ) && ! empty( $form_settings['logged-users'] ) ) {
 			if ( filter_var( $form_settings['logged-users'], FILTER_VALIDATE_BOOLEAN ) && ! is_user_logged_in() ) {
-				$can_show = array(
+				$can_show      = array(
 					'can_submit' => false,
-					'error'      => __( 'Only logged in users can submit this form.', Powerform::DOMAIN ),
+					'error'      => __( "Nur angemeldete Benutzer können dieses Formular senden.", Powerform::DOMAIN )
 				);
 			}
 		}
@@ -292,20 +237,20 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 						$submits       = intval( $form_settings['expire_submits'] );
 						$total_entries = Powerform_Form_Entry_Model::count_entries( $this->id );
 						if ( $total_entries >= $submits ) {
-							$can_show = array(
+							$can_show      = array(
 								'can_submit' => false,
-								'error'      => __( 'You reached the maximum allowed submissions for this form.', Powerform::DOMAIN ),
+								'error'      => __( "Du hast die maximal zulässige Anzahl von Einsendungen für dieses Formular erreicht.", Powerform::DOMAIN )
 							);
 						}
 					}
 				} elseif ( 'date' === $form_settings['form-expire'] ) {
 					if ( isset( $form_settings['expire_date'] ) && ! empty( $form_settings['expire_date'] ) ) {
 						$expire_date  = strtotime( $form_settings['expire_date'] );
-						$current_date = strtotime( 'now' );
+						$current_date = strtotime( "now" );
 						if ( $current_date > $expire_date ) {
-							$can_show = array(
+							$can_show      = array(
 								'can_submit' => false,
-								'error'      => __( 'Unfortunately this form expired.', Powerform::DOMAIN ),
+								'error'      => __( "Leider ist dieses Formular abgelaufen.", Powerform::DOMAIN )
 							);
 						}
 					}
@@ -319,12 +264,10 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 	/**
 	 * Check if can show the form
 	 *
-	 * @param $is_preview
-	 *
 	 * @since 1.0
 	 * @return bool
 	 */
-	public function form_is_visible( $is_preview ) {
+	public function form_is_visible() {
 		$form_settings = $this->settings;
 		$can_show      = true;
 
@@ -339,15 +282,15 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 					if ( isset( $form_settings['expire_submits'] ) && ! empty( $form_settings['expire_submits'] ) ) {
 						$submits       = intval( $form_settings['expire_submits'] );
 						$total_entries = Powerform_Form_Entry_Model::count_entries( $this->id );
-						if ( $total_entries >= $submits && ! $is_preview ) {
+						if ( $total_entries >= $submits ) {
 							$can_show = false;
 						}
 					}
 				} elseif ( 'date' === $form_settings['form-expire'] ) {
 					if ( isset( $form_settings['expire_date'] ) && ! empty( $form_settings['expire_date'] ) ) {
 						$expire_date  = strtotime( $form_settings['expire_date'] );
-						$current_date = strtotime( 'now' );
-						if ( $current_date > $expire_date && ! $is_preview ) {
+						$current_date = strtotime( "now" );
+						if ( $current_date > $expire_date ) {
 							$can_show = false;
 						}
 					}
@@ -408,6 +351,7 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 			} catch ( Exception $e ) {
 				powerform_addon_maybe_log( $connected_addon->get_slug(), 'failed to get to_exportable_data', $e->getMessage() );
 			}
+
 		}
 
 		/**
@@ -488,8 +432,9 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 					}
 				}
 			} catch ( Exception $e ) {
-				powerform_addon_maybe_log( $slug, 'failed to get import form settings', $e->getMessage() );
+				powerform_addon_maybe_log( $slug, 'Importformulareinstellungen konnten nicht abgerufen werden', $e->getMessage() );
 			}
+
 		}
 
 		return $model;
@@ -501,19 +446,16 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 	 *
 	 * @since 1.5
 	 *
-	 * @param int $id
-	 * @param array $settings
-	 *
 	 * @return boolean
 	 */
-	public function is_prevent_store( $id = null, $settings = array() ) {
-		$form_id       = ! empty( $id ) ? $id : (int) $this->id;
-		$form_settings = ! empty( $settings ) ? $settings : $this->settings;
+	public function is_prevent_store() {
+		$form_id       = (int) $this->id;
+		$form_settings = $this->settings;
 
 		// default is always store
 		$is_prevent_store = false;
 
-		$is_prevent_store = isset( $form_settings['store'] ) ? $form_settings['store'] : $is_prevent_store;
+		$is_prevent_store = isset( $this->settings['store'] ) ? $this->settings['store'] : $is_prevent_store;
 		$is_prevent_store = filter_var( $is_prevent_store, FILTER_VALIDATE_BOOLEAN );
 
 		/**
@@ -570,32 +512,9 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 			$submission_behaviour = $form_settings['submission-behaviour'];
 		}
 
-		// If Stripe field exist & submit is AJAX we fall back to hide to force page reload when form submitted
-		if ( $this->has_stripe_or_paypal( $this->fields ) && $this->is_ajax_submit() ) {
-			$submission_behaviour = 'behaviour-hide';
-		}
-
 		$submission_behaviour = apply_filters( 'powerform_custom_form_get_submission_behaviour', $submission_behaviour, $form_id, $form_settings );
 
 		return $submission_behaviour;
-	}
-
-	/**
-	 * Check if submit is handled with AJAX
-	 *
-	 * @since 1.9
-	 *
-	 * @return bool
-	 */
-	public function is_ajax_submit() {
-		$form_id       = (int) $this->id;
-		$form_settings = $this->settings;
-
-		if ( ! isset( $form_settings['enable-ajax'] ) || empty( $form_settings['enable-ajax'] ) ) {
-			return false;
-		}
-
-		return filter_var( $form_settings['enable-ajax'], FILTER_VALIDATE_BOOLEAN );
 	}
 
 	/**
@@ -645,6 +564,7 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 		$form_settings  = $this->settings;
 		$global_enabled = parent::is_use_donotcachepage_constant();
 
+
 		$enabled = isset( $form_settings['use_donotcachepage'] ) ? $this->settings['use_donotcachepage'] : false;
 		$enabled = filter_var( $enabled, FILTER_VALIDATE_BOOLEAN );
 
@@ -665,131 +585,5 @@ class Powerform_Custom_Form_Model extends Powerform_Base_Form_Model {
 		$enabled = apply_filters( 'powerform_custom_form_is_use_donotcachepage_constant', $enabled, $global_enabled, $form_id, $form_settings );
 
 		return $enabled;
-	}
-
-	/**
-	 * Get field
-	 *
-	 * Call this method when you need get field and migrate it as well
-	 *
-	 * @since 1.7
-	 *
-	 * @param      $id
-	 *
-	 * @return array|null
-	 */
-	public function get_formatted_array_field( $id ) {
-		foreach ( $this->get_fields() as $field ) {
-			if ( $field->slug === $id ) {
-				return $field->to_formatted_array();
-			}
-		}
-
-		return null;
-	}
-
-	/**
-	 * Flag whether ssl required when payment exists
-	 *
-	 * @since 1.7
-	 *
-	 * @return bool
-	 */
-	public function is_payment_require_ssl() {
-		$form_id        = (int) $this->id;
-		$form_settings  = $this->settings;
-		$global_enabled = defined( 'POWERFORM_PAYMENT_REQUIRE_SSL' ) && POWERFORM_PAYMENT_REQUIRE_SSL;
-
-		$enabled = isset( $form_settings['payment_require_ssl'] ) ? $form_settings['payment_require_ssl'] : false;
-		$enabled = filter_var( $enabled, FILTER_VALIDATE_BOOLEAN );
-
-		$enabled = $global_enabled || $enabled;
-
-		/**
-		 * Filter is ajax load for Custom Form
-		 *
-		 * @since 1.6.1
-		 *
-		 * @param bool  $enabled
-		 * @param bool  $global_enabled
-		 * @param int   $form_id
-		 * @param array $form_settings
-		 *
-		 * @return bool
-		 */
-		$enabled = apply_filters( 'powerform_custom_form_is_payment_require_ssl', $enabled, $global_enabled, $form_id, $form_settings );
-
-		return $enabled;
-	}
-
-	/**
-	 * Check if Custom form has calculation field
-	 *
-	 * @since 1.7
-	 * @return bool
-	 */
-	public function has_calculation_field() {
-		$fields = $this->fields;
-		foreach ( $fields as $field ) {
-			$field = $field->to_formatted_array();
-			if ( isset( $field['type'] ) && 'calculation' === $field['type'] ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Check if Custom form has stripe field
-	 *
-	 * @since 1.7
-	 * @return bool
-	 */
-	public function has_stripe_field() {
-		$fields = $this->fields;
-		foreach ( $fields as $field ) {
-			$field = $field->to_formatted_array();
-			if ( isset( $field['type'] ) && 'stripe' === $field['type'] ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Check if form has stripe or paypal field
-	 *
-	 * @since 1.9.3
-	 * @return bool
-	 */
-	public function has_stripe_or_paypal( $fields ) {
-		foreach ( $fields as $field ) {
-			$field = $field->to_formatted_array();
-			if ( isset( $field['type'] ) && ( 'stripe' === $field['type'] || 'paypal' === $field['type'] ) ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Check if Custom form has paypal field
-	 *
-	 * @since 1.7
-	 * @return bool
-	 */
-	public function has_paypal_field() {
-		$fields = $this->fields;
-		foreach ( $fields as $field ) {
-			$field = $field->to_formatted_array();
-			if ( isset( $field['type'] ) && 'paypal' === $field['type'] ) {
-				return true;
-			}
-		}
-
-		return false;
 	}
 }

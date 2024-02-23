@@ -76,16 +76,7 @@ abstract class Powerform_Field {
 	 *
 	 * @var array
 	 */
-
 	public $validation_message = array();
-
-
-	/**
-	 * Autofill Settings
-	 *
-	 * @var array
-	 */
-	public $autofill_settings = array();
 
 	/**
 	 * Activated Autofill Providers for this field based @see autofill_settings
@@ -110,31 +101,13 @@ abstract class Powerform_Field {
 	 */
 	public $icon = 'sui-icon-element-radio';
 
-	/**
-	 * @var bool
-	 */
-	public $is_calculable = false;
-
-	const FIELD_NOT_CALCULABLE = 'FIELD_NOT_CALCULABLE';
-
 	public function __construct() {
-		$this->autofill_settings = array(); // Initialize autofill_settings here
-		add_action( 'admin_init', array( &$this, 'admin_init_field' ) );
-	}
-
-	/**
-	 * admin init field
-	 *
-	 * @since 1.7
-	 */
-	public function admin_init_field() {
-
-		$this->settings          = apply_filters( "powerform_field_{$this->slug}_general_settings", array() );
-		$this->autofill_settings = apply_filters( "powerform_field_{$this->slug}_autofill_settings", $this->autofill_settings() );
-		$this->defaults          = apply_filters( "powerform_field_{$this->slug}_defaults", $this->defaults() );
-		$this->position          = apply_filters( "powerform_field_{$this->slug}_position", $this->position );
-		$this->is_calculable     = apply_filters( "powerform_field_{$this->slug}_is_calculable", $this->is_calculable );
-
+		if ( is_admin() ) {
+			$this->settings          = apply_filters( "powerform_field_{$this->slug}_general_settings", array() );
+			$this->autofill_settings = apply_filters( "powerform_field_{$this->slug}_autofill_settings", $this->autofill_settings() );
+			$this->defaults          = apply_filters( "powerform_field_{$this->slug}_defaults", $this->defaults() );
+			$this->position          = apply_filters( "powerform_field_{$this->slug}_position", $this->position );
+		}
 	}
 
 	/**
@@ -189,19 +162,13 @@ abstract class Powerform_Field {
 	 */
 
 	public static function get_property( $property, $field, $fallback = '', $data_type = null ) {
-
 		$property_value = $fallback;
-
 		if ( isset( $field[ $property ] ) ) {
 			$property_value = $field[ $property ];
 		}
 
 		if ( ! empty( $data_type ) ) {
 			$property_value = powerform_var_type_cast( $property_value, $data_type );
-		}
-
-		if ( 'required_message' === $property ) {
-			$property_value = wp_kses_post( $property_value );
 		}
 
 		return $property_value;
@@ -240,19 +207,14 @@ abstract class Powerform_Field {
 	 *
 	 * @return string
 	 */
-	public static function get_description( $description, $get_id = '' ) {
-
-		$html = '';
-
-		if ( ! empty( $description ) ) {
-
-			$html .= sprintf(
-				'<span class="powerform-description" aria-describedby="%s">%s</span>',
-				$get_id,
-				esc_html( $description )
-			);
-
+	public static function get_description( $description ) {
+		if ( empty( $description ) ) {
+			return '';
 		}
+
+		$html = '<div class="powerform-field--helper">';
+		$html .= sprintf( '<label class="powerform-label--helper">%s</label>', $description );
+		$html .= '</div>';
 
 		return $html;
 	}
@@ -273,65 +235,55 @@ abstract class Powerform_Field {
 	 * @return mixed
 	 */
 	public static function create_input( $attr = array(), $label = '', $description = '', $required = false, $design = '', $wrapper_input = array() ) {
-
 		$html = '';
 
-		// Override value by the posted value
+		// override value by the posted value
 		$value = isset( $attr['value'] ) ? $attr['value'] : false;
-
 		if ( isset( $attr['name'] ) ) {
 			$value = self::get_post_data( $attr['name'], $value );
 		}
-
 		$attr['value'] = $value;
 
 		$markup = self::implode_attr( $attr );
-
-		// Get field id
-		$get_id = $attr['id'];
 
 		if ( $label ) {
 
 			if ( $required ) {
 
-				$html .= sprintf(
-					'<label for="%s" class="powerform-label">%s %s</label>',
-					$get_id,
-					esc_html( $label ),
-					powerform_get_required_icon()
-				);
+				$html .= '<div class="powerform-field--label">';
+				$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s %s</label>', $attr['id'], $label, powerform_get_required_icon() );
+				$html .= '</div>';
 
 			} else {
 
-				$html .= sprintf(
-					'<label for="%s" class="powerform-label">%s</label>',
-					$get_id,
-					esc_html( $label )
-				);
+				$html .= '<div class="powerform-field--label">';
+				$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s</label>', $attr['id'], $label );
+				$html .= '</div>';
 
 			}
+
 		}
 
 		if ( isset( $wrapper_input[0] ) ) {
 			$html .= $wrapper_input[0];
 		}
 
-		if ( isset( $wrapper_input[2] ) && ! empty( $wrapper_input[2] ) ) {
-			$html .= sprintf( '<span class="powerform-icon-%s" aria-hidden="true"></span>', $wrapper_input[2] );
+		if ( 'material' === $design ) {
+			$html .= '<div class="powerform-input--wrap">';
 		}
 
-		if ( isset( $wrapper_input[3] ) && ! empty( $wrapper_input[3] ) ) {
-			$html .= sprintf( '<span class="powerform-prefix">%s</span>', $wrapper_input[3] );
-		}
+		$html .= sprintf( '<input size="1" %s />', $markup );
 
-			$html .= sprintf( '<input %s />', $markup );
+		if ( 'material' === $design ) {
+			$html .= '</div>';
+		}
 
 		if ( isset( $wrapper_input[1] ) ) {
 			$html .= $wrapper_input[1];
 		}
 
 		if ( ! empty( $description ) || '' !== $description ) {
-			$html .= self::get_description( esc_html( $description ), $get_id );
+			$html .= self::get_description( $description );
 		}
 
 		return apply_filters( 'powerform_field_create_input', $html, $attr, $label, $description );
@@ -353,14 +305,12 @@ abstract class Powerform_Field {
 	 * @return mixed
 	 */
 	public static function create_textarea( $attr = array(), $label = '', $description = '', $required = false, $design = '' ) {
+		$html = '';
 
-		$html    = '';
 		$content = isset( $attr['content'] ) ? $attr['content'] : '';
-
 		if ( isset( $attr['name'] ) ) {
 			$content = self::get_post_data( $attr['name'], $content );
 		}
-
 		unset( $attr['content'] );
 
 		$markup = self::implode_attr( $attr );
@@ -369,25 +319,29 @@ abstract class Powerform_Field {
 
 			if ( $required ) {
 
-				$html .= sprintf(
-					'<label for="%s" class="powerform-label">%s %s</label>',
-					$attr['id'],
-					esc_html( $label ),
-					powerform_get_required_icon()
-				);
+				$html .= '<div class="powerform-field--label">';
+				$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s %s</label>', $attr['id'], $label, powerform_get_required_icon() );
+				$html .= '</div>';
 
 			} else {
 
-				$html .= sprintf(
-					'<label for="%s" class="powerform-label">%s</label>',
-					$attr['id'],
-					esc_html( $label )
-				);
+				$html .= '<div class="powerform-field--label">';
+				$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s</label>', $attr['id'], $label );
+				$html .= '</div>';
 
 			}
+
+		}
+
+		if ( 'material' === $design ) {
+			$html .= '<div class="powerform-textarea--wrap">';
 		}
 
 		$html .= sprintf( '<textarea %s >%s</textarea>', $markup, $content );
+
+		if ( 'material' === $design ) {
+			$html .= '</div>';
+		}
 
 		if ( ! empty( $description ) ) {
 			$html .= self::get_description( $description );
@@ -423,16 +377,17 @@ abstract class Powerform_Field {
 			if ( $required ) {
 
 				$html .= '<div class="powerform-field--label">';
-				$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s %s</label>', $attr['id'], esc_html( $label ), powerform_get_required_icon() );
+				$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s %s</label>', $attr['id'], $label, powerform_get_required_icon() );
 				$html .= '</div>';
 
 			} else {
 
 				$html .= '<div class="powerform-field--label">';
-				$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s</label>', $attr['id'], esc_html( $label ) );
+				$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s</label>', $attr['id'], $label );
 				$html .= '</div>';
 
 			}
+
 		}
 
 		$wp_editor_class = isset( $attr['class'] ) ? $attr['class'] : '';
@@ -449,9 +404,6 @@ abstract class Powerform_Field {
 				'textarea_name' => isset( $attr['name'] ) ? $attr['name'] : '',
 				'media_buttons' => false,
 				'editor_class'  => $wp_editor_class,
-				//'tinymce'     => array(
-				//	'content_css' => '/powerform-{theme}-editor.min.css'
-				//),
 			)
 		);
 
@@ -498,40 +450,18 @@ abstract class Powerform_Field {
 	 * @return mixed
 	 */
 	public static function create_select( $attr = array(), $label = '', $options = array(), $value = '', $description = '', $required = false ) {
-
-		$html = '';
+		$html   = '';
 
 		$markup = self::implode_attr( $attr );
-
-		if ( isset( $attr['id'] ) ) {
-			$get_id = $attr['id'];
-		} else {
-			$get_id = uniqid( 'powerform-select-' );
-		}
-
 		if ( self::get_post_data( $attr['name'], false ) ) {
 			$value = self::get_post_data( $attr['name'] );
 		}
 
 		if ( $label ) {
-
 			if ( $required ) {
-
-				$html .= sprintf(
-					'<label for="%s" class="powerform-label">%s %s</label>',
-					$get_id,
-					esc_html( $label ),
-					powerform_get_required_icon()
-				);
-
+				$html .= sprintf( '<div class="powerform-field--label"><label class="powerform-label">%s %s</label></div>', $label, powerform_get_required_icon() );
 			} else {
-
-				$html .= sprintf(
-					'<label for="%s" class="powerform-label">%s</label>',
-					$get_id,
-					esc_html( $label )
-				);
-
+				$html .= sprintf( '<div class="powerform-field--label"><label class="powerform-label">%s</label></div>', $label );
 			}
 		}
 
@@ -539,12 +469,12 @@ abstract class Powerform_Field {
 
 		$html .= sprintf( '<select %s>', $markup );
 
-			$html .= self::populate_options_for_select( $options, $value );
+		$html .= self::populate_options_for_select( $options, $value );
 
 		$html .= '</select>';
 
 		if ( ! empty( $description ) ) {
-			$html .= self::get_description( $description, $get_id );
+			$html .= self::get_description( $description );
 		}
 
 		return apply_filters( 'powerform_field_create_select', $html, $attr, $label, $options, $value, $description );
@@ -564,19 +494,17 @@ abstract class Powerform_Field {
 	 * @return mixed
 	 */
 	public static function create_simple_select( $attr = array(), $options = array(), $value = '', $description = '' ) {
-
 		_deprecated_function( 'create_simple_select', '1.6.1', 'create_select' );
 
 		$html   = '';
 		$markup = self::implode_attr( $attr );
-
 		if ( self::get_post_data( $attr['name'], false ) ) {
 			$value = self::get_post_data( $attr['name'] );
 		}
 
 		$html .= sprintf( '<select %s>', $markup );
 
-			$html .= self::populate_options_for_select( $options, $value );
+		$html .= self::populate_options_for_select( $options, $value );
 
 		$html .= '</select>';
 
@@ -604,13 +532,14 @@ abstract class Powerform_Field {
 
 			if ( isset( $option['value'] ) && is_array( $option['value'] ) ) {
 				$populated_optgroup_options = self::populate_options_for_select( $option['value'], $selected_value );
-				$html                      .= sprintf( '<optgroup label="%s">%s</optgroup>', $option['label'], $populated_optgroup_options );
+				$html                       .= sprintf( '<optgroup label="%s">%s</optgroup>', $option['label'], $populated_optgroup_options );
 			} else {
-				if ( ( $option['value'] == $selected_value ) || ( isset( $option['selected'] ) && $option['selected'] ) ) { // phpcs:ignore -- loose comparison ok : possible compare '1' and 1.
+				if ( $option['value'] == $selected_value ) { // WPCS: loose comparison ok : possible compare '1' and 1.
 					$selected = 'selected="selected"';
 				}
-				$html .= sprintf( '<option value="%s" %s>%s</option>', esc_html( $option['value'] ), $selected, esc_html( $option['label'] ) );
+				$html .= sprintf( '<option value="%s" %s>%s</option>', $option['value'], $selected, $option['label'] );
 			}
+
 		}
 
 		return $html;
@@ -627,92 +556,56 @@ abstract class Powerform_Field {
 	 * @param bool   $required
 	 *
 	 * @param        $design
-	 * @param        $file_type
-	 * @param        $form_id
-	 * @param        $upload_attr
 	 *
 	 * @return string $html
 	 */
-	public static function create_file_upload( $id, $name, $description, $required, $design, $file_type = 'single', $form_id = 0, $upload_attr = array() ) {
+	public static function create_file_upload( $id, $name, $description, $required, $design ) {
 
-		$html        = '';
-		$style       = '';
-		$field_id    = $id;
-		$id          = 'powerform-field-' . $id;
-		$button_id   = 'powerform-field-' . $id . '_button';
-		$mainclass   = 'powerform-file-upload';
-		$class       = 'powerform-input-file';
+		$id    = $id . '-field';
+		$class = 'powerform-input-file';
 
 		if ( $required ) {
 			$class .= '-required do-validate';
 		}
 
-		if ( 'multiple' === $file_type ) {
-			$mainclass = 'powerform-multi-upload';
-			$class     .= ' ' . $id . '-' . $form_id;
+		$html = '<div class="powerform-upload">';
 
-		}
-		$upload_data = self::implode_attr( $upload_attr );
+		if ( 'clean' === $design ) {
 
-		$html .= sprintf( '<div class="%s %s" data-element="%s">', $mainclass, $style, $field_id );
+			$html .= sprintf( '<input class="powerform-input %s" type="file" name="%s" id="%s">', $class, $name, $id );
+			$html .= sprintf( '<button class="powerform-upload--remove" style="display: none;">%s</button>', __( 'Entfernen', Powerform::DOMAIN ) );
 
-			$html .= sprintf( '<input type="file" name="%s" id="%s" class="%s" %s>', $name, $id, $class, $upload_data );
+		} else {
 
-			if ( 'clean' === $design ) {
+			if ( 'material' !== $design ) {
 
-				$html .= sprintf( '<button class="powerform-upload--remove" style="display: none;">%s</button>', __( 'Remove', Powerform::DOMAIN ) );
+				$html .= sprintf(
+					'<button type="button" class="powerform-button powerform-upload-button" data-id="%s" id="%s">%s</button>',
+					$id,
+					$id,
+					__( 'Datei wählen', Powerform::DOMAIN )
+				);
 
 			} else {
 
-				if ( 'multiple' === $file_type ) {
+				$html .= sprintf(
+					'<button type="button" class="powerform-button powerform-upload-button" data-id="%s" id="%s"><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">%s</span></button>',
+					$id,
+					$id,
+					__( 'Datei wählen', Powerform::DOMAIN )
+				);
 
-					$html .= '<div class="powerform-multi-upload-message" aria-hidden="true">';
-
-						$html .= '<span class="powerform-icon-upload" aria-hidden="true"></span>';
-
-						$html .= '<p>';
-							$html .= sprintf( esc_html__( 'Drag and Drop (or) %1$sChoose Files%2$s', Powerform::DOMAIN ), '<a class="powerform-upload-file--' . $id . '" href="javascript:void(0)">', '</a>' );
-						$html .= '</p>';
-
-					$html .= '</div>';
-
-				} else {
-
-					$html .= sprintf( '<button id="%s" class="powerform-button powerform-button-upload" data-id="%s">', $button_id, $id );
-
-						if ( 'material' === $design ) {
-
-							$html .= sprintf(
-								'<span>%s</span>',
-								__( 'Choose File', Powerform::DOMAIN )
-							);
-
-							$html .= '<span aria-hidden="true"></span>';
-
-						} else {
-							$html .= __( 'Choose File', Powerform::DOMAIN );
-						}
-
-					$html .= '</button>';
-
-					$html .= sprintf(
-						'<span data-empty-text="%s">%s</span>',
-						__( 'No file chosen', Powerform::DOMAIN ),
-						__( 'No file chosen', Powerform::DOMAIN )
-					);
-
-					$html .= '<button class="powerform-button-delete" style="display: none;">';
-
-						$html .= '<i class="powerform-icon-close" aria-hidden="true"></i>';
-
-						$html .= sprintf(
-							'<span class="powerform-screen-reader-only">%s</span>',
-							__( 'Delete uploaded file', Powerform::DOMAIN )
-						);
-
-					$html .= '</button>';
-				}
 			}
+
+			$html .= sprintf( '<label class="powerform-label" id="%s">%s</label>', $id, __( 'Keine Datei ausgewählt', Powerform::DOMAIN ) );
+			$html .= '<button class="powerform-upload--remove" style="display: none;"><span class="wpdui-icon wpdui-icon-close"></span></button>';
+			$html .= sprintf( '<input class="powerform-input %s" type="file" name="%s" id="%s" style="display:none"/>', $class, $name, $id );
+
+		}
+
+		if ( ! empty( $description ) || '' !== $description ) {
+			$html .= self::get_description( $description );
+		}
 
 		$html .= '</div>';
 
@@ -736,7 +629,7 @@ abstract class Powerform_Field {
 			$data[] = $key . '="' . $value . '"';
 		}
 
-		return implode( ' ', $data );
+		return implode( " ", $data );
 	}
 
 	/**
@@ -746,9 +639,8 @@ abstract class Powerform_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data - the data to be validated
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 	}
 
 	/**
@@ -800,56 +692,16 @@ abstract class Powerform_Field {
 	}
 
 	/**
-	 * Get field nested conditions
-	 *
-	 * @param $field
-	 * @param $conditions
-	 * @param bool $form_object
-	 *
-	 * @since 1.7.2
-	 *
-	 * @return array
-	 */
-	public function get_field_conditions( $field, $conditions, $form_object = false ) {
-		$all_conditions = array();
-
-		foreach ( $conditions as $condition ) {
-			// Check if we have nested conditions
-			$element_id = $condition['element_id'];
-
-			if ( $form_object ) {
-				// Get condition field object
-				$parent_field      = $form_object->get_field( $element_id );
-				$parent_conditions = self::get_property( 'conditions', $parent_field, array() );
-
-				if ( ! empty( $parent_conditions ) ) {
-					$all_conditions[] = self::get_field_conditions( $parent_field, $parent_conditions, $form_object )[0];
-				} else {
-					// Add main condition
-					$all_conditions[] = $condition;
-				}
-			} else {
-				// Add main condition
-				$all_conditions[] = $condition;
-			}
-		}
-
-		return $all_conditions;
-	}
-
-	/**
 	 * Check if Field is hidden based on conditions property and POST-ed data
 	 *
 	 * @since 1.0
-	 * @since 1.7 add $pseudo_submitted_data to get value of calculation and stripe etc
 	 *
 	 * @param $field
 	 * @param $form_data
-	 * @param $pseudo_submitted_data
 	 *
 	 * @return bool
 	 */
-	public function is_hidden( $field, $form_data, $pseudo_submitted_data, $form_object = false ) {
+	public function is_hidden( $field, $form_data ) {
 		$conditions = self::get_property( 'conditions', $field, array() );
 
 		// empty conditions
@@ -861,75 +713,29 @@ abstract class Powerform_Field {
 		$condition_rule   = self::get_property( 'condition_rule', $field, 'all' );
 
 		$condition_fulfilled = 0;
-		$conditions_count    = 0;
-
-		$all_conditions = self::get_field_conditions( $field, $conditions, $form_object );
-
 		foreach ( $conditions as $condition ) {
-
 			$element_id = $condition['element_id'];
 
-			if ( stripos( $element_id, 'signature-' ) !== false ) {
-				// We have signature field
+			if ( ! isset( $form_data[ $element_id ] ) ) {
 				$is_condition_fulfilled = false;
-				$signature_id = 'field-' . $element_id;
-
-				if ( isset( $form_data[ $signature_id ] ) ) {
- 					$signature_data = 'ctlSignature' . $form_data[ $signature_id ] . '_data';
-
-					if ( isset( $form_data[ $signature_data ] ) ) {
-						$is_condition_fulfilled = self::is_condition_fulfilled( $form_data[ $signature_data ], $condition );
-					}
-				}
-			} elseif ( stripos( $element_id, 'calculation-' ) !== false || stripos( $element_id, 'stripe-' ) !== false ) {
-				$is_condition_fulfilled = false;
-				if ( isset( $pseudo_submitted_data[ $element_id ] ) ) {
-					//Condition's value is saved as a string value
-					$is_condition_fulfilled = self::is_condition_fulfilled( (string) $pseudo_submitted_data[ $element_id ], $condition );
-				}
-			} elseif ( ! isset( $form_data[ $element_id ] ) ) {
-				$is_condition_fulfilled = false;
-			} elseif ( stripos( $element_id, 'checkbox-' ) !== false || stripos( $element_id, 'radio-' ) !== false ) {
-				$is_condition_fulfilled = self::is_condition_fulfilled( $form_data[ $element_id ], $condition );
 			} else {
-				$is_condition_fulfilled = self::is_condition_fulfilled( $form_data[ $element_id ], $condition, $form_data['form_id'] );
+				$is_condition_fulfilled = self::is_condition_fulfilled( $form_data[ $element_id ], $condition );
 			}
-
 			if ( $is_condition_fulfilled ) {
 				$condition_fulfilled ++;
-			}
-
-			// Increase conditions count
-			$conditions_count ++;
-
-			// Check for parent conditions
-			if ( $form_object ) {
-				$parent_field      = $form_object->get_field( $element_id );
-				$parent_conditions = self::get_property( 'conditions', $parent_field, array() );
-
-				if ( ! empty( $parent_conditions ) && 'any' !== $condition_rule ) {
-					// Increase conditions count
-					$conditions_count ++;
-					$parent_hidden = self::is_hidden( $parent_field, $form_data, $pseudo_submitted_data, $form_object = false );
-
-					// If parent not hidden increase fulfilled conditions
-					if ( ! $parent_hidden && 'show' === $condition_action ) {
-						$condition_fulfilled ++;
-					}
-				}
 			}
 		}
 
 		//initialized as hidden
 		if ( 'show' === $condition_action ) {
-			if ( ( $condition_fulfilled > 0 && 'any' === $condition_rule ) || ( $conditions_count === $condition_fulfilled && 'all' === $condition_rule ) ) {
+			if ( ( $condition_fulfilled > 0 && 'any' === $condition_rule ) || ( count( $conditions ) === $condition_fulfilled && 'all' === $condition_rule ) ) {
 				return false;
 			}
 
 			return true;
 		} else {
 			//initialized as shown
-			if ( ( $condition_fulfilled > 0 && 'any' === $condition_rule ) || ( $conditions_count === $condition_fulfilled && 'all' === $condition_rule ) ) {
+			if ( ( $condition_fulfilled > 0 && 'any' === $condition_rule ) || ( count( $conditions ) === $condition_fulfilled && 'all' === $condition_rule ) ) {
 				return true;
 			}
 
@@ -944,22 +750,15 @@ abstract class Powerform_Field {
 	 *
 	 * @param $form_field_value
 	 * @param $condition
-	 * @param $form_id null
 	 *
 	 * @return bool
 	 */
-	public static function is_condition_fulfilled( $form_field_value, $condition, $form_id = NULL ) {
-
-		$form_field_value = wp_unslash( $form_field_value );
-
+	public static function is_condition_fulfilled( $form_field_value, $condition ) {
 		switch ( $condition['rule'] ) {
 			case 'is':
 				if ( is_array( $form_field_value ) ) {
 					// possible input is "1" to be compared with 1
 					return in_array( $condition['value'], $form_field_value ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-				}
-				if ( is_numeric( $condition['value'] ) ) {
-					return ( ( int ) $form_field_value === ( int ) $condition['value'] );
 				}
 
 				return ( $form_field_value === $condition['value'] );
@@ -993,113 +792,11 @@ abstract class Powerform_Field {
 			case 'starts':
 				return ( stripos( $form_field_value, $condition['value'] ) === 0 ? true : false );
 			case 'ends':
-				return ( stripos( $form_field_value, $condition['value'] ) === ( strlen( $form_field_value ) - 1 ) ? true : false );
-				case 'day_is':
-                if ( NULL !== $form_id ) {
-                    $day = self::get_day_or_month( $form_field_value, $condition['element_id'], $form_id, 'D' );
-				    return $day === $condition['value'];
-                }
-
-                return false;
-			case 'day_is_not':
-             if ( NULL !== $form_id ) {
-                 $day = self::get_day_or_month( $form_field_value, $condition['element_id'], $form_id, 'D' );
-			    	  return $day !== $condition['value'];
-             }
-
-             return false;
-			case 'month_is':
-             if ( NULL !== $form_id ) {
-                 $month = self::get_day_or_month( $form_field_value, $condition['element_id'], $form_id, 'M' );
-			    	  return $month === $condition['value'];
-             }
-
-             return false;
-			case 'month_is_not':
-             if ( NULL !== $form_id ) {
-                 $month = self::get_day_or_month( $form_field_value, $condition['element_id'], $form_id, 'M' );
-			    	  return $month !== $condition['value'];
-             }
-
-             return false;
-			case 'is_before':
-             if ( NULL !== $form_id ) {
-                 $date = self::get_day_or_month( $form_field_value, $condition['element_id'], $form_id, 'j F Y' );
-                 return strtotime( $date ) < strtotime( $condition['value'] );
-             }
-
-             return false;
-			case 'is_after':
-             if ( NULL !== $form_id ) {
-                 $date = self::get_day_or_month( $form_field_value, $condition['element_id'], $form_id, 'j F Y' );
-                 return strtotime( $date ) > strtotime( $condition['value'] );
-             }
-
-             return false;
-			case 'is_before_n_or_more_days':
-             if ( NULL !== $form_id ) {
-                 $date = self::get_day_or_month( $form_field_value, $condition['element_id'], $form_id, 'Y-m-d' );
-                 return strtotime( $date ) <= strtotime( '-' . $condition['value'] . ' days' );
-             }
-
-             return false;
-            // date_is_less_than_n_days_before_current_date
-			case 'is_before_less_than_n_days':
-             if ( NULL !== $form_id ) {
-                 $date         = self::get_day_or_month( $form_field_value, $condition['element_id'], $form_id, 'Y-m-d' );
-                 $rule_date    = strtotime( '-' . $condition['value'] . ' days' );
-                 $current_date = strtotime( 'today' );
-                 return $rule_date < strtotime( $date ) && strtotime( $date ) < $current_date;
-             }
-
-             return false;
-			case 'is_after_n_or_more_days':
-             if ( NULL !== $form_id ) {
-                 $date = self::get_day_or_month( $form_field_value, $condition['element_id'], $form_id, 'Y-m-d' );
-                 return strtotime( $date ) >= strtotime( '+' . $condition['value'] . ' days' );
-             }
-
-             return false;
-            // date_is_less_than_n_days_after_current_date
-			case 'is_after_less_than_n_days':
-             if ( NULL !== $form_id ) {
-                 $date         = self::get_day_or_month( $form_field_value, $condition['element_id'], $form_id, 'Y-m-d' );
-                 $rule_date    = strtotime( '+' . $condition['value'] . ' days' );
-                 $current_date = strtotime( 'today' );
-                 return $rule_date > strtotime( $date ) && strtotime( $date ) > $current_date;
-             }
-
-             return false;
+				return ( stripos( $form_field_value, $condition['value'] ) === ( strlen( $form_field_value - 1 ) ) ? true : false );
 			default:
 				return false;
 		}
 	}
-
-	/**
-	 * Get the day or month from given date
-	 *
-	 * @since 1.14
-	 *
-	 * @param $form_field_value
-	 * @param $element_id
-	 * @param $form_id
-	 * @param $format
-	 *
-	 * @return string|bool
-	 */
-	 public static function get_day_or_month( $form_field_value, $element_id, $form_id, $format ) {
-	     $date_format        = Powerform_API::get_form_field( $form_id, $element_id, false )->date_format;
-	     $normalized_format  = new Powerform_Date();
-	     $normalized_format  = $normalized_format->normalize_date_format( $date_format );
-	     $date               = date_create_from_format( $normalized_format, $form_field_value );
-
-	     if ( 'D' === $format ) {
-	         // Day format is based on fields' visibility day format.
-	         return substr( date_format( $date, $format ), 0, -1 );
-	     } else {
-	         return date_format( $date, $format );
-	     }
-	 }
 
 	/**
 	 * Return field ID
@@ -1205,15 +902,15 @@ abstract class Powerform_Field {
 	 * @return mixed value of $_POST[$id] or $fallback when unavailable
 	 */
 	public static function get_post_data( $id, $fallback = '' ) {
-		if ( isset( $_POST[ $id ] ) ) { // phpcs:ignore
-			return self::get_post_data_sanitize( $_POST[ $id ], $fallback ); // phpcs:ignore
+		if( isset( $_POST[ $id ] ) ) {
+			return self::get_post_data_sanitize( $_POST[ $id ], $fallback );
 		}
 
 		return $fallback;
 	}
 
 	/**
-	 * Return sanitized $_POST value, or the fallback value
+	 * Return sanitized $_POST vlaue, or the fallback value
 	 *
 	 * @since 1.6.3
 	 *
@@ -1223,10 +920,10 @@ abstract class Powerform_Field {
 	 * @return mixed value of $_POST[$id] or $fallback when unavailable
 	 */
 	public static function get_post_data_sanitize( $data, $fallback ) {
-		if ( is_array( $data ) ) {
+		if( is_array( $data ) ) {
 			$escaped = array();
 
-			foreach ( $data as $key => $value ) {
+			foreach( $data as $key => $value ) {
 				$escaped[ $key ] = self::get_post_data_sanitize( $value, '' );
 			}
 
@@ -1269,8 +966,8 @@ abstract class Powerform_Field {
 
 		// Lazy init providers
 		if ( self::is_autofill_enabled( $settings )
-			&& isset( $settings['fields-autofill'] )
-			&& ! empty( $settings['fields-autofill'] ) ) {
+		     && isset( $settings['fields-autofill'] )
+		     && ! empty( $settings['fields-autofill'] ) ) {
 
 			foreach ( $settings['fields-autofill'] as $fields_autofill ) {
 				if ( ! isset( $fields_autofill['provider'] ) || empty( $fields_autofill['provider'] ) ) {
@@ -1391,6 +1088,7 @@ abstract class Powerform_Field {
 					$field_data = $autofill_value;
 				}
 			}
+
 		}
 
 		return $field_data;
@@ -1535,172 +1233,8 @@ abstract class Powerform_Field {
 			$required_message = $fallback;
 		}
 
-		$required_message = wp_kses_post( $required_message );
-
 		$required_message = apply_filters( "powerform_{$this->slug}_field_{$slug}_required_validation_message", $required_message, $id, $field );
 
 		return $required_message;
-	}
-
-	/**
-	 * Get dummy value for parsing formula
-	 *
-	 * @since 1.7
-	 *
-	 * @param array $field_settings
-	 *
-	 * @return float|string
-	 */
-	public function get_dummy_calculable_value( $field_settings = array() ) {
-		$dummy_value = 1.0;
-		$field_slug  = $this->slug;
-
-		if ( ! $this->is_calculable ) {
-			$dummy_value = self::FIELD_NOT_CALCULABLE;
-		}
-
-		/**
-		 * Filter Dummy calculable value
-		 *
-		 * @since 1.7
-		 *
-		 * @param float $dummy_value
-		 * @param array $field_settings
-		 *
-		 * @return float|int
-		 */
-		$dummy_value = apply_filters( "powerform_field_{$field_slug}_dummy_calculable_value", $dummy_value, $field_settings );
-
-		return $dummy_value;
-	}
-
-	/**
-	 * Get calculable value
-	 *
-	 * @since 1.7
-	 *
-	 * @param array|mixed $submitted_data
-	 * @param array       $field_settings
-	 *
-	 * @return float|string
-	 */
-	public function get_calculable_value( $submitted_data, $field_settings ) {
-		$field_slug       = $this->slug;
-		$calculable_value = 0.0;
-
-		/**
-		 * Filter formula being used on calculable value on abstract level
-		 * this hook can be used on un-implemented calculation field
-		 *
-		 * @since 1.7
-		 *
-		 * @param float $calculable_value
-		 * @param array $submitted_data
-		 * @param array $field_settings
-		 *
-		 * @return string|int|float formula, or hardcoded value
-		 */
-		$calculable_value = apply_filters( "powerform_field_{$field_slug}_calculable_value", $calculable_value, $submitted_data, $field_settings );
-
-		return $calculable_value;
-	}
-
-	/**
-	 *
-	 * Get calculable precision
-	 *
-	 * @since 1.7
-	 *
-	 * @param $submitted_data
-	 * @param $field_settings
-	 *
-	 * @return int
-	 */
-	public function get_calculable_precision( $submitted_data, $field_settings ) {
-		$field_slug = $this->slug;
-		$precision  = 2;
-
-		/**
-		 * Filter formula being used on calculable value on abstract level
-		 * this hook can be used on un-implemented calculation field
-		 *
-		 * @since 1.7
-		 *
-		 * @param int   $precision
-		 * @param array $submitted_data
-		 * @param array $field_settings
-		 *
-		 * @return string|int|float formula, or hardcoded value
-		 */
-		$precision = apply_filters( "powerform_field_{$field_slug}_calculable_precision", $precision, $submitted_data, $field_settings );
-
-		return $precision;
-	}
-
-	/**
-	 * Return if field has pre-fill value filled
-	 *
-	 * @since 1.10
-	 *
-	 * @param $field
-	 * @return bool
-	 */
-	public function has_prefill( $field, $prefix = false ) {
-		if ( $prefix ) {
-			$prefix = $prefix . '_';
-		}
-
-		$prefill = self::get_property( $prefix . 'prefill', $field, false );
-
-		if ( $prefill ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Get pre-fill value if set, else return $default
-	 *
-	 * @since 1.10
-	 *
-	 * @param $field
-	 * @param $default
-	 * @return mixed
-	 */
-	public function get_prefill( $field, $default, $prefix = false ) {
-		if ( $prefix ) {
-			$prefix = $prefix . '_';
-		}
-
-		$prefill = self::get_property( $prefix . 'prefill', $field, false );
-
-		if ( ! empty( $_REQUEST[ $prefill ] ) ) {  // WPCS: CSRF ok.
-			return sanitize_text_field( $_REQUEST[ $prefill ] );
-		}
-
-		return $default;
-	}
-
-	/**
-	 * Replace object value from prefill
-	 *
-	 * @since 1.10
-	 *
-	 * @param $field
-	 * @param $attributes
-	 * @param $prefix
-	 * @param bool $default
-	 * @return mixed
-	 */
-	public function replace_from_prefill( $field, $attributes, $prefix, $default = false ) {
-		if( $this->has_prefill( $field, $prefix ) ) {
-			// We have pre-fill parameter, use its value or $value
-			$value = $this->get_prefill( $field, $default, $prefix );
-
-			$attributes['value'] = esc_html( $value );
-		}
-
-		return $attributes;
 	}
 }

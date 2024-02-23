@@ -28,7 +28,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Sheets extends Powerform_Google_Service
+class Google_Service_Sheets extends Google_Service
 {
   /** View and manage the files in your Google Drive. */
   const DRIVE =
@@ -46,14 +46,14 @@ class Powerform_Google_Service_Sheets extends Powerform_Google_Service
   public $spreadsheets;
   public $spreadsheets_sheets;
   public $spreadsheets_values;
-  
+
 
   /**
    * Constructs the internal representation of the Sheets service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://sheets.googleapis.com/';
@@ -61,7 +61,7 @@ class Powerform_Google_Service_Sheets extends Powerform_Google_Service
     $this->version = 'v4';
     $this->serviceName = 'sheets';
 
-    $this->spreadsheets = new Powerform_Google_Service_Sheets_Spreadsheets_Resource(
+    $this->spreadsheets = new Google_Service_Sheets_Spreadsheets_Resource(
         $this,
         $this->serviceName,
         'spreadsheets',
@@ -104,7 +104,7 @@ class Powerform_Google_Service_Sheets extends Powerform_Google_Service
           )
         )
     );
-    $this->spreadsheets_sheets = new Powerform_Google_Service_Sheets_SpreadsheetsSheets_Resource(
+    $this->spreadsheets_sheets = new Google_Service_Sheets_SpreadsheetsSheets_Resource(
         $this,
         $this->serviceName,
         'sheets',
@@ -129,7 +129,7 @@ class Powerform_Google_Service_Sheets extends Powerform_Google_Service
           )
         )
     );
-    $this->spreadsheets_values = new Powerform_Google_Service_Sheets_SpreadsheetsValues_Resource(
+    $this->spreadsheets_values = new Google_Service_Sheets_SpreadsheetsValues_Resource(
         $this,
         $this->serviceName,
         'values',
@@ -230,11 +230,11 @@ class Powerform_Google_Service_Sheets extends Powerform_Google_Service
  * The "spreadsheets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sheetsService = new Powerform_Google_Service_Sheets(...);
+ *   $sheetsService = new Google_Service_Sheets(...);
  *   $spreadsheets = $sheetsService->spreadsheets;
  *  </code>
  */
-class Powerform_Google_Service_Sheets_Spreadsheets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Sheets_Spreadsheets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -256,30 +256,30 @@ class Powerform_Google_Service_Sheets_Spreadsheets_Resource extends Powerform_Go
    * (spreadsheets.batchUpdate)
    *
    * @param string $spreadsheetId The spreadsheet to apply the updates to.
-   * @param Powerform_Google_BatchUpdateSpreadsheetRequest $postBody
+   * @param Google_BatchUpdateSpreadsheetRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Sheets_BatchUpdateSpreadsheetResponse
+   * @return Google_Service_Sheets_BatchUpdateSpreadsheetResponse
    */
-  public function batchUpdate($spreadsheetId, Powerform_Google_Service_Sheets_BatchUpdateSpreadsheetRequest $postBody, $optParams = array())
+  public function batchUpdate($spreadsheetId, Google_Service_Sheets_BatchUpdateSpreadsheetRequest $postBody, $optParams = array())
   {
     $params = array('spreadsheetId' => $spreadsheetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('batchUpdate', array($params), "Powerform_Google_Service_Sheets_BatchUpdateSpreadsheetResponse");
+    return $this->call('batchUpdate', array($params), "Google_Service_Sheets_BatchUpdateSpreadsheetResponse");
   }
 
   /**
    * Creates a spreadsheet, returning the newly created spreadsheet.
    * (spreadsheets.create)
    *
-   * @param Powerform_Google_Spreadsheet $postBody
+   * @param Google_Spreadsheet $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Sheets_Spreadsheet
+   * @return Google_Service_Sheets_Spreadsheet
    */
-  public function create(Powerform_Google_Service_Sheets_Spreadsheet $postBody, $optParams = array())
+  public function create(Google_Service_Sheets_Spreadsheet $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Sheets_Spreadsheet");
+    return $this->call('create', array($params), "Google_Service_Sheets_Spreadsheet");
   }
 
   /**
@@ -307,13 +307,13 @@ class Powerform_Google_Service_Sheets_Spreadsheets_Resource extends Powerform_Go
    * @opt_param string ranges The ranges to retrieve from the spreadsheet.
    * @opt_param bool includeGridData True if grid data should be returned. This
    * parameter is ignored if a field mask was set in the request.
-   * @return Powerform_Google_Service_Sheets_Spreadsheet
+   * @return Google_Service_Sheets_Spreadsheet
    */
   public function get($spreadsheetId, $optParams = array())
   {
     $params = array('spreadsheetId' => $spreadsheetId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Sheets_Spreadsheet");
+    return $this->call('get', array($params), "Google_Service_Sheets_Spreadsheet");
   }
 }
 
@@ -321,11 +321,11 @@ class Powerform_Google_Service_Sheets_Spreadsheets_Resource extends Powerform_Go
  * The "sheets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sheetsService = new Powerform_Google_Service_Sheets(...);
+ *   $sheetsService = new Google_Service_Sheets(...);
  *   $sheets = $sheetsService->sheets;
  *  </code>
  */
-class Powerform_Google_Service_Sheets_SpreadsheetsSheets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Sheets_SpreadsheetsSheets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -335,26 +335,26 @@ class Powerform_Google_Service_Sheets_SpreadsheetsSheets_Resource extends Powerf
    * @param string $spreadsheetId The id of the spreadsheet containing the sheet
    * to copy.
    * @param int $sheetId The ID of the sheet to copy.
-   * @param Powerform_Google_CopySheetToAnotherSpreadsheetRequest $postBody
+   * @param Google_CopySheetToAnotherSpreadsheetRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Sheets_SheetProperties
+   * @return Google_Service_Sheets_SheetProperties
    */
-  public function copyTo($spreadsheetId, $sheetId, Powerform_Google_Service_Sheets_CopySheetToAnotherSpreadsheetRequest $postBody, $optParams = array())
+  public function copyTo($spreadsheetId, $sheetId, Google_Service_Sheets_CopySheetToAnotherSpreadsheetRequest $postBody, $optParams = array())
   {
     $params = array('spreadsheetId' => $spreadsheetId, 'sheetId' => $sheetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('copyTo', array($params), "Powerform_Google_Service_Sheets_SheetProperties");
+    return $this->call('copyTo', array($params), "Google_Service_Sheets_SheetProperties");
   }
 }
 /**
  * The "values" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sheetsService = new Powerform_Google_Service_Sheets(...);
+ *   $sheetsService = new Google_Service_Sheets(...);
  *   $values = $sheetsService->values;
  *  </code>
  */
-class Powerform_Google_Service_Sheets_SpreadsheetsValues_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Sheets_SpreadsheetsValues_Resource extends Google_Service_Resource
 {
 
   /**
@@ -376,13 +376,13 @@ class Powerform_Google_Service_Sheets_SpreadsheetsValues_Resource extends Powerf
    * requesting `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`,
    * whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
    * `[[1,3],[2,4]]`.
-   * @return Powerform_Google_Service_Sheets_BatchGetValuesResponse
+   * @return Google_Service_Sheets_BatchGetValuesResponse
    */
   public function batchGet($spreadsheetId, $optParams = array())
   {
     $params = array('spreadsheetId' => $spreadsheetId);
     $params = array_merge($params, $optParams);
-    return $this->call('batchGet', array($params), "Powerform_Google_Service_Sheets_BatchGetValuesResponse");
+    return $this->call('batchGet', array($params), "Google_Service_Sheets_BatchGetValuesResponse");
   }
 
   /**
@@ -391,15 +391,15 @@ class Powerform_Google_Service_Sheets_SpreadsheetsValues_Resource extends Powerf
    * (values.batchUpdate)
    *
    * @param string $spreadsheetId The id of the spreadsheet to update.
-   * @param Powerform_Google_BatchUpdateValuesRequest $postBody
+   * @param Google_BatchUpdateValuesRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Sheets_BatchUpdateValuesResponse
+   * @return Google_Service_Sheets_BatchUpdateValuesResponse
    */
-  public function batchUpdate($spreadsheetId, Powerform_Google_Service_Sheets_BatchUpdateValuesRequest $postBody, $optParams = array())
+  public function batchUpdate($spreadsheetId, Google_Service_Sheets_BatchUpdateValuesRequest $postBody, $optParams = array())
   {
     $params = array('spreadsheetId' => $spreadsheetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('batchUpdate', array($params), "Powerform_Google_Service_Sheets_BatchUpdateValuesResponse");
+    return $this->call('batchUpdate', array($params), "Google_Service_Sheets_BatchUpdateValuesResponse");
   }
 
   /**
@@ -421,13 +421,13 @@ class Powerform_Google_Service_Sheets_SpreadsheetsValues_Resource extends Powerf
    * requesting `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`,
    * whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
    * `[[1,3],[2,4]]`.
-   * @return Powerform_Google_Service_Sheets_ValueRange
+   * @return Google_Service_Sheets_ValueRange
    */
   public function get($spreadsheetId, $range, $optParams = array())
   {
     $params = array('spreadsheetId' => $spreadsheetId, 'range' => $range);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Sheets_ValueRange");
+    return $this->call('get', array($params), "Google_Service_Sheets_ValueRange");
   }
 
   /**
@@ -436,32 +436,32 @@ class Powerform_Google_Service_Sheets_SpreadsheetsValues_Resource extends Powerf
    *
    * @param string $spreadsheetId The id of the spreadsheet to update.
    * @param string $range The A1 notation of the values to update.
-   * @param Powerform_Google_ValueRange $postBody
+   * @param Google_ValueRange $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string valueInputOption How the input data should be interpreted.
-   * @return Powerform_Google_Service_Sheets_UpdateValuesResponse
+   * @return Google_Service_Sheets_UpdateValuesResponse
    */
-  public function update($spreadsheetId, $range, Powerform_Google_Service_Sheets_ValueRange $postBody, $optParams = array())
+  public function update($spreadsheetId, $range, Google_Service_Sheets_ValueRange $postBody, $optParams = array())
   {
     $params = array('spreadsheetId' => $spreadsheetId, 'range' => $range, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Sheets_UpdateValuesResponse");
+    return $this->call('update', array($params), "Google_Service_Sheets_UpdateValuesResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Sheets_AddChartRequest extends Powerform_Google_Model
+class Google_Service_Sheets_AddChartRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $chartType = 'Powerform_Google_Service_Sheets_EmbeddedChart';
+  protected $chartType = 'Google_Service_Sheets_EmbeddedChart';
   protected $chartDataType = '';
 
 
-  public function setChart(Powerform_Google_Service_Sheets_EmbeddedChart $chart)
+  public function setChart(Google_Service_Sheets_EmbeddedChart $chart)
   {
     $this->chart = $chart;
   }
@@ -471,15 +471,15 @@ class Powerform_Google_Service_Sheets_AddChartRequest extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Sheets_AddChartResponse extends Powerform_Google_Model
+class Google_Service_Sheets_AddChartResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $chartType = 'Powerform_Google_Service_Sheets_EmbeddedChart';
+  protected $chartType = 'Google_Service_Sheets_EmbeddedChart';
   protected $chartDataType = '';
 
 
-  public function setChart(Powerform_Google_Service_Sheets_EmbeddedChart $chart)
+  public function setChart(Google_Service_Sheets_EmbeddedChart $chart)
   {
     $this->chart = $chart;
   }
@@ -489,12 +489,12 @@ class Powerform_Google_Service_Sheets_AddChartResponse extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Sheets_AddConditionalFormatRuleRequest extends Powerform_Google_Model
+class Google_Service_Sheets_AddConditionalFormatRuleRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $index;
-  protected $ruleType = 'Powerform_Google_Service_Sheets_ConditionalFormatRule';
+  protected $ruleType = 'Google_Service_Sheets_ConditionalFormatRule';
   protected $ruleDataType = '';
 
 
@@ -506,7 +506,7 @@ class Powerform_Google_Service_Sheets_AddConditionalFormatRuleRequest extends Po
   {
     return $this->index;
   }
-  public function setRule(Powerform_Google_Service_Sheets_ConditionalFormatRule $rule)
+  public function setRule(Google_Service_Sheets_ConditionalFormatRule $rule)
   {
     $this->rule = $rule;
   }
@@ -516,15 +516,15 @@ class Powerform_Google_Service_Sheets_AddConditionalFormatRuleRequest extends Po
   }
 }
 
-class Powerform_Google_Service_Sheets_AddFilterViewRequest extends Powerform_Google_Model
+class Google_Service_Sheets_AddFilterViewRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $filterType = 'Powerform_Google_Service_Sheets_FilterView';
+  protected $filterType = 'Google_Service_Sheets_FilterView';
   protected $filterDataType = '';
 
 
-  public function setFilter(Powerform_Google_Service_Sheets_FilterView $filter)
+  public function setFilter(Google_Service_Sheets_FilterView $filter)
   {
     $this->filter = $filter;
   }
@@ -534,15 +534,15 @@ class Powerform_Google_Service_Sheets_AddFilterViewRequest extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Sheets_AddFilterViewResponse extends Powerform_Google_Model
+class Google_Service_Sheets_AddFilterViewResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $filterType = 'Powerform_Google_Service_Sheets_FilterView';
+  protected $filterType = 'Google_Service_Sheets_FilterView';
   protected $filterDataType = '';
 
 
-  public function setFilter(Powerform_Google_Service_Sheets_FilterView $filter)
+  public function setFilter(Google_Service_Sheets_FilterView $filter)
   {
     $this->filter = $filter;
   }
@@ -552,15 +552,15 @@ class Powerform_Google_Service_Sheets_AddFilterViewResponse extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Sheets_AddNamedRangeRequest extends Powerform_Google_Model
+class Google_Service_Sheets_AddNamedRangeRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $namedRangeType = 'Powerform_Google_Service_Sheets_NamedRange';
+  protected $namedRangeType = 'Google_Service_Sheets_NamedRange';
   protected $namedRangeDataType = '';
 
 
-  public function setNamedRange(Powerform_Google_Service_Sheets_NamedRange $namedRange)
+  public function setNamedRange(Google_Service_Sheets_NamedRange $namedRange)
   {
     $this->namedRange = $namedRange;
   }
@@ -570,15 +570,15 @@ class Powerform_Google_Service_Sheets_AddNamedRangeRequest extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Sheets_AddNamedRangeResponse extends Powerform_Google_Model
+class Google_Service_Sheets_AddNamedRangeResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $namedRangeType = 'Powerform_Google_Service_Sheets_NamedRange';
+  protected $namedRangeType = 'Google_Service_Sheets_NamedRange';
   protected $namedRangeDataType = '';
 
 
-  public function setNamedRange(Powerform_Google_Service_Sheets_NamedRange $namedRange)
+  public function setNamedRange(Google_Service_Sheets_NamedRange $namedRange)
   {
     $this->namedRange = $namedRange;
   }
@@ -588,15 +588,15 @@ class Powerform_Google_Service_Sheets_AddNamedRangeResponse extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Sheets_AddProtectedRangeRequest extends Powerform_Google_Model
+class Google_Service_Sheets_AddProtectedRangeRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $protectedRangeType = 'Powerform_Google_Service_Sheets_ProtectedRange';
+  protected $protectedRangeType = 'Google_Service_Sheets_ProtectedRange';
   protected $protectedRangeDataType = '';
 
 
-  public function setProtectedRange(Powerform_Google_Service_Sheets_ProtectedRange $protectedRange)
+  public function setProtectedRange(Google_Service_Sheets_ProtectedRange $protectedRange)
   {
     $this->protectedRange = $protectedRange;
   }
@@ -606,15 +606,15 @@ class Powerform_Google_Service_Sheets_AddProtectedRangeRequest extends Powerform
   }
 }
 
-class Powerform_Google_Service_Sheets_AddProtectedRangeResponse extends Powerform_Google_Model
+class Google_Service_Sheets_AddProtectedRangeResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $protectedRangeType = 'Powerform_Google_Service_Sheets_ProtectedRange';
+  protected $protectedRangeType = 'Google_Service_Sheets_ProtectedRange';
   protected $protectedRangeDataType = '';
 
 
-  public function setProtectedRange(Powerform_Google_Service_Sheets_ProtectedRange $protectedRange)
+  public function setProtectedRange(Google_Service_Sheets_ProtectedRange $protectedRange)
   {
     $this->protectedRange = $protectedRange;
   }
@@ -624,15 +624,15 @@ class Powerform_Google_Service_Sheets_AddProtectedRangeResponse extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Sheets_AddSheetRequest extends Powerform_Google_Model
+class Google_Service_Sheets_AddSheetRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $propertiesType = 'Powerform_Google_Service_Sheets_SheetProperties';
+  protected $propertiesType = 'Google_Service_Sheets_SheetProperties';
   protected $propertiesDataType = '';
 
 
-  public function setProperties(Powerform_Google_Service_Sheets_SheetProperties $properties)
+  public function setProperties(Google_Service_Sheets_SheetProperties $properties)
   {
     $this->properties = $properties;
   }
@@ -642,15 +642,15 @@ class Powerform_Google_Service_Sheets_AddSheetRequest extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Sheets_AddSheetResponse extends Powerform_Google_Model
+class Google_Service_Sheets_AddSheetResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $propertiesType = 'Powerform_Google_Service_Sheets_SheetProperties';
+  protected $propertiesType = 'Google_Service_Sheets_SheetProperties';
   protected $propertiesDataType = '';
 
 
-  public function setProperties(Powerform_Google_Service_Sheets_SheetProperties $properties)
+  public function setProperties(Google_Service_Sheets_SheetProperties $properties)
   {
     $this->properties = $properties;
   }
@@ -660,13 +660,13 @@ class Powerform_Google_Service_Sheets_AddSheetResponse extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Sheets_AppendCellsRequest extends Powerform_Google_Collection
+class Google_Service_Sheets_AppendCellsRequest extends Google_Collection
 {
   protected $collection_key = 'rows';
   protected $internal_gapi_mappings = array(
   );
   public $fields;
-  protected $rowsType = 'Powerform_Google_Service_Sheets_RowData';
+  protected $rowsType = 'Google_Service_Sheets_RowData';
   protected $rowsDataType = 'array';
   public $sheetId;
 
@@ -697,7 +697,7 @@ class Powerform_Google_Service_Sheets_AppendCellsRequest extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Sheets_AppendDimensionRequest extends Powerform_Google_Model
+class Google_Service_Sheets_AppendDimensionRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -732,18 +732,18 @@ class Powerform_Google_Service_Sheets_AppendDimensionRequest extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Sheets_AutoFillRequest extends Powerform_Google_Model
+class Google_Service_Sheets_AutoFillRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
-  protected $sourceAndDestinationType = 'Powerform_Google_Service_Sheets_SourceAndDestination';
+  protected $sourceAndDestinationType = 'Google_Service_Sheets_SourceAndDestination';
   protected $sourceAndDestinationDataType = '';
   public $useAlternateSeries;
 
 
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -751,7 +751,7 @@ class Powerform_Google_Service_Sheets_AutoFillRequest extends Powerform_Google_M
   {
     return $this->range;
   }
-  public function setSourceAndDestination(Powerform_Google_Service_Sheets_SourceAndDestination $sourceAndDestination)
+  public function setSourceAndDestination(Google_Service_Sheets_SourceAndDestination $sourceAndDestination)
   {
     $this->sourceAndDestination = $sourceAndDestination;
   }
@@ -769,15 +769,15 @@ class Powerform_Google_Service_Sheets_AutoFillRequest extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Sheets_AutoResizeDimensionsRequest extends Powerform_Google_Model
+class Google_Service_Sheets_AutoResizeDimensionsRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $dimensionsType = 'Powerform_Google_Service_Sheets_DimensionRange';
+  protected $dimensionsType = 'Google_Service_Sheets_DimensionRange';
   protected $dimensionsDataType = '';
 
 
-  public function setDimensions(Powerform_Google_Service_Sheets_DimensionRange $dimensions)
+  public function setDimensions(Google_Service_Sheets_DimensionRange $dimensions)
   {
     $this->dimensions = $dimensions;
   }
@@ -787,17 +787,17 @@ class Powerform_Google_Service_Sheets_AutoResizeDimensionsRequest extends Powerf
   }
 }
 
-class Powerform_Google_Service_Sheets_BasicChartAxis extends Powerform_Google_Model
+class Google_Service_Sheets_BasicChartAxis extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $formatType = 'Powerform_Google_Service_Sheets_TextFormat';
+  protected $formatType = 'Google_Service_Sheets_TextFormat';
   protected $formatDataType = '';
   public $position;
   public $title;
 
 
-  public function setFormat(Powerform_Google_Service_Sheets_TextFormat $format)
+  public function setFormat(Google_Service_Sheets_TextFormat $format)
   {
     $this->format = $format;
   }
@@ -823,15 +823,15 @@ class Powerform_Google_Service_Sheets_BasicChartAxis extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Sheets_BasicChartDomain extends Powerform_Google_Model
+class Google_Service_Sheets_BasicChartDomain extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $domainType = 'Powerform_Google_Service_Sheets_ChartData';
+  protected $domainType = 'Google_Service_Sheets_ChartData';
   protected $domainDataType = '';
 
 
-  public function setDomain(Powerform_Google_Service_Sheets_ChartData $domain)
+  public function setDomain(Google_Service_Sheets_ChartData $domain)
   {
     $this->domain = $domain;
   }
@@ -841,17 +841,17 @@ class Powerform_Google_Service_Sheets_BasicChartDomain extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Sheets_BasicChartSeries extends Powerform_Google_Model
+class Google_Service_Sheets_BasicChartSeries extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $seriesType = 'Powerform_Google_Service_Sheets_ChartData';
+  protected $seriesType = 'Google_Service_Sheets_ChartData';
   protected $seriesDataType = '';
   public $targetAxis;
   public $type;
 
 
-  public function setSeries(Powerform_Google_Service_Sheets_ChartData $series)
+  public function setSeries(Google_Service_Sheets_ChartData $series)
   {
     $this->series = $series;
   }
@@ -877,19 +877,19 @@ class Powerform_Google_Service_Sheets_BasicChartSeries extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Sheets_BasicChartSpec extends Powerform_Google_Collection
+class Google_Service_Sheets_BasicChartSpec extends Google_Collection
 {
   protected $collection_key = 'series';
   protected $internal_gapi_mappings = array(
   );
-  protected $axisType = 'Powerform_Google_Service_Sheets_BasicChartAxis';
+  protected $axisType = 'Google_Service_Sheets_BasicChartAxis';
   protected $axisDataType = 'array';
   public $chartType;
-  protected $domainsType = 'Powerform_Google_Service_Sheets_BasicChartDomain';
+  protected $domainsType = 'Google_Service_Sheets_BasicChartDomain';
   protected $domainsDataType = 'array';
   public $headerCount;
   public $legendPosition;
-  protected $seriesType = 'Powerform_Google_Service_Sheets_BasicChartSeries';
+  protected $seriesType = 'Google_Service_Sheets_BasicChartSeries';
   protected $seriesDataType = 'array';
 
 
@@ -943,16 +943,16 @@ class Powerform_Google_Service_Sheets_BasicChartSpec extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Sheets_BasicFilter extends Powerform_Google_Collection
+class Google_Service_Sheets_BasicFilter extends Google_Collection
 {
   protected $collection_key = 'sortSpecs';
   protected $internal_gapi_mappings = array(
   );
-  protected $criteriaType = 'Powerform_Google_Service_Sheets_FilterCriteria';
+  protected $criteriaType = 'Google_Service_Sheets_FilterCriteria';
   protected $criteriaDataType = 'map';
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
-  protected $sortSpecsType = 'Powerform_Google_Service_Sheets_SortSpec';
+  protected $sortSpecsType = 'Google_Service_Sheets_SortSpec';
   protected $sortSpecsDataType = 'array';
 
 
@@ -964,7 +964,7 @@ class Powerform_Google_Service_Sheets_BasicFilter extends Powerform_Google_Colle
   {
     return $this->criteria;
   }
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -982,13 +982,13 @@ class Powerform_Google_Service_Sheets_BasicFilter extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Sheets_BatchGetValuesResponse extends Powerform_Google_Collection
+class Google_Service_Sheets_BatchGetValuesResponse extends Google_Collection
 {
   protected $collection_key = 'valueRanges';
   protected $internal_gapi_mappings = array(
   );
   public $spreadsheetId;
-  protected $valueRangesType = 'Powerform_Google_Service_Sheets_ValueRange';
+  protected $valueRangesType = 'Google_Service_Sheets_ValueRange';
   protected $valueRangesDataType = 'array';
 
 
@@ -1010,12 +1010,12 @@ class Powerform_Google_Service_Sheets_BatchGetValuesResponse extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Sheets_BatchUpdateSpreadsheetRequest extends Powerform_Google_Collection
+class Google_Service_Sheets_BatchUpdateSpreadsheetRequest extends Google_Collection
 {
   protected $collection_key = 'requests';
   protected $internal_gapi_mappings = array(
   );
-  protected $requestsType = 'Powerform_Google_Service_Sheets_Request';
+  protected $requestsType = 'Google_Service_Sheets_Request';
   protected $requestsDataType = 'array';
 
 
@@ -1029,12 +1029,12 @@ class Powerform_Google_Service_Sheets_BatchUpdateSpreadsheetRequest extends Powe
   }
 }
 
-class Powerform_Google_Service_Sheets_BatchUpdateSpreadsheetResponse extends Powerform_Google_Collection
+class Google_Service_Sheets_BatchUpdateSpreadsheetResponse extends Google_Collection
 {
   protected $collection_key = 'replies';
   protected $internal_gapi_mappings = array(
   );
-  protected $repliesType = 'Powerform_Google_Service_Sheets_Response';
+  protected $repliesType = 'Google_Service_Sheets_Response';
   protected $repliesDataType = 'array';
   public $spreadsheetId;
 
@@ -1057,12 +1057,12 @@ class Powerform_Google_Service_Sheets_BatchUpdateSpreadsheetResponse extends Pow
   }
 }
 
-class Powerform_Google_Service_Sheets_BatchUpdateValuesRequest extends Powerform_Google_Collection
+class Google_Service_Sheets_BatchUpdateValuesRequest extends Google_Collection
 {
   protected $collection_key = 'data';
   protected $internal_gapi_mappings = array(
   );
-  protected $dataType = 'Powerform_Google_Service_Sheets_ValueRange';
+  protected $dataType = 'Google_Service_Sheets_ValueRange';
   protected $dataDataType = 'array';
   public $valueInputOption;
 
@@ -1085,12 +1085,12 @@ class Powerform_Google_Service_Sheets_BatchUpdateValuesRequest extends Powerform
   }
 }
 
-class Powerform_Google_Service_Sheets_BatchUpdateValuesResponse extends Powerform_Google_Collection
+class Google_Service_Sheets_BatchUpdateValuesResponse extends Google_Collection
 {
   protected $collection_key = 'responses';
   protected $internal_gapi_mappings = array(
   );
-  protected $responsesType = 'Powerform_Google_Service_Sheets_UpdateValuesResponse';
+  protected $responsesType = 'Google_Service_Sheets_UpdateValuesResponse';
   protected $responsesDataType = 'array';
   public $spreadsheetId;
   public $totalUpdatedCells;
@@ -1149,13 +1149,13 @@ class Powerform_Google_Service_Sheets_BatchUpdateValuesResponse extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Sheets_BooleanCondition extends Powerform_Google_Collection
+class Google_Service_Sheets_BooleanCondition extends Google_Collection
 {
   protected $collection_key = 'values';
   protected $internal_gapi_mappings = array(
   );
   public $type;
-  protected $valuesType = 'Powerform_Google_Service_Sheets_ConditionValue';
+  protected $valuesType = 'Google_Service_Sheets_ConditionValue';
   protected $valuesDataType = 'array';
 
 
@@ -1177,17 +1177,17 @@ class Powerform_Google_Service_Sheets_BooleanCondition extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Sheets_BooleanRule extends Powerform_Google_Model
+class Google_Service_Sheets_BooleanRule extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $conditionType = 'Powerform_Google_Service_Sheets_BooleanCondition';
+  protected $conditionType = 'Google_Service_Sheets_BooleanCondition';
   protected $conditionDataType = '';
-  protected $formatType = 'Powerform_Google_Service_Sheets_CellFormat';
+  protected $formatType = 'Google_Service_Sheets_CellFormat';
   protected $formatDataType = '';
 
 
-  public function setCondition(Powerform_Google_Service_Sheets_BooleanCondition $condition)
+  public function setCondition(Google_Service_Sheets_BooleanCondition $condition)
   {
     $this->condition = $condition;
   }
@@ -1195,7 +1195,7 @@ class Powerform_Google_Service_Sheets_BooleanRule extends Powerform_Google_Model
   {
     return $this->condition;
   }
-  public function setFormat(Powerform_Google_Service_Sheets_CellFormat $format)
+  public function setFormat(Google_Service_Sheets_CellFormat $format)
   {
     $this->format = $format;
   }
@@ -1205,17 +1205,17 @@ class Powerform_Google_Service_Sheets_BooleanRule extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_Border extends Powerform_Google_Model
+class Google_Service_Sheets_Border extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $colorType = 'Powerform_Google_Service_Sheets_Color';
+  protected $colorType = 'Google_Service_Sheets_Color';
   protected $colorDataType = '';
   public $style;
   public $width;
 
 
-  public function setColor(Powerform_Google_Service_Sheets_Color $color)
+  public function setColor(Google_Service_Sheets_Color $color)
   {
     $this->color = $color;
   }
@@ -1241,21 +1241,21 @@ class Powerform_Google_Service_Sheets_Border extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_Borders extends Powerform_Google_Model
+class Google_Service_Sheets_Borders extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $bottomType = 'Powerform_Google_Service_Sheets_Border';
+  protected $bottomType = 'Google_Service_Sheets_Border';
   protected $bottomDataType = '';
-  protected $leftType = 'Powerform_Google_Service_Sheets_Border';
+  protected $leftType = 'Google_Service_Sheets_Border';
   protected $leftDataType = '';
-  protected $rightType = 'Powerform_Google_Service_Sheets_Border';
+  protected $rightType = 'Google_Service_Sheets_Border';
   protected $rightDataType = '';
-  protected $topType = 'Powerform_Google_Service_Sheets_Border';
+  protected $topType = 'Google_Service_Sheets_Border';
   protected $topDataType = '';
 
 
-  public function setBottom(Powerform_Google_Service_Sheets_Border $bottom)
+  public function setBottom(Google_Service_Sheets_Border $bottom)
   {
     $this->bottom = $bottom;
   }
@@ -1263,7 +1263,7 @@ class Powerform_Google_Service_Sheets_Borders extends Powerform_Google_Model
   {
     return $this->bottom;
   }
-  public function setLeft(Powerform_Google_Service_Sheets_Border $left)
+  public function setLeft(Google_Service_Sheets_Border $left)
   {
     $this->left = $left;
   }
@@ -1271,7 +1271,7 @@ class Powerform_Google_Service_Sheets_Borders extends Powerform_Google_Model
   {
     return $this->left;
   }
-  public function setRight(Powerform_Google_Service_Sheets_Border $right)
+  public function setRight(Google_Service_Sheets_Border $right)
   {
     $this->right = $right;
   }
@@ -1279,7 +1279,7 @@ class Powerform_Google_Service_Sheets_Borders extends Powerform_Google_Model
   {
     return $this->right;
   }
-  public function setTop(Powerform_Google_Service_Sheets_Border $top)
+  public function setTop(Google_Service_Sheets_Border $top)
   {
     $this->top = $top;
   }
@@ -1289,31 +1289,31 @@ class Powerform_Google_Service_Sheets_Borders extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_CellData extends Powerform_Google_Collection
+class Google_Service_Sheets_CellData extends Google_Collection
 {
   protected $collection_key = 'textFormatRuns';
   protected $internal_gapi_mappings = array(
   );
-  protected $dataValidationType = 'Powerform_Google_Service_Sheets_DataValidationRule';
+  protected $dataValidationType = 'Google_Service_Sheets_DataValidationRule';
   protected $dataValidationDataType = '';
-  protected $effectiveFormatType = 'Powerform_Google_Service_Sheets_CellFormat';
+  protected $effectiveFormatType = 'Google_Service_Sheets_CellFormat';
   protected $effectiveFormatDataType = '';
-  protected $effectiveValueType = 'Powerform_Google_Service_Sheets_ExtendedValue';
+  protected $effectiveValueType = 'Google_Service_Sheets_ExtendedValue';
   protected $effectiveValueDataType = '';
   public $formattedValue;
   public $hyperlink;
   public $note;
-  protected $pivotTableType = 'Powerform_Google_Service_Sheets_PivotTable';
+  protected $pivotTableType = 'Google_Service_Sheets_PivotTable';
   protected $pivotTableDataType = '';
-  protected $textFormatRunsType = 'Powerform_Google_Service_Sheets_TextFormatRun';
+  protected $textFormatRunsType = 'Google_Service_Sheets_TextFormatRun';
   protected $textFormatRunsDataType = 'array';
-  protected $userEnteredFormatType = 'Powerform_Google_Service_Sheets_CellFormat';
+  protected $userEnteredFormatType = 'Google_Service_Sheets_CellFormat';
   protected $userEnteredFormatDataType = '';
-  protected $userEnteredValueType = 'Powerform_Google_Service_Sheets_ExtendedValue';
+  protected $userEnteredValueType = 'Google_Service_Sheets_ExtendedValue';
   protected $userEnteredValueDataType = '';
 
 
-  public function setDataValidation(Powerform_Google_Service_Sheets_DataValidationRule $dataValidation)
+  public function setDataValidation(Google_Service_Sheets_DataValidationRule $dataValidation)
   {
     $this->dataValidation = $dataValidation;
   }
@@ -1321,7 +1321,7 @@ class Powerform_Google_Service_Sheets_CellData extends Powerform_Google_Collecti
   {
     return $this->dataValidation;
   }
-  public function setEffectiveFormat(Powerform_Google_Service_Sheets_CellFormat $effectiveFormat)
+  public function setEffectiveFormat(Google_Service_Sheets_CellFormat $effectiveFormat)
   {
     $this->effectiveFormat = $effectiveFormat;
   }
@@ -1329,7 +1329,7 @@ class Powerform_Google_Service_Sheets_CellData extends Powerform_Google_Collecti
   {
     return $this->effectiveFormat;
   }
-  public function setEffectiveValue(Powerform_Google_Service_Sheets_ExtendedValue $effectiveValue)
+  public function setEffectiveValue(Google_Service_Sheets_ExtendedValue $effectiveValue)
   {
     $this->effectiveValue = $effectiveValue;
   }
@@ -1361,7 +1361,7 @@ class Powerform_Google_Service_Sheets_CellData extends Powerform_Google_Collecti
   {
     return $this->note;
   }
-  public function setPivotTable(Powerform_Google_Service_Sheets_PivotTable $pivotTable)
+  public function setPivotTable(Google_Service_Sheets_PivotTable $pivotTable)
   {
     $this->pivotTable = $pivotTable;
   }
@@ -1377,7 +1377,7 @@ class Powerform_Google_Service_Sheets_CellData extends Powerform_Google_Collecti
   {
     return $this->textFormatRuns;
   }
-  public function setUserEnteredFormat(Powerform_Google_Service_Sheets_CellFormat $userEnteredFormat)
+  public function setUserEnteredFormat(Google_Service_Sheets_CellFormat $userEnteredFormat)
   {
     $this->userEnteredFormat = $userEnteredFormat;
   }
@@ -1385,7 +1385,7 @@ class Powerform_Google_Service_Sheets_CellData extends Powerform_Google_Collecti
   {
     return $this->userEnteredFormat;
   }
-  public function setUserEnteredValue(Powerform_Google_Service_Sheets_ExtendedValue $userEnteredValue)
+  public function setUserEnteredValue(Google_Service_Sheets_ExtendedValue $userEnteredValue)
   {
     $this->userEnteredValue = $userEnteredValue;
   }
@@ -1395,28 +1395,28 @@ class Powerform_Google_Service_Sheets_CellData extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Sheets_CellFormat extends Powerform_Google_Model
+class Google_Service_Sheets_CellFormat extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $backgroundColorType = 'Powerform_Google_Service_Sheets_Color';
+  protected $backgroundColorType = 'Google_Service_Sheets_Color';
   protected $backgroundColorDataType = '';
-  protected $bordersType = 'Powerform_Google_Service_Sheets_Borders';
+  protected $bordersType = 'Google_Service_Sheets_Borders';
   protected $bordersDataType = '';
   public $horizontalAlignment;
   public $hyperlinkDisplayType;
-  protected $numberFormatType = 'Powerform_Google_Service_Sheets_NumberFormat';
+  protected $numberFormatType = 'Google_Service_Sheets_NumberFormat';
   protected $numberFormatDataType = '';
-  protected $paddingType = 'Powerform_Google_Service_Sheets_Padding';
+  protected $paddingType = 'Google_Service_Sheets_Padding';
   protected $paddingDataType = '';
   public $textDirection;
-  protected $textFormatType = 'Powerform_Google_Service_Sheets_TextFormat';
+  protected $textFormatType = 'Google_Service_Sheets_TextFormat';
   protected $textFormatDataType = '';
   public $verticalAlignment;
   public $wrapStrategy;
 
 
-  public function setBackgroundColor(Powerform_Google_Service_Sheets_Color $backgroundColor)
+  public function setBackgroundColor(Google_Service_Sheets_Color $backgroundColor)
   {
     $this->backgroundColor = $backgroundColor;
   }
@@ -1424,7 +1424,7 @@ class Powerform_Google_Service_Sheets_CellFormat extends Powerform_Google_Model
   {
     return $this->backgroundColor;
   }
-  public function setBorders(Powerform_Google_Service_Sheets_Borders $borders)
+  public function setBorders(Google_Service_Sheets_Borders $borders)
   {
     $this->borders = $borders;
   }
@@ -1448,7 +1448,7 @@ class Powerform_Google_Service_Sheets_CellFormat extends Powerform_Google_Model
   {
     return $this->hyperlinkDisplayType;
   }
-  public function setNumberFormat(Powerform_Google_Service_Sheets_NumberFormat $numberFormat)
+  public function setNumberFormat(Google_Service_Sheets_NumberFormat $numberFormat)
   {
     $this->numberFormat = $numberFormat;
   }
@@ -1456,7 +1456,7 @@ class Powerform_Google_Service_Sheets_CellFormat extends Powerform_Google_Model
   {
     return $this->numberFormat;
   }
-  public function setPadding(Powerform_Google_Service_Sheets_Padding $padding)
+  public function setPadding(Google_Service_Sheets_Padding $padding)
   {
     $this->padding = $padding;
   }
@@ -1472,7 +1472,7 @@ class Powerform_Google_Service_Sheets_CellFormat extends Powerform_Google_Model
   {
     return $this->textDirection;
   }
-  public function setTextFormat(Powerform_Google_Service_Sheets_TextFormat $textFormat)
+  public function setTextFormat(Google_Service_Sheets_TextFormat $textFormat)
   {
     $this->textFormat = $textFormat;
   }
@@ -1498,15 +1498,15 @@ class Powerform_Google_Service_Sheets_CellFormat extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_ChartData extends Powerform_Google_Model
+class Google_Service_Sheets_ChartData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $sourceRangeType = 'Powerform_Google_Service_Sheets_ChartSourceRange';
+  protected $sourceRangeType = 'Google_Service_Sheets_ChartSourceRange';
   protected $sourceRangeDataType = '';
 
 
-  public function setSourceRange(Powerform_Google_Service_Sheets_ChartSourceRange $sourceRange)
+  public function setSourceRange(Google_Service_Sheets_ChartSourceRange $sourceRange)
   {
     $this->sourceRange = $sourceRange;
   }
@@ -1516,12 +1516,12 @@ class Powerform_Google_Service_Sheets_ChartData extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_ChartSourceRange extends Powerform_Google_Collection
+class Google_Service_Sheets_ChartSourceRange extends Google_Collection
 {
   protected $collection_key = 'sources';
   protected $internal_gapi_mappings = array(
   );
-  protected $sourcesType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $sourcesType = 'Google_Service_Sheets_GridRange';
   protected $sourcesDataType = 'array';
 
 
@@ -1535,19 +1535,19 @@ class Powerform_Google_Service_Sheets_ChartSourceRange extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Sheets_ChartSpec extends Powerform_Google_Model
+class Google_Service_Sheets_ChartSpec extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $basicChartType = 'Powerform_Google_Service_Sheets_BasicChartSpec';
+  protected $basicChartType = 'Google_Service_Sheets_BasicChartSpec';
   protected $basicChartDataType = '';
   public $hiddenDimensionStrategy;
-  protected $pieChartType = 'Powerform_Google_Service_Sheets_PieChartSpec';
+  protected $pieChartType = 'Google_Service_Sheets_PieChartSpec';
   protected $pieChartDataType = '';
   public $title;
 
 
-  public function setBasicChart(Powerform_Google_Service_Sheets_BasicChartSpec $basicChart)
+  public function setBasicChart(Google_Service_Sheets_BasicChartSpec $basicChart)
   {
     $this->basicChart = $basicChart;
   }
@@ -1563,7 +1563,7 @@ class Powerform_Google_Service_Sheets_ChartSpec extends Powerform_Google_Model
   {
     return $this->hiddenDimensionStrategy;
   }
-  public function setPieChart(Powerform_Google_Service_Sheets_PieChartSpec $pieChart)
+  public function setPieChart(Google_Service_Sheets_PieChartSpec $pieChart)
   {
     $this->pieChart = $pieChart;
   }
@@ -1581,7 +1581,7 @@ class Powerform_Google_Service_Sheets_ChartSpec extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_ClearBasicFilterRequest extends Powerform_Google_Model
+class Google_Service_Sheets_ClearBasicFilterRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1598,7 +1598,7 @@ class Powerform_Google_Service_Sheets_ClearBasicFilterRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Sheets_Color extends Powerform_Google_Model
+class Google_Service_Sheets_Color extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1642,7 +1642,7 @@ class Powerform_Google_Service_Sheets_Color extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_ConditionValue extends Powerform_Google_Model
+class Google_Service_Sheets_ConditionValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1668,20 +1668,20 @@ class Powerform_Google_Service_Sheets_ConditionValue extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Sheets_ConditionalFormatRule extends Powerform_Google_Collection
+class Google_Service_Sheets_ConditionalFormatRule extends Google_Collection
 {
   protected $collection_key = 'ranges';
   protected $internal_gapi_mappings = array(
   );
-  protected $booleanRuleType = 'Powerform_Google_Service_Sheets_BooleanRule';
+  protected $booleanRuleType = 'Google_Service_Sheets_BooleanRule';
   protected $booleanRuleDataType = '';
-  protected $gradientRuleType = 'Powerform_Google_Service_Sheets_GradientRule';
+  protected $gradientRuleType = 'Google_Service_Sheets_GradientRule';
   protected $gradientRuleDataType = '';
-  protected $rangesType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangesType = 'Google_Service_Sheets_GridRange';
   protected $rangesDataType = 'array';
 
 
-  public function setBooleanRule(Powerform_Google_Service_Sheets_BooleanRule $booleanRule)
+  public function setBooleanRule(Google_Service_Sheets_BooleanRule $booleanRule)
   {
     $this->booleanRule = $booleanRule;
   }
@@ -1689,7 +1689,7 @@ class Powerform_Google_Service_Sheets_ConditionalFormatRule extends Powerform_Go
   {
     return $this->booleanRule;
   }
-  public function setGradientRule(Powerform_Google_Service_Sheets_GradientRule $gradientRule)
+  public function setGradientRule(Google_Service_Sheets_GradientRule $gradientRule)
   {
     $this->gradientRule = $gradientRule;
   }
@@ -1707,19 +1707,19 @@ class Powerform_Google_Service_Sheets_ConditionalFormatRule extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Sheets_CopyPasteRequest extends Powerform_Google_Model
+class Google_Service_Sheets_CopyPasteRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $destinationType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $destinationType = 'Google_Service_Sheets_GridRange';
   protected $destinationDataType = '';
   public $pasteOrientation;
   public $pasteType;
-  protected $sourceType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $sourceType = 'Google_Service_Sheets_GridRange';
   protected $sourceDataType = '';
 
 
-  public function setDestination(Powerform_Google_Service_Sheets_GridRange $destination)
+  public function setDestination(Google_Service_Sheets_GridRange $destination)
   {
     $this->destination = $destination;
   }
@@ -1743,7 +1743,7 @@ class Powerform_Google_Service_Sheets_CopyPasteRequest extends Powerform_Google_
   {
     return $this->pasteType;
   }
-  public function setSource(Powerform_Google_Service_Sheets_GridRange $source)
+  public function setSource(Google_Service_Sheets_GridRange $source)
   {
     $this->source = $source;
   }
@@ -1753,7 +1753,7 @@ class Powerform_Google_Service_Sheets_CopyPasteRequest extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Sheets_CopySheetToAnotherSpreadsheetRequest extends Powerform_Google_Model
+class Google_Service_Sheets_CopySheetToAnotherSpreadsheetRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1770,18 +1770,18 @@ class Powerform_Google_Service_Sheets_CopySheetToAnotherSpreadsheetRequest exten
   }
 }
 
-class Powerform_Google_Service_Sheets_CutPasteRequest extends Powerform_Google_Model
+class Google_Service_Sheets_CutPasteRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $destinationType = 'Powerform_Google_Service_Sheets_GridCoordinate';
+  protected $destinationType = 'Google_Service_Sheets_GridCoordinate';
   protected $destinationDataType = '';
   public $pasteType;
-  protected $sourceType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $sourceType = 'Google_Service_Sheets_GridRange';
   protected $sourceDataType = '';
 
 
-  public function setDestination(Powerform_Google_Service_Sheets_GridCoordinate $destination)
+  public function setDestination(Google_Service_Sheets_GridCoordinate $destination)
   {
     $this->destination = $destination;
   }
@@ -1797,7 +1797,7 @@ class Powerform_Google_Service_Sheets_CutPasteRequest extends Powerform_Google_M
   {
     return $this->pasteType;
   }
-  public function setSource(Powerform_Google_Service_Sheets_GridRange $source)
+  public function setSource(Google_Service_Sheets_GridRange $source)
   {
     $this->source = $source;
   }
@@ -1807,18 +1807,18 @@ class Powerform_Google_Service_Sheets_CutPasteRequest extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Sheets_DataValidationRule extends Powerform_Google_Model
+class Google_Service_Sheets_DataValidationRule extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $conditionType = 'Powerform_Google_Service_Sheets_BooleanCondition';
+  protected $conditionType = 'Google_Service_Sheets_BooleanCondition';
   protected $conditionDataType = '';
   public $inputMessage;
   public $showCustomUi;
   public $strict;
 
 
-  public function setCondition(Powerform_Google_Service_Sheets_BooleanCondition $condition)
+  public function setCondition(Google_Service_Sheets_BooleanCondition $condition)
   {
     $this->condition = $condition;
   }
@@ -1852,7 +1852,7 @@ class Powerform_Google_Service_Sheets_DataValidationRule extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Sheets_DeleteConditionalFormatRuleRequest extends Powerform_Google_Model
+class Google_Service_Sheets_DeleteConditionalFormatRuleRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1878,15 +1878,15 @@ class Powerform_Google_Service_Sheets_DeleteConditionalFormatRuleRequest extends
   }
 }
 
-class Powerform_Google_Service_Sheets_DeleteConditionalFormatRuleResponse extends Powerform_Google_Model
+class Google_Service_Sheets_DeleteConditionalFormatRuleResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $ruleType = 'Powerform_Google_Service_Sheets_ConditionalFormatRule';
+  protected $ruleType = 'Google_Service_Sheets_ConditionalFormatRule';
   protected $ruleDataType = '';
 
 
-  public function setRule(Powerform_Google_Service_Sheets_ConditionalFormatRule $rule)
+  public function setRule(Google_Service_Sheets_ConditionalFormatRule $rule)
   {
     $this->rule = $rule;
   }
@@ -1896,15 +1896,15 @@ class Powerform_Google_Service_Sheets_DeleteConditionalFormatRuleResponse extend
   }
 }
 
-class Powerform_Google_Service_Sheets_DeleteDimensionRequest extends Powerform_Google_Model
+class Google_Service_Sheets_DeleteDimensionRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $rangeType = 'Powerform_Google_Service_Sheets_DimensionRange';
+  protected $rangeType = 'Google_Service_Sheets_DimensionRange';
   protected $rangeDataType = '';
 
 
-  public function setRange(Powerform_Google_Service_Sheets_DimensionRange $range)
+  public function setRange(Google_Service_Sheets_DimensionRange $range)
   {
     $this->range = $range;
   }
@@ -1914,7 +1914,7 @@ class Powerform_Google_Service_Sheets_DeleteDimensionRequest extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Sheets_DeleteEmbeddedObjectRequest extends Powerform_Google_Model
+class Google_Service_Sheets_DeleteEmbeddedObjectRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1931,7 +1931,7 @@ class Powerform_Google_Service_Sheets_DeleteEmbeddedObjectRequest extends Powerf
   }
 }
 
-class Powerform_Google_Service_Sheets_DeleteFilterViewRequest extends Powerform_Google_Model
+class Google_Service_Sheets_DeleteFilterViewRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1948,7 +1948,7 @@ class Powerform_Google_Service_Sheets_DeleteFilterViewRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Sheets_DeleteNamedRangeRequest extends Powerform_Google_Model
+class Google_Service_Sheets_DeleteNamedRangeRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1965,7 +1965,7 @@ class Powerform_Google_Service_Sheets_DeleteNamedRangeRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Sheets_DeleteProtectedRangeRequest extends Powerform_Google_Model
+class Google_Service_Sheets_DeleteProtectedRangeRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1982,7 +1982,7 @@ class Powerform_Google_Service_Sheets_DeleteProtectedRangeRequest extends Powerf
   }
 }
 
-class Powerform_Google_Service_Sheets_DeleteSheetRequest extends Powerform_Google_Model
+class Google_Service_Sheets_DeleteSheetRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1999,7 +1999,7 @@ class Powerform_Google_Service_Sheets_DeleteSheetRequest extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Sheets_DimensionProperties extends Powerform_Google_Model
+class Google_Service_Sheets_DimensionProperties extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2034,7 +2034,7 @@ class Powerform_Google_Service_Sheets_DimensionProperties extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Sheets_DimensionRange extends Powerform_Google_Model
+class Google_Service_Sheets_DimensionRange extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2078,7 +2078,7 @@ class Powerform_Google_Service_Sheets_DimensionRange extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Sheets_DuplicateFilterViewRequest extends Powerform_Google_Model
+class Google_Service_Sheets_DuplicateFilterViewRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2095,15 +2095,15 @@ class Powerform_Google_Service_Sheets_DuplicateFilterViewRequest extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Sheets_DuplicateFilterViewResponse extends Powerform_Google_Model
+class Google_Service_Sheets_DuplicateFilterViewResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $filterType = 'Powerform_Google_Service_Sheets_FilterView';
+  protected $filterType = 'Google_Service_Sheets_FilterView';
   protected $filterDataType = '';
 
 
-  public function setFilter(Powerform_Google_Service_Sheets_FilterView $filter)
+  public function setFilter(Google_Service_Sheets_FilterView $filter)
   {
     $this->filter = $filter;
   }
@@ -2113,7 +2113,7 @@ class Powerform_Google_Service_Sheets_DuplicateFilterViewResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_Sheets_DuplicateSheetRequest extends Powerform_Google_Model
+class Google_Service_Sheets_DuplicateSheetRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2157,15 +2157,15 @@ class Powerform_Google_Service_Sheets_DuplicateSheetRequest extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Sheets_DuplicateSheetResponse extends Powerform_Google_Model
+class Google_Service_Sheets_DuplicateSheetResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $propertiesType = 'Powerform_Google_Service_Sheets_SheetProperties';
+  protected $propertiesType = 'Google_Service_Sheets_SheetProperties';
   protected $propertiesDataType = '';
 
 
-  public function setProperties(Powerform_Google_Service_Sheets_SheetProperties $properties)
+  public function setProperties(Google_Service_Sheets_SheetProperties $properties)
   {
     $this->properties = $properties;
   }
@@ -2175,7 +2175,7 @@ class Powerform_Google_Service_Sheets_DuplicateSheetResponse extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Sheets_Editors extends Powerform_Google_Collection
+class Google_Service_Sheets_Editors extends Google_Collection
 {
   protected $collection_key = 'users';
   protected $internal_gapi_mappings = array(
@@ -2211,14 +2211,14 @@ class Powerform_Google_Service_Sheets_Editors extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Sheets_EmbeddedChart extends Powerform_Google_Model
+class Google_Service_Sheets_EmbeddedChart extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $chartId;
-  protected $positionType = 'Powerform_Google_Service_Sheets_EmbeddedObjectPosition';
+  protected $positionType = 'Google_Service_Sheets_EmbeddedObjectPosition';
   protected $positionDataType = '';
-  protected $specType = 'Powerform_Google_Service_Sheets_ChartSpec';
+  protected $specType = 'Google_Service_Sheets_ChartSpec';
   protected $specDataType = '';
 
 
@@ -2230,7 +2230,7 @@ class Powerform_Google_Service_Sheets_EmbeddedChart extends Powerform_Google_Mod
   {
     return $this->chartId;
   }
-  public function setPosition(Powerform_Google_Service_Sheets_EmbeddedObjectPosition $position)
+  public function setPosition(Google_Service_Sheets_EmbeddedObjectPosition $position)
   {
     $this->position = $position;
   }
@@ -2238,7 +2238,7 @@ class Powerform_Google_Service_Sheets_EmbeddedChart extends Powerform_Google_Mod
   {
     return $this->position;
   }
-  public function setSpec(Powerform_Google_Service_Sheets_ChartSpec $spec)
+  public function setSpec(Google_Service_Sheets_ChartSpec $spec)
   {
     $this->spec = $spec;
   }
@@ -2248,12 +2248,12 @@ class Powerform_Google_Service_Sheets_EmbeddedChart extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Sheets_EmbeddedObjectPosition extends Powerform_Google_Model
+class Google_Service_Sheets_EmbeddedObjectPosition extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $newSheet;
-  protected $overlayPositionType = 'Powerform_Google_Service_Sheets_OverlayPosition';
+  protected $overlayPositionType = 'Google_Service_Sheets_OverlayPosition';
   protected $overlayPositionDataType = '';
   public $sheetId;
 
@@ -2266,7 +2266,7 @@ class Powerform_Google_Service_Sheets_EmbeddedObjectPosition extends Powerform_G
   {
     return $this->newSheet;
   }
-  public function setOverlayPosition(Powerform_Google_Service_Sheets_OverlayPosition $overlayPosition)
+  public function setOverlayPosition(Google_Service_Sheets_OverlayPosition $overlayPosition)
   {
     $this->overlayPosition = $overlayPosition;
   }
@@ -2284,7 +2284,7 @@ class Powerform_Google_Service_Sheets_EmbeddedObjectPosition extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Sheets_ErrorValue extends Powerform_Google_Model
+class Google_Service_Sheets_ErrorValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2310,12 +2310,12 @@ class Powerform_Google_Service_Sheets_ErrorValue extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_ExtendedValue extends Powerform_Google_Model
+class Google_Service_Sheets_ExtendedValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $boolValue;
-  protected $errorValueType = 'Powerform_Google_Service_Sheets_ErrorValue';
+  protected $errorValueType = 'Google_Service_Sheets_ErrorValue';
   protected $errorValueDataType = '';
   public $formulaValue;
   public $numberValue;
@@ -2330,7 +2330,7 @@ class Powerform_Google_Service_Sheets_ExtendedValue extends Powerform_Google_Mod
   {
     return $this->boolValue;
   }
-  public function setErrorValue(Powerform_Google_Service_Sheets_ErrorValue $errorValue)
+  public function setErrorValue(Google_Service_Sheets_ErrorValue $errorValue)
   {
     $this->errorValue = $errorValue;
   }
@@ -2364,17 +2364,17 @@ class Powerform_Google_Service_Sheets_ExtendedValue extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Sheets_FilterCriteria extends Powerform_Google_Collection
+class Google_Service_Sheets_FilterCriteria extends Google_Collection
 {
   protected $collection_key = 'hiddenValues';
   protected $internal_gapi_mappings = array(
   );
-  protected $conditionType = 'Powerform_Google_Service_Sheets_BooleanCondition';
+  protected $conditionType = 'Google_Service_Sheets_BooleanCondition';
   protected $conditionDataType = '';
   public $hiddenValues;
 
 
-  public function setCondition(Powerform_Google_Service_Sheets_BooleanCondition $condition)
+  public function setCondition(Google_Service_Sheets_BooleanCondition $condition)
   {
     $this->condition = $condition;
   }
@@ -2392,18 +2392,18 @@ class Powerform_Google_Service_Sheets_FilterCriteria extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Sheets_FilterView extends Powerform_Google_Collection
+class Google_Service_Sheets_FilterView extends Google_Collection
 {
   protected $collection_key = 'sortSpecs';
   protected $internal_gapi_mappings = array(
   );
-  protected $criteriaType = 'Powerform_Google_Service_Sheets_FilterCriteria';
+  protected $criteriaType = 'Google_Service_Sheets_FilterCriteria';
   protected $criteriaDataType = 'map';
   public $filterViewId;
   public $namedRangeId;
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
-  protected $sortSpecsType = 'Powerform_Google_Service_Sheets_SortSpec';
+  protected $sortSpecsType = 'Google_Service_Sheets_SortSpec';
   protected $sortSpecsDataType = 'array';
   public $title;
 
@@ -2432,7 +2432,7 @@ class Powerform_Google_Service_Sheets_FilterView extends Powerform_Google_Collec
   {
     return $this->namedRangeId;
   }
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -2458,7 +2458,7 @@ class Powerform_Google_Service_Sheets_FilterView extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Sheets_FindReplaceRequest extends Powerform_Google_Model
+class Google_Service_Sheets_FindReplaceRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2467,7 +2467,7 @@ class Powerform_Google_Service_Sheets_FindReplaceRequest extends Powerform_Googl
   public $includeFormulas;
   public $matchCase;
   public $matchEntireCell;
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
   public $replacement;
   public $searchByRegex;
@@ -2514,7 +2514,7 @@ class Powerform_Google_Service_Sheets_FindReplaceRequest extends Powerform_Googl
   {
     return $this->matchEntireCell;
   }
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -2548,7 +2548,7 @@ class Powerform_Google_Service_Sheets_FindReplaceRequest extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Sheets_FindReplaceResponse extends Powerform_Google_Model
+class Google_Service_Sheets_FindReplaceResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2601,19 +2601,19 @@ class Powerform_Google_Service_Sheets_FindReplaceResponse extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Sheets_GradientRule extends Powerform_Google_Model
+class Google_Service_Sheets_GradientRule extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $maxpointType = 'Powerform_Google_Service_Sheets_InterpolationPoint';
+  protected $maxpointType = 'Google_Service_Sheets_InterpolationPoint';
   protected $maxpointDataType = '';
-  protected $midpointType = 'Powerform_Google_Service_Sheets_InterpolationPoint';
+  protected $midpointType = 'Google_Service_Sheets_InterpolationPoint';
   protected $midpointDataType = '';
-  protected $minpointType = 'Powerform_Google_Service_Sheets_InterpolationPoint';
+  protected $minpointType = 'Google_Service_Sheets_InterpolationPoint';
   protected $minpointDataType = '';
 
 
-  public function setMaxpoint(Powerform_Google_Service_Sheets_InterpolationPoint $maxpoint)
+  public function setMaxpoint(Google_Service_Sheets_InterpolationPoint $maxpoint)
   {
     $this->maxpoint = $maxpoint;
   }
@@ -2621,7 +2621,7 @@ class Powerform_Google_Service_Sheets_GradientRule extends Powerform_Google_Mode
   {
     return $this->maxpoint;
   }
-  public function setMidpoint(Powerform_Google_Service_Sheets_InterpolationPoint $midpoint)
+  public function setMidpoint(Google_Service_Sheets_InterpolationPoint $midpoint)
   {
     $this->midpoint = $midpoint;
   }
@@ -2629,7 +2629,7 @@ class Powerform_Google_Service_Sheets_GradientRule extends Powerform_Google_Mode
   {
     return $this->midpoint;
   }
-  public function setMinpoint(Powerform_Google_Service_Sheets_InterpolationPoint $minpoint)
+  public function setMinpoint(Google_Service_Sheets_InterpolationPoint $minpoint)
   {
     $this->minpoint = $minpoint;
   }
@@ -2639,7 +2639,7 @@ class Powerform_Google_Service_Sheets_GradientRule extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Sheets_GridCoordinate extends Powerform_Google_Model
+class Google_Service_Sheets_GridCoordinate extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2674,16 +2674,16 @@ class Powerform_Google_Service_Sheets_GridCoordinate extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Sheets_GridData extends Powerform_Google_Collection
+class Google_Service_Sheets_GridData extends Google_Collection
 {
   protected $collection_key = 'rowMetadata';
   protected $internal_gapi_mappings = array(
   );
-  protected $columnMetadataType = 'Powerform_Google_Service_Sheets_DimensionProperties';
+  protected $columnMetadataType = 'Google_Service_Sheets_DimensionProperties';
   protected $columnMetadataDataType = 'array';
-  protected $rowDataType = 'Powerform_Google_Service_Sheets_RowData';
+  protected $rowDataType = 'Google_Service_Sheets_RowData';
   protected $rowDataDataType = 'array';
-  protected $rowMetadataType = 'Powerform_Google_Service_Sheets_DimensionProperties';
+  protected $rowMetadataType = 'Google_Service_Sheets_DimensionProperties';
   protected $rowMetadataDataType = 'array';
   public $startColumn;
   public $startRow;
@@ -2731,7 +2731,7 @@ class Powerform_Google_Service_Sheets_GridData extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Sheets_GridProperties extends Powerform_Google_Model
+class Google_Service_Sheets_GridProperties extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2784,7 +2784,7 @@ class Powerform_Google_Service_Sheets_GridProperties extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Sheets_GridRange extends Powerform_Google_Model
+class Google_Service_Sheets_GridRange extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2837,12 +2837,12 @@ class Powerform_Google_Service_Sheets_GridRange extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_InsertDimensionRequest extends Powerform_Google_Model
+class Google_Service_Sheets_InsertDimensionRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $inheritFromBefore;
-  protected $rangeType = 'Powerform_Google_Service_Sheets_DimensionRange';
+  protected $rangeType = 'Google_Service_Sheets_DimensionRange';
   protected $rangeDataType = '';
 
 
@@ -2854,7 +2854,7 @@ class Powerform_Google_Service_Sheets_InsertDimensionRequest extends Powerform_G
   {
     return $this->inheritFromBefore;
   }
-  public function setRange(Powerform_Google_Service_Sheets_DimensionRange $range)
+  public function setRange(Google_Service_Sheets_DimensionRange $range)
   {
     $this->range = $range;
   }
@@ -2864,17 +2864,17 @@ class Powerform_Google_Service_Sheets_InsertDimensionRequest extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Sheets_InterpolationPoint extends Powerform_Google_Model
+class Google_Service_Sheets_InterpolationPoint extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $colorType = 'Powerform_Google_Service_Sheets_Color';
+  protected $colorType = 'Google_Service_Sheets_Color';
   protected $colorDataType = '';
   public $type;
   public $value;
 
 
-  public function setColor(Powerform_Google_Service_Sheets_Color $color)
+  public function setColor(Google_Service_Sheets_Color $color)
   {
     $this->color = $color;
   }
@@ -2900,12 +2900,12 @@ class Powerform_Google_Service_Sheets_InterpolationPoint extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Sheets_MergeCellsRequest extends Powerform_Google_Model
+class Google_Service_Sheets_MergeCellsRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $mergeType;
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
 
 
@@ -2917,7 +2917,7 @@ class Powerform_Google_Service_Sheets_MergeCellsRequest extends Powerform_Google
   {
     return $this->mergeType;
   }
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -2927,12 +2927,12 @@ class Powerform_Google_Service_Sheets_MergeCellsRequest extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Sheets_MoveDimensionRequest extends Powerform_Google_Model
+class Google_Service_Sheets_MoveDimensionRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $destinationIndex;
-  protected $sourceType = 'Powerform_Google_Service_Sheets_DimensionRange';
+  protected $sourceType = 'Google_Service_Sheets_DimensionRange';
   protected $sourceDataType = '';
 
 
@@ -2944,7 +2944,7 @@ class Powerform_Google_Service_Sheets_MoveDimensionRequest extends Powerform_Goo
   {
     return $this->destinationIndex;
   }
-  public function setSource(Powerform_Google_Service_Sheets_DimensionRange $source)
+  public function setSource(Google_Service_Sheets_DimensionRange $source)
   {
     $this->source = $source;
   }
@@ -2954,13 +2954,13 @@ class Powerform_Google_Service_Sheets_MoveDimensionRequest extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Sheets_NamedRange extends Powerform_Google_Model
+class Google_Service_Sheets_NamedRange extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $name;
   public $namedRangeId;
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
 
 
@@ -2980,7 +2980,7 @@ class Powerform_Google_Service_Sheets_NamedRange extends Powerform_Google_Model
   {
     return $this->namedRangeId;
   }
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -2990,7 +2990,7 @@ class Powerform_Google_Service_Sheets_NamedRange extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_NumberFormat extends Powerform_Google_Model
+class Google_Service_Sheets_NumberFormat extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3016,11 +3016,11 @@ class Powerform_Google_Service_Sheets_NumberFormat extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Sheets_OverlayPosition extends Powerform_Google_Model
+class Google_Service_Sheets_OverlayPosition extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $anchorCellType = 'Powerform_Google_Service_Sheets_GridCoordinate';
+  protected $anchorCellType = 'Google_Service_Sheets_GridCoordinate';
   protected $anchorCellDataType = '';
   public $heightPixels;
   public $offsetXPixels;
@@ -3028,7 +3028,7 @@ class Powerform_Google_Service_Sheets_OverlayPosition extends Powerform_Google_M
   public $widthPixels;
 
 
-  public function setAnchorCell(Powerform_Google_Service_Sheets_GridCoordinate $anchorCell)
+  public function setAnchorCell(Google_Service_Sheets_GridCoordinate $anchorCell)
   {
     $this->anchorCell = $anchorCell;
   }
@@ -3070,7 +3070,7 @@ class Powerform_Google_Service_Sheets_OverlayPosition extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Sheets_Padding extends Powerform_Google_Model
+class Google_Service_Sheets_Padding extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3114,11 +3114,11 @@ class Powerform_Google_Service_Sheets_Padding extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_PasteDataRequest extends Powerform_Google_Model
+class Google_Service_Sheets_PasteDataRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $coordinateType = 'Powerform_Google_Service_Sheets_GridCoordinate';
+  protected $coordinateType = 'Google_Service_Sheets_GridCoordinate';
   protected $coordinateDataType = '';
   public $data;
   public $delimiter;
@@ -3126,7 +3126,7 @@ class Powerform_Google_Service_Sheets_PasteDataRequest extends Powerform_Google_
   public $type;
 
 
-  public function setCoordinate(Powerform_Google_Service_Sheets_GridCoordinate $coordinate)
+  public function setCoordinate(Google_Service_Sheets_GridCoordinate $coordinate)
   {
     $this->coordinate = $coordinate;
   }
@@ -3168,20 +3168,20 @@ class Powerform_Google_Service_Sheets_PasteDataRequest extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Sheets_PieChartSpec extends Powerform_Google_Model
+class Google_Service_Sheets_PieChartSpec extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $domainType = 'Powerform_Google_Service_Sheets_ChartData';
+  protected $domainType = 'Google_Service_Sheets_ChartData';
   protected $domainDataType = '';
   public $legendPosition;
   public $pieHole;
-  protected $seriesType = 'Powerform_Google_Service_Sheets_ChartData';
+  protected $seriesType = 'Google_Service_Sheets_ChartData';
   protected $seriesDataType = '';
   public $threeDimensional;
 
 
-  public function setDomain(Powerform_Google_Service_Sheets_ChartData $domain)
+  public function setDomain(Google_Service_Sheets_ChartData $domain)
   {
     $this->domain = $domain;
   }
@@ -3205,7 +3205,7 @@ class Powerform_Google_Service_Sheets_PieChartSpec extends Powerform_Google_Mode
   {
     return $this->pieHole;
   }
-  public function setSeries(Powerform_Google_Service_Sheets_ChartData $series)
+  public function setSeries(Google_Service_Sheets_ChartData $series)
   {
     $this->series = $series;
   }
@@ -3223,7 +3223,7 @@ class Powerform_Google_Service_Sheets_PieChartSpec extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Sheets_PivotFilterCriteria extends Powerform_Google_Collection
+class Google_Service_Sheets_PivotFilterCriteria extends Google_Collection
 {
   protected $collection_key = 'visibleValues';
   protected $internal_gapi_mappings = array(
@@ -3241,7 +3241,7 @@ class Powerform_Google_Service_Sheets_PivotFilterCriteria extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Sheets_PivotGroup extends Powerform_Google_Collection
+class Google_Service_Sheets_PivotGroup extends Google_Collection
 {
   protected $collection_key = 'valueMetadata';
   protected $internal_gapi_mappings = array(
@@ -3249,9 +3249,9 @@ class Powerform_Google_Service_Sheets_PivotGroup extends Powerform_Google_Collec
   public $showTotals;
   public $sortOrder;
   public $sourceColumnOffset;
-  protected $valueBucketType = 'Powerform_Google_Service_Sheets_PivotGroupSortValueBucket';
+  protected $valueBucketType = 'Google_Service_Sheets_PivotGroupSortValueBucket';
   protected $valueBucketDataType = '';
-  protected $valueMetadataType = 'Powerform_Google_Service_Sheets_PivotGroupValueMetadata';
+  protected $valueMetadataType = 'Google_Service_Sheets_PivotGroupValueMetadata';
   protected $valueMetadataDataType = 'array';
 
 
@@ -3279,7 +3279,7 @@ class Powerform_Google_Service_Sheets_PivotGroup extends Powerform_Google_Collec
   {
     return $this->sourceColumnOffset;
   }
-  public function setValueBucket(Powerform_Google_Service_Sheets_PivotGroupSortValueBucket $valueBucket)
+  public function setValueBucket(Google_Service_Sheets_PivotGroupSortValueBucket $valueBucket)
   {
     $this->valueBucket = $valueBucket;
   }
@@ -3297,12 +3297,12 @@ class Powerform_Google_Service_Sheets_PivotGroup extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Sheets_PivotGroupSortValueBucket extends Powerform_Google_Collection
+class Google_Service_Sheets_PivotGroupSortValueBucket extends Google_Collection
 {
   protected $collection_key = 'buckets';
   protected $internal_gapi_mappings = array(
   );
-  protected $bucketsType = 'Powerform_Google_Service_Sheets_ExtendedValue';
+  protected $bucketsType = 'Google_Service_Sheets_ExtendedValue';
   protected $bucketsDataType = 'array';
   public $valuesIndex;
 
@@ -3325,12 +3325,12 @@ class Powerform_Google_Service_Sheets_PivotGroupSortValueBucket extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Sheets_PivotGroupValueMetadata extends Powerform_Google_Model
+class Google_Service_Sheets_PivotGroupValueMetadata extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $collapsed;
-  protected $valueType = 'Powerform_Google_Service_Sheets_ExtendedValue';
+  protected $valueType = 'Google_Service_Sheets_ExtendedValue';
   protected $valueDataType = '';
 
 
@@ -3342,7 +3342,7 @@ class Powerform_Google_Service_Sheets_PivotGroupValueMetadata extends Powerform_
   {
     return $this->collapsed;
   }
-  public function setValue(Powerform_Google_Service_Sheets_ExtendedValue $value)
+  public function setValue(Google_Service_Sheets_ExtendedValue $value)
   {
     $this->value = $value;
   }
@@ -3352,21 +3352,21 @@ class Powerform_Google_Service_Sheets_PivotGroupValueMetadata extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Sheets_PivotTable extends Powerform_Google_Collection
+class Google_Service_Sheets_PivotTable extends Google_Collection
 {
   protected $collection_key = 'values';
   protected $internal_gapi_mappings = array(
   );
-  protected $columnsType = 'Powerform_Google_Service_Sheets_PivotGroup';
+  protected $columnsType = 'Google_Service_Sheets_PivotGroup';
   protected $columnsDataType = 'array';
-  protected $criteriaType = 'Powerform_Google_Service_Sheets_PivotFilterCriteria';
+  protected $criteriaType = 'Google_Service_Sheets_PivotFilterCriteria';
   protected $criteriaDataType = 'map';
-  protected $rowsType = 'Powerform_Google_Service_Sheets_PivotGroup';
+  protected $rowsType = 'Google_Service_Sheets_PivotGroup';
   protected $rowsDataType = 'array';
-  protected $sourceType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $sourceType = 'Google_Service_Sheets_GridRange';
   protected $sourceDataType = '';
   public $valueLayout;
-  protected $valuesType = 'Powerform_Google_Service_Sheets_PivotValue';
+  protected $valuesType = 'Google_Service_Sheets_PivotValue';
   protected $valuesDataType = 'array';
 
 
@@ -3394,7 +3394,7 @@ class Powerform_Google_Service_Sheets_PivotTable extends Powerform_Google_Collec
   {
     return $this->rows;
   }
-  public function setSource(Powerform_Google_Service_Sheets_GridRange $source)
+  public function setSource(Google_Service_Sheets_GridRange $source)
   {
     $this->source = $source;
   }
@@ -3420,7 +3420,7 @@ class Powerform_Google_Service_Sheets_PivotTable extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Sheets_PivotValue extends Powerform_Google_Model
+class Google_Service_Sheets_PivotValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3464,20 +3464,20 @@ class Powerform_Google_Service_Sheets_PivotValue extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_ProtectedRange extends Powerform_Google_Collection
+class Google_Service_Sheets_ProtectedRange extends Google_Collection
 {
   protected $collection_key = 'unprotectedRanges';
   protected $internal_gapi_mappings = array(
   );
   public $description;
-  protected $editorsType = 'Powerform_Google_Service_Sheets_Editors';
+  protected $editorsType = 'Google_Service_Sheets_Editors';
   protected $editorsDataType = '';
   public $namedRangeId;
   public $protectedRangeId;
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
   public $requestingUserCanEdit;
-  protected $unprotectedRangesType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $unprotectedRangesType = 'Google_Service_Sheets_GridRange';
   protected $unprotectedRangesDataType = 'array';
   public $warningOnly;
 
@@ -3490,7 +3490,7 @@ class Powerform_Google_Service_Sheets_ProtectedRange extends Powerform_Google_Co
   {
     return $this->description;
   }
-  public function setEditors(Powerform_Google_Service_Sheets_Editors $editors)
+  public function setEditors(Google_Service_Sheets_Editors $editors)
   {
     $this->editors = $editors;
   }
@@ -3514,7 +3514,7 @@ class Powerform_Google_Service_Sheets_ProtectedRange extends Powerform_Google_Co
   {
     return $this->protectedRangeId;
   }
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -3548,18 +3548,18 @@ class Powerform_Google_Service_Sheets_ProtectedRange extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Sheets_RepeatCellRequest extends Powerform_Google_Model
+class Google_Service_Sheets_RepeatCellRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $cellType = 'Powerform_Google_Service_Sheets_CellData';
+  protected $cellType = 'Google_Service_Sheets_CellData';
   protected $cellDataType = '';
   public $fields;
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
 
 
-  public function setCell(Powerform_Google_Service_Sheets_CellData $cell)
+  public function setCell(Google_Service_Sheets_CellData $cell)
   {
     $this->cell = $cell;
   }
@@ -3575,7 +3575,7 @@ class Powerform_Google_Service_Sheets_RepeatCellRequest extends Powerform_Google
   {
     return $this->fields;
   }
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -3585,101 +3585,101 @@ class Powerform_Google_Service_Sheets_RepeatCellRequest extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
+class Google_Service_Sheets_Request extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $addChartType = 'Powerform_Google_Service_Sheets_AddChartRequest';
+  protected $addChartType = 'Google_Service_Sheets_AddChartRequest';
   protected $addChartDataType = '';
-  protected $addConditionalFormatRuleType = 'Powerform_Google_Service_Sheets_AddConditionalFormatRuleRequest';
+  protected $addConditionalFormatRuleType = 'Google_Service_Sheets_AddConditionalFormatRuleRequest';
   protected $addConditionalFormatRuleDataType = '';
-  protected $addFilterViewType = 'Powerform_Google_Service_Sheets_AddFilterViewRequest';
+  protected $addFilterViewType = 'Google_Service_Sheets_AddFilterViewRequest';
   protected $addFilterViewDataType = '';
-  protected $addNamedRangeType = 'Powerform_Google_Service_Sheets_AddNamedRangeRequest';
+  protected $addNamedRangeType = 'Google_Service_Sheets_AddNamedRangeRequest';
   protected $addNamedRangeDataType = '';
-  protected $addProtectedRangeType = 'Powerform_Google_Service_Sheets_AddProtectedRangeRequest';
+  protected $addProtectedRangeType = 'Google_Service_Sheets_AddProtectedRangeRequest';
   protected $addProtectedRangeDataType = '';
-  protected $addSheetType = 'Powerform_Google_Service_Sheets_AddSheetRequest';
+  protected $addSheetType = 'Google_Service_Sheets_AddSheetRequest';
   protected $addSheetDataType = '';
-  protected $appendCellsType = 'Powerform_Google_Service_Sheets_AppendCellsRequest';
+  protected $appendCellsType = 'Google_Service_Sheets_AppendCellsRequest';
   protected $appendCellsDataType = '';
-  protected $appendDimensionType = 'Powerform_Google_Service_Sheets_AppendDimensionRequest';
+  protected $appendDimensionType = 'Google_Service_Sheets_AppendDimensionRequest';
   protected $appendDimensionDataType = '';
-  protected $autoFillType = 'Powerform_Google_Service_Sheets_AutoFillRequest';
+  protected $autoFillType = 'Google_Service_Sheets_AutoFillRequest';
   protected $autoFillDataType = '';
-  protected $autoResizeDimensionsType = 'Powerform_Google_Service_Sheets_AutoResizeDimensionsRequest';
+  protected $autoResizeDimensionsType = 'Google_Service_Sheets_AutoResizeDimensionsRequest';
   protected $autoResizeDimensionsDataType = '';
-  protected $clearBasicFilterType = 'Powerform_Google_Service_Sheets_ClearBasicFilterRequest';
+  protected $clearBasicFilterType = 'Google_Service_Sheets_ClearBasicFilterRequest';
   protected $clearBasicFilterDataType = '';
-  protected $copyPasteType = 'Powerform_Google_Service_Sheets_CopyPasteRequest';
+  protected $copyPasteType = 'Google_Service_Sheets_CopyPasteRequest';
   protected $copyPasteDataType = '';
-  protected $cutPasteType = 'Powerform_Google_Service_Sheets_CutPasteRequest';
+  protected $cutPasteType = 'Google_Service_Sheets_CutPasteRequest';
   protected $cutPasteDataType = '';
-  protected $deleteConditionalFormatRuleType = 'Powerform_Google_Service_Sheets_DeleteConditionalFormatRuleRequest';
+  protected $deleteConditionalFormatRuleType = 'Google_Service_Sheets_DeleteConditionalFormatRuleRequest';
   protected $deleteConditionalFormatRuleDataType = '';
-  protected $deleteDimensionType = 'Powerform_Google_Service_Sheets_DeleteDimensionRequest';
+  protected $deleteDimensionType = 'Google_Service_Sheets_DeleteDimensionRequest';
   protected $deleteDimensionDataType = '';
-  protected $deleteEmbeddedObjectType = 'Powerform_Google_Service_Sheets_DeleteEmbeddedObjectRequest';
+  protected $deleteEmbeddedObjectType = 'Google_Service_Sheets_DeleteEmbeddedObjectRequest';
   protected $deleteEmbeddedObjectDataType = '';
-  protected $deleteFilterViewType = 'Powerform_Google_Service_Sheets_DeleteFilterViewRequest';
+  protected $deleteFilterViewType = 'Google_Service_Sheets_DeleteFilterViewRequest';
   protected $deleteFilterViewDataType = '';
-  protected $deleteNamedRangeType = 'Powerform_Google_Service_Sheets_DeleteNamedRangeRequest';
+  protected $deleteNamedRangeType = 'Google_Service_Sheets_DeleteNamedRangeRequest';
   protected $deleteNamedRangeDataType = '';
-  protected $deleteProtectedRangeType = 'Powerform_Google_Service_Sheets_DeleteProtectedRangeRequest';
+  protected $deleteProtectedRangeType = 'Google_Service_Sheets_DeleteProtectedRangeRequest';
   protected $deleteProtectedRangeDataType = '';
-  protected $deleteSheetType = 'Powerform_Google_Service_Sheets_DeleteSheetRequest';
+  protected $deleteSheetType = 'Google_Service_Sheets_DeleteSheetRequest';
   protected $deleteSheetDataType = '';
-  protected $duplicateFilterViewType = 'Powerform_Google_Service_Sheets_DuplicateFilterViewRequest';
+  protected $duplicateFilterViewType = 'Google_Service_Sheets_DuplicateFilterViewRequest';
   protected $duplicateFilterViewDataType = '';
-  protected $duplicateSheetType = 'Powerform_Google_Service_Sheets_DuplicateSheetRequest';
+  protected $duplicateSheetType = 'Google_Service_Sheets_DuplicateSheetRequest';
   protected $duplicateSheetDataType = '';
-  protected $findReplaceType = 'Powerform_Google_Service_Sheets_FindReplaceRequest';
+  protected $findReplaceType = 'Google_Service_Sheets_FindReplaceRequest';
   protected $findReplaceDataType = '';
-  protected $insertDimensionType = 'Powerform_Google_Service_Sheets_InsertDimensionRequest';
+  protected $insertDimensionType = 'Google_Service_Sheets_InsertDimensionRequest';
   protected $insertDimensionDataType = '';
-  protected $mergeCellsType = 'Powerform_Google_Service_Sheets_MergeCellsRequest';
+  protected $mergeCellsType = 'Google_Service_Sheets_MergeCellsRequest';
   protected $mergeCellsDataType = '';
-  protected $moveDimensionType = 'Powerform_Google_Service_Sheets_MoveDimensionRequest';
+  protected $moveDimensionType = 'Google_Service_Sheets_MoveDimensionRequest';
   protected $moveDimensionDataType = '';
-  protected $pasteDataType = 'Powerform_Google_Service_Sheets_PasteDataRequest';
+  protected $pasteDataType = 'Google_Service_Sheets_PasteDataRequest';
   protected $pasteDataDataType = '';
-  protected $repeatCellType = 'Powerform_Google_Service_Sheets_RepeatCellRequest';
+  protected $repeatCellType = 'Google_Service_Sheets_RepeatCellRequest';
   protected $repeatCellDataType = '';
-  protected $setBasicFilterType = 'Powerform_Google_Service_Sheets_SetBasicFilterRequest';
+  protected $setBasicFilterType = 'Google_Service_Sheets_SetBasicFilterRequest';
   protected $setBasicFilterDataType = '';
-  protected $setDataValidationType = 'Powerform_Google_Service_Sheets_SetDataValidationRequest';
+  protected $setDataValidationType = 'Google_Service_Sheets_SetDataValidationRequest';
   protected $setDataValidationDataType = '';
-  protected $sortRangeType = 'Powerform_Google_Service_Sheets_SortRangeRequest';
+  protected $sortRangeType = 'Google_Service_Sheets_SortRangeRequest';
   protected $sortRangeDataType = '';
-  protected $textToColumnsType = 'Powerform_Google_Service_Sheets_TextToColumnsRequest';
+  protected $textToColumnsType = 'Google_Service_Sheets_TextToColumnsRequest';
   protected $textToColumnsDataType = '';
-  protected $unmergeCellsType = 'Powerform_Google_Service_Sheets_UnmergeCellsRequest';
+  protected $unmergeCellsType = 'Google_Service_Sheets_UnmergeCellsRequest';
   protected $unmergeCellsDataType = '';
-  protected $updateBordersType = 'Powerform_Google_Service_Sheets_UpdateBordersRequest';
+  protected $updateBordersType = 'Google_Service_Sheets_UpdateBordersRequest';
   protected $updateBordersDataType = '';
-  protected $updateCellsType = 'Powerform_Google_Service_Sheets_UpdateCellsRequest';
+  protected $updateCellsType = 'Google_Service_Sheets_UpdateCellsRequest';
   protected $updateCellsDataType = '';
-  protected $updateChartSpecType = 'Powerform_Google_Service_Sheets_UpdateChartSpecRequest';
+  protected $updateChartSpecType = 'Google_Service_Sheets_UpdateChartSpecRequest';
   protected $updateChartSpecDataType = '';
-  protected $updateConditionalFormatRuleType = 'Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleRequest';
+  protected $updateConditionalFormatRuleType = 'Google_Service_Sheets_UpdateConditionalFormatRuleRequest';
   protected $updateConditionalFormatRuleDataType = '';
-  protected $updateDimensionPropertiesType = 'Powerform_Google_Service_Sheets_UpdateDimensionPropertiesRequest';
+  protected $updateDimensionPropertiesType = 'Google_Service_Sheets_UpdateDimensionPropertiesRequest';
   protected $updateDimensionPropertiesDataType = '';
-  protected $updateEmbeddedObjectPositionType = 'Powerform_Google_Service_Sheets_UpdateEmbeddedObjectPositionRequest';
+  protected $updateEmbeddedObjectPositionType = 'Google_Service_Sheets_UpdateEmbeddedObjectPositionRequest';
   protected $updateEmbeddedObjectPositionDataType = '';
-  protected $updateFilterViewType = 'Powerform_Google_Service_Sheets_UpdateFilterViewRequest';
+  protected $updateFilterViewType = 'Google_Service_Sheets_UpdateFilterViewRequest';
   protected $updateFilterViewDataType = '';
-  protected $updateNamedRangeType = 'Powerform_Google_Service_Sheets_UpdateNamedRangeRequest';
+  protected $updateNamedRangeType = 'Google_Service_Sheets_UpdateNamedRangeRequest';
   protected $updateNamedRangeDataType = '';
-  protected $updateProtectedRangeType = 'Powerform_Google_Service_Sheets_UpdateProtectedRangeRequest';
+  protected $updateProtectedRangeType = 'Google_Service_Sheets_UpdateProtectedRangeRequest';
   protected $updateProtectedRangeDataType = '';
-  protected $updateSheetPropertiesType = 'Powerform_Google_Service_Sheets_UpdateSheetPropertiesRequest';
+  protected $updateSheetPropertiesType = 'Google_Service_Sheets_UpdateSheetPropertiesRequest';
   protected $updateSheetPropertiesDataType = '';
-  protected $updateSpreadsheetPropertiesType = 'Powerform_Google_Service_Sheets_UpdateSpreadsheetPropertiesRequest';
+  protected $updateSpreadsheetPropertiesType = 'Google_Service_Sheets_UpdateSpreadsheetPropertiesRequest';
   protected $updateSpreadsheetPropertiesDataType = '';
 
 
-  public function setAddChart(Powerform_Google_Service_Sheets_AddChartRequest $addChart)
+  public function setAddChart(Google_Service_Sheets_AddChartRequest $addChart)
   {
     $this->addChart = $addChart;
   }
@@ -3687,7 +3687,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->addChart;
   }
-  public function setAddConditionalFormatRule(Powerform_Google_Service_Sheets_AddConditionalFormatRuleRequest $addConditionalFormatRule)
+  public function setAddConditionalFormatRule(Google_Service_Sheets_AddConditionalFormatRuleRequest $addConditionalFormatRule)
   {
     $this->addConditionalFormatRule = $addConditionalFormatRule;
   }
@@ -3695,7 +3695,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->addConditionalFormatRule;
   }
-  public function setAddFilterView(Powerform_Google_Service_Sheets_AddFilterViewRequest $addFilterView)
+  public function setAddFilterView(Google_Service_Sheets_AddFilterViewRequest $addFilterView)
   {
     $this->addFilterView = $addFilterView;
   }
@@ -3703,7 +3703,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->addFilterView;
   }
-  public function setAddNamedRange(Powerform_Google_Service_Sheets_AddNamedRangeRequest $addNamedRange)
+  public function setAddNamedRange(Google_Service_Sheets_AddNamedRangeRequest $addNamedRange)
   {
     $this->addNamedRange = $addNamedRange;
   }
@@ -3711,7 +3711,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->addNamedRange;
   }
-  public function setAddProtectedRange(Powerform_Google_Service_Sheets_AddProtectedRangeRequest $addProtectedRange)
+  public function setAddProtectedRange(Google_Service_Sheets_AddProtectedRangeRequest $addProtectedRange)
   {
     $this->addProtectedRange = $addProtectedRange;
   }
@@ -3719,7 +3719,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->addProtectedRange;
   }
-  public function setAddSheet(Powerform_Google_Service_Sheets_AddSheetRequest $addSheet)
+  public function setAddSheet(Google_Service_Sheets_AddSheetRequest $addSheet)
   {
     $this->addSheet = $addSheet;
   }
@@ -3727,7 +3727,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->addSheet;
   }
-  public function setAppendCells(Powerform_Google_Service_Sheets_AppendCellsRequest $appendCells)
+  public function setAppendCells(Google_Service_Sheets_AppendCellsRequest $appendCells)
   {
     $this->appendCells = $appendCells;
   }
@@ -3735,7 +3735,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->appendCells;
   }
-  public function setAppendDimension(Powerform_Google_Service_Sheets_AppendDimensionRequest $appendDimension)
+  public function setAppendDimension(Google_Service_Sheets_AppendDimensionRequest $appendDimension)
   {
     $this->appendDimension = $appendDimension;
   }
@@ -3743,7 +3743,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->appendDimension;
   }
-  public function setAutoFill(Powerform_Google_Service_Sheets_AutoFillRequest $autoFill)
+  public function setAutoFill(Google_Service_Sheets_AutoFillRequest $autoFill)
   {
     $this->autoFill = $autoFill;
   }
@@ -3751,7 +3751,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->autoFill;
   }
-  public function setAutoResizeDimensions(Powerform_Google_Service_Sheets_AutoResizeDimensionsRequest $autoResizeDimensions)
+  public function setAutoResizeDimensions(Google_Service_Sheets_AutoResizeDimensionsRequest $autoResizeDimensions)
   {
     $this->autoResizeDimensions = $autoResizeDimensions;
   }
@@ -3759,7 +3759,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->autoResizeDimensions;
   }
-  public function setClearBasicFilter(Powerform_Google_Service_Sheets_ClearBasicFilterRequest $clearBasicFilter)
+  public function setClearBasicFilter(Google_Service_Sheets_ClearBasicFilterRequest $clearBasicFilter)
   {
     $this->clearBasicFilter = $clearBasicFilter;
   }
@@ -3767,7 +3767,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->clearBasicFilter;
   }
-  public function setCopyPaste(Powerform_Google_Service_Sheets_CopyPasteRequest $copyPaste)
+  public function setCopyPaste(Google_Service_Sheets_CopyPasteRequest $copyPaste)
   {
     $this->copyPaste = $copyPaste;
   }
@@ -3775,7 +3775,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->copyPaste;
   }
-  public function setCutPaste(Powerform_Google_Service_Sheets_CutPasteRequest $cutPaste)
+  public function setCutPaste(Google_Service_Sheets_CutPasteRequest $cutPaste)
   {
     $this->cutPaste = $cutPaste;
   }
@@ -3783,7 +3783,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->cutPaste;
   }
-  public function setDeleteConditionalFormatRule(Powerform_Google_Service_Sheets_DeleteConditionalFormatRuleRequest $deleteConditionalFormatRule)
+  public function setDeleteConditionalFormatRule(Google_Service_Sheets_DeleteConditionalFormatRuleRequest $deleteConditionalFormatRule)
   {
     $this->deleteConditionalFormatRule = $deleteConditionalFormatRule;
   }
@@ -3791,7 +3791,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->deleteConditionalFormatRule;
   }
-  public function setDeleteDimension(Powerform_Google_Service_Sheets_DeleteDimensionRequest $deleteDimension)
+  public function setDeleteDimension(Google_Service_Sheets_DeleteDimensionRequest $deleteDimension)
   {
     $this->deleteDimension = $deleteDimension;
   }
@@ -3799,7 +3799,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->deleteDimension;
   }
-  public function setDeleteEmbeddedObject(Powerform_Google_Service_Sheets_DeleteEmbeddedObjectRequest $deleteEmbeddedObject)
+  public function setDeleteEmbeddedObject(Google_Service_Sheets_DeleteEmbeddedObjectRequest $deleteEmbeddedObject)
   {
     $this->deleteEmbeddedObject = $deleteEmbeddedObject;
   }
@@ -3807,7 +3807,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->deleteEmbeddedObject;
   }
-  public function setDeleteFilterView(Powerform_Google_Service_Sheets_DeleteFilterViewRequest $deleteFilterView)
+  public function setDeleteFilterView(Google_Service_Sheets_DeleteFilterViewRequest $deleteFilterView)
   {
     $this->deleteFilterView = $deleteFilterView;
   }
@@ -3815,7 +3815,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->deleteFilterView;
   }
-  public function setDeleteNamedRange(Powerform_Google_Service_Sheets_DeleteNamedRangeRequest $deleteNamedRange)
+  public function setDeleteNamedRange(Google_Service_Sheets_DeleteNamedRangeRequest $deleteNamedRange)
   {
     $this->deleteNamedRange = $deleteNamedRange;
   }
@@ -3823,7 +3823,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->deleteNamedRange;
   }
-  public function setDeleteProtectedRange(Powerform_Google_Service_Sheets_DeleteProtectedRangeRequest $deleteProtectedRange)
+  public function setDeleteProtectedRange(Google_Service_Sheets_DeleteProtectedRangeRequest $deleteProtectedRange)
   {
     $this->deleteProtectedRange = $deleteProtectedRange;
   }
@@ -3831,7 +3831,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->deleteProtectedRange;
   }
-  public function setDeleteSheet(Powerform_Google_Service_Sheets_DeleteSheetRequest $deleteSheet)
+  public function setDeleteSheet(Google_Service_Sheets_DeleteSheetRequest $deleteSheet)
   {
     $this->deleteSheet = $deleteSheet;
   }
@@ -3839,7 +3839,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->deleteSheet;
   }
-  public function setDuplicateFilterView(Powerform_Google_Service_Sheets_DuplicateFilterViewRequest $duplicateFilterView)
+  public function setDuplicateFilterView(Google_Service_Sheets_DuplicateFilterViewRequest $duplicateFilterView)
   {
     $this->duplicateFilterView = $duplicateFilterView;
   }
@@ -3847,7 +3847,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->duplicateFilterView;
   }
-  public function setDuplicateSheet(Powerform_Google_Service_Sheets_DuplicateSheetRequest $duplicateSheet)
+  public function setDuplicateSheet(Google_Service_Sheets_DuplicateSheetRequest $duplicateSheet)
   {
     $this->duplicateSheet = $duplicateSheet;
   }
@@ -3855,7 +3855,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->duplicateSheet;
   }
-  public function setFindReplace(Powerform_Google_Service_Sheets_FindReplaceRequest $findReplace)
+  public function setFindReplace(Google_Service_Sheets_FindReplaceRequest $findReplace)
   {
     $this->findReplace = $findReplace;
   }
@@ -3863,7 +3863,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->findReplace;
   }
-  public function setInsertDimension(Powerform_Google_Service_Sheets_InsertDimensionRequest $insertDimension)
+  public function setInsertDimension(Google_Service_Sheets_InsertDimensionRequest $insertDimension)
   {
     $this->insertDimension = $insertDimension;
   }
@@ -3871,7 +3871,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->insertDimension;
   }
-  public function setMergeCells(Powerform_Google_Service_Sheets_MergeCellsRequest $mergeCells)
+  public function setMergeCells(Google_Service_Sheets_MergeCellsRequest $mergeCells)
   {
     $this->mergeCells = $mergeCells;
   }
@@ -3879,7 +3879,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->mergeCells;
   }
-  public function setMoveDimension(Powerform_Google_Service_Sheets_MoveDimensionRequest $moveDimension)
+  public function setMoveDimension(Google_Service_Sheets_MoveDimensionRequest $moveDimension)
   {
     $this->moveDimension = $moveDimension;
   }
@@ -3887,7 +3887,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->moveDimension;
   }
-  public function setPasteData(Powerform_Google_Service_Sheets_PasteDataRequest $pasteData)
+  public function setPasteData(Google_Service_Sheets_PasteDataRequest $pasteData)
   {
     $this->pasteData = $pasteData;
   }
@@ -3895,7 +3895,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->pasteData;
   }
-  public function setRepeatCell(Powerform_Google_Service_Sheets_RepeatCellRequest $repeatCell)
+  public function setRepeatCell(Google_Service_Sheets_RepeatCellRequest $repeatCell)
   {
     $this->repeatCell = $repeatCell;
   }
@@ -3903,7 +3903,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->repeatCell;
   }
-  public function setSetBasicFilter(Powerform_Google_Service_Sheets_SetBasicFilterRequest $setBasicFilter)
+  public function setSetBasicFilter(Google_Service_Sheets_SetBasicFilterRequest $setBasicFilter)
   {
     $this->setBasicFilter = $setBasicFilter;
   }
@@ -3911,7 +3911,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->setBasicFilter;
   }
-  public function setSetDataValidation(Powerform_Google_Service_Sheets_SetDataValidationRequest $setDataValidation)
+  public function setSetDataValidation(Google_Service_Sheets_SetDataValidationRequest $setDataValidation)
   {
     $this->setDataValidation = $setDataValidation;
   }
@@ -3919,7 +3919,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->setDataValidation;
   }
-  public function setSortRange(Powerform_Google_Service_Sheets_SortRangeRequest $sortRange)
+  public function setSortRange(Google_Service_Sheets_SortRangeRequest $sortRange)
   {
     $this->sortRange = $sortRange;
   }
@@ -3927,7 +3927,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->sortRange;
   }
-  public function setTextToColumns(Powerform_Google_Service_Sheets_TextToColumnsRequest $textToColumns)
+  public function setTextToColumns(Google_Service_Sheets_TextToColumnsRequest $textToColumns)
   {
     $this->textToColumns = $textToColumns;
   }
@@ -3935,7 +3935,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->textToColumns;
   }
-  public function setUnmergeCells(Powerform_Google_Service_Sheets_UnmergeCellsRequest $unmergeCells)
+  public function setUnmergeCells(Google_Service_Sheets_UnmergeCellsRequest $unmergeCells)
   {
     $this->unmergeCells = $unmergeCells;
   }
@@ -3943,7 +3943,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->unmergeCells;
   }
-  public function setUpdateBorders(Powerform_Google_Service_Sheets_UpdateBordersRequest $updateBorders)
+  public function setUpdateBorders(Google_Service_Sheets_UpdateBordersRequest $updateBorders)
   {
     $this->updateBorders = $updateBorders;
   }
@@ -3951,7 +3951,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->updateBorders;
   }
-  public function setUpdateCells(Powerform_Google_Service_Sheets_UpdateCellsRequest $updateCells)
+  public function setUpdateCells(Google_Service_Sheets_UpdateCellsRequest $updateCells)
   {
     $this->updateCells = $updateCells;
   }
@@ -3959,7 +3959,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->updateCells;
   }
-  public function setUpdateChartSpec(Powerform_Google_Service_Sheets_UpdateChartSpecRequest $updateChartSpec)
+  public function setUpdateChartSpec(Google_Service_Sheets_UpdateChartSpecRequest $updateChartSpec)
   {
     $this->updateChartSpec = $updateChartSpec;
   }
@@ -3967,7 +3967,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->updateChartSpec;
   }
-  public function setUpdateConditionalFormatRule(Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleRequest $updateConditionalFormatRule)
+  public function setUpdateConditionalFormatRule(Google_Service_Sheets_UpdateConditionalFormatRuleRequest $updateConditionalFormatRule)
   {
     $this->updateConditionalFormatRule = $updateConditionalFormatRule;
   }
@@ -3975,7 +3975,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->updateConditionalFormatRule;
   }
-  public function setUpdateDimensionProperties(Powerform_Google_Service_Sheets_UpdateDimensionPropertiesRequest $updateDimensionProperties)
+  public function setUpdateDimensionProperties(Google_Service_Sheets_UpdateDimensionPropertiesRequest $updateDimensionProperties)
   {
     $this->updateDimensionProperties = $updateDimensionProperties;
   }
@@ -3983,7 +3983,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->updateDimensionProperties;
   }
-  public function setUpdateEmbeddedObjectPosition(Powerform_Google_Service_Sheets_UpdateEmbeddedObjectPositionRequest $updateEmbeddedObjectPosition)
+  public function setUpdateEmbeddedObjectPosition(Google_Service_Sheets_UpdateEmbeddedObjectPositionRequest $updateEmbeddedObjectPosition)
   {
     $this->updateEmbeddedObjectPosition = $updateEmbeddedObjectPosition;
   }
@@ -3991,7 +3991,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->updateEmbeddedObjectPosition;
   }
-  public function setUpdateFilterView(Powerform_Google_Service_Sheets_UpdateFilterViewRequest $updateFilterView)
+  public function setUpdateFilterView(Google_Service_Sheets_UpdateFilterViewRequest $updateFilterView)
   {
     $this->updateFilterView = $updateFilterView;
   }
@@ -3999,7 +3999,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->updateFilterView;
   }
-  public function setUpdateNamedRange(Powerform_Google_Service_Sheets_UpdateNamedRangeRequest $updateNamedRange)
+  public function setUpdateNamedRange(Google_Service_Sheets_UpdateNamedRangeRequest $updateNamedRange)
   {
     $this->updateNamedRange = $updateNamedRange;
   }
@@ -4007,7 +4007,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->updateNamedRange;
   }
-  public function setUpdateProtectedRange(Powerform_Google_Service_Sheets_UpdateProtectedRangeRequest $updateProtectedRange)
+  public function setUpdateProtectedRange(Google_Service_Sheets_UpdateProtectedRangeRequest $updateProtectedRange)
   {
     $this->updateProtectedRange = $updateProtectedRange;
   }
@@ -4015,7 +4015,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->updateProtectedRange;
   }
-  public function setUpdateSheetProperties(Powerform_Google_Service_Sheets_UpdateSheetPropertiesRequest $updateSheetProperties)
+  public function setUpdateSheetProperties(Google_Service_Sheets_UpdateSheetPropertiesRequest $updateSheetProperties)
   {
     $this->updateSheetProperties = $updateSheetProperties;
   }
@@ -4023,7 +4023,7 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   {
     return $this->updateSheetProperties;
   }
-  public function setUpdateSpreadsheetProperties(Powerform_Google_Service_Sheets_UpdateSpreadsheetPropertiesRequest $updateSpreadsheetProperties)
+  public function setUpdateSpreadsheetProperties(Google_Service_Sheets_UpdateSpreadsheetPropertiesRequest $updateSpreadsheetProperties)
   {
     $this->updateSpreadsheetProperties = $updateSpreadsheetProperties;
   }
@@ -4033,35 +4033,35 @@ class Powerform_Google_Service_Sheets_Request extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
+class Google_Service_Sheets_Response extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $addChartType = 'Powerform_Google_Service_Sheets_AddChartResponse';
+  protected $addChartType = 'Google_Service_Sheets_AddChartResponse';
   protected $addChartDataType = '';
-  protected $addFilterViewType = 'Powerform_Google_Service_Sheets_AddFilterViewResponse';
+  protected $addFilterViewType = 'Google_Service_Sheets_AddFilterViewResponse';
   protected $addFilterViewDataType = '';
-  protected $addNamedRangeType = 'Powerform_Google_Service_Sheets_AddNamedRangeResponse';
+  protected $addNamedRangeType = 'Google_Service_Sheets_AddNamedRangeResponse';
   protected $addNamedRangeDataType = '';
-  protected $addProtectedRangeType = 'Powerform_Google_Service_Sheets_AddProtectedRangeResponse';
+  protected $addProtectedRangeType = 'Google_Service_Sheets_AddProtectedRangeResponse';
   protected $addProtectedRangeDataType = '';
-  protected $addSheetType = 'Powerform_Google_Service_Sheets_AddSheetResponse';
+  protected $addSheetType = 'Google_Service_Sheets_AddSheetResponse';
   protected $addSheetDataType = '';
-  protected $deleteConditionalFormatRuleType = 'Powerform_Google_Service_Sheets_DeleteConditionalFormatRuleResponse';
+  protected $deleteConditionalFormatRuleType = 'Google_Service_Sheets_DeleteConditionalFormatRuleResponse';
   protected $deleteConditionalFormatRuleDataType = '';
-  protected $duplicateFilterViewType = 'Powerform_Google_Service_Sheets_DuplicateFilterViewResponse';
+  protected $duplicateFilterViewType = 'Google_Service_Sheets_DuplicateFilterViewResponse';
   protected $duplicateFilterViewDataType = '';
-  protected $duplicateSheetType = 'Powerform_Google_Service_Sheets_DuplicateSheetResponse';
+  protected $duplicateSheetType = 'Google_Service_Sheets_DuplicateSheetResponse';
   protected $duplicateSheetDataType = '';
-  protected $findReplaceType = 'Powerform_Google_Service_Sheets_FindReplaceResponse';
+  protected $findReplaceType = 'Google_Service_Sheets_FindReplaceResponse';
   protected $findReplaceDataType = '';
-  protected $updateConditionalFormatRuleType = 'Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleResponse';
+  protected $updateConditionalFormatRuleType = 'Google_Service_Sheets_UpdateConditionalFormatRuleResponse';
   protected $updateConditionalFormatRuleDataType = '';
-  protected $updateEmbeddedObjectPositionType = 'Powerform_Google_Service_Sheets_UpdateEmbeddedObjectPositionResponse';
+  protected $updateEmbeddedObjectPositionType = 'Google_Service_Sheets_UpdateEmbeddedObjectPositionResponse';
   protected $updateEmbeddedObjectPositionDataType = '';
 
 
-  public function setAddChart(Powerform_Google_Service_Sheets_AddChartResponse $addChart)
+  public function setAddChart(Google_Service_Sheets_AddChartResponse $addChart)
   {
     $this->addChart = $addChart;
   }
@@ -4069,7 +4069,7 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   {
     return $this->addChart;
   }
-  public function setAddFilterView(Powerform_Google_Service_Sheets_AddFilterViewResponse $addFilterView)
+  public function setAddFilterView(Google_Service_Sheets_AddFilterViewResponse $addFilterView)
   {
     $this->addFilterView = $addFilterView;
   }
@@ -4077,7 +4077,7 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   {
     return $this->addFilterView;
   }
-  public function setAddNamedRange(Powerform_Google_Service_Sheets_AddNamedRangeResponse $addNamedRange)
+  public function setAddNamedRange(Google_Service_Sheets_AddNamedRangeResponse $addNamedRange)
   {
     $this->addNamedRange = $addNamedRange;
   }
@@ -4085,7 +4085,7 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   {
     return $this->addNamedRange;
   }
-  public function setAddProtectedRange(Powerform_Google_Service_Sheets_AddProtectedRangeResponse $addProtectedRange)
+  public function setAddProtectedRange(Google_Service_Sheets_AddProtectedRangeResponse $addProtectedRange)
   {
     $this->addProtectedRange = $addProtectedRange;
   }
@@ -4093,7 +4093,7 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   {
     return $this->addProtectedRange;
   }
-  public function setAddSheet(Powerform_Google_Service_Sheets_AddSheetResponse $addSheet)
+  public function setAddSheet(Google_Service_Sheets_AddSheetResponse $addSheet)
   {
     $this->addSheet = $addSheet;
   }
@@ -4101,7 +4101,7 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   {
     return $this->addSheet;
   }
-  public function setDeleteConditionalFormatRule(Powerform_Google_Service_Sheets_DeleteConditionalFormatRuleResponse $deleteConditionalFormatRule)
+  public function setDeleteConditionalFormatRule(Google_Service_Sheets_DeleteConditionalFormatRuleResponse $deleteConditionalFormatRule)
   {
     $this->deleteConditionalFormatRule = $deleteConditionalFormatRule;
   }
@@ -4109,7 +4109,7 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   {
     return $this->deleteConditionalFormatRule;
   }
-  public function setDuplicateFilterView(Powerform_Google_Service_Sheets_DuplicateFilterViewResponse $duplicateFilterView)
+  public function setDuplicateFilterView(Google_Service_Sheets_DuplicateFilterViewResponse $duplicateFilterView)
   {
     $this->duplicateFilterView = $duplicateFilterView;
   }
@@ -4117,7 +4117,7 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   {
     return $this->duplicateFilterView;
   }
-  public function setDuplicateSheet(Powerform_Google_Service_Sheets_DuplicateSheetResponse $duplicateSheet)
+  public function setDuplicateSheet(Google_Service_Sheets_DuplicateSheetResponse $duplicateSheet)
   {
     $this->duplicateSheet = $duplicateSheet;
   }
@@ -4125,7 +4125,7 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   {
     return $this->duplicateSheet;
   }
-  public function setFindReplace(Powerform_Google_Service_Sheets_FindReplaceResponse $findReplace)
+  public function setFindReplace(Google_Service_Sheets_FindReplaceResponse $findReplace)
   {
     $this->findReplace = $findReplace;
   }
@@ -4133,7 +4133,7 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   {
     return $this->findReplace;
   }
-  public function setUpdateConditionalFormatRule(Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleResponse $updateConditionalFormatRule)
+  public function setUpdateConditionalFormatRule(Google_Service_Sheets_UpdateConditionalFormatRuleResponse $updateConditionalFormatRule)
   {
     $this->updateConditionalFormatRule = $updateConditionalFormatRule;
   }
@@ -4141,7 +4141,7 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   {
     return $this->updateConditionalFormatRule;
   }
-  public function setUpdateEmbeddedObjectPosition(Powerform_Google_Service_Sheets_UpdateEmbeddedObjectPositionResponse $updateEmbeddedObjectPosition)
+  public function setUpdateEmbeddedObjectPosition(Google_Service_Sheets_UpdateEmbeddedObjectPositionResponse $updateEmbeddedObjectPosition)
   {
     $this->updateEmbeddedObjectPosition = $updateEmbeddedObjectPosition;
   }
@@ -4151,12 +4151,12 @@ class Powerform_Google_Service_Sheets_Response extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_RowData extends Powerform_Google_Collection
+class Google_Service_Sheets_RowData extends Google_Collection
 {
   protected $collection_key = 'values';
   protected $internal_gapi_mappings = array(
   );
-  protected $valuesType = 'Powerform_Google_Service_Sheets_CellData';
+  protected $valuesType = 'Google_Service_Sheets_CellData';
   protected $valuesDataType = 'array';
 
 
@@ -4170,15 +4170,15 @@ class Powerform_Google_Service_Sheets_RowData extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Sheets_SetBasicFilterRequest extends Powerform_Google_Model
+class Google_Service_Sheets_SetBasicFilterRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $filterType = 'Powerform_Google_Service_Sheets_BasicFilter';
+  protected $filterType = 'Google_Service_Sheets_BasicFilter';
   protected $filterDataType = '';
 
 
-  public function setFilter(Powerform_Google_Service_Sheets_BasicFilter $filter)
+  public function setFilter(Google_Service_Sheets_BasicFilter $filter)
   {
     $this->filter = $filter;
   }
@@ -4188,17 +4188,17 @@ class Powerform_Google_Service_Sheets_SetBasicFilterRequest extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Sheets_SetDataValidationRequest extends Powerform_Google_Model
+class Google_Service_Sheets_SetDataValidationRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
-  protected $ruleType = 'Powerform_Google_Service_Sheets_DataValidationRule';
+  protected $ruleType = 'Google_Service_Sheets_DataValidationRule';
   protected $ruleDataType = '';
 
 
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -4206,7 +4206,7 @@ class Powerform_Google_Service_Sheets_SetDataValidationRequest extends Powerform
   {
     return $this->range;
   }
-  public function setRule(Powerform_Google_Service_Sheets_DataValidationRule $rule)
+  public function setRule(Google_Service_Sheets_DataValidationRule $rule)
   {
     $this->rule = $rule;
   }
@@ -4216,30 +4216,30 @@ class Powerform_Google_Service_Sheets_SetDataValidationRequest extends Powerform
   }
 }
 
-class Powerform_Google_Service_Sheets_Sheet extends Powerform_Google_Collection
+class Google_Service_Sheets_Sheet extends Google_Collection
 {
   protected $collection_key = 'protectedRanges';
   protected $internal_gapi_mappings = array(
   );
-  protected $basicFilterType = 'Powerform_Google_Service_Sheets_BasicFilter';
+  protected $basicFilterType = 'Google_Service_Sheets_BasicFilter';
   protected $basicFilterDataType = '';
-  protected $chartsType = 'Powerform_Google_Service_Sheets_EmbeddedChart';
+  protected $chartsType = 'Google_Service_Sheets_EmbeddedChart';
   protected $chartsDataType = 'array';
-  protected $conditionalFormatsType = 'Powerform_Google_Service_Sheets_ConditionalFormatRule';
+  protected $conditionalFormatsType = 'Google_Service_Sheets_ConditionalFormatRule';
   protected $conditionalFormatsDataType = 'array';
-  protected $dataType = 'Powerform_Google_Service_Sheets_GridData';
+  protected $dataType = 'Google_Service_Sheets_GridData';
   protected $dataDataType = 'array';
-  protected $filterViewsType = 'Powerform_Google_Service_Sheets_FilterView';
+  protected $filterViewsType = 'Google_Service_Sheets_FilterView';
   protected $filterViewsDataType = 'array';
-  protected $mergesType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $mergesType = 'Google_Service_Sheets_GridRange';
   protected $mergesDataType = 'array';
-  protected $propertiesType = 'Powerform_Google_Service_Sheets_SheetProperties';
+  protected $propertiesType = 'Google_Service_Sheets_SheetProperties';
   protected $propertiesDataType = '';
-  protected $protectedRangesType = 'Powerform_Google_Service_Sheets_ProtectedRange';
+  protected $protectedRangesType = 'Google_Service_Sheets_ProtectedRange';
   protected $protectedRangesDataType = 'array';
 
 
-  public function setBasicFilter(Powerform_Google_Service_Sheets_BasicFilter $basicFilter)
+  public function setBasicFilter(Google_Service_Sheets_BasicFilter $basicFilter)
   {
     $this->basicFilter = $basicFilter;
   }
@@ -4287,7 +4287,7 @@ class Powerform_Google_Service_Sheets_Sheet extends Powerform_Google_Collection
   {
     return $this->merges;
   }
-  public function setProperties(Powerform_Google_Service_Sheets_SheetProperties $properties)
+  public function setProperties(Google_Service_Sheets_SheetProperties $properties)
   {
     $this->properties = $properties;
   }
@@ -4305,23 +4305,23 @@ class Powerform_Google_Service_Sheets_Sheet extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Sheets_SheetProperties extends Powerform_Google_Model
+class Google_Service_Sheets_SheetProperties extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $gridPropertiesType = 'Powerform_Google_Service_Sheets_GridProperties';
+  protected $gridPropertiesType = 'Google_Service_Sheets_GridProperties';
   protected $gridPropertiesDataType = '';
   public $hidden;
   public $index;
   public $rightToLeft;
   public $sheetId;
   public $sheetType;
-  protected $tabColorType = 'Powerform_Google_Service_Sheets_Color';
+  protected $tabColorType = 'Google_Service_Sheets_Color';
   protected $tabColorDataType = '';
   public $title;
 
 
-  public function setGridProperties(Powerform_Google_Service_Sheets_GridProperties $gridProperties)
+  public function setGridProperties(Google_Service_Sheets_GridProperties $gridProperties)
   {
     $this->gridProperties = $gridProperties;
   }
@@ -4369,7 +4369,7 @@ class Powerform_Google_Service_Sheets_SheetProperties extends Powerform_Google_M
   {
     return $this->sheetType;
   }
-  public function setTabColor(Powerform_Google_Service_Sheets_Color $tabColor)
+  public function setTabColor(Google_Service_Sheets_Color $tabColor)
   {
     $this->tabColor = $tabColor;
   }
@@ -4387,18 +4387,18 @@ class Powerform_Google_Service_Sheets_SheetProperties extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Sheets_SortRangeRequest extends Powerform_Google_Collection
+class Google_Service_Sheets_SortRangeRequest extends Google_Collection
 {
   protected $collection_key = 'sortSpecs';
   protected $internal_gapi_mappings = array(
   );
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
-  protected $sortSpecsType = 'Powerform_Google_Service_Sheets_SortSpec';
+  protected $sortSpecsType = 'Google_Service_Sheets_SortSpec';
   protected $sortSpecsDataType = 'array';
 
 
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -4416,7 +4416,7 @@ class Powerform_Google_Service_Sheets_SortRangeRequest extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Sheets_SortSpec extends Powerform_Google_Model
+class Google_Service_Sheets_SortSpec extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4442,13 +4442,13 @@ class Powerform_Google_Service_Sheets_SortSpec extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_SourceAndDestination extends Powerform_Google_Model
+class Google_Service_Sheets_SourceAndDestination extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $dimension;
   public $fillLength;
-  protected $sourceType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $sourceType = 'Google_Service_Sheets_GridRange';
   protected $sourceDataType = '';
 
 
@@ -4468,7 +4468,7 @@ class Powerform_Google_Service_Sheets_SourceAndDestination extends Powerform_Goo
   {
     return $this->fillLength;
   }
-  public function setSource(Powerform_Google_Service_Sheets_GridRange $source)
+  public function setSource(Google_Service_Sheets_GridRange $source)
   {
     $this->source = $source;
   }
@@ -4478,16 +4478,16 @@ class Powerform_Google_Service_Sheets_SourceAndDestination extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Sheets_Spreadsheet extends Powerform_Google_Collection
+class Google_Service_Sheets_Spreadsheet extends Google_Collection
 {
   protected $collection_key = 'sheets';
   protected $internal_gapi_mappings = array(
   );
-  protected $namedRangesType = 'Powerform_Google_Service_Sheets_NamedRange';
+  protected $namedRangesType = 'Google_Service_Sheets_NamedRange';
   protected $namedRangesDataType = 'array';
-  protected $propertiesType = 'Powerform_Google_Service_Sheets_SpreadsheetProperties';
+  protected $propertiesType = 'Google_Service_Sheets_SpreadsheetProperties';
   protected $propertiesDataType = '';
-  protected $sheetsType = 'Powerform_Google_Service_Sheets_Sheet';
+  protected $sheetsType = 'Google_Service_Sheets_Sheet';
   protected $sheetsDataType = 'array';
   public $spreadsheetId;
 
@@ -4500,7 +4500,7 @@ class Powerform_Google_Service_Sheets_Spreadsheet extends Powerform_Google_Colle
   {
     return $this->namedRanges;
   }
-  public function setProperties(Powerform_Google_Service_Sheets_SpreadsheetProperties $properties)
+  public function setProperties(Google_Service_Sheets_SpreadsheetProperties $properties)
   {
     $this->properties = $properties;
   }
@@ -4526,12 +4526,12 @@ class Powerform_Google_Service_Sheets_Spreadsheet extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Sheets_SpreadsheetProperties extends Powerform_Google_Model
+class Google_Service_Sheets_SpreadsheetProperties extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $autoRecalc;
-  protected $defaultFormatType = 'Powerform_Google_Service_Sheets_CellFormat';
+  protected $defaultFormatType = 'Google_Service_Sheets_CellFormat';
   protected $defaultFormatDataType = '';
   public $locale;
   public $timeZone;
@@ -4546,7 +4546,7 @@ class Powerform_Google_Service_Sheets_SpreadsheetProperties extends Powerform_Go
   {
     return $this->autoRecalc;
   }
-  public function setDefaultFormat(Powerform_Google_Service_Sheets_CellFormat $defaultFormat)
+  public function setDefaultFormat(Google_Service_Sheets_CellFormat $defaultFormat)
   {
     $this->defaultFormat = $defaultFormat;
   }
@@ -4580,14 +4580,14 @@ class Powerform_Google_Service_Sheets_SpreadsheetProperties extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Sheets_TextFormat extends Powerform_Google_Model
+class Google_Service_Sheets_TextFormat extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $bold;
   public $fontFamily;
   public $fontSize;
-  protected $foregroundColorType = 'Powerform_Google_Service_Sheets_Color';
+  protected $foregroundColorType = 'Google_Service_Sheets_Color';
   protected $foregroundColorDataType = '';
   public $italic;
   public $strikethrough;
@@ -4618,7 +4618,7 @@ class Powerform_Google_Service_Sheets_TextFormat extends Powerform_Google_Model
   {
     return $this->fontSize;
   }
-  public function setForegroundColor(Powerform_Google_Service_Sheets_Color $foregroundColor)
+  public function setForegroundColor(Google_Service_Sheets_Color $foregroundColor)
   {
     $this->foregroundColor = $foregroundColor;
   }
@@ -4652,16 +4652,16 @@ class Powerform_Google_Service_Sheets_TextFormat extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Sheets_TextFormatRun extends Powerform_Google_Model
+class Google_Service_Sheets_TextFormatRun extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $formatType = 'Powerform_Google_Service_Sheets_TextFormat';
+  protected $formatType = 'Google_Service_Sheets_TextFormat';
   protected $formatDataType = '';
   public $startIndex;
 
 
-  public function setFormat(Powerform_Google_Service_Sheets_TextFormat $format)
+  public function setFormat(Google_Service_Sheets_TextFormat $format)
   {
     $this->format = $format;
   }
@@ -4679,13 +4679,13 @@ class Powerform_Google_Service_Sheets_TextFormatRun extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Sheets_TextToColumnsRequest extends Powerform_Google_Model
+class Google_Service_Sheets_TextToColumnsRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $delimiter;
   public $delimiterType;
-  protected $sourceType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $sourceType = 'Google_Service_Sheets_GridRange';
   protected $sourceDataType = '';
 
 
@@ -4705,7 +4705,7 @@ class Powerform_Google_Service_Sheets_TextToColumnsRequest extends Powerform_Goo
   {
     return $this->delimiterType;
   }
-  public function setSource(Powerform_Google_Service_Sheets_GridRange $source)
+  public function setSource(Google_Service_Sheets_GridRange $source)
   {
     $this->source = $source;
   }
@@ -4715,15 +4715,15 @@ class Powerform_Google_Service_Sheets_TextToColumnsRequest extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Sheets_UnmergeCellsRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UnmergeCellsRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
 
 
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -4733,27 +4733,27 @@ class Powerform_Google_Service_Sheets_UnmergeCellsRequest extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateBordersRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateBordersRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $bottomType = 'Powerform_Google_Service_Sheets_Border';
+  protected $bottomType = 'Google_Service_Sheets_Border';
   protected $bottomDataType = '';
-  protected $innerHorizontalType = 'Powerform_Google_Service_Sheets_Border';
+  protected $innerHorizontalType = 'Google_Service_Sheets_Border';
   protected $innerHorizontalDataType = '';
-  protected $innerVerticalType = 'Powerform_Google_Service_Sheets_Border';
+  protected $innerVerticalType = 'Google_Service_Sheets_Border';
   protected $innerVerticalDataType = '';
-  protected $leftType = 'Powerform_Google_Service_Sheets_Border';
+  protected $leftType = 'Google_Service_Sheets_Border';
   protected $leftDataType = '';
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
-  protected $rightType = 'Powerform_Google_Service_Sheets_Border';
+  protected $rightType = 'Google_Service_Sheets_Border';
   protected $rightDataType = '';
-  protected $topType = 'Powerform_Google_Service_Sheets_Border';
+  protected $topType = 'Google_Service_Sheets_Border';
   protected $topDataType = '';
 
 
-  public function setBottom(Powerform_Google_Service_Sheets_Border $bottom)
+  public function setBottom(Google_Service_Sheets_Border $bottom)
   {
     $this->bottom = $bottom;
   }
@@ -4761,7 +4761,7 @@ class Powerform_Google_Service_Sheets_UpdateBordersRequest extends Powerform_Goo
   {
     return $this->bottom;
   }
-  public function setInnerHorizontal(Powerform_Google_Service_Sheets_Border $innerHorizontal)
+  public function setInnerHorizontal(Google_Service_Sheets_Border $innerHorizontal)
   {
     $this->innerHorizontal = $innerHorizontal;
   }
@@ -4769,7 +4769,7 @@ class Powerform_Google_Service_Sheets_UpdateBordersRequest extends Powerform_Goo
   {
     return $this->innerHorizontal;
   }
-  public function setInnerVertical(Powerform_Google_Service_Sheets_Border $innerVertical)
+  public function setInnerVertical(Google_Service_Sheets_Border $innerVertical)
   {
     $this->innerVertical = $innerVertical;
   }
@@ -4777,7 +4777,7 @@ class Powerform_Google_Service_Sheets_UpdateBordersRequest extends Powerform_Goo
   {
     return $this->innerVertical;
   }
-  public function setLeft(Powerform_Google_Service_Sheets_Border $left)
+  public function setLeft(Google_Service_Sheets_Border $left)
   {
     $this->left = $left;
   }
@@ -4785,7 +4785,7 @@ class Powerform_Google_Service_Sheets_UpdateBordersRequest extends Powerform_Goo
   {
     return $this->left;
   }
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -4793,7 +4793,7 @@ class Powerform_Google_Service_Sheets_UpdateBordersRequest extends Powerform_Goo
   {
     return $this->range;
   }
-  public function setRight(Powerform_Google_Service_Sheets_Border $right)
+  public function setRight(Google_Service_Sheets_Border $right)
   {
     $this->right = $right;
   }
@@ -4801,7 +4801,7 @@ class Powerform_Google_Service_Sheets_UpdateBordersRequest extends Powerform_Goo
   {
     return $this->right;
   }
-  public function setTop(Powerform_Google_Service_Sheets_Border $top)
+  public function setTop(Google_Service_Sheets_Border $top)
   {
     $this->top = $top;
   }
@@ -4811,17 +4811,17 @@ class Powerform_Google_Service_Sheets_UpdateBordersRequest extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateCellsRequest extends Powerform_Google_Collection
+class Google_Service_Sheets_UpdateCellsRequest extends Google_Collection
 {
   protected $collection_key = 'rows';
   protected $internal_gapi_mappings = array(
   );
   public $fields;
-  protected $rangeType = 'Powerform_Google_Service_Sheets_GridRange';
+  protected $rangeType = 'Google_Service_Sheets_GridRange';
   protected $rangeDataType = '';
-  protected $rowsType = 'Powerform_Google_Service_Sheets_RowData';
+  protected $rowsType = 'Google_Service_Sheets_RowData';
   protected $rowsDataType = 'array';
-  protected $startType = 'Powerform_Google_Service_Sheets_GridCoordinate';
+  protected $startType = 'Google_Service_Sheets_GridCoordinate';
   protected $startDataType = '';
 
 
@@ -4833,7 +4833,7 @@ class Powerform_Google_Service_Sheets_UpdateCellsRequest extends Powerform_Googl
   {
     return $this->fields;
   }
-  public function setRange(Powerform_Google_Service_Sheets_GridRange $range)
+  public function setRange(Google_Service_Sheets_GridRange $range)
   {
     $this->range = $range;
   }
@@ -4849,7 +4849,7 @@ class Powerform_Google_Service_Sheets_UpdateCellsRequest extends Powerform_Googl
   {
     return $this->rows;
   }
-  public function setStart(Powerform_Google_Service_Sheets_GridCoordinate $start)
+  public function setStart(Google_Service_Sheets_GridCoordinate $start)
   {
     $this->start = $start;
   }
@@ -4859,12 +4859,12 @@ class Powerform_Google_Service_Sheets_UpdateCellsRequest extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateChartSpecRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateChartSpecRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $chartId;
-  protected $specType = 'Powerform_Google_Service_Sheets_ChartSpec';
+  protected $specType = 'Google_Service_Sheets_ChartSpec';
   protected $specDataType = '';
 
 
@@ -4876,7 +4876,7 @@ class Powerform_Google_Service_Sheets_UpdateChartSpecRequest extends Powerform_G
   {
     return $this->chartId;
   }
-  public function setSpec(Powerform_Google_Service_Sheets_ChartSpec $spec)
+  public function setSpec(Google_Service_Sheets_ChartSpec $spec)
   {
     $this->spec = $spec;
   }
@@ -4886,13 +4886,13 @@ class Powerform_Google_Service_Sheets_UpdateChartSpecRequest extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateConditionalFormatRuleRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $index;
   public $newIndex;
-  protected $ruleType = 'Powerform_Google_Service_Sheets_ConditionalFormatRule';
+  protected $ruleType = 'Google_Service_Sheets_ConditionalFormatRule';
   protected $ruleDataType = '';
   public $sheetId;
 
@@ -4913,7 +4913,7 @@ class Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleRequest extends
   {
     return $this->newIndex;
   }
-  public function setRule(Powerform_Google_Service_Sheets_ConditionalFormatRule $rule)
+  public function setRule(Google_Service_Sheets_ConditionalFormatRule $rule)
   {
     $this->rule = $rule;
   }
@@ -4931,15 +4931,15 @@ class Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleRequest extends
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleResponse extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateConditionalFormatRuleResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $newIndex;
-  protected $newRuleType = 'Powerform_Google_Service_Sheets_ConditionalFormatRule';
+  protected $newRuleType = 'Google_Service_Sheets_ConditionalFormatRule';
   protected $newRuleDataType = '';
   public $oldIndex;
-  protected $oldRuleType = 'Powerform_Google_Service_Sheets_ConditionalFormatRule';
+  protected $oldRuleType = 'Google_Service_Sheets_ConditionalFormatRule';
   protected $oldRuleDataType = '';
 
 
@@ -4951,7 +4951,7 @@ class Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleResponse extend
   {
     return $this->newIndex;
   }
-  public function setNewRule(Powerform_Google_Service_Sheets_ConditionalFormatRule $newRule)
+  public function setNewRule(Google_Service_Sheets_ConditionalFormatRule $newRule)
   {
     $this->newRule = $newRule;
   }
@@ -4967,7 +4967,7 @@ class Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleResponse extend
   {
     return $this->oldIndex;
   }
-  public function setOldRule(Powerform_Google_Service_Sheets_ConditionalFormatRule $oldRule)
+  public function setOldRule(Google_Service_Sheets_ConditionalFormatRule $oldRule)
   {
     $this->oldRule = $oldRule;
   }
@@ -4977,14 +4977,14 @@ class Powerform_Google_Service_Sheets_UpdateConditionalFormatRuleResponse extend
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateDimensionPropertiesRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateDimensionPropertiesRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $fields;
-  protected $propertiesType = 'Powerform_Google_Service_Sheets_DimensionProperties';
+  protected $propertiesType = 'Google_Service_Sheets_DimensionProperties';
   protected $propertiesDataType = '';
-  protected $rangeType = 'Powerform_Google_Service_Sheets_DimensionRange';
+  protected $rangeType = 'Google_Service_Sheets_DimensionRange';
   protected $rangeDataType = '';
 
 
@@ -4996,7 +4996,7 @@ class Powerform_Google_Service_Sheets_UpdateDimensionPropertiesRequest extends P
   {
     return $this->fields;
   }
-  public function setProperties(Powerform_Google_Service_Sheets_DimensionProperties $properties)
+  public function setProperties(Google_Service_Sheets_DimensionProperties $properties)
   {
     $this->properties = $properties;
   }
@@ -5004,7 +5004,7 @@ class Powerform_Google_Service_Sheets_UpdateDimensionPropertiesRequest extends P
   {
     return $this->properties;
   }
-  public function setRange(Powerform_Google_Service_Sheets_DimensionRange $range)
+  public function setRange(Google_Service_Sheets_DimensionRange $range)
   {
     $this->range = $range;
   }
@@ -5014,12 +5014,12 @@ class Powerform_Google_Service_Sheets_UpdateDimensionPropertiesRequest extends P
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateEmbeddedObjectPositionRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateEmbeddedObjectPositionRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $fields;
-  protected $newPositionType = 'Powerform_Google_Service_Sheets_EmbeddedObjectPosition';
+  protected $newPositionType = 'Google_Service_Sheets_EmbeddedObjectPosition';
   protected $newPositionDataType = '';
   public $objectId;
 
@@ -5032,7 +5032,7 @@ class Powerform_Google_Service_Sheets_UpdateEmbeddedObjectPositionRequest extend
   {
     return $this->fields;
   }
-  public function setNewPosition(Powerform_Google_Service_Sheets_EmbeddedObjectPosition $newPosition)
+  public function setNewPosition(Google_Service_Sheets_EmbeddedObjectPosition $newPosition)
   {
     $this->newPosition = $newPosition;
   }
@@ -5050,15 +5050,15 @@ class Powerform_Google_Service_Sheets_UpdateEmbeddedObjectPositionRequest extend
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateEmbeddedObjectPositionResponse extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateEmbeddedObjectPositionResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $positionType = 'Powerform_Google_Service_Sheets_EmbeddedObjectPosition';
+  protected $positionType = 'Google_Service_Sheets_EmbeddedObjectPosition';
   protected $positionDataType = '';
 
 
-  public function setPosition(Powerform_Google_Service_Sheets_EmbeddedObjectPosition $position)
+  public function setPosition(Google_Service_Sheets_EmbeddedObjectPosition $position)
   {
     $this->position = $position;
   }
@@ -5068,12 +5068,12 @@ class Powerform_Google_Service_Sheets_UpdateEmbeddedObjectPositionResponse exten
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateFilterViewRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateFilterViewRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $fields;
-  protected $filterType = 'Powerform_Google_Service_Sheets_FilterView';
+  protected $filterType = 'Google_Service_Sheets_FilterView';
   protected $filterDataType = '';
 
 
@@ -5085,7 +5085,7 @@ class Powerform_Google_Service_Sheets_UpdateFilterViewRequest extends Powerform_
   {
     return $this->fields;
   }
-  public function setFilter(Powerform_Google_Service_Sheets_FilterView $filter)
+  public function setFilter(Google_Service_Sheets_FilterView $filter)
   {
     $this->filter = $filter;
   }
@@ -5095,12 +5095,12 @@ class Powerform_Google_Service_Sheets_UpdateFilterViewRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateNamedRangeRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateNamedRangeRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $fields;
-  protected $namedRangeType = 'Powerform_Google_Service_Sheets_NamedRange';
+  protected $namedRangeType = 'Google_Service_Sheets_NamedRange';
   protected $namedRangeDataType = '';
 
 
@@ -5112,7 +5112,7 @@ class Powerform_Google_Service_Sheets_UpdateNamedRangeRequest extends Powerform_
   {
     return $this->fields;
   }
-  public function setNamedRange(Powerform_Google_Service_Sheets_NamedRange $namedRange)
+  public function setNamedRange(Google_Service_Sheets_NamedRange $namedRange)
   {
     $this->namedRange = $namedRange;
   }
@@ -5122,12 +5122,12 @@ class Powerform_Google_Service_Sheets_UpdateNamedRangeRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateProtectedRangeRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateProtectedRangeRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $fields;
-  protected $protectedRangeType = 'Powerform_Google_Service_Sheets_ProtectedRange';
+  protected $protectedRangeType = 'Google_Service_Sheets_ProtectedRange';
   protected $protectedRangeDataType = '';
 
 
@@ -5139,7 +5139,7 @@ class Powerform_Google_Service_Sheets_UpdateProtectedRangeRequest extends Powerf
   {
     return $this->fields;
   }
-  public function setProtectedRange(Powerform_Google_Service_Sheets_ProtectedRange $protectedRange)
+  public function setProtectedRange(Google_Service_Sheets_ProtectedRange $protectedRange)
   {
     $this->protectedRange = $protectedRange;
   }
@@ -5149,12 +5149,12 @@ class Powerform_Google_Service_Sheets_UpdateProtectedRangeRequest extends Powerf
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateSheetPropertiesRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateSheetPropertiesRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $fields;
-  protected $propertiesType = 'Powerform_Google_Service_Sheets_SheetProperties';
+  protected $propertiesType = 'Google_Service_Sheets_SheetProperties';
   protected $propertiesDataType = '';
 
 
@@ -5166,7 +5166,7 @@ class Powerform_Google_Service_Sheets_UpdateSheetPropertiesRequest extends Power
   {
     return $this->fields;
   }
-  public function setProperties(Powerform_Google_Service_Sheets_SheetProperties $properties)
+  public function setProperties(Google_Service_Sheets_SheetProperties $properties)
   {
     $this->properties = $properties;
   }
@@ -5176,12 +5176,12 @@ class Powerform_Google_Service_Sheets_UpdateSheetPropertiesRequest extends Power
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateSpreadsheetPropertiesRequest extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateSpreadsheetPropertiesRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $fields;
-  protected $propertiesType = 'Powerform_Google_Service_Sheets_SpreadsheetProperties';
+  protected $propertiesType = 'Google_Service_Sheets_SpreadsheetProperties';
   protected $propertiesDataType = '';
 
 
@@ -5193,7 +5193,7 @@ class Powerform_Google_Service_Sheets_UpdateSpreadsheetPropertiesRequest extends
   {
     return $this->fields;
   }
-  public function setProperties(Powerform_Google_Service_Sheets_SpreadsheetProperties $properties)
+  public function setProperties(Google_Service_Sheets_SpreadsheetProperties $properties)
   {
     $this->properties = $properties;
   }
@@ -5203,7 +5203,7 @@ class Powerform_Google_Service_Sheets_UpdateSpreadsheetPropertiesRequest extends
   }
 }
 
-class Powerform_Google_Service_Sheets_UpdateValuesResponse extends Powerform_Google_Model
+class Google_Service_Sheets_UpdateValuesResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5256,7 +5256,7 @@ class Powerform_Google_Service_Sheets_UpdateValuesResponse extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Sheets_ValueRange extends Powerform_Google_Collection
+class Google_Service_Sheets_ValueRange extends Google_Collection
 {
   protected $collection_key = 'values';
   protected $internal_gapi_mappings = array(

@@ -174,12 +174,6 @@ class Powerform_CForm_Page extends Powerform_Admin_Page {
 		}
 
 		if ( $is_redirect ) {
-			$to_referer = true;
-
-			if ( isset( $_POST['powerformRedirect' ] ) && "false" === $_POST['powerformRedirect' ] ) {
-				$to_referer = false;
-			}
-
 			//todo add messaging as flash
 			$fallback_redirect = admin_url( 'admin.php' );
 			$fallback_redirect = add_query_arg(
@@ -188,8 +182,7 @@ class Powerform_CForm_Page extends Powerform_Admin_Page {
 				),
 				$fallback_redirect
 			);
-
-			$this->maybe_redirect_to_referer( $fallback_redirect, $to_referer );
+			$this->maybe_redirect_to_referer( $fallback_redirect );
 		}
 
 		exit;
@@ -206,10 +199,10 @@ class Powerform_CForm_Page extends Powerform_Admin_Page {
 			'powerform_cform_bulk_actions',
 			array(
 				'publish-forms'        => __( "Veröffentlichen", Powerform::DOMAIN ),
-				'draft-forms'          => __( "Unveröffentlicht", Powerform::DOMAIN ),
-				'clone-forms'          => __( "Duplikat", Powerform::DOMAIN ),
-				'reset-views-forms'    => __( "Tracking-Reset", Powerform::DOMAIN ),
-				'delete-entries-forms' => __( "Einsendungen löschen", Powerform::DOMAIN ),
+				'draft-forms'          => __( "Nicht veröffentlichen", Powerform::DOMAIN ),
+				'clone-forms'          => __( "Duplizieren", Powerform::DOMAIN ),
+				'reset-views-forms'    => __( "Reset Tracking Data", Powerform::DOMAIN ),
+				'delete-entries-forms' => __( "Delete Submissions", Powerform::DOMAIN ),
 				'delete-forms'         => __( "Löschen", Powerform::DOMAIN ),
 			) );
 	}
@@ -244,6 +237,7 @@ class Powerform_CForm_Page extends Powerform_Admin_Page {
 		if ( ! isset( $data['models'] ) || empty( $data['models'] ) ) {
 			return $modules;
 		}
+
 
 		foreach ( $data['models'] as $model ) {
 			$modules[] = array(
@@ -322,29 +316,12 @@ class Powerform_CForm_Page extends Powerform_Admin_Page {
 
 			//update title
 			if ( isset( $model->settings['formName'] ) ) {
-				$model->settings['formName'] = sprintf( __( "Kopie von %s", Powerform::DOMAIN ), $model->settings['formName'] );
+				$model->settings['formName'] = sprintf( __( "Copy of %s", Powerform::DOMAIN ), $model->settings['formName'] );
 			}
 
 			//save it to create new record
 			$new_id = $model->save( true );
-
-			/**
-			* Action called after form cloned
-			*
-			* @since 1.11
-			*
-			* @param int    $id - form id
-			* @param object $model - form model
-			*
-			*/
-			do_action( 'powerform_form_action_clone', $new_id, $model );
-
 			powerform_clone_form_submissions_retention( $id, $new_id );
-
-			// Purge count forms cache
-			wp_cache_delete( 'powerform_form_total_entries', 'powerform_form_total' );
-			wp_cache_delete( 'powerform_form_total_entries_publish', 'powerform_form_total_entries_publish' );
-			wp_cache_delete( 'powerform_form_total_entries_draft', 'powerform_form_total_entries_draft' );
 		}
 	}
 
@@ -379,21 +356,6 @@ class Powerform_CForm_Page extends Powerform_Admin_Page {
 			$form_view->delete_by_form( $id );
 			powerform_update_form_submissions_retention( $id, null, null );
 			wp_delete_post( $id );
-
-			// Purge count forms cache
-			wp_cache_delete( 'powerform_form_total_entries', 'powerform_form_total_entries' );
-			wp_cache_delete( 'powerform_form_total_entries_publish', 'powerform_form_total_entries_publish' );
-			wp_cache_delete( 'powerform_form_total_entries_draft', 'powerform_form_total_entries_draft' );
-
-			/**
-			 * Action called after quiz deleted
-			 *
-			 * @since 1.11
-			 *
-			 * @param int    $id - quiz id
-			 *
-			 */
-			do_action( 'powerform_form_action_delete', $id );
 		}
 	}
 
@@ -433,7 +395,7 @@ class Powerform_CForm_Page extends Powerform_Admin_Page {
 		fwrite( $fp, $encoded ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fwrite
 		fseek( $fp, 0 );
 
-		$filename = sanitize_title( __( 'powerform', POWERFORM::DOMAIN ) ) . '-' . sanitize_title( $model_name ) . '-form-export' . '.txt';
+		$filename = 'powerform-' . sanitize_title( $model_name ) . '-form-export' . '.txt';
 
 		header( 'Content-Description: File Transfer' );
 		header( 'Content-Type: text/plain' );
@@ -483,7 +445,5 @@ class Powerform_CForm_Page extends Powerform_Admin_Page {
 		wp_enqueue_style( 'intlTelInput-powerform-css', $style_src, array(), $style_version ); // intlTelInput
 		wp_enqueue_script( 'powerform-intlTelInput', $script_src, array( 'jquery' ), $script_version, false ); // intlTelInput
 
-		powerform_print_forms_admin_styles( POWERFORM_VERSION );
-		powerform_print_front_scripts( POWERFORM_VERSION );
 	}
 }

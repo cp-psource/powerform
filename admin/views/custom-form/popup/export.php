@@ -1,5 +1,5 @@
 <?php
-$form_id = $_POST['id'];// phpcs:ignore -- varified on admin ajax
+$form_id = $_POST['id'];// WPCS: CSRF ok. varified on admin ajax
 $nonce   = wp_create_nonce( 'powerformCustomFormRequest' );
 
 $exportable = array();
@@ -7,10 +7,10 @@ $model      = Powerform_Custom_Form_Model::model()->load( $form_id );
 if ( $model instanceof Powerform_Custom_Form_Model ) {
 	$exportable = $model->to_exportable_data();
 }
-$text_area_id = uniqid( 'export-text-' );
+$text_area_id = uniqid('export-text-');
 ?>
 
-<div class="sui-box-body psource-popup-form">
+<div class="sui-box-body wpmudev-popup-form">
 
 	<div class="sui-form-field">
 		<textarea class="sui-form-control" readonly="readonly" rows="10" id="<?php echo esc_attr( $text_area_id ); ?>"></textarea>
@@ -19,18 +19,16 @@ $text_area_id = uniqid( 'export-text-' );
 
 	<div class="sui-notice sui-notice-info">
 		<p>
-			<?php
-			echo(
+			<?php echo(
 			sprintf(
-				__( 'Du kannst diese %1$s in Powerform %2$s%3$s%4$s oder höher importieren. Die %5$s können bei einer niedrigeren Version als Deiner Installation beschädigt werden.', Powerform::DOMAIN ), //phpcs:ignore
-				__( 'Formular', Powerform::DOMAIN ),//phpcs:ignore
+				__( 'Du kannst diese %1$s in Powerform %2$s%3$s%4$s oder höher importieren. Die %5$s können bei einer Version, die niedriger als Deine Installation ist, beschädigt werden.', Powerform::DOMAIN ), //phpcs:ignore
+				__( 'Formulare', Powerform::DOMAIN ),//phpcs:ignore
 				'<strong>',
 				POWERFORM_VERSION,//phpcs:ignore
 				'</strong>',
-				__( 'Formular', Powerform::DOMAIN )
+				__( 'Formulare', Powerform::DOMAIN )
 			)
-			);
-			?>
+			); ?>
 		</p>
 	</div>
 

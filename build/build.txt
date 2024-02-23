@@ -13,15 +13,10 @@ admin/popup/login.js
 admin/popup/quizzes.js
 admin/popup/schedule.js
 admin/popup/new-form.js
-admin/popup/polls.js
 admin/popup/ajax.js
 admin/popup/delete.js
 admin/popup/preview.js
 admin/popup/reset-plugin-settings.js
-admin/popup/disconnect-stripe.js
-admin/popup/disconnect-paypal.js
-admin/popup/approve-user.js
-admin/popup/delete-unconfirmed-user.js
 admin/popups.js
 text!tpl/popups.html
 admin/addons/view.js
@@ -29,3 +24,6 @@ admin/addons/addons.js
 admin/views.js
 admin/application.js
 admin/setup.js
+
+
+553479-1557340684-au

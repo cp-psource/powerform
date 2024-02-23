@@ -16,7 +16,7 @@ class Powerform_Settings_Page extends Powerform_Admin_Page {
 	 * @var array
 	 */
 	private $addons_data = array();
-	public $addons_list  = array();
+	public  $addons_list = array();
 
 	public function init() {
 		$this->process_request();
@@ -54,7 +54,8 @@ class Powerform_Settings_Page extends Powerform_Admin_Page {
 			return;
 		}
 
-		if ( ! wp_verify_nonce( $_POST['powerformNonce'], 'powerformSettingsRequest' ) ) {
+		$nonce = $_POST['powerformNonce']; // WPCS: CSRF OK
+		if ( ! wp_verify_nonce( $nonce, 'powerformSettingsRequest' ) ) {
 			return;
 		}
 
@@ -63,16 +64,6 @@ class Powerform_Settings_Page extends Powerform_Admin_Page {
 		switch ( $action ) {
 			case 'reset_plugin_settings':
 				powerform_reset_settings();
-				break;
-			case 'disconnect_stripe':
-				if ( class_exists( 'Powerform_Gateway_Stripe' ) ) {
-					Powerform_Gateway_Stripe::store_settings( array() );
-				}
-				break;
-			case 'disconnect_paypal':
-				if ( class_exists( 'Powerform_PayPal_Express' ) ) {
-					Powerform_PayPal_Express::store_settings( array() );
-				}
 				break;
 			default:
 				break;

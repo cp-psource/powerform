@@ -64,23 +64,23 @@ class Powerform_Name extends Powerform_Field {
 	public function defaults() {
 		return array(
 			'field_label'             => __( 'Name', Powerform::DOMAIN ),
-			'placeholder'             => __( 'E.g. John Doe', Powerform::DOMAIN ),
-			'prefix_label'            => __( 'Prefix', Powerform::DOMAIN ),
-			'fname_label'             => __( 'First Name', Powerform::DOMAIN ),
-			'fname_placeholder'       => __( 'E.g. John', Powerform::DOMAIN ),
-			'mname_label'             => __( 'Middle Name', Powerform::DOMAIN ),
-			'mname_placeholder'       => __( 'E.g. Smith', Powerform::DOMAIN ),
-			'lname_label'             => __( 'Last Name', Powerform::DOMAIN ),
-			'lname_placeholder'       => __( 'E.g. Doe', Powerform::DOMAIN ),
-			'prefix'                  => 'true',
-			'fname'                   => 'true',
-			'mname'                   => 'true',
-			'lname'                   => 'true',
-			'required_message'        => __( 'Name is required.', Powerform::DOMAIN ),
-			'prefix_required_message' => __( 'Prefix is required.', Powerform::DOMAIN ),
-			'fname_required_message'  => __( 'First Name is required.', Powerform::DOMAIN ),
-			'mname_required_message'  => __( 'Middle Name is required.', Powerform::DOMAIN ),
-			'lname_required_message'  => __( 'Last Name is required.', Powerform::DOMAIN ),
+			'placeholder'             => __( 'Z.B. John Doe', Powerform::DOMAIN ),
+			'prefix_label'            => __( 'Präfix', Powerform::DOMAIN ),
+			'fname_label'             => __( 'Vorname', Powerform::DOMAIN ),
+			'fname_placeholder'       => __( 'Z.B. John', Powerform::DOMAIN ),
+			'mname_label'             => __( 'Zweiter Vorname', Powerform::DOMAIN ),
+			'mname_placeholder'       => __( 'Z.B. Smith', Powerform::DOMAIN ),
+			'lname_label'             => __( 'Nachname', Powerform::DOMAIN ),
+			'lname_placeholder'       => __( 'Z.B. Doe', Powerform::DOMAIN ),
+			'prefix'                  => "true",
+			'fname'                   => "true",
+			'mname'                   => "true",
+			'lname'                   => "true",
+			'required_message'        => __( 'Name ist erforderlich.', Powerform::DOMAIN ),
+			'prefix_required_message' => __( 'Präfix ist erforderlich.', Powerform::DOMAIN ),
+			'fname_required_message'  => __( 'Vorname ist erforderlich.', Powerform::DOMAIN ),
+			'mname_required_message'  => __( 'Zweiter Vorname ist erforderlich.', Powerform::DOMAIN ),
+			'lname_required_message'  => __( 'Nachname ist erforderlich.', Powerform::DOMAIN ),
 		);
 	}
 
@@ -135,49 +135,28 @@ class Powerform_Name extends Powerform_Field {
 	 * @return string
 	 */
 	public function get_simple( $field, $design ) {
-		$html        = '';
 		$id          = self::get_property( 'element_id', $field );
 		$name        = $id;
-		$id          = 'powerform-field-' . $id;
+		$id          = $id . '-field';
 		$required    = self::get_property( 'required', $field, false );
-		$ariareq     = 'false';
-		$label       = esc_html( self::get_property( 'field_label', $field, '' ) );
-		$description = esc_html( self::get_property( 'description', $field, '' ) );
+		$label       = self::get_property( 'field_label', $field, '' );
+		$description = self::get_property( 'description', $field, '' );
 		$placeholder = $this->sanitize_value( self::get_property( 'placeholder', $field ) );
 
-		if ( (bool) $required ) {
-			$ariareq = 'true';
-		}
-
-		$value = '';
-
-		// Check if Pre-fill parameter used
-		if ( $this->has_prefill( $field ) ) {
-			// We have pre-fill parameter, use its value or $value
-			$value = $this->get_prefill( $field, $value );
-		}
-
 		$name_attr = array(
-			'type'          => 'text',
-			'name'          => $name,
-			'value'         => $value,
-			'placeholder'   => $placeholder,
-			'id'            => $id,
-			'class'         => 'powerform-input powerform-name--field',
-			'aria-required' => $ariareq,
+			'type'            => 'text',
+			'class'           => 'powerform-name--field powerform-input',
+			'name'            => $name,
+			'id'              => $id,
+			'placeholder'     => $placeholder,
+			'aria-labelledby' => 'powerform-label-' . $id,
 		);
 
 		$autofill_markup = $this->get_element_autofill_markup_attr( $name, $this->form_settings );
 
 		$name_attr = array_merge( $name_attr, $autofill_markup );
 
-		$html .= '<div class="powerform-field">';
-
-			$html .= self::create_input( $name_attr, $label, $description, $required, $design );
-
-		$html .= '</div>';
-
-		return $html;
+		return self::create_input( $name_attr, $label, $description, $required, $design );
 	}
 
 	/**
@@ -191,8 +170,8 @@ class Powerform_Name extends Powerform_Field {
 	 * @return string
 	 */
 	public function get_multi_first_row( $field, $design ) {
-		$html     = '';
 		$cols     = 12;
+		$html     = '';
 		$id       = self::get_property( 'element_id', $field );
 		$name     = $id;
 		$required = self::get_property( 'required', $field, false );
@@ -207,10 +186,10 @@ class Powerform_Name extends Powerform_Field {
 		 */
 		$prefix_required = self::get_property( 'prefix_required', $field, false, 'bool' );
 		$fname_required  = self::get_property( 'fname_required', $field, false, 'bool' );
-		$fname_ariareq   = 'false';
 
-		if ( (bool) self::get_property( 'fname_required', $field, false ) ) {
-			$fname_ariareq = 'true';
+		// If both prefix & first name are disabled, return
+		if ( ! $prefix && ! $fname ) {
+			return '';
 		}
 
 		// If both prefix & first name are enabled, change cols
@@ -218,95 +197,77 @@ class Powerform_Name extends Powerform_Field {
 			$cols = 6;
 		}
 
-		// START: Row
-		$html .= '<div class="powerform-row" data-multiple="true">';
-
-			// FIELD: Prefix
 		if ( $prefix ) {
-
+			/**
+			 * Create prefix field
+			 */
 			$prefix_data = array(
-				'name'  => $id . '-prefix',
-				'id'    => 'powerform-field-prefix-' . $id,
 				'class' => 'powerform-select',
+				'name'  => $id . '-prefix',
+				'id'    => $id . '-prefix',
 			);
 
 			$options        = array();
-			$prefill        = false;
 			$prefix_options = powerform_get_name_prefixes();
 
-			if ( $this->has_prefill( $field, 'prefix' ) ) {
-				// We have pre-fill parameter, use its value or $value
-				$prefill = $this->get_prefill( $field, false, 'prefix' );
-			}
-
 			foreach ( $prefix_options as $key => $pfx ) {
-				$selected = false;
-
-				if ( strtolower( $key ) === strtolower( $prefill ) ) {
-					$selected = true;
-				}
 				$options[] = array(
-					'value' => esc_html( $key ),
-					'label' => esc_html( $pfx ),
-                    'selected' => $selected
+					'value' => $key,
+					'label' => $pfx,
 				);
 			}
 
+			$html .= '<div class="powerform-row powerform-row--inner">';
 			$html .= sprintf( '<div class="powerform-col powerform-col-%s">', $cols );
+			$html .= '<div class="powerform-field powerform-field--inner">';
 
-				$html .= '<div class="powerform-field">';
-
-					$html .= self::create_select(
-						$prefix_data,
-						self::get_property( 'prefix_label', $field ),
-						$options,
-						self::get_property( 'prefix_placeholder', $field ),
-						self::get_property( 'prefix_description', $field ),
-						$prefix_required
-					);
-
-				$html .= '</div>';
-
-			$html .= '</div>';
-		}
-
-			// FIELD: First Name
-		if ( $fname ) {
-
-			$first_name = array(
-				'type'          => 'text',
-				'name'          => $id . '-first-name',
-				'placeholder'   => $this->sanitize_value( self::get_property( 'fname_placeholder', $field ) ),
-				'id'            => 'powerform-field-first-' . $id,
-				'class'         => 'powerform-input',
-				'aria-required' => $fname_ariareq,
+			$html .= self::create_select(
+				$prefix_data,
+				self::get_property( 'prefix_label', $field ),
+				$options,
+				self::get_property( 'prefix_placeholder', $field ),
+				self::get_property( 'prefix_description', $field ),
+				$prefix_required
 			);
 
-			$autofill_markup = $this->get_element_autofill_markup_attr( $id . '-first-name', $this->form_settings );
+			$html .= '</div>';
+			$html .= '</div>';
+
+			if ( ! $fname ) {
+				$html .= '</div>';
+			}
+		}
+
+		if ( $fname ) {
+			/**
+			 * Create first name field
+			 */
+			$first_name = array(
+				'type'            => 'text',
+				'class'           => 'powerform-input',
+				'name'            => $id . '-first-name',
+				'id'              => $id . '-first-name',
+				'placeholder'     => $this->sanitize_value( self::get_property( 'fname_placeholder', $field ) ),
+				'aria-labelledby' => 'powerform-label-' . $id . '-first-name',
+			);
+
+			$autofill_markup = $this->get_element_autofill_markup_attr( $first_name['id'], $this->form_settings );
 
 			$first_name = array_merge( $first_name, $autofill_markup );
 
-			$first_name = $this->replace_from_prefill( $field, $first_name, 'fname' );
+			if ( ! $prefix ) {
+				$html .= '<div class="powerform-row powerform-row--inner">';
+			}
 
 			$html .= sprintf( '<div class="powerform-col powerform-col-%s">', $cols );
+			$html .= '<div class="powerform-field powerform-field--inner">';
 
-				$html .= '<div class="powerform-field">';
-
-					$html .= self::create_input(
-						$first_name,
-						esc_html( self::get_property( 'fname_label', $field ) ),
-						esc_html( self::get_property( 'fname_description', $field ) ),
-						$fname_required,
-						$design
-					);
-
-				$html .= '</div>';
+			$html .= self::create_input( $first_name, self::get_property( 'fname_label', $field ), self::get_property( 'fname_description', $field ), $fname_required, $design );
 
 			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '</div>';
 		}
-
-		// END: Row
-		$html .= '</div>';
 
 		return $html;
 	}
@@ -322,8 +283,8 @@ class Powerform_Name extends Powerform_Field {
 	 * @return string
 	 */
 	public function get_multi_second_row( $field, $design ) {
-		$html     = '';
 		$cols     = 12;
+		$html     = '';
 		$id       = self::get_property( 'element_id', $field );
 		$name     = $id;
 		$required = self::get_property( 'required', $field, false );
@@ -337,93 +298,75 @@ class Powerform_Name extends Powerform_Field {
 		 * @since 1.6
 		 */
 		$mname_required = self::get_property( 'mname_required', $field, false, 'bool' );
-		$mname_ariareq  = 'false';
 		$lname_required = self::get_property( 'lname_required', $field, false, 'bool' );
-		$lname_ariareq  = 'false';
 
-		if ( (bool) self::get_property( 'mname_required', $field, false ) ) {
-			$mname_ariareq = 'true';
+		// If both prefix & first name are disabled, return
+		if ( ! $mname && ! $lname ) {
+			return '';
 		}
 
-		if ( (bool) self::get_property( 'lname_required', $field, false ) ) {
-			$lname_ariareq = 'true';
-		}
-
+		// If both prefix & first name are enabled, change cols
 		if ( $mname && $lname ) {
 			$cols = 6;
 		}
 
-		// START: Row
-		$html .= '<div class="powerform-row" data-multiple="true">';
-
-			// FIELD: Middle Name
 		if ( $mname ) {
-
+			/**
+			 * Create middle name field
+			 */
 			$middle_name = array(
-				'type'          => 'text',
-				'name'          => $id . '-middle-name',
-				'placeholder'   => $this->sanitize_value( self::get_property( 'mname_placeholder', $field ) ),
-				'id'            => 'powerform-field-middle-' . $id,
-				'class'         => 'powerform-input',
-				'aria-required' => $mname_ariareq,
+				'type'            => 'text',
+				'class'           => 'powerform-input',
+				'name'            => $id . '-middle-name',
+				'id'              => $id . '-middle-name',
+				'placeholder'     => $this->sanitize_value( self::get_property( 'mname_placeholder', $field ) ),
+				'aria-labelledby' => 'powerform-label-' . $id . '-middle-name',
 			);
 
-			$middle_name = $this->replace_from_prefill( $field, $middle_name, 'mname' );
-
+			$html .= '<div class="powerform-row powerform-row--inner">';
 			$html .= sprintf( '<div class="powerform-col powerform-col-%s">', $cols );
+			$html .= '<div class="powerform-field powerform-field--inner">';
 
-				$html .= '<div class="powerform-field">';
-
-				$html .= self::create_input(
-					$middle_name,
-					esc_html( self::get_property( 'mname_label', $field ) ),
-					esc_html( self::get_property( 'mname_description', $field ) ),
-					$mname_required,
-					$design
-				);
-
-				$html .= '</div>';
+			$html .= self::create_input( $middle_name, self::get_property( 'mname_label', $field ), self::get_property( 'mname_description', $field ), $mname_required, $design );
 
 			$html .= '</div>';
+			$html .= '</div>';
+
+			if ( ! $lname ) {
+				$html .= '</div>';
+			}
 		}
 
-			// FIELD: Last Name
 		if ( $lname ) {
-
+			/**
+			 * Create last name field
+			 */
 			$last_name = array(
-				'type'          => 'text',
-				'name'          => $id . '-last-name',
-				'placeholder'   => $this->sanitize_value( self::get_property( 'lname_placeholder', $field ) ),
-				'id'            => 'powerform-field-last-' . $id,
-				'class'         => 'powerform-input',
-				'aria-required' => $lname_ariareq,
+				'type'            => 'text',
+				'class'           => 'powerform-input',
+				'name'            => $id . '-last-name',
+				'id'              => $id . '-last-name',
+				'placeholder'     => $this->sanitize_value( self::get_property( 'lname_placeholder', $field ) ),
+				'aria-labelledby' => 'powerform-label-' . $id . '-last-name',
 			);
 
 			$autofill_markup = $this->get_element_autofill_markup_attr( $id . '-last-name', $this->form_settings );
 
 			$last_name = array_merge( $last_name, $autofill_markup );
 
-			$last_name = $this->replace_from_prefill( $field, $last_name, 'lname' );
+			if ( ! $mname ) {
+				$html .= '<div class="powerform-row powerform-row--inner">';
+			}
 
 			$html .= sprintf( '<div class="powerform-col powerform-col-%s">', $cols );
+			$html .= '<div class="powerform-field powerform-field--inner">';
 
-			$html .= '<div class="powerform-field">';
-
-				$html .= self::create_input(
-					$last_name,
-					esc_html( self::get_property( 'lname_label', $field ) ),
-					esc_html( self::get_property( 'lname_description', $field ) ),
-					$lname_required,
-					$design
-				);
-
-				$html .= '</div>';
+			$html .= self::create_input( $last_name, self::get_property( 'lname_label', $field ), self::get_property( 'lname_description', $field ), $lname_required, $design );
 
 			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '</div>';
 		}
-
-		// END: Row
-		$html .= '</div>';
 
 		return $html;
 	}
@@ -453,7 +396,7 @@ class Powerform_Name extends Powerform_Field {
 			$html = $this->get_simple( $field, $design );
 		} else {
 			// Multiple fields
-			$html  = $this->get_multi_first_row( $field, $design );
+			$html = $this->get_multi_first_row( $field, $design );
 			$html .= $this->get_multi_second_row( $field, $design );
 		}
 
@@ -469,7 +412,6 @@ class Powerform_Name extends Powerform_Field {
 	public function get_validation_rules() {
 		$rules    = '';
 		$field    = $this->field;
-		$id       = self::get_property( 'element_id', $field );
 		$multiple = self::get_property( 'multiple_name', $field, false, 'bool' );
 		$required = $this->is_required( $field );
 
@@ -511,14 +453,17 @@ class Powerform_Name extends Powerform_Field {
 					$rules .= '"' . $this->get_id( $field ) . '-last-name": "required",';
 				}
 			}
+
+
 		} else {
 			if ( $required ) {
 				$rules .= '"' . $this->get_id( $field ) . '": "required",';
 				$rules .= '"' . $this->get_id( $field ) . '": "trim",';
 			}
+
 		}
 
-		return apply_filters( 'powerform_field_name_validation_rules', $rules, $id, $field );
+		return $rules;
 	}
 
 	/**
@@ -551,9 +496,8 @@ class Powerform_Name extends Powerform_Field {
 					$field,
 					'prefix_required_message',
 					'prefix',
-					__( 'Prefix is required.', Powerform::DOMAIN )
-				);
-				$messages        .= '"' . $this->get_id( $field ) . '-prefix": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
+					__( 'Präfix ist erforderlich.', Powerform::DOMAIN ) );
+				$messages         .= '"' . $this->get_id( $field ) . '-prefix": "' . $required_message . '",' . "\n";
 			}
 
 			if ( $fname && $fname_required ) {
@@ -562,9 +506,8 @@ class Powerform_Name extends Powerform_Field {
 					$field,
 					'fname_required_message',
 					'first',
-					__( 'This field is required. Please input your first name.', Powerform::DOMAIN )
-				);
-				$messages        .= '"' . $this->get_id( $field ) . '-first-name": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
+					__( 'Dieses Feld wird benötigt. Bitte gib Deinen Vornamen ein.', Powerform::DOMAIN ) );
+				$messages         .= '"' . $this->get_id( $field ) . '-first-name": "' . $required_message . '",' . "\n";
 			}
 
 			if ( $mname && $mname_required ) {
@@ -573,9 +516,8 @@ class Powerform_Name extends Powerform_Field {
 					$field,
 					'mname_required_message',
 					'middle',
-					__( 'This field is required. Please input your middle name.', Powerform::DOMAIN )
-				);
-				$messages        .= '"' . $this->get_id( $field ) . '-middle-name": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
+					__( 'Dieses Feld wird benötigt. Bitte gib Deinen zweiten Vornamen ein', Powerform::DOMAIN ) );
+				$messages         .= '"' . $this->get_id( $field ) . '-middle-name": "' . $required_message . '",' . "\n";
 			}
 
 			if ( $lname && $lname_required ) {
@@ -584,20 +526,20 @@ class Powerform_Name extends Powerform_Field {
 					$field,
 					'lname_required_message',
 					'last',
-					__( 'This field is required. Please input your last name.', Powerform::DOMAIN )
-				);
-				$messages        .= '"' . $this->get_id( $field ) . '-last-name": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
+					__( 'Dieses Feld wird benötigt. Bitte gib Deinen Nachnamen ein', Powerform::DOMAIN ) );
+				$messages         .= '"' . $this->get_id( $field ) . '-last-name": "' . $required_message . '",' . "\n";
 			}
+
 		} else {
 			if ( $required ) {
 				// backward compat
 				$required_message = self::get_property( 'required_message', $field, self::FIELD_PROPERTY_VALUE_NOT_EXIST, 'string' );
 				if ( self::FIELD_PROPERTY_VALUE_NOT_EXIST === $required_message ) {
-					$required_message = __( 'This field is required. Please input your name.', Powerform::DOMAIN );
+					$required_message = __( 'Dieses Feld wird benötigt. Bitte gib Deinen Namen ein', Powerform::DOMAIN );
 				}
 
 				$required_message = apply_filters( 'powerform_name_field_required_validation_message', $required_message, $id, $field );
-				$messages        .= '"' . $this->get_id( $field ) . '": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
+				$messages         .= '"' . $this->get_id( $field ) . '": "' . $required_message . '",' . "\n";
 
 			}
 		}
@@ -612,9 +554,8 @@ class Powerform_Name extends Powerform_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$id          = self::get_property( 'element_id', $field );
 		$is_multiple = self::get_property( 'multiple_name', $field, false, 'bool' );
 		$required    = $this->is_required( $field );
@@ -642,8 +583,7 @@ class Powerform_Name extends Powerform_Field {
 						$field,
 						'prefix_required_message',
 						'prefix',
-						__( 'Prefix is required.', Powerform::DOMAIN )
-					);
+						__( 'Präfix ist erforderlich.', Powerform::DOMAIN ) );
 				}
 
 				if ( $fname && $fname_required && empty( $fname_data ) ) {
@@ -652,8 +592,7 @@ class Powerform_Name extends Powerform_Field {
 						$field,
 						'fname_required_message',
 						'first',
-						__( 'This field is required. Please input your first name.', Powerform::DOMAIN )
-					);
+						__( 'Dieses Feld wird benötigt. Bitte gib Deinen Vornamen ein.', Powerform::DOMAIN ) );
 				}
 
 				if ( $mname && $mname_required && empty( $mname_data ) ) {
@@ -662,8 +601,7 @@ class Powerform_Name extends Powerform_Field {
 						$field,
 						'mname_required_message',
 						'middle',
-						__( 'This field is required. Please input your middle name.', Powerform::DOMAIN )
-					);
+						__( 'Dieses Feld wird benötigt. Bitte gib Deinen zweiten Vornamen ein', Powerform::DOMAIN ) );
 				}
 
 				if ( $lname && $lname_required && empty( $lname_data ) ) {
@@ -672,17 +610,18 @@ class Powerform_Name extends Powerform_Field {
 						$field,
 						'lname_required_message',
 						'last',
-						__( 'This field is required. Please input your last name.', Powerform::DOMAIN )
-					);
+						__( 'Dieses Feld wird benötigt. Bitte gib Deinen Nachnamen ein', Powerform::DOMAIN ) );
 				}
+
 			}
+
 		} else {
 			if ( $required ) {
 				if ( empty( $data ) ) {
 					// backward compat
 					$required_message = self::get_property( 'required_message', $field, self::FIELD_PROPERTY_VALUE_NOT_EXIST, 'string' );
 					if ( self::FIELD_PROPERTY_VALUE_NOT_EXIST === $required_message ) {
-						$required_message = __( 'This field is required. Please input your name.', Powerform::DOMAIN );
+						$required_message = __( 'Dieses Feld wird benötigt. Bitte gib Deinen Namen ein', Powerform::DOMAIN );
 					}
 
 					$required_message                = apply_filters( 'powerform_name_field_required_validation_message', $required_message, $id, $field );
@@ -691,6 +630,7 @@ class Powerform_Name extends Powerform_Field {
 			}
 		}
 	}
+
 
 	/**
 	 * Sanitize data
@@ -709,4 +649,5 @@ class Powerform_Name extends Powerform_Field {
 
 		return apply_filters( 'powerform_field_name_sanitize', $data, $field, $original_data );
 	}
+
 }

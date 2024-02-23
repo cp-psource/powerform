@@ -20,28 +20,14 @@ class Powerform_Loader {
 	 * Retrieve data
 	 *
 	 * @since 1.0
-	 * @since 1.7 add $requirements
-	 *
-	 * @param       $dir
-	 * @param array $requirements
-	 *
 	 * @return mixed
 	 */
-	public function load_files( $dir, $requirements = array() ) {
+	public function load_files( $dir ) {
 		$files = scandir( powerform_plugin_dir() . $dir );
 		foreach ( $files as $file ) {
 			$path = powerform_plugin_dir() . $dir . '/' . $file;
 
 			if( $this->is_php( $file ) && is_file( $path ) ) {
-
-				// check requirement
-				if ( ! empty ( $requirements ) ) {
-					if ( in_array( $file, array_keys( $requirements ), true ) ) {
-						if ( ! $this->is_requirement_fulfilled( $requirements[ $file ] ) ) {
-							continue;
-						}
-					}
-				}
 				// Get class name
 				$class_name = str_replace( '.php', '', $file );
 				// Include file
@@ -105,26 +91,5 @@ class Powerform_Loader {
 
 			return $object;
 		}
-	}
-
-	/**
-	 * Check if requirement fulfilled by system
-	 *
-	 * @since 1.7
-	 *
-	 * @param array $requirement
-	 *
-	 * @return bool
-	 */
-	private function is_requirement_fulfilled( $requirement ) {
-		// check php version
-		if ( isset( $requirement['php'] ) ) {
-			$version = $requirement['php'];
-			if ( version_compare( PHP_VERSION, $version, 'lt' ) ) {
-				return false;
-			}
-		}
-
-		return true;
 	}
 }

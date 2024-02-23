@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Genomics extends Powerform_Google_Service
+class Google_Service_Genomics extends Google_Service
 {
   /** View and manage your data in Google BigQuery. */
   const BIGQUERY =
@@ -58,14 +58,14 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
   public $referencesets;
   public $variants;
   public $variantsets;
-  
+
 
   /**
    * Constructs the internal representation of the Genomics service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://genomics.googleapis.com/';
@@ -73,7 +73,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'genomics';
 
-    $this->callsets = new Powerform_Google_Service_Genomics_Callsets_Resource(
+    $this->callsets = new Google_Service_Genomics_Callsets_Resource(
         $this,
         $this->serviceName,
         'callsets',
@@ -125,7 +125,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
           )
         )
     );
-    $this->datasets = new Powerform_Google_Service_Genomics_Datasets_Resource(
+    $this->datasets = new Google_Service_Genomics_Datasets_Resource(
         $this,
         $this->serviceName,
         'datasets',
@@ -230,7 +230,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
           )
         )
     );
-    $this->operations = new Powerform_Google_Service_Genomics_Operations_Resource(
+    $this->operations = new Google_Service_Genomics_Operations_Resource(
         $this,
         $this->serviceName,
         'operations',
@@ -282,7 +282,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
           )
         )
     );
-    $this->readgroupsets = new Powerform_Google_Service_Genomics_Readgroupsets_Resource(
+    $this->readgroupsets = new Google_Service_Genomics_Readgroupsets_Resource(
         $this,
         $this->serviceName,
         'readgroupsets',
@@ -344,7 +344,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
           )
         )
     );
-    $this->readgroupsets_coveragebuckets = new Powerform_Google_Service_Genomics_ReadgroupsetsCoveragebuckets_Resource(
+    $this->readgroupsets_coveragebuckets = new Google_Service_Genomics_ReadgroupsetsCoveragebuckets_Resource(
         $this,
         $this->serviceName,
         'coveragebuckets',
@@ -388,7 +388,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
           )
         )
     );
-    $this->reads = new Powerform_Google_Service_Genomics_Reads_Resource(
+    $this->reads = new Google_Service_Genomics_Reads_Resource(
         $this,
         $this->serviceName,
         'reads',
@@ -406,7 +406,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
           )
         )
     );
-    $this->references = new Powerform_Google_Service_Genomics_References_Resource(
+    $this->references = new Google_Service_Genomics_References_Resource(
         $this,
         $this->serviceName,
         'references',
@@ -430,7 +430,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
           )
         )
     );
-    $this->references_bases = new Powerform_Google_Service_Genomics_ReferencesBases_Resource(
+    $this->references_bases = new Google_Service_Genomics_ReferencesBases_Resource(
         $this,
         $this->serviceName,
         'bases',
@@ -466,7 +466,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
           )
         )
     );
-    $this->referencesets = new Powerform_Google_Service_Genomics_Referencesets_Resource(
+    $this->referencesets = new Google_Service_Genomics_Referencesets_Resource(
         $this,
         $this->serviceName,
         'referencesets',
@@ -490,7 +490,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
           )
         )
     );
-    $this->variants = new Powerform_Google_Service_Genomics_Variants_Resource(
+    $this->variants = new Google_Service_Genomics_Variants_Resource(
         $this,
         $this->serviceName,
         'variants',
@@ -550,7 +550,7 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
           )
         )
     );
-    $this->variantsets = new Powerform_Google_Service_Genomics_Variantsets_Resource(
+    $this->variantsets = new Google_Service_Genomics_Variantsets_Resource(
         $this,
         $this->serviceName,
         'variantsets',
@@ -620,11 +620,11 @@ class Powerform_Google_Service_Genomics extends Powerform_Google_Service
  * The "callsets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $callsets = $genomicsService->callsets;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_Callsets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_Callsets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -633,15 +633,15 @@ class Powerform_Google_Service_Genomics_Callsets_Resource extends Powerform_Goog
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    * (callsets.create)
    *
-   * @param Powerform_Google_CallSet $postBody
+   * @param Google_CallSet $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_CallSet
+   * @return Google_Service_Genomics_CallSet
    */
-  public function create(Powerform_Google_Service_Genomics_CallSet $postBody, $optParams = array())
+  public function create(Google_Service_Genomics_CallSet $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Genomics_CallSet");
+    return $this->call('create', array($params), "Google_Service_Genomics_CallSet");
   }
 
   /**
@@ -652,13 +652,13 @@ class Powerform_Google_Service_Genomics_Callsets_Resource extends Powerform_Goog
    *
    * @param string $callSetId The ID of the call set to be deleted.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Empty
+   * @return Google_Service_Genomics_Empty
    */
   public function delete($callSetId, $optParams = array())
   {
     $params = array('callSetId' => $callSetId);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Genomics_Empty");
+    return $this->call('delete', array($params), "Google_Service_Genomics_Empty");
   }
 
   /**
@@ -669,13 +669,13 @@ class Powerform_Google_Service_Genomics_Callsets_Resource extends Powerform_Goog
    *
    * @param string $callSetId The ID of the call set.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_CallSet
+   * @return Google_Service_Genomics_CallSet
    */
   public function get($callSetId, $optParams = array())
   {
     $params = array('callSetId' => $callSetId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Genomics_CallSet");
+    return $this->call('get', array($params), "Google_Service_Genomics_CallSet");
   }
 
   /**
@@ -685,19 +685,19 @@ class Powerform_Google_Service_Genomics_Callsets_Resource extends Powerform_Goog
    * This method supports patch semantics. (callsets.patch)
    *
    * @param string $callSetId The ID of the call set to be updated.
-   * @param Powerform_Google_CallSet $postBody
+   * @param Google_CallSet $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask An optional mask specifying which fields to
    * update. At this time, the only mutable field is name. The only acceptable
    * value is "name". If unspecified, all mutable fields will be updated.
-   * @return Powerform_Google_Service_Genomics_CallSet
+   * @return Google_Service_Genomics_CallSet
    */
-  public function patch($callSetId, Powerform_Google_Service_Genomics_CallSet $postBody, $optParams = array())
+  public function patch($callSetId, Google_Service_Genomics_CallSet $postBody, $optParams = array())
   {
     $params = array('callSetId' => $callSetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Genomics_CallSet");
+    return $this->call('patch', array($params), "Google_Service_Genomics_CallSet");
   }
 
   /**
@@ -708,15 +708,15 @@ class Powerform_Google_Service_Genomics_Callsets_Resource extends Powerform_Goog
    * s/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L178).
    * (callsets.search)
    *
-   * @param Powerform_Google_SearchCallSetsRequest $postBody
+   * @param Google_SearchCallSetsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_SearchCallSetsResponse
+   * @return Google_Service_Genomics_SearchCallSetsResponse
    */
-  public function search(Powerform_Google_Service_Genomics_SearchCallSetsRequest $postBody, $optParams = array())
+  public function search(Google_Service_Genomics_SearchCallSetsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('search', array($params), "Powerform_Google_Service_Genomics_SearchCallSetsResponse");
+    return $this->call('search', array($params), "Google_Service_Genomics_SearchCallSetsResponse");
   }
 }
 
@@ -724,11 +724,11 @@ class Powerform_Google_Service_Genomics_Callsets_Resource extends Powerform_Goog
  * The "datasets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $datasets = $genomicsService->datasets;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_Datasets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -737,15 +737,15 @@ class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Goog
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    * (datasets.create)
    *
-   * @param Powerform_Google_Dataset $postBody
+   * @param Google_Dataset $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Dataset
+   * @return Google_Service_Genomics_Dataset
    */
-  public function create(Powerform_Google_Service_Genomics_Dataset $postBody, $optParams = array())
+  public function create(Google_Service_Genomics_Dataset $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Genomics_Dataset");
+    return $this->call('create', array($params), "Google_Service_Genomics_Dataset");
   }
 
   /**
@@ -756,13 +756,13 @@ class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Goog
    *
    * @param string $datasetId The ID of the dataset to be deleted.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Empty
+   * @return Google_Service_Genomics_Empty
    */
   public function delete($datasetId, $optParams = array())
   {
     $params = array('datasetId' => $datasetId);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Genomics_Empty");
+    return $this->call('delete', array($params), "Google_Service_Genomics_Empty");
   }
 
   /**
@@ -773,13 +773,13 @@ class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Goog
    *
    * @param string $datasetId The ID of the dataset.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Dataset
+   * @return Google_Service_Genomics_Dataset
    */
   public function get($datasetId, $optParams = array())
   {
     $params = array('datasetId' => $datasetId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Genomics_Dataset");
+    return $this->call('get', array($params), "Google_Service_Genomics_Dataset");
   }
 
   /**
@@ -791,15 +791,15 @@ class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Goog
    *
    * @param string $resource REQUIRED: The resource for which policy is being
    * specified. Format is `datasets/`.
-   * @param Powerform_Google_GetIamPolicyRequest $postBody
+   * @param Google_GetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Policy
+   * @return Google_Service_Genomics_Policy
    */
-  public function getIamPolicy($resource, Powerform_Google_Service_Genomics_GetIamPolicyRequest $postBody, $optParams = array())
+  public function getIamPolicy($resource, Google_Service_Genomics_GetIamPolicyRequest $postBody, $optParams = array())
   {
     $params = array('resource' => $resource, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('getIamPolicy', array($params), "Powerform_Google_Service_Genomics_Policy");
+    return $this->call('getIamPolicy', array($params), "Google_Service_Genomics_Policy");
   }
 
   /**
@@ -816,13 +816,13 @@ class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Goog
    * @opt_param string pageToken The continuation token, which is used to page
    * through large result sets. To get the next page of results, set this
    * parameter to the value of `nextPageToken` from the previous response.
-   * @return Powerform_Google_Service_Genomics_ListDatasetsResponse
+   * @return Google_Service_Genomics_ListDatasetsResponse
    */
   public function listDatasets($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Genomics_ListDatasetsResponse");
+    return $this->call('list', array($params), "Google_Service_Genomics_ListDatasetsResponse");
   }
 
   /**
@@ -832,19 +832,19 @@ class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Goog
    * This method supports patch semantics. (datasets.patch)
    *
    * @param string $datasetId The ID of the dataset to be updated.
-   * @param Powerform_Google_Dataset $postBody
+   * @param Google_Dataset $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask An optional mask specifying which fields to
    * update. At this time, the only mutable field is name. The only acceptable
    * value is "name". If unspecified, all mutable fields will be updated.
-   * @return Powerform_Google_Service_Genomics_Dataset
+   * @return Google_Service_Genomics_Dataset
    */
-  public function patch($datasetId, Powerform_Google_Service_Genomics_Dataset $postBody, $optParams = array())
+  public function patch($datasetId, Google_Service_Genomics_Dataset $postBody, $optParams = array())
   {
     $params = array('datasetId' => $datasetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Genomics_Dataset");
+    return $this->call('patch', array($params), "Google_Service_Genomics_Dataset");
   }
 
   /**
@@ -856,15 +856,15 @@ class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Goog
    *
    * @param string $resource REQUIRED: The resource for which policy is being
    * specified. Format is `datasets/`.
-   * @param Powerform_Google_SetIamPolicyRequest $postBody
+   * @param Google_SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Policy
+   * @return Google_Service_Genomics_Policy
    */
-  public function setIamPolicy($resource, Powerform_Google_Service_Genomics_SetIamPolicyRequest $postBody, $optParams = array())
+  public function setIamPolicy($resource, Google_Service_Genomics_SetIamPolicyRequest $postBody, $optParams = array())
   {
     $params = array('resource' => $resource, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('setIamPolicy', array($params), "Powerform_Google_Service_Genomics_Policy");
+    return $this->call('setIamPolicy', array($params), "Google_Service_Genomics_Policy");
   }
 
   /**
@@ -876,15 +876,15 @@ class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Goog
    *
    * @param string $resource REQUIRED: The resource for which policy is being
    * specified. Format is `datasets/`.
-   * @param Powerform_Google_TestIamPermissionsRequest $postBody
+   * @param Google_TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_TestIamPermissionsResponse
+   * @return Google_Service_Genomics_TestIamPermissionsResponse
    */
-  public function testIamPermissions($resource, Powerform_Google_Service_Genomics_TestIamPermissionsRequest $postBody, $optParams = array())
+  public function testIamPermissions($resource, Google_Service_Genomics_TestIamPermissionsRequest $postBody, $optParams = array())
   {
     $params = array('resource' => $resource, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('testIamPermissions', array($params), "Powerform_Google_Service_Genomics_TestIamPermissionsResponse");
+    return $this->call('testIamPermissions', array($params), "Google_Service_Genomics_TestIamPermissionsResponse");
   }
 
   /**
@@ -895,15 +895,15 @@ class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Goog
    * after the deletion occurred. (datasets.undelete)
    *
    * @param string $datasetId The ID of the dataset to be undeleted.
-   * @param Powerform_Google_UndeleteDatasetRequest $postBody
+   * @param Google_UndeleteDatasetRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Dataset
+   * @return Google_Service_Genomics_Dataset
    */
-  public function undelete($datasetId, Powerform_Google_Service_Genomics_UndeleteDatasetRequest $postBody, $optParams = array())
+  public function undelete($datasetId, Google_Service_Genomics_UndeleteDatasetRequest $postBody, $optParams = array())
   {
     $params = array('datasetId' => $datasetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('undelete', array($params), "Powerform_Google_Service_Genomics_Dataset");
+    return $this->call('undelete', array($params), "Google_Service_Genomics_Dataset");
   }
 }
 
@@ -911,11 +911,11 @@ class Powerform_Google_Service_Genomics_Datasets_Resource extends Powerform_Goog
  * The "operations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $operations = $genomicsService->operations;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_Operations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_Operations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -926,15 +926,15 @@ class Powerform_Google_Service_Genomics_Operations_Resource extends Powerform_Go
    * cancellation. (operations.cancel)
    *
    * @param string $name The name of the operation resource to be cancelled.
-   * @param Powerform_Google_CancelOperationRequest $postBody
+   * @param Google_CancelOperationRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Empty
+   * @return Google_Service_Genomics_Empty
    */
-  public function cancel($name, Powerform_Google_Service_Genomics_CancelOperationRequest $postBody, $optParams = array())
+  public function cancel($name, Google_Service_Genomics_CancelOperationRequest $postBody, $optParams = array())
   {
     $params = array('name' => $name, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('cancel', array($params), "Powerform_Google_Service_Genomics_Empty");
+    return $this->call('cancel', array($params), "Google_Service_Genomics_Empty");
   }
 
   /**
@@ -944,13 +944,13 @@ class Powerform_Google_Service_Genomics_Operations_Resource extends Powerform_Go
    *
    * @param string $name The name of the operation resource.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Operation
+   * @return Google_Service_Genomics_Operation
    */
   public function get($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Genomics_Operation");
+    return $this->call('get', array($params), "Google_Service_Genomics_Operation");
   }
 
   /**
@@ -969,13 +969,13 @@ class Powerform_Google_Service_Genomics_Operations_Resource extends Powerform_Go
    * @opt_param int pageSize The maximum number of results to return. If
    * unspecified, defaults to 256. The maximum value is 2048.
    * @opt_param string pageToken The standard list page token.
-   * @return Powerform_Google_Service_Genomics_ListOperationsResponse
+   * @return Google_Service_Genomics_ListOperationsResponse
    */
   public function listOperations($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Genomics_ListOperationsResponse");
+    return $this->call('list', array($params), "Google_Service_Genomics_ListOperationsResponse");
   }
 }
 
@@ -983,11 +983,11 @@ class Powerform_Google_Service_Genomics_Operations_Resource extends Powerform_Go
  * The "readgroupsets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $readgroupsets = $genomicsService->readgroupsets;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_Readgroupsets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_Readgroupsets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1000,13 +1000,13 @@ class Powerform_Google_Service_Genomics_Readgroupsets_Resource extends Powerform
    * caller must have WRITE permissions to the dataset associated with this read
    * group set.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Empty
+   * @return Google_Service_Genomics_Empty
    */
   public function delete($readGroupSetId, $optParams = array())
   {
     $params = array('readGroupSetId' => $readGroupSetId);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Genomics_Empty");
+    return $this->call('delete', array($params), "Google_Service_Genomics_Empty");
   }
 
   /**
@@ -1021,15 +1021,15 @@ class Powerform_Google_Service_Genomics_Readgroupsets_Resource extends Powerform
    *
    * @param string $readGroupSetId Required. The ID of the read group set to
    * export. The caller must have READ access to this read group set.
-   * @param Powerform_Google_ExportReadGroupSetRequest $postBody
+   * @param Google_ExportReadGroupSetRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Operation
+   * @return Google_Service_Genomics_Operation
    */
-  public function export($readGroupSetId, Powerform_Google_Service_Genomics_ExportReadGroupSetRequest $postBody, $optParams = array())
+  public function export($readGroupSetId, Google_Service_Genomics_ExportReadGroupSetRequest $postBody, $optParams = array())
   {
     $params = array('readGroupSetId' => $readGroupSetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('export', array($params), "Powerform_Google_Service_Genomics_Operation");
+    return $this->call('export', array($params), "Google_Service_Genomics_Operation");
   }
 
   /**
@@ -1040,13 +1040,13 @@ class Powerform_Google_Service_Genomics_Readgroupsets_Resource extends Powerform
    *
    * @param string $readGroupSetId The ID of the read group set.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_ReadGroupSet
+   * @return Google_Service_Genomics_ReadGroupSet
    */
   public function get($readGroupSetId, $optParams = array())
   {
     $params = array('readGroupSetId' => $readGroupSetId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Genomics_ReadGroupSet");
+    return $this->call('get', array($params), "Google_Service_Genomics_ReadGroupSet");
   }
 
   /**
@@ -1063,15 +1063,15 @@ class Powerform_Google_Service_Genomics_Readgroupsets_Resource extends Powerform
    * reads will be stripped of positional information (reference name and
    * position) (readgroupsets.import)
    *
-   * @param Powerform_Google_ImportReadGroupSetsRequest $postBody
+   * @param Google_ImportReadGroupSetsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Operation
+   * @return Google_Service_Genomics_Operation
    */
-  public function import(Powerform_Google_Service_Genomics_ImportReadGroupSetsRequest $postBody, $optParams = array())
+  public function import(Google_Service_Genomics_ImportReadGroupSetsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('import', array($params), "Powerform_Google_Service_Genomics_Operation");
+    return $this->call('import', array($params), "Google_Service_Genomics_Operation");
   }
 
   /**
@@ -1083,19 +1083,19 @@ class Powerform_Google_Service_Genomics_Readgroupsets_Resource extends Powerform
    * @param string $readGroupSetId The ID of the read group set to be updated. The
    * caller must have WRITE permissions to the dataset associated with this read
    * group set.
-   * @param Powerform_Google_ReadGroupSet $postBody
+   * @param Google_ReadGroupSet $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask An optional mask specifying which fields to
    * update. Supported fields: * name. * referenceSetId. Leaving `updateMask`
    * unset is equivalent to specifying all mutable fields.
-   * @return Powerform_Google_Service_Genomics_ReadGroupSet
+   * @return Google_Service_Genomics_ReadGroupSet
    */
-  public function patch($readGroupSetId, Powerform_Google_Service_Genomics_ReadGroupSet $postBody, $optParams = array())
+  public function patch($readGroupSetId, Google_Service_Genomics_ReadGroupSet $postBody, $optParams = array())
   {
     $params = array('readGroupSetId' => $readGroupSetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Genomics_ReadGroupSet");
+    return $this->call('patch', array($params), "Google_Service_Genomics_ReadGroupSet");
   }
 
   /**
@@ -1106,15 +1106,15 @@ class Powerform_Google_Service_Genomics_Readgroupsets_Resource extends Powerform
    * chemas/blob/v0.5.1/src/main/resources/avro/readmethods.avdl#L135).
    * (readgroupsets.search)
    *
-   * @param Powerform_Google_SearchReadGroupSetsRequest $postBody
+   * @param Google_SearchReadGroupSetsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_SearchReadGroupSetsResponse
+   * @return Google_Service_Genomics_SearchReadGroupSetsResponse
    */
-  public function search(Powerform_Google_Service_Genomics_SearchReadGroupSetsRequest $postBody, $optParams = array())
+  public function search(Google_Service_Genomics_SearchReadGroupSetsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('search', array($params), "Powerform_Google_Service_Genomics_SearchReadGroupSetsResponse");
+    return $this->call('search', array($params), "Google_Service_Genomics_SearchReadGroupSetsResponse");
   }
 }
 
@@ -1122,11 +1122,11 @@ class Powerform_Google_Service_Genomics_Readgroupsets_Resource extends Powerform
  * The "coveragebuckets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $coveragebuckets = $genomicsService->coveragebuckets;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_ReadgroupsetsCoveragebuckets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_ReadgroupsetsCoveragebuckets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1165,13 +1165,13 @@ class Powerform_Google_Service_Genomics_ReadgroupsetsCoveragebuckets_Resource ex
    * parameter to the value of `nextPageToken` from the previous response.
    * @opt_param int pageSize The maximum number of results to return in a single
    * page. If unspecified, defaults to 1024. The maximum value is 2048.
-   * @return Powerform_Google_Service_Genomics_ListCoverageBucketsResponse
+   * @return Google_Service_Genomics_ListCoverageBucketsResponse
    */
   public function listReadgroupsetsCoveragebuckets($readGroupSetId, $optParams = array())
   {
     $params = array('readGroupSetId' => $readGroupSetId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Genomics_ListCoverageBucketsResponse");
+    return $this->call('list', array($params), "Google_Service_Genomics_ListCoverageBucketsResponse");
   }
 }
 
@@ -1179,11 +1179,11 @@ class Powerform_Google_Service_Genomics_ReadgroupsetsCoveragebuckets_Resource ex
  * The "reads" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $reads = $genomicsService->reads;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_Reads_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_Reads_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1204,30 +1204,30 @@ class Powerform_Google_Service_Genomics_Reads_Resource extends Powerform_Google_
    * [GlobalAllianceApi.searchReads](https://github.com/ga4gh/schemas/blob/v0.5.1/
    * src/main/resources/avro/readmethods.avdl#L85). (reads.search)
    *
-   * @param Powerform_Google_SearchReadsRequest $postBody
+   * @param Google_SearchReadsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_SearchReadsResponse
+   * @return Google_Service_Genomics_SearchReadsResponse
    */
-  public function search(Powerform_Google_Service_Genomics_SearchReadsRequest $postBody, $optParams = array())
+  public function search(Google_Service_Genomics_SearchReadsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('search', array($params), "Powerform_Google_Service_Genomics_SearchReadsResponse");
+    return $this->call('search', array($params), "Google_Service_Genomics_SearchReadsResponse");
   }
 
   /**
    * Returns a stream of all the reads matching the search request, ordered by
    * reference name, position, and ID. (reads.stream)
    *
-   * @param Powerform_Google_StreamReadsRequest $postBody
+   * @param Google_StreamReadsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_StreamReadsResponse
+   * @return Google_Service_Genomics_StreamReadsResponse
    */
-  public function stream(Powerform_Google_Service_Genomics_StreamReadsRequest $postBody, $optParams = array())
+  public function stream(Google_Service_Genomics_StreamReadsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('stream', array($params), "Powerform_Google_Service_Genomics_StreamReadsResponse");
+    return $this->call('stream', array($params), "Google_Service_Genomics_StreamReadsResponse");
   }
 }
 
@@ -1235,11 +1235,11 @@ class Powerform_Google_Service_Genomics_Reads_Resource extends Powerform_Google_
  * The "references" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $references = $genomicsService->references;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_References_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_References_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1252,13 +1252,13 @@ class Powerform_Google_Service_Genomics_References_Resource extends Powerform_Go
    *
    * @param string $referenceId The ID of the reference.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Reference
+   * @return Google_Service_Genomics_Reference
    */
   public function get($referenceId, $optParams = array())
   {
     $params = array('referenceId' => $referenceId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Genomics_Reference");
+    return $this->call('get', array($params), "Google_Service_Genomics_Reference");
   }
 
   /**
@@ -1269,15 +1269,15 @@ class Powerform_Google_Service_Genomics_References_Resource extends Powerform_Go
    * mas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L146).
    * (references.search)
    *
-   * @param Powerform_Google_SearchReferencesRequest $postBody
+   * @param Google_SearchReferencesRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_SearchReferencesResponse
+   * @return Google_Service_Genomics_SearchReferencesResponse
    */
-  public function search(Powerform_Google_Service_Genomics_SearchReferencesRequest $postBody, $optParams = array())
+  public function search(Google_Service_Genomics_SearchReferencesRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('search', array($params), "Powerform_Google_Service_Genomics_SearchReferencesResponse");
+    return $this->call('search', array($params), "Google_Service_Genomics_SearchReferencesResponse");
   }
 }
 
@@ -1285,11 +1285,11 @@ class Powerform_Google_Service_Genomics_References_Resource extends Powerform_Go
  * The "bases" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $bases = $genomicsService->bases;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_ReferencesBases_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_ReferencesBases_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1313,13 +1313,13 @@ class Powerform_Google_Service_Genomics_ReferencesBases_Resource extends Powerfo
    * @opt_param int pageSize The maximum number of bases to return in a single
    * page. If unspecified, defaults to 200Kbp (kilo base pairs). The maximum value
    * is 10Mbp (mega base pairs).
-   * @return Powerform_Google_Service_Genomics_ListBasesResponse
+   * @return Google_Service_Genomics_ListBasesResponse
    */
   public function listReferencesBases($referenceId, $optParams = array())
   {
     $params = array('referenceId' => $referenceId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Genomics_ListBasesResponse");
+    return $this->call('list', array($params), "Google_Service_Genomics_ListBasesResponse");
   }
 }
 
@@ -1327,11 +1327,11 @@ class Powerform_Google_Service_Genomics_ReferencesBases_Resource extends Powerfo
  * The "referencesets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $referencesets = $genomicsService->referencesets;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_Referencesets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_Referencesets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1344,13 +1344,13 @@ class Powerform_Google_Service_Genomics_Referencesets_Resource extends Powerform
    *
    * @param string $referenceSetId The ID of the reference set.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_ReferenceSet
+   * @return Google_Service_Genomics_ReferenceSet
    */
   public function get($referenceSetId, $optParams = array())
   {
     $params = array('referenceSetId' => $referenceSetId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Genomics_ReferenceSet");
+    return $this->call('get', array($params), "Google_Service_Genomics_ReferenceSet");
   }
 
   /**
@@ -1361,15 +1361,15 @@ class Powerform_Google_Service_Genomics_Referencesets_Resource extends Powerform
    * om/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L7
    * 1) (referencesets.search)
    *
-   * @param Powerform_Google_SearchReferenceSetsRequest $postBody
+   * @param Google_SearchReferenceSetsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_SearchReferenceSetsResponse
+   * @return Google_Service_Genomics_SearchReferenceSetsResponse
    */
-  public function search(Powerform_Google_Service_Genomics_SearchReferenceSetsRequest $postBody, $optParams = array())
+  public function search(Google_Service_Genomics_SearchReferenceSetsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('search', array($params), "Powerform_Google_Service_Genomics_SearchReferenceSetsResponse");
+    return $this->call('search', array($params), "Google_Service_Genomics_SearchReferenceSetsResponse");
   }
 }
 
@@ -1377,11 +1377,11 @@ class Powerform_Google_Service_Genomics_Referencesets_Resource extends Powerform
  * The "variants" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $variants = $genomicsService->variants;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_Variants_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_Variants_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1390,15 +1390,15 @@ class Powerform_Google_Service_Genomics_Variants_Resource extends Powerform_Goog
    * Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
    * (variants.create)
    *
-   * @param Powerform_Google_Variant $postBody
+   * @param Google_Variant $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Variant
+   * @return Google_Service_Genomics_Variant
    */
-  public function create(Powerform_Google_Service_Genomics_Variant $postBody, $optParams = array())
+  public function create(Google_Service_Genomics_Variant $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Genomics_Variant");
+    return $this->call('create', array($params), "Google_Service_Genomics_Variant");
   }
 
   /**
@@ -1409,13 +1409,13 @@ class Powerform_Google_Service_Genomics_Variants_Resource extends Powerform_Goog
    *
    * @param string $variantId The ID of the variant to be deleted.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Empty
+   * @return Google_Service_Genomics_Empty
    */
   public function delete($variantId, $optParams = array())
   {
     $params = array('variantId' => $variantId);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Genomics_Empty");
+    return $this->call('delete', array($params), "Google_Service_Genomics_Empty");
   }
 
   /**
@@ -1426,13 +1426,13 @@ class Powerform_Google_Service_Genomics_Variants_Resource extends Powerform_Goog
    *
    * @param string $variantId The ID of the variant.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Variant
+   * @return Google_Service_Genomics_Variant
    */
   public function get($variantId, $optParams = array())
   {
     $params = array('variantId' => $variantId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Genomics_Variant");
+    return $this->call('get', array($params), "Google_Service_Genomics_Variant");
   }
 
   /**
@@ -1451,15 +1451,15 @@ class Powerform_Google_Service_Genomics_Variants_Resource extends Powerform_Goog
    * context. Imported VCF headers are appended to the metadata already in a
    * variant set. (variants.import)
    *
-   * @param Powerform_Google_ImportVariantsRequest $postBody
+   * @param Google_ImportVariantsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Operation
+   * @return Google_Service_Genomics_Operation
    */
-  public function import(Powerform_Google_Service_Genomics_ImportVariantsRequest $postBody, $optParams = array())
+  public function import(Google_Service_Genomics_ImportVariantsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('import', array($params), "Powerform_Google_Service_Genomics_Operation");
+    return $this->call('import', array($params), "Google_Service_Genomics_Operation");
   }
 
   /**
@@ -1470,19 +1470,19 @@ class Powerform_Google_Service_Genomics_Variants_Resource extends Powerform_Goog
    * its calls. (variants.patch)
    *
    * @param string $variantId The ID of the variant to be updated.
-   * @param Powerform_Google_Variant $postBody
+   * @param Google_Variant $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask An optional mask specifying which fields to
    * update. At this time, mutable fields are names and info. Acceptable values
    * are "names" and "info". If unspecified, all mutable fields will be updated.
-   * @return Powerform_Google_Service_Genomics_Variant
+   * @return Google_Service_Genomics_Variant
    */
-  public function patch($variantId, Powerform_Google_Service_Genomics_Variant $postBody, $optParams = array())
+  public function patch($variantId, Google_Service_Genomics_Variant $postBody, $optParams = array())
   {
     $params = array('variantId' => $variantId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Genomics_Variant");
+    return $this->call('patch', array($params), "Google_Service_Genomics_Variant");
   }
 
   /**
@@ -1493,30 +1493,30 @@ class Powerform_Google_Service_Genomics_Variants_Resource extends Powerform_Goog
    * s/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L126).
    * (variants.search)
    *
-   * @param Powerform_Google_SearchVariantsRequest $postBody
+   * @param Google_SearchVariantsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_SearchVariantsResponse
+   * @return Google_Service_Genomics_SearchVariantsResponse
    */
-  public function search(Powerform_Google_Service_Genomics_SearchVariantsRequest $postBody, $optParams = array())
+  public function search(Google_Service_Genomics_SearchVariantsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('search', array($params), "Powerform_Google_Service_Genomics_SearchVariantsResponse");
+    return $this->call('search', array($params), "Google_Service_Genomics_SearchVariantsResponse");
   }
 
   /**
    * Returns a stream of all the variants matching the search request, ordered by
    * reference name, position, and ID. (variants.stream)
    *
-   * @param Powerform_Google_StreamVariantsRequest $postBody
+   * @param Google_StreamVariantsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_StreamVariantsResponse
+   * @return Google_Service_Genomics_StreamVariantsResponse
    */
-  public function stream(Powerform_Google_Service_Genomics_StreamVariantsRequest $postBody, $optParams = array())
+  public function stream(Google_Service_Genomics_StreamVariantsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('stream', array($params), "Powerform_Google_Service_Genomics_StreamVariantsResponse");
+    return $this->call('stream', array($params), "Google_Service_Genomics_StreamVariantsResponse");
   }
 }
 
@@ -1524,11 +1524,11 @@ class Powerform_Google_Service_Genomics_Variants_Resource extends Powerform_Goog
  * The "variantsets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $genomicsService = new Powerform_Google_Service_Genomics(...);
+ *   $genomicsService = new Google_Service_Genomics(...);
  *   $variantsets = $genomicsService->variantsets;
  *  </code>
  */
-class Powerform_Google_Service_Genomics_Variantsets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Genomics_Variantsets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1539,15 +1539,15 @@ class Powerform_Google_Service_Genomics_Variantsets_Resource extends Powerform_G
    * are optional. Note that the `id` field will be ignored, as this is assigned
    * by the server. (variantsets.create)
    *
-   * @param Powerform_Google_VariantSet $postBody
+   * @param Google_VariantSet $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_VariantSet
+   * @return Google_Service_Genomics_VariantSet
    */
-  public function create(Powerform_Google_Service_Genomics_VariantSet $postBody, $optParams = array())
+  public function create(Google_Service_Genomics_VariantSet $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Genomics_VariantSet");
+    return $this->call('create', array($params), "Google_Service_Genomics_VariantSet");
   }
 
   /**
@@ -1558,13 +1558,13 @@ class Powerform_Google_Service_Genomics_Variantsets_Resource extends Powerform_G
    *
    * @param string $variantSetId The ID of the variant set to be deleted.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Empty
+   * @return Google_Service_Genomics_Empty
    */
   public function delete($variantSetId, $optParams = array())
   {
     $params = array('variantSetId' => $variantSetId);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Genomics_Empty");
+    return $this->call('delete', array($params), "Google_Service_Genomics_Empty");
   }
 
   /**
@@ -1576,15 +1576,15 @@ class Powerform_Google_Service_Genomics_Variantsets_Resource extends Powerform_G
    * @param string $variantSetId Required. The ID of the variant set that contains
    * variant data which should be exported. The caller must have READ access to
    * this variant set.
-   * @param Powerform_Google_ExportVariantSetRequest $postBody
+   * @param Google_ExportVariantSetRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_Operation
+   * @return Google_Service_Genomics_Operation
    */
-  public function export($variantSetId, Powerform_Google_Service_Genomics_ExportVariantSetRequest $postBody, $optParams = array())
+  public function export($variantSetId, Google_Service_Genomics_ExportVariantSetRequest $postBody, $optParams = array())
   {
     $params = array('variantSetId' => $variantSetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('export', array($params), "Powerform_Google_Service_Genomics_Operation");
+    return $this->call('export', array($params), "Google_Service_Genomics_Operation");
   }
 
   /**
@@ -1595,13 +1595,13 @@ class Powerform_Google_Service_Genomics_Variantsets_Resource extends Powerform_G
    *
    * @param string $variantSetId Required. The ID of the variant set.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_VariantSet
+   * @return Google_Service_Genomics_VariantSet
    */
   public function get($variantSetId, $optParams = array())
   {
     $params = array('variantSetId' => $variantSetId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Genomics_VariantSet");
+    return $this->call('get', array($params), "Google_Service_Genomics_VariantSet");
   }
 
   /**
@@ -1612,19 +1612,19 @@ class Powerform_Google_Service_Genomics_Variantsets_Resource extends Powerform_G
    *
    * @param string $variantSetId The ID of the variant to be updated (must already
    * exist).
-   * @param Powerform_Google_VariantSet $postBody
+   * @param Google_VariantSet $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask An optional mask specifying which fields to
    * update. Supported fields: * metadata. Leaving `updateMask` unset is
    * equivalent to specifying all mutable fields.
-   * @return Powerform_Google_Service_Genomics_VariantSet
+   * @return Google_Service_Genomics_VariantSet
    */
-  public function patch($variantSetId, Powerform_Google_Service_Genomics_VariantSet $postBody, $optParams = array())
+  public function patch($variantSetId, Google_Service_Genomics_VariantSet $postBody, $optParams = array())
   {
     $params = array('variantSetId' => $variantSetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Genomics_VariantSet");
+    return $this->call('patch', array($params), "Google_Service_Genomics_VariantSet");
   }
 
   /**
@@ -1635,22 +1635,22 @@ class Powerform_Google_Service_Genomics_Variantsets_Resource extends Powerform_G
    * /ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/variantmethods.avdl#L49).
    * (variantsets.search)
    *
-   * @param Powerform_Google_SearchVariantSetsRequest $postBody
+   * @param Google_SearchVariantSetsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Genomics_SearchVariantSetsResponse
+   * @return Google_Service_Genomics_SearchVariantSetsResponse
    */
-  public function search(Powerform_Google_Service_Genomics_SearchVariantSetsRequest $postBody, $optParams = array())
+  public function search(Google_Service_Genomics_SearchVariantSetsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('search', array($params), "Powerform_Google_Service_Genomics_SearchVariantSetsResponse");
+    return $this->call('search', array($params), "Google_Service_Genomics_SearchVariantSetsResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Genomics_Binding extends Powerform_Google_Collection
+class Google_Service_Genomics_Binding extends Google_Collection
 {
   protected $collection_key = 'members';
   protected $internal_gapi_mappings = array(
@@ -1677,7 +1677,7 @@ class Powerform_Google_Service_Genomics_Binding extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Genomics_CallSet extends Powerform_Google_Collection
+class Google_Service_Genomics_CallSet extends Google_Collection
 {
   protected $collection_key = 'variantSetIds';
   protected $internal_gapi_mappings = array(
@@ -1740,11 +1740,11 @@ class Powerform_Google_Service_Genomics_CallSet extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Genomics_CancelOperationRequest extends Powerform_Google_Model
+class Google_Service_Genomics_CancelOperationRequest extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Genomics_CigarUnit extends Powerform_Google_Model
+class Google_Service_Genomics_CigarUnit extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1779,11 +1779,11 @@ class Powerform_Google_Service_Genomics_CigarUnit extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Genomics_CloudAuditOptions extends Powerform_Google_Model
+class Google_Service_Genomics_CloudAuditOptions extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Genomics_Condition extends Powerform_Google_Collection
+class Google_Service_Genomics_Condition extends Google_Collection
 {
   protected $collection_key = 'values';
   protected $internal_gapi_mappings = array(
@@ -1846,7 +1846,7 @@ class Powerform_Google_Service_Genomics_Condition extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Genomics_CounterOptions extends Powerform_Google_Model
+class Google_Service_Genomics_CounterOptions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1872,12 +1872,12 @@ class Powerform_Google_Service_Genomics_CounterOptions extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Genomics_CoverageBucket extends Powerform_Google_Model
+class Google_Service_Genomics_CoverageBucket extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $meanCoverage;
-  protected $rangeType = 'Powerform_Google_Service_Genomics_Range';
+  protected $rangeType = 'Google_Service_Genomics_Range';
   protected $rangeDataType = '';
 
 
@@ -1889,7 +1889,7 @@ class Powerform_Google_Service_Genomics_CoverageBucket extends Powerform_Google_
   {
     return $this->meanCoverage;
   }
-  public function setRange(Powerform_Google_Service_Genomics_Range $range)
+  public function setRange(Google_Service_Genomics_Range $range)
   {
     $this->range = $range;
   }
@@ -1899,11 +1899,11 @@ class Powerform_Google_Service_Genomics_CoverageBucket extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Genomics_DataAccessOptions extends Powerform_Google_Model
+class Google_Service_Genomics_DataAccessOptions extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Genomics_Dataset extends Powerform_Google_Model
+class Google_Service_Genomics_Dataset extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1947,11 +1947,11 @@ class Powerform_Google_Service_Genomics_Dataset extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Genomics_Empty extends Powerform_Google_Model
+class Google_Service_Genomics_Empty extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Genomics_Experiment extends Powerform_Google_Model
+class Google_Service_Genomics_Experiment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1995,7 +1995,7 @@ class Powerform_Google_Service_Genomics_Experiment extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Genomics_ExportReadGroupSetRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_ExportReadGroupSetRequest extends Google_Collection
 {
   protected $collection_key = 'referenceNames';
   protected $internal_gapi_mappings = array(
@@ -2031,7 +2031,7 @@ class Powerform_Google_Service_Genomics_ExportReadGroupSetRequest extends Powerf
   }
 }
 
-class Powerform_Google_Service_Genomics_ExportVariantSetRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_ExportVariantSetRequest extends Google_Collection
 {
   protected $collection_key = 'callSetIds';
   protected $internal_gapi_mappings = array(
@@ -2085,11 +2085,11 @@ class Powerform_Google_Service_Genomics_ExportVariantSetRequest extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Genomics_GetIamPolicyRequest extends Powerform_Google_Model
+class Google_Service_Genomics_GetIamPolicyRequest extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Genomics_ImportReadGroupSetsRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_ImportReadGroupSetsRequest extends Google_Collection
 {
   protected $collection_key = 'sourceUris';
   protected $internal_gapi_mappings = array(
@@ -2134,7 +2134,7 @@ class Powerform_Google_Service_Genomics_ImportReadGroupSetsRequest extends Power
   }
 }
 
-class Powerform_Google_Service_Genomics_ImportReadGroupSetsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_ImportReadGroupSetsResponse extends Google_Collection
 {
   protected $collection_key = 'readGroupSetIds';
   protected $internal_gapi_mappings = array(
@@ -2152,7 +2152,7 @@ class Powerform_Google_Service_Genomics_ImportReadGroupSetsResponse extends Powe
   }
 }
 
-class Powerform_Google_Service_Genomics_ImportVariantsRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_ImportVariantsRequest extends Google_Collection
 {
   protected $collection_key = 'sourceUris';
   protected $internal_gapi_mappings = array(
@@ -2197,7 +2197,7 @@ class Powerform_Google_Service_Genomics_ImportVariantsRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Genomics_ImportVariantsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_ImportVariantsResponse extends Google_Collection
 {
   protected $collection_key = 'callSetIds';
   protected $internal_gapi_mappings = array(
@@ -2215,15 +2215,15 @@ class Powerform_Google_Service_Genomics_ImportVariantsResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Genomics_LinearAlignment extends Powerform_Google_Collection
+class Google_Service_Genomics_LinearAlignment extends Google_Collection
 {
   protected $collection_key = 'cigar';
   protected $internal_gapi_mappings = array(
   );
-  protected $cigarType = 'Powerform_Google_Service_Genomics_CigarUnit';
+  protected $cigarType = 'Google_Service_Genomics_CigarUnit';
   protected $cigarDataType = 'array';
   public $mappingQuality;
-  protected $positionType = 'Powerform_Google_Service_Genomics_Position';
+  protected $positionType = 'Google_Service_Genomics_Position';
   protected $positionDataType = '';
 
 
@@ -2243,7 +2243,7 @@ class Powerform_Google_Service_Genomics_LinearAlignment extends Powerform_Google
   {
     return $this->mappingQuality;
   }
-  public function setPosition(Powerform_Google_Service_Genomics_Position $position)
+  public function setPosition(Google_Service_Genomics_Position $position)
   {
     $this->position = $position;
   }
@@ -2253,7 +2253,7 @@ class Powerform_Google_Service_Genomics_LinearAlignment extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Genomics_ListBasesResponse extends Powerform_Google_Model
+class Google_Service_Genomics_ListBasesResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2288,13 +2288,13 @@ class Powerform_Google_Service_Genomics_ListBasesResponse extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Genomics_ListCoverageBucketsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_ListCoverageBucketsResponse extends Google_Collection
 {
   protected $collection_key = 'coverageBuckets';
   protected $internal_gapi_mappings = array(
   );
   public $bucketWidth;
-  protected $coverageBucketsType = 'Powerform_Google_Service_Genomics_CoverageBucket';
+  protected $coverageBucketsType = 'Google_Service_Genomics_CoverageBucket';
   protected $coverageBucketsDataType = 'array';
   public $nextPageToken;
 
@@ -2325,12 +2325,12 @@ class Powerform_Google_Service_Genomics_ListCoverageBucketsResponse extends Powe
   }
 }
 
-class Powerform_Google_Service_Genomics_ListDatasetsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_ListDatasetsResponse extends Google_Collection
 {
   protected $collection_key = 'datasets';
   protected $internal_gapi_mappings = array(
   );
-  protected $datasetsType = 'Powerform_Google_Service_Genomics_Dataset';
+  protected $datasetsType = 'Google_Service_Genomics_Dataset';
   protected $datasetsDataType = 'array';
   public $nextPageToken;
 
@@ -2353,13 +2353,13 @@ class Powerform_Google_Service_Genomics_ListDatasetsResponse extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Genomics_ListOperationsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_ListOperationsResponse extends Google_Collection
 {
   protected $collection_key = 'operations';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $operationsType = 'Powerform_Google_Service_Genomics_Operation';
+  protected $operationsType = 'Google_Service_Genomics_Operation';
   protected $operationsDataType = 'array';
 
 
@@ -2381,19 +2381,19 @@ class Powerform_Google_Service_Genomics_ListOperationsResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Genomics_LogConfig extends Powerform_Google_Model
+class Google_Service_Genomics_LogConfig extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $cloudAuditType = 'Powerform_Google_Service_Genomics_CloudAuditOptions';
+  protected $cloudAuditType = 'Google_Service_Genomics_CloudAuditOptions';
   protected $cloudAuditDataType = '';
-  protected $counterType = 'Powerform_Google_Service_Genomics_CounterOptions';
+  protected $counterType = 'Google_Service_Genomics_CounterOptions';
   protected $counterDataType = '';
-  protected $dataAccessType = 'Powerform_Google_Service_Genomics_DataAccessOptions';
+  protected $dataAccessType = 'Google_Service_Genomics_DataAccessOptions';
   protected $dataAccessDataType = '';
 
 
-  public function setCloudAudit(Powerform_Google_Service_Genomics_CloudAuditOptions $cloudAudit)
+  public function setCloudAudit(Google_Service_Genomics_CloudAuditOptions $cloudAudit)
   {
     $this->cloudAudit = $cloudAudit;
   }
@@ -2401,7 +2401,7 @@ class Powerform_Google_Service_Genomics_LogConfig extends Powerform_Google_Model
   {
     return $this->cloudAudit;
   }
-  public function setCounter(Powerform_Google_Service_Genomics_CounterOptions $counter)
+  public function setCounter(Google_Service_Genomics_CounterOptions $counter)
   {
     $this->counter = $counter;
   }
@@ -2409,7 +2409,7 @@ class Powerform_Google_Service_Genomics_LogConfig extends Powerform_Google_Model
   {
     return $this->counter;
   }
-  public function setDataAccess(Powerform_Google_Service_Genomics_DataAccessOptions $dataAccess)
+  public function setDataAccess(Google_Service_Genomics_DataAccessOptions $dataAccess)
   {
     $this->dataAccess = $dataAccess;
   }
@@ -2419,12 +2419,12 @@ class Powerform_Google_Service_Genomics_LogConfig extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Genomics_Operation extends Powerform_Google_Model
+class Google_Service_Genomics_Operation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $done;
-  protected $errorType = 'Powerform_Google_Service_Genomics_Status';
+  protected $errorType = 'Google_Service_Genomics_Status';
   protected $errorDataType = '';
   public $metadata;
   public $name;
@@ -2439,7 +2439,7 @@ class Powerform_Google_Service_Genomics_Operation extends Powerform_Google_Model
   {
     return $this->done;
   }
-  public function setError(Powerform_Google_Service_Genomics_Status $error)
+  public function setError(Google_Service_Genomics_Status $error)
   {
     $this->error = $error;
   }
@@ -2473,7 +2473,7 @@ class Powerform_Google_Service_Genomics_Operation extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Genomics_OperationEvent extends Powerform_Google_Model
+class Google_Service_Genomics_OperationEvent extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2490,13 +2490,13 @@ class Powerform_Google_Service_Genomics_OperationEvent extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Genomics_OperationMetadata extends Powerform_Google_Collection
+class Google_Service_Genomics_OperationMetadata extends Google_Collection
 {
   protected $collection_key = 'events';
   protected $internal_gapi_mappings = array(
   );
   public $createTime;
-  protected $eventsType = 'Powerform_Google_Service_Genomics_OperationEvent';
+  protected $eventsType = 'Google_Service_Genomics_OperationEvent';
   protected $eventsDataType = 'array';
   public $projectId;
   public $request;
@@ -2536,15 +2536,15 @@ class Powerform_Google_Service_Genomics_OperationMetadata extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Genomics_Policy extends Powerform_Google_Collection
+class Google_Service_Genomics_Policy extends Google_Collection
 {
   protected $collection_key = 'rules';
   protected $internal_gapi_mappings = array(
   );
-  protected $bindingsType = 'Powerform_Google_Service_Genomics_Binding';
+  protected $bindingsType = 'Google_Service_Genomics_Binding';
   protected $bindingsDataType = 'array';
   public $etag;
-  protected $rulesType = 'Powerform_Google_Service_Genomics_Rule';
+  protected $rulesType = 'Google_Service_Genomics_Rule';
   protected $rulesDataType = 'array';
   public $version;
 
@@ -2583,7 +2583,7 @@ class Powerform_Google_Service_Genomics_Policy extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Genomics_Position extends Powerform_Google_Model
+class Google_Service_Genomics_Position extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2618,7 +2618,7 @@ class Powerform_Google_Service_Genomics_Position extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Genomics_Program extends Powerform_Google_Model
+class Google_Service_Genomics_Program extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2671,7 +2671,7 @@ class Powerform_Google_Service_Genomics_Program extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Genomics_Range extends Powerform_Google_Model
+class Google_Service_Genomics_Range extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2706,14 +2706,14 @@ class Powerform_Google_Service_Genomics_Range extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Genomics_Read extends Powerform_Google_Collection
+class Google_Service_Genomics_Read extends Google_Collection
 {
   protected $collection_key = 'alignedQuality';
   protected $internal_gapi_mappings = array(
   );
   public $alignedQuality;
   public $alignedSequence;
-  protected $alignmentType = 'Powerform_Google_Service_Genomics_LinearAlignment';
+  protected $alignmentType = 'Google_Service_Genomics_LinearAlignment';
   protected $alignmentDataType = '';
   public $duplicateFragment;
   public $failedVendorQualityChecks;
@@ -2721,7 +2721,7 @@ class Powerform_Google_Service_Genomics_Read extends Powerform_Google_Collection
   public $fragmentName;
   public $id;
   public $info;
-  protected $nextMatePositionType = 'Powerform_Google_Service_Genomics_Position';
+  protected $nextMatePositionType = 'Google_Service_Genomics_Position';
   protected $nextMatePositionDataType = '';
   public $numberReads;
   public $properPlacement;
@@ -2748,7 +2748,7 @@ class Powerform_Google_Service_Genomics_Read extends Powerform_Google_Collection
   {
     return $this->alignedSequence;
   }
-  public function setAlignment(Powerform_Google_Service_Genomics_LinearAlignment $alignment)
+  public function setAlignment(Google_Service_Genomics_LinearAlignment $alignment)
   {
     $this->alignment = $alignment;
   }
@@ -2804,7 +2804,7 @@ class Powerform_Google_Service_Genomics_Read extends Powerform_Google_Collection
   {
     return $this->info;
   }
-  public function setNextMatePosition(Powerform_Google_Service_Genomics_Position $nextMatePosition)
+  public function setNextMatePosition(Google_Service_Genomics_Position $nextMatePosition)
   {
     $this->nextMatePosition = $nextMatePosition;
   }
@@ -2870,20 +2870,20 @@ class Powerform_Google_Service_Genomics_Read extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Genomics_ReadGroup extends Powerform_Google_Collection
+class Google_Service_Genomics_ReadGroup extends Google_Collection
 {
   protected $collection_key = 'programs';
   protected $internal_gapi_mappings = array(
   );
   public $datasetId;
   public $description;
-  protected $experimentType = 'Powerform_Google_Service_Genomics_Experiment';
+  protected $experimentType = 'Google_Service_Genomics_Experiment';
   protected $experimentDataType = '';
   public $id;
   public $info;
   public $name;
   public $predictedInsertSize;
-  protected $programsType = 'Powerform_Google_Service_Genomics_Program';
+  protected $programsType = 'Google_Service_Genomics_Program';
   protected $programsDataType = 'array';
   public $referenceSetId;
   public $sampleId;
@@ -2905,7 +2905,7 @@ class Powerform_Google_Service_Genomics_ReadGroup extends Powerform_Google_Colle
   {
     return $this->description;
   }
-  public function setExperiment(Powerform_Google_Service_Genomics_Experiment $experiment)
+  public function setExperiment(Google_Service_Genomics_Experiment $experiment)
   {
     $this->experiment = $experiment;
   }
@@ -2971,7 +2971,7 @@ class Powerform_Google_Service_Genomics_ReadGroup extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Genomics_ReadGroupSet extends Powerform_Google_Collection
+class Google_Service_Genomics_ReadGroupSet extends Google_Collection
 {
   protected $collection_key = 'readGroups';
   protected $internal_gapi_mappings = array(
@@ -2981,7 +2981,7 @@ class Powerform_Google_Service_Genomics_ReadGroupSet extends Powerform_Google_Co
   public $id;
   public $info;
   public $name;
-  protected $readGroupsType = 'Powerform_Google_Service_Genomics_ReadGroup';
+  protected $readGroupsType = 'Google_Service_Genomics_ReadGroup';
   protected $readGroupsDataType = 'array';
   public $referenceSetId;
 
@@ -3044,7 +3044,7 @@ class Powerform_Google_Service_Genomics_ReadGroupSet extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Genomics_Reference extends Powerform_Google_Collection
+class Google_Service_Genomics_Reference extends Google_Collection
 {
   protected $collection_key = 'sourceAccessions';
   protected $internal_gapi_mappings = array(
@@ -3116,7 +3116,7 @@ class Powerform_Google_Service_Genomics_Reference extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Genomics_ReferenceBound extends Powerform_Google_Model
+class Google_Service_Genomics_ReferenceBound extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3142,7 +3142,7 @@ class Powerform_Google_Service_Genomics_ReferenceBound extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Genomics_ReferenceSet extends Powerform_Google_Collection
+class Google_Service_Genomics_ReferenceSet extends Google_Collection
 {
   protected $collection_key = 'sourceAccessions';
   protected $internal_gapi_mappings = array(
@@ -3223,17 +3223,17 @@ class Powerform_Google_Service_Genomics_ReferenceSet extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Genomics_Rule extends Powerform_Google_Collection
+class Google_Service_Genomics_Rule extends Google_Collection
 {
   protected $collection_key = 'permissions';
   protected $internal_gapi_mappings = array(
   );
   public $action;
-  protected $conditionsType = 'Powerform_Google_Service_Genomics_Condition';
+  protected $conditionsType = 'Google_Service_Genomics_Condition';
   protected $conditionsDataType = 'array';
   public $description;
   public $in;
-  protected $logConfigType = 'Powerform_Google_Service_Genomics_LogConfig';
+  protected $logConfigType = 'Google_Service_Genomics_LogConfig';
   protected $logConfigDataType = 'array';
   public $notIn;
   public $permissions;
@@ -3297,7 +3297,7 @@ class Powerform_Google_Service_Genomics_Rule extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchCallSetsRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchCallSetsRequest extends Google_Collection
 {
   protected $collection_key = 'variantSetIds';
   protected $internal_gapi_mappings = array(
@@ -3342,12 +3342,12 @@ class Powerform_Google_Service_Genomics_SearchCallSetsRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchCallSetsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchCallSetsResponse extends Google_Collection
 {
   protected $collection_key = 'callSets';
   protected $internal_gapi_mappings = array(
   );
-  protected $callSetsType = 'Powerform_Google_Service_Genomics_CallSet';
+  protected $callSetsType = 'Google_Service_Genomics_CallSet';
   protected $callSetsDataType = 'array';
   public $nextPageToken;
 
@@ -3370,7 +3370,7 @@ class Powerform_Google_Service_Genomics_SearchCallSetsResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchReadGroupSetsRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchReadGroupSetsRequest extends Google_Collection
 {
   protected $collection_key = 'datasetIds';
   protected $internal_gapi_mappings = array(
@@ -3415,13 +3415,13 @@ class Powerform_Google_Service_Genomics_SearchReadGroupSetsRequest extends Power
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchReadGroupSetsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchReadGroupSetsResponse extends Google_Collection
 {
   protected $collection_key = 'readGroupSets';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $readGroupSetsType = 'Powerform_Google_Service_Genomics_ReadGroupSet';
+  protected $readGroupSetsType = 'Google_Service_Genomics_ReadGroupSet';
   protected $readGroupSetsDataType = 'array';
 
 
@@ -3443,7 +3443,7 @@ class Powerform_Google_Service_Genomics_SearchReadGroupSetsResponse extends Powe
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchReadsRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchReadsRequest extends Google_Collection
 {
   protected $collection_key = 'readGroupSetIds';
   protected $internal_gapi_mappings = array(
@@ -3515,12 +3515,12 @@ class Powerform_Google_Service_Genomics_SearchReadsRequest extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchReadsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchReadsResponse extends Google_Collection
 {
   protected $collection_key = 'alignments';
   protected $internal_gapi_mappings = array(
   );
-  protected $alignmentsType = 'Powerform_Google_Service_Genomics_Read';
+  protected $alignmentsType = 'Google_Service_Genomics_Read';
   protected $alignmentsDataType = 'array';
   public $nextPageToken;
 
@@ -3543,7 +3543,7 @@ class Powerform_Google_Service_Genomics_SearchReadsResponse extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchReferenceSetsRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchReferenceSetsRequest extends Google_Collection
 {
   protected $collection_key = 'md5checksums';
   protected $internal_gapi_mappings = array(
@@ -3597,13 +3597,13 @@ class Powerform_Google_Service_Genomics_SearchReferenceSetsRequest extends Power
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchReferenceSetsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchReferenceSetsResponse extends Google_Collection
 {
   protected $collection_key = 'referenceSets';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $referenceSetsType = 'Powerform_Google_Service_Genomics_ReferenceSet';
+  protected $referenceSetsType = 'Google_Service_Genomics_ReferenceSet';
   protected $referenceSetsDataType = 'array';
 
 
@@ -3625,7 +3625,7 @@ class Powerform_Google_Service_Genomics_SearchReferenceSetsResponse extends Powe
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchReferencesRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchReferencesRequest extends Google_Collection
 {
   protected $collection_key = 'md5checksums';
   protected $internal_gapi_mappings = array(
@@ -3679,13 +3679,13 @@ class Powerform_Google_Service_Genomics_SearchReferencesRequest extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchReferencesResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchReferencesResponse extends Google_Collection
 {
   protected $collection_key = 'references';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $referencesType = 'Powerform_Google_Service_Genomics_Reference';
+  protected $referencesType = 'Google_Service_Genomics_Reference';
   protected $referencesDataType = 'array';
 
 
@@ -3707,7 +3707,7 @@ class Powerform_Google_Service_Genomics_SearchReferencesResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchVariantSetsRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchVariantSetsRequest extends Google_Collection
 {
   protected $collection_key = 'datasetIds';
   protected $internal_gapi_mappings = array(
@@ -3743,13 +3743,13 @@ class Powerform_Google_Service_Genomics_SearchVariantSetsRequest extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchVariantSetsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchVariantSetsResponse extends Google_Collection
 {
   protected $collection_key = 'variantSets';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $variantSetsType = 'Powerform_Google_Service_Genomics_VariantSet';
+  protected $variantSetsType = 'Google_Service_Genomics_VariantSet';
   protected $variantSetsDataType = 'array';
 
 
@@ -3771,7 +3771,7 @@ class Powerform_Google_Service_Genomics_SearchVariantSetsResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchVariantsRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchVariantsRequest extends Google_Collection
 {
   protected $collection_key = 'variantSetIds';
   protected $internal_gapi_mappings = array(
@@ -3861,13 +3861,13 @@ class Powerform_Google_Service_Genomics_SearchVariantsRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Genomics_SearchVariantsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_SearchVariantsResponse extends Google_Collection
 {
   protected $collection_key = 'variants';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $variantsType = 'Powerform_Google_Service_Genomics_Variant';
+  protected $variantsType = 'Google_Service_Genomics_Variant';
   protected $variantsDataType = 'array';
 
 
@@ -3889,15 +3889,15 @@ class Powerform_Google_Service_Genomics_SearchVariantsResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Genomics_SetIamPolicyRequest extends Powerform_Google_Model
+class Google_Service_Genomics_SetIamPolicyRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $policyType = 'Powerform_Google_Service_Genomics_Policy';
+  protected $policyType = 'Google_Service_Genomics_Policy';
   protected $policyDataType = '';
 
 
-  public function setPolicy(Powerform_Google_Service_Genomics_Policy $policy)
+  public function setPolicy(Google_Service_Genomics_Policy $policy)
   {
     $this->policy = $policy;
   }
@@ -3907,7 +3907,7 @@ class Powerform_Google_Service_Genomics_SetIamPolicyRequest extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Genomics_Status extends Powerform_Google_Collection
+class Google_Service_Genomics_Status extends Google_Collection
 {
   protected $collection_key = 'details';
   protected $internal_gapi_mappings = array(
@@ -3943,7 +3943,7 @@ class Powerform_Google_Service_Genomics_Status extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Genomics_StreamReadsRequest extends Powerform_Google_Model
+class Google_Service_Genomics_StreamReadsRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3996,12 +3996,12 @@ class Powerform_Google_Service_Genomics_StreamReadsRequest extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Genomics_StreamReadsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_StreamReadsResponse extends Google_Collection
 {
   protected $collection_key = 'alignments';
   protected $internal_gapi_mappings = array(
   );
-  protected $alignmentsType = 'Powerform_Google_Service_Genomics_Read';
+  protected $alignmentsType = 'Google_Service_Genomics_Read';
   protected $alignmentsDataType = 'array';
 
 
@@ -4015,7 +4015,7 @@ class Powerform_Google_Service_Genomics_StreamReadsResponse extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Genomics_StreamVariantsRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_StreamVariantsRequest extends Google_Collection
 {
   protected $collection_key = 'callSetIds';
   protected $internal_gapi_mappings = array(
@@ -4078,12 +4078,12 @@ class Powerform_Google_Service_Genomics_StreamVariantsRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Genomics_StreamVariantsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_StreamVariantsResponse extends Google_Collection
 {
   protected $collection_key = 'variants';
   protected $internal_gapi_mappings = array(
   );
-  protected $variantsType = 'Powerform_Google_Service_Genomics_Variant';
+  protected $variantsType = 'Google_Service_Genomics_Variant';
   protected $variantsDataType = 'array';
 
 
@@ -4097,7 +4097,7 @@ class Powerform_Google_Service_Genomics_StreamVariantsResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Genomics_TestIamPermissionsRequest extends Powerform_Google_Collection
+class Google_Service_Genomics_TestIamPermissionsRequest extends Google_Collection
 {
   protected $collection_key = 'permissions';
   protected $internal_gapi_mappings = array(
@@ -4115,7 +4115,7 @@ class Powerform_Google_Service_Genomics_TestIamPermissionsRequest extends Powerf
   }
 }
 
-class Powerform_Google_Service_Genomics_TestIamPermissionsResponse extends Powerform_Google_Collection
+class Google_Service_Genomics_TestIamPermissionsResponse extends Google_Collection
 {
   protected $collection_key = 'permissions';
   protected $internal_gapi_mappings = array(
@@ -4133,17 +4133,17 @@ class Powerform_Google_Service_Genomics_TestIamPermissionsResponse extends Power
   }
 }
 
-class Powerform_Google_Service_Genomics_UndeleteDatasetRequest extends Powerform_Google_Model
+class Google_Service_Genomics_UndeleteDatasetRequest extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Genomics_Variant extends Powerform_Google_Collection
+class Google_Service_Genomics_Variant extends Google_Collection
 {
   protected $collection_key = 'names';
   protected $internal_gapi_mappings = array(
   );
   public $alternateBases;
-  protected $callsType = 'Powerform_Google_Service_Genomics_VariantCall';
+  protected $callsType = 'Google_Service_Genomics_VariantCall';
   protected $callsDataType = 'array';
   public $created;
   public $end;
@@ -4264,7 +4264,7 @@ class Powerform_Google_Service_Genomics_Variant extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Genomics_VariantCall extends Powerform_Google_Collection
+class Google_Service_Genomics_VariantCall extends Google_Collection
 {
   protected $collection_key = 'genotypeLikelihood';
   protected $internal_gapi_mappings = array(
@@ -4327,16 +4327,16 @@ class Powerform_Google_Service_Genomics_VariantCall extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Genomics_VariantSet extends Powerform_Google_Collection
+class Google_Service_Genomics_VariantSet extends Google_Collection
 {
   protected $collection_key = 'referenceBounds';
   protected $internal_gapi_mappings = array(
   );
   public $datasetId;
   public $id;
-  protected $metadataType = 'Powerform_Google_Service_Genomics_VariantSetMetadata';
+  protected $metadataType = 'Google_Service_Genomics_VariantSetMetadata';
   protected $metadataDataType = 'array';
-  protected $referenceBoundsType = 'Powerform_Google_Service_Genomics_ReferenceBound';
+  protected $referenceBoundsType = 'Google_Service_Genomics_ReferenceBound';
   protected $referenceBoundsDataType = 'array';
   public $referenceSetId;
 
@@ -4383,7 +4383,7 @@ class Powerform_Google_Service_Genomics_VariantSet extends Powerform_Google_Coll
   }
 }
 
-class Powerform_Google_Service_Genomics_VariantSetMetadata extends Powerform_Google_Model
+class Google_Service_Genomics_VariantSetMetadata extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

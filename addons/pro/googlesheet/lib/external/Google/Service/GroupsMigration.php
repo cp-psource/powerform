@@ -26,21 +26,21 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_GroupsMigration extends Powerform_Google_Service
+class Google_Service_GroupsMigration extends Google_Service
 {
   /** Manage messages in groups on your domain. */
   const APPS_GROUPS_MIGRATION =
       "https://www.googleapis.com/auth/apps.groups.migration";
 
   public $archive;
-  
+
 
   /**
    * Constructs the internal representation of the GroupsMigration service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -48,7 +48,7 @@ class Powerform_Google_Service_GroupsMigration extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'groupsmigration';
 
-    $this->archive = new Powerform_Google_Service_GroupsMigration_Archive_Resource(
+    $this->archive = new Google_Service_GroupsMigration_Archive_Resource(
         $this,
         $this->serviceName,
         'archive',
@@ -76,11 +76,11 @@ class Powerform_Google_Service_GroupsMigration extends Powerform_Google_Service
  * The "archive" collection of methods.
  * Typical usage is:
  *  <code>
- *   $groupsmigrationService = new Powerform_Google_Service_GroupsMigration(...);
+ *   $groupsmigrationService = new Google_Service_GroupsMigration(...);
  *   $archive = $groupsmigrationService->archive;
  *  </code>
  */
-class Powerform_Google_Service_GroupsMigration_Archive_Resource extends Powerform_Google_Service_Resource
+class Google_Service_GroupsMigration_Archive_Resource extends Google_Service_Resource
 {
 
   /**
@@ -88,20 +88,20 @@ class Powerform_Google_Service_GroupsMigration_Archive_Resource extends Powerfor
    *
    * @param string $groupId The group ID
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_GroupsMigration_Groups
+   * @return Google_Service_GroupsMigration_Groups
    */
   public function insert($groupId, $optParams = array())
   {
     $params = array('groupId' => $groupId);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_GroupsMigration_Groups");
+    return $this->call('insert', array($params), "Google_Service_GroupsMigration_Groups");
   }
 }
 
 
 
 
-class Powerform_Google_Service_GroupsMigration_Groups extends Powerform_Google_Model
+class Google_Service_GroupsMigration_Groups extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Monitoring extends Powerform_Google_Service
+class Google_Service_Monitoring extends Google_Service
 {
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
@@ -50,14 +50,14 @@ class Powerform_Google_Service_Monitoring extends Powerform_Google_Service
   public $projects_metricDescriptors;
   public $projects_monitoredResourceDescriptors;
   public $projects_timeSeries;
-  
+
 
   /**
    * Constructs the internal representation of the Monitoring service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://monitoring.googleapis.com/';
@@ -65,7 +65,7 @@ class Powerform_Google_Service_Monitoring extends Powerform_Google_Service
     $this->version = 'v3';
     $this->serviceName = 'monitoring';
 
-    $this->projects_collectdTimeSeries = new Powerform_Google_Service_Monitoring_ProjectsCollectdTimeSeries_Resource(
+    $this->projects_collectdTimeSeries = new Google_Service_Monitoring_ProjectsCollectdTimeSeries_Resource(
         $this,
         $this->serviceName,
         'collectdTimeSeries',
@@ -85,7 +85,7 @@ class Powerform_Google_Service_Monitoring extends Powerform_Google_Service
           )
         )
     );
-    $this->projects_groups = new Powerform_Google_Service_Monitoring_ProjectsGroups_Resource(
+    $this->projects_groups = new Google_Service_Monitoring_ProjectsGroups_Resource(
         $this,
         $this->serviceName,
         'groups',
@@ -173,7 +173,7 @@ class Powerform_Google_Service_Monitoring extends Powerform_Google_Service
           )
         )
     );
-    $this->projects_groups_members = new Powerform_Google_Service_Monitoring_ProjectsGroupsMembers_Resource(
+    $this->projects_groups_members = new Google_Service_Monitoring_ProjectsGroupsMembers_Resource(
         $this,
         $this->serviceName,
         'members',
@@ -213,7 +213,7 @@ class Powerform_Google_Service_Monitoring extends Powerform_Google_Service
           )
         )
     );
-    $this->projects_metricDescriptors = new Powerform_Google_Service_Monitoring_ProjectsMetricDescriptors_Resource(
+    $this->projects_metricDescriptors = new Google_Service_Monitoring_ProjectsMetricDescriptors_Resource(
         $this,
         $this->serviceName,
         'metricDescriptors',
@@ -275,7 +275,7 @@ class Powerform_Google_Service_Monitoring extends Powerform_Google_Service
           )
         )
     );
-    $this->projects_monitoredResourceDescriptors = new Powerform_Google_Service_Monitoring_ProjectsMonitoredResourceDescriptors_Resource(
+    $this->projects_monitoredResourceDescriptors = new Google_Service_Monitoring_ProjectsMonitoredResourceDescriptors_Resource(
         $this,
         $this->serviceName,
         'monitoredResourceDescriptors',
@@ -317,7 +317,7 @@ class Powerform_Google_Service_Monitoring extends Powerform_Google_Service
           )
         )
     );
-    $this->projects_timeSeries = new Powerform_Google_Service_Monitoring_ProjectsTimeSeries_Resource(
+    $this->projects_timeSeries = new Google_Service_Monitoring_ProjectsTimeSeries_Resource(
         $this,
         $this->serviceName,
         'timeSeries',
@@ -400,11 +400,11 @@ class Powerform_Google_Service_Monitoring extends Powerform_Google_Service
  * The "projects" collection of methods.
  * Typical usage is:
  *  <code>
- *   $monitoringService = new Powerform_Google_Service_Monitoring(...);
+ *   $monitoringService = new Google_Service_Monitoring(...);
  *   $projects = $monitoringService->projects;
  *  </code>
  */
-class Powerform_Google_Service_Monitoring_Projects_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Monitoring_Projects_Resource extends Google_Service_Resource
 {
 }
 
@@ -412,11 +412,11 @@ class Powerform_Google_Service_Monitoring_Projects_Resource extends Powerform_Go
  * The "collectdTimeSeries" collection of methods.
  * Typical usage is:
  *  <code>
- *   $monitoringService = new Powerform_Google_Service_Monitoring(...);
+ *   $monitoringService = new Google_Service_Monitoring(...);
  *   $collectdTimeSeries = $monitoringService->collectdTimeSeries;
  *  </code>
  */
-class Powerform_Google_Service_Monitoring_ProjectsCollectdTimeSeries_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Monitoring_ProjectsCollectdTimeSeries_Resource extends Google_Service_Resource
 {
 
   /**
@@ -427,26 +427,26 @@ class Powerform_Google_Service_Monitoring_ProjectsCollectdTimeSeries_Resource ex
    *
    * @param string $name The project in which to create the time series. The
    * format is `"projects/PROJECT_ID_OR_NUMBER"`.
-   * @param Powerform_Google_CreateCollectdTimeSeriesRequest $postBody
+   * @param Google_CreateCollectdTimeSeriesRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Monitoring_Empty
+   * @return Google_Service_Monitoring_Empty
    */
-  public function create($name, Powerform_Google_Service_Monitoring_CreateCollectdTimeSeriesRequest $postBody, $optParams = array())
+  public function create($name, Google_Service_Monitoring_CreateCollectdTimeSeriesRequest $postBody, $optParams = array())
   {
     $params = array('name' => $name, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Monitoring_Empty");
+    return $this->call('create', array($params), "Google_Service_Monitoring_Empty");
   }
 }
 /**
  * The "groups" collection of methods.
  * Typical usage is:
  *  <code>
- *   $monitoringService = new Powerform_Google_Service_Monitoring(...);
+ *   $monitoringService = new Google_Service_Monitoring(...);
  *   $groups = $monitoringService->groups;
  *  </code>
  */
-class Powerform_Google_Service_Monitoring_ProjectsGroups_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Monitoring_ProjectsGroups_Resource extends Google_Service_Resource
 {
 
   /**
@@ -454,18 +454,18 @@ class Powerform_Google_Service_Monitoring_ProjectsGroups_Resource extends Powerf
    *
    * @param string $name The project in which to create the group. The format is
    * `"projects/{project_id_or_number}"`.
-   * @param Powerform_Google_Group $postBody
+   * @param Google_Group $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool validateOnly If true, validate this request but do not create
    * the group.
-   * @return Powerform_Google_Service_Monitoring_Group
+   * @return Google_Service_Monitoring_Group
    */
-  public function create($name, Powerform_Google_Service_Monitoring_Group $postBody, $optParams = array())
+  public function create($name, Google_Service_Monitoring_Group $postBody, $optParams = array())
   {
     $params = array('name' => $name, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Monitoring_Group");
+    return $this->call('create', array($params), "Google_Service_Monitoring_Group");
   }
 
   /**
@@ -474,13 +474,13 @@ class Powerform_Google_Service_Monitoring_ProjectsGroups_Resource extends Powerf
    * @param string $name The group to delete. The format is
    * `"projects/{project_id_or_number}/groups/{group_id}"`.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Monitoring_Empty
+   * @return Google_Service_Monitoring_Empty
    */
   public function delete($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Monitoring_Empty");
+    return $this->call('delete', array($params), "Google_Service_Monitoring_Empty");
   }
 
   /**
@@ -489,13 +489,13 @@ class Powerform_Google_Service_Monitoring_ProjectsGroups_Resource extends Powerf
    * @param string $name The group to retrieve. The format is
    * `"projects/{project_id_or_number}/groups/{group_id}"`.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Monitoring_Group
+   * @return Google_Service_Monitoring_Group
    */
   public function get($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Monitoring_Group");
+    return $this->call('get', array($params), "Google_Service_Monitoring_Group");
   }
 
   /**
@@ -525,13 +525,13 @@ class Powerform_Google_Service_Monitoring_ProjectsGroups_Resource extends Powerf
    * the `nextPageToken` value returned by a previous call to this method. Using
    * this field causes the method to return additional results from the previous
    * method call.
-   * @return Powerform_Google_Service_Monitoring_ListGroupsResponse
+   * @return Google_Service_Monitoring_ListGroupsResponse
    */
   public function listProjectsGroups($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Monitoring_ListGroupsResponse");
+    return $this->call('list', array($params), "Google_Service_Monitoring_ListGroupsResponse");
   }
 
   /**
@@ -543,18 +543,18 @@ class Powerform_Google_Service_Monitoring_ProjectsGroups_Resource extends Powerf
    * this field is ignored and a new name is created consisting of the project
    * specified in the call to `CreateGroup` and a unique `{group_id}` that is
    * generated automatically. @OutputOnly
-   * @param Powerform_Google_Group $postBody
+   * @param Google_Group $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool validateOnly If true, validate this request but do not update
    * the existing group.
-   * @return Powerform_Google_Service_Monitoring_Group
+   * @return Google_Service_Monitoring_Group
    */
-  public function update($name, Powerform_Google_Service_Monitoring_Group $postBody, $optParams = array())
+  public function update($name, Google_Service_Monitoring_Group $postBody, $optParams = array())
   {
     $params = array('name' => $name, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Monitoring_Group");
+    return $this->call('update', array($params), "Google_Service_Monitoring_Group");
   }
 }
 
@@ -562,11 +562,11 @@ class Powerform_Google_Service_Monitoring_ProjectsGroups_Resource extends Powerf
  * The "members" collection of methods.
  * Typical usage is:
  *  <code>
- *   $monitoringService = new Powerform_Google_Service_Monitoring(...);
+ *   $monitoringService = new Google_Service_Monitoring(...);
  *   $members = $monitoringService->members;
  *  </code>
  */
-class Powerform_Google_Service_Monitoring_ProjectsGroupsMembers_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Monitoring_ProjectsGroupsMembers_Resource extends Google_Service_Resource
 {
 
   /**
@@ -595,24 +595,24 @@ class Powerform_Google_Service_Monitoring_ProjectsGroupsMembers_Resource extends
    * point in time, `endTime`. If `startTime` is present, it must be earlier than
    * (less than) `endTime`. The interval begins after `startTime`—it does not
    * include `startTime`.
-   * @return Powerform_Google_Service_Monitoring_ListGroupMembersResponse
+   * @return Google_Service_Monitoring_ListGroupMembersResponse
    */
   public function listProjectsGroupsMembers($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Monitoring_ListGroupMembersResponse");
+    return $this->call('list', array($params), "Google_Service_Monitoring_ListGroupMembersResponse");
   }
 }
 /**
  * The "metricDescriptors" collection of methods.
  * Typical usage is:
  *  <code>
- *   $monitoringService = new Powerform_Google_Service_Monitoring(...);
+ *   $monitoringService = new Google_Service_Monitoring(...);
  *   $metricDescriptors = $monitoringService->metricDescriptors;
  *  </code>
  */
-class Powerform_Google_Service_Monitoring_ProjectsMetricDescriptors_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Monitoring_ProjectsMetricDescriptors_Resource extends Google_Service_Resource
 {
 
   /**
@@ -621,15 +621,15 @@ class Powerform_Google_Service_Monitoring_ProjectsMetricDescriptors_Resource ext
    *
    * @param string $name The project on which to execute the request. The format
    * is `"projects/{project_id_or_number}"`.
-   * @param Powerform_Google_MetricDescriptor $postBody
+   * @param Google_MetricDescriptor $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Monitoring_MetricDescriptor
+   * @return Google_Service_Monitoring_MetricDescriptor
    */
-  public function create($name, Powerform_Google_Service_Monitoring_MetricDescriptor $postBody, $optParams = array())
+  public function create($name, Google_Service_Monitoring_MetricDescriptor $postBody, $optParams = array())
   {
     $params = array('name' => $name, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Monitoring_MetricDescriptor");
+    return $this->call('create', array($params), "Google_Service_Monitoring_MetricDescriptor");
   }
 
   /**
@@ -641,13 +641,13 @@ class Powerform_Google_Service_Monitoring_ProjectsMetricDescriptors_Resource ext
    * `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`. An example
    * of `{metric_id}` is: `"custom.googleapis.com/my_test_metric"`.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Monitoring_Empty
+   * @return Google_Service_Monitoring_Empty
    */
   public function delete($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Monitoring_Empty");
+    return $this->call('delete', array($params), "Google_Service_Monitoring_Empty");
   }
 
   /**
@@ -659,13 +659,13 @@ class Powerform_Google_Service_Monitoring_ProjectsMetricDescriptors_Resource ext
    * value of `{metric_id}` is
    * `"compute.googleapis.com/instance/disk/read_bytes_count"`.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Monitoring_MetricDescriptor
+   * @return Google_Service_Monitoring_MetricDescriptor
    */
   public function get($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Monitoring_MetricDescriptor");
+    return $this->call('get', array($params), "Google_Service_Monitoring_MetricDescriptor");
   }
 
   /**
@@ -688,24 +688,24 @@ class Powerform_Google_Service_Monitoring_ProjectsMetricDescriptors_Resource ext
    * the `nextPageToken` value returned by a previous call to this method. Using
    * this field causes the method to return additional results from the previous
    * method call.
-   * @return Powerform_Google_Service_Monitoring_ListMetricDescriptorsResponse
+   * @return Google_Service_Monitoring_ListMetricDescriptorsResponse
    */
   public function listProjectsMetricDescriptors($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Monitoring_ListMetricDescriptorsResponse");
+    return $this->call('list', array($params), "Google_Service_Monitoring_ListMetricDescriptorsResponse");
   }
 }
 /**
  * The "monitoredResourceDescriptors" collection of methods.
  * Typical usage is:
  *  <code>
- *   $monitoringService = new Powerform_Google_Service_Monitoring(...);
+ *   $monitoringService = new Google_Service_Monitoring(...);
  *   $monitoredResourceDescriptors = $monitoringService->monitoredResourceDescriptors;
  *  </code>
  */
-class Powerform_Google_Service_Monitoring_ProjectsMonitoredResourceDescriptors_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Monitoring_ProjectsMonitoredResourceDescriptors_Resource extends Google_Service_Resource
 {
 
   /**
@@ -716,13 +716,13 @@ class Powerform_Google_Service_Monitoring_ProjectsMonitoredResourceDescriptors_R
    * "projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}
    * "`. The `{resource_type}` is a predefined type, such as `cloudsql_database`.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Monitoring_MonitoredResourceDescriptor
+   * @return Google_Service_Monitoring_MonitoredResourceDescriptor
    */
   public function get($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Monitoring_MonitoredResourceDescriptor");
+    return $this->call('get', array($params), "Google_Service_Monitoring_MonitoredResourceDescriptor");
   }
 
   /**
@@ -744,24 +744,24 @@ class Powerform_Google_Service_Monitoring_ProjectsMonitoredResourceDescriptors_R
    * the `nextPageToken` value returned by a previous call to this method. Using
    * this field causes the method to return additional results from the previous
    * method call.
-   * @return Powerform_Google_Service_Monitoring_ListMonitoredResourceDescriptorsResponse
+   * @return Google_Service_Monitoring_ListMonitoredResourceDescriptorsResponse
    */
   public function listProjectsMonitoredResourceDescriptors($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Monitoring_ListMonitoredResourceDescriptorsResponse");
+    return $this->call('list', array($params), "Google_Service_Monitoring_ListMonitoredResourceDescriptorsResponse");
   }
 }
 /**
  * The "timeSeries" collection of methods.
  * Typical usage is:
  *  <code>
- *   $monitoringService = new Powerform_Google_Service_Monitoring(...);
+ *   $monitoringService = new Google_Service_Monitoring(...);
  *   $timeSeries = $monitoringService->timeSeries;
  *  </code>
  */
-class Powerform_Google_Service_Monitoring_ProjectsTimeSeries_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Monitoring_ProjectsTimeSeries_Resource extends Google_Service_Resource
 {
 
   /**
@@ -772,15 +772,15 @@ class Powerform_Google_Service_Monitoring_ProjectsTimeSeries_Resource extends Po
    *
    * @param string $name The project on which to execute the request. The format
    * is `"projects/{project_id_or_number}"`.
-   * @param Powerform_Google_CreateTimeSeriesRequest $postBody
+   * @param Google_CreateTimeSeriesRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Monitoring_Empty
+   * @return Google_Service_Monitoring_Empty
    */
-  public function create($name, Powerform_Google_Service_Monitoring_CreateTimeSeriesRequest $postBody, $optParams = array())
+  public function create($name, Google_Service_Monitoring_CreateTimeSeriesRequest $postBody, $optParams = array())
   {
     $params = array('name' => $name, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Monitoring_Empty");
+    return $this->call('create', array($params), "Google_Service_Monitoring_Empty");
   }
 
   /**
@@ -848,32 +848,32 @@ class Powerform_Google_Service_Monitoring_ProjectsTimeSeries_Resource extends Po
    * the `nextPageToken` value returned by a previous call to this method. Using
    * this field causes the method to return additional results from the previous
    * method call.
-   * @return Powerform_Google_Service_Monitoring_ListTimeSeriesResponse
+   * @return Google_Service_Monitoring_ListTimeSeriesResponse
    */
   public function listProjectsTimeSeries($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Monitoring_ListTimeSeriesResponse");
+    return $this->call('list', array($params), "Google_Service_Monitoring_ListTimeSeriesResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Monitoring_BucketOptions extends Powerform_Google_Model
+class Google_Service_Monitoring_BucketOptions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $explicitBucketsType = 'Powerform_Google_Service_Monitoring_Explicit';
+  protected $explicitBucketsType = 'Google_Service_Monitoring_Explicit';
   protected $explicitBucketsDataType = '';
-  protected $exponentialBucketsType = 'Powerform_Google_Service_Monitoring_Exponential';
+  protected $exponentialBucketsType = 'Google_Service_Monitoring_Exponential';
   protected $exponentialBucketsDataType = '';
-  protected $linearBucketsType = 'Powerform_Google_Service_Monitoring_Linear';
+  protected $linearBucketsType = 'Google_Service_Monitoring_Linear';
   protected $linearBucketsDataType = '';
 
 
-  public function setExplicitBuckets(Powerform_Google_Service_Monitoring_Explicit $explicitBuckets)
+  public function setExplicitBuckets(Google_Service_Monitoring_Explicit $explicitBuckets)
   {
     $this->explicitBuckets = $explicitBuckets;
   }
@@ -881,7 +881,7 @@ class Powerform_Google_Service_Monitoring_BucketOptions extends Powerform_Google
   {
     return $this->explicitBuckets;
   }
-  public function setExponentialBuckets(Powerform_Google_Service_Monitoring_Exponential $exponentialBuckets)
+  public function setExponentialBuckets(Google_Service_Monitoring_Exponential $exponentialBuckets)
   {
     $this->exponentialBuckets = $exponentialBuckets;
   }
@@ -889,7 +889,7 @@ class Powerform_Google_Service_Monitoring_BucketOptions extends Powerform_Google
   {
     return $this->exponentialBuckets;
   }
-  public function setLinearBuckets(Powerform_Google_Service_Monitoring_Linear $linearBuckets)
+  public function setLinearBuckets(Google_Service_Monitoring_Linear $linearBuckets)
   {
     $this->linearBuckets = $linearBuckets;
   }
@@ -899,20 +899,20 @@ class Powerform_Google_Service_Monitoring_BucketOptions extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Monitoring_CollectdPayload extends Powerform_Google_Collection
+class Google_Service_Monitoring_CollectdPayload extends Google_Collection
 {
   protected $collection_key = 'values';
   protected $internal_gapi_mappings = array(
   );
   public $endTime;
-  protected $metadataType = 'Powerform_Google_Service_Monitoring_TypedValue';
+  protected $metadataType = 'Google_Service_Monitoring_TypedValue';
   protected $metadataDataType = 'map';
   public $plugin;
   public $pluginInstance;
   public $startTime;
   public $type;
   public $typeInstance;
-  protected $valuesType = 'Powerform_Google_Service_Monitoring_CollectdValue';
+  protected $valuesType = 'Google_Service_Monitoring_CollectdValue';
   protected $valuesDataType = 'array';
 
 
@@ -982,17 +982,17 @@ class Powerform_Google_Service_Monitoring_CollectdPayload extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Monitoring_CollectdPayloadMetadata extends Powerform_Google_Model
+class Google_Service_Monitoring_CollectdPayloadMetadata extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Monitoring_CollectdValue extends Powerform_Google_Model
+class Google_Service_Monitoring_CollectdValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $dataSourceName;
   public $dataSourceType;
-  protected $valueType = 'Powerform_Google_Service_Monitoring_TypedValue';
+  protected $valueType = 'Google_Service_Monitoring_TypedValue';
   protected $valueDataType = '';
 
 
@@ -1012,7 +1012,7 @@ class Powerform_Google_Service_Monitoring_CollectdValue extends Powerform_Google
   {
     return $this->dataSourceType;
   }
-  public function setValue(Powerform_Google_Service_Monitoring_TypedValue $value)
+  public function setValue(Google_Service_Monitoring_TypedValue $value)
   {
     $this->value = $value;
   }
@@ -1022,15 +1022,15 @@ class Powerform_Google_Service_Monitoring_CollectdValue extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Monitoring_CreateCollectdTimeSeriesRequest extends Powerform_Google_Collection
+class Google_Service_Monitoring_CreateCollectdTimeSeriesRequest extends Google_Collection
 {
   protected $collection_key = 'collectdPayloads';
   protected $internal_gapi_mappings = array(
   );
-  protected $collectdPayloadsType = 'Powerform_Google_Service_Monitoring_CollectdPayload';
+  protected $collectdPayloadsType = 'Google_Service_Monitoring_CollectdPayload';
   protected $collectdPayloadsDataType = 'array';
   public $collectdVersion;
-  protected $resourceType = 'Powerform_Google_Service_Monitoring_MonitoredResource';
+  protected $resourceType = 'Google_Service_Monitoring_MonitoredResource';
   protected $resourceDataType = '';
 
 
@@ -1050,7 +1050,7 @@ class Powerform_Google_Service_Monitoring_CreateCollectdTimeSeriesRequest extend
   {
     return $this->collectdVersion;
   }
-  public function setResource(Powerform_Google_Service_Monitoring_MonitoredResource $resource)
+  public function setResource(Google_Service_Monitoring_MonitoredResource $resource)
   {
     $this->resource = $resource;
   }
@@ -1060,12 +1060,12 @@ class Powerform_Google_Service_Monitoring_CreateCollectdTimeSeriesRequest extend
   }
 }
 
-class Powerform_Google_Service_Monitoring_CreateTimeSeriesRequest extends Powerform_Google_Collection
+class Google_Service_Monitoring_CreateTimeSeriesRequest extends Google_Collection
 {
   protected $collection_key = 'timeSeries';
   protected $internal_gapi_mappings = array(
   );
-  protected $timeSeriesType = 'Powerform_Google_Service_Monitoring_TimeSeries';
+  protected $timeSeriesType = 'Google_Service_Monitoring_TimeSeries';
   protected $timeSeriesDataType = 'array';
 
 
@@ -1079,17 +1079,17 @@ class Powerform_Google_Service_Monitoring_CreateTimeSeriesRequest extends Powerf
   }
 }
 
-class Powerform_Google_Service_Monitoring_Distribution extends Powerform_Google_Collection
+class Google_Service_Monitoring_Distribution extends Google_Collection
 {
   protected $collection_key = 'bucketCounts';
   protected $internal_gapi_mappings = array(
   );
   public $bucketCounts;
-  protected $bucketOptionsType = 'Powerform_Google_Service_Monitoring_BucketOptions';
+  protected $bucketOptionsType = 'Google_Service_Monitoring_BucketOptions';
   protected $bucketOptionsDataType = '';
   public $count;
   public $mean;
-  protected $rangeType = 'Powerform_Google_Service_Monitoring_Range';
+  protected $rangeType = 'Google_Service_Monitoring_Range';
   protected $rangeDataType = '';
   public $sumOfSquaredDeviation;
 
@@ -1102,7 +1102,7 @@ class Powerform_Google_Service_Monitoring_Distribution extends Powerform_Google_
   {
     return $this->bucketCounts;
   }
-  public function setBucketOptions(Powerform_Google_Service_Monitoring_BucketOptions $bucketOptions)
+  public function setBucketOptions(Google_Service_Monitoring_BucketOptions $bucketOptions)
   {
     $this->bucketOptions = $bucketOptions;
   }
@@ -1126,7 +1126,7 @@ class Powerform_Google_Service_Monitoring_Distribution extends Powerform_Google_
   {
     return $this->mean;
   }
-  public function setRange(Powerform_Google_Service_Monitoring_Range $range)
+  public function setRange(Google_Service_Monitoring_Range $range)
   {
     $this->range = $range;
   }
@@ -1144,11 +1144,11 @@ class Powerform_Google_Service_Monitoring_Distribution extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Monitoring_Empty extends Powerform_Google_Model
+class Google_Service_Monitoring_Empty extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Monitoring_Explicit extends Powerform_Google_Collection
+class Google_Service_Monitoring_Explicit extends Google_Collection
 {
   protected $collection_key = 'bounds';
   protected $internal_gapi_mappings = array(
@@ -1166,7 +1166,7 @@ class Powerform_Google_Service_Monitoring_Explicit extends Powerform_Google_Coll
   }
 }
 
-class Powerform_Google_Service_Monitoring_Exponential extends Powerform_Google_Model
+class Google_Service_Monitoring_Exponential extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1201,7 +1201,7 @@ class Powerform_Google_Service_Monitoring_Exponential extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Monitoring_Field extends Powerform_Google_Collection
+class Google_Service_Monitoring_Field extends Google_Collection
 {
   protected $collection_key = 'options';
   protected $internal_gapi_mappings = array(
@@ -1213,7 +1213,7 @@ class Powerform_Google_Service_Monitoring_Field extends Powerform_Google_Collect
   public $name;
   public $number;
   public $oneofIndex;
-  protected $optionsType = 'Powerform_Google_Service_Monitoring_Option';
+  protected $optionsType = 'Google_Service_Monitoring_Option';
   protected $optionsDataType = 'array';
   public $packed;
   public $typeUrl;
@@ -1301,7 +1301,7 @@ class Powerform_Google_Service_Monitoring_Field extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Monitoring_Group extends Powerform_Google_Model
+class Google_Service_Monitoring_Group extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1354,7 +1354,7 @@ class Powerform_Google_Service_Monitoring_Group extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Monitoring_LabelDescriptor extends Powerform_Google_Model
+class Google_Service_Monitoring_LabelDescriptor extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1389,7 +1389,7 @@ class Powerform_Google_Service_Monitoring_LabelDescriptor extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Monitoring_Linear extends Powerform_Google_Model
+class Google_Service_Monitoring_Linear extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1424,12 +1424,12 @@ class Powerform_Google_Service_Monitoring_Linear extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Monitoring_ListGroupMembersResponse extends Powerform_Google_Collection
+class Google_Service_Monitoring_ListGroupMembersResponse extends Google_Collection
 {
   protected $collection_key = 'members';
   protected $internal_gapi_mappings = array(
   );
-  protected $membersType = 'Powerform_Google_Service_Monitoring_MonitoredResource';
+  protected $membersType = 'Google_Service_Monitoring_MonitoredResource';
   protected $membersDataType = 'array';
   public $nextPageToken;
   public $totalSize;
@@ -1461,12 +1461,12 @@ class Powerform_Google_Service_Monitoring_ListGroupMembersResponse extends Power
   }
 }
 
-class Powerform_Google_Service_Monitoring_ListGroupsResponse extends Powerform_Google_Collection
+class Google_Service_Monitoring_ListGroupsResponse extends Google_Collection
 {
   protected $collection_key = 'group';
   protected $internal_gapi_mappings = array(
   );
-  protected $groupType = 'Powerform_Google_Service_Monitoring_Group';
+  protected $groupType = 'Google_Service_Monitoring_Group';
   protected $groupDataType = 'array';
   public $nextPageToken;
 
@@ -1489,12 +1489,12 @@ class Powerform_Google_Service_Monitoring_ListGroupsResponse extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Monitoring_ListMetricDescriptorsResponse extends Powerform_Google_Collection
+class Google_Service_Monitoring_ListMetricDescriptorsResponse extends Google_Collection
 {
   protected $collection_key = 'metricDescriptors';
   protected $internal_gapi_mappings = array(
   );
-  protected $metricDescriptorsType = 'Powerform_Google_Service_Monitoring_MetricDescriptor';
+  protected $metricDescriptorsType = 'Google_Service_Monitoring_MetricDescriptor';
   protected $metricDescriptorsDataType = 'array';
   public $nextPageToken;
 
@@ -1517,13 +1517,13 @@ class Powerform_Google_Service_Monitoring_ListMetricDescriptorsResponse extends 
   }
 }
 
-class Powerform_Google_Service_Monitoring_ListMonitoredResourceDescriptorsResponse extends Powerform_Google_Collection
+class Google_Service_Monitoring_ListMonitoredResourceDescriptorsResponse extends Google_Collection
 {
   protected $collection_key = 'resourceDescriptors';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $resourceDescriptorsType = 'Powerform_Google_Service_Monitoring_MonitoredResourceDescriptor';
+  protected $resourceDescriptorsType = 'Google_Service_Monitoring_MonitoredResourceDescriptor';
   protected $resourceDescriptorsDataType = 'array';
 
 
@@ -1545,13 +1545,13 @@ class Powerform_Google_Service_Monitoring_ListMonitoredResourceDescriptorsRespon
   }
 }
 
-class Powerform_Google_Service_Monitoring_ListTimeSeriesResponse extends Powerform_Google_Collection
+class Google_Service_Monitoring_ListTimeSeriesResponse extends Google_Collection
 {
   protected $collection_key = 'timeSeries';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $timeSeriesType = 'Powerform_Google_Service_Monitoring_TimeSeries';
+  protected $timeSeriesType = 'Google_Service_Monitoring_TimeSeries';
   protected $timeSeriesDataType = 'array';
 
 
@@ -1573,7 +1573,7 @@ class Powerform_Google_Service_Monitoring_ListTimeSeriesResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Monitoring_Metric extends Powerform_Google_Model
+class Google_Service_Monitoring_Metric extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1599,14 +1599,14 @@ class Powerform_Google_Service_Monitoring_Metric extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Monitoring_MetricDescriptor extends Powerform_Google_Collection
+class Google_Service_Monitoring_MetricDescriptor extends Google_Collection
 {
   protected $collection_key = 'labels';
   protected $internal_gapi_mappings = array(
   );
   public $description;
   public $displayName;
-  protected $labelsType = 'Powerform_Google_Service_Monitoring_LabelDescriptor';
+  protected $labelsType = 'Google_Service_Monitoring_LabelDescriptor';
   protected $labelsDataType = 'array';
   public $metricKind;
   public $name;
@@ -1681,11 +1681,11 @@ class Powerform_Google_Service_Monitoring_MetricDescriptor extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Monitoring_MetricLabels extends Powerform_Google_Model
+class Google_Service_Monitoring_MetricLabels extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Monitoring_MonitoredResource extends Powerform_Google_Model
+class Google_Service_Monitoring_MonitoredResource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1711,14 +1711,14 @@ class Powerform_Google_Service_Monitoring_MonitoredResource extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Monitoring_MonitoredResourceDescriptor extends Powerform_Google_Collection
+class Google_Service_Monitoring_MonitoredResourceDescriptor extends Google_Collection
 {
   protected $collection_key = 'labels';
   protected $internal_gapi_mappings = array(
   );
   public $description;
   public $displayName;
-  protected $labelsType = 'Powerform_Google_Service_Monitoring_LabelDescriptor';
+  protected $labelsType = 'Google_Service_Monitoring_LabelDescriptor';
   protected $labelsDataType = 'array';
   public $name;
   public $type;
@@ -1766,11 +1766,11 @@ class Powerform_Google_Service_Monitoring_MonitoredResourceDescriptor extends Po
   }
 }
 
-class Powerform_Google_Service_Monitoring_MonitoredResourceLabels extends Powerform_Google_Model
+class Google_Service_Monitoring_MonitoredResourceLabels extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Monitoring_Option extends Powerform_Google_Model
+class Google_Service_Monitoring_Option extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1796,21 +1796,21 @@ class Powerform_Google_Service_Monitoring_Option extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Monitoring_OptionValue extends Powerform_Google_Model
+class Google_Service_Monitoring_OptionValue extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Monitoring_Point extends Powerform_Google_Model
+class Google_Service_Monitoring_Point extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $intervalType = 'Powerform_Google_Service_Monitoring_TimeInterval';
+  protected $intervalType = 'Google_Service_Monitoring_TimeInterval';
   protected $intervalDataType = '';
-  protected $valueType = 'Powerform_Google_Service_Monitoring_TypedValue';
+  protected $valueType = 'Google_Service_Monitoring_TypedValue';
   protected $valueDataType = '';
 
 
-  public function setInterval(Powerform_Google_Service_Monitoring_TimeInterval $interval)
+  public function setInterval(Google_Service_Monitoring_TimeInterval $interval)
   {
     $this->interval = $interval;
   }
@@ -1818,7 +1818,7 @@ class Powerform_Google_Service_Monitoring_Point extends Powerform_Google_Model
   {
     return $this->interval;
   }
-  public function setValue(Powerform_Google_Service_Monitoring_TypedValue $value)
+  public function setValue(Google_Service_Monitoring_TypedValue $value)
   {
     $this->value = $value;
   }
@@ -1828,7 +1828,7 @@ class Powerform_Google_Service_Monitoring_Point extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Monitoring_Range extends Powerform_Google_Model
+class Google_Service_Monitoring_Range extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1854,7 +1854,7 @@ class Powerform_Google_Service_Monitoring_Range extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Monitoring_SourceContext extends Powerform_Google_Model
+class Google_Service_Monitoring_SourceContext extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1871,7 +1871,7 @@ class Powerform_Google_Service_Monitoring_SourceContext extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Monitoring_TimeInterval extends Powerform_Google_Model
+class Google_Service_Monitoring_TimeInterval extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1897,22 +1897,22 @@ class Powerform_Google_Service_Monitoring_TimeInterval extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Monitoring_TimeSeries extends Powerform_Google_Collection
+class Google_Service_Monitoring_TimeSeries extends Google_Collection
 {
   protected $collection_key = 'points';
   protected $internal_gapi_mappings = array(
   );
-  protected $metricType = 'Powerform_Google_Service_Monitoring_Metric';
+  protected $metricType = 'Google_Service_Monitoring_Metric';
   protected $metricDataType = '';
   public $metricKind;
-  protected $pointsType = 'Powerform_Google_Service_Monitoring_Point';
+  protected $pointsType = 'Google_Service_Monitoring_Point';
   protected $pointsDataType = 'array';
-  protected $resourceType = 'Powerform_Google_Service_Monitoring_MonitoredResource';
+  protected $resourceType = 'Google_Service_Monitoring_MonitoredResource';
   protected $resourceDataType = '';
   public $valueType;
 
 
-  public function setMetric(Powerform_Google_Service_Monitoring_Metric $metric)
+  public function setMetric(Google_Service_Monitoring_Metric $metric)
   {
     $this->metric = $metric;
   }
@@ -1936,7 +1936,7 @@ class Powerform_Google_Service_Monitoring_TimeSeries extends Powerform_Google_Co
   {
     return $this->points;
   }
-  public function setResource(Powerform_Google_Service_Monitoring_MonitoredResource $resource)
+  public function setResource(Google_Service_Monitoring_MonitoredResource $resource)
   {
     $this->resource = $resource;
   }
@@ -1954,18 +1954,18 @@ class Powerform_Google_Service_Monitoring_TimeSeries extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Monitoring_Type extends Powerform_Google_Collection
+class Google_Service_Monitoring_Type extends Google_Collection
 {
   protected $collection_key = 'options';
   protected $internal_gapi_mappings = array(
   );
-  protected $fieldsType = 'Powerform_Google_Service_Monitoring_Field';
+  protected $fieldsType = 'Google_Service_Monitoring_Field';
   protected $fieldsDataType = 'array';
   public $name;
   public $oneofs;
-  protected $optionsType = 'Powerform_Google_Service_Monitoring_Option';
+  protected $optionsType = 'Google_Service_Monitoring_Option';
   protected $optionsDataType = 'array';
-  protected $sourceContextType = 'Powerform_Google_Service_Monitoring_SourceContext';
+  protected $sourceContextType = 'Google_Service_Monitoring_SourceContext';
   protected $sourceContextDataType = '';
   public $syntax;
 
@@ -2002,7 +2002,7 @@ class Powerform_Google_Service_Monitoring_Type extends Powerform_Google_Collecti
   {
     return $this->options;
   }
-  public function setSourceContext(Powerform_Google_Service_Monitoring_SourceContext $sourceContext)
+  public function setSourceContext(Google_Service_Monitoring_SourceContext $sourceContext)
   {
     $this->sourceContext = $sourceContext;
   }
@@ -2020,12 +2020,12 @@ class Powerform_Google_Service_Monitoring_Type extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Monitoring_TypedValue extends Powerform_Google_Model
+class Google_Service_Monitoring_TypedValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $boolValue;
-  protected $distributionValueType = 'Powerform_Google_Service_Monitoring_Distribution';
+  protected $distributionValueType = 'Google_Service_Monitoring_Distribution';
   protected $distributionValueDataType = '';
   public $doubleValue;
   public $int64Value;
@@ -2040,7 +2040,7 @@ class Powerform_Google_Service_Monitoring_TypedValue extends Powerform_Google_Mo
   {
     return $this->boolValue;
   }
-  public function setDistributionValue(Powerform_Google_Service_Monitoring_Distribution $distributionValue)
+  public function setDistributionValue(Google_Service_Monitoring_Distribution $distributionValue)
   {
     $this->distributionValue = $distributionValue;
   }

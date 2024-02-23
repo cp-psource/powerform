@@ -84,11 +84,10 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 	 *
 	 * @param Powerform_Custom_Form_Model $custom_form
 	 * @param array                        $data
-	 * @param array                        $pseudo_submitted_data
 	 * @param Powerform_Form_Entry_Model  $entry - saved entry @since 1.0.3
 	 */
-	public function process_mail( $custom_form, $data, Powerform_Form_Entry_Model $entry, $pseudo_submitted_data = array() ) {
-		$notifications = $custom_form->notifications;
+	public function process_mail( $custom_form, $data, Powerform_Form_Entry_Model $entry ) {
+		$setting = $custom_form->settings;
 
 		if ( ! isset( $data['current_url'] ) || empty( $data['current_url'] ) ) {
 			$data['current_url'] = powerform_get_current_url();
@@ -107,24 +106,7 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 			$this->set_headers();
 
 		}
-		$files       = array();
-		$form_fields = $custom_form->get_fields();
-		foreach ( $form_fields as $form_field ) {
-			$field_array    = $form_field->to_formatted_array();
-			$field_forms    = powerform_fields_to_array();
-			$field_type     = $field_array['type'];
-			$form_field_obj = $field_forms[ $field_type ];
-			if ( 'upload' === $field_type && ! $form_field_obj->is_hidden( $field_array, $data, $pseudo_submitted_data ) ) {
-				$field_slug = isset( $entry->meta_data[ $form_field->slug ] ) ? $entry->meta_data[ $form_field->slug ] : '';
-				if ( ! empty( $field_slug ) && ! empty( $field_slug['value']['file'] ) ) {
-					$email_files = isset( $field_slug['value']['file'] ) ? $field_slug['value']['file']['file_path'] : array();
-					$files[]     = is_array( $email_files ) ? $email_files : array( $email_files );
-				}
-			}
-		}
-		if ( ! empty( $files ) ) {
-			$files = call_user_func_array( 'array_merge', $files );
-		}
+
 		/**
 		 * Message data filter
 		 *
@@ -150,16 +132,12 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 		do_action( 'powerform_custom_form_mail_before_send_mail', $this, $custom_form, $data, $entry );
 
 		//Process Email
-		if ( ! empty( $notifications ) ) {
+		if ( $this->send_admin_mail( $setting ) || $this->send_user_mail( $setting ) ) {
 			$this->init( $_POST ); // WPCS: CSRF OK
 			//Process admin mail
-			foreach ( $notifications as $notification ) {
+			if ( $this->send_admin_mail( $setting ) ) {
+				$recipients = $this->get_admin_email_recipients( $setting, $data, $custom_form, $entry );
 
-				if ( $this->is_condition( $notification, $data, $pseudo_submitted_data ) ) {
-					continue;
-				}
-
-				$recipients = $this->get_admin_email_recipients( $notification, $data, $custom_form, $entry, $pseudo_submitted_data );
 				/**
 				 * Custom form admin mail recipients filter
 				 *
@@ -178,18 +156,14 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 				);
 
 				if ( ! empty( $recipients ) ) {
-					$subject = '';
-					$message = '';
-					if ( isset( $notification['email-subject'] ) ) {
-						$subject = powerform_replace_form_data( $notification['email-subject'], $data, $custom_form, $entry );
-						$subject = powerform_replace_variables( $subject, $custom_form->id, $data['current_url'] );
-						$subject = powerform_replace_custom_form_data( $subject, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
-					}
-					if ( isset( $notification['email-editor'] ) ) {
-						$message = powerform_replace_form_data( $notification['email-editor'], $data, $custom_form, $entry );
-						$message = powerform_replace_variables( $message, $custom_form->id, $data['current_url'] );
-						$message = powerform_replace_custom_form_data( $message, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
-					}
+					$subject = powerform_replace_form_data( $setting['admin-email-title'], $data, $custom_form, $entry );
+					$subject = powerform_replace_variables( $subject, $custom_form->id, $data['current_url'] );
+					$subject = powerform_replace_custom_form_data( $subject, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
+
+					$message = powerform_replace_form_data( $setting['admin-email-editor'], $data, $custom_form, $entry );
+					$message = powerform_replace_variables( $message, $custom_form->id, $data['current_url'] );
+					$message = powerform_replace_custom_form_data( $message, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
+
 					/**
 					 * Custom form mail subject filter
 					 *
@@ -215,14 +189,14 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 					$message = apply_filters( 'powerform_custom_form_mail_admin_message', $message, $custom_form, $data, $entry, $this );
 
 					$from_name = $this->sender_name;
-					if ( isset( $notification['from-name'] ) && ! empty( $notification['from-name'] ) ) {
-						$notification_from_name = $notification['from-name'];
-						$notification_from_name = powerform_replace_form_data( $notification_from_name, $data );
-						$notification_from_name = powerform_replace_variables( $notification_from_name, $custom_form->id, $data['current_url'] );
-						$notification_from_name = powerform_replace_custom_form_data( $notification_from_name, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
+					if ( isset( $setting['admin-email-from-name'] ) && ! empty( $setting['admin-email-from-name'] ) ) {
+						$setting_from_name = $setting['admin-email-from-name'];
+						$setting_from_name = powerform_replace_form_data( $setting_from_name, $data );
+						$setting_from_name = powerform_replace_variables( $setting_from_name, $custom_form->id, $data['current_url'] );
+						$setting_from_name = powerform_replace_custom_form_data( $setting_from_name, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
 
-						if ( ! empty( $notification_from_name ) ) {
-							$from_name = $notification_from_name;
+						if ( ! empty( $setting_from_name ) ) {
+							$from_name = $setting_from_name;
 						}
 					}
 					/**
@@ -239,15 +213,14 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 					$from_name = apply_filters( 'powerform_custom_form_mail_admin_from_name', $from_name, $custom_form, $data, $entry, $this );
 
 					$from_email = $this->sender_email;
+					if ( isset( $setting['admin-email-from-address'] ) && ! empty( $setting['admin-email-from-address'] ) ) {
+						$setting_from_address = $setting['admin-email-from-address'];
+						$setting_from_address = powerform_replace_form_data( $setting_from_address, $data );
+						$setting_from_address = powerform_replace_variables( $setting_from_address, $custom_form->id, $data['current_url'] );
+						$setting_from_address = powerform_replace_custom_form_data( $setting_from_address, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
 
-					if ( isset( $notification['form-email'] ) && ! empty( $notification['form-email'] ) ) {
-						$notification_from_address = $notification['form-email'];
-						$notification_from_address = powerform_replace_form_data( $notification_from_address, $data );
-						$notification_from_address = powerform_replace_variables( $notification_from_address, $custom_form->id, $data['current_url'] );
-						$notification_from_address = powerform_replace_custom_form_data( $notification_from_address, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
-
-						if ( is_email( $notification_from_address ) ) {
-							$from_email = $notification_from_address;
+						if ( is_email( $setting_from_address ) ) {
+							$from_email = $setting_from_address;
 						}
 					}
 					/**
@@ -264,14 +237,14 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 					$from_email = apply_filters( 'powerform_custom_form_mail_admin_from_email', $from_email, $custom_form, $data, $entry, $this );
 
 					$reply_to_address = '';
-					if ( isset( $notification['replyto-email'] ) && ! empty( $notification['replyto-email'] ) ) {
-						$notification_reply_to_address = $notification['replyto-email'];
-						$notification_reply_to_address = powerform_replace_form_data( $notification_reply_to_address, $data );
-						$notification_reply_to_address = powerform_replace_variables( $notification_reply_to_address, $custom_form->id, $data['current_url'] );
-						$notification_reply_to_address = powerform_replace_custom_form_data( $notification_reply_to_address, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
+					if ( isset( $setting['admin-email-reply-to-address'] ) && ! empty( $setting['admin-email-reply-to-address'] ) ) {
+						$setting_reply_to_address = $setting['admin-email-reply-to-address'];
+						$setting_reply_to_address = powerform_replace_form_data( $setting_reply_to_address, $data );
+						$setting_reply_to_address = powerform_replace_variables( $setting_reply_to_address, $custom_form->id, $data['current_url'] );
+						$setting_reply_to_address = powerform_replace_custom_form_data( $setting_reply_to_address, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
 
-						if ( is_email( $notification_reply_to_address ) ) {
-							$reply_to_address = $notification_reply_to_address;
+						if ( is_email( $setting_reply_to_address ) ) {
+							$reply_to_address = $setting_reply_to_address;
 						}
 					}
 
@@ -289,15 +262,15 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 					$reply_to_address = apply_filters( 'powerform_custom_form_mail_admin_reply_to', $reply_to_address, $custom_form, $data, $entry, $this );
 
 					$cc_addresses = array();
-					if ( isset( $notification['cc-email'] ) && ! empty( $notification['cc-email'] ) ) {
-						$notification_cc_addresses = array_map('trim', explode( ',', $notification['cc-email'] ) );
+					if ( isset( $setting['admin-email-cc-address'] ) && ! empty( $setting['admin-email-cc-address'] ) && is_array( $setting['admin-email-cc-address'] ) ) {
+						$setting_cc_addresses = $setting['admin-email-cc-address'];
 
-						foreach ( $notification_cc_addresses as $key => $notification_cc_address ) {
-							$notification_cc_address = powerform_replace_form_data( $notification_cc_address, $data );
-							$notification_cc_address = powerform_replace_variables( $notification_cc_address, $custom_form->id, $data['current_url'] );
-							$notification_cc_address = powerform_replace_custom_form_data( $notification_cc_address, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
-							if ( is_email( $notification_cc_address ) ) {
-								$cc_addresses[] = $notification_cc_address;
+						foreach ( $setting_cc_addresses as $key => $setting_cc_address ) {
+							$setting_cc_address = powerform_replace_form_data( $setting_cc_address, $data );
+							$setting_cc_address = powerform_replace_variables( $setting_cc_address, $custom_form->id, $data['current_url'] );
+							$setting_cc_address = powerform_replace_custom_form_data( $setting_cc_address, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
+							if ( is_email( $setting_cc_address ) ) {
+								$cc_addresses[] = $setting_cc_address;
 							}
 						}
 					}
@@ -315,15 +288,15 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 					$cc_addresses = apply_filters( 'powerform_custom_form_mail_admin_cc_addresses', $cc_addresses, $custom_form, $data, $entry, $this );
 
 					$bcc_addresses = array();
-					if ( isset( $notification['bcc-email'] ) && ! empty( $notification['bcc-email'] ) ) {
-						$notification_bcc_addresses = array_map('trim', explode( ',', $notification['bcc-email'] ) );
+					if ( isset( $setting['admin-email-bcc-address'] ) && ! empty( $setting['admin-email-bcc-address'] ) && is_array( $setting['admin-email-bcc-address'] ) ) {
+						$setting_bcc_addresses = $setting['admin-email-bcc-address'];
 
-						foreach ( $notification_bcc_addresses as $key => $notification_bcc_address ) {
-							$notification_bcc_address = powerform_replace_form_data( $notification_bcc_address, $data );
-							$notification_bcc_address = powerform_replace_variables( $notification_bcc_address, $custom_form->id, $data['current_url'] );
-							$notification_bcc_address = powerform_replace_custom_form_data( $notification_bcc_address, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
-							if ( is_email( $notification_bcc_address ) ) {
-								$bcc_addresses[] = $notification_bcc_address;
+						foreach ( $setting_bcc_addresses as $key => $setting_bcc_address ) {
+							$setting_bcc_address = powerform_replace_form_data( $setting_bcc_address, $data );
+							$setting_bcc_address = powerform_replace_variables( $setting_bcc_address, $custom_form->id, $data['current_url'] );
+							$setting_bcc_address = powerform_replace_custom_form_data( $setting_bcc_address, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
+							if ( is_email( $setting_bcc_address ) ) {
+								$bcc_addresses[] = $setting_bcc_address;
 							}
 						}
 					}
@@ -395,10 +368,6 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 					$this->set_subject( $subject );
 					$this->set_recipients( $recipients );
 					$this->set_message_with_vars( $this->message_vars, $message );
-					if ( ! empty( $files ) && isset( $notification['email-attachment'] ) && 'true' === $notification['email-attachment'] ) {
-						$this->set_attachment( $files );
-					}
-
 					$this->send_multiple();
 
 					/**
@@ -413,7 +382,239 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 					do_action( 'powerform_custom_form_mail_admin_sent', $this, $custom_form, $data, $entry, $recipients );
 				}
 			}
+
+			$user_data_email = $this->get_user_email_recipients( $data, $custom_form, $entry );
+
+			//Process user mail
+			if ( $this->send_user_mail( $setting ) && $user_data_email && ! empty( $user_data_email ) ) {
+				$subject = powerform_replace_form_data( $setting['user-email-title'], $data, $custom_form, $entry );
+				$subject = powerform_replace_variables( $subject, $custom_form->id, $data['current_url'] );
+				$subject = powerform_replace_custom_form_data( $subject, $custom_form, $data, $entry, $this->skip_custom_form_data['user'] );
+
+				$message = powerform_replace_form_data( $setting['user-email-editor'], $data, $custom_form, $entry );
+				$message = powerform_replace_variables( $message, $custom_form->id, $data['current_url'] );
+				$message = powerform_replace_custom_form_data( $message, $custom_form, $data, $entry, $this->skip_custom_form_data['user'] );
+
+				/**
+				 * Custom form mail subject filter
+				 *
+				 * @since 1.0.2
+				 *
+				 * @param string $subject
+				 * @param Powerform_Custom_Form_Model - the current form
+				 *
+				 * @return string $subject
+				 */
+				$subject = apply_filters( 'powerform_custom_form_mail_user_subject', $subject, $custom_form, $data, $entry, $this );
+
+				/**
+				 * Custom form mail filter
+				 *
+				 * @since 1.0.2
+				 *
+				 * @param string $message
+				 * @param Powerform_Custom_Form_Model - the current form
+				 *
+				 * @return string $message
+				 */
+				$message = apply_filters( 'powerform_custom_form_mail_user_message', $message, $custom_form, $data, $entry, $this );
+
+				$from_name = $this->sender_name;
+				if ( isset( $setting['user-email-from-name'] ) && ! empty( $setting['user-email-from-name'] ) ) {
+					$setting_from_name = $setting['user-email-from-name'];
+					$setting_from_name = powerform_replace_form_data( $setting_from_name, $data );
+					$setting_from_name = powerform_replace_variables( $setting_from_name, $custom_form->id, $data['current_url'] );
+					$setting_from_name = powerform_replace_custom_form_data( $setting_from_name, $custom_form, $data, $entry, $this->skip_custom_form_data['user'] );
+
+					if ( ! empty( $setting_from_name ) ) {
+						$from_name = $setting_from_name;
+					}
+				}
+				/**
+				 * Filter `From` name of mail that send to user
+				 *
+				 * @since 1.5
+				 *
+				 * @param string                       $from_name
+				 * @param Powerform_Custom_Form_Model $custom_form Current Form Model
+				 * @param array                        $data        POST data
+				 * @param Powerform_Form_Entry_Model  $entry       entry model
+				 * @param Powerform_CForm_Front_Mail  $this        mail class
+				 */
+				$from_name = apply_filters( 'powerform_custom_form_mail_user_from_name', $from_name, $custom_form, $data, $entry, $this );
+
+				$from_email = $this->sender_email;
+				if ( isset( $setting['user-email-from-address'] ) && ! empty( $setting['user-email-from-address'] ) ) {
+					$setting_from_address = $setting['user-email-from-address'];
+					$setting_from_address = powerform_replace_form_data( $setting_from_address, $data );
+					$setting_from_address = powerform_replace_variables( $setting_from_address, $custom_form->id, $data['current_url'] );
+					$setting_from_address = powerform_replace_custom_form_data( $setting_from_address, $custom_form, $data, $entry, $this->skip_custom_form_data['user'] );
+
+					if ( is_email( $setting_from_address ) ) {
+						$from_email = $setting_from_address;
+					}
+				}
+				/**
+				 * Filter `From` email address of mail that send to user
+				 *
+				 * @since 1.5
+				 *
+				 * @param string                       $from_email
+				 * @param Powerform_Custom_Form_Model $custom_form Current Form Model
+				 * @param array                        $data        POST data
+				 * @param Powerform_Form_Entry_Model  $entry       entry model
+				 * @param Powerform_CForm_Front_Mail  $this        mail class
+				 */
+				$from_email = apply_filters( 'powerform_custom_form_mail_user_from_email', $from_email, $custom_form, $data, $entry, $this );
+
+				$reply_to_address = '';
+				if ( isset( $setting['user-email-reply-to-address'] ) && ! empty( $setting['user-email-reply-to-address'] ) ) {
+					$setting_reply_to_address = $setting['user-email-reply-to-address'];
+					$setting_reply_to_address = powerform_replace_form_data( $setting_reply_to_address, $data );
+					$setting_reply_to_address = powerform_replace_variables( $setting_reply_to_address, $custom_form->id, $data['current_url'] );
+					$setting_reply_to_address = powerform_replace_custom_form_data( $setting_reply_to_address, $custom_form, $data, $entry, $this->skip_custom_form_data['user'] );
+
+					if ( is_email( $setting_reply_to_address ) ) {
+						$reply_to_address = $setting_reply_to_address;
+					}
+				}
+
+				/**
+				 * Filter `Reply To` email address of mail that send to user
+				 *
+				 * @since 1.5
+				 *
+				 * @param string                       $reply_to_address
+				 * @param Powerform_Custom_Form_Model $custom_form Current Form Model
+				 * @param array                        $data        POST data
+				 * @param Powerform_Form_Entry_Model  $entry       entry model
+				 * @param Powerform_CForm_Front_Mail  $this        mail class
+				 */
+				$reply_to_address = apply_filters( 'powerform_custom_form_mail_user_reply_to', $reply_to_address, $custom_form, $data, $entry, $this );
+
+				$cc_addresses = array();
+				if ( isset( $setting['user-email-cc-address'] ) && ! empty( $setting['user-email-cc-address'] ) && is_array( $setting['user-email-cc-address'] ) ) {
+					$setting_cc_addresses = $setting['user-email-cc-address'];
+
+					foreach ( $setting_cc_addresses as $key => $setting_cc_address ) {
+						$setting_cc_address = powerform_replace_form_data( $setting_cc_address, $data );
+						$setting_cc_address = powerform_replace_variables( $setting_cc_address, $custom_form->id, $data['current_url'] );
+						$setting_cc_address = powerform_replace_custom_form_data( $setting_cc_address, $custom_form, $data, $entry, $this->skip_custom_form_data['user'] );
+						if ( is_email( $setting_cc_address ) ) {
+							$cc_addresses[] = $setting_cc_address;
+						}
+					}
+				}
+
+				/**
+				 * Filter `CC` email addresses of mail that send to user
+				 *
+				 * @since 1.5
+				 *
+				 * @param array                        $cc_addresses
+				 * @param Powerform_Custom_Form_Model $custom_form Current Form Model
+				 * @param array                        $data        POST data
+				 * @param Powerform_Form_Entry_Model  $entry       entry model
+				 * @param Powerform_CForm_Front_Mail  $this        mail class
+				 */
+				$cc_addresses = apply_filters( 'powerform_custom_form_mail_user_cc_addresses', $cc_addresses, $custom_form, $data, $entry, $this );
+
+				$bcc_addresses = array();
+				if ( isset( $setting['user-email-bcc-address'] ) && ! empty( $setting['user-email-bcc-address'] ) && is_array( $setting['user-email-bcc-address'] ) ) {
+					$setting_bcc_addresses = $setting['user-email-bcc-address'];
+
+					foreach ( $setting_bcc_addresses as $key => $setting_bcc_address ) {
+						$setting_bcc_address = powerform_replace_form_data( $setting_bcc_address, $data );
+						$setting_bcc_address = powerform_replace_variables( $setting_bcc_address, $custom_form->id, $data['current_url'] );
+						$setting_bcc_address = powerform_replace_custom_form_data( $setting_bcc_address, $custom_form, $data, $entry, $this->skip_custom_form_data['user'] );
+						if ( is_email( $setting_bcc_address ) ) {
+							$bcc_addresses[] = $setting_bcc_address;
+						}
+					}
+				}
+				/**
+				 * Filter `BCC` email addresses of mail that send to user
+				 *
+				 * @since 1.5
+				 *
+				 * @param array                        $bcc_addresses
+				 * @param Powerform_Custom_Form_Model $custom_form Current Form Model
+				 * @param array                        $data        POST data
+				 * @param Powerform_Form_Entry_Model  $entry       entry model
+				 * @param Powerform_CForm_Front_Mail  $this        mail class
+				 */
+				$bcc_addresses = apply_filters( 'powerform_custom_form_mail_user_bcc_addresses', $bcc_addresses, $custom_form, $data, $entry, $this );
+
+				$content_type = $this->content_type;
+				/**
+				 * Filter `Content-Type` of mail that send to user
+				 *
+				 * @since 1.5
+				 *
+				 * @param string                       $content_type
+				 * @param Powerform_Custom_Form_Model $custom_form Current Form Model
+				 * @param array                        $data        POST data
+				 * @param Powerform_Form_Entry_Model  $entry       entry model
+				 * @param Powerform_CForm_Front_Mail  $this        mail class
+				 */
+				$content_type = apply_filters( 'powerform_custom_form_mail_user_content_type', $content_type, $custom_form, $data, $entry, $this );
+
+				$headers = array();
+
+				// only change From header if these two are valid
+				if ( ! empty( $from_name ) && ! empty( $from_email ) ) {
+					$headers[] = 'From: ' . $from_name . ' <' . $from_email . '>';
+				}
+
+				if ( ! empty( $reply_to_address ) ) {
+					$headers[] = 'Reply-To: ' . $reply_to_address;
+				}
+
+				if ( ! empty( $cc_addresses ) && is_array( $cc_addresses ) ) {
+					$headers[] = 'Cc: ' . implode( ', ', $cc_addresses );
+				}
+
+				if ( ! empty( $bcc_addresses ) && is_array( $bcc_addresses ) ) {
+					$headers[] = 'BCc: ' . implode( ', ', $bcc_addresses );
+				}
+
+				if ( ! empty( $content_type ) ) {
+					$headers[] = 'Content-Type: ' . $content_type;
+				}
+
+				/**
+				 * Filter headers of mail that send to user
+				 *
+				 * @since 1.5
+				 *
+				 * @param array                        $headers
+				 * @param Powerform_Custom_Form_Model $custom_form Current Form Model
+				 * @param array                        $data        POST data
+				 * @param Powerform_Form_Entry_Model  $entry       entry model
+				 * @param Powerform_CForm_Front_Mail  $this        mail class
+				 */
+				$headers = apply_filters( 'powerform_custom_form_mail_user_headers', $headers, $custom_form, $data, $entry, $this );
+
+				$this->set_headers( $headers );
+				$this->set_subject( $subject );
+				$this->set_recipients( $user_data_email );
+				$this->set_message_with_vars( $this->message_vars, $message );
+				$this->send_multiple();
+
+				/**
+				 * Action called after admin mail sent
+				 *
+				 * @param Powerform_CForm_Front_Mail - the current form
+				 * @param Powerform_Custom_Form_Model - the current form
+				 * @param array                       $data            - current data
+				 * @param Powerform_Form_Entry_Model $entry           - saved entry @since 1.0.3
+				 * @param array                       $user_data_email - the recipients email address
+				 */
+				do_action( 'powerform_custom_form_mail_user_sent', $this, $custom_form, $data, $entry, $user_data_email );
+			}
 		}
+
+
 		/**
 		 * Action called after mail is sent
 		 *
@@ -547,57 +748,36 @@ class Powerform_CForm_Front_Mail extends Powerform_Mail {
 	 * @since 1.0.3
 	 * @since 1.6.2 add $data,$custom_form model, and entry
 	 *
-	 * @param       $notification (backward compat argument)
+	 * @param       $setting (backward compat argument)
 	 * @param array $data
 	 * @param array $custom_form
 	 * @param array $entry
-	 * @param array $pseudo_submitted_data
 	 *
 	 * @return array
 	 */
-	public function get_admin_email_recipients( $notification, $data = array(), $custom_form = null, $entry = null, $pseudo_submitted_data = array() ) {
+	public function get_admin_email_recipients( $setting, $data = array(), $custom_form = null, $entry = null ) {
+
+		// since 1.6.2 use settings from custom form model
+		if ( $custom_form instanceof Powerform_Custom_Form_Model ) {
+			$setting = $custom_form->settings;
+		}
 
 		$email = array();
-		if ( isset( $notification['email-recipients'] ) && 'routing' === $notification['email-recipients'] ) {
-			if ( ! empty( $notification['routing'] ) ) {
-				foreach ( $notification['routing'] as $routing ) {
-					if ( $this->is_routing( $routing, $data, $pseudo_submitted_data ) ) {
-						$recipients = array_map( 'trim', explode( ',', $routing['email'] ) );
-						if ( ! empty( $recipients ) ) {
-							foreach ( $recipients as $key => $recipient ) {
-								$recipient = powerform_replace_form_data( $recipient, $data );
-								$recipient = powerform_replace_variables( $recipient, $custom_form->id, $data['current_url'] );
-								$recipient = powerform_replace_custom_form_data( $recipient, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
-								if ( is_email( $recipient ) ) {
-									$email[] = $recipient;
-								}
-							}
-						}
-					}
-				}
-			}
-		} else if ( isset( $notification['recipients'] ) && ! empty( $notification['recipients'] ) ) {
-			$recipients = array_map( 'trim', explode( ',', $notification['recipients'] ) );
-			if ( ! empty( $recipients ) ) {
-				foreach ( $recipients as $key => $recipient ) {
-					$recipient = powerform_replace_form_data( $recipient, $data );
-					$recipient = powerform_replace_variables( $recipient, $custom_form->id, $data['current_url'] );
-					$recipient = powerform_replace_custom_form_data( $recipient, $custom_form, $data, $entry, $this->skip_custom_form_data['admin'] );
-					if ( is_email( $recipient ) ) {
-						$email[] = $recipient;
-					}
-				}
+		// backward compatibility for version < 1.0.3
+		// when `admin-email-recipients` not exist use admin email
+		if ( ! isset( $setting['admin-email-recipients'] ) ) {
+			$email = array( get_option( 'admin_email' ) );
+		}
+
+		if ( isset( $setting['admin-email-recipients'] ) && ! empty( $setting['admin-email-recipients'] ) ) {
+			if ( is_array( $setting['admin-email-recipients'] ) ) {
+				$email = $setting['admin-email-recipients'];
 			}
 		}
 
-		$email = apply_filters_deprecated( 'powerform_get_admin_email_recipents', array(
-			$email,
-			$notification,
-			$custom_form,
-			$entry
-		), '1.6', 'powerform_get_admin_email_recipients' );
+		$email = apply_filters_deprecated( 'powerform_get_admin_email_recipents', array( $email, $setting, $custom_form, $entry ), '1.6', 'powerform_get_admin_email_recipients' );
 
-		return apply_filters( 'powerform_get_admin_email_recipients', $email, $notification, $data, $custom_form, $entry );
+		return apply_filters( 'powerform_get_admin_email_recipients', $email, $setting, $data, $custom_form, $entry );
 	}
 
 	/**

@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Appsactivity extends Powerform_Google_Service
+class Google_Service_Appsactivity extends Google_Service
 {
   /** View the activity history of your Google Apps. */
   const ACTIVITY =
@@ -45,14 +45,14 @@ class Powerform_Google_Service_Appsactivity extends Powerform_Google_Service
       "https://www.googleapis.com/auth/drive.readonly";
 
   public $activities;
-  
+
 
   /**
    * Constructs the internal representation of the Appsactivity service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -60,7 +60,7 @@ class Powerform_Google_Service_Appsactivity extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'appsactivity';
 
-    $this->activities = new Powerform_Google_Service_Appsactivity_Activities_Resource(
+    $this->activities = new Google_Service_Appsactivity_Activities_Resource(
         $this,
         $this->serviceName,
         'activities',
@@ -111,11 +111,11 @@ class Powerform_Google_Service_Appsactivity extends Powerform_Google_Service
  * The "activities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $appsactivityService = new Powerform_Google_Service_Appsactivity(...);
+ *   $appsactivityService = new Google_Service_Appsactivity(...);
  *   $activities = $appsactivityService->activities;
  *  </code>
  */
-class Powerform_Google_Service_Appsactivity_Activities_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Appsactivity_Activities_Resource extends Google_Service_Resource
 {
 
   /**
@@ -141,31 +141,31 @@ class Powerform_Google_Service_Appsactivity_Activities_Resource extends Powerfor
    * Possible values of source are: - drive.google.com
    * @opt_param string userId Indicates the user to return activity for. Use the
    * special value me to indicate the currently authenticated user.
-   * @return Powerform_Google_Service_Appsactivity_ListActivitiesResponse
+   * @return Google_Service_Appsactivity_ListActivitiesResponse
    */
   public function listActivities($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Appsactivity_ListActivitiesResponse");
+    return $this->call('list', array($params), "Google_Service_Appsactivity_ListActivitiesResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Appsactivity_Activity extends Powerform_Google_Collection
+class Google_Service_Appsactivity_Activity extends Google_Collection
 {
   protected $collection_key = 'singleEvents';
   protected $internal_gapi_mappings = array(
   );
-  protected $combinedEventType = 'Powerform_Google_Service_Appsactivity_Event';
+  protected $combinedEventType = 'Google_Service_Appsactivity_Event';
   protected $combinedEventDataType = '';
-  protected $singleEventsType = 'Powerform_Google_Service_Appsactivity_Event';
+  protected $singleEventsType = 'Google_Service_Appsactivity_Event';
   protected $singleEventsDataType = 'array';
 
 
-  public function setCombinedEvent(Powerform_Google_Service_Appsactivity_Event $combinedEvent)
+  public function setCombinedEvent(Google_Service_Appsactivity_Event $combinedEvent)
   {
     $this->combinedEvent = $combinedEvent;
   }
@@ -183,7 +183,7 @@ class Powerform_Google_Service_Appsactivity_Activity extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Appsactivity_Event extends Powerform_Google_Collection
+class Google_Service_Appsactivity_Event extends Google_Collection
 {
   protected $collection_key = 'permissionChanges';
   protected $internal_gapi_mappings = array(
@@ -191,16 +191,16 @@ class Powerform_Google_Service_Appsactivity_Event extends Powerform_Google_Colle
   public $additionalEventTypes;
   public $eventTimeMillis;
   public $fromUserDeletion;
-  protected $moveType = 'Powerform_Google_Service_Appsactivity_Move';
+  protected $moveType = 'Google_Service_Appsactivity_Move';
   protected $moveDataType = '';
-  protected $permissionChangesType = 'Powerform_Google_Service_Appsactivity_PermissionChange';
+  protected $permissionChangesType = 'Google_Service_Appsactivity_PermissionChange';
   protected $permissionChangesDataType = 'array';
   public $primaryEventType;
-  protected $renameType = 'Powerform_Google_Service_Appsactivity_Rename';
+  protected $renameType = 'Google_Service_Appsactivity_Rename';
   protected $renameDataType = '';
-  protected $targetType = 'Powerform_Google_Service_Appsactivity_Target';
+  protected $targetType = 'Google_Service_Appsactivity_Target';
   protected $targetDataType = '';
-  protected $userType = 'Powerform_Google_Service_Appsactivity_User';
+  protected $userType = 'Google_Service_Appsactivity_User';
   protected $userDataType = '';
 
 
@@ -228,7 +228,7 @@ class Powerform_Google_Service_Appsactivity_Event extends Powerform_Google_Colle
   {
     return $this->fromUserDeletion;
   }
-  public function setMove(Powerform_Google_Service_Appsactivity_Move $move)
+  public function setMove(Google_Service_Appsactivity_Move $move)
   {
     $this->move = $move;
   }
@@ -252,7 +252,7 @@ class Powerform_Google_Service_Appsactivity_Event extends Powerform_Google_Colle
   {
     return $this->primaryEventType;
   }
-  public function setRename(Powerform_Google_Service_Appsactivity_Rename $rename)
+  public function setRename(Google_Service_Appsactivity_Rename $rename)
   {
     $this->rename = $rename;
   }
@@ -260,7 +260,7 @@ class Powerform_Google_Service_Appsactivity_Event extends Powerform_Google_Colle
   {
     return $this->rename;
   }
-  public function setTarget(Powerform_Google_Service_Appsactivity_Target $target)
+  public function setTarget(Google_Service_Appsactivity_Target $target)
   {
     $this->target = $target;
   }
@@ -268,7 +268,7 @@ class Powerform_Google_Service_Appsactivity_Event extends Powerform_Google_Colle
   {
     return $this->target;
   }
-  public function setUser(Powerform_Google_Service_Appsactivity_User $user)
+  public function setUser(Google_Service_Appsactivity_User $user)
   {
     $this->user = $user;
   }
@@ -278,12 +278,12 @@ class Powerform_Google_Service_Appsactivity_Event extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Appsactivity_ListActivitiesResponse extends Powerform_Google_Collection
+class Google_Service_Appsactivity_ListActivitiesResponse extends Google_Collection
 {
   protected $collection_key = 'activities';
   protected $internal_gapi_mappings = array(
   );
-  protected $activitiesType = 'Powerform_Google_Service_Appsactivity_Activity';
+  protected $activitiesType = 'Google_Service_Appsactivity_Activity';
   protected $activitiesDataType = 'array';
   public $nextPageToken;
 
@@ -306,14 +306,14 @@ class Powerform_Google_Service_Appsactivity_ListActivitiesResponse extends Power
   }
 }
 
-class Powerform_Google_Service_Appsactivity_Move extends Powerform_Google_Collection
+class Google_Service_Appsactivity_Move extends Google_Collection
 {
   protected $collection_key = 'removedParents';
   protected $internal_gapi_mappings = array(
   );
-  protected $addedParentsType = 'Powerform_Google_Service_Appsactivity_Parent';
+  protected $addedParentsType = 'Google_Service_Appsactivity_Parent';
   protected $addedParentsDataType = 'array';
-  protected $removedParentsType = 'Powerform_Google_Service_Appsactivity_Parent';
+  protected $removedParentsType = 'Google_Service_Appsactivity_Parent';
   protected $removedParentsDataType = 'array';
 
 
@@ -335,7 +335,7 @@ class Powerform_Google_Service_Appsactivity_Move extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Appsactivity_Parent extends Powerform_Google_Model
+class Google_Service_Appsactivity_Parent extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -370,7 +370,7 @@ class Powerform_Google_Service_Appsactivity_Parent extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Appsactivity_Permission extends Powerform_Google_Model
+class Google_Service_Appsactivity_Permission extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -378,7 +378,7 @@ class Powerform_Google_Service_Appsactivity_Permission extends Powerform_Google_
   public $permissionId;
   public $role;
   public $type;
-  protected $userType = 'Powerform_Google_Service_Appsactivity_User';
+  protected $userType = 'Google_Service_Appsactivity_User';
   protected $userDataType = '';
   public $withLink;
 
@@ -415,7 +415,7 @@ class Powerform_Google_Service_Appsactivity_Permission extends Powerform_Google_
   {
     return $this->type;
   }
-  public function setUser(Powerform_Google_Service_Appsactivity_User $user)
+  public function setUser(Google_Service_Appsactivity_User $user)
   {
     $this->user = $user;
   }
@@ -433,14 +433,14 @@ class Powerform_Google_Service_Appsactivity_Permission extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Appsactivity_PermissionChange extends Powerform_Google_Collection
+class Google_Service_Appsactivity_PermissionChange extends Google_Collection
 {
   protected $collection_key = 'removedPermissions';
   protected $internal_gapi_mappings = array(
   );
-  protected $addedPermissionsType = 'Powerform_Google_Service_Appsactivity_Permission';
+  protected $addedPermissionsType = 'Google_Service_Appsactivity_Permission';
   protected $addedPermissionsDataType = 'array';
-  protected $removedPermissionsType = 'Powerform_Google_Service_Appsactivity_Permission';
+  protected $removedPermissionsType = 'Google_Service_Appsactivity_Permission';
   protected $removedPermissionsDataType = 'array';
 
 
@@ -462,7 +462,7 @@ class Powerform_Google_Service_Appsactivity_PermissionChange extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Appsactivity_Photo extends Powerform_Google_Model
+class Google_Service_Appsactivity_Photo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -479,7 +479,7 @@ class Powerform_Google_Service_Appsactivity_Photo extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Appsactivity_Rename extends Powerform_Google_Model
+class Google_Service_Appsactivity_Rename extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -505,7 +505,7 @@ class Powerform_Google_Service_Appsactivity_Rename extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Appsactivity_Target extends Powerform_Google_Model
+class Google_Service_Appsactivity_Target extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -540,12 +540,12 @@ class Powerform_Google_Service_Appsactivity_Target extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Appsactivity_User extends Powerform_Google_Model
+class Google_Service_Appsactivity_User extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $name;
-  protected $photoType = 'Powerform_Google_Service_Appsactivity_Photo';
+  protected $photoType = 'Google_Service_Appsactivity_Photo';
   protected $photoDataType = '';
 
 
@@ -557,7 +557,7 @@ class Powerform_Google_Service_Appsactivity_User extends Powerform_Google_Model
   {
     return $this->name;
   }
-  public function setPhoto(Powerform_Google_Service_Appsactivity_Photo $photo)
+  public function setPhoto(Google_Service_Appsactivity_Photo $photo)
   {
     $this->photo = $photo;
   }

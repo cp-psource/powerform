@@ -34,13 +34,12 @@ class Powerform_Recaptcha {
 	 *
 	 * @since 1.5.3
 	 *
-	 * @param        $user_response
-	 * @param null   $remote_ip
-	 * @param string $score
+	 * @param      $user_response
+	 * @param null $remote_ip
 	 *
 	 * @return bool|WP_Error (true on success, WP_Error on fail)
 	 */
-	public function verify( $user_response, $remote_ip = null, $score = '' ) {
+	public function verify( $user_response, $remote_ip = null ) {
 
 		$url = $this->get_verify_endpoint();
 
@@ -73,13 +72,6 @@ class Powerform_Recaptcha {
 		$json = json_decode( $body, true );
 		if ( empty( $json ) ) {
 			$error = new WP_Error( 'recaptcha_failed_decode', 'Fehler beim Dekodieren', array( $body ) );
-			powerform_maybe_log( __METHOD__, $error );
-
-			return $error;
-		}
-
-		if( ! empty( $score ) && ! empty( $json['score'] ) && floatval( $json['score'] )  < floatval( $score ) ) {
-			$error = new WP_Error( 'recaptcha_failed_score', 'Punktzahl ist niedriger als erwartet.', array( $body ) );
 			powerform_maybe_log( __METHOD__, $error );
 
 			return $error;

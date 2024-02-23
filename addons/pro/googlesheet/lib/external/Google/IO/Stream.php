@@ -16,16 +16,16 @@
  */
 
 /**
- * Http Streams based implementation of Powerform_Google_IO.
+ * Http Streams based implementation of Google_IO.
  *
  * @author Stuart Langley <slangley@google.com>
  */
 
-if (!class_exists('Powerform_Google_Client')) {
+if (!class_exists('Google_Client')) {
   require_once dirname(__FILE__) . '/../autoload.php';
 }
 
-class Powerform_Google_IO_Stream extends Powerform_Google_IO_Abstract
+class Google_IO_Stream extends Google_IO_Abstract
 {
   const TIMEOUT = "timeout";
   const ZLIB = "compress.zlib://";
@@ -42,13 +42,13 @@ class Powerform_Google_IO_Stream extends Powerform_Google_IO_Abstract
     "verify_peer" => true,
   );
 
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     if (!ini_get('allow_url_fopen')) {
       $error = 'The stream IO handler requires the allow_url_fopen runtime ' .
                'configuration to be enabled';
       $client->getLogger()->critical($error);
-      throw new Powerform_Google_IO_Exception($error);
+      throw new Google_IO_Exception($error);
     }
 
     parent::__construct($client);
@@ -57,11 +57,11 @@ class Powerform_Google_IO_Stream extends Powerform_Google_IO_Abstract
   /**
    * Execute an HTTP Request
    *
-   * @param Powerform_Google_Http_Request $request the http request to be executed
+   * @param Google_Http_Request $request the http request to be executed
    * @return array containing response headers, body, and http code
-   * @throws Powerform_Google_IO_Exception on curl or IO error
+   * @throws Google_IO_Exception on curl or IO error
    */
-  public function executeRequest(Powerform_Google_Http_Request $request)
+  public function executeRequest(Google_Http_Request $request)
   {
     $default_options = stream_context_get_options(stream_context_get_default());
 
@@ -138,7 +138,7 @@ class Powerform_Google_IO_Stream extends Powerform_Google_IO_Abstract
       );
 
       $this->client->getLogger()->error('Stream ' . $error);
-      throw new Powerform_Google_IO_Exception($error, $this->trappedErrorNumber);
+      throw new Google_IO_Exception($error, $this->trappedErrorNumber);
     }
 
     $response_data = false;
@@ -161,7 +161,7 @@ class Powerform_Google_IO_Stream extends Powerform_Google_IO_Abstract
       );
 
       $this->client->getLogger()->error('Stream ' . $error);
-      throw new Powerform_Google_IO_Exception($error, $respHttpCode);
+      throw new Google_IO_Exception($error, $respHttpCode);
     }
 
     $responseHeaders = $this->getHttpResponseHeaders($http_response_header);

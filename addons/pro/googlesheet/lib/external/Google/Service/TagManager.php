@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_TagManager extends Powerform_Google_Service
+class Google_Service_TagManager extends Google_Service
 {
   /** Delete your Google Tag Manager containers. */
   const TAGMANAGER_DELETE_CONTAINERS =
@@ -60,14 +60,14 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
   public $accounts_containers_variables;
   public $accounts_containers_versions;
   public $accounts_permissions;
-  
+
 
   /**
    * Constructs the internal representation of the TagManager service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -75,7 +75,7 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'tagmanager';
 
-    $this->accounts = new Powerform_Google_Service_TagManager_Accounts_Resource(
+    $this->accounts = new Google_Service_TagManager_Accounts_Resource(
         $this,
         $this->serviceName,
         'accounts',
@@ -113,7 +113,7 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_containers = new Powerform_Google_Service_TagManager_AccountsContainers_Resource(
+    $this->accounts_containers = new Google_Service_TagManager_AccountsContainers_Resource(
         $this,
         $this->serviceName,
         'containers',
@@ -192,7 +192,7 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_containers_folders = new Powerform_Google_Service_TagManager_AccountsContainersFolders_Resource(
+    $this->accounts_containers_folders = new Google_Service_TagManager_AccountsContainersFolders_Resource(
         $this,
         $this->serviceName,
         'folders',
@@ -296,7 +296,7 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_containers_folders_entities = new Powerform_Google_Service_TagManager_AccountsContainersFoldersEntities_Resource(
+    $this->accounts_containers_folders_entities = new Google_Service_TagManager_AccountsContainersFoldersEntities_Resource(
         $this,
         $this->serviceName,
         'entities',
@@ -326,7 +326,7 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_containers_move_folders = new Powerform_Google_Service_TagManager_AccountsContainersMoveFolders_Resource(
+    $this->accounts_containers_move_folders = new Google_Service_TagManager_AccountsContainersMoveFolders_Resource(
         $this,
         $this->serviceName,
         'move_folders',
@@ -371,7 +371,7 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_containers_tags = new Powerform_Google_Service_TagManager_AccountsContainersTags_Resource(
+    $this->accounts_containers_tags = new Google_Service_TagManager_AccountsContainersTags_Resource(
         $this,
         $this->serviceName,
         'tags',
@@ -475,7 +475,7 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_containers_triggers = new Powerform_Google_Service_TagManager_AccountsContainersTriggers_Resource(
+    $this->accounts_containers_triggers = new Google_Service_TagManager_AccountsContainersTriggers_Resource(
         $this,
         $this->serviceName,
         'triggers',
@@ -579,7 +579,7 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_containers_variables = new Powerform_Google_Service_TagManager_AccountsContainersVariables_Resource(
+    $this->accounts_containers_variables = new Google_Service_TagManager_AccountsContainersVariables_Resource(
         $this,
         $this->serviceName,
         'variables',
@@ -683,7 +683,7 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_containers_versions = new Powerform_Google_Service_TagManager_AccountsContainersVersions_Resource(
+    $this->accounts_containers_versions = new Google_Service_TagManager_AccountsContainersVersions_Resource(
         $this,
         $this->serviceName,
         'versions',
@@ -859,7 +859,7 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_permissions = new Powerform_Google_Service_TagManager_AccountsPermissions_Resource(
+    $this->accounts_permissions = new Google_Service_TagManager_AccountsPermissions_Resource(
         $this,
         $this->serviceName,
         'permissions',
@@ -942,11 +942,11 @@ class Powerform_Google_Service_TagManager extends Powerform_Google_Service
  * The "accounts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Powerform_Google_Service_TagManager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $accounts = $tagmanagerService->accounts;
  *  </code>
  */
-class Powerform_Google_Service_TagManager_Accounts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_TagManager_Accounts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -954,44 +954,44 @@ class Powerform_Google_Service_TagManager_Accounts_Resource extends Powerform_Go
    *
    * @param string $accountId The GTM Account ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Account
+   * @return Google_Service_TagManager_Account
    */
   public function get($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_TagManager_Account");
+    return $this->call('get', array($params), "Google_Service_TagManager_Account");
   }
 
   /**
    * Lists all GTM Accounts that a user has access to. (accounts.listAccounts)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_ListAccountsResponse
+   * @return Google_Service_TagManager_ListAccountsResponse
    */
   public function listAccounts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_TagManager_ListAccountsResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListAccountsResponse");
   }
 
   /**
    * Updates a GTM Account. (accounts.update)
    *
    * @param string $accountId The GTM Account ID.
-   * @param Powerform_Google_Account $postBody
+   * @param Google_Account $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string fingerprint When provided, this fingerprint must match the
    * fingerprint of the account in storage.
-   * @return Powerform_Google_Service_TagManager_Account
+   * @return Google_Service_TagManager_Account
    */
-  public function update($accountId, Powerform_Google_Service_TagManager_Account $postBody, $optParams = array())
+  public function update($accountId, Google_Service_TagManager_Account $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_TagManager_Account");
+    return $this->call('update', array($params), "Google_Service_TagManager_Account");
   }
 }
 
@@ -999,26 +999,26 @@ class Powerform_Google_Service_TagManager_Accounts_Resource extends Powerform_Go
  * The "containers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Powerform_Google_Service_TagManager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $containers = $tagmanagerService->containers;
  *  </code>
  */
-class Powerform_Google_Service_TagManager_AccountsContainers_Resource extends Powerform_Google_Service_Resource
+class Google_Service_TagManager_AccountsContainers_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a Container. (containers.create)
    *
    * @param string $accountId The GTM Account ID.
-   * @param Powerform_Google_Container $postBody
+   * @param Google_Container $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Container
+   * @return Google_Service_TagManager_Container
    */
-  public function create($accountId, Powerform_Google_Service_TagManager_Container $postBody, $optParams = array())
+  public function create($accountId, Google_Service_TagManager_Container $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_TagManager_Container");
+    return $this->call('create', array($params), "Google_Service_TagManager_Container");
   }
 
   /**
@@ -1041,13 +1041,13 @@ class Powerform_Google_Service_TagManager_AccountsContainers_Resource extends Po
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Container
+   * @return Google_Service_TagManager_Container
    */
   public function get($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_TagManager_Container");
+    return $this->call('get', array($params), "Google_Service_TagManager_Container");
   }
 
   /**
@@ -1056,13 +1056,13 @@ class Powerform_Google_Service_TagManager_AccountsContainers_Resource extends Po
    *
    * @param string $accountId The GTM Account ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_ListContainersResponse
+   * @return Google_Service_TagManager_ListContainersResponse
    */
   public function listAccountsContainers($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_TagManager_ListContainersResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListContainersResponse");
   }
 
   /**
@@ -1070,18 +1070,18 @@ class Powerform_Google_Service_TagManager_AccountsContainers_Resource extends Po
    *
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
-   * @param Powerform_Google_Container $postBody
+   * @param Google_Container $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string fingerprint When provided, this fingerprint must match the
    * fingerprint of the container in storage.
-   * @return Powerform_Google_Service_TagManager_Container
+   * @return Google_Service_TagManager_Container
    */
-  public function update($accountId, $containerId, Powerform_Google_Service_TagManager_Container $postBody, $optParams = array())
+  public function update($accountId, $containerId, Google_Service_TagManager_Container $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_TagManager_Container");
+    return $this->call('update', array($params), "Google_Service_TagManager_Container");
   }
 }
 
@@ -1089,11 +1089,11 @@ class Powerform_Google_Service_TagManager_AccountsContainers_Resource extends Po
  * The "folders" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Powerform_Google_Service_TagManager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $folders = $tagmanagerService->folders;
  *  </code>
  */
-class Powerform_Google_Service_TagManager_AccountsContainersFolders_Resource extends Powerform_Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersFolders_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1101,15 +1101,15 @@ class Powerform_Google_Service_TagManager_AccountsContainersFolders_Resource ext
    *
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
-   * @param Powerform_Google_Folder $postBody
+   * @param Google_Folder $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Folder
+   * @return Google_Service_TagManager_Folder
    */
-  public function create($accountId, $containerId, Powerform_Google_Service_TagManager_Folder $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_Folder $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_TagManager_Folder");
+    return $this->call('create', array($params), "Google_Service_TagManager_Folder");
   }
 
   /**
@@ -1134,13 +1134,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersFolders_Resource ext
    * @param string $containerId The GTM Container ID.
    * @param string $folderId The GTM Folder ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Folder
+   * @return Google_Service_TagManager_Folder
    */
   public function get($accountId, $containerId, $folderId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'folderId' => $folderId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_TagManager_Folder");
+    return $this->call('get', array($params), "Google_Service_TagManager_Folder");
   }
 
   /**
@@ -1149,13 +1149,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersFolders_Resource ext
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_ListFoldersResponse
+   * @return Google_Service_TagManager_ListFoldersResponse
    */
   public function listAccountsContainersFolders($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_TagManager_ListFoldersResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListFoldersResponse");
   }
 
   /**
@@ -1164,18 +1164,18 @@ class Powerform_Google_Service_TagManager_AccountsContainersFolders_Resource ext
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
    * @param string $folderId The GTM Folder ID.
-   * @param Powerform_Google_Folder $postBody
+   * @param Google_Folder $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string fingerprint When provided, this fingerprint must match the
    * fingerprint of the folder in storage.
-   * @return Powerform_Google_Service_TagManager_Folder
+   * @return Google_Service_TagManager_Folder
    */
-  public function update($accountId, $containerId, $folderId, Powerform_Google_Service_TagManager_Folder $postBody, $optParams = array())
+  public function update($accountId, $containerId, $folderId, Google_Service_TagManager_Folder $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'folderId' => $folderId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_TagManager_Folder");
+    return $this->call('update', array($params), "Google_Service_TagManager_Folder");
   }
 }
 
@@ -1183,11 +1183,11 @@ class Powerform_Google_Service_TagManager_AccountsContainersFolders_Resource ext
  * The "entities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Powerform_Google_Service_TagManager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $entities = $tagmanagerService->entities;
  *  </code>
  */
-class Powerform_Google_Service_TagManager_AccountsContainersFoldersEntities_Resource extends Powerform_Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersFoldersEntities_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1198,24 +1198,24 @@ class Powerform_Google_Service_TagManager_AccountsContainersFoldersEntities_Reso
    * @param string $containerId The GTM Container ID.
    * @param string $folderId The GTM Folder ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_FolderEntities
+   * @return Google_Service_TagManager_FolderEntities
    */
   public function listAccountsContainersFoldersEntities($accountId, $containerId, $folderId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'folderId' => $folderId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_TagManager_FolderEntities");
+    return $this->call('list', array($params), "Google_Service_TagManager_FolderEntities");
   }
 }
 /**
  * The "move_folders" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Powerform_Google_Service_TagManager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $move_folders = $tagmanagerService->move_folders;
  *  </code>
  */
-class Powerform_Google_Service_TagManager_AccountsContainersMoveFolders_Resource extends Powerform_Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersMoveFolders_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1241,11 +1241,11 @@ class Powerform_Google_Service_TagManager_AccountsContainersMoveFolders_Resource
  * The "tags" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Powerform_Google_Service_TagManager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $tags = $tagmanagerService->tags;
  *  </code>
  */
-class Powerform_Google_Service_TagManager_AccountsContainersTags_Resource extends Powerform_Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersTags_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1253,15 +1253,15 @@ class Powerform_Google_Service_TagManager_AccountsContainersTags_Resource extend
    *
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
-   * @param Powerform_Google_Tag $postBody
+   * @param Google_Tag $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Tag
+   * @return Google_Service_TagManager_Tag
    */
-  public function create($accountId, $containerId, Powerform_Google_Service_TagManager_Tag $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_Tag $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_TagManager_Tag");
+    return $this->call('create', array($params), "Google_Service_TagManager_Tag");
   }
 
   /**
@@ -1286,13 +1286,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersTags_Resource extend
    * @param string $containerId The GTM Container ID.
    * @param string $tagId The GTM Tag ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Tag
+   * @return Google_Service_TagManager_Tag
    */
   public function get($accountId, $containerId, $tagId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'tagId' => $tagId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_TagManager_Tag");
+    return $this->call('get', array($params), "Google_Service_TagManager_Tag");
   }
 
   /**
@@ -1301,13 +1301,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersTags_Resource extend
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_ListTagsResponse
+   * @return Google_Service_TagManager_ListTagsResponse
    */
   public function listAccountsContainersTags($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_TagManager_ListTagsResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListTagsResponse");
   }
 
   /**
@@ -1316,29 +1316,29 @@ class Powerform_Google_Service_TagManager_AccountsContainersTags_Resource extend
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
    * @param string $tagId The GTM Tag ID.
-   * @param Powerform_Google_Tag $postBody
+   * @param Google_Tag $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string fingerprint When provided, this fingerprint must match the
    * fingerprint of the tag in storage.
-   * @return Powerform_Google_Service_TagManager_Tag
+   * @return Google_Service_TagManager_Tag
    */
-  public function update($accountId, $containerId, $tagId, Powerform_Google_Service_TagManager_Tag $postBody, $optParams = array())
+  public function update($accountId, $containerId, $tagId, Google_Service_TagManager_Tag $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'tagId' => $tagId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_TagManager_Tag");
+    return $this->call('update', array($params), "Google_Service_TagManager_Tag");
   }
 }
 /**
  * The "triggers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Powerform_Google_Service_TagManager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $triggers = $tagmanagerService->triggers;
  *  </code>
  */
-class Powerform_Google_Service_TagManager_AccountsContainersTriggers_Resource extends Powerform_Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersTriggers_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1346,15 +1346,15 @@ class Powerform_Google_Service_TagManager_AccountsContainersTriggers_Resource ex
    *
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
-   * @param Powerform_Google_Trigger $postBody
+   * @param Google_Trigger $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Trigger
+   * @return Google_Service_TagManager_Trigger
    */
-  public function create($accountId, $containerId, Powerform_Google_Service_TagManager_Trigger $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_Trigger $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_TagManager_Trigger");
+    return $this->call('create', array($params), "Google_Service_TagManager_Trigger");
   }
 
   /**
@@ -1379,13 +1379,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersTriggers_Resource ex
    * @param string $containerId The GTM Container ID.
    * @param string $triggerId The GTM Trigger ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Trigger
+   * @return Google_Service_TagManager_Trigger
    */
   public function get($accountId, $containerId, $triggerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'triggerId' => $triggerId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_TagManager_Trigger");
+    return $this->call('get', array($params), "Google_Service_TagManager_Trigger");
   }
 
   /**
@@ -1395,13 +1395,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersTriggers_Resource ex
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_ListTriggersResponse
+   * @return Google_Service_TagManager_ListTriggersResponse
    */
   public function listAccountsContainersTriggers($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_TagManager_ListTriggersResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListTriggersResponse");
   }
 
   /**
@@ -1410,29 +1410,29 @@ class Powerform_Google_Service_TagManager_AccountsContainersTriggers_Resource ex
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
    * @param string $triggerId The GTM Trigger ID.
-   * @param Powerform_Google_Trigger $postBody
+   * @param Google_Trigger $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string fingerprint When provided, this fingerprint must match the
    * fingerprint of the trigger in storage.
-   * @return Powerform_Google_Service_TagManager_Trigger
+   * @return Google_Service_TagManager_Trigger
    */
-  public function update($accountId, $containerId, $triggerId, Powerform_Google_Service_TagManager_Trigger $postBody, $optParams = array())
+  public function update($accountId, $containerId, $triggerId, Google_Service_TagManager_Trigger $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'triggerId' => $triggerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_TagManager_Trigger");
+    return $this->call('update', array($params), "Google_Service_TagManager_Trigger");
   }
 }
 /**
  * The "variables" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Powerform_Google_Service_TagManager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $variables = $tagmanagerService->variables;
  *  </code>
  */
-class Powerform_Google_Service_TagManager_AccountsContainersVariables_Resource extends Powerform_Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersVariables_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1440,15 +1440,15 @@ class Powerform_Google_Service_TagManager_AccountsContainersVariables_Resource e
    *
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
-   * @param Powerform_Google_Variable $postBody
+   * @param Google_Variable $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Variable
+   * @return Google_Service_TagManager_Variable
    */
-  public function create($accountId, $containerId, Powerform_Google_Service_TagManager_Variable $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_Variable $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_TagManager_Variable");
+    return $this->call('create', array($params), "Google_Service_TagManager_Variable");
   }
 
   /**
@@ -1473,13 +1473,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersVariables_Resource e
    * @param string $containerId The GTM Container ID.
    * @param string $variableId The GTM Variable ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_Variable
+   * @return Google_Service_TagManager_Variable
    */
   public function get($accountId, $containerId, $variableId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'variableId' => $variableId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_TagManager_Variable");
+    return $this->call('get', array($params), "Google_Service_TagManager_Variable");
   }
 
   /**
@@ -1489,13 +1489,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersVariables_Resource e
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_ListVariablesResponse
+   * @return Google_Service_TagManager_ListVariablesResponse
    */
   public function listAccountsContainersVariables($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_TagManager_ListVariablesResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListVariablesResponse");
   }
 
   /**
@@ -1504,29 +1504,29 @@ class Powerform_Google_Service_TagManager_AccountsContainersVariables_Resource e
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
    * @param string $variableId The GTM Variable ID.
-   * @param Powerform_Google_Variable $postBody
+   * @param Google_Variable $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string fingerprint When provided, this fingerprint must match the
    * fingerprint of the variable in storage.
-   * @return Powerform_Google_Service_TagManager_Variable
+   * @return Google_Service_TagManager_Variable
    */
-  public function update($accountId, $containerId, $variableId, Powerform_Google_Service_TagManager_Variable $postBody, $optParams = array())
+  public function update($accountId, $containerId, $variableId, Google_Service_TagManager_Variable $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'variableId' => $variableId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_TagManager_Variable");
+    return $this->call('update', array($params), "Google_Service_TagManager_Variable");
   }
 }
 /**
  * The "versions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Powerform_Google_Service_TagManager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $versions = $tagmanagerService->versions;
  *  </code>
  */
-class Powerform_Google_Service_TagManager_AccountsContainersVersions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersVersions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1534,15 +1534,15 @@ class Powerform_Google_Service_TagManager_AccountsContainersVersions_Resource ex
    *
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
-   * @param Powerform_Google_CreateContainerVersionRequestVersionOptions $postBody
+   * @param Google_CreateContainerVersionRequestVersionOptions $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_CreateContainerVersionResponse
+   * @return Google_Service_TagManager_CreateContainerVersionResponse
    */
-  public function create($accountId, $containerId, Powerform_Google_Service_TagManager_CreateContainerVersionRequestVersionOptions $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_CreateContainerVersionRequestVersionOptions $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_TagManager_CreateContainerVersionResponse");
+    return $this->call('create', array($params), "Google_Service_TagManager_CreateContainerVersionResponse");
   }
 
   /**
@@ -1568,13 +1568,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersVersions_Resource ex
    * @param string $containerVersionId The GTM Container Version ID. Specify
    * published to retrieve the currently published version.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_ContainerVersion
+   * @return Google_Service_TagManager_ContainerVersion
    */
   public function get($accountId, $containerId, $containerVersionId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'containerVersionId' => $containerVersionId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_TagManager_ContainerVersion");
+    return $this->call('get', array($params), "Google_Service_TagManager_ContainerVersion");
   }
 
   /**
@@ -1588,13 +1588,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersVersions_Resource ex
    * @opt_param bool headers Retrieve headers only when true.
    * @opt_param bool includeDeleted Also retrieve deleted (archived) versions when
    * true.
-   * @return Powerform_Google_Service_TagManager_ListContainerVersionsResponse
+   * @return Google_Service_TagManager_ListContainerVersionsResponse
    */
   public function listAccountsContainersVersions($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_TagManager_ListContainerVersionsResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListContainerVersionsResponse");
   }
 
   /**
@@ -1607,13 +1607,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersVersions_Resource ex
    *
    * @opt_param string fingerprint When provided, this fingerprint must match the
    * fingerprint of the container version in storage.
-   * @return Powerform_Google_Service_TagManager_PublishContainerVersionResponse
+   * @return Google_Service_TagManager_PublishContainerVersionResponse
    */
   public function publish($accountId, $containerId, $containerVersionId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'containerVersionId' => $containerVersionId);
     $params = array_merge($params, $optParams);
-    return $this->call('publish', array($params), "Powerform_Google_Service_TagManager_PublishContainerVersionResponse");
+    return $this->call('publish', array($params), "Google_Service_TagManager_PublishContainerVersionResponse");
   }
 
   /**
@@ -1626,13 +1626,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersVersions_Resource ex
    * @param string $containerId The GTM Container ID.
    * @param string $containerVersionId The GTM Container Version ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_ContainerVersion
+   * @return Google_Service_TagManager_ContainerVersion
    */
   public function restore($accountId, $containerId, $containerVersionId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'containerVersionId' => $containerVersionId);
     $params = array_merge($params, $optParams);
-    return $this->call('restore', array($params), "Powerform_Google_Service_TagManager_ContainerVersion");
+    return $this->call('restore', array($params), "Google_Service_TagManager_ContainerVersion");
   }
 
   /**
@@ -1642,13 +1642,13 @@ class Powerform_Google_Service_TagManager_AccountsContainersVersions_Resource ex
    * @param string $containerId The GTM Container ID.
    * @param string $containerVersionId The GTM Container Version ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_ContainerVersion
+   * @return Google_Service_TagManager_ContainerVersion
    */
   public function undelete($accountId, $containerId, $containerVersionId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'containerVersionId' => $containerVersionId);
     $params = array_merge($params, $optParams);
-    return $this->call('undelete', array($params), "Powerform_Google_Service_TagManager_ContainerVersion");
+    return $this->call('undelete', array($params), "Google_Service_TagManager_ContainerVersion");
   }
 
   /**
@@ -1657,44 +1657,44 @@ class Powerform_Google_Service_TagManager_AccountsContainersVersions_Resource ex
    * @param string $accountId The GTM Account ID.
    * @param string $containerId The GTM Container ID.
    * @param string $containerVersionId The GTM Container Version ID.
-   * @param Powerform_Google_ContainerVersion $postBody
+   * @param Google_ContainerVersion $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string fingerprint When provided, this fingerprint must match the
    * fingerprint of the container version in storage.
-   * @return Powerform_Google_Service_TagManager_ContainerVersion
+   * @return Google_Service_TagManager_ContainerVersion
    */
-  public function update($accountId, $containerId, $containerVersionId, Powerform_Google_Service_TagManager_ContainerVersion $postBody, $optParams = array())
+  public function update($accountId, $containerId, $containerVersionId, Google_Service_TagManager_ContainerVersion $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'containerVersionId' => $containerVersionId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_TagManager_ContainerVersion");
+    return $this->call('update', array($params), "Google_Service_TagManager_ContainerVersion");
   }
 }
 /**
  * The "permissions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Powerform_Google_Service_TagManager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $permissions = $tagmanagerService->permissions;
  *  </code>
  */
-class Powerform_Google_Service_TagManager_AccountsPermissions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_TagManager_AccountsPermissions_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a user's Account & Container Permissions. (permissions.create)
    *
    * @param string $accountId The GTM Account ID.
-   * @param Powerform_Google_UserAccess $postBody
+   * @param Google_UserAccess $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_UserAccess
+   * @return Google_Service_TagManager_UserAccess
    */
-  public function create($accountId, Powerform_Google_Service_TagManager_UserAccess $postBody, $optParams = array())
+  public function create($accountId, Google_Service_TagManager_UserAccess $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_TagManager_UserAccess");
+    return $this->call('create', array($params), "Google_Service_TagManager_UserAccess");
   }
 
   /**
@@ -1718,13 +1718,13 @@ class Powerform_Google_Service_TagManager_AccountsPermissions_Resource extends P
    * @param string $accountId The GTM Account ID.
    * @param string $permissionId The GTM User ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_UserAccess
+   * @return Google_Service_TagManager_UserAccess
    */
   public function get($accountId, $permissionId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'permissionId' => $permissionId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_TagManager_UserAccess");
+    return $this->call('get', array($params), "Google_Service_TagManager_UserAccess");
   }
 
   /**
@@ -1735,13 +1735,13 @@ class Powerform_Google_Service_TagManager_AccountsPermissions_Resource extends P
    * @param string $accountId The GTM Account ID. @required
    * tagmanager.accounts.permissions.list
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_ListAccountUsersResponse
+   * @return Google_Service_TagManager_ListAccountUsersResponse
    */
   public function listAccountsPermissions($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_TagManager_ListAccountUsersResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListAccountUsersResponse");
   }
 
   /**
@@ -1749,22 +1749,22 @@ class Powerform_Google_Service_TagManager_AccountsPermissions_Resource extends P
    *
    * @param string $accountId The GTM Account ID.
    * @param string $permissionId The GTM User ID.
-   * @param Powerform_Google_UserAccess $postBody
+   * @param Google_UserAccess $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_TagManager_UserAccess
+   * @return Google_Service_TagManager_UserAccess
    */
-  public function update($accountId, $permissionId, Powerform_Google_Service_TagManager_UserAccess $postBody, $optParams = array())
+  public function update($accountId, $permissionId, Google_Service_TagManager_UserAccess $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'permissionId' => $permissionId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_TagManager_UserAccess");
+    return $this->call('update', array($params), "Google_Service_TagManager_UserAccess");
   }
 }
 
 
 
 
-class Powerform_Google_Service_TagManager_Account extends Powerform_Google_Model
+class Google_Service_TagManager_Account extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1808,7 +1808,7 @@ class Powerform_Google_Service_TagManager_Account extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_TagManager_AccountAccess extends Powerform_Google_Collection
+class Google_Service_TagManager_AccountAccess extends Google_Collection
 {
   protected $collection_key = 'permission';
   protected $internal_gapi_mappings = array(
@@ -1826,12 +1826,12 @@ class Powerform_Google_Service_TagManager_AccountAccess extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_TagManager_Condition extends Powerform_Google_Collection
+class Google_Service_TagManager_Condition extends Google_Collection
 {
   protected $collection_key = 'parameter';
   protected $internal_gapi_mappings = array(
   );
-  protected $parameterType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $parameterType = 'Google_Service_TagManager_Parameter';
   protected $parameterDataType = 'array';
   public $type;
 
@@ -1854,7 +1854,7 @@ class Powerform_Google_Service_TagManager_Condition extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_TagManager_Container extends Powerform_Google_Collection
+class Google_Service_TagManager_Container extends Google_Collection
 {
   protected $collection_key = 'usageContext';
   protected $internal_gapi_mappings = array(
@@ -1962,7 +1962,7 @@ class Powerform_Google_Service_TagManager_Container extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_TagManager_ContainerAccess extends Powerform_Google_Collection
+class Google_Service_TagManager_ContainerAccess extends Google_Collection
 {
   protected $collection_key = 'permission';
   protected $internal_gapi_mappings = array(
@@ -1989,31 +1989,31 @@ class Powerform_Google_Service_TagManager_ContainerAccess extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_TagManager_ContainerVersion extends Powerform_Google_Collection
+class Google_Service_TagManager_ContainerVersion extends Google_Collection
 {
   protected $collection_key = 'variable';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
-  protected $containerType = 'Powerform_Google_Service_TagManager_Container';
+  protected $containerType = 'Google_Service_TagManager_Container';
   protected $containerDataType = '';
   public $containerId;
   public $containerVersionId;
   public $deleted;
   public $fingerprint;
-  protected $folderType = 'Powerform_Google_Service_TagManager_Folder';
+  protected $folderType = 'Google_Service_TagManager_Folder';
   protected $folderDataType = 'array';
-  protected $macroType = 'Powerform_Google_Service_TagManager_Macro';
+  protected $macroType = 'Google_Service_TagManager_Macro';
   protected $macroDataType = 'array';
   public $name;
   public $notes;
-  protected $ruleType = 'Powerform_Google_Service_TagManager_Rule';
+  protected $ruleType = 'Google_Service_TagManager_Rule';
   protected $ruleDataType = 'array';
-  protected $tagType = 'Powerform_Google_Service_TagManager_Tag';
+  protected $tagType = 'Google_Service_TagManager_Tag';
   protected $tagDataType = 'array';
-  protected $triggerType = 'Powerform_Google_Service_TagManager_Trigger';
+  protected $triggerType = 'Google_Service_TagManager_Trigger';
   protected $triggerDataType = 'array';
-  protected $variableType = 'Powerform_Google_Service_TagManager_Variable';
+  protected $variableType = 'Google_Service_TagManager_Variable';
   protected $variableDataType = 'array';
 
 
@@ -2025,7 +2025,7 @@ class Powerform_Google_Service_TagManager_ContainerVersion extends Powerform_Goo
   {
     return $this->accountId;
   }
-  public function setContainer(Powerform_Google_Service_TagManager_Container $container)
+  public function setContainer(Google_Service_TagManager_Container $container)
   {
     $this->container = $container;
   }
@@ -2131,7 +2131,7 @@ class Powerform_Google_Service_TagManager_ContainerVersion extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_TagManager_ContainerVersionHeader extends Powerform_Google_Model
+class Google_Service_TagManager_ContainerVersionHeader extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2229,7 +2229,7 @@ class Powerform_Google_Service_TagManager_ContainerVersionHeader extends Powerfo
   }
 }
 
-class Powerform_Google_Service_TagManager_CreateContainerVersionRequestVersionOptions extends Powerform_Google_Model
+class Google_Service_TagManager_CreateContainerVersionRequestVersionOptions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2264,12 +2264,12 @@ class Powerform_Google_Service_TagManager_CreateContainerVersionRequestVersionOp
   }
 }
 
-class Powerform_Google_Service_TagManager_CreateContainerVersionResponse extends Powerform_Google_Model
+class Google_Service_TagManager_CreateContainerVersionResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $compilerError;
-  protected $containerVersionType = 'Powerform_Google_Service_TagManager_ContainerVersion';
+  protected $containerVersionType = 'Google_Service_TagManager_ContainerVersion';
   protected $containerVersionDataType = '';
 
 
@@ -2281,7 +2281,7 @@ class Powerform_Google_Service_TagManager_CreateContainerVersionResponse extends
   {
     return $this->compilerError;
   }
-  public function setContainerVersion(Powerform_Google_Service_TagManager_ContainerVersion $containerVersion)
+  public function setContainerVersion(Google_Service_TagManager_ContainerVersion $containerVersion)
   {
     $this->containerVersion = $containerVersion;
   }
@@ -2291,7 +2291,7 @@ class Powerform_Google_Service_TagManager_CreateContainerVersionResponse extends
   }
 }
 
-class Powerform_Google_Service_TagManager_Folder extends Powerform_Google_Model
+class Google_Service_TagManager_Folder extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2344,16 +2344,16 @@ class Powerform_Google_Service_TagManager_Folder extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_TagManager_FolderEntities extends Powerform_Google_Collection
+class Google_Service_TagManager_FolderEntities extends Google_Collection
 {
   protected $collection_key = 'variable';
   protected $internal_gapi_mappings = array(
   );
-  protected $tagType = 'Powerform_Google_Service_TagManager_Tag';
+  protected $tagType = 'Google_Service_TagManager_Tag';
   protected $tagDataType = 'array';
-  protected $triggerType = 'Powerform_Google_Service_TagManager_Trigger';
+  protected $triggerType = 'Google_Service_TagManager_Trigger';
   protected $triggerDataType = 'array';
-  protected $variableType = 'Powerform_Google_Service_TagManager_Variable';
+  protected $variableType = 'Google_Service_TagManager_Variable';
   protected $variableDataType = 'array';
 
 
@@ -2383,12 +2383,12 @@ class Powerform_Google_Service_TagManager_FolderEntities extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_TagManager_ListAccountUsersResponse extends Powerform_Google_Collection
+class Google_Service_TagManager_ListAccountUsersResponse extends Google_Collection
 {
   protected $collection_key = 'userAccess';
   protected $internal_gapi_mappings = array(
   );
-  protected $userAccessType = 'Powerform_Google_Service_TagManager_UserAccess';
+  protected $userAccessType = 'Google_Service_TagManager_UserAccess';
   protected $userAccessDataType = 'array';
 
 
@@ -2402,12 +2402,12 @@ class Powerform_Google_Service_TagManager_ListAccountUsersResponse extends Power
   }
 }
 
-class Powerform_Google_Service_TagManager_ListAccountsResponse extends Powerform_Google_Collection
+class Google_Service_TagManager_ListAccountsResponse extends Google_Collection
 {
   protected $collection_key = 'accounts';
   protected $internal_gapi_mappings = array(
   );
-  protected $accountsType = 'Powerform_Google_Service_TagManager_Account';
+  protected $accountsType = 'Google_Service_TagManager_Account';
   protected $accountsDataType = 'array';
 
 
@@ -2421,14 +2421,14 @@ class Powerform_Google_Service_TagManager_ListAccountsResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_TagManager_ListContainerVersionsResponse extends Powerform_Google_Collection
+class Google_Service_TagManager_ListContainerVersionsResponse extends Google_Collection
 {
   protected $collection_key = 'containerVersionHeader';
   protected $internal_gapi_mappings = array(
   );
-  protected $containerVersionType = 'Powerform_Google_Service_TagManager_ContainerVersion';
+  protected $containerVersionType = 'Google_Service_TagManager_ContainerVersion';
   protected $containerVersionDataType = 'array';
-  protected $containerVersionHeaderType = 'Powerform_Google_Service_TagManager_ContainerVersionHeader';
+  protected $containerVersionHeaderType = 'Google_Service_TagManager_ContainerVersionHeader';
   protected $containerVersionHeaderDataType = 'array';
 
 
@@ -2450,12 +2450,12 @@ class Powerform_Google_Service_TagManager_ListContainerVersionsResponse extends 
   }
 }
 
-class Powerform_Google_Service_TagManager_ListContainersResponse extends Powerform_Google_Collection
+class Google_Service_TagManager_ListContainersResponse extends Google_Collection
 {
   protected $collection_key = 'containers';
   protected $internal_gapi_mappings = array(
   );
-  protected $containersType = 'Powerform_Google_Service_TagManager_Container';
+  protected $containersType = 'Google_Service_TagManager_Container';
   protected $containersDataType = 'array';
 
 
@@ -2469,12 +2469,12 @@ class Powerform_Google_Service_TagManager_ListContainersResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_TagManager_ListFoldersResponse extends Powerform_Google_Collection
+class Google_Service_TagManager_ListFoldersResponse extends Google_Collection
 {
   protected $collection_key = 'folders';
   protected $internal_gapi_mappings = array(
   );
-  protected $foldersType = 'Powerform_Google_Service_TagManager_Folder';
+  protected $foldersType = 'Google_Service_TagManager_Folder';
   protected $foldersDataType = 'array';
 
 
@@ -2488,12 +2488,12 @@ class Powerform_Google_Service_TagManager_ListFoldersResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_TagManager_ListTagsResponse extends Powerform_Google_Collection
+class Google_Service_TagManager_ListTagsResponse extends Google_Collection
 {
   protected $collection_key = 'tags';
   protected $internal_gapi_mappings = array(
   );
-  protected $tagsType = 'Powerform_Google_Service_TagManager_Tag';
+  protected $tagsType = 'Google_Service_TagManager_Tag';
   protected $tagsDataType = 'array';
 
 
@@ -2507,12 +2507,12 @@ class Powerform_Google_Service_TagManager_ListTagsResponse extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_TagManager_ListTriggersResponse extends Powerform_Google_Collection
+class Google_Service_TagManager_ListTriggersResponse extends Google_Collection
 {
   protected $collection_key = 'triggers';
   protected $internal_gapi_mappings = array(
   );
-  protected $triggersType = 'Powerform_Google_Service_TagManager_Trigger';
+  protected $triggersType = 'Google_Service_TagManager_Trigger';
   protected $triggersDataType = 'array';
 
 
@@ -2526,12 +2526,12 @@ class Powerform_Google_Service_TagManager_ListTriggersResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_TagManager_ListVariablesResponse extends Powerform_Google_Collection
+class Google_Service_TagManager_ListVariablesResponse extends Google_Collection
 {
   protected $collection_key = 'variables';
   protected $internal_gapi_mappings = array(
   );
-  protected $variablesType = 'Powerform_Google_Service_TagManager_Variable';
+  protected $variablesType = 'Google_Service_TagManager_Variable';
   protected $variablesDataType = 'array';
 
 
@@ -2545,7 +2545,7 @@ class Powerform_Google_Service_TagManager_ListVariablesResponse extends Powerfor
   }
 }
 
-class Powerform_Google_Service_TagManager_Macro extends Powerform_Google_Collection
+class Google_Service_TagManager_Macro extends Google_Collection
 {
   protected $collection_key = 'parameter';
   protected $internal_gapi_mappings = array(
@@ -2558,7 +2558,7 @@ class Powerform_Google_Service_TagManager_Macro extends Powerform_Google_Collect
   public $macroId;
   public $name;
   public $notes;
-  protected $parameterType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $parameterType = 'Google_Service_TagManager_Parameter';
   protected $parameterDataType = 'array';
   public $parentFolderId;
   public $scheduleEndMs;
@@ -2672,15 +2672,15 @@ class Powerform_Google_Service_TagManager_Macro extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_TagManager_Parameter extends Powerform_Google_Collection
+class Google_Service_TagManager_Parameter extends Google_Collection
 {
   protected $collection_key = 'map';
   protected $internal_gapi_mappings = array(
   );
   public $key;
-  protected $listType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $listType = 'Google_Service_TagManager_Parameter';
   protected $listDataType = 'array';
-  protected $mapType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $mapType = 'Google_Service_TagManager_Parameter';
   protected $mapDataType = 'array';
   public $type;
   public $value;
@@ -2728,12 +2728,12 @@ class Powerform_Google_Service_TagManager_Parameter extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_TagManager_PublishContainerVersionResponse extends Powerform_Google_Model
+class Google_Service_TagManager_PublishContainerVersionResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $compilerError;
-  protected $containerVersionType = 'Powerform_Google_Service_TagManager_ContainerVersion';
+  protected $containerVersionType = 'Google_Service_TagManager_ContainerVersion';
   protected $containerVersionDataType = '';
 
 
@@ -2745,7 +2745,7 @@ class Powerform_Google_Service_TagManager_PublishContainerVersionResponse extend
   {
     return $this->compilerError;
   }
-  public function setContainerVersion(Powerform_Google_Service_TagManager_ContainerVersion $containerVersion)
+  public function setContainerVersion(Google_Service_TagManager_ContainerVersion $containerVersion)
   {
     $this->containerVersion = $containerVersion;
   }
@@ -2755,13 +2755,13 @@ class Powerform_Google_Service_TagManager_PublishContainerVersionResponse extend
   }
 }
 
-class Powerform_Google_Service_TagManager_Rule extends Powerform_Google_Collection
+class Google_Service_TagManager_Rule extends Google_Collection
 {
   protected $collection_key = 'condition';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
-  protected $conditionType = 'Powerform_Google_Service_TagManager_Condition';
+  protected $conditionType = 'Google_Service_TagManager_Condition';
   protected $conditionDataType = 'array';
   public $containerId;
   public $fingerprint;
@@ -2828,7 +2828,7 @@ class Powerform_Google_Service_TagManager_Rule extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_TagManager_SetupTag extends Powerform_Google_Model
+class Google_Service_TagManager_SetupTag extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2854,7 +2854,7 @@ class Powerform_Google_Service_TagManager_SetupTag extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_TagManager_Tag extends Powerform_Google_Collection
+class Google_Service_TagManager_Tag extends Google_Collection
 {
   protected $collection_key = 'teardownTag';
   protected $internal_gapi_mappings = array(
@@ -2869,18 +2869,18 @@ class Powerform_Google_Service_TagManager_Tag extends Powerform_Google_Collectio
   public $liveOnly;
   public $name;
   public $notes;
-  protected $parameterType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $parameterType = 'Google_Service_TagManager_Parameter';
   protected $parameterDataType = 'array';
   public $parentFolderId;
-  protected $priorityType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $priorityType = 'Google_Service_TagManager_Parameter';
   protected $priorityDataType = '';
   public $scheduleEndMs;
   public $scheduleStartMs;
-  protected $setupTagType = 'Powerform_Google_Service_TagManager_SetupTag';
+  protected $setupTagType = 'Google_Service_TagManager_SetupTag';
   protected $setupTagDataType = 'array';
   public $tagFiringOption;
   public $tagId;
-  protected $teardownTagType = 'Powerform_Google_Service_TagManager_TeardownTag';
+  protected $teardownTagType = 'Google_Service_TagManager_TeardownTag';
   protected $teardownTagDataType = 'array';
   public $type;
 
@@ -2981,7 +2981,7 @@ class Powerform_Google_Service_TagManager_Tag extends Powerform_Google_Collectio
   {
     return $this->parentFolderId;
   }
-  public function setPriority(Powerform_Google_Service_TagManager_Parameter $priority)
+  public function setPriority(Google_Service_TagManager_Parameter $priority)
   {
     $this->priority = $priority;
   }
@@ -3047,7 +3047,7 @@ class Powerform_Google_Service_TagManager_Tag extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_TagManager_TeardownTag extends Powerform_Google_Model
+class Google_Service_TagManager_TeardownTag extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3073,41 +3073,41 @@ class Powerform_Google_Service_TagManager_TeardownTag extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Collection
+class Google_Service_TagManager_Trigger extends Google_Collection
 {
   protected $collection_key = 'filter';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
-  protected $autoEventFilterType = 'Powerform_Google_Service_TagManager_Condition';
+  protected $autoEventFilterType = 'Google_Service_TagManager_Condition';
   protected $autoEventFilterDataType = 'array';
-  protected $checkValidationType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $checkValidationType = 'Google_Service_TagManager_Parameter';
   protected $checkValidationDataType = '';
   public $containerId;
-  protected $customEventFilterType = 'Powerform_Google_Service_TagManager_Condition';
+  protected $customEventFilterType = 'Google_Service_TagManager_Condition';
   protected $customEventFilterDataType = 'array';
-  protected $enableAllVideosType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $enableAllVideosType = 'Google_Service_TagManager_Parameter';
   protected $enableAllVideosDataType = '';
-  protected $eventNameType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $eventNameType = 'Google_Service_TagManager_Parameter';
   protected $eventNameDataType = '';
-  protected $filterType = 'Powerform_Google_Service_TagManager_Condition';
+  protected $filterType = 'Google_Service_TagManager_Condition';
   protected $filterDataType = 'array';
   public $fingerprint;
-  protected $intervalType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $intervalType = 'Google_Service_TagManager_Parameter';
   protected $intervalDataType = '';
-  protected $limitType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $limitType = 'Google_Service_TagManager_Parameter';
   protected $limitDataType = '';
   public $name;
   public $parentFolderId;
   public $triggerId;
   public $type;
-  protected $uniqueTriggerIdType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $uniqueTriggerIdType = 'Google_Service_TagManager_Parameter';
   protected $uniqueTriggerIdDataType = '';
-  protected $videoPercentageListType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $videoPercentageListType = 'Google_Service_TagManager_Parameter';
   protected $videoPercentageListDataType = '';
-  protected $waitForTagsType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $waitForTagsType = 'Google_Service_TagManager_Parameter';
   protected $waitForTagsDataType = '';
-  protected $waitForTagsTimeoutType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $waitForTagsTimeoutType = 'Google_Service_TagManager_Parameter';
   protected $waitForTagsTimeoutDataType = '';
 
 
@@ -3127,7 +3127,7 @@ class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Colle
   {
     return $this->autoEventFilter;
   }
-  public function setCheckValidation(Powerform_Google_Service_TagManager_Parameter $checkValidation)
+  public function setCheckValidation(Google_Service_TagManager_Parameter $checkValidation)
   {
     $this->checkValidation = $checkValidation;
   }
@@ -3151,7 +3151,7 @@ class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Colle
   {
     return $this->customEventFilter;
   }
-  public function setEnableAllVideos(Powerform_Google_Service_TagManager_Parameter $enableAllVideos)
+  public function setEnableAllVideos(Google_Service_TagManager_Parameter $enableAllVideos)
   {
     $this->enableAllVideos = $enableAllVideos;
   }
@@ -3159,7 +3159,7 @@ class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Colle
   {
     return $this->enableAllVideos;
   }
-  public function setEventName(Powerform_Google_Service_TagManager_Parameter $eventName)
+  public function setEventName(Google_Service_TagManager_Parameter $eventName)
   {
     $this->eventName = $eventName;
   }
@@ -3183,7 +3183,7 @@ class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Colle
   {
     return $this->fingerprint;
   }
-  public function setInterval(Powerform_Google_Service_TagManager_Parameter $interval)
+  public function setInterval(Google_Service_TagManager_Parameter $interval)
   {
     $this->interval = $interval;
   }
@@ -3191,7 +3191,7 @@ class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Colle
   {
     return $this->interval;
   }
-  public function setLimit(Powerform_Google_Service_TagManager_Parameter $limit)
+  public function setLimit(Google_Service_TagManager_Parameter $limit)
   {
     $this->limit = $limit;
   }
@@ -3231,7 +3231,7 @@ class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Colle
   {
     return $this->type;
   }
-  public function setUniqueTriggerId(Powerform_Google_Service_TagManager_Parameter $uniqueTriggerId)
+  public function setUniqueTriggerId(Google_Service_TagManager_Parameter $uniqueTriggerId)
   {
     $this->uniqueTriggerId = $uniqueTriggerId;
   }
@@ -3239,7 +3239,7 @@ class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Colle
   {
     return $this->uniqueTriggerId;
   }
-  public function setVideoPercentageList(Powerform_Google_Service_TagManager_Parameter $videoPercentageList)
+  public function setVideoPercentageList(Google_Service_TagManager_Parameter $videoPercentageList)
   {
     $this->videoPercentageList = $videoPercentageList;
   }
@@ -3247,7 +3247,7 @@ class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Colle
   {
     return $this->videoPercentageList;
   }
-  public function setWaitForTags(Powerform_Google_Service_TagManager_Parameter $waitForTags)
+  public function setWaitForTags(Google_Service_TagManager_Parameter $waitForTags)
   {
     $this->waitForTags = $waitForTags;
   }
@@ -3255,7 +3255,7 @@ class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Colle
   {
     return $this->waitForTags;
   }
-  public function setWaitForTagsTimeout(Powerform_Google_Service_TagManager_Parameter $waitForTagsTimeout)
+  public function setWaitForTagsTimeout(Google_Service_TagManager_Parameter $waitForTagsTimeout)
   {
     $this->waitForTagsTimeout = $waitForTagsTimeout;
   }
@@ -3265,21 +3265,21 @@ class Powerform_Google_Service_TagManager_Trigger extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_TagManager_UserAccess extends Powerform_Google_Collection
+class Google_Service_TagManager_UserAccess extends Google_Collection
 {
   protected $collection_key = 'containerAccess';
   protected $internal_gapi_mappings = array(
   );
-  protected $accountAccessType = 'Powerform_Google_Service_TagManager_AccountAccess';
+  protected $accountAccessType = 'Google_Service_TagManager_AccountAccess';
   protected $accountAccessDataType = '';
   public $accountId;
-  protected $containerAccessType = 'Powerform_Google_Service_TagManager_ContainerAccess';
+  protected $containerAccessType = 'Google_Service_TagManager_ContainerAccess';
   protected $containerAccessDataType = 'array';
   public $emailAddress;
   public $permissionId;
 
 
-  public function setAccountAccess(Powerform_Google_Service_TagManager_AccountAccess $accountAccess)
+  public function setAccountAccess(Google_Service_TagManager_AccountAccess $accountAccess)
   {
     $this->accountAccess = $accountAccess;
   }
@@ -3321,7 +3321,7 @@ class Powerform_Google_Service_TagManager_UserAccess extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_TagManager_Variable extends Powerform_Google_Collection
+class Google_Service_TagManager_Variable extends Google_Collection
 {
   protected $collection_key = 'parameter';
   protected $internal_gapi_mappings = array(
@@ -3333,7 +3333,7 @@ class Powerform_Google_Service_TagManager_Variable extends Powerform_Google_Coll
   public $fingerprint;
   public $name;
   public $notes;
-  protected $parameterType = 'Powerform_Google_Service_TagManager_Parameter';
+  protected $parameterType = 'Google_Service_TagManager_Parameter';
   protected $parameterDataType = 'array';
   public $parentFolderId;
   public $scheduleEndMs;

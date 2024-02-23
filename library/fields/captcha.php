@@ -43,7 +43,7 @@ class Powerform_Captcha extends Powerform_Field {
 	/**
 	 * @var string
 	 */
-	public $hide_advanced = 'true';
+	public $hide_advanced = "true";
 
 	/**
 	 * @var string
@@ -70,9 +70,7 @@ class Powerform_Captcha extends Powerform_Field {
 	public function defaults() {
 
 		return array(
-			'captcha_type'            => __( 'v2_checkbox', Powerform::DOMAIN ),
-			'score_threshold'         => __( '0.5', Powerform::DOMAIN ),
-			'recaptcha_error_message' => __( 'Die reCAPTCHA-Überprüfung ist fehlgeschlagen. Bitte versuche es erneut.', Powerform::DOMAIN ),
+			// 'field_label'  => __( 'Are you a human?', Powerform::DOMAIN )
 		);
 	}
 
@@ -98,7 +96,7 @@ class Powerform_Captcha extends Powerform_Field {
 		$is_invisible = filter_var( $is_invisible, FILTER_VALIDATE_BOOLEAN );
 		if ( ! $is_invisible ) {
 			$type = self::get_property( 'captcha_type', $field, '' );
-			if ( 'invisible' === $type || 'v3_recaptcha' === $type || 'v2_invisible' === $type ) {
+			if ( 'invisible' === $type ) {
 				$is_invisible = true;
 			}
 		}
@@ -117,25 +115,19 @@ class Powerform_Captcha extends Powerform_Field {
 	 * @return mixed
 	 */
 	public function markup( $field, $settings = array() ) {
+		$key           = get_option( "powerform_captcha_key", false );
+		$theme         = get_option( "powerform_captcha_theme", false );
+		$captcha_size  = self::get_property( 'captcha_type', $field, '' );
+		$captcha_theme = self::get_property( 'captcha_theme', $field, $theme );
 
-		$captcha_type  = self::get_property( 'captcha_type', $field, '' );
-		$captcha_theme = self::get_property( 'captcha_theme', $field, 'light' );
-		$captcha_size  = self::get_property( 'captcha_size', $field, 'normal' );
-
-		if ( 'v2_checkbox' === $captcha_type ) {
-			$key = get_option( 'powerform_captcha_key', '' );
-		} elseif ( 'v2_invisible' === $captcha_type ) {
-			$key = get_option( 'powerform_v2_invisible_captcha_key', '' );
-		} elseif ( 'v3_recaptcha' === $captcha_type ) {
-			$key = get_option( 'powerform_v3_captcha_key', '' );
-		} else {
-			$key = get_option( 'powerform_captcha_key', '' );
+		if ( 'full' === $captcha_size ) {
+			$captcha_size = 'normal';
 		}
 
 		$captcha_class = 'powerform-g-recaptcha';
 
 		if ( $this->is_invisible_recaptcha( $field ) ) {
-			$captcha_size   = 'invisible';
+			$captcha_size  = 'invisible';
 			$captcha_class .= ' recaptcha-invisible';
 		}
 
@@ -154,16 +146,7 @@ class Powerform_Captcha extends Powerform_Field {
 	 * @return bool
 	 */
 	public function is_available( $field ) {
-		$captcha_type = self::get_property( 'captcha_type', $field, '' );
-		if ( 'v2_checkbox' === $captcha_type ) {
-			$key = get_option( 'powerform_captcha_key', '' );
-		} elseif ( 'v2_invisible' === $captcha_type ) {
-			$key = get_option( 'powerform_v2_invisible_captcha_key', '' );
-		} elseif ( 'v3_recaptcha' === $captcha_type ) {
-			$key = get_option( 'powerform_v3_captcha_key', '' );
-		} else {
-			$key = get_option( 'powerform_captcha_key', '' );
-		}
+		$key = get_option( "powerform_captcha_key", false );
 
 		if ( ! $key ) {
 			return false;
@@ -179,31 +162,17 @@ class Powerform_Captcha extends Powerform_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 *
 	 * @return bool
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
-		$captcha_type  = self::get_property( 'captcha_type', $field, '' );
-		$score = '';
-
-		if ( 'v2_checkbox' === $captcha_type ) {
-			$secret = get_option( 'powerform_captcha_secret', '' );
-		} elseif ( 'v2_invisible' === $captcha_type ) {
-			$secret = get_option( 'powerform_v2_invisible_captcha_secret', '' );
-		} elseif ( 'v3_recaptcha' === $captcha_type ) {
-			$secret = get_option( 'powerform_v3_captcha_secret', '' );
-			$score  = self::get_property( 'score_threshold', $field, '' );
-		} else {
-			$secret = get_option( 'powerform_captcha_secret', '' );
-		}
-		$element_id    = self::get_property( 'element_id', $field );
-		$error_message = self::get_property( 'recaptcha_error_message', $field, '' );
+	public function validate( $field, $data ) {
+		$secret     = get_option( 'powerform_captcha_secret', false );
+		$element_id = self::get_property( 'element_id', $field );
 
 		$recaptcha = new Powerform_Recaptcha( $secret );
-		$verify    = $recaptcha->verify( $data, null, $score );
+		$verify    = $recaptcha->verify( $data );
 		if ( is_wp_error( $verify ) ) {
-			$invalid_captcha_message = ( ! empty( $error_message ) ? $error_message : __( 'Die reCAPTCHA-Überprüfung ist fehlgeschlagen. Bitte versuche es erneut.', Powerform::DOMAIN ) );
+			$invalid_captcha_message = __( 'Ungültiges Captcha. Bitte überprüfe die Captcha-Eingabe.', Powerform::DOMAIN );
 
 			/**
 			 * Filter message displayed for invalid captcha

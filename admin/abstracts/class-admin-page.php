@@ -50,7 +50,7 @@ abstract class Powerform_Admin_Page {
 	 */
 	public function __construct(
 		$page_slug,
-		$folder,
+		$folder = '',
 		$page_title,
 		$menu_title,
 		$parent = false,
@@ -67,7 +67,7 @@ abstract class Powerform_Admin_Page {
 				$page_slug,
 				$render ? array( $this, 'render' ) : null,
 				'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNDAiIGhlaWdodD0iMzAyIj48ZyBmaWxsPSIjODg4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yMjkuMjc4IDI0Ljg3OGwtMjAuMjEtMjAuMjE3di0uMDAzYy0zLjM1Ni0zLjMzOC04Ljc3OC0zLjMzNS0xMi4xMS4wMDNMNjQuNTIzIDEzNy4xMDFhOC41MDcgOC41MDcgMCAwIDAtMi41MDggNi4wNTJjMCAyLjI4OC44OTIgNC40NCAyLjUwOCA2LjA1MmwyMC4yMTEgMjAuMjE3YTguNTQgOC41NCAwIDAgMCA2LjA1MiAyLjUwNCA4LjU0IDguNTQgMCAwIDAgNi4wNTctMi41MDRsMTMyLjQzNS0xMzIuNDRjMy4zMzgtMy4zMzkgMy4zMzgtOC43NjYgMC0xMi4xMDRtMTA4LjIyMyAyMS43OTRsLTIwLjIxNy0yMC4yMTRjLTMuMzMyLTMuMzM4LTguNzcxLTMuMzM4LTEyLjEwMyAwTDEyOS41MjYgMjAyLjEwN2MtMy4zMzggMy4zMzgtMy4zMzggOC43NjggMCAxMi4xMDZsMjAuMjE3IDIwLjIxNGE4LjUyOCA4LjUyOCAwIDAgMCA2LjA1MiAyLjUwMmMyLjE5IDAgNC4zODUtLjgzMyA2LjA1LTIuNTAyTDMzNy41MDIgNTguNzc1YzMuMzMyLTMuMzM1IDMuMzMyLTguNzYyIDAtMTIuMTAzTTUxLjEyIDIxMC44NTZjLTEuNDQyLTEuNDM4LTMuNDY1LTIuMDM0LTUuNDc3LTEuNTQ0YTUuNzkgNS43OSAwIDAgMC00LjE4NSAzLjg1OWwtMTcuODkzIDU0Ljg2NGE1Ljc5NiA1Ljc5NiAwIDAgMCAxLjQxNiA1LjkyOSA1LjggNS44IDAgMCAwIDUuOTI5IDEuNDJsNTQuODcyLTE3Ljg5NXYtLjAwM2E1Ljc4NCA1Ljc4NCAwIDAgMCAzLjg1Ni00LjE4MiA1Ljc5MSA1Ljc5MSAwIDAgMC0xLjU1LTUuNDc1bC0zNi45NjctMzYuOTczem0yNDguNzIxLTc2Ljc4M2wtMzMuMTA2IDMzLjEwNmE4LjMxMSA4LjMxMSAwIDAgMC0yLjMzNSA0LjUxNmMtOS43OTYgNTUuNDA0LTU3LjczIDk1LjYxOC0xMTMuOTc5IDk1LjYxOC01LjYwNSAwLTExLjMwNi0uNDYzLTE3LjQxOS0xLjQxMy0yLjY1OC0uNDIzLTUuNDU1LjQ2Ni03LjM3MiAyLjM4M2wtMTQuODc5IDE0Ljg3OGMtMi4yMTggMi4yMjEtMy4wMzcgNS4zNTItMi4xOSA4LjM4MS44NDcgMy4wMzQgMy4xODIgNS4yOTEgNi4yNDEgNi4wMzhhMTUwLjY3NCAxNTAuNjc0IDAgMCAwIDM1LjYyIDQuMjcxYzgyLjk0NSAwIDE1MC40MjgtNjcuNDggMTUwLjQyOC0xNTAuNDI1IDAtMy40MzYtLjI0Ni02LjgxMy0uNDktMTAuMTg3bC0uNTE5LTcuMTY2ek0xNjIuNDU1IDEuNWwtMzUuNjQyIDM1LjYxNGMtMS4yNDQgMS4yMS0zLjAwNCAxLjY5OS00LjcxNyAyLjEwNC00Ni4zNjcgMTAuOTY4LTg2LjM4IDUzLjk3LTg3LjQ2NyAxMDcuOTUtLjExMiA1LjYwNC0uMDk0IDExLjE1My43NDkgMTcuMjgyLjM3NiAyLjY2NS0uNTYxIDUuNDQ2LTIuNTExIDcuMzNMMTcuNzMgMTg2LjM5NWMtMi4yNiAyLjE4LTQuOTE1IDMuMDQ4LTguNDE4IDIuMDQ0LTMuNTAzLTEuMDA0LTUuNC0zLjM3Mi02LjA5My02LjQ0My0yLjYzLTExLjY3OC0zLjU5My0yMy43MDItMy4xLTM1Ljg5M0MzLjQ3NiA2My4yMzUgNzAuMDY1IDIuNjcgMTQ3LjAyMyAxLjAwOGMzLjQzNi0uMDc0IDMuODU1LS4xMzQgNy4yMjUuMTdsOC4yMDguMzIyeiIvPjwvZz48L3N2Zz4='
-				//'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48cGF0aCBmaWxsPSIjODg4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNDkuNDQ2IDI2Ny42MmExMTcuNzYgMTE3Ljc2IDAgMCAxLTI3Ljg1LTMuMzQgNi42NDMgNi42NDMgMCAwIDEtNC44ODEtNC43MmMtLjY2MS0yLjM2OS0uMDIxLTQuODE4IDEuNzEzLTYuNTU0bDExLjYzNC0xMS42MzRjMS40OTgtMS40OTkgMy42ODYtMi4xOTMgNS43NjUtMS44NjMgNC43NzkuNzQzIDkuMjM1IDEuMTA1IDEzLjYxOSAxLjEwNSA0My45ODIgMCA4MS40NjItMzEuNDQ0IDg5LjEyMy03NC43NjVhNi40OTIgNi40OTIgMCAwIDEgMS44MjUtMy41M2wyNS44ODUtMjUuODg3LjQwNiA1LjYwM2MuMTkzIDIuNjQuMzg0IDUuMjguMzg0IDcuOTY1IDAgNjQuODU3LTUyLjc2NiAxMTcuNjItMTE3LjYyMyAxMTcuNjJtLTQ2LjYzLTEwMS41OWE2LjY4NCA2LjY4NCAwIDAgMS00LjczMi0xLjk1OGwtMTUuODAyLTE1LjgwOGE2LjY0IDYuNjQgMCAwIDEtMS45NjItNC43MzJjMC0xLjc4Ny42OTctMy40NjggMS45NjItNC43MzJsMTAzLjU1LTEwMy41NTdjMi42MDctMi42MSA2Ljg0Ny0yLjYxMiA5LjQ3LS4wMDJ2LjAwMmwxNS44MDMgMTUuODA3YTYuNyA2LjcgMCAwIDEgMCA5LjQ2NUwxMDcuNTUzIDE2NC4wNzJhNi42ODYgNi42ODYgMCAwIDEtNC43MzcgMS45NThtLS44OTcgNjMuNjNhNC41MjQgNC41MjQgMCAwIDEtMy4wMTUgMy4yN3YuMDAybC00Mi45MDUgMTMuOTkzYTQuNTI4IDQuNTI4IDAgMCAxLTQuNjM2LTEuMTExIDQuNTI4IDQuNTI4IDAgMCAxLTEuMTA3LTQuNjM2bDEzLjk5LTQyLjg5OWE0LjUyMiA0LjUyMiAwIDAgMSAzLjI3My0zLjAxNmMxLjU3Mi0uMzg0IDMuMTU0LjA4MiA0LjI4MiAxLjIwNmwyOC45MDcgMjguOTFhNC41MjggNC41MjggMCAwIDEgMS4yMSA0LjI4MW0tNjEtNTAuNDM0YTYuNzk1IDYuNzk1IDAgMCAxLTEuOTIxLS4yNzljLTIuMzg4LS43MS00LjEyMy0yLjU4Ni00LjYzNi01LjAxNS0xLjY3OC03LjkzOS0yLjUzMi0xNS45OS0yLjUzMi0yMy45MzIgMC02NC44NTcgNTIuNzYtMTE3LjYyIDExNy42MTctMTE3LjYyLjg5NCAwIDEuNzc0LjA2IDIuNjUuMTIuNTQ5LjAzNyAxLjA5OC4wNzYgMS42NS4wOTZsNS4xMjYuMTgxLTI3LjQyIDI3LjQyYTYuNTk3IDYuNTk3IDAgMCAxLTMuMTE2IDEuNzM2aC0uMDA1Qzg3LjQxNCA3MS43MSA1OC44MzQgMTA3LjkyNSA1OC44MzQgMTUwYzAgMy4wNTUuMjA2IDYuMjgzLjYyNCA5Ljg3MWE2LjY1OCA2LjY1OCAwIDAgMS0xLjkwNCA1LjUwM2wtMTEuODg3IDExLjg4N2E2LjcxNSA2LjcxNSAwIDAgMS00Ljc1IDEuOTY1bTI0NS4yNTgtOTIuMTJMMTU4LjM3OSAyMTQuOWE2LjY2OCA2LjY2OCAwIDAgMS00LjczMSAxLjk1NiA2LjY2OCA2LjY2OCAwIDAgMS00LjczMy0xLjk1NmwtMTUuODA4LTE1LjgwNWE2LjcgNi43IDAgMCAxIDAtOS40NjZMMjY2LjgwNiA1NS45MzNDMjM5LjMxIDIxLjgzNCAxOTcuMjE1IDAgMTUwIDAgNjcuMTU3IDAgMCA2Ny4xNTcgMCAxNTBjMCA4Mi44NDIgNjcuMTU3IDE1MCAxNTAgMTUwczE1MC02Ny4xNTggMTUwLTE1MGMwLTIyLjQ2Ny00Ljk3My00My43NjItMTMuODI1LTYyLjg5NCIvPjwvc3ZnPg=='
+			//'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48cGF0aCBmaWxsPSIjODg4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNDkuNDQ2IDI2Ny42MmExMTcuNzYgMTE3Ljc2IDAgMCAxLTI3Ljg1LTMuMzQgNi42NDMgNi42NDMgMCAwIDEtNC44ODEtNC43MmMtLjY2MS0yLjM2OS0uMDIxLTQuODE4IDEuNzEzLTYuNTU0bDExLjYzNC0xMS42MzRjMS40OTgtMS40OTkgMy42ODYtMi4xOTMgNS43NjUtMS44NjMgNC43NzkuNzQzIDkuMjM1IDEuMTA1IDEzLjYxOSAxLjEwNSA0My45ODIgMCA4MS40NjItMzEuNDQ0IDg5LjEyMy03NC43NjVhNi40OTIgNi40OTIgMCAwIDEgMS44MjUtMy41M2wyNS44ODUtMjUuODg3LjQwNiA1LjYwM2MuMTkzIDIuNjQuMzg0IDUuMjguMzg0IDcuOTY1IDAgNjQuODU3LTUyLjc2NiAxMTcuNjItMTE3LjYyMyAxMTcuNjJtLTQ2LjYzLTEwMS41OWE2LjY4NCA2LjY4NCAwIDAgMS00LjczMi0xLjk1OGwtMTUuODAyLTE1LjgwOGE2LjY0IDYuNjQgMCAwIDEtMS45NjItNC43MzJjMC0xLjc4Ny42OTctMy40NjggMS45NjItNC43MzJsMTAzLjU1LTEwMy41NTdjMi42MDctMi42MSA2Ljg0Ny0yLjYxMiA5LjQ3LS4wMDJ2LjAwMmwxNS44MDMgMTUuODA3YTYuNyA2LjcgMCAwIDEgMCA5LjQ2NUwxMDcuNTUzIDE2NC4wNzJhNi42ODYgNi42ODYgMCAwIDEtNC43MzcgMS45NThtLS44OTcgNjMuNjNhNC41MjQgNC41MjQgMCAwIDEtMy4wMTUgMy4yN3YuMDAybC00Mi45MDUgMTMuOTkzYTQuNTI4IDQuNTI4IDAgMCAxLTQuNjM2LTEuMTExIDQuNTI4IDQuNTI4IDAgMCAxLTEuMTA3LTQuNjM2bDEzLjk5LTQyLjg5OWE0LjUyMiA0LjUyMiAwIDAgMSAzLjI3My0zLjAxNmMxLjU3Mi0uMzg0IDMuMTU0LjA4MiA0LjI4MiAxLjIwNmwyOC45MDcgMjguOTFhNC41MjggNC41MjggMCAwIDEgMS4yMSA0LjI4MW0tNjEtNTAuNDM0YTYuNzk1IDYuNzk1IDAgMCAxLTEuOTIxLS4yNzljLTIuMzg4LS43MS00LjEyMy0yLjU4Ni00LjYzNi01LjAxNS0xLjY3OC03LjkzOS0yLjUzMi0xNS45OS0yLjUzMi0yMy45MzIgMC02NC44NTcgNTIuNzYtMTE3LjYyIDExNy42MTctMTE3LjYyLjg5NCAwIDEuNzc0LjA2IDIuNjUuMTIuNTQ5LjAzNyAxLjA5OC4wNzYgMS42NS4wOTZsNS4xMjYuMTgxLTI3LjQyIDI3LjQyYTYuNTk3IDYuNTk3IDAgMCAxLTMuMTE2IDEuNzM2aC0uMDA1Qzg3LjQxNCA3MS43MSA1OC44MzQgMTA3LjkyNSA1OC44MzQgMTUwYzAgMy4wNTUuMjA2IDYuMjgzLjYyNCA5Ljg3MWE2LjY1OCA2LjY1OCAwIDAgMS0xLjkwNCA1LjUwM2wtMTEuODg3IDExLjg4N2E2LjcxNSA2LjcxNSAwIDAgMS00Ljc1IDEuOTY1bTI0NS4yNTgtOTIuMTJMMTU4LjM3OSAyMTQuOWE2LjY2OCA2LjY2OCAwIDAgMS00LjczMSAxLjk1NiA2LjY2OCA2LjY2OCAwIDAgMS00LjczMy0xLjk1NmwtMTUuODA4LTE1LjgwNWE2LjcgNi43IDAgMCAxIDAtOS40NjZMMjY2LjgwNiA1NS45MzNDMjM5LjMxIDIxLjgzNCAxOTcuMjE1IDAgMTUwIDAgNjcuMTU3IDAgMCA2Ny4xNTcgMCAxNTBjMCA4Mi44NDIgNjcuMTU3IDE1MCAxNTAgMTUwczE1MC02Ny4xNTggMTUwLTE1MGMwLTIyLjQ2Ny00Ljk3My00My43NjItMTMuODI1LTYyLjg5NCIvPjwvc3ZnPg=='
 			);
 		} else {
 			$this->page_id = add_submenu_page(
@@ -153,7 +153,6 @@ abstract class Powerform_Admin_Page {
 	 * @since 1.0
 	 */
 	public function add_page_hooks() {
-		add_filter( 'user_can_richedit', '__return_true' ); //Confirms wp editor script is loaded on Powerform admin pages.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'admin_body_class', array( $this, 'admin_body_classes' ) );
 		add_action( 'init', array( $this, 'init_scripts' ) );
@@ -188,6 +187,10 @@ abstract class Powerform_Admin_Page {
 			$powerform_data->get_options_data(),
 			$powerform_l10n->get_l10n_strings()
 		);
+
+		// Load front scripts for preview_form
+		powerform_print_front_styles( POWERFORM_VERSION );
+		powerform_print_front_scripts( POWERFORM_VERSION );
 	}
 
 	/**
@@ -207,9 +210,7 @@ abstract class Powerform_Admin_Page {
 	 *
 	 * @since 1.0
 	 */
-	protected function render_header() {
-	?>
-
+	protected function render_header() { ?>
 		<header class="sui-header">
 			<?php
 			if ( $this->template_exists( $this->folder . '/header' ) ) {
@@ -220,8 +221,7 @@ abstract class Powerform_Admin_Page {
 			<?php } ?>
 
 		</header>
-
-	<?php
+		<?php
 	}
 
 	/**
@@ -229,73 +229,18 @@ abstract class Powerform_Admin_Page {
 	 *
 	 * @since 1.0
 	 */
-	/*protected function render_footer() {
+	protected function render_footer() {
+
 		$hide_footer = false;
-		$footer_text = sprintf(
-				__( 'Made with %s by PSOURCE', 'psource' ),
-			' <i class="sui-icon-heart"></i>'
-		);
-		if ( Powerform::is_psource_member() ) {
-			$hide_footer = apply_filters( 'psource_branding_change_footer', $hide_footer );
-			$footer_text = apply_filters( 'psource_branding_footer_text', $footer_text );
-		}
+		$footer_text = sprintf( __( 'Gecodet mit %s vom WMS N@W', 'wpmudev' ), ' <i class="sui-icon-heart"></i>' );
 
 		if ( $this->template_exists( $this->folder . '/footer' ) ) {
 			$this->template( $this->folder . '/footer' );
-		}
-		?>
-		<div class="sui-footer"><?php echo $footer_text; // phpcs:ignore ?></div>
+		} ?>
+		<div class="sui-footer"><?php echo $footer_text; // wpcs xss ok. ?></div>
 
-		<?php if ( POWERFORM_PRO ) { ?>
 
-			<?php if ( ! $hide_footer ) : ?>
-				<ul class="sui-footer-nav">
-					<li><a href="https://n3rds.work/hub/" target="_blank"><?php esc_html_e( 'The Hub', Powerform::DOMAIN ); ?></a></li>
-					<li><a href="https://n3rds.work/projects/category/plugins/" target="_blank"><?php esc_html_e( 'Plugins', Powerform::DOMAIN ); ?></a></li>
-					<li><a href="https://n3rds.work/roadmap/" target="_blank"><?php esc_html_e( 'Roadmap', Powerform::DOMAIN ); ?></a></li>
-					<li><a href="https://n3rds.work/hub/support/" target="_blank"><?php esc_html_e( 'Support', Powerform::DOMAIN ); ?></a></li>
-					<li><a href="https://n3rds.work/docs/" target="_blank"><?php esc_html_e( 'Docs', Powerform::DOMAIN ); ?></a></li>
-					<li><a href="https://n3rds.work/hub/community/" target="_blank"><?php esc_html_e( 'Community', Powerform::DOMAIN ); ?></a></li>
-					<li><a href="https://n3rds.work/academy/" target="_blank"><?php esc_html_e( 'Academy', Powerform::DOMAIN ); ?></a></li>
-					<li><a href="https://n3rds.work/terms-of-service/" target="_blank"><?php esc_html_e( 'Terms of Service', Powerform::DOMAIN ); ?></a></li>
-					<li><a href="https://incsub.com/privacy-policy/" target="_blank"><?php esc_html_e( 'Privacy Policy', Powerform::DOMAIN ); ?></a></li>
-				</ul>
-			<?php endif; ?>
-
-		<?php } else { ?>
-
-			<ul class="sui-footer-nav">
-				<li><a href="https://profiles.wordpress.org/psource#content-plugins" target="_blank"><?php esc_html_e( 'Free Plugins', Powerform::DOMAIN ); ?></a></li>
-				<li><a href="https://n3rds.work/features/" target="_blank"><?php esc_html_e( 'Membership', Powerform::DOMAIN ); ?></a></li>
-				<li><a href="https://n3rds.work/roadmap/" target="_blank"><?php esc_html_e( 'Roadmap', Powerform::DOMAIN ); ?></a></li>
-				<li><a href="https://wordpress.org/support/plugin/powerform" target="_blank"><?php esc_html_e( 'Support', Powerform::DOMAIN ); ?></a></li>
-				<li><a href="https://n3rds.work/docs/" target="_blank"><?php esc_html_e( 'Docs', Powerform::DOMAIN ); ?></a></li>
-				<li><a href="https://n3rds.work/hub-welcome/" target="_blank"><?php esc_html_e( 'The Hub', Powerform::DOMAIN ); ?></a></li>
-				<li><a href="https://n3rds.work/terms-of-service/" target="_blank"><?php esc_html_e( 'Terms of Service', Powerform::DOMAIN ); ?></a></li>
-				<li><a href="https://incsub.com/privacy-policy/" target="_blank"><?php esc_html_e( 'Privacy Policy', Powerform::DOMAIN ); ?></a></li>
-			</ul>
-
-		<?php } ?>
-
-		<?php if ( ! $hide_footer ) : ?>
-			<ul class="sui-footer-social">
-				<li><a href="https://www.facebook.com/psource" target="_blank">
-					<i class="sui-icon-social-facebook" aria-hidden="true"></i>
-					<span class="sui-screen-reader-text"><?php esc_html_e( 'Facebook', Powerform::DOMAIN ); ?></span>
-				</a></li>
-				<li><a href="https://twitter.com/psource" target="_blank">
-					<i class="sui-icon-social-twitter" aria-hidden="true"></i>
-					<span class="sui-screen-reader-text"><?php esc_html_e( 'Twitter', Powerform::DOMAIN ); ?></span>
-				</a></li>
-				<li><a href="https://www.instagram.com/wpmu_dev/" target="_blank">
-					<i class="sui-icon-instagram" aria-hidden="true"></i>
-					<span class="sui-screen-reader-text"><?php esc_html_e( 'Instagram', Powerform::DOMAIN ); ?></span>
-				</a></li>
-			</ul>
-		<?php endif; ?>
-
-		<?php
-	}*/
+	<?php }
 
 	/**
 	 * Render page container
@@ -303,21 +248,17 @@ abstract class Powerform_Admin_Page {
 	 * @since 1.0
 	 */
 	public function render() {
-
-		$accessibility_enabled = get_option( 'powerform_enable_accessibility', false ); ?>
-
-		<main class="sui-wrap <?php echo $accessibility_enabled ? 'sui-color-accessible' : ''; ?> <?php echo esc_attr( 'psource-powerform-' . $this->page_slug ); ?>">
-
+		$accessibility_enabled = get_option( 'powerform_enable_accessibility', false );
+		?>
+		<main class="sui-wrap <?php echo $accessibility_enabled ? 'sui-color-accessible' : ''; ?> <?php echo esc_attr( 'wpmudev-powerform-' . $this->page_slug ); ?>">
 			<?php
 			$this->render_header();
 
 			$this->render_page_content();
 
-			//$this->render_footer();
+			$this->render_footer();
 			?>
-
 		</main>
-
 		<?php
 	}
 
@@ -363,8 +304,8 @@ abstract class Powerform_Admin_Page {
 		}
 
 		if ( $echo ) {
-			echo $content;// phpcs:ignore
-		}
+			echo $content;
+		}// WPCS: XSS ok.
 
 		return $content;
 	}
@@ -511,7 +452,7 @@ abstract class Powerform_Admin_Page {
 	}
 
 	/**
-	 * Generates the admin body class required for PSOURCE Shared UI
+	 * Generates the admin body class required for WPMU DEV Shared UI
 	 *
 	 * @since 1.0.2
 	 * @return string $sui_body_class
@@ -556,7 +497,7 @@ abstract class Powerform_Admin_Page {
 	 * @return string
 	 */
 	protected function get_admin_page() {
-		return ( isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : '' );
+		return ( isset( $_GET['page'] ) ? $_GET['page'] : '' );
 	}
 
 	/**
@@ -566,12 +507,10 @@ abstract class Powerform_Admin_Page {
 	 *
 	 * @param string $fallback_redirect url if referer not found
 	 */
-	protected function maybe_redirect_to_referer( $fallback_redirect = '', $to_referer = true ) {
+	protected function maybe_redirect_to_referer( $fallback_redirect = '' ) {
 		$referer = wp_get_referer();
 		$referer = ! empty( $referer ) ? $referer : wp_get_raw_referer();
-		$referer = remove_query_arg( array( 'export', 'delete' ), $referer );
-
-		if ( $referer && $to_referer ) {
+		if ( $referer ) {
 			wp_safe_redirect( $referer );
 		} elseif ( $fallback_redirect ) {
 			wp_safe_redirect( $fallback_redirect );
@@ -597,11 +536,11 @@ abstract class Powerform_Admin_Page {
 	 */
 	public function get_box_summary_classes() {
 		$classes = '';
-		if ( Powerform::is_psource_member() ) {
+		if ( Powerform::is_wpmudev_member() ) {
 			$hide_branding         = false;
-			$hide_branding         = apply_filters( 'psource_branding_hide_branding', $hide_branding );
+			$hide_branding         = apply_filters( 'wpmudev_branding_hide_branding', $hide_branding );
 			$custom_branding_image = '';
-			$custom_branding_image = apply_filters( 'psource_branding_hero_image', $custom_branding_image );
+			$custom_branding_image = apply_filters( 'wpmudev_branding_hero_image', $custom_branding_image );
 			if ( $hide_branding && ! empty( $custom_branding_image ) ) {
 				$classes .= ' sui-rebranded';
 			} elseif ( $hide_branding && empty( $custom_branding_image ) ) {
@@ -620,8 +559,8 @@ abstract class Powerform_Admin_Page {
 	 */
 	public function get_box_summary_image_url() {
 		$image_url = '';
-		if ( Powerform::is_psource_member() ) {
-			$image_url = apply_filters( 'psource_branding_hero_image', $image_url );
+		if ( Powerform::is_wpmudev_member() ) {
+			$image_url = apply_filters( 'wpmudev_branding_hero_image', $image_url );
 		}
 
 		return $image_url;

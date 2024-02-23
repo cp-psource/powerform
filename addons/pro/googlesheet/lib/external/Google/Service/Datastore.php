@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Datastore extends Powerform_Google_Service
+class Google_Service_Datastore extends Google_Service
 {
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
@@ -39,14 +39,14 @@ class Powerform_Google_Service_Datastore extends Powerform_Google_Service
       "https://www.googleapis.com/auth/userinfo.email";
 
   public $datasets;
-  
+
 
   /**
    * Constructs the internal representation of the Datastore service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -54,7 +54,7 @@ class Powerform_Google_Service_Datastore extends Powerform_Google_Service
     $this->version = 'v1beta2';
     $this->serviceName = 'datastore';
 
-    $this->datasets = new Powerform_Google_Service_Datastore_Datasets_Resource(
+    $this->datasets = new Google_Service_Datastore_Datasets_Resource(
         $this,
         $this->serviceName,
         'datasets',
@@ -132,11 +132,11 @@ class Powerform_Google_Service_Datastore extends Powerform_Google_Service
  * The "datasets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $datastoreService = new Powerform_Google_Service_Datastore(...);
+ *   $datastoreService = new Google_Service_Datastore(...);
  *   $datasets = $datastoreService->datasets;
  *  </code>
  */
-class Powerform_Google_Service_Datastore_Datasets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Datastore_Datasets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -144,30 +144,30 @@ class Powerform_Google_Service_Datastore_Datasets_Resource extends Powerform_Goo
    * is inserted). (datasets.allocateIds)
    *
    * @param string $datasetId Identifies the dataset.
-   * @param Powerform_Google_AllocateIdsRequest $postBody
+   * @param Google_AllocateIdsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Datastore_AllocateIdsResponse
+   * @return Google_Service_Datastore_AllocateIdsResponse
    */
-  public function allocateIds($datasetId, Powerform_Google_Service_Datastore_AllocateIdsRequest $postBody, $optParams = array())
+  public function allocateIds($datasetId, Google_Service_Datastore_AllocateIdsRequest $postBody, $optParams = array())
   {
     $params = array('datasetId' => $datasetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('allocateIds', array($params), "Powerform_Google_Service_Datastore_AllocateIdsResponse");
+    return $this->call('allocateIds', array($params), "Google_Service_Datastore_AllocateIdsResponse");
   }
 
   /**
    * Begin a new transaction. (datasets.beginTransaction)
    *
    * @param string $datasetId Identifies the dataset.
-   * @param Powerform_Google_BeginTransactionRequest $postBody
+   * @param Google_BeginTransactionRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Datastore_BeginTransactionResponse
+   * @return Google_Service_Datastore_BeginTransactionResponse
    */
-  public function beginTransaction($datasetId, Powerform_Google_Service_Datastore_BeginTransactionRequest $postBody, $optParams = array())
+  public function beginTransaction($datasetId, Google_Service_Datastore_BeginTransactionRequest $postBody, $optParams = array())
   {
     $params = array('datasetId' => $datasetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('beginTransaction', array($params), "Powerform_Google_Service_Datastore_BeginTransactionResponse");
+    return $this->call('beginTransaction', array($params), "Google_Service_Datastore_BeginTransactionResponse");
   }
 
   /**
@@ -175,72 +175,72 @@ class Powerform_Google_Service_Datastore_Datasets_Resource extends Powerform_Goo
    * entities. (datasets.commit)
    *
    * @param string $datasetId Identifies the dataset.
-   * @param Powerform_Google_CommitRequest $postBody
+   * @param Google_CommitRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Datastore_CommitResponse
+   * @return Google_Service_Datastore_CommitResponse
    */
-  public function commit($datasetId, Powerform_Google_Service_Datastore_CommitRequest $postBody, $optParams = array())
+  public function commit($datasetId, Google_Service_Datastore_CommitRequest $postBody, $optParams = array())
   {
     $params = array('datasetId' => $datasetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('commit', array($params), "Powerform_Google_Service_Datastore_CommitResponse");
+    return $this->call('commit', array($params), "Google_Service_Datastore_CommitResponse");
   }
 
   /**
    * Look up some entities by key. (datasets.lookup)
    *
    * @param string $datasetId Identifies the dataset.
-   * @param Powerform_Google_LookupRequest $postBody
+   * @param Google_LookupRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Datastore_LookupResponse
+   * @return Google_Service_Datastore_LookupResponse
    */
-  public function lookup($datasetId, Powerform_Google_Service_Datastore_LookupRequest $postBody, $optParams = array())
+  public function lookup($datasetId, Google_Service_Datastore_LookupRequest $postBody, $optParams = array())
   {
     $params = array('datasetId' => $datasetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('lookup', array($params), "Powerform_Google_Service_Datastore_LookupResponse");
+    return $this->call('lookup', array($params), "Google_Service_Datastore_LookupResponse");
   }
 
   /**
    * Roll back a transaction. (datasets.rollback)
    *
    * @param string $datasetId Identifies the dataset.
-   * @param Powerform_Google_RollbackRequest $postBody
+   * @param Google_RollbackRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Datastore_RollbackResponse
+   * @return Google_Service_Datastore_RollbackResponse
    */
-  public function rollback($datasetId, Powerform_Google_Service_Datastore_RollbackRequest $postBody, $optParams = array())
+  public function rollback($datasetId, Google_Service_Datastore_RollbackRequest $postBody, $optParams = array())
   {
     $params = array('datasetId' => $datasetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('rollback', array($params), "Powerform_Google_Service_Datastore_RollbackResponse");
+    return $this->call('rollback', array($params), "Google_Service_Datastore_RollbackResponse");
   }
 
   /**
    * Query for entities. (datasets.runQuery)
    *
    * @param string $datasetId Identifies the dataset.
-   * @param Powerform_Google_RunQueryRequest $postBody
+   * @param Google_RunQueryRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Datastore_RunQueryResponse
+   * @return Google_Service_Datastore_RunQueryResponse
    */
-  public function runQuery($datasetId, Powerform_Google_Service_Datastore_RunQueryRequest $postBody, $optParams = array())
+  public function runQuery($datasetId, Google_Service_Datastore_RunQueryRequest $postBody, $optParams = array())
   {
     $params = array('datasetId' => $datasetId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('runQuery', array($params), "Powerform_Google_Service_Datastore_RunQueryResponse");
+    return $this->call('runQuery', array($params), "Google_Service_Datastore_RunQueryResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Datastore_AllocateIdsRequest extends Powerform_Google_Collection
+class Google_Service_Datastore_AllocateIdsRequest extends Google_Collection
 {
   protected $collection_key = 'keys';
   protected $internal_gapi_mappings = array(
   );
-  protected $keysType = 'Powerform_Google_Service_Datastore_Key';
+  protected $keysType = 'Google_Service_Datastore_Key';
   protected $keysDataType = 'array';
 
 
@@ -254,18 +254,18 @@ class Powerform_Google_Service_Datastore_AllocateIdsRequest extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Datastore_AllocateIdsResponse extends Powerform_Google_Collection
+class Google_Service_Datastore_AllocateIdsResponse extends Google_Collection
 {
   protected $collection_key = 'keys';
   protected $internal_gapi_mappings = array(
   );
-  protected $headerType = 'Powerform_Google_Service_Datastore_ResponseHeader';
+  protected $headerType = 'Google_Service_Datastore_ResponseHeader';
   protected $headerDataType = '';
-  protected $keysType = 'Powerform_Google_Service_Datastore_Key';
+  protected $keysType = 'Google_Service_Datastore_Key';
   protected $keysDataType = 'array';
 
 
-  public function setHeader(Powerform_Google_Service_Datastore_ResponseHeader $header)
+  public function setHeader(Google_Service_Datastore_ResponseHeader $header)
   {
     $this->header = $header;
   }
@@ -283,7 +283,7 @@ class Powerform_Google_Service_Datastore_AllocateIdsResponse extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Datastore_BeginTransactionRequest extends Powerform_Google_Model
+class Google_Service_Datastore_BeginTransactionRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -300,16 +300,16 @@ class Powerform_Google_Service_Datastore_BeginTransactionRequest extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Datastore_BeginTransactionResponse extends Powerform_Google_Model
+class Google_Service_Datastore_BeginTransactionResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $headerType = 'Powerform_Google_Service_Datastore_ResponseHeader';
+  protected $headerType = 'Google_Service_Datastore_ResponseHeader';
   protected $headerDataType = '';
   public $transaction;
 
 
-  public function setHeader(Powerform_Google_Service_Datastore_ResponseHeader $header)
+  public function setHeader(Google_Service_Datastore_ResponseHeader $header)
   {
     $this->header = $header;
   }
@@ -327,13 +327,13 @@ class Powerform_Google_Service_Datastore_BeginTransactionResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_Datastore_CommitRequest extends Powerform_Google_Model
+class Google_Service_Datastore_CommitRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $ignoreReadOnly;
   public $mode;
-  protected $mutationType = 'Powerform_Google_Service_Datastore_Mutation';
+  protected $mutationType = 'Google_Service_Datastore_Mutation';
   protected $mutationDataType = '';
   public $transaction;
 
@@ -354,7 +354,7 @@ class Powerform_Google_Service_Datastore_CommitRequest extends Powerform_Google_
   {
     return $this->mode;
   }
-  public function setMutation(Powerform_Google_Service_Datastore_Mutation $mutation)
+  public function setMutation(Google_Service_Datastore_Mutation $mutation)
   {
     $this->mutation = $mutation;
   }
@@ -372,17 +372,17 @@ class Powerform_Google_Service_Datastore_CommitRequest extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Datastore_CommitResponse extends Powerform_Google_Model
+class Google_Service_Datastore_CommitResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $headerType = 'Powerform_Google_Service_Datastore_ResponseHeader';
+  protected $headerType = 'Google_Service_Datastore_ResponseHeader';
   protected $headerDataType = '';
-  protected $mutationResultType = 'Powerform_Google_Service_Datastore_MutationResult';
+  protected $mutationResultType = 'Google_Service_Datastore_MutationResult';
   protected $mutationResultDataType = '';
 
 
-  public function setHeader(Powerform_Google_Service_Datastore_ResponseHeader $header)
+  public function setHeader(Google_Service_Datastore_ResponseHeader $header)
   {
     $this->header = $header;
   }
@@ -390,7 +390,7 @@ class Powerform_Google_Service_Datastore_CommitResponse extends Powerform_Google
   {
     return $this->header;
   }
-  public function setMutationResult(Powerform_Google_Service_Datastore_MutationResult $mutationResult)
+  public function setMutationResult(Google_Service_Datastore_MutationResult $mutationResult)
   {
     $this->mutationResult = $mutationResult;
   }
@@ -400,12 +400,12 @@ class Powerform_Google_Service_Datastore_CommitResponse extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Datastore_CompositeFilter extends Powerform_Google_Collection
+class Google_Service_Datastore_CompositeFilter extends Google_Collection
 {
   protected $collection_key = 'filters';
   protected $internal_gapi_mappings = array(
   );
-  protected $filtersType = 'Powerform_Google_Service_Datastore_Filter';
+  protected $filtersType = 'Google_Service_Datastore_Filter';
   protected $filtersDataType = 'array';
   public $operator;
 
@@ -428,17 +428,17 @@ class Powerform_Google_Service_Datastore_CompositeFilter extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Datastore_Entity extends Powerform_Google_Model
+class Google_Service_Datastore_Entity extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $keyType = 'Powerform_Google_Service_Datastore_Key';
+  protected $keyType = 'Google_Service_Datastore_Key';
   protected $keyDataType = '';
-  protected $propertiesType = 'Powerform_Google_Service_Datastore_Property';
+  protected $propertiesType = 'Google_Service_Datastore_Property';
   protected $propertiesDataType = 'map';
 
 
-  public function setKey(Powerform_Google_Service_Datastore_Key $key)
+  public function setKey(Google_Service_Datastore_Key $key)
   {
     $this->key = $key;
   }
@@ -456,15 +456,15 @@ class Powerform_Google_Service_Datastore_Entity extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Datastore_EntityResult extends Powerform_Google_Model
+class Google_Service_Datastore_EntityResult extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $entityType = 'Powerform_Google_Service_Datastore_Entity';
+  protected $entityType = 'Google_Service_Datastore_Entity';
   protected $entityDataType = '';
 
 
-  public function setEntity(Powerform_Google_Service_Datastore_Entity $entity)
+  public function setEntity(Google_Service_Datastore_Entity $entity)
   {
     $this->entity = $entity;
   }
@@ -474,17 +474,17 @@ class Powerform_Google_Service_Datastore_EntityResult extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Datastore_Filter extends Powerform_Google_Model
+class Google_Service_Datastore_Filter extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $compositeFilterType = 'Powerform_Google_Service_Datastore_CompositeFilter';
+  protected $compositeFilterType = 'Google_Service_Datastore_CompositeFilter';
   protected $compositeFilterDataType = '';
-  protected $propertyFilterType = 'Powerform_Google_Service_Datastore_PropertyFilter';
+  protected $propertyFilterType = 'Google_Service_Datastore_PropertyFilter';
   protected $propertyFilterDataType = '';
 
 
-  public function setCompositeFilter(Powerform_Google_Service_Datastore_CompositeFilter $compositeFilter)
+  public function setCompositeFilter(Google_Service_Datastore_CompositeFilter $compositeFilter)
   {
     $this->compositeFilter = $compositeFilter;
   }
@@ -492,7 +492,7 @@ class Powerform_Google_Service_Datastore_Filter extends Powerform_Google_Model
   {
     return $this->compositeFilter;
   }
-  public function setPropertyFilter(Powerform_Google_Service_Datastore_PropertyFilter $propertyFilter)
+  public function setPropertyFilter(Google_Service_Datastore_PropertyFilter $propertyFilter)
   {
     $this->propertyFilter = $propertyFilter;
   }
@@ -502,15 +502,15 @@ class Powerform_Google_Service_Datastore_Filter extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Datastore_GqlQuery extends Powerform_Google_Collection
+class Google_Service_Datastore_GqlQuery extends Google_Collection
 {
   protected $collection_key = 'numberArgs';
   protected $internal_gapi_mappings = array(
   );
   public $allowLiteral;
-  protected $nameArgsType = 'Powerform_Google_Service_Datastore_GqlQueryArg';
+  protected $nameArgsType = 'Google_Service_Datastore_GqlQueryArg';
   protected $nameArgsDataType = 'array';
-  protected $numberArgsType = 'Powerform_Google_Service_Datastore_GqlQueryArg';
+  protected $numberArgsType = 'Google_Service_Datastore_GqlQueryArg';
   protected $numberArgsDataType = 'array';
   public $queryString;
 
@@ -549,13 +549,13 @@ class Powerform_Google_Service_Datastore_GqlQuery extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Datastore_GqlQueryArg extends Powerform_Google_Model
+class Google_Service_Datastore_GqlQueryArg extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $cursor;
   public $name;
-  protected $valueType = 'Powerform_Google_Service_Datastore_Value';
+  protected $valueType = 'Google_Service_Datastore_Value';
   protected $valueDataType = '';
 
 
@@ -575,7 +575,7 @@ class Powerform_Google_Service_Datastore_GqlQueryArg extends Powerform_Google_Mo
   {
     return $this->name;
   }
-  public function setValue(Powerform_Google_Service_Datastore_Value $value)
+  public function setValue(Google_Service_Datastore_Value $value)
   {
     $this->value = $value;
   }
@@ -585,18 +585,18 @@ class Powerform_Google_Service_Datastore_GqlQueryArg extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Datastore_Key extends Powerform_Google_Collection
+class Google_Service_Datastore_Key extends Google_Collection
 {
   protected $collection_key = 'path';
   protected $internal_gapi_mappings = array(
   );
-  protected $partitionIdType = 'Powerform_Google_Service_Datastore_PartitionId';
+  protected $partitionIdType = 'Google_Service_Datastore_PartitionId';
   protected $partitionIdDataType = '';
-  protected $pathType = 'Powerform_Google_Service_Datastore_KeyPathElement';
+  protected $pathType = 'Google_Service_Datastore_KeyPathElement';
   protected $pathDataType = 'array';
 
 
-  public function setPartitionId(Powerform_Google_Service_Datastore_PartitionId $partitionId)
+  public function setPartitionId(Google_Service_Datastore_PartitionId $partitionId)
   {
     $this->partitionId = $partitionId;
   }
@@ -614,7 +614,7 @@ class Powerform_Google_Service_Datastore_Key extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Datastore_KeyPathElement extends Powerform_Google_Model
+class Google_Service_Datastore_KeyPathElement extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -649,7 +649,7 @@ class Powerform_Google_Service_Datastore_KeyPathElement extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Datastore_KindExpression extends Powerform_Google_Model
+class Google_Service_Datastore_KindExpression extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -666,14 +666,14 @@ class Powerform_Google_Service_Datastore_KindExpression extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Datastore_LookupRequest extends Powerform_Google_Collection
+class Google_Service_Datastore_LookupRequest extends Google_Collection
 {
   protected $collection_key = 'keys';
   protected $internal_gapi_mappings = array(
   );
-  protected $keysType = 'Powerform_Google_Service_Datastore_Key';
+  protected $keysType = 'Google_Service_Datastore_Key';
   protected $keysDataType = 'array';
-  protected $readOptionsType = 'Powerform_Google_Service_Datastore_ReadOptions';
+  protected $readOptionsType = 'Google_Service_Datastore_ReadOptions';
   protected $readOptionsDataType = '';
 
 
@@ -685,7 +685,7 @@ class Powerform_Google_Service_Datastore_LookupRequest extends Powerform_Google_
   {
     return $this->keys;
   }
-  public function setReadOptions(Powerform_Google_Service_Datastore_ReadOptions $readOptions)
+  public function setReadOptions(Google_Service_Datastore_ReadOptions $readOptions)
   {
     $this->readOptions = $readOptions;
   }
@@ -695,18 +695,18 @@ class Powerform_Google_Service_Datastore_LookupRequest extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Datastore_LookupResponse extends Powerform_Google_Collection
+class Google_Service_Datastore_LookupResponse extends Google_Collection
 {
   protected $collection_key = 'missing';
   protected $internal_gapi_mappings = array(
   );
-  protected $deferredType = 'Powerform_Google_Service_Datastore_Key';
+  protected $deferredType = 'Google_Service_Datastore_Key';
   protected $deferredDataType = 'array';
-  protected $foundType = 'Powerform_Google_Service_Datastore_EntityResult';
+  protected $foundType = 'Google_Service_Datastore_EntityResult';
   protected $foundDataType = 'array';
-  protected $headerType = 'Powerform_Google_Service_Datastore_ResponseHeader';
+  protected $headerType = 'Google_Service_Datastore_ResponseHeader';
   protected $headerDataType = '';
-  protected $missingType = 'Powerform_Google_Service_Datastore_EntityResult';
+  protected $missingType = 'Google_Service_Datastore_EntityResult';
   protected $missingDataType = 'array';
 
 
@@ -726,7 +726,7 @@ class Powerform_Google_Service_Datastore_LookupResponse extends Powerform_Google
   {
     return $this->found;
   }
-  public function setHeader(Powerform_Google_Service_Datastore_ResponseHeader $header)
+  public function setHeader(Google_Service_Datastore_ResponseHeader $header)
   {
     $this->header = $header;
   }
@@ -744,21 +744,21 @@ class Powerform_Google_Service_Datastore_LookupResponse extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Datastore_Mutation extends Powerform_Google_Collection
+class Google_Service_Datastore_Mutation extends Google_Collection
 {
   protected $collection_key = 'upsert';
   protected $internal_gapi_mappings = array(
   );
-  protected $deleteType = 'Powerform_Google_Service_Datastore_Key';
+  protected $deleteType = 'Google_Service_Datastore_Key';
   protected $deleteDataType = 'array';
   public $force;
-  protected $insertType = 'Powerform_Google_Service_Datastore_Entity';
+  protected $insertType = 'Google_Service_Datastore_Entity';
   protected $insertDataType = 'array';
-  protected $insertAutoIdType = 'Powerform_Google_Service_Datastore_Entity';
+  protected $insertAutoIdType = 'Google_Service_Datastore_Entity';
   protected $insertAutoIdDataType = 'array';
-  protected $updateType = 'Powerform_Google_Service_Datastore_Entity';
+  protected $updateType = 'Google_Service_Datastore_Entity';
   protected $updateDataType = 'array';
-  protected $upsertType = 'Powerform_Google_Service_Datastore_Entity';
+  protected $upsertType = 'Google_Service_Datastore_Entity';
   protected $upsertDataType = 'array';
 
 
@@ -812,13 +812,13 @@ class Powerform_Google_Service_Datastore_Mutation extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Datastore_MutationResult extends Powerform_Google_Collection
+class Google_Service_Datastore_MutationResult extends Google_Collection
 {
   protected $collection_key = 'insertAutoIdKeys';
   protected $internal_gapi_mappings = array(
   );
   public $indexUpdates;
-  protected $insertAutoIdKeysType = 'Powerform_Google_Service_Datastore_Key';
+  protected $insertAutoIdKeysType = 'Google_Service_Datastore_Key';
   protected $insertAutoIdKeysDataType = 'array';
 
 
@@ -840,7 +840,7 @@ class Powerform_Google_Service_Datastore_MutationResult extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Datastore_PartitionId extends Powerform_Google_Model
+class Google_Service_Datastore_PartitionId extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -866,7 +866,7 @@ class Powerform_Google_Service_Datastore_PartitionId extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Datastore_Property extends Powerform_Google_Collection
+class Google_Service_Datastore_Property extends Google_Collection
 {
   protected $collection_key = 'listValue';
   protected $internal_gapi_mappings = array(
@@ -876,13 +876,13 @@ class Powerform_Google_Service_Datastore_Property extends Powerform_Google_Colle
   public $booleanValue;
   public $dateTimeValue;
   public $doubleValue;
-  protected $entityValueType = 'Powerform_Google_Service_Datastore_Entity';
+  protected $entityValueType = 'Google_Service_Datastore_Entity';
   protected $entityValueDataType = '';
   public $indexed;
   public $integerValue;
-  protected $keyValueType = 'Powerform_Google_Service_Datastore_Key';
+  protected $keyValueType = 'Google_Service_Datastore_Key';
   protected $keyValueDataType = '';
-  protected $listValueType = 'Powerform_Google_Service_Datastore_Value';
+  protected $listValueType = 'Google_Service_Datastore_Value';
   protected $listValueDataType = 'array';
   public $meaning;
   public $stringValue;
@@ -928,7 +928,7 @@ class Powerform_Google_Service_Datastore_Property extends Powerform_Google_Colle
   {
     return $this->doubleValue;
   }
-  public function setEntityValue(Powerform_Google_Service_Datastore_Entity $entityValue)
+  public function setEntityValue(Google_Service_Datastore_Entity $entityValue)
   {
     $this->entityValue = $entityValue;
   }
@@ -952,7 +952,7 @@ class Powerform_Google_Service_Datastore_Property extends Powerform_Google_Colle
   {
     return $this->integerValue;
   }
-  public function setKeyValue(Powerform_Google_Service_Datastore_Key $keyValue)
+  public function setKeyValue(Google_Service_Datastore_Key $keyValue)
   {
     $this->keyValue = $keyValue;
   }
@@ -986,12 +986,12 @@ class Powerform_Google_Service_Datastore_Property extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Datastore_PropertyExpression extends Powerform_Google_Model
+class Google_Service_Datastore_PropertyExpression extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $aggregationFunction;
-  protected $propertyType = 'Powerform_Google_Service_Datastore_PropertyReference';
+  protected $propertyType = 'Google_Service_Datastore_PropertyReference';
   protected $propertyDataType = '';
 
 
@@ -1003,7 +1003,7 @@ class Powerform_Google_Service_Datastore_PropertyExpression extends Powerform_Go
   {
     return $this->aggregationFunction;
   }
-  public function setProperty(Powerform_Google_Service_Datastore_PropertyReference $property)
+  public function setProperty(Google_Service_Datastore_PropertyReference $property)
   {
     $this->property = $property;
   }
@@ -1013,14 +1013,14 @@ class Powerform_Google_Service_Datastore_PropertyExpression extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Datastore_PropertyFilter extends Powerform_Google_Model
+class Google_Service_Datastore_PropertyFilter extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $operator;
-  protected $propertyType = 'Powerform_Google_Service_Datastore_PropertyReference';
+  protected $propertyType = 'Google_Service_Datastore_PropertyReference';
   protected $propertyDataType = '';
-  protected $valueType = 'Powerform_Google_Service_Datastore_Value';
+  protected $valueType = 'Google_Service_Datastore_Value';
   protected $valueDataType = '';
 
 
@@ -1032,7 +1032,7 @@ class Powerform_Google_Service_Datastore_PropertyFilter extends Powerform_Google
   {
     return $this->operator;
   }
-  public function setProperty(Powerform_Google_Service_Datastore_PropertyReference $property)
+  public function setProperty(Google_Service_Datastore_PropertyReference $property)
   {
     $this->property = $property;
   }
@@ -1040,7 +1040,7 @@ class Powerform_Google_Service_Datastore_PropertyFilter extends Powerform_Google
   {
     return $this->property;
   }
-  public function setValue(Powerform_Google_Service_Datastore_Value $value)
+  public function setValue(Google_Service_Datastore_Value $value)
   {
     $this->value = $value;
   }
@@ -1050,12 +1050,12 @@ class Powerform_Google_Service_Datastore_PropertyFilter extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Datastore_PropertyOrder extends Powerform_Google_Model
+class Google_Service_Datastore_PropertyOrder extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $direction;
-  protected $propertyType = 'Powerform_Google_Service_Datastore_PropertyReference';
+  protected $propertyType = 'Google_Service_Datastore_PropertyReference';
   protected $propertyDataType = '';
 
 
@@ -1067,7 +1067,7 @@ class Powerform_Google_Service_Datastore_PropertyOrder extends Powerform_Google_
   {
     return $this->direction;
   }
-  public function setProperty(Powerform_Google_Service_Datastore_PropertyReference $property)
+  public function setProperty(Google_Service_Datastore_PropertyReference $property)
   {
     $this->property = $property;
   }
@@ -1077,7 +1077,7 @@ class Powerform_Google_Service_Datastore_PropertyOrder extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Datastore_PropertyReference extends Powerform_Google_Model
+class Google_Service_Datastore_PropertyReference extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1094,23 +1094,23 @@ class Powerform_Google_Service_Datastore_PropertyReference extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Datastore_Query extends Powerform_Google_Collection
+class Google_Service_Datastore_Query extends Google_Collection
 {
   protected $collection_key = 'projection';
   protected $internal_gapi_mappings = array(
   );
   public $endCursor;
-  protected $filterType = 'Powerform_Google_Service_Datastore_Filter';
+  protected $filterType = 'Google_Service_Datastore_Filter';
   protected $filterDataType = '';
-  protected $groupByType = 'Powerform_Google_Service_Datastore_PropertyReference';
+  protected $groupByType = 'Google_Service_Datastore_PropertyReference';
   protected $groupByDataType = 'array';
-  protected $kindsType = 'Powerform_Google_Service_Datastore_KindExpression';
+  protected $kindsType = 'Google_Service_Datastore_KindExpression';
   protected $kindsDataType = 'array';
   public $limit;
   public $offset;
-  protected $orderType = 'Powerform_Google_Service_Datastore_PropertyOrder';
+  protected $orderType = 'Google_Service_Datastore_PropertyOrder';
   protected $orderDataType = 'array';
-  protected $projectionType = 'Powerform_Google_Service_Datastore_PropertyExpression';
+  protected $projectionType = 'Google_Service_Datastore_PropertyExpression';
   protected $projectionDataType = 'array';
   public $startCursor;
 
@@ -1123,7 +1123,7 @@ class Powerform_Google_Service_Datastore_Query extends Powerform_Google_Collecti
   {
     return $this->endCursor;
   }
-  public function setFilter(Powerform_Google_Service_Datastore_Filter $filter)
+  public function setFilter(Google_Service_Datastore_Filter $filter)
   {
     $this->filter = $filter;
   }
@@ -1189,14 +1189,14 @@ class Powerform_Google_Service_Datastore_Query extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Datastore_QueryResultBatch extends Powerform_Google_Collection
+class Google_Service_Datastore_QueryResultBatch extends Google_Collection
 {
   protected $collection_key = 'entityResults';
   protected $internal_gapi_mappings = array(
   );
   public $endCursor;
   public $entityResultType;
-  protected $entityResultsType = 'Powerform_Google_Service_Datastore_EntityResult';
+  protected $entityResultsType = 'Google_Service_Datastore_EntityResult';
   protected $entityResultsDataType = 'array';
   public $moreResults;
   public $skippedResults;
@@ -1244,7 +1244,7 @@ class Powerform_Google_Service_Datastore_QueryResultBatch extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Datastore_ReadOptions extends Powerform_Google_Model
+class Google_Service_Datastore_ReadOptions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1270,7 +1270,7 @@ class Powerform_Google_Service_Datastore_ReadOptions extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Datastore_ResponseHeader extends Powerform_Google_Model
+class Google_Service_Datastore_ResponseHeader extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1287,7 +1287,7 @@ class Powerform_Google_Service_Datastore_ResponseHeader extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Datastore_RollbackRequest extends Powerform_Google_Model
+class Google_Service_Datastore_RollbackRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1304,15 +1304,15 @@ class Powerform_Google_Service_Datastore_RollbackRequest extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Datastore_RollbackResponse extends Powerform_Google_Model
+class Google_Service_Datastore_RollbackResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $headerType = 'Powerform_Google_Service_Datastore_ResponseHeader';
+  protected $headerType = 'Google_Service_Datastore_ResponseHeader';
   protected $headerDataType = '';
 
 
-  public function setHeader(Powerform_Google_Service_Datastore_ResponseHeader $header)
+  public function setHeader(Google_Service_Datastore_ResponseHeader $header)
   {
     $this->header = $header;
   }
@@ -1322,21 +1322,21 @@ class Powerform_Google_Service_Datastore_RollbackResponse extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Datastore_RunQueryRequest extends Powerform_Google_Model
+class Google_Service_Datastore_RunQueryRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $gqlQueryType = 'Powerform_Google_Service_Datastore_GqlQuery';
+  protected $gqlQueryType = 'Google_Service_Datastore_GqlQuery';
   protected $gqlQueryDataType = '';
-  protected $partitionIdType = 'Powerform_Google_Service_Datastore_PartitionId';
+  protected $partitionIdType = 'Google_Service_Datastore_PartitionId';
   protected $partitionIdDataType = '';
-  protected $queryType = 'Powerform_Google_Service_Datastore_Query';
+  protected $queryType = 'Google_Service_Datastore_Query';
   protected $queryDataType = '';
-  protected $readOptionsType = 'Powerform_Google_Service_Datastore_ReadOptions';
+  protected $readOptionsType = 'Google_Service_Datastore_ReadOptions';
   protected $readOptionsDataType = '';
 
 
-  public function setGqlQuery(Powerform_Google_Service_Datastore_GqlQuery $gqlQuery)
+  public function setGqlQuery(Google_Service_Datastore_GqlQuery $gqlQuery)
   {
     $this->gqlQuery = $gqlQuery;
   }
@@ -1344,7 +1344,7 @@ class Powerform_Google_Service_Datastore_RunQueryRequest extends Powerform_Googl
   {
     return $this->gqlQuery;
   }
-  public function setPartitionId(Powerform_Google_Service_Datastore_PartitionId $partitionId)
+  public function setPartitionId(Google_Service_Datastore_PartitionId $partitionId)
   {
     $this->partitionId = $partitionId;
   }
@@ -1352,7 +1352,7 @@ class Powerform_Google_Service_Datastore_RunQueryRequest extends Powerform_Googl
   {
     return $this->partitionId;
   }
-  public function setQuery(Powerform_Google_Service_Datastore_Query $query)
+  public function setQuery(Google_Service_Datastore_Query $query)
   {
     $this->query = $query;
   }
@@ -1360,7 +1360,7 @@ class Powerform_Google_Service_Datastore_RunQueryRequest extends Powerform_Googl
   {
     return $this->query;
   }
-  public function setReadOptions(Powerform_Google_Service_Datastore_ReadOptions $readOptions)
+  public function setReadOptions(Google_Service_Datastore_ReadOptions $readOptions)
   {
     $this->readOptions = $readOptions;
   }
@@ -1370,17 +1370,17 @@ class Powerform_Google_Service_Datastore_RunQueryRequest extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Datastore_RunQueryResponse extends Powerform_Google_Model
+class Google_Service_Datastore_RunQueryResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $batchType = 'Powerform_Google_Service_Datastore_QueryResultBatch';
+  protected $batchType = 'Google_Service_Datastore_QueryResultBatch';
   protected $batchDataType = '';
-  protected $headerType = 'Powerform_Google_Service_Datastore_ResponseHeader';
+  protected $headerType = 'Google_Service_Datastore_ResponseHeader';
   protected $headerDataType = '';
 
 
-  public function setBatch(Powerform_Google_Service_Datastore_QueryResultBatch $batch)
+  public function setBatch(Google_Service_Datastore_QueryResultBatch $batch)
   {
     $this->batch = $batch;
   }
@@ -1388,7 +1388,7 @@ class Powerform_Google_Service_Datastore_RunQueryResponse extends Powerform_Goog
   {
     return $this->batch;
   }
-  public function setHeader(Powerform_Google_Service_Datastore_ResponseHeader $header)
+  public function setHeader(Google_Service_Datastore_ResponseHeader $header)
   {
     $this->header = $header;
   }
@@ -1398,7 +1398,7 @@ class Powerform_Google_Service_Datastore_RunQueryResponse extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Datastore_Value extends Powerform_Google_Collection
+class Google_Service_Datastore_Value extends Google_Collection
 {
   protected $collection_key = 'listValue';
   protected $internal_gapi_mappings = array(
@@ -1408,13 +1408,13 @@ class Powerform_Google_Service_Datastore_Value extends Powerform_Google_Collecti
   public $booleanValue;
   public $dateTimeValue;
   public $doubleValue;
-  protected $entityValueType = 'Powerform_Google_Service_Datastore_Entity';
+  protected $entityValueType = 'Google_Service_Datastore_Entity';
   protected $entityValueDataType = '';
   public $indexed;
   public $integerValue;
-  protected $keyValueType = 'Powerform_Google_Service_Datastore_Key';
+  protected $keyValueType = 'Google_Service_Datastore_Key';
   protected $keyValueDataType = '';
-  protected $listValueType = 'Powerform_Google_Service_Datastore_Value';
+  protected $listValueType = 'Google_Service_Datastore_Value';
   protected $listValueDataType = 'array';
   public $meaning;
   public $stringValue;
@@ -1460,7 +1460,7 @@ class Powerform_Google_Service_Datastore_Value extends Powerform_Google_Collecti
   {
     return $this->doubleValue;
   }
-  public function setEntityValue(Powerform_Google_Service_Datastore_Entity $entityValue)
+  public function setEntityValue(Google_Service_Datastore_Entity $entityValue)
   {
     $this->entityValue = $entityValue;
   }
@@ -1484,7 +1484,7 @@ class Powerform_Google_Service_Datastore_Value extends Powerform_Google_Collecti
   {
     return $this->integerValue;
   }
-  public function setKeyValue(Powerform_Google_Service_Datastore_Key $keyValue)
+  public function setKeyValue(Google_Service_Datastore_Key $keyValue)
   {
     $this->keyValue = $keyValue;
   }

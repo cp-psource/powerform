@@ -110,14 +110,11 @@ class Powerform_Widget extends WP_Widget {
 		if ( isset( $instance['quiz_id'] ) ) {
 			$quiz_id = $instance['quiz_id'];
 		}
-		$form_style = '' === $form_type || 'form' === $form_type ? 'block' : 'none';
-		$poll_style = 'poll' === $form_type ? 'block' : 'none';
-		$quiz_style = 'quiz' === $form_type ? 'block' : 'none';
 		?>
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-				<?php esc_html_e( "Title", Powerform::DOMAIN ); ?>
+				<?php esc_html_e( "Titel", Powerform::DOMAIN ); ?>
 			</label>
 			<input
 					type="text"
@@ -134,13 +131,13 @@ class Powerform_Widget extends WP_Widget {
 			<select class="widefat powerform-form-type" id="<?php echo esc_attr( $this->get_field_id( 'form_type' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'form_type' ) ); ?>">
 				<option value="form" <?php selected( 'form', $form_type ); ?>><?php esc_html_e( "Formular", Powerform::DOMAIN ); ?></option>
 				<option value="poll" <?php selected( 'poll', $form_type ); ?>><?php esc_html_e( "Umfrage", Powerform::DOMAIN ); ?></option>
-				<option value="quiz" <?php selected( 'quiz', $form_type ); ?>><?php esc_html_e( "Quiz", Powerform::DOMAIN ); ?></option>
+				<option value="quiz" <?php selected( 'quiz', $form_type ); ?>><?php esc_html_e( "Test", Powerform::DOMAIN ); ?></option>
 			</select>
 		</p>
 
-		<p id="powerform-wrapper-form" class="powerform-form-wrapper" style="display:<?php echo $form_style; ?>">
+		<p id="powerform-wrapper-form" class="powerform-form-wrapper">
 			<label for="<?php echo esc_attr( $this->get_field_id( 'form_id' ) ); ?>">
-				<?php esc_html_e( "Wähle Formular", Powerform::DOMAIN ); ?>
+				<?php esc_html_e( "Select Form", Powerform::DOMAIN ); ?>
 			</label>
 			<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'form_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'form_id' ) ); ?>">
 				<?php
@@ -156,9 +153,9 @@ class Powerform_Widget extends WP_Widget {
 			</select>
 		</p>
 
-		<p id="powerform-wrapper-poll" class="powerform-form-wrapper" style="display:<?php echo $poll_style; ?>">
+		<p id="powerform-wrapper-poll" class="powerform-form-wrapper">
 			<label for="<?php echo esc_attr( $this->get_field_id( 'poll_id' ) ); ?>">
-				<?php esc_html_e( "Wähle Umfrage", Powerform::DOMAIN ); ?>
+				<?php esc_html_e( "Select Poll", Powerform::DOMAIN ); ?>
 			</label>
 			<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'poll_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'poll_id' ) ); ?>">
 				<?php
@@ -174,9 +171,9 @@ class Powerform_Widget extends WP_Widget {
 			</select>
 		</p>
 
-		<p id="powerform-wrapper-quiz" class="powerform-form-wrapper" style="display:<?php echo $quiz_style; ?>">
+		<p id="powerform-wrapper-quiz" class="powerform-form-wrapper">
 			<label for="<?php echo esc_attr( $this->get_field_id( 'quiz_id' ) ); ?>">
-				<?php esc_html_e( "Wähle Quiz", Powerform::DOMAIN ); ?>
+				<?php esc_html_e( "Select Quiz", Powerform::DOMAIN ); ?>
 			</label>
 			<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'quiz_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'quiz_id' ) ); ?>">
 				<?php
@@ -202,7 +199,9 @@ class Powerform_Widget extends WP_Widget {
 					$widget.find(".powerform-form-wrapper").hide();
 					$widget.find("#powerform-wrapper-" + value).show();
 				});
-            });
+
+				jQuery(".powerform-form-type").change();
+			});
 		</script>
 		<?php
 		return '';

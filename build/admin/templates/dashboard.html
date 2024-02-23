@@ -2,12 +2,7 @@
 
     <script type="text/template" id="powerform-new-form-content-tpl">
         <p><small>{{ Powerform.l10n.popup.new_form_desc2 }}</small></p>
-        <div class="sui-notice" id="powerform-template-register-notice" style="display: none;">
-            <p>{{ Powerform.l10n.popup.registration_notice }}</p>
-        </div>
-        <div class="sui-notice" id="powerform-template-login-notice" style="display: none;">
-            <p>{{ Powerform.l10n.popup.login_notice }}</p>
-        </div>
+
         <div id="powerform-form-name-input" class="sui-form-field">
 
             <label for="powerform-form-name" class="sui-screen-reader-text">{{ Powerform.l10n.popup.input_label }}</label>
@@ -30,37 +25,15 @@
     </script>
 
     <script type="text/template" id="powerform-new-quiz-content-tpl">
+        <p><small>{{ Powerform.l10n.popup.new_quiz_desc2 }}</small></p>
 
-        <p><small>{{ Powerform.l10n.popup.new_quiz_desc2 }}
-			{[ if( Powerform.Data.showDocLink ) { ]}
-			<a href="https://n3rds.work/docs/wpmu-dev-plugins/powerform/?utm_source=powerform&utm_medium=plugin&utm_campaign=capture_leads_learnmore_link#leads" target="_blank">
-				{{ Powerform.l10n.popup.learn_more }}
-			</a>
-			{[ } ]}
-		</small></p>
+        <div id="powerform-form-name-input" class="sui-form-field">
 
-        <div class="sui-form-field" style="margin-bottom: 0;">
-
-            <label for="powerform-new-quiz-leads" class="sui-toggle fui-highlighted-toggle">
-
-				<input
-					type="checkbox"
-					id="powerform-new-quiz-leads"
-					aria-labelledby="powerform-new-quiz-leads-label"
-				/>
-
-				<span class="sui-toggle-slider" aria-hidden="true"></span>
-
-				<span id="powerform-new-quiz-leads-label" class="sui-toggle-label">{{ Powerform.l10n.quiz.quiz_leads_toggle }}</span>
-
-			</label>
-
-            <div id="sui-quiz-leads-description" class="sui-notice sui-notice-info" style="display: none; margin-top: 30px;">
-                <p>{{ Powerform.l10n.quiz.quiz_leads_desc }}</p>
-            </div>
+            <label for="powerform-form-name" class="sui-screen-reader-text">{{ Powerform.l10n.popup.input_label }}</label>
+            <input type="text" id="powerform-form-name" class="sui-form-control fui-required" placeholder="{{Powerform.l10n.popup.new_quiz_placeholder}}" autofocus>
+            <span class="sui-error-message" style="display: none;">{{Powerform.l10n.popup.quiz_name_validation}}</span>
 
         </div>
-
     </script>
 
     <script type="text/template" id="powerform-new-form-tpl">
@@ -69,7 +42,7 @@
 
             <h3 class="sui-box-title" id="dialogTitle">{{ Powerform.l10n.popup.enter_name }}</h3>
 
-            <button class="sui-dialog-close powerform-cancel-create-form" data-a11y-dialog-hide aria-label="Close this dialog window"></button>
+            <button class="sui-dialog-close powerform-cancel-create-form" data-a11y-dialog-hide aria-label="Dieses Dialogfenster schließen"></button>
 
         </div>
 
@@ -92,57 +65,28 @@
 
     </script>
 
-    <script type="text/template" id="powerform-new-quiz-tpl">
-
-        <div class="sui-box-header sui-block-content-center">
-
-            <h3 class="sui-box-title" id="dialogTitle">{{ Powerform.l10n.quiz.collect_leads }}</h3>
-
-            <button class="sui-dialog-close powerform-cancel-create-form" data-a11y-dialog-hide aria-label="Close this dialog window"></button>
-
-        </div>
-
-        <div class="sui-box-body sui-box-body-slim sui-block-content-center">
-
-        </div>
-
-        <div class="sui-box-footer sui-box-footer-right" style="padding-top: 0;">
-
-            <button id="powerform-build-your-form" class="sui-button sui-button-blue">
-				<span class="sui-loading-text"><i class="sui-icon-plus" aria-hidden="true"></i> {{ Powerform.l10n.quiz.create_quiz }}</span>
-				<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>
-			</button>
-
-        </div>
-
-        {[ if( Powerform.Data.showBranding ) { ]}
-        <img src="{{ Powerform.Data.imagesUrl }}/powerform-create-modal.png" srcset="{{ Powerform.Data.imagesUrl }}/powerform-create-modal.png 1x, {{ Powerform.Data.imagesUrl }}/powerform-create-modal@2x.png 2x" class="sui-image sui-image-center" aria-hidden="true"
-            alt="Powerform"> {[ } ]}
-
-    </script>
-
     <script type="text/template" id="powerform-login-popup-tpl">
 
-        <div class="psource-row">
+        <div class="wpmudev-row">
 
-            <div class="psource-col col-12 col-sm-6">
+            <div class="wpmudev-col col-12 col-sm-6">
 
-                <a class="psource-popup--logreg" href="{{ loginUrl }}">
+                <a class="wpmudev-popup--logreg" href="{{ loginUrl }}">
 
-                    <div class="psource-logreg--header">
+                    <div class="wpmudev-logreg--header">
 
                         <span class="wpdui-icon wpdui-icon-key"></span>
 
-                        <h3 class="psource-logreg--title">{{ Powerform.l10n.login.login_label }}</h3>
+                        <h3 class="wpmudev-logreg--title">{{ Powerform.l10n.login.login_label }}</h3>
 
                     </div>
 
-                    <div class="psource-logreg--section">
+                    <div class="wpmudev-logreg--section">
 
-                        <p class="psource-logreg--description">{{ Powerform.l10n.login.login_description }}</p>
+                        <p class="wpmudev-logreg--description">{{ Powerform.l10n.login.login_description }}</p>
 
-                        <div class="psource-logreg--image">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="110" height="140" viewBox="0 0 110 140" preserveAspectRatio="none" class="psource-svg-login">
+                        <div class="wpmudev-logreg--image">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="110" height="140" viewBox="0 0 110 140" preserveAspectRatio="none" class="wpmudev-svg-login">
                                 <defs>
                                     <path id="b" d="M0 40h100v94H0z"/>
                                     <filter id="a" width="116%" height="117%" x="-8%" y="-7.4%"
@@ -181,24 +125,24 @@
 
             </div>
 
-            <div class="psource-col col-12 col-sm-6">
+            <div class="wpmudev-col col-12 col-sm-6">
 
-                <a class="psource-popup--logreg" href="{{ registerUrl }}">
+                <a class="wpmudev-popup--logreg" href="{{ registerUrl }}">
 
-                    <div class="psource-logreg--header">
+                    <div class="wpmudev-logreg--header">
 
                         <span class="wpdui-icon wpdui-icon-profile-female"></span>
 
-                        <h3 class="psource-logreg--title">{{ Powerform.l10n.login.registration_label }}</h3>
+                        <h3 class="wpmudev-logreg--title">{{ Powerform.l10n.login.registration_label }}</h3>
 
                     </div>
 
-                    <div class="psource-logreg--section">
+                    <div class="wpmudev-logreg--section">
 
-                        <p class="psource-logreg--description">{{ Powerform.l10n.login.registration_description }}</p>
+                        <p class="wpmudev-logreg--description">{{ Powerform.l10n.login.registration_description }}</p>
 
-                        <div class="psource-logreg--image">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="183" height="97" viewBox="0 0 183 97" preserveAspectRatio="none" class="psource-svg-registration">
+                        <div class="wpmudev-logreg--image">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="183" height="97" viewBox="0 0 183 97" preserveAspectRatio="none" class="wpmudev-svg-registration">
                                 <defs>
                                     <path id="a" d="M0 58h183v15H0z"/>
                                     <path id="b" d="M0 23h183v15H0z"/>
@@ -227,7 +171,7 @@
 
         <div class="sui-box-header sui-block-content-center">
 
-            <h3 class="sui-box-title" id="dialogTitle">{{ Powerform.l10n.quiz.choose_quiz_title }}</h3>
+            <h3 class="sui-box-title" id="dialogTitle">Testtyp auswählen</h3>
 
             <div class="sui-actions-right">
 
@@ -237,23 +181,9 @@
 
         </div>
 
-        <div class="sui-box-body" style="padding-top: 10px; padding-bottom: 5px;">
+        <div class="sui-box-body sui-block-content-center" style="padding-top: 10px;">
 
-            <p class="sui-description sui-block-content-center">{{ Powerform.l10n.quiz.choose_quiz_description }}</p>
-
-            <div id="powerform-form-name-input" class="sui-form-field">
-
-                <label for="powerform-form-name" class="sui-label">{{ Powerform.l10n.quiz.quiz_name }}</label>
-
-                <input type="text" id="powerform-form-name" class="sui-form-control" placeholder="{{Powerform.l10n.popup.new_quiz_placeholder}}" autofocus />
-
-                <div id="sui-quiz-name-error" class="sui-notice sui-notice-error powerform-validate-answers" style="display: none;">
-                    <p>{{Powerform.l10n.popup.quiz_name_validation}}</p>
-                </div>
-
-            </div>
-
-            <label class="sui-label">{{ Powerform.l10n.quiz.quiz_type }}</label>
+            <p class="sui-description">{{ Powerform.l10n.quiz.choose_quiz_description }}</p>
 
         </div>
 
@@ -315,81 +245,6 @@
 
     </script>
 
-    <script type="text/template" id="powerform-form-popup-tpl">
-
-        <div class="sui-box-header sui-block-content-center">
-
-            <h3 class="sui-box-title" id="dialogTitle">{{ Powerform.l10n.form.form_template_title }}</h3>
-
-            <div class="sui-actions-right">
-
-                <button data-a11y-dialog-hide="" class="sui-dialog-close" aria-label=""></button>
-
-            </div>
-
-        </div>
-
-        <div class="sui-box-body sui-block-content-center" style="padding-top: 10px;">
-
-            <p class="sui-description">{{ Powerform.l10n.form.form_template_description }}</p>
-
-        </div>
-
-        <div class="sui-box-selectors sui-box-selectors-col-2">
-
-            <ul>
-
-                {[ _.each(templates, function(template){ ]} {[ if( template.options.id !== 'leads' ) { ]}
-
-                <li>
-
-                    <label for="powerform-new-quiz--{{ template.options.id }}" class="sui-box-selector">
-
-								<input
-										type="radio"
-										name="powerform-form-template"
-										id="powerform-new-quiz--{{ template.options.id }}"
-										class="powerform-new-form-type"
-										value="{{ template.options.id }}"
-										{[ if( template.options.id === 'blank' ) { ]}
-										checked="checked"
-										{[ } ]}
-								/>
-
-								<span>
-									<i class="sui-icon-{{template.options.icon}}" aria-hidden="true"></i>
-									{{ template.options.name }}
-								</span>
-
-							</label>
-
-                </li>
-
-                {[ } ]} {[ }); ]}
-
-            </ul>
-
-        </div>
-
-        <div class="sui-box-footer">
-
-            <div class="sui-actions-right">
-
-                <button class="sui-button select-quiz-template">
-					<span class="sui-loading-text">{{ Powerform.l10n.quiz.continue_button }}</span>
-					<i class="sui-icon-load sui-loading" aria-hidden="true"></i>
-				</button>
-
-            </div>
-
-        </div>
-
-        {[ if( Powerform.Data.showBranding ) { ]}
-        <img src="{{ Powerform.Data.imagesUrl }}/powerform-create-modal.png" srcset="{{ Powerform.Data.imagesUrl }}/powerform-create-modal.png 1x, {{ Powerform.Data.imagesUrl }}/powerform-create-modal@2x.png 2x" class="sui-image sui-image-center" aria-hidden="true"
-            alt="Powerform"> {[ } ]}
-
-    </script>
-
     <script type="text/template" id="powerform-exports-schedule-popup-tpl">
 
         <div class="sui-box-body">
@@ -402,19 +257,11 @@
                     <span class="sui-description">{{ Powerform.l10n.popup.manual_description }}</span>
 
                     <form method="post" style="margin-top: 10px;">
-
                         <input type="hidden" name="powerform_export" value="1" />
                         <input type="hidden" name="form_id" value="{{ Powerform.l10n.exporter.form_id }}" />
                         <input type="hidden" name="form_type" value="{{ Powerform.l10n.exporter.form_type }}" />
                         <input type="hidden" name="_powerform_nonce" value="{{ Powerform.l10n.exporter.export_nonce }}" />
-
-                        <button class="sui-button sui-button-ghost">{{ Powerform.l10n.popup.download_csv }}</button> {[ if( 'cform' === Powerform.l10n.exporter.form_type || 'quiz' === Powerform.l10n.exporter.form_type ) { ]}
-                        <label for="apply-submission-filter" class="sui-checkbox sui-checkbox-sm sui-checkbox-stacked" style="margin-top: 20px;">
-								<input type="checkbox" name="submission-filter" id="apply-submission-filter" value="yes" />
-								<span aria-hidden="true"></span>
-								<span>{{ Powerform.l10n.popup.apply_submission_filter }}</span>
-							</label> {[ } ]}
-
+                        <button class="sui-button sui-button-ghost">{{ Powerform.l10n.popup.download_csv }}</button>
                     </form>
 
                 </div>
@@ -425,30 +272,26 @@
 
                 <div class="sui-box-settings-col-2">
 
-                    <span class="sui-settings-label sui-dark">{{ Powerform.l10n.popup.scheduled_exports }}</span>
+                    <span class="sui-settings-lзabel sui-dark">{{ Powerform.l10n.popup.scheduled_exports }}</span>
                     <span class="sui-description">{{ Powerform.l10n.popup.scheduled_description }}</span>
 
-                    <div class="sui-side-tabs" style="margin-top: 10px;">
+                    <div class="sui-side-tabs">
 
                         <div class="sui-tabs-menu tab-labels">
 
                             <label for="powerform-disable-scheduled-exports" class="sui-tab-item tab-label-disable">
-								<input
-									type="radio"
+								<input type="radio"
 									name="enabled"
 									value="false"
-									id="powerform-disable-scheduled-exports"
-								/>
+									id="powerform-disable-scheduled-exports" />
 								{{ Powerform.l10n.popup.disable }}
 							</label>
 
                             <label for="powerform-enable-scheduled-exports" class="sui-tab-item tab-label-enable">
-								<input
-									type="radio"
+								<input type="radio"
 									name="enabled"
 									value="true"
-									id="powerform-enable-scheduled-exports"
-								/>
+									id="powerform-enable-scheduled-exports" />
 								{{ Powerform.l10n.popup.enable }}
 							</label>
 
@@ -571,15 +414,11 @@
 
                                 </div>
 
-                                <div id="powerform-export-schedule-email" class="sui-form-field" style="margin-bottom: 20px;">
+                                <div id="powerform-export-schedule-email" class="sui-form-field">
 
                                     <label class="sui-label">{{ Powerform.l10n.popup.email_to }}</label>
 
-                                    <select name="email[]" class="sui-select fui-multi-select psource-select" multiple="multiple">
-										{[ _.each( Powerform.l10n.exporter.email, function ( email ) { ]}
-										<option value="{{ email }}" selected="selected">{{ email }}</option>
-										{[ }) ]}
-									</select>
+                                    <input type="email" name="email" placeholder="{{ Powerform.l10n.popup.email_placeholder }}" value="{{ Powerform.l10n.exporter.email }}" class="wpmudev-input sui-form-control" />
 
                                     <input type="hidden" name="form_id" value="{{ Powerform.l10n.exporter.form_id }}" />
                                     <input type="hidden" name="form_type" value="{{ Powerform.l10n.exporter.form_type }}" />
@@ -588,14 +427,12 @@
 
                                 </div>
 
-                                <label for="powerform-send-if-new-exports" class="sui-checkbox sui-checkbox-sm sui-checkbox-stacked">
-									<input
-										type="checkbox"
+                                <label for="powerform-send-if-new-exports" class="sui-checkbox">
+									<input type="checkbox"
 										name="if_new"
 										value="true"
 										id="powerform-send-if-new-exports"
-										class="powerform-field-singular"
-									/>
+										class="powerform-field-singular" />
 									<span aria-hidden="true"></span>
 									<span class="sui-description">{{ Powerform.l10n.popup.scheduled_export_if_new }}</span>
 								</label>
@@ -618,7 +455,7 @@
 
             <div class="sui-actions-right">
 
-                <button type="submit" class="sui-button psource-action-done">{{ Powerform.l10n.popup.save }}</button>
+                <button type="submit" class="sui-button wpmudev-action-done">{{ Powerform.l10n.popup.save_changes }}</button>
 
             </div>
 
@@ -628,11 +465,11 @@
 
     <script type="text/template" id="powerform-new-form-popup-tpl">
 
-        <div class="psource-box--congrats">
+        <div class="wpmudev-box--congrats">
 
-            <div class="psource-congrats--image"></div>
+            <div class="wpmudev-congrats--image"></div>
 
-            <div class="psource-congrats--message">
+            <div class="wpmudev-congrats--message">
 
                 <p><strong>{{ title }}</strong> {{ Powerform.l10n.popup.is_ready }}<br/> {{ Powerform.l10n.popup.new_form_desc }}</p>
 
@@ -695,98 +532,6 @@
                 <button type="submit" class="sui-button sui-button-ghost sui-button-red popup-confirmation-confirm">
 					<i class="sui-icon-refresh" aria-hidden="true"></i>
 					{{ Powerform.l10n.popup.reset }}
-				</button>
-            </form>
-        </div>
-
-    </script>
-
-    <script type="text/template" id="powerform-disconnect-stripe-popup-tpl">
-
-        <div class="sui-box-body">
-            <span class="sui-description">{{ content }}</span>
-        </div>
-
-        <div class="sui-box-footer">
-            <button type="button" class="sui-button sui-button-ghost powerform-popup-cancel" data-a11y-dialog-hide>{{ Powerform.l10n.popup.cancel }}</button>
-            <button type="submit" class="disconnect_stripe sui-button sui-button-ghost sui-button-red popup-confirmation-confirm" data-nonce="{{ nonce }}" data-action="disconnect_stripe">
-				<i class="sui-icon-refresh" aria-hidden="true"></i>
-				{{ Powerform.l10n.popup.disconnect }}
-			</button>
-        </div>
-
-    </script>
-    <script type="text/template" id="powerform-disconnect-paypal-popup-tpl">
-
-        <div class="sui-box-body">
-            <span class="sui-description">{{ content }}</span>
-        </div>
-
-        <div class="sui-box-footer">
-            <button type="button" class="sui-button sui-button-ghost powerform-popup-cancel" data-a11y-dialog-hide>{{ Powerform.l10n.popup.cancel }}</button>
-            <button type="submit" class="disconnect_paypal sui-button sui-button-ghost sui-button-red popup-confirmation-confirm" data-nonce="{{ nonce }}" data-action="disconnect_paypal">
-				{{ Powerform.l10n.popup.disconnect }}
-			</button>
-        </div>
-
-    </script>
-
-    <script type="text/template" id="powerform-delete-poll-popup-tpl">
-
-        <div class="sui-box-body">
-            <span class="sui-description">{{ content }}</span>
-        </div>
-
-        <div class="sui-box-footer">
-            <button type="button" class="sui-button sui-button-ghost powerform-popup-cancel" data-a11y-dialog-hide>{{ Powerform.l10n.popup.cancel }}</button>
-            <button type="submit" class="delete-poll-submission sui-button sui-button-ghost sui-button-red popup-confirmation-confirm" data-nonce="{{ nonce }}" data-id="{{ id }}" data-action="delete_poll_submissions">
-				{{ Powerform.l10n.popup.delete }}
-			</button>
-        </div>
-
-    </script>
-
-    <script type="text/template" id="powerform-approve-user-popup-tpl">
-
-        <div class="sui-box-body">
-            <span class="sui-description">{{ content }}</span>
-        </div>
-
-        <div class="sui-box-footer">
-            <button type="button" class="sui-button sui-button-ghost powerform-popup-cancel" data-a11y-dialog-hide>{{ Powerform.l10n.popup.cancel }}</button>
-            <form method="post" class="form-approve-user">
-                <input type="hidden" name="powerform_action" value="approve_user">
-                <input type="hidden" name="id" value="{{ id }}">
-                <input type="hidden" name="activationKey" value="{{ activationKey }}">
-                <input type="hidden" id="powerformNonce" name="powerformNonce" value="{{ nonce }}">
-                <input type="hidden" id="powerformEntryNonce" name="powerformEntryNonce" value="{{ nonce }}">
-                <input type="hidden" name="_wp_http_referer" value="{{ referrer }}">
-                <button type="submit" class="sui-button approve-user popup-confirmation-confirm">
-					{{ Powerform.l10n.popup.approve_user }}
-				</button>
-            </form>
-        </div>
-
-    </script>
-
-    <script type="text/template" id="powerform-delete-unconfirmed-user-popup-tpl">
-
-        <div class="sui-box-body">
-            <span class="sui-description">{{ content }}</span>
-        </div>
-
-        <div class="sui-box-footer">
-            <button type="button" class="sui-button sui-button-ghost powerform-popup-cancel" data-a11y-dialog-hide>{{ Powerform.l10n.popup.cancel }}</button>
-            <form method="post" class="form-delete-unconfirmed-user">
-                <input type="hidden" name="powerformAction" value="delete-unconfirmed-user">
-                <input type="hidden" name="formId" value="{{ formId }}">
-                <input type="hidden" name="entryId" value="{{ entryId }}">
-                <input type="hidden" name="activationKey" value="{{ activationKey }}">
-                <input type="hidden" id="powerformNonceDeleteUnconfirmedUser" name="powerformNonceDeleteUnconfirmedUser" value="{{ nonce }}">
-                <input type="hidden" name="_wp_http_referer" value="{{ referrer }}">
-                <button type="submit" class="sui-button sui-button-ghost sui-button-red delete-unconfirmed-user popup-confirmation-confirm">
-					<i class="sui-icon-trash" aria-hidden="true"></i>
-					{{ Powerform.l10n.popup.delete }}
 				</button>
             </form>
         </div>

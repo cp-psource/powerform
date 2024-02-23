@@ -103,8 +103,7 @@ abstract class Powerform_Addon_Form_Settings_Abstract {
 		$this->form_id = $form_id;
 		$custom_form   = Powerform_Custom_Form_Model::model()->load( $this->form_id );
 		if ( ! $custom_form ) {
-			/* translators: ... */
-			throw new Powerform_Addon_Exception( sprintf( __( 'Form with id %d could not be found', Powerform::DOMAIN ), $this->form_id ) );
+			throw new Powerform_Addon_Exception( sprintf( __( 'Formular mit der ID %d konnte nicht gefunden werden', Powerform::DOMAIN ), $this->form_id ) );
 		}
 		$this->form_fields   = powerform_addon_format_form_fields( $custom_form );
 		$this->form_settings = powerform_addon_format_form_settings( $custom_form );
@@ -229,6 +228,7 @@ abstract class Powerform_Addon_Form_Settings_Abstract {
 	 */
 	final public function is_force_form_disconnected() {
 		$disconnected = get_post_meta( $this->form_id, 'powerform_addon_' . $this->addon->get_slug() . '_form_disconnect', true );
+
 
 		if ( ! empty( $disconnected ) && isset( $disconnected['disconnect'] ) && $disconnected['disconnect'] ) {
 			$this->is_force_form_disconnected     = true;
@@ -601,25 +601,5 @@ abstract class Powerform_Addon_Form_Settings_Abstract {
 			//do nothing
 		}
 
-	}
-
-	/**
-	 * Mailchimp Address type fields array
-	 *
-	 * @since 1.0 Mailchimp Addon
-	 * @return array
-	 */
-	public function mail_address_fields() {
-
-		$address = array(
-			'addr1'   => 'Address 1',
-			'addr2'   => 'Address 2',
-			'city'    => 'City',
-			'state'   => 'State',
-			'zip'     => 'Zip',
-			'country' => 'Country',
-		);
-
-		return $address;
 	}
 }

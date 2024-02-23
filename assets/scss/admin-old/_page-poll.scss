@@ -1,0 +1,12 @@
+@include body-class(true) {
+
+	.powerform-polls-content {
+
+		.sui-vertical-tabs {
+
+			li {
+				pointer-events: none;
+			}
+		}
+	}
+}

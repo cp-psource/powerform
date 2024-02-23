@@ -18,9 +18,9 @@ class Powerform_Quizz_New_Knowledge extends Powerform_Admin_Page {
 	 */
 	public function getWizardTitle() {
 		if ( isset( $_REQUEST['id'] ) ) { // WPCS: CSRF OK
-			return __( "Quiz bearbeiten", Powerform::DOMAIN );
+			return __( "Test bearbeiten", Powerform::DOMAIN );
 		} else {
-			return __( "Neues Quiz", Powerform::DOMAIN );
+			return __( "Neuer Test", Powerform::DOMAIN );
 		}
 	}
 

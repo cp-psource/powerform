@@ -43,7 +43,7 @@ class Powerform_Integrations_Page extends Powerform_Admin_Page {
 
 		Powerform_Addon_Admin_Ajax::get_instance()->generate_nonce();
 		$this->addon_nonce = Powerform_Addon_Admin_Ajax::get_instance()->get_nonce();
-		add_filter( 'powerform_data', array( $this, 'add_addons_js_data' ) );
+		add_filter( 'powerform_data', array( $this, "add_addons_js_data" ) );
 
 		$this->validate_addon_page();
 	}
@@ -84,8 +84,8 @@ class Powerform_Integrations_Page extends Powerform_Admin_Page {
 				<h1 class="sui-header-title"><?php echo esc_html( $this->addon_page['title'] ); ?></h1>
 				<div class="sui-actions-right">
 					<?php if ( powerform_is_show_documentation_link() ) : ?>
-						<a href="https://n3rds.work/docs/wpmu-dev-plugins/powerform/#integrations" target="_blank" class="sui-button sui-button-ghost">
-							<i class="sui-icon-academy"></i> <?php esc_html_e( 'View Documentation', Powerform::DOMAIN ); ?>
+						<a href="https://n3rds.work/piestingtal_source/powerform-plugin/" target="_blank" class="sui-button sui-button-ghost">
+							<i class="sui-icon-academy"></i> <?php esc_html_e( "Dokumentation anzeigen", Powerform::DOMAIN ); ?>
 						</a>
 					<?php endif; ?>
 				</div>

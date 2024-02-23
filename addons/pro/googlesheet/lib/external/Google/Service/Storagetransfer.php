@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Storagetransfer extends Powerform_Google_Service
+class Google_Service_Storagetransfer extends Google_Service
 {
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
@@ -37,14 +37,14 @@ class Powerform_Google_Service_Storagetransfer extends Powerform_Google_Service
   public $transferJobs;
   public $transferOperations;
   public $v1;
-  
+
 
   /**
    * Constructs the internal representation of the Storagetransfer service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://storagetransfer.googleapis.com/';
@@ -52,7 +52,7 @@ class Powerform_Google_Service_Storagetransfer extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'storagetransfer';
 
-    $this->googleServiceAccounts = new Powerform_Google_Service_Storagetransfer_GoogleServiceAccounts_Resource(
+    $this->googleServiceAccounts = new Google_Service_Storagetransfer_GoogleServiceAccounts_Resource(
         $this,
         $this->serviceName,
         'googleServiceAccounts',
@@ -72,7 +72,7 @@ class Powerform_Google_Service_Storagetransfer extends Powerform_Google_Service
           )
         )
     );
-    $this->transferJobs = new Powerform_Google_Service_Storagetransfer_TransferJobs_Resource(
+    $this->transferJobs = new Google_Service_Storagetransfer_TransferJobs_Resource(
         $this,
         $this->serviceName,
         'transferJobs',
@@ -127,7 +127,7 @@ class Powerform_Google_Service_Storagetransfer extends Powerform_Google_Service
           )
         )
     );
-    $this->transferOperations = new Powerform_Google_Service_Storagetransfer_TransferOperations_Resource(
+    $this->transferOperations = new Google_Service_Storagetransfer_TransferOperations_Resource(
         $this,
         $this->serviceName,
         'transferOperations',
@@ -209,7 +209,7 @@ class Powerform_Google_Service_Storagetransfer extends Powerform_Google_Service
           )
         )
     );
-    $this->v1 = new Powerform_Google_Service_Storagetransfer_V1_Resource(
+    $this->v1 = new Google_Service_Storagetransfer_V1_Resource(
         $this,
         $this->serviceName,
         'v1',
@@ -236,11 +236,11 @@ class Powerform_Google_Service_Storagetransfer extends Powerform_Google_Service
  * The "googleServiceAccounts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storagetransferService = new Powerform_Google_Service_Storagetransfer(...);
+ *   $storagetransferService = new Google_Service_Storagetransfer(...);
  *   $googleServiceAccounts = $storagetransferService->googleServiceAccounts;
  *  </code>
  */
-class Powerform_Google_Service_Storagetransfer_GoogleServiceAccounts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Storagetransfer_GoogleServiceAccounts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -255,13 +255,13 @@ class Powerform_Google_Service_Storagetransfer_GoogleServiceAccounts_Resource ex
    * @param string $projectId The ID of the Google Developers Console project that
    * the Google service account is associated with. Required.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storagetransfer_GoogleServiceAccount
+   * @return Google_Service_Storagetransfer_GoogleServiceAccount
    */
   public function get($projectId, $optParams = array())
   {
     $params = array('projectId' => $projectId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Storagetransfer_GoogleServiceAccount");
+    return $this->call('get', array($params), "Google_Service_Storagetransfer_GoogleServiceAccount");
   }
 }
 
@@ -269,25 +269,25 @@ class Powerform_Google_Service_Storagetransfer_GoogleServiceAccounts_Resource ex
  * The "transferJobs" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storagetransferService = new Powerform_Google_Service_Storagetransfer(...);
+ *   $storagetransferService = new Google_Service_Storagetransfer(...);
  *   $transferJobs = $storagetransferService->transferJobs;
  *  </code>
  */
-class Powerform_Google_Service_Storagetransfer_TransferJobs_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Storagetransfer_TransferJobs_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a transfer job that runs periodically. (transferJobs.create)
    *
-   * @param Powerform_Google_TransferJob $postBody
+   * @param Google_TransferJob $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storagetransfer_TransferJob
+   * @return Google_Service_Storagetransfer_TransferJob
    */
-  public function create(Powerform_Google_Service_Storagetransfer_TransferJob $postBody, $optParams = array())
+  public function create(Google_Service_Storagetransfer_TransferJob $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Storagetransfer_TransferJob");
+    return $this->call('create', array($params), "Google_Service_Storagetransfer_TransferJob");
   }
 
   /**
@@ -298,13 +298,13 @@ class Powerform_Google_Service_Storagetransfer_TransferJobs_Resource extends Pow
    *
    * @opt_param string projectId The ID of the Google Developers Console project
    * that owns the job. Required.
-   * @return Powerform_Google_Service_Storagetransfer_TransferJob
+   * @return Google_Service_Storagetransfer_TransferJob
    */
   public function get($jobName, $optParams = array())
   {
     $params = array('jobName' => $jobName);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Storagetransfer_TransferJob");
+    return $this->call('get', array($params), "Google_Service_Storagetransfer_TransferJob");
   }
 
   /**
@@ -322,13 +322,13 @@ class Powerform_Google_Service_Storagetransfer_TransferJobs_Resource extends Pow
    * `ENABLED`, `DISABLED`, and `DELETED`.
    * @opt_param int pageSize The list page size. The max allowed value is 256.
    * @opt_param string pageToken The list page token.
-   * @return Powerform_Google_Service_Storagetransfer_ListTransferJobsResponse
+   * @return Google_Service_Storagetransfer_ListTransferJobsResponse
    */
   public function listTransferJobs($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Storagetransfer_ListTransferJobsResponse");
+    return $this->call('list', array($params), "Google_Service_Storagetransfer_ListTransferJobsResponse");
   }
 
   /**
@@ -337,15 +337,15 @@ class Powerform_Google_Service_Storagetransfer_TransferJobs_Resource extends Pow
    * job is not allowed. (transferJobs.patch)
    *
    * @param string $jobName The name of job to update. Required.
-   * @param Powerform_Google_UpdateTransferJobRequest $postBody
+   * @param Google_UpdateTransferJobRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storagetransfer_TransferJob
+   * @return Google_Service_Storagetransfer_TransferJob
    */
-  public function patch($jobName, Powerform_Google_Service_Storagetransfer_UpdateTransferJobRequest $postBody, $optParams = array())
+  public function patch($jobName, Google_Service_Storagetransfer_UpdateTransferJobRequest $postBody, $optParams = array())
   {
     $params = array('jobName' => $jobName, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Storagetransfer_TransferJob");
+    return $this->call('patch', array($params), "Google_Service_Storagetransfer_TransferJob");
   }
 }
 
@@ -353,11 +353,11 @@ class Powerform_Google_Service_Storagetransfer_TransferJobs_Resource extends Pow
  * The "transferOperations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storagetransferService = new Powerform_Google_Service_Storagetransfer(...);
+ *   $storagetransferService = new Google_Service_Storagetransfer(...);
  *   $transferOperations = $storagetransferService->transferOperations;
  *  </code>
  */
-class Powerform_Google_Service_Storagetransfer_TransferOperations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Storagetransfer_TransferOperations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -367,13 +367,13 @@ class Powerform_Google_Service_Storagetransfer_TransferOperations_Resource exten
    *
    * @param string $name The name of the operation resource to be cancelled.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storagetransfer_Empty
+   * @return Google_Service_Storagetransfer_Empty
    */
   public function cancel($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('cancel', array($params), "Powerform_Google_Service_Storagetransfer_Empty");
+    return $this->call('cancel', array($params), "Google_Service_Storagetransfer_Empty");
   }
 
   /**
@@ -382,13 +382,13 @@ class Powerform_Google_Service_Storagetransfer_TransferOperations_Resource exten
    *
    * @param string $name The name of the operation resource to be deleted.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storagetransfer_Empty
+   * @return Google_Service_Storagetransfer_Empty
    */
   public function delete($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Storagetransfer_Empty");
+    return $this->call('delete', array($params), "Google_Service_Storagetransfer_Empty");
   }
 
   /**
@@ -398,13 +398,13 @@ class Powerform_Google_Service_Storagetransfer_TransferOperations_Resource exten
    *
    * @param string $name The name of the operation resource.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storagetransfer_Operation
+   * @return Google_Service_Storagetransfer_Operation
    */
   public function get($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Storagetransfer_Operation");
+    return $this->call('get', array($params), "Google_Service_Storagetransfer_Operation");
   }
 
   /**
@@ -420,43 +420,43 @@ class Powerform_Google_Service_Storagetransfer_TransferOperations_Resource exten
    * @opt_param string filter The standard list filter.
    * @opt_param int pageSize The standard list page size.
    * @opt_param string pageToken The standard list page token.
-   * @return Powerform_Google_Service_Storagetransfer_ListOperationsResponse
+   * @return Google_Service_Storagetransfer_ListOperationsResponse
    */
   public function listTransferOperations($name, $optParams = array())
   {
     $params = array('name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Storagetransfer_ListOperationsResponse");
+    return $this->call('list', array($params), "Google_Service_Storagetransfer_ListOperationsResponse");
   }
 
   /**
    * Pauses a transfer operation. (transferOperations.pause)
    *
    * @param string $name The name of the transfer operation. Required.
-   * @param Powerform_Google_PauseTransferOperationRequest $postBody
+   * @param Google_PauseTransferOperationRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storagetransfer_Empty
+   * @return Google_Service_Storagetransfer_Empty
    */
-  public function pause($name, Powerform_Google_Service_Storagetransfer_PauseTransferOperationRequest $postBody, $optParams = array())
+  public function pause($name, Google_Service_Storagetransfer_PauseTransferOperationRequest $postBody, $optParams = array())
   {
     $params = array('name' => $name, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('pause', array($params), "Powerform_Google_Service_Storagetransfer_Empty");
+    return $this->call('pause', array($params), "Google_Service_Storagetransfer_Empty");
   }
 
   /**
    * Resumes a transfer operation that is paused. (transferOperations.resume)
    *
    * @param string $name The name of the transfer operation. Required.
-   * @param Powerform_Google_ResumeTransferOperationRequest $postBody
+   * @param Google_ResumeTransferOperationRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storagetransfer_Empty
+   * @return Google_Service_Storagetransfer_Empty
    */
-  public function resume($name, Powerform_Google_Service_Storagetransfer_ResumeTransferOperationRequest $postBody, $optParams = array())
+  public function resume($name, Google_Service_Storagetransfer_ResumeTransferOperationRequest $postBody, $optParams = array())
   {
     $params = array('name' => $name, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('resume', array($params), "Powerform_Google_Service_Storagetransfer_Empty");
+    return $this->call('resume', array($params), "Google_Service_Storagetransfer_Empty");
   }
 }
 
@@ -464,11 +464,11 @@ class Powerform_Google_Service_Storagetransfer_TransferOperations_Resource exten
  * The "v1" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storagetransferService = new Powerform_Google_Service_Storagetransfer(...);
+ *   $storagetransferService = new Google_Service_Storagetransfer(...);
  *   $v1 = $storagetransferService->v1;
  *  </code>
  */
-class Powerform_Google_Service_Storagetransfer_V1_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Storagetransfer_V1_Resource extends Google_Service_Resource
 {
 
   /**
@@ -484,20 +484,20 @@ class Powerform_Google_Service_Storagetransfer_V1_Resource extends Powerform_Goo
    *
    * @opt_param string projectId The ID of the Google Developers Console project
    * that the Google service account is associated with. Required.
-   * @return Powerform_Google_Service_Storagetransfer_GoogleServiceAccount
+   * @return Google_Service_Storagetransfer_GoogleServiceAccount
    */
   public function getGoogleServiceAccount($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('getGoogleServiceAccount', array($params), "Powerform_Google_Service_Storagetransfer_GoogleServiceAccount");
+    return $this->call('getGoogleServiceAccount', array($params), "Google_Service_Storagetransfer_GoogleServiceAccount");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Storagetransfer_AwsAccessKey extends Powerform_Google_Model
+class Google_Service_Storagetransfer_AwsAccessKey extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -523,16 +523,16 @@ class Powerform_Google_Service_Storagetransfer_AwsAccessKey extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_AwsS3Data extends Powerform_Google_Model
+class Google_Service_Storagetransfer_AwsS3Data extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $awsAccessKeyType = 'Powerform_Google_Service_Storagetransfer_AwsAccessKey';
+  protected $awsAccessKeyType = 'Google_Service_Storagetransfer_AwsAccessKey';
   protected $awsAccessKeyDataType = '';
   public $bucketName;
 
 
-  public function setAwsAccessKey(Powerform_Google_Service_Storagetransfer_AwsAccessKey $awsAccessKey)
+  public function setAwsAccessKey(Google_Service_Storagetransfer_AwsAccessKey $awsAccessKey)
   {
     $this->awsAccessKey = $awsAccessKey;
   }
@@ -550,7 +550,7 @@ class Powerform_Google_Service_Storagetransfer_AwsS3Data extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_Date extends Powerform_Google_Model
+class Google_Service_Storagetransfer_Date extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -585,11 +585,11 @@ class Powerform_Google_Service_Storagetransfer_Date extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_Empty extends Powerform_Google_Model
+class Google_Service_Storagetransfer_Empty extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Storagetransfer_ErrorLogEntry extends Powerform_Google_Collection
+class Google_Service_Storagetransfer_ErrorLogEntry extends Google_Collection
 {
   protected $collection_key = 'errorDetails';
   protected $internal_gapi_mappings = array(
@@ -616,14 +616,14 @@ class Powerform_Google_Service_Storagetransfer_ErrorLogEntry extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_ErrorSummary extends Powerform_Google_Collection
+class Google_Service_Storagetransfer_ErrorSummary extends Google_Collection
 {
   protected $collection_key = 'errorLogEntries';
   protected $internal_gapi_mappings = array(
   );
   public $errorCode;
   public $errorCount;
-  protected $errorLogEntriesType = 'Powerform_Google_Service_Storagetransfer_ErrorLogEntry';
+  protected $errorLogEntriesType = 'Google_Service_Storagetransfer_ErrorLogEntry';
   protected $errorLogEntriesDataType = 'array';
 
 
@@ -653,7 +653,7 @@ class Powerform_Google_Service_Storagetransfer_ErrorSummary extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_GcsData extends Powerform_Google_Model
+class Google_Service_Storagetransfer_GcsData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -670,7 +670,7 @@ class Powerform_Google_Service_Storagetransfer_GcsData extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_GoogleServiceAccount extends Powerform_Google_Model
+class Google_Service_Storagetransfer_GoogleServiceAccount extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -687,7 +687,7 @@ class Powerform_Google_Service_Storagetransfer_GoogleServiceAccount extends Powe
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_HttpData extends Powerform_Google_Model
+class Google_Service_Storagetransfer_HttpData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -704,13 +704,13 @@ class Powerform_Google_Service_Storagetransfer_HttpData extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_ListOperationsResponse extends Powerform_Google_Collection
+class Google_Service_Storagetransfer_ListOperationsResponse extends Google_Collection
 {
   protected $collection_key = 'operations';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $operationsType = 'Powerform_Google_Service_Storagetransfer_Operation';
+  protected $operationsType = 'Google_Service_Storagetransfer_Operation';
   protected $operationsDataType = 'array';
 
 
@@ -732,13 +732,13 @@ class Powerform_Google_Service_Storagetransfer_ListOperationsResponse extends Po
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_ListTransferJobsResponse extends Powerform_Google_Collection
+class Google_Service_Storagetransfer_ListTransferJobsResponse extends Google_Collection
 {
   protected $collection_key = 'transferJobs';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $transferJobsType = 'Powerform_Google_Service_Storagetransfer_TransferJob';
+  protected $transferJobsType = 'Google_Service_Storagetransfer_TransferJob';
   protected $transferJobsDataType = 'array';
 
 
@@ -760,7 +760,7 @@ class Powerform_Google_Service_Storagetransfer_ListTransferJobsResponse extends 
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_ObjectConditions extends Powerform_Google_Collection
+class Google_Service_Storagetransfer_ObjectConditions extends Google_Collection
 {
   protected $collection_key = 'includePrefixes';
   protected $internal_gapi_mappings = array(
@@ -805,12 +805,12 @@ class Powerform_Google_Service_Storagetransfer_ObjectConditions extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_Operation extends Powerform_Google_Model
+class Google_Service_Storagetransfer_Operation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $done;
-  protected $errorType = 'Powerform_Google_Service_Storagetransfer_Status';
+  protected $errorType = 'Google_Service_Storagetransfer_Status';
   protected $errorDataType = '';
   public $metadata;
   public $name;
@@ -825,7 +825,7 @@ class Powerform_Google_Service_Storagetransfer_Operation extends Powerform_Googl
   {
     return $this->done;
   }
-  public function setError(Powerform_Google_Service_Storagetransfer_Status $error)
+  public function setError(Google_Service_Storagetransfer_Status $error)
   {
     $this->error = $error;
   }
@@ -859,27 +859,27 @@ class Powerform_Google_Service_Storagetransfer_Operation extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_PauseTransferOperationRequest extends Powerform_Google_Model
+class Google_Service_Storagetransfer_PauseTransferOperationRequest extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Storagetransfer_ResumeTransferOperationRequest extends Powerform_Google_Model
+class Google_Service_Storagetransfer_ResumeTransferOperationRequest extends Google_Model
 {
 }
 
-class Powerform_Google_Service_Storagetransfer_Schedule extends Powerform_Google_Model
+class Google_Service_Storagetransfer_Schedule extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $scheduleEndDateType = 'Powerform_Google_Service_Storagetransfer_Date';
+  protected $scheduleEndDateType = 'Google_Service_Storagetransfer_Date';
   protected $scheduleEndDateDataType = '';
-  protected $scheduleStartDateType = 'Powerform_Google_Service_Storagetransfer_Date';
+  protected $scheduleStartDateType = 'Google_Service_Storagetransfer_Date';
   protected $scheduleStartDateDataType = '';
-  protected $startTimeOfDayType = 'Powerform_Google_Service_Storagetransfer_TimeOfDay';
+  protected $startTimeOfDayType = 'Google_Service_Storagetransfer_TimeOfDay';
   protected $startTimeOfDayDataType = '';
 
 
-  public function setScheduleEndDate(Powerform_Google_Service_Storagetransfer_Date $scheduleEndDate)
+  public function setScheduleEndDate(Google_Service_Storagetransfer_Date $scheduleEndDate)
   {
     $this->scheduleEndDate = $scheduleEndDate;
   }
@@ -887,7 +887,7 @@ class Powerform_Google_Service_Storagetransfer_Schedule extends Powerform_Google
   {
     return $this->scheduleEndDate;
   }
-  public function setScheduleStartDate(Powerform_Google_Service_Storagetransfer_Date $scheduleStartDate)
+  public function setScheduleStartDate(Google_Service_Storagetransfer_Date $scheduleStartDate)
   {
     $this->scheduleStartDate = $scheduleStartDate;
   }
@@ -895,7 +895,7 @@ class Powerform_Google_Service_Storagetransfer_Schedule extends Powerform_Google
   {
     return $this->scheduleStartDate;
   }
-  public function setStartTimeOfDay(Powerform_Google_Service_Storagetransfer_TimeOfDay $startTimeOfDay)
+  public function setStartTimeOfDay(Google_Service_Storagetransfer_TimeOfDay $startTimeOfDay)
   {
     $this->startTimeOfDay = $startTimeOfDay;
   }
@@ -905,7 +905,7 @@ class Powerform_Google_Service_Storagetransfer_Schedule extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_Status extends Powerform_Google_Collection
+class Google_Service_Storagetransfer_Status extends Google_Collection
 {
   protected $collection_key = 'details';
   protected $internal_gapi_mappings = array(
@@ -941,7 +941,7 @@ class Powerform_Google_Service_Storagetransfer_Status extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_TimeOfDay extends Powerform_Google_Model
+class Google_Service_Storagetransfer_TimeOfDay extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -985,7 +985,7 @@ class Powerform_Google_Service_Storagetransfer_TimeOfDay extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_TransferCounters extends Powerform_Google_Model
+class Google_Service_Storagetransfer_TransferCounters extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1137,7 +1137,7 @@ class Powerform_Google_Service_Storagetransfer_TransferCounters extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_TransferJob extends Powerform_Google_Model
+class Google_Service_Storagetransfer_TransferJob extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1147,10 +1147,10 @@ class Powerform_Google_Service_Storagetransfer_TransferJob extends Powerform_Goo
   public $lastModificationTime;
   public $name;
   public $projectId;
-  protected $scheduleType = 'Powerform_Google_Service_Storagetransfer_Schedule';
+  protected $scheduleType = 'Google_Service_Storagetransfer_Schedule';
   protected $scheduleDataType = '';
   public $status;
-  protected $transferSpecType = 'Powerform_Google_Service_Storagetransfer_TransferSpec';
+  protected $transferSpecType = 'Google_Service_Storagetransfer_TransferSpec';
   protected $transferSpecDataType = '';
 
 
@@ -1202,7 +1202,7 @@ class Powerform_Google_Service_Storagetransfer_TransferJob extends Powerform_Goo
   {
     return $this->projectId;
   }
-  public function setSchedule(Powerform_Google_Service_Storagetransfer_Schedule $schedule)
+  public function setSchedule(Google_Service_Storagetransfer_Schedule $schedule)
   {
     $this->schedule = $schedule;
   }
@@ -1218,7 +1218,7 @@ class Powerform_Google_Service_Storagetransfer_TransferJob extends Powerform_Goo
   {
     return $this->status;
   }
-  public function setTransferSpec(Powerform_Google_Service_Storagetransfer_TransferSpec $transferSpec)
+  public function setTransferSpec(Google_Service_Storagetransfer_TransferSpec $transferSpec)
   {
     $this->transferSpec = $transferSpec;
   }
@@ -1228,26 +1228,26 @@ class Powerform_Google_Service_Storagetransfer_TransferJob extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_TransferOperation extends Powerform_Google_Collection
+class Google_Service_Storagetransfer_TransferOperation extends Google_Collection
 {
   protected $collection_key = 'errorBreakdowns';
   protected $internal_gapi_mappings = array(
   );
-  protected $countersType = 'Powerform_Google_Service_Storagetransfer_TransferCounters';
+  protected $countersType = 'Google_Service_Storagetransfer_TransferCounters';
   protected $countersDataType = '';
   public $endTime;
-  protected $errorBreakdownsType = 'Powerform_Google_Service_Storagetransfer_ErrorSummary';
+  protected $errorBreakdownsType = 'Google_Service_Storagetransfer_ErrorSummary';
   protected $errorBreakdownsDataType = 'array';
   public $name;
   public $projectId;
   public $startTime;
   public $status;
   public $transferJobName;
-  protected $transferSpecType = 'Powerform_Google_Service_Storagetransfer_TransferSpec';
+  protected $transferSpecType = 'Google_Service_Storagetransfer_TransferSpec';
   protected $transferSpecDataType = '';
 
 
-  public function setCounters(Powerform_Google_Service_Storagetransfer_TransferCounters $counters)
+  public function setCounters(Google_Service_Storagetransfer_TransferCounters $counters)
   {
     $this->counters = $counters;
   }
@@ -1311,7 +1311,7 @@ class Powerform_Google_Service_Storagetransfer_TransferOperation extends Powerfo
   {
     return $this->transferJobName;
   }
-  public function setTransferSpec(Powerform_Google_Service_Storagetransfer_TransferSpec $transferSpec)
+  public function setTransferSpec(Google_Service_Storagetransfer_TransferSpec $transferSpec)
   {
     $this->transferSpec = $transferSpec;
   }
@@ -1321,7 +1321,7 @@ class Powerform_Google_Service_Storagetransfer_TransferOperation extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_TransferOptions extends Powerform_Google_Model
+class Google_Service_Storagetransfer_TransferOptions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1356,25 +1356,25 @@ class Powerform_Google_Service_Storagetransfer_TransferOptions extends Powerform
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_TransferSpec extends Powerform_Google_Model
+class Google_Service_Storagetransfer_TransferSpec extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $awsS3DataSourceType = 'Powerform_Google_Service_Storagetransfer_AwsS3Data';
+  protected $awsS3DataSourceType = 'Google_Service_Storagetransfer_AwsS3Data';
   protected $awsS3DataSourceDataType = '';
-  protected $gcsDataSinkType = 'Powerform_Google_Service_Storagetransfer_GcsData';
+  protected $gcsDataSinkType = 'Google_Service_Storagetransfer_GcsData';
   protected $gcsDataSinkDataType = '';
-  protected $gcsDataSourceType = 'Powerform_Google_Service_Storagetransfer_GcsData';
+  protected $gcsDataSourceType = 'Google_Service_Storagetransfer_GcsData';
   protected $gcsDataSourceDataType = '';
-  protected $httpDataSourceType = 'Powerform_Google_Service_Storagetransfer_HttpData';
+  protected $httpDataSourceType = 'Google_Service_Storagetransfer_HttpData';
   protected $httpDataSourceDataType = '';
-  protected $objectConditionsType = 'Powerform_Google_Service_Storagetransfer_ObjectConditions';
+  protected $objectConditionsType = 'Google_Service_Storagetransfer_ObjectConditions';
   protected $objectConditionsDataType = '';
-  protected $transferOptionsType = 'Powerform_Google_Service_Storagetransfer_TransferOptions';
+  protected $transferOptionsType = 'Google_Service_Storagetransfer_TransferOptions';
   protected $transferOptionsDataType = '';
 
 
-  public function setAwsS3DataSource(Powerform_Google_Service_Storagetransfer_AwsS3Data $awsS3DataSource)
+  public function setAwsS3DataSource(Google_Service_Storagetransfer_AwsS3Data $awsS3DataSource)
   {
     $this->awsS3DataSource = $awsS3DataSource;
   }
@@ -1382,7 +1382,7 @@ class Powerform_Google_Service_Storagetransfer_TransferSpec extends Powerform_Go
   {
     return $this->awsS3DataSource;
   }
-  public function setGcsDataSink(Powerform_Google_Service_Storagetransfer_GcsData $gcsDataSink)
+  public function setGcsDataSink(Google_Service_Storagetransfer_GcsData $gcsDataSink)
   {
     $this->gcsDataSink = $gcsDataSink;
   }
@@ -1390,7 +1390,7 @@ class Powerform_Google_Service_Storagetransfer_TransferSpec extends Powerform_Go
   {
     return $this->gcsDataSink;
   }
-  public function setGcsDataSource(Powerform_Google_Service_Storagetransfer_GcsData $gcsDataSource)
+  public function setGcsDataSource(Google_Service_Storagetransfer_GcsData $gcsDataSource)
   {
     $this->gcsDataSource = $gcsDataSource;
   }
@@ -1398,7 +1398,7 @@ class Powerform_Google_Service_Storagetransfer_TransferSpec extends Powerform_Go
   {
     return $this->gcsDataSource;
   }
-  public function setHttpDataSource(Powerform_Google_Service_Storagetransfer_HttpData $httpDataSource)
+  public function setHttpDataSource(Google_Service_Storagetransfer_HttpData $httpDataSource)
   {
     $this->httpDataSource = $httpDataSource;
   }
@@ -1406,7 +1406,7 @@ class Powerform_Google_Service_Storagetransfer_TransferSpec extends Powerform_Go
   {
     return $this->httpDataSource;
   }
-  public function setObjectConditions(Powerform_Google_Service_Storagetransfer_ObjectConditions $objectConditions)
+  public function setObjectConditions(Google_Service_Storagetransfer_ObjectConditions $objectConditions)
   {
     $this->objectConditions = $objectConditions;
   }
@@ -1414,7 +1414,7 @@ class Powerform_Google_Service_Storagetransfer_TransferSpec extends Powerform_Go
   {
     return $this->objectConditions;
   }
-  public function setTransferOptions(Powerform_Google_Service_Storagetransfer_TransferOptions $transferOptions)
+  public function setTransferOptions(Google_Service_Storagetransfer_TransferOptions $transferOptions)
   {
     $this->transferOptions = $transferOptions;
   }
@@ -1424,12 +1424,12 @@ class Powerform_Google_Service_Storagetransfer_TransferSpec extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Storagetransfer_UpdateTransferJobRequest extends Powerform_Google_Model
+class Google_Service_Storagetransfer_UpdateTransferJobRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $projectId;
-  protected $transferJobType = 'Powerform_Google_Service_Storagetransfer_TransferJob';
+  protected $transferJobType = 'Google_Service_Storagetransfer_TransferJob';
   protected $transferJobDataType = '';
   public $updateTransferJobFieldMask;
 
@@ -1442,7 +1442,7 @@ class Powerform_Google_Service_Storagetransfer_UpdateTransferJobRequest extends 
   {
     return $this->projectId;
   }
-  public function setTransferJob(Powerform_Google_Service_Storagetransfer_TransferJob $transferJob)
+  public function setTransferJob(Google_Service_Storagetransfer_TransferJob $transferJob)
   {
     $this->transferJob = $transferJob;
   }

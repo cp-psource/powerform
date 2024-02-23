@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Powerform_Polls_General_Data_Protection extends Powerform_General_Data_Protection {
 
 	public function __construct() {
-		parent::__construct( __( 'Powerform Umfragen', Powerform::DOMAIN ) );
+		parent::__construct( __( 'Powerformulare-Umfragen', Powerform::DOMAIN ) );
 	}
 
 	/**

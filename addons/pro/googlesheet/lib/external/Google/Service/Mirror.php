@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Mirror extends Powerform_Google_Service
+class Google_Service_Mirror extends Google_Service
 {
   /** View your location. */
   const GLASS_LOCATION =
@@ -42,14 +42,14 @@ class Powerform_Google_Service_Mirror extends Powerform_Google_Service
   public $subscriptions;
   public $timeline;
   public $timeline_attachments;
-  
+
 
   /**
    * Constructs the internal representation of the Mirror service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -57,7 +57,7 @@ class Powerform_Google_Service_Mirror extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'mirror';
 
-    $this->accounts = new Powerform_Google_Service_Mirror_Accounts_Resource(
+    $this->accounts = new Google_Service_Mirror_Accounts_Resource(
         $this,
         $this->serviceName,
         'accounts',
@@ -87,7 +87,7 @@ class Powerform_Google_Service_Mirror extends Powerform_Google_Service
           )
         )
     );
-    $this->contacts = new Powerform_Google_Service_Mirror_Contacts_Resource(
+    $this->contacts = new Google_Service_Mirror_Contacts_Resource(
         $this,
         $this->serviceName,
         'contacts',
@@ -145,7 +145,7 @@ class Powerform_Google_Service_Mirror extends Powerform_Google_Service
           )
         )
     );
-    $this->locations = new Powerform_Google_Service_Mirror_Locations_Resource(
+    $this->locations = new Google_Service_Mirror_Locations_Resource(
         $this,
         $this->serviceName,
         'locations',
@@ -169,7 +169,7 @@ class Powerform_Google_Service_Mirror extends Powerform_Google_Service
           )
         )
     );
-    $this->settings = new Powerform_Google_Service_Mirror_Settings_Resource(
+    $this->settings = new Google_Service_Mirror_Settings_Resource(
         $this,
         $this->serviceName,
         'settings',
@@ -189,7 +189,7 @@ class Powerform_Google_Service_Mirror extends Powerform_Google_Service
           )
         )
     );
-    $this->subscriptions = new Powerform_Google_Service_Mirror_Subscriptions_Resource(
+    $this->subscriptions = new Google_Service_Mirror_Subscriptions_Resource(
         $this,
         $this->serviceName,
         'subscriptions',
@@ -227,7 +227,7 @@ class Powerform_Google_Service_Mirror extends Powerform_Google_Service
           )
         )
     );
-    $this->timeline = new Powerform_Google_Service_Mirror_Timeline_Resource(
+    $this->timeline = new Google_Service_Mirror_Timeline_Resource(
         $this,
         $this->serviceName,
         'timeline',
@@ -314,7 +314,7 @@ class Powerform_Google_Service_Mirror extends Powerform_Google_Service
           )
         )
     );
-    $this->timeline_attachments = new Powerform_Google_Service_Mirror_TimelineAttachments_Resource(
+    $this->timeline_attachments = new Google_Service_Mirror_TimelineAttachments_Resource(
         $this,
         $this->serviceName,
         'attachments',
@@ -382,11 +382,11 @@ class Powerform_Google_Service_Mirror extends Powerform_Google_Service
  * The "accounts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Powerform_Google_Service_Mirror(...);
+ *   $mirrorService = new Google_Service_Mirror(...);
  *   $accounts = $mirrorService->accounts;
  *  </code>
  */
-class Powerform_Google_Service_Mirror_Accounts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Mirror_Accounts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -397,15 +397,15 @@ class Powerform_Google_Service_Mirror_Accounts_Resource extends Powerform_Google
    * Manager.
    * @param string $accountName The name of the account to be passed to the
    * Android Account Manager.
-   * @param Powerform_Google_Account $postBody
+   * @param Google_Account $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Account
+   * @return Google_Service_Mirror_Account
    */
-  public function insert($userToken, $accountType, $accountName, Powerform_Google_Service_Mirror_Account $postBody, $optParams = array())
+  public function insert($userToken, $accountType, $accountName, Google_Service_Mirror_Account $postBody, $optParams = array())
   {
     $params = array('userToken' => $userToken, 'accountType' => $accountType, 'accountName' => $accountName, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Mirror_Account");
+    return $this->call('insert', array($params), "Google_Service_Mirror_Account");
   }
 }
 
@@ -413,11 +413,11 @@ class Powerform_Google_Service_Mirror_Accounts_Resource extends Powerform_Google
  * The "contacts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Powerform_Google_Service_Mirror(...);
+ *   $mirrorService = new Google_Service_Mirror(...);
  *   $contacts = $mirrorService->contacts;
  *  </code>
  */
-class Powerform_Google_Service_Mirror_Contacts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Mirror_Contacts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -438,27 +438,27 @@ class Powerform_Google_Service_Mirror_Contacts_Resource extends Powerform_Google
    *
    * @param string $id The ID of the contact.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Contact
+   * @return Google_Service_Mirror_Contact
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Mirror_Contact");
+    return $this->call('get', array($params), "Google_Service_Mirror_Contact");
   }
 
   /**
    * Inserts a new contact. (contacts.insert)
    *
-   * @param Powerform_Google_Contact $postBody
+   * @param Google_Contact $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Contact
+   * @return Google_Service_Mirror_Contact
    */
-  public function insert(Powerform_Google_Service_Mirror_Contact $postBody, $optParams = array())
+  public function insert(Google_Service_Mirror_Contact $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Mirror_Contact");
+    return $this->call('insert', array($params), "Google_Service_Mirror_Contact");
   }
 
   /**
@@ -466,13 +466,13 @@ class Powerform_Google_Service_Mirror_Contacts_Resource extends Powerform_Google
    * (contacts.listContacts)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_ContactsListResponse
+   * @return Google_Service_Mirror_ContactsListResponse
    */
   public function listContacts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Mirror_ContactsListResponse");
+    return $this->call('list', array($params), "Google_Service_Mirror_ContactsListResponse");
   }
 
   /**
@@ -480,30 +480,30 @@ class Powerform_Google_Service_Mirror_Contacts_Resource extends Powerform_Google
    * (contacts.patch)
    *
    * @param string $id The ID of the contact.
-   * @param Powerform_Google_Contact $postBody
+   * @param Google_Contact $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Contact
+   * @return Google_Service_Mirror_Contact
    */
-  public function patch($id, Powerform_Google_Service_Mirror_Contact $postBody, $optParams = array())
+  public function patch($id, Google_Service_Mirror_Contact $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Mirror_Contact");
+    return $this->call('patch', array($params), "Google_Service_Mirror_Contact");
   }
 
   /**
    * Updates a contact in place. (contacts.update)
    *
    * @param string $id The ID of the contact.
-   * @param Powerform_Google_Contact $postBody
+   * @param Google_Contact $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Contact
+   * @return Google_Service_Mirror_Contact
    */
-  public function update($id, Powerform_Google_Service_Mirror_Contact $postBody, $optParams = array())
+  public function update($id, Google_Service_Mirror_Contact $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Mirror_Contact");
+    return $this->call('update', array($params), "Google_Service_Mirror_Contact");
   }
 }
 
@@ -511,11 +511,11 @@ class Powerform_Google_Service_Mirror_Contacts_Resource extends Powerform_Google
  * The "locations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Powerform_Google_Service_Mirror(...);
+ *   $mirrorService = new Google_Service_Mirror(...);
  *   $locations = $mirrorService->locations;
  *  </code>
  */
-class Powerform_Google_Service_Mirror_Locations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Mirror_Locations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -524,26 +524,26 @@ class Powerform_Google_Service_Mirror_Locations_Resource extends Powerform_Googl
    * @param string $id The ID of the location or latest for the last known
    * location.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Location
+   * @return Google_Service_Mirror_Location
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Mirror_Location");
+    return $this->call('get', array($params), "Google_Service_Mirror_Location");
   }
 
   /**
    * Retrieves a list of locations for the user. (locations.listLocations)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_LocationsListResponse
+   * @return Google_Service_Mirror_LocationsListResponse
    */
   public function listLocations($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Mirror_LocationsListResponse");
+    return $this->call('list', array($params), "Google_Service_Mirror_LocationsListResponse");
   }
 }
 
@@ -551,11 +551,11 @@ class Powerform_Google_Service_Mirror_Locations_Resource extends Powerform_Googl
  * The "settings" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Powerform_Google_Service_Mirror(...);
+ *   $mirrorService = new Google_Service_Mirror(...);
  *   $settings = $mirrorService->settings;
  *  </code>
  */
-class Powerform_Google_Service_Mirror_Settings_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Mirror_Settings_Resource extends Google_Service_Resource
 {
 
   /**
@@ -567,13 +567,13 @@ class Powerform_Google_Service_Mirror_Settings_Resource extends Powerform_Google
    * the user’s current time zone region as defined in the tz database. Example:
    * America/Los_Angeles.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Setting
+   * @return Google_Service_Mirror_Setting
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Mirror_Setting");
+    return $this->call('get', array($params), "Google_Service_Mirror_Setting");
   }
 }
 
@@ -581,11 +581,11 @@ class Powerform_Google_Service_Mirror_Settings_Resource extends Powerform_Google
  * The "subscriptions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Powerform_Google_Service_Mirror(...);
+ *   $mirrorService = new Google_Service_Mirror(...);
  *   $subscriptions = $mirrorService->subscriptions;
  *  </code>
  */
-class Powerform_Google_Service_Mirror_Subscriptions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Mirror_Subscriptions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -604,15 +604,15 @@ class Powerform_Google_Service_Mirror_Subscriptions_Resource extends Powerform_G
   /**
    * Creates a new subscription. (subscriptions.insert)
    *
-   * @param Powerform_Google_Subscription $postBody
+   * @param Google_Subscription $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Subscription
+   * @return Google_Service_Mirror_Subscription
    */
-  public function insert(Powerform_Google_Service_Mirror_Subscription $postBody, $optParams = array())
+  public function insert(Google_Service_Mirror_Subscription $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Mirror_Subscription");
+    return $this->call('insert', array($params), "Google_Service_Mirror_Subscription");
   }
 
   /**
@@ -620,28 +620,28 @@ class Powerform_Google_Service_Mirror_Subscriptions_Resource extends Powerform_G
    * (subscriptions.listSubscriptions)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_SubscriptionsListResponse
+   * @return Google_Service_Mirror_SubscriptionsListResponse
    */
   public function listSubscriptions($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Mirror_SubscriptionsListResponse");
+    return $this->call('list', array($params), "Google_Service_Mirror_SubscriptionsListResponse");
   }
 
   /**
    * Updates an existing subscription in place. (subscriptions.update)
    *
    * @param string $id The ID of the subscription.
-   * @param Powerform_Google_Subscription $postBody
+   * @param Google_Subscription $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Subscription
+   * @return Google_Service_Mirror_Subscription
    */
-  public function update($id, Powerform_Google_Service_Mirror_Subscription $postBody, $optParams = array())
+  public function update($id, Google_Service_Mirror_Subscription $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Mirror_Subscription");
+    return $this->call('update', array($params), "Google_Service_Mirror_Subscription");
   }
 }
 
@@ -649,11 +649,11 @@ class Powerform_Google_Service_Mirror_Subscriptions_Resource extends Powerform_G
  * The "timeline" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Powerform_Google_Service_Mirror(...);
+ *   $mirrorService = new Google_Service_Mirror(...);
  *   $timeline = $mirrorService->timeline;
  *  </code>
  */
-class Powerform_Google_Service_Mirror_Timeline_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Mirror_Timeline_Resource extends Google_Service_Resource
 {
 
   /**
@@ -674,27 +674,27 @@ class Powerform_Google_Service_Mirror_Timeline_Resource extends Powerform_Google
    *
    * @param string $id The ID of the timeline item.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_TimelineItem
+   * @return Google_Service_Mirror_TimelineItem
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Mirror_TimelineItem");
+    return $this->call('get', array($params), "Google_Service_Mirror_TimelineItem");
   }
 
   /**
    * Inserts a new item into the timeline. (timeline.insert)
    *
-   * @param Powerform_Google_TimelineItem $postBody
+   * @param Google_TimelineItem $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_TimelineItem
+   * @return Google_Service_Mirror_TimelineItem
    */
-  public function insert(Powerform_Google_Service_Mirror_TimelineItem $postBody, $optParams = array())
+  public function insert(Google_Service_Mirror_TimelineItem $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Mirror_TimelineItem");
+    return $this->call('insert', array($params), "Google_Service_Mirror_TimelineItem");
   }
 
   /**
@@ -715,13 +715,13 @@ class Powerform_Google_Service_Mirror_Timeline_Resource extends Powerform_Google
    * @opt_param bool pinnedOnly If true, only pinned items will be returned.
    * @opt_param string sourceItemId If provided, only items with the given
    * sourceItemId will be returned.
-   * @return Powerform_Google_Service_Mirror_TimelineListResponse
+   * @return Google_Service_Mirror_TimelineListResponse
    */
   public function listTimeline($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Mirror_TimelineListResponse");
+    return $this->call('list', array($params), "Google_Service_Mirror_TimelineListResponse");
   }
 
   /**
@@ -729,30 +729,30 @@ class Powerform_Google_Service_Mirror_Timeline_Resource extends Powerform_Google
    * (timeline.patch)
    *
    * @param string $id The ID of the timeline item.
-   * @param Powerform_Google_TimelineItem $postBody
+   * @param Google_TimelineItem $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_TimelineItem
+   * @return Google_Service_Mirror_TimelineItem
    */
-  public function patch($id, Powerform_Google_Service_Mirror_TimelineItem $postBody, $optParams = array())
+  public function patch($id, Google_Service_Mirror_TimelineItem $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Mirror_TimelineItem");
+    return $this->call('patch', array($params), "Google_Service_Mirror_TimelineItem");
   }
 
   /**
    * Updates a timeline item in place. (timeline.update)
    *
    * @param string $id The ID of the timeline item.
-   * @param Powerform_Google_TimelineItem $postBody
+   * @param Google_TimelineItem $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_TimelineItem
+   * @return Google_Service_Mirror_TimelineItem
    */
-  public function update($id, Powerform_Google_Service_Mirror_TimelineItem $postBody, $optParams = array())
+  public function update($id, Google_Service_Mirror_TimelineItem $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Mirror_TimelineItem");
+    return $this->call('update', array($params), "Google_Service_Mirror_TimelineItem");
   }
 }
 
@@ -760,11 +760,11 @@ class Powerform_Google_Service_Mirror_Timeline_Resource extends Powerform_Google
  * The "attachments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Powerform_Google_Service_Mirror(...);
+ *   $mirrorService = new Google_Service_Mirror(...);
  *   $attachments = $mirrorService->attachments;
  *  </code>
  */
-class Powerform_Google_Service_Mirror_TimelineAttachments_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Mirror_TimelineAttachments_Resource extends Google_Service_Resource
 {
 
   /**
@@ -788,13 +788,13 @@ class Powerform_Google_Service_Mirror_TimelineAttachments_Resource extends Power
    * @param string $itemId The ID of the timeline item the attachment belongs to.
    * @param string $attachmentId The ID of the attachment.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Attachment
+   * @return Google_Service_Mirror_Attachment
    */
   public function get($itemId, $attachmentId, $optParams = array())
   {
     $params = array('itemId' => $itemId, 'attachmentId' => $attachmentId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Mirror_Attachment");
+    return $this->call('get', array($params), "Google_Service_Mirror_Attachment");
   }
 
   /**
@@ -802,13 +802,13 @@ class Powerform_Google_Service_Mirror_TimelineAttachments_Resource extends Power
    *
    * @param string $itemId The ID of the timeline item the attachment belongs to.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_Attachment
+   * @return Google_Service_Mirror_Attachment
    */
   public function insert($itemId, $optParams = array())
   {
     $params = array('itemId' => $itemId);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Mirror_Attachment");
+    return $this->call('insert', array($params), "Google_Service_Mirror_Attachment");
   }
 
   /**
@@ -818,29 +818,29 @@ class Powerform_Google_Service_Mirror_TimelineAttachments_Resource extends Power
    * @param string $itemId The ID of the timeline item whose attachments should be
    * listed.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Mirror_AttachmentsListResponse
+   * @return Google_Service_Mirror_AttachmentsListResponse
    */
   public function listTimelineAttachments($itemId, $optParams = array())
   {
     $params = array('itemId' => $itemId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Mirror_AttachmentsListResponse");
+    return $this->call('list', array($params), "Google_Service_Mirror_AttachmentsListResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Mirror_Account extends Powerform_Google_Collection
+class Google_Service_Mirror_Account extends Google_Collection
 {
   protected $collection_key = 'userData';
   protected $internal_gapi_mappings = array(
   );
-  protected $authTokensType = 'Powerform_Google_Service_Mirror_AuthToken';
+  protected $authTokensType = 'Google_Service_Mirror_AuthToken';
   protected $authTokensDataType = 'array';
   public $features;
   public $password;
-  protected $userDataType = 'Powerform_Google_Service_Mirror_UserData';
+  protected $userDataType = 'Google_Service_Mirror_UserData';
   protected $userDataDataType = 'array';
 
 
@@ -878,7 +878,7 @@ class Powerform_Google_Service_Mirror_Account extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Mirror_Attachment extends Powerform_Google_Model
+class Google_Service_Mirror_Attachment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -922,12 +922,12 @@ class Powerform_Google_Service_Mirror_Attachment extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Mirror_AttachmentsListResponse extends Powerform_Google_Collection
+class Google_Service_Mirror_AttachmentsListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Mirror_Attachment';
+  protected $itemsType = 'Google_Service_Mirror_Attachment';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -950,7 +950,7 @@ class Powerform_Google_Service_Mirror_AttachmentsListResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Mirror_AuthToken extends Powerform_Google_Model
+class Google_Service_Mirror_AuthToken extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -976,7 +976,7 @@ class Powerform_Google_Service_Mirror_AuthToken extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Mirror_Command extends Powerform_Google_Model
+class Google_Service_Mirror_Command extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -993,12 +993,12 @@ class Powerform_Google_Service_Mirror_Command extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Mirror_Contact extends Powerform_Google_Collection
+class Google_Service_Mirror_Contact extends Google_Collection
 {
   protected $collection_key = 'sharingFeatures';
   protected $internal_gapi_mappings = array(
   );
-  protected $acceptCommandsType = 'Powerform_Google_Service_Mirror_Command';
+  protected $acceptCommandsType = 'Google_Service_Mirror_Command';
   protected $acceptCommandsDataType = 'array';
   public $acceptTypes;
   public $displayName;
@@ -1111,12 +1111,12 @@ class Powerform_Google_Service_Mirror_Contact extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Mirror_ContactsListResponse extends Powerform_Google_Collection
+class Google_Service_Mirror_ContactsListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Mirror_Contact';
+  protected $itemsType = 'Google_Service_Mirror_Contact';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1139,7 +1139,7 @@ class Powerform_Google_Service_Mirror_ContactsListResponse extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Mirror_Location extends Powerform_Google_Model
+class Google_Service_Mirror_Location extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1219,12 +1219,12 @@ class Powerform_Google_Service_Mirror_Location extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Mirror_LocationsListResponse extends Powerform_Google_Collection
+class Google_Service_Mirror_LocationsListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Mirror_Location';
+  protected $itemsType = 'Google_Service_Mirror_Location';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1247,7 +1247,7 @@ class Powerform_Google_Service_Mirror_LocationsListResponse extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Mirror_MenuItem extends Powerform_Google_Collection
+class Google_Service_Mirror_MenuItem extends Google_Collection
 {
   protected $collection_key = 'values';
   protected $internal_gapi_mappings = array(
@@ -1258,7 +1258,7 @@ class Powerform_Google_Service_Mirror_MenuItem extends Powerform_Google_Collecti
   public $id;
   public $payload;
   public $removeWhenSelected;
-  protected $valuesType = 'Powerform_Google_Service_Mirror_MenuValue';
+  protected $valuesType = 'Google_Service_Mirror_MenuValue';
   protected $valuesDataType = 'array';
 
 
@@ -1312,7 +1312,7 @@ class Powerform_Google_Service_Mirror_MenuItem extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Mirror_MenuValue extends Powerform_Google_Model
+class Google_Service_Mirror_MenuValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1347,7 +1347,7 @@ class Powerform_Google_Service_Mirror_MenuValue extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Mirror_Notification extends Powerform_Google_Collection
+class Google_Service_Mirror_Notification extends Google_Collection
 {
   protected $collection_key = 'userActions';
   protected $internal_gapi_mappings = array(
@@ -1355,7 +1355,7 @@ class Powerform_Google_Service_Mirror_Notification extends Powerform_Google_Coll
   public $collection;
   public $itemId;
   public $operation;
-  protected $userActionsType = 'Powerform_Google_Service_Mirror_UserAction';
+  protected $userActionsType = 'Google_Service_Mirror_UserAction';
   protected $userActionsDataType = 'array';
   public $userToken;
   public $verifyToken;
@@ -1411,7 +1411,7 @@ class Powerform_Google_Service_Mirror_Notification extends Powerform_Google_Coll
   }
 }
 
-class Powerform_Google_Service_Mirror_NotificationConfig extends Powerform_Google_Model
+class Google_Service_Mirror_NotificationConfig extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1437,7 +1437,7 @@ class Powerform_Google_Service_Mirror_NotificationConfig extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Mirror_Setting extends Powerform_Google_Model
+class Google_Service_Mirror_Setting extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1472,7 +1472,7 @@ class Powerform_Google_Service_Mirror_Setting extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Mirror_Subscription extends Powerform_Google_Collection
+class Google_Service_Mirror_Subscription extends Google_Collection
 {
   protected $collection_key = 'operation';
   protected $internal_gapi_mappings = array(
@@ -1481,7 +1481,7 @@ class Powerform_Google_Service_Mirror_Subscription extends Powerform_Google_Coll
   public $collection;
   public $id;
   public $kind;
-  protected $notificationType = 'Powerform_Google_Service_Mirror_Notification';
+  protected $notificationType = 'Google_Service_Mirror_Notification';
   protected $notificationDataType = '';
   public $operation;
   public $updated;
@@ -1521,7 +1521,7 @@ class Powerform_Google_Service_Mirror_Subscription extends Powerform_Google_Coll
   {
     return $this->kind;
   }
-  public function setNotification(Powerform_Google_Service_Mirror_Notification $notification)
+  public function setNotification(Google_Service_Mirror_Notification $notification)
   {
     $this->notification = $notification;
   }
@@ -1563,12 +1563,12 @@ class Powerform_Google_Service_Mirror_Subscription extends Powerform_Google_Coll
   }
 }
 
-class Powerform_Google_Service_Mirror_SubscriptionsListResponse extends Powerform_Google_Collection
+class Google_Service_Mirror_SubscriptionsListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Mirror_Subscription';
+  protected $itemsType = 'Google_Service_Mirror_Subscription';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1591,17 +1591,17 @@ class Powerform_Google_Service_Mirror_SubscriptionsListResponse extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Mirror_TimelineItem extends Powerform_Google_Collection
+class Google_Service_Mirror_TimelineItem extends Google_Collection
 {
   protected $collection_key = 'recipients';
   protected $internal_gapi_mappings = array(
   );
-  protected $attachmentsType = 'Powerform_Google_Service_Mirror_Attachment';
+  protected $attachmentsType = 'Google_Service_Mirror_Attachment';
   protected $attachmentsDataType = 'array';
   public $bundleId;
   public $canonicalUrl;
   public $created;
-  protected $creatorType = 'Powerform_Google_Service_Mirror_Contact';
+  protected $creatorType = 'Google_Service_Mirror_Contact';
   protected $creatorDataType = '';
   public $displayTime;
   public $etag;
@@ -1612,14 +1612,14 @@ class Powerform_Google_Service_Mirror_TimelineItem extends Powerform_Google_Coll
   public $isDeleted;
   public $isPinned;
   public $kind;
-  protected $locationType = 'Powerform_Google_Service_Mirror_Location';
+  protected $locationType = 'Google_Service_Mirror_Location';
   protected $locationDataType = '';
-  protected $menuItemsType = 'Powerform_Google_Service_Mirror_MenuItem';
+  protected $menuItemsType = 'Google_Service_Mirror_MenuItem';
   protected $menuItemsDataType = 'array';
-  protected $notificationType = 'Powerform_Google_Service_Mirror_NotificationConfig';
+  protected $notificationType = 'Google_Service_Mirror_NotificationConfig';
   protected $notificationDataType = '';
   public $pinScore;
-  protected $recipientsType = 'Powerform_Google_Service_Mirror_Contact';
+  protected $recipientsType = 'Google_Service_Mirror_Contact';
   protected $recipientsDataType = 'array';
   public $selfLink;
   public $sourceItemId;
@@ -1662,7 +1662,7 @@ class Powerform_Google_Service_Mirror_TimelineItem extends Powerform_Google_Coll
   {
     return $this->created;
   }
-  public function setCreator(Powerform_Google_Service_Mirror_Contact $creator)
+  public function setCreator(Google_Service_Mirror_Contact $creator)
   {
     $this->creator = $creator;
   }
@@ -1742,7 +1742,7 @@ class Powerform_Google_Service_Mirror_TimelineItem extends Powerform_Google_Coll
   {
     return $this->kind;
   }
-  public function setLocation(Powerform_Google_Service_Mirror_Location $location)
+  public function setLocation(Google_Service_Mirror_Location $location)
   {
     $this->location = $location;
   }
@@ -1758,7 +1758,7 @@ class Powerform_Google_Service_Mirror_TimelineItem extends Powerform_Google_Coll
   {
     return $this->menuItems;
   }
-  public function setNotification(Powerform_Google_Service_Mirror_NotificationConfig $notification)
+  public function setNotification(Google_Service_Mirror_NotificationConfig $notification)
   {
     $this->notification = $notification;
   }
@@ -1840,12 +1840,12 @@ class Powerform_Google_Service_Mirror_TimelineItem extends Powerform_Google_Coll
   }
 }
 
-class Powerform_Google_Service_Mirror_TimelineListResponse extends Powerform_Google_Collection
+class Google_Service_Mirror_TimelineListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Mirror_TimelineItem';
+  protected $itemsType = 'Google_Service_Mirror_TimelineItem';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1877,7 +1877,7 @@ class Powerform_Google_Service_Mirror_TimelineListResponse extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Mirror_UserAction extends Powerform_Google_Model
+class Google_Service_Mirror_UserAction extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1903,7 +1903,7 @@ class Powerform_Google_Service_Mirror_UserAction extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Mirror_UserData extends Powerform_Google_Model
+class Google_Service_Mirror_UserData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

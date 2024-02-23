@@ -14,8 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 abstract class Powerform_Template {
-	protected $fields = array();
-    protected $settings = array();
 
 	/*
 	 * Template fields
@@ -32,9 +30,9 @@ abstract class Powerform_Template {
 	public $options = array();
 
 	public function __construct() {
-		$this->fields   = $this->fields();
+		$this->fields = $this->fields();
 		$this->settings = $this->settings();
-		$this->options  = $this->defaults();
+		$this->options = $this->defaults();
 	}
 
 	/**
@@ -70,10 +68,8 @@ abstract class Powerform_Template {
 	 *
 	 * @return mixed|string
 	 */
-	public function get_option( $option, $default = '' ) {
-		if ( isset( $this->options[ $option ] ) ) {
-			return $this->options[ $option ];
-		}
+	 public function get_option( $option, $default = '' ) {
+		if( isset( $this->options[ $option ] ) ) return $this->options[ $option ];
 		return $default;
-	}
+	 }
 }

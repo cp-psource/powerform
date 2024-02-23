@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_YouTubeAnalytics extends Powerform_Google_Service
+class Google_Service_YouTubeAnalytics extends Google_Service
 {
   /** Manage your YouTube account. */
   const YOUTUBE =
@@ -49,14 +49,14 @@ class Powerform_Google_Service_YouTubeAnalytics extends Powerform_Google_Service
   public $groupItems;
   public $groups;
   public $reports;
-  
+
 
   /**
    * Constructs the internal representation of the YouTubeAnalytics service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -64,7 +64,7 @@ class Powerform_Google_Service_YouTubeAnalytics extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'youtubeAnalytics';
 
-    $this->batchReportDefinitions = new Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinitions_Resource(
+    $this->batchReportDefinitions = new Google_Service_YouTubeAnalytics_BatchReportDefinitions_Resource(
         $this,
         $this->serviceName,
         'batchReportDefinitions',
@@ -84,7 +84,7 @@ class Powerform_Google_Service_YouTubeAnalytics extends Powerform_Google_Service
           )
         )
     );
-    $this->batchReports = new Powerform_Google_Service_YouTubeAnalytics_BatchReports_Resource(
+    $this->batchReports = new Google_Service_YouTubeAnalytics_BatchReports_Resource(
         $this,
         $this->serviceName,
         'batchReports',
@@ -109,7 +109,7 @@ class Powerform_Google_Service_YouTubeAnalytics extends Powerform_Google_Service
           )
         )
     );
-    $this->groupItems = new Powerform_Google_Service_YouTubeAnalytics_GroupItems_Resource(
+    $this->groupItems = new Google_Service_YouTubeAnalytics_GroupItems_Resource(
         $this,
         $this->serviceName,
         'groupItems',
@@ -156,7 +156,7 @@ class Powerform_Google_Service_YouTubeAnalytics extends Powerform_Google_Service
           )
         )
     );
-    $this->groups = new Powerform_Google_Service_YouTubeAnalytics_Groups_Resource(
+    $this->groups = new Google_Service_YouTubeAnalytics_Groups_Resource(
         $this,
         $this->serviceName,
         'groups',
@@ -219,7 +219,7 @@ class Powerform_Google_Service_YouTubeAnalytics extends Powerform_Google_Service
           )
         )
     );
-    $this->reports = new Powerform_Google_Service_YouTubeAnalytics_Reports_Resource(
+    $this->reports = new Google_Service_YouTubeAnalytics_Reports_Resource(
         $this,
         $this->serviceName,
         'reports',
@@ -286,11 +286,11 @@ class Powerform_Google_Service_YouTubeAnalytics extends Powerform_Google_Service
  * The "batchReportDefinitions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeAnalyticsService = new Powerform_Google_Service_YouTubeAnalytics(...);
+ *   $youtubeAnalyticsService = new Google_Service_YouTubeAnalytics(...);
  *   $batchReportDefinitions = $youtubeAnalyticsService->batchReportDefinitions;
  *  </code>
  */
-class Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinitions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTubeAnalytics_BatchReportDefinitions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -300,13 +300,13 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinitions_Resource 
    * @param string $onBehalfOfContentOwner The onBehalfOfContentOwner parameter
    * identifies the content owner that the user is acting on behalf of.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinitionList
+   * @return Google_Service_YouTubeAnalytics_BatchReportDefinitionList
    */
   public function listBatchReportDefinitions($onBehalfOfContentOwner, $optParams = array())
   {
     $params = array('onBehalfOfContentOwner' => $onBehalfOfContentOwner);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinitionList");
+    return $this->call('list', array($params), "Google_Service_YouTubeAnalytics_BatchReportDefinitionList");
   }
 }
 
@@ -314,11 +314,11 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinitions_Resource 
  * The "batchReports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeAnalyticsService = new Powerform_Google_Service_YouTubeAnalytics(...);
+ *   $youtubeAnalyticsService = new Google_Service_YouTubeAnalytics(...);
  *   $batchReports = $youtubeAnalyticsService->batchReports;
  *  </code>
  */
-class Powerform_Google_Service_YouTubeAnalytics_BatchReports_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTubeAnalytics_BatchReports_Resource extends Google_Service_Resource
 {
 
   /**
@@ -330,13 +330,13 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReports_Resource extends Po
    * @param string $onBehalfOfContentOwner The onBehalfOfContentOwner parameter
    * identifies the content owner that the user is acting on behalf of.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTubeAnalytics_BatchReportList
+   * @return Google_Service_YouTubeAnalytics_BatchReportList
    */
   public function listBatchReports($batchReportDefinitionId, $onBehalfOfContentOwner, $optParams = array())
   {
     $params = array('batchReportDefinitionId' => $batchReportDefinitionId, 'onBehalfOfContentOwner' => $onBehalfOfContentOwner);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTubeAnalytics_BatchReportList");
+    return $this->call('list', array($params), "Google_Service_YouTubeAnalytics_BatchReportList");
   }
 }
 
@@ -344,11 +344,11 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReports_Resource extends Po
  * The "groupItems" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeAnalyticsService = new Powerform_Google_Service_YouTubeAnalytics(...);
+ *   $youtubeAnalyticsService = new Google_Service_YouTubeAnalytics(...);
  *   $groupItems = $youtubeAnalyticsService->groupItems;
  *  </code>
  */
-class Powerform_Google_Service_YouTubeAnalytics_GroupItems_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTubeAnalytics_GroupItems_Resource extends Google_Service_Resource
 {
 
   /**
@@ -381,7 +381,7 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupItems_Resource extends Powe
   /**
    * Creates a group item. (groupItems.insert)
    *
-   * @param Powerform_Google_GroupItem $postBody
+   * @param Google_GroupItem $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -396,13 +396,13 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupItems_Resource extends Powe
    * authentication credentials for each individual channel. The CMS account that
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
-   * @return Powerform_Google_Service_YouTubeAnalytics_GroupItem
+   * @return Google_Service_YouTubeAnalytics_GroupItem
    */
-  public function insert(Powerform_Google_Service_YouTubeAnalytics_GroupItem $postBody, $optParams = array())
+  public function insert(Google_Service_YouTubeAnalytics_GroupItem $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTubeAnalytics_GroupItem");
+    return $this->call('insert', array($params), "Google_Service_YouTubeAnalytics_GroupItem");
   }
 
   /**
@@ -425,13 +425,13 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupItems_Resource extends Powe
    * authentication credentials for each individual channel. The CMS account that
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
-   * @return Powerform_Google_Service_YouTubeAnalytics_GroupItemListResponse
+   * @return Google_Service_YouTubeAnalytics_GroupItemListResponse
    */
   public function listGroupItems($groupId, $optParams = array())
   {
     $params = array('groupId' => $groupId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTubeAnalytics_GroupItemListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTubeAnalytics_GroupItemListResponse");
   }
 }
 
@@ -439,11 +439,11 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupItems_Resource extends Powe
  * The "groups" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeAnalyticsService = new Powerform_Google_Service_YouTubeAnalytics(...);
+ *   $youtubeAnalyticsService = new Google_Service_YouTubeAnalytics(...);
  *   $groups = $youtubeAnalyticsService->groups;
  *  </code>
  */
-class Powerform_Google_Service_YouTubeAnalytics_Groups_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTubeAnalytics_Groups_Resource extends Google_Service_Resource
 {
 
   /**
@@ -476,7 +476,7 @@ class Powerform_Google_Service_YouTubeAnalytics_Groups_Resource extends Powerfor
   /**
    * Creates a group. (groups.insert)
    *
-   * @param Powerform_Google_Group $postBody
+   * @param Google_Group $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -491,13 +491,13 @@ class Powerform_Google_Service_YouTubeAnalytics_Groups_Resource extends Powerfor
    * authentication credentials for each individual channel. The CMS account that
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
-   * @return Powerform_Google_Service_YouTubeAnalytics_Group
+   * @return Google_Service_YouTubeAnalytics_Group
    */
-  public function insert(Powerform_Google_Service_YouTubeAnalytics_Group $postBody, $optParams = array())
+  public function insert(Google_Service_YouTubeAnalytics_Group $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTubeAnalytics_Group");
+    return $this->call('insert', array($params), "Google_Service_YouTubeAnalytics_Group");
   }
 
   /**
@@ -527,20 +527,20 @@ class Powerform_Google_Service_YouTubeAnalytics_Groups_Resource extends Powerfor
    * @opt_param string pageToken The pageToken parameter identifies a specific
    * page in the result set that should be returned. In an API response, the
    * nextPageToken property identifies the next page that can be retrieved.
-   * @return Powerform_Google_Service_YouTubeAnalytics_GroupListResponse
+   * @return Google_Service_YouTubeAnalytics_GroupListResponse
    */
   public function listGroups($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTubeAnalytics_GroupListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTubeAnalytics_GroupListResponse");
   }
 
   /**
    * Modifies a group. For example, you could change a group's title.
    * (groups.update)
    *
-   * @param Powerform_Google_Group $postBody
+   * @param Google_Group $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -555,13 +555,13 @@ class Powerform_Google_Service_YouTubeAnalytics_Groups_Resource extends Powerfor
    * authentication credentials for each individual channel. The CMS account that
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
-   * @return Powerform_Google_Service_YouTubeAnalytics_Group
+   * @return Google_Service_YouTubeAnalytics_Group
    */
-  public function update(Powerform_Google_Service_YouTubeAnalytics_Group $postBody, $optParams = array())
+  public function update(Google_Service_YouTubeAnalytics_Group $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTubeAnalytics_Group");
+    return $this->call('update', array($params), "Google_Service_YouTubeAnalytics_Group");
   }
 }
 
@@ -569,11 +569,11 @@ class Powerform_Google_Service_YouTubeAnalytics_Groups_Resource extends Powerfor
  * The "reports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeAnalyticsService = new Powerform_Google_Service_YouTubeAnalytics(...);
+ *   $youtubeAnalyticsService = new Google_Service_YouTubeAnalytics(...);
  *   $reports = $youtubeAnalyticsService->reports;
  *  </code>
  */
-class Powerform_Google_Service_YouTubeAnalytics_Reports_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTubeAnalytics_Reports_Resource extends Google_Service_Resource
 {
 
   /**
@@ -620,30 +620,30 @@ class Powerform_Google_Service_YouTubeAnalytics_Reports_Resource extends Powerfo
    * @opt_param int start-index An index of the first entity to retrieve. Use this
    * parameter as a pagination mechanism along with the max-results parameter
    * (one-based, inclusive).
-   * @return Powerform_Google_Service_YouTubeAnalytics_ResultTable
+   * @return Google_Service_YouTubeAnalytics_ResultTable
    */
   public function query($ids, $startDate, $endDate, $metrics, $optParams = array())
   {
     $params = array('ids' => $ids, 'start-date' => $startDate, 'end-date' => $endDate, 'metrics' => $metrics);
     $params = array_merge($params, $optParams);
-    return $this->call('query', array($params), "Powerform_Google_Service_YouTubeAnalytics_ResultTable");
+    return $this->call('query', array($params), "Google_Service_YouTubeAnalytics_ResultTable");
   }
 }
 
 
 
 
-class Powerform_Google_Service_YouTubeAnalytics_BatchReport extends Powerform_Google_Collection
+class Google_Service_YouTubeAnalytics_BatchReport extends Google_Collection
 {
   protected $collection_key = 'outputs';
   protected $internal_gapi_mappings = array(
   );
   public $id;
   public $kind;
-  protected $outputsType = 'Powerform_Google_Service_YouTubeAnalytics_BatchReportOutputs';
+  protected $outputsType = 'Google_Service_YouTubeAnalytics_BatchReportOutputs';
   protected $outputsDataType = 'array';
   public $reportId;
-  protected $timeSpanType = 'Powerform_Google_Service_YouTubeAnalytics_BatchReportTimeSpan';
+  protected $timeSpanType = 'Google_Service_YouTubeAnalytics_BatchReportTimeSpan';
   protected $timeSpanDataType = '';
   public $timeUpdated;
 
@@ -680,7 +680,7 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReport extends Powerform_Go
   {
     return $this->reportId;
   }
-  public function setTimeSpan(Powerform_Google_Service_YouTubeAnalytics_BatchReportTimeSpan $timeSpan)
+  public function setTimeSpan(Google_Service_YouTubeAnalytics_BatchReportTimeSpan $timeSpan)
   {
     $this->timeSpan = $timeSpan;
   }
@@ -698,7 +698,7 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReport extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinition extends Powerform_Google_Model
+class Google_Service_YouTubeAnalytics_BatchReportDefinition extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -751,12 +751,12 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinition extends Po
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinitionList extends Powerform_Google_Collection
+class Google_Service_YouTubeAnalytics_BatchReportDefinitionList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinition';
+  protected $itemsType = 'Google_Service_YouTubeAnalytics_BatchReportDefinition';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -779,12 +779,12 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReportDefinitionList extend
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_BatchReportList extends Powerform_Google_Collection
+class Google_Service_YouTubeAnalytics_BatchReportList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_YouTubeAnalytics_BatchReport';
+  protected $itemsType = 'Google_Service_YouTubeAnalytics_BatchReport';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -807,7 +807,7 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReportList extends Powerfor
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_BatchReportOutputs extends Powerform_Google_Model
+class Google_Service_YouTubeAnalytics_BatchReportOutputs extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -842,7 +842,7 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReportOutputs extends Power
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_BatchReportTimeSpan extends Powerform_Google_Model
+class Google_Service_YouTubeAnalytics_BatchReportTimeSpan extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -868,20 +868,20 @@ class Powerform_Google_Service_YouTubeAnalytics_BatchReportTimeSpan extends Powe
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_Group extends Powerform_Google_Model
+class Google_Service_YouTubeAnalytics_Group extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $contentDetailsType = 'Powerform_Google_Service_YouTubeAnalytics_GroupContentDetails';
+  protected $contentDetailsType = 'Google_Service_YouTubeAnalytics_GroupContentDetails';
   protected $contentDetailsDataType = '';
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTubeAnalytics_GroupSnippet';
+  protected $snippetType = 'Google_Service_YouTubeAnalytics_GroupSnippet';
   protected $snippetDataType = '';
 
 
-  public function setContentDetails(Powerform_Google_Service_YouTubeAnalytics_GroupContentDetails $contentDetails)
+  public function setContentDetails(Google_Service_YouTubeAnalytics_GroupContentDetails $contentDetails)
   {
     $this->contentDetails = $contentDetails;
   }
@@ -913,7 +913,7 @@ class Powerform_Google_Service_YouTubeAnalytics_Group extends Powerform_Google_M
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTubeAnalytics_GroupSnippet $snippet)
+  public function setSnippet(Google_Service_YouTubeAnalytics_GroupSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -923,7 +923,7 @@ class Powerform_Google_Service_YouTubeAnalytics_Group extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_GroupContentDetails extends Powerform_Google_Model
+class Google_Service_YouTubeAnalytics_GroupContentDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -949,7 +949,7 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupContentDetails extends Powe
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_GroupItem extends Powerform_Google_Model
+class Google_Service_YouTubeAnalytics_GroupItem extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -957,7 +957,7 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupItem extends Powerform_Goog
   public $groupId;
   public $id;
   public $kind;
-  protected $resourceType = 'Powerform_Google_Service_YouTubeAnalytics_GroupItemResource';
+  protected $resourceType = 'Google_Service_YouTubeAnalytics_GroupItemResource';
   protected $resourceDataType = '';
 
 
@@ -993,7 +993,7 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupItem extends Powerform_Goog
   {
     return $this->kind;
   }
-  public function setResource(Powerform_Google_Service_YouTubeAnalytics_GroupItemResource $resource)
+  public function setResource(Google_Service_YouTubeAnalytics_GroupItemResource $resource)
   {
     $this->resource = $resource;
   }
@@ -1003,13 +1003,13 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupItem extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_GroupItemListResponse extends Powerform_Google_Collection
+class Google_Service_YouTubeAnalytics_GroupItemListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_YouTubeAnalytics_GroupItem';
+  protected $itemsType = 'Google_Service_YouTubeAnalytics_GroupItem';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1040,7 +1040,7 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupItemListResponse extends Po
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_GroupItemResource extends Powerform_Google_Model
+class Google_Service_YouTubeAnalytics_GroupItemResource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1066,13 +1066,13 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupItemResource extends Powerf
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_GroupListResponse extends Powerform_Google_Collection
+class Google_Service_YouTubeAnalytics_GroupListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_YouTubeAnalytics_Group';
+  protected $itemsType = 'Google_Service_YouTubeAnalytics_Group';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1112,7 +1112,7 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupListResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_GroupSnippet extends Powerform_Google_Model
+class Google_Service_YouTubeAnalytics_GroupSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1138,12 +1138,12 @@ class Powerform_Google_Service_YouTubeAnalytics_GroupSnippet extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_ResultTable extends Powerform_Google_Collection
+class Google_Service_YouTubeAnalytics_ResultTable extends Google_Collection
 {
   protected $collection_key = 'rows';
   protected $internal_gapi_mappings = array(
   );
-  protected $columnHeadersType = 'Powerform_Google_Service_YouTubeAnalytics_ResultTableColumnHeaders';
+  protected $columnHeadersType = 'Google_Service_YouTubeAnalytics_ResultTableColumnHeaders';
   protected $columnHeadersDataType = 'array';
   public $kind;
   public $rows;
@@ -1175,7 +1175,7 @@ class Powerform_Google_Service_YouTubeAnalytics_ResultTable extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTubeAnalytics_ResultTableColumnHeaders extends Powerform_Google_Model
+class Google_Service_YouTubeAnalytics_ResultTableColumnHeaders extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

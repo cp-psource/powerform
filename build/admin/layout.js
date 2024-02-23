@@ -27,28 +27,27 @@ function copyToClipboard(e) {
                     var t = e(".sui-checkbox input:checked").map(function() { if (parseFloat(this.value)) return this.value }).get().join(",");
                     e('form[name="bulk-action-form"] input[name="ids"]').val(t)
                 }
-                "powerform-check-all-modules" !== e(this).attr("id") && e("#powerform-check-all-modules").prop("checked", !1)
-            }), e(".psource-can--hide").ready(function() { e(this).find(".psource-box-header").on("click", function() { e(this).closest(".psource-can--hide").toggleClass("psource-is--hidden") }) }), e(document).on("click", ".psource-open-entry", function(t) {
+            }), e(".wpmudev-can--hide").ready(function() { e(this).find(".wpmudev-box-header").on("click", function() { e(this).closest(".wpmudev-can--hide").toggleClass("wpmudev-is--hidden") }) }), e(document).on("click", ".wpmudev-open-entry", function(t) {
                 if ("checkbox" !== e(t.target).attr("type") && !e(t.target).hasClass("wpdui-icon-check")) {
                     t.preventDefault(), t.stopPropagation();
                     var i = e(this),
                         n = i.data("entry"),
                         a = e("#powerform-" + n),
-                        o = !0;
-                    a.hasClass("psource-is_open") && (o = !1), e(".psource-entries--result").removeClass("psource-is_open"), o && a.toggleClass("psource-is_open")
+                        s = !0;
+                    a.hasClass("wpmudev-is_open") && (s = !1), e(".wpmudev-entries--result").removeClass("wpmudev-is_open"), s && a.toggleClass("wpmudev-is_open")
                 }
-            }), e(".psource-result--menu").ready(function() {
-                e(this).find(".psource-button-action").on("click", function() {
-                    var t = e(this).next(".psource-menu");
-                    e(".psource-result--menu.psource-active").removeClass("psource-active"), e(".psource-button-action.psource-active").not(e(this)).removeClass("psource-active"), e(".psource-menu").not(t).addClass("psource-hidden"), e(this).toggleClass("psource-active"), t.toggleClass("psource-hidden")
+            }), e(".wpmudev-result--menu").ready(function() {
+                e(this).find(".wpmudev-button-action").on("click", function() {
+                    var t = e(this).next(".wpmudev-menu");
+                    e(".wpmudev-result--menu.wpmudev-active").removeClass("wpmudev-active"), e(".wpmudev-button-action.wpmudev-active").not(e(this)).removeClass("wpmudev-active"), e(".wpmudev-menu").not(t).addClass("wpmudev-hidden"), e(this).toggleClass("wpmudev-active"), t.toggleClass("wpmudev-hidden")
                 })
             }), e(document).ready(function() {
-                var t = e(".psource-list"),
-                    i = t.find(".psource-list-table"),
-                    n = i.find(".psource-table-body tr"),
+                var t = e(".wpmudev-list"),
+                    i = t.find(".wpmudev-list-table"),
+                    n = i.find(".wpmudev-table-body tr"),
                     a = n.length,
-                    o = a;
-                n.each(function() { e(this).find(".psource-body-menu").css("z-index", o), o-- })
+                    s = a;
+                n.each(function() { e(this).find(".wpmudev-body-menu").css("z-index", s), s-- })
             }), e(document).ready(function() {
                 e("body").on("change", ".sui-insert-variables select", function(t) {
                     var i = e(t.target),
@@ -56,19 +55,13 @@ function copyToClipboard(e) {
                     if (n) {
                         if (t.preventDefault(), e("#" + n).length > 0) {
                             var a = e("input#" + n + ",textarea#" + n),
-                                o = a.val();
-                            a.val(o + " " + i.val()), a.trigger("change", a.val())
+                                s = a.val();
+                            a.val(s + " " + i.val()), a.trigger("change", a.val())
                         }
                         return !1
                     }
-                }), e(".copy-clipboard").on("click", function(t) { t.preventDefault(), copyToClipboard(e(this).data("shortcode")), Powerform.Notification.open("success", Powerform.l10n.options.shortcode_copied, 4e3) }), e("body").on("click", ".delete-poll-submission", function(t) {
-                    var i = e(t.target),
-                        n = { action: "powerform_delete_poll_submissions", id: i.data("id"), _ajax_nonce: i.data("nonce") };
-                    i.addClass("sui-button-onload"), e.post({ url: Powerform.Data.ajaxUrl, type: "post", data: n }).done(function(e) { e.success && jQuery(".sui-poll-submission").addClass("sui-message").html("").html(e.data.html), Powerform.Popup.close(), _.isUndefined(e.data.notification) || _.isUndefined(e.data.notification.type) || _.isUndefined(e.data.notification.text) || _.isUndefined(e.data.notification.duration) || Powerform.Notification.open(e.data.notification.type, e.data.notification.text, e.data.notification.duration).done(function() {}) })
-                })
+                }), e(".copy-clipboard").on("click", function(t) { t.preventDefault(), copyToClipboard(e(this).data("shortcode")), Powerform.Notification.open("success", Powerform.l10n.options.shortcode_copied, 4e3) })
             })
-        }), e(window).on("load", function() { "undefined" == typeof Powerform || "powerform-entries" !== Powerform.Utils.get_url_param("page") || Powerform.Utils.get_url_param("form_type") || Powerform.Utils.get_url_param("form_id") || e(".show-submissions").trigger("click") }), e(window).on("pageshow", function(e) {
-            (e.persisted || void 0 !== window.performance && "back_forward" === window.performance.getEntriesByType("navigation")[0].type) && window.location.reload()
         })
     }()
 }(jQuery, document);

@@ -2,159 +2,180 @@
 
 /**
  * Class Powerform_Addon_Container
- * Container, der Addons enthält
+ * Container that holds addons
  *
  * @since 1.1
  */
 class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 
-    /**
-     * @since 1.1
-     * @var Powerform_Addon_Abstract[]
-     */
-    private $addons = array();
+	/**
+	 * @since 1.1
+	 * @var Powerform_Addon_Abstract[]
+	 */
+	private $addons = array();
 
-    /**
-     * @since 1.1
-     *
-     * @param mixed $offset
-     *
-     * @return bool
-     */
-    public function offsetExists($offset): bool {
-        return isset($this->addons[$offset]);
-    }
+	/**
+	 * @since 1.1
+	 *
+	 * @param mixed $offset
+	 *
+	 * @return bool
+	 */
+	public function offsetExists( $offset ) {
+		return isset( $this->addons[ $offset ] );
+	}
 
-    /**
-     * @since 1.1
-     *
-     * @param mixed $offset
-     *
-     * @return Powerform_Addon_Abstract|null
-     */
-    public function offsetGet($offset): ?Powerform_Addon_Abstract {
-        return $this->addons[$offset] ?? null;
-    }
+	/**
+	 * @since 1.1
+	 *
+	 * @param mixed $offset
+	 *
+	 * @return Powerform_Addon_Abstract|mixed|null
+	 */
+	public function offsetGet( $offset ) {
+		if ( isset( $this->addons[ $offset ] ) ) {
+			return $this->addons[ $offset ];
+		}
 
-    /**
-     * @since 1.1
-     *
-     * @param mixed $offset
-     * @param mixed $value
-     */
-    public function offsetSet($offset, $value): void {
-        $this->addons[$offset] = $value;
-    }
 
-    /**
-     * @since 1.1
-     *
-     * @param mixed $offset
-     */
-    public function offsetUnset($offset): void {
-        unset($this->addons[$offset]);
-    }
+		return null;
+	}
 
-    /**
-     * @since 1.1
-     *
-     * @return int
-     */
-    public function count(): int {
-        return count($this->addons);
-    }
+	/**
+	 * @since 1.1
+	 *
+	 * @param mixed $offset
+	 * @param mixed $value
+	 */
+	public function offsetSet( $offset, $value ) {
+		$this->addons[ $offset ] = $value;
+	}
 
-    /**
-     * @since 1.1
-     *
-     * @return array
-     */
-    public function get_slugs(): array {
-        return array_keys($this->addons);
-    }
+	/**
+	 * @param mixed $offset
+	 */
+	public function offsetUnset( $offset ) {
+		unset( $this->addons[ $offset ] );
+	}
 
-    /**
-     * @since 1.1
-     *
-     * @return array
-     */
-    public function to_grouped_array(): array {
-        $addons = array();
+	/**
+	 * Count elements of an object
+	 *
+	 * @link  http://php.net/manual/en/countable.count.php
+	 * @return int The custom count as an integer.
+	 * </p>
+	 * <p>
+	 * The return value is cast to an integer.
+	 * @since 1.1
+	 */
+	public function count() {
+		return count( $this->addons );
+	}
 
-        foreach ($this->addons as $slug => $addon_members) {
-            // force to offsetGet
-            // in case will added hook
-            $addon = $this[$slug];
-            // enable later when implemented
-            //  if ( ! $addon ) {
-            //  continue;
-            // }
-            $addons[$addon->get_slug()] = $addon->to_array();
-        }
+	/**
+	 * Get All registers slug of addons
+	 *
+	 * @since 1.1
+	 * @return array
+	 */
+	public function get_slugs() {
+		return array_keys( $this->addons );
+	}
 
-        return $addons;
-    }
+	public function to_grouped_array() {
+		$addons = array();
 
-    /**
-     * @since 1.1
-     *
-     * @return array
-     */
-    public function to_array(): array {
-        $addons = array();
+		foreach ( $this->addons as $slug => $addon_members ) {
+			// force to offsetGet
+			// in case will added hook
+			$addon = $this[ $slug ];
+			// enable later when implemented
+			//  if ( ! $addon ) {
+			//	continue;
+			// }
+			$addons[ $addon->get_slug() ] = $addon->to_array();
+		}
 
-        foreach ($this->addons as $slug => $addon_members) {
-            // force to offsetGet: enable when needed
-            // in case will added hook
-            $addon = $this[$slug];
-            // if ( ! $addon ) {
-            //  continue;
-            // }
+		return $addons;
+	}
 
-            $addons[$addon->get_slug()] = $addon->to_array();
-        }
+	/**
+	 * Return add-ons list as array
+	 *
+	 * @since 1.1
+	 *
+	 * @return array
+	 */
+	public function to_array() {
+		$addons = array();
 
-        return $addons;
-    }
+		foreach ( $this->addons as $slug => $addon_members ) {
+			// force to offsetGet: enable when needed
+			// in case will added hook
+			$addon = $this[ $slug ];
+			// if ( ! $addon ) {
+			// continue;
+			// }
 
-    /**
-     * @since 1.1
-     *
-     * @return mixed
-     */
-    public function current(): mixed {
-        return current($this->addons);
-    }
+			$addons[ $addon->get_slug() ] = $addon->to_array();
+		}
 
-    /**
-     * @since 1.1
-     */
-    public function next(): void {
-        next($this->addons);
-    }
+		return $addons;
+	}
 
-    /**
-     * @since 1.1
-     *
-     * @return mixed
-     */
-    public function key(): mixed {
-        return key($this->addons);
-    }
+	/**
+	 * Return the current element
+	 *
+	 * @link  http://php.net/manual/en/iterator.current.php
+	 * @return mixed Can return any type.
+	 * @since 1.1
+	 */
+	public function current() {
+		return current( $this->addons );
+	}
 
-    /**
-     * @since 1.1
-     *
-     * @return bool
-     */
-    public function valid(): bool {
-        return key($this->addons) !== null;
-    }
+	/**
+	 * Move forward to next element
+	 *
+	 * @link  http://php.net/manual/en/iterator.next.php
+	 * @return void Any returned value is ignored.
+	 * @since 1.1
+	 */
+	public function next() {
+		next( $this->addons );
+	}
 
-    /**
-     * @since 1.1
-     */
-    public function rewind(): void {
-        reset($this->addons);
-    }
+	/**
+	 * Return the key of the current element
+	 *
+	 * @link  http://php.net/manual/en/iterator.key.php
+	 * @return mixed scalar on success, or null on failure.
+	 * @since 1.1
+	 */
+	public function key() {
+		return key( $this->addons );
+	}
+
+	/**
+	 * Checks if current position is valid
+	 *
+	 * @link  http://php.net/manual/en/iterator.valid.php
+	 * @return boolean The return value will be casted to boolean and then evaluated.
+	 * Returns true on success or false on failure.
+	 * @since 1.1
+	 */
+	public function valid() {
+		return key( $this->addons ) !== null;
+	}
+
+	/**
+	 * Rewind the Iterator to the first element
+	 *
+	 * @link  http://php.net/manual/en/iterator.rewind.php
+	 * @return void Any returned value is ignored.
+	 * @since 1.1
+	 */
+	public function rewind() {
+		reset( $this->addons );
+	}
 }

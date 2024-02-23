@@ -26,21 +26,21 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Groupssettings extends Powerform_Google_Service
+class Google_Service_Groupssettings extends Google_Service
 {
   /** View and manage the settings of a Google Apps Group. */
   const APPS_GROUPS_SETTINGS =
       "https://www.googleapis.com/auth/apps.groups.settings";
 
   public $groups;
-  
+
 
   /**
    * Constructs the internal representation of the Groupssettings service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -48,7 +48,7 @@ class Powerform_Google_Service_Groupssettings extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'groupssettings';
 
-    $this->groups = new Powerform_Google_Service_Groupssettings_Groups_Resource(
+    $this->groups = new Google_Service_Groupssettings_Groups_Resource(
         $this,
         $this->serviceName,
         'groups',
@@ -96,11 +96,11 @@ class Powerform_Google_Service_Groupssettings extends Powerform_Google_Service
  * The "groups" collection of methods.
  * Typical usage is:
  *  <code>
- *   $groupssettingsService = new Powerform_Google_Service_Groupssettings(...);
+ *   $groupssettingsService = new Google_Service_Groupssettings(...);
  *   $groups = $groupssettingsService->groups;
  *  </code>
  */
-class Powerform_Google_Service_Groupssettings_Groups_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Groupssettings_Groups_Resource extends Google_Service_Resource
 {
 
   /**
@@ -108,13 +108,13 @@ class Powerform_Google_Service_Groupssettings_Groups_Resource extends Powerform_
    *
    * @param string $groupUniqueId The resource ID
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Groupssettings_Groups
+   * @return Google_Service_Groupssettings_Groups
    */
   public function get($groupUniqueId, $optParams = array())
   {
     $params = array('groupUniqueId' => $groupUniqueId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Groupssettings_Groups");
+    return $this->call('get', array($params), "Google_Service_Groupssettings_Groups");
   }
 
   /**
@@ -122,37 +122,37 @@ class Powerform_Google_Service_Groupssettings_Groups_Resource extends Powerform_
    * (groups.patch)
    *
    * @param string $groupUniqueId The resource ID
-   * @param Powerform_Google_Groups $postBody
+   * @param Google_Groups $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Groupssettings_Groups
+   * @return Google_Service_Groupssettings_Groups
    */
-  public function patch($groupUniqueId, Powerform_Google_Service_Groupssettings_Groups $postBody, $optParams = array())
+  public function patch($groupUniqueId, Google_Service_Groupssettings_Groups $postBody, $optParams = array())
   {
     $params = array('groupUniqueId' => $groupUniqueId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Groupssettings_Groups");
+    return $this->call('patch', array($params), "Google_Service_Groupssettings_Groups");
   }
 
   /**
    * Updates an existing resource. (groups.update)
    *
    * @param string $groupUniqueId The resource ID
-   * @param Powerform_Google_Groups $postBody
+   * @param Google_Groups $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Groupssettings_Groups
+   * @return Google_Service_Groupssettings_Groups
    */
-  public function update($groupUniqueId, Powerform_Google_Service_Groupssettings_Groups $postBody, $optParams = array())
+  public function update($groupUniqueId, Google_Service_Groupssettings_Groups $postBody, $optParams = array())
   {
     $params = array('groupUniqueId' => $groupUniqueId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Groupssettings_Groups");
+    return $this->call('update', array($params), "Google_Service_Groupssettings_Groups");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Groupssettings_Groups extends Powerform_Google_Model
+class Google_Service_Groupssettings_Groups extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

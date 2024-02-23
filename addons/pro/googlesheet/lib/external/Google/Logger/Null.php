@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-if (!class_exists('Powerform_Google_Client')) {
+if (!class_exists('Google_Client')) {
   require_once dirname(__FILE__) . '/../autoload.php';
 }
 
@@ -24,7 +24,7 @@ if (!class_exists('Powerform_Google_Client')) {
  *
  * This logger simply discards all messages.
  */
-class Powerform_Google_Logger_Null extends Powerform_Google_Logger_Abstract
+class Google_Logger_Null extends Google_Logger_Abstract
 {
   /**
    * {@inheritdoc}

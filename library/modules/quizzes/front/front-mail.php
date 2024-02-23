@@ -62,32 +62,7 @@ class Powerform_Quiz_Front_Mail extends Powerform_Mail {
 	public function process_mail( $quiz, $data, Powerform_Form_Entry_Model $entry ) {
 		powerform_maybe_log( __METHOD__ );
 
-		$setting       = $quiz->settings;
-		$notifications = $quiz->notifications;
-		$lead_model    = null;
-
-		if ( ! isset( $data['current_url'] ) || empty( $data['current_url'] ) ) {
-			$data['current_url'] = powerform_get_current_url();
-		}
-
-		$has_lead = isset( $setting['hasLeads'] ) ? $setting['hasLeads'] : false;
-		if ( $has_lead ) {
-			$lead_id     = isset( $setting['leadsId'] ) ? $setting['leadsId'] : 0;
-			$lead_model  = Powerform_Custom_Form_Model::model()->load( $lead_id );
-			$form_fields = powerform_addon_format_form_fields( $lead_model );
-			$lead_data   = powerform_addons_lead_submitted_data( $form_fields, $entry );
-			$data        = array_merge( $data, $lead_data );
-			$files       = $this->get_lead_file_attachment( $lead_model, $data, $entry );
-			foreach ( $data as $element => $element_value ) {
-				if ( ! empty( $element_value ) && is_array( $element_value ) &&
-				     ( stripos( $element, 'time-' ) !== false || stripos( $element, 'date-' ) !== false ) ) {
-					foreach ( $element_value as $key => $value ) {
-						$key_value               = $element . '-' . $key;
-						$data[ $key_value ] = $value;
-					}
-				}
-			}
-		}
+		$setting = $quiz->settings;
 
 		/**
 		 * Message data filter
@@ -113,278 +88,237 @@ class Powerform_Quiz_Front_Mail extends Powerform_Mail {
 		 */
 		do_action( 'powerform_quiz_mail_before_send_mail', $this, $quiz, $data, $entry );
 
-		if ( ! empty( $notifications ) ) {
+		//Process admin mail
+		if ( $this->is_send_admin_mail( $setting ) ) {
 			$this->init( $_POST ); // WPCS: CSRF OK
-			//Process admin mail
-			foreach ( $notifications as $notification ) {
+			$recipients = $this->get_admin_email_recipients( $data, $quiz, $entry );
 
-				if ( $this->is_quiz_condition( $notification, $data, $quiz ) ) {
-					continue;
+			if ( ! empty( $recipients ) ) {
+				$subject = $setting['admin-email-title'];
+				$subject = powerform_replace_variables( $subject, $quiz->id, $data['current_url'] );
+				$subject = powerform_replace_quiz_form_data( $subject, $quiz, $data, $entry );
+
+				/**
+				 * Quiz admin mail subject filter
+				 *
+				 * @since 1.6.2
+				 *
+				 * @param string                     $subject
+				 * @param Powerform_Quiz_Form_Model $quiz the current quiz modal
+				 *
+				 * @return string $subject
+				 */
+				$subject = apply_filters( 'powerform_quiz_mail_admin_subject', $subject, $quiz, $data, $entry, $this );
+
+
+				$message = $setting['admin-email-editor'];
+				$message = powerform_replace_variables( $message, $quiz->id, $data['current_url'] );
+				$message = powerform_replace_quiz_form_data( $message, $quiz, $data, $entry );
+
+				/**
+				 * Quiz admin mail message filter
+				 *
+				 * @since 1.6.2
+				 *
+				 * @param string                     $message
+				 * @param Powerform_Quiz_Form_Model $quiz the current quiz
+				 * @param array                      $data
+				 * @param Powerform_Quiz_Front_Mail $this
+				 *
+				 * @return string $message
+				 */
+				$message = apply_filters( 'powerform_quiz_mail_admin_message', $message, $quiz, $data, $entry, $this );
+
+				$from_name = $this->sender_name;
+				if ( isset( $setting['admin-email-from-name'] ) && ! empty( $setting['admin-email-from-name'] ) ) {
+					$setting_from_name = $setting['admin-email-from-name'];
+					$setting_from_name = powerform_replace_variables( $setting_from_name, $quiz->id, $data['current_url'] );
+					$setting_from_name = powerform_replace_quiz_form_data( $setting_from_name, $quiz, $data, $entry );
+
+					if ( ! empty( $setting_from_name ) ) {
+						$from_name = $setting_from_name;
+					}
+				}
+				/**
+				 * Filter `From` name of mail that send to admin
+				 *
+				 * @since 1.6.2
+				 *
+				 * @param string                      $from_name
+				 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
+				 * @param array                       $data  POST data
+				 * @param Powerform_Form_Entry_Model $entry entry model
+				 * @param Powerform_Quiz_Front_Mail  $this  mail class
+				 */
+				$from_name = apply_filters( 'powerform_quiz_mail_admin_from_name', $from_name, $quiz, $data, $entry, $this );
+
+				$from_email = $this->sender_email;
+				if ( isset( $setting['admin-email-from-address'] ) && ! empty( $setting['admin-email-from-address'] ) ) {
+					$setting_from_address = $setting['admin-email-from-address'];
+					$setting_from_address = powerform_replace_variables( $setting_from_address, $quiz->id, $data['current_url'] );
+					$setting_from_address = powerform_replace_quiz_form_data( $setting_from_address, $quiz, $data, $entry );
+
+					if ( is_email( $setting_from_address ) ) {
+						$from_email = $setting_from_address;
+					}
+				}
+				/**
+				 * Filter `From` email address of mail that send to admin
+				 *
+				 * @since 1.6.2
+				 *
+				 * @param string                      $from_email
+				 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
+				 * @param array                       $data  POST data
+				 * @param Powerform_Form_Entry_Model $entry entry model
+				 * @param Powerform_Quiz_Front_Mail  $this  mail class
+				 */
+				$from_email = apply_filters( 'powerform_quiz_mail_admin_from_email', $from_email, $quiz, $data, $entry, $this );
+
+				$reply_to_address = '';
+				if ( isset( $setting['admin-email-reply-to-address'] ) && ! empty( $setting['admin-email-reply-to-address'] ) ) {
+					$setting_reply_to_address = $setting['admin-email-reply-to-address'];
+					$setting_reply_to_address = powerform_replace_variables( $setting_reply_to_address, $quiz->id, $data['current_url'] );
+					$setting_reply_to_address = powerform_replace_quiz_form_data( $setting_reply_to_address, $quiz, $data, $entry );
+
+					if ( is_email( $setting_reply_to_address ) ) {
+						$reply_to_address = $setting_reply_to_address;
+					}
 				}
 
-				$recipients = $this->get_admin_email_recipients( $notification, $data, $quiz, $entry, $lead_model );
+				/**
+				 * Filter `Reply To` email address of mail that send to admin
+				 *
+				 * @since 1.6.2
+				 *
+				 * @param string                      $reply_to_address
+				 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
+				 * @param array                       $data  POST data
+				 * @param Powerform_Form_Entry_Model $entry entry model
+				 * @param Powerform_Quiz_Front_Mail  $this  mail class
+				 */
+				$reply_to_address = apply_filters( 'powerform_quiz_mail_admin_reply_to', $reply_to_address, $quiz, $data, $entry, $this );
 
-				if ( ! empty( $recipients ) ) {
-					$subject = '';
-					$message = '';
-					if ( isset( $notification['email-subject'] ) ) {
-						$subject = powerform_replace_variables( $notification['email-subject'], $quiz->id, $data['current_url'] );
-						$subject = powerform_replace_quiz_form_data( $subject, $quiz, $data, $entry );
-						if ( $has_lead ) {
-							$subject = powerform_replace_form_data( $subject, $data, $lead_model, $entry );
-							$subject = powerform_replace_custom_form_data( $subject, $lead_model, $data, $entry );
+				$cc_addresses = array();
+				if ( isset( $setting['admin-email-cc-address'] ) && ! empty( $setting['admin-email-cc-address'] ) && is_array( $setting['admin-email-cc-address'] ) ) {
+					$setting_cc_addresses = $setting['admin-email-cc-address'];
+
+					foreach ( $setting_cc_addresses as $key => $setting_cc_address ) {
+						$setting_cc_address = powerform_replace_variables( $setting_cc_address, $quiz->id, $data['current_url'] );
+						$setting_cc_address = powerform_replace_quiz_form_data( $setting_cc_address, $quiz, $data, $entry );
+						if ( is_email( $setting_cc_address ) ) {
+							$cc_addresses[] = $setting_cc_address;
 						}
 					}
-					/**
-					 * Quiz admin mail subject filter
-					 *
-					 * @since 1.6.2
-					 *
-					 * @param string                     $subject
-					 * @param Powerform_Quiz_Form_Model $quiz the current quiz modal
-					 *
-					 * @return string $subject
-					 */
-					$subject = apply_filters( 'powerform_quiz_mail_admin_subject', $subject, $quiz, $data, $entry, $this );
-
-					if ( isset( $notification['email-editor'] ) ) {
-						$message = powerform_replace_variables( $notification['email-editor'], $quiz->id, $data['current_url'] );
-						$message = powerform_replace_quiz_form_data( $message, $quiz, $data, $entry );
-						if ( $has_lead ) {
-							$message = powerform_replace_form_data( $message, $data, $lead_model, $entry );
-							$message = powerform_replace_custom_form_data( $message, $lead_model, $data, $entry );
-						}
-					}
-					/**
-					 * Quiz admin mail message filter
-					 *
-					 * @since 1.6.2
-					 *
-					 * @param string                     $message
-					 * @param Powerform_Quiz_Form_Model $quiz the current quiz
-					 * @param array                      $data
-					 * @param Powerform_Quiz_Front_Mail $this
-					 *
-					 * @return string $message
-					 */
-					$message = apply_filters( 'powerform_quiz_mail_admin_message', $message, $quiz, $data, $entry, $this );
-
-					$from_name = $this->sender_name;
-					if ( isset( $notification['from-name'] ) && ! empty( $notification['from-name'] ) ) {
-						$notification_from_name = $notification['from-name'];
-						$notification_from_name = powerform_replace_variables( $notification_from_name, $quiz->id, $data['current_url'] );
-						$notification_from_name = powerform_replace_quiz_form_data( $notification_from_name, $quiz, $data, $entry );
-						if ( $has_lead ) {
-							$notification_from_name = powerform_replace_form_data( $notification_from_name, $data, $lead_model, $entry );
-							$notification_from_name = powerform_replace_custom_form_data( $notification_from_name, $lead_model, $data, $entry );
-						}
-
-						if ( ! empty( $notification_from_name ) ) {
-							$from_name = $notification_from_name;
-						}
-					}
-					/**
-					 * Filter `From` name of mail that send to admin
-					 *
-					 * @since 1.6.2
-					 *
-					 * @param string                      $from_name
-					 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
-					 * @param array                       $data  POST data
-					 * @param Powerform_Form_Entry_Model $entry entry model
-					 * @param Powerform_Quiz_Front_Mail  $this  mail class
-					 */
-					$from_name = apply_filters( 'powerform_quiz_mail_admin_from_name', $from_name, $quiz, $data, $entry, $this );
-
-					$from_email = $this->sender_email;
-
-					if ( isset( $notification['form-email'] ) && ! empty( $notification['form-email'] ) ) {
-						$notification_from_address = $notification['form-email'];
-						$notification_from_address = powerform_replace_variables( $notification_from_address, $quiz->id, $data['current_url'] );
-						$notification_from_address = powerform_replace_quiz_form_data( $notification_from_address, $quiz, $data, $entry );
-						if ( $has_lead ) {
-							$notification_from_address = powerform_replace_form_data( $notification_from_address, $data, $lead_model, $entry );
-							$notification_from_address = powerform_replace_custom_form_data( $notification_from_address, $lead_model, $data, $entry );
-						}
-
-						if ( is_email( $notification_from_address ) ) {
-							$from_email = $notification_from_address;
-						}
-					}
-					/**
-					 * Filter `From` email address of mail that send to admin
-					 *
-					 * @since 1.6.2
-					 *
-					 * @param string                      $from_email
-					 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
-					 * @param array                       $data  POST data
-					 * @param Powerform_Form_Entry_Model $entry entry model
-					 * @param Powerform_Quiz_Front_Mail  $this  mail class
-					 */
-					$from_email = apply_filters( 'powerform_quiz_mail_admin_from_email', $from_email, $quiz, $data, $entry, $this );
-
-					$reply_to_address = '';
-					if ( isset( $notification['replyto-email'] ) && ! empty( $notification['replyto-email'] ) ) {
-						$notification_reply_to_address = $notification['replyto-email'];
-						$notification_reply_to_address = powerform_replace_variables( $notification_reply_to_address, $quiz->id, $data['current_url'] );
-						$notification_reply_to_address = powerform_replace_quiz_form_data( $notification_reply_to_address, $quiz, $data, $entry );
-						if ( $has_lead ) {
-							$notification_reply_to_address = powerform_replace_form_data( $notification_reply_to_address, $data, $lead_model, $entry );
-							$notification_reply_to_address = powerform_replace_custom_form_data( $notification_reply_to_address, $lead_model, $data, $entry );
-						}
-
-						if ( is_email( $notification_reply_to_address ) ) {
-							$reply_to_address = $notification_reply_to_address;
-						}
-					}
-
-					/**
-					 * Filter `Reply To` email address of mail that send to admin
-					 *
-					 * @since 1.6.2
-					 *
-					 * @param string                      $reply_to_address
-					 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
-					 * @param array                       $data  POST data
-					 * @param Powerform_Form_Entry_Model $entry entry model
-					 * @param Powerform_Quiz_Front_Mail  $this  mail class
-					 */
-					$reply_to_address = apply_filters( 'powerform_quiz_mail_admin_reply_to', $reply_to_address, $quiz, $data, $entry, $this );
-
-					$cc_addresses = array();
-					if ( isset( $notification['cc-email'] ) && ! empty( $notification['cc-email'] ) ) {
-						$notification_cc_addresses = array_map( 'trim', explode( ',', $notification['cc-email'] ) );
-						foreach ( $notification_cc_addresses as $key => $notification_cc_address ) {
-							$notification_cc_address = powerform_replace_variables( $notification_cc_address, $quiz->id, $data['current_url'] );
-							$notification_cc_address = powerform_replace_quiz_form_data( $notification_cc_address, $quiz, $data, $entry );
-							if ( $has_lead ) {
-								$notification_cc_address = powerform_replace_form_data( $notification_cc_address, $data, $lead_model, $entry );
-								$notification_cc_address = powerform_replace_custom_form_data( $notification_cc_address, $lead_model, $data, $entry );
-							}
-
-							if ( is_email( $notification_cc_address ) ) {
-								$cc_addresses[] = $notification_cc_address;
-							}
-						}
-
-					}
-					/**
-					 * Filter `CC` email addresses of mail that send to admin
-					 *
-					 * @since 1.6.2
-					 *
-					 * @param array                       $cc_addresses
-					 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
-					 * @param array                       $data  POST data
-					 * @param Powerform_Form_Entry_Model $entry entry model
-					 * @param Powerform_Quiz_Front_Mail  $this  mail class
-					 */
-					$cc_addresses = apply_filters( 'powerform_quiz_mail_admin_cc_addresses', $cc_addresses, $quiz, $data, $entry, $this );
-
-					$bcc_addresses = array();
-					if ( isset( $notification['bcc-email'] ) && ! empty( $notification['bcc-email'] ) ) {
-						$notification_bcc_addresses = array_map( 'trim', explode( ',', $notification['bcc-email'] ) );
-
-						foreach ( $notification_bcc_addresses as $key => $notification_bcc_address ) {
-							$notification_bcc_address = powerform_replace_variables( $notification_bcc_address, $quiz->id, $data['current_url'] );
-							$notification_bcc_address = powerform_replace_quiz_form_data( $notification_bcc_address, $quiz, $data, $entry );
-							if ( $has_lead ) {
-								$notification_bcc_address = powerform_replace_form_data( $notification_bcc_address, $data, $lead_model, $entry );
-								$notification_bcc_address = powerform_replace_custom_form_data( $notification_bcc_address, $lead_model, $data, $entry );
-							}
-							if ( is_email( $notification_bcc_address ) ) {
-								$bcc_addresses[] = $notification_bcc_address;
-							}
-						}
-					}
-					/**
-					 * Filter `BCC` email addresses of mail that send to admin
-					 *
-					 * @since 1.6.2
-					 *
-					 * @param array                       $bcc_addresses
-					 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
-					 * @param array                       $data  POST data
-					 * @param Powerform_Form_Entry_Model $entry entry model
-					 * @param Powerform_Quiz_Front_Mail  $this  mail class
-					 */
-					$bcc_addresses = apply_filters( 'powerform_quiz_mail_admin_bcc_addresses', $bcc_addresses, $quiz, $data, $entry, $this );
-
-					$content_type = $this->content_type;
-					/**
-					 * Filter `Content-Type` of mail that send to admin
-					 *
-					 * @since 1.6.2
-					 *
-					 * @param string                      $content_type
-					 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
-					 * @param array                       $data  POST data
-					 * @param Powerform_Form_Entry_Model $entry entry model
-					 * @param Powerform_Quiz_Front_Mail  $this  mail class
-					 */
-					$content_type = apply_filters( 'powerform_quiz_mail_admin_content_type', $content_type, $quiz, $data, $entry, $this );
-
-
-					$headers = array();
-
-					// only change From header if these two are valid
-					if ( ! empty( $from_name ) && ! empty( $from_email ) ) {
-						$headers[] = 'From: ' . $from_name . ' <' . $from_email . '>';
-					}
-
-					if ( ! empty( $reply_to_address ) ) {
-						$headers[] = 'Reply-To: ' . $reply_to_address;
-					}
-
-					if ( ! empty( $cc_addresses ) && is_array( $cc_addresses ) ) {
-						$headers[] = 'Cc: ' . implode( ', ', $cc_addresses );
-					}
-
-					if ( ! empty( $bcc_addresses ) && is_array( $bcc_addresses ) ) {
-						$headers[] = 'BCc: ' . implode( ', ', $bcc_addresses );
-					}
-
-					if ( ! empty( $content_type ) ) {
-						$headers[] = 'Content-Type: ' . $content_type;
-					}
-
-					/**
-					 * Filter headers of mail that send to admin
-					 *
-					 * @since 1.6.2
-					 *
-					 * @param array                       $headers
-					 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
-					 * @param array                       $data  POST data
-					 * @param Powerform_Form_Entry_Model $entry entry model
-					 * @param Powerform_Quiz_Front_Mail  $this  mail class
-					 */
-					$headers = apply_filters( 'powerform_quiz_mail_admin_headers', $headers, $quiz, $data, $entry, $this );
-
-					$this->set_headers( $headers );
-
-					$this->set_subject( $subject );
-					$this->set_recipients( $recipients );
-					$this->set_message_with_vars( $this->message_vars, $message );
-					if ( ! empty( $files ) && isset( $notification['email-attachment'] ) && 'true' === $notification['email-attachment'] ) {
-						$this->set_attachment( $files );
-					}
-					$this->send_multiple();
-
-					/**
-					 * Action called after admin mail sent
-					 *
-					 * @param Powerform_Quiz_Front_Mail  $this       the mail class
-					 * @param Powerform_Quiz_Form_Model  $quiz       the current quiz
-					 * @param array                       $data       - current data
-					 * @param Powerform_Form_Entry_Model $entry      - saved entry
-					 * @param array                       $recipients - array or recipients
-					 */
-					do_action( 'powerform_quiz_mail_admin_sent', $this, $quiz, $data, $entry, $recipients );
 				}
+				/**
+				 * Filter `CC` email addresses of mail that send to admin
+				 *
+				 * @since 1.6.2
+				 *
+				 * @param array                       $cc_addresses
+				 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
+				 * @param array                       $data  POST data
+				 * @param Powerform_Form_Entry_Model $entry entry model
+				 * @param Powerform_Quiz_Front_Mail  $this  mail class
+				 */
+				$cc_addresses = apply_filters( 'powerform_quiz_mail_admin_cc_addresses', $cc_addresses, $quiz, $data, $entry, $this );
+
+				$bcc_addresses = array();
+				if ( isset( $setting['admin-email-bcc-address'] ) && ! empty( $setting['admin-email-bcc-address'] ) && is_array( $setting['admin-email-bcc-address'] ) ) {
+					$setting_bcc_addresses = $setting['admin-email-bcc-address'];
+
+					foreach ( $setting_bcc_addresses as $key => $setting_bcc_address ) {
+						$setting_bcc_address = powerform_replace_variables( $setting_bcc_address, $quiz->id, $data['current_url'] );
+						$setting_bcc_address = powerform_replace_quiz_form_data( $setting_bcc_address, $quiz, $data, $entry );
+						if ( is_email( $setting_bcc_address ) ) {
+							$bcc_addresses[] = $setting_bcc_address;
+						}
+					}
+				}
+				/**
+				 * Filter `BCC` email addresses of mail that send to admin
+				 *
+				 * @since 1.6.2
+				 *
+				 * @param array                       $bcc_addresses
+				 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
+				 * @param array                       $data  POST data
+				 * @param Powerform_Form_Entry_Model $entry entry model
+				 * @param Powerform_Quiz_Front_Mail  $this  mail class
+				 */
+				$bcc_addresses = apply_filters( 'powerform_quiz_mail_admin_bcc_addresses', $bcc_addresses, $quiz, $data, $entry, $this );
+
+				$content_type = $this->content_type;
+				/**
+				 * Filter `Content-Type` of mail that send to admin
+				 *
+				 * @since 1.6.2
+				 *
+				 * @param string                      $content_type
+				 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
+				 * @param array                       $data  POST data
+				 * @param Powerform_Form_Entry_Model $entry entry model
+				 * @param Powerform_Quiz_Front_Mail  $this  mail class
+				 */
+				$content_type = apply_filters( 'powerform_quiz_mail_admin_content_type', $content_type, $quiz, $data, $entry, $this );
+
+				$headers = array();
+
+				// only change From header if these two are valid
+				if ( ! empty( $from_name ) && ! empty( $from_email ) ) {
+					$headers[] = 'From: ' . $from_name . ' <' . $from_email . '>';
+				}
+
+				if ( ! empty( $reply_to_address ) ) {
+					$headers[] = 'Reply-To: ' . $reply_to_address;
+				}
+
+				if ( ! empty( $cc_addresses ) && is_array( $cc_addresses ) ) {
+					$headers[] = 'Cc: ' . implode( ', ', $cc_addresses );
+				}
+
+				if ( ! empty( $bcc_addresses ) && is_array( $bcc_addresses ) ) {
+					$headers[] = 'BCc: ' . implode( ', ', $bcc_addresses );
+				}
+
+				if ( ! empty( $content_type ) ) {
+					$headers[] = 'Content-Type: ' . $content_type;
+				}
+
+				/**
+				 * Filter headers of mail that send to admin
+				 *
+				 * @since 1.6.2
+				 *
+				 * @param array                       $headers
+				 * @param Powerform_Quiz_Form_Model  $quiz  current quiz Model
+				 * @param array                       $data  POST data
+				 * @param Powerform_Form_Entry_Model $entry entry model
+				 * @param Powerform_Quiz_Front_Mail  $this  mail class
+				 */
+				$headers = apply_filters( 'powerform_quiz_mail_admin_headers', $headers, $quiz, $data, $entry, $this );
+
+				$this->set_headers( $headers );
+
+				$this->set_subject( $subject );
+				$this->set_recipients( $recipients );
+				$this->set_message_with_vars( $this->message_vars, $message );
+				$this->send_multiple();
+
+				/**
+				 * Action called after admin mail sent
+				 *
+				 * @param Powerform_Quiz_Front_Mail  $this       the mail class
+				 * @param Powerform_Quiz_Form_Model  $quiz       the current quiz
+				 * @param array                       $data       - current data
+				 * @param Powerform_Form_Entry_Model $entry      - saved entry
+				 * @param array                       $recipients - array or recipients
+				 */
+				do_action( 'powerform_quiz_mail_admin_sent', $this, $quiz, $data, $entry, $recipients );
 			}
 		}
+
 
 		/**
 		 * Action called after mail is sent
@@ -423,87 +357,22 @@ class Powerform_Quiz_Front_Mail extends Powerform_Mail {
 	 *
 	 * @since 1.6.2
 	 *
-	 * @param array                       $notification
 	 * @param array                       $data
 	 * @param Powerform_Quiz_Form_Model  $quiz
 	 * @param Powerform_Form_Entry_Model $entry
-	 * @param                             $lead_model
 	 *
 	 * @return array
 	 */
-	public function get_admin_email_recipients( $notification, $data, $quiz, $entry, $lead_model ) {
-		$email = array();
-		if ( isset( $notification['email-recipients'] ) && 'routing' === $notification['email-recipients'] ) {
-			if ( ! empty( $notification['routing'] ) ) {
-				foreach ( $notification['routing'] as $routing ) {
-					if ( $this->is_quiz_routing( $routing, $data, $quiz ) ) {
-						$recipients = array_map( 'trim', explode( ',', $routing['email'] ) );
-						if ( ! empty( $recipients ) ) {
-							foreach ( $recipients as $key => $recipient ) {
-								$recipient = powerform_replace_variables( $recipient, $quiz->id, $data['current_url'] );
-								$recipient = powerform_replace_quiz_form_data( $recipient, $quiz, $data, $entry );
-								if ( isset( $quiz->settings['hasLeads'] ) && $quiz->settings['hasLeads'] ) {
-									$recipient        = powerform_replace_form_data( $recipient, $data, $lead_model, $entry );
-									$recipient        = powerform_replace_custom_form_data( $recipient, $lead_model, $data, $entry );
-								}
-								if ( is_email( $recipient ) ) {
-									$email[] = $recipient;
-								}
-							}
-						}
-					}
-				}
-			}
-		} else if ( isset( $notification['recipients'] ) && ! empty( $notification['recipients'] ) ) {
-			$recipients = array_map( 'trim', explode( ',', $notification['recipients'] ) );
-			if ( ! empty( $recipients ) ) {
-				foreach ( $recipients as $key => $recipient ) {
-					$recipient = powerform_replace_variables( $recipient, $quiz->id, $data['current_url'] );
-					$recipient = powerform_replace_quiz_form_data( $recipient, $quiz, $data, $entry );
-					if ( isset( $quiz->settings['hasLeads'] ) && $quiz->settings['hasLeads'] ) {
-						$recipient        = powerform_replace_form_data( $recipient, $data, $lead_model, $entry );
-						$recipient        = powerform_replace_custom_form_data( $recipient, $lead_model, $data, $entry );
-					}
-					if ( is_email( $recipient ) ) {
-						$email[] = $recipient;
-					}
-				}
+	public function get_admin_email_recipients( $data, $quiz, $entry ) {
+		$setting = $quiz->settings;
+		$email   = array();
+		if ( isset( $setting['admin-email-recipients'] ) && ! empty( $setting['admin-email-recipients'] ) ) {
+			if ( is_array( $setting['admin-email-recipients'] ) ) {
+				$email = $setting['admin-email-recipients'];
 			}
 		}
 
-		return apply_filters( 'powerform_quiz_get_admin_email_recipients', $email, $notification, $data, $quiz, $entry );
+		return apply_filters( 'powerform_quiz_get_admin_email_recipients', $email, $setting, $data, $quiz, $entry );
 	}
 
-	/**
-	 * Lead file attachment
-	 *
-	 * @param $lead_model
-	 * @param $data
-	 * @param $entry
-	 *
-	 * @return array|mixed
-	 */
-	public function get_lead_file_attachment( $lead_model, $data, $entry ) {
-		$files                 = array();
-		$form_fields           = $lead_model->get_fields();
-		$pseudo_submitted_data = Powerform_CForm_Front_Action::get_instance()->build_pseudo_submitted_data( $lead_model, $data );
-		foreach ( $form_fields as $form_field ) {
-			$field_array    = $form_field->to_formatted_array();
-			$field_forms    = powerform_fields_to_array();
-			$field_type     = $field_array['type'];
-			$form_field_obj = $field_forms[ $field_type ];
-			if ( 'upload' === $field_type && ! $form_field_obj->is_hidden( $field_array, $data, $pseudo_submitted_data ) ) {
-				$field_slug = isset( $entry->meta_data[ $form_field->slug ] ) ? $entry->meta_data[ $form_field->slug ] : '';
-				if ( ! empty( $field_slug ) && ! empty( $field_slug['value']['file'] ) ) {
-					$email_files = isset( $field_slug['value']['file'] ) ? $field_slug['value']['file']['file_path'] : array();
-					$files[]     = is_array( $email_files ) ? $email_files : array( $email_files );
-				}
-			}
-		}
-		if ( ! empty( $files ) ) {
-			$files = call_user_func_array( 'array_merge', $files );
-		}
-
-		return $files;
-	}
 }

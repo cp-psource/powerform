@@ -38,13 +38,11 @@ class Powerform_Poll_Page extends Powerform_Admin_Page {
 	/**
 	 * Count modules
 	 *
-	 * @param $status
-	 *
 	 * @since 1.0
 	 * @return int
 	 */
-	public function countModules( $status = '' ) {
-		return Powerform_Poll_Form_Model::model()->count_all( $status );
+	public function countModules() {
+		return Powerform_Poll_Form_Model::model()->count_all();
 	}
 
 	/**
@@ -277,7 +275,7 @@ class Powerform_Poll_Page extends Powerform_Admin_Page {
 			'powerform_polls_bulk_actions',
 			array(
 				'clone-polls'        => __( "Duplikat", Powerform::DOMAIN ),
-				'reset-views-polls'  => __( "Tracking-Reset", Powerform::DOMAIN ),
+				'reset-views-polls'  => __( "Tracking-Daten zurücksetzen", Powerform::DOMAIN ),
 				'delete-votes-polls' => __( "Stimmen löschen", Powerform::DOMAIN ),
 				'delete-polls'       => __( "Löschen", Powerform::DOMAIN ),
 			) );
@@ -315,18 +313,6 @@ class Powerform_Poll_Page extends Powerform_Admin_Page {
 
 			//save it to create new record
 			$new_id = $model->save( true );
-
-			/**
-			 * Action called after poll cloned
-			 *
-			 * @since 1.11
-			 *
-			 * @param int    $id - poll id
-			 * @param object $model - poll model
-			 *
-			 */
-			do_action( 'powerform_poll_action_clone', $new_id, $model );
-
 			powerform_clone_poll_ip_address_retention( $id, $new_id );
 		}
 	}
@@ -362,16 +348,6 @@ class Powerform_Poll_Page extends Powerform_Admin_Page {
 			$form_view->delete_by_form( $id );
 			powerform_update_poll_ip_address_retention( $id, null, null );
 			wp_delete_post( $id );
-
-			/**
-			 * Action called after quiz deleted
-			 *
-			 * @since 1.11
-			 *
-			 * @param int    $id - quiz id
-			 *
-			 */
-			do_action( 'powerform_poll_action_delete', $id );
 		}
 	}
 
@@ -411,7 +387,7 @@ class Powerform_Poll_Page extends Powerform_Admin_Page {
 		fwrite( $fp, $encoded ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fwrite
 		fseek( $fp, 0 );
 
-		$filename = sanitize_title( __( 'powerform', POWERFORM::DOMAIN ) ) . '-' . sanitize_title( $model_name ) . '-poll-export' . '.txt';
+		$filename = 'powerform-' . sanitize_title( $model_name ) . '-poll-export' . '.txt';
 
 		header( 'Content-Description: File Transfer' );
 		header( 'Content-Type: text/plain' );
@@ -421,19 +397,5 @@ class Powerform_Poll_Page extends Powerform_Admin_Page {
 
 		// make php send the generated csv lines to the browser
 		fpassthru( $fp );
-	}
-
-	/**
-	 * Override scripts to be loaded
-	 *
-	 * @since 1.11
-	 *
-	 * @param $hook
-	 */
-	public function enqueue_scripts( $hook ) {
-		parent::enqueue_scripts( $hook );
-
-		powerform_print_polls_admin_styles( POWERFORM_VERSION );
-		powerform_print_front_scripts( POWERFORM_VERSION );
 	}
 }

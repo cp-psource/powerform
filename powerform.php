@@ -37,56 +37,27 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
  
 //Set the branch that contains the stable release.
 $myUpdateChecker->setBranch('master');
-
-
 if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
 if ( ! defined( 'POWERFORM_VERSION' ) ) {
-	define( 'POWERFORM_VERSION', '1.2.2' );
+	define( 'POWERFORM_VERSION', '1.7.4' );
 }
 
 if ( ! defined( 'POWERFORM_SUI_VERSION' ) ) {
-	define( 'POWERFORM_SUI_VERSION', '2.6.0' );
-}
-
-if ( ! defined( 'POWERFORM_STRIPE_LIB_VERSION' ) ) {
-	define( 'POWERFORM_STRIPE_LIB_VERSION', '7.21.1' );
-}
-
-if ( ! defined( 'POWERFORM_STRIPE_LIB_DATE' ) ) {
-	define( 'POWERFORM_STRIPE_LIB_DATE', '2019-12-03' );
-}
-
-if ( ! defined( 'POWERFORM_STRIPE_PARTNER_ID' ) ) {
-	define( 'POWERFORM_STRIPE_PARTNER_ID', 'pp_partner_GeDaq2odDgGkDJ' );
-}
-
-if ( ! defined( 'POWERFORM_PAYPAL_LIB_VERSION' ) ) {
-	define( 'POWERFORM_PAYPAL_LIB_VERSION', '1.14.0' );
+	define( 'POWERFORM_SUI_VERSION', '2.3.22' );
 }
 
 if ( ! defined( 'POWERFORM_PRO' ) ) {
 	define( 'POWERFORM_PRO', true );
 }
 
-if ( ! defined( 'POWERFORM_PLUGIN_BASENAME' ) ) {
-	define( 'POWERFORM_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-
-}
-
-/*if ( ! defined( 'POWERFORM_PRO_URL' ) ) {
-	define( 'POWERFORM_PRO_URL', 'https://n3rds.work/project/powerform-pro/' );
-}*/
-
 // Include API
 require_once plugin_dir_path( __FILE__ ) . 'library/class-api.php';
 
 // Register activation hook
 register_activation_hook( __FILE__, array( 'Powerform', 'activation_hook' ) );
-// Register deactivation hook
-register_deactivation_hook( __FILE__, array( 'Powerform', 'deactivation_hook' ) );
 
 /**
  * Class Powerform
@@ -140,14 +111,13 @@ if ( ! class_exists( 'Powerform' ) ) {
 			add_action( 'admin_init', array( $this, 'initialize_admin' ) );
 
 			$this->includes();
-			$this->include_vendors();
+			//$this->include_vendors();
+			$this->init();
+			$this->load_textdomain();
 
 			if ( self::is_addons_feature_enabled() ) {
 				$this->init_addons();
 			}
-
-			$this->init();
-			$this->load_textdomain();
 		}
 
 		/**
@@ -157,17 +127,6 @@ if ( ! class_exists( 'Powerform' ) ) {
 		 */
 		public static function activation_hook() {
 			add_option( 'powerform_activation_hook', 'activated' );
-
-			self::set_free_installation_timestamp();
-		}
-
-		/**
-		 * Called on plugin deactivation
-		 *
-		 * @since 1.11
-		 */
-		public static function deactivation_hook() {
-			wp_clear_scheduled_hook( 'powerform_general_data_protection_cleanup' );
 		}
 
 		/**
@@ -178,7 +137,7 @@ if ( ! class_exists( 'Powerform' ) ) {
 		 * @since 1.3
 		 */
 		public function initialize_admin() {
-			if ( is_admin() && 'activated' === get_option( 'powerform_activation_hook' ) ) {
+			if( is_admin() && get_option( 'powerform_activation_hook' ) === 'activated' ) {
 				delete_option( 'powerform_activation_hook' );
 				flush_rewrite_rules();
 			}
@@ -373,25 +332,6 @@ if ( ! class_exists( 'Powerform' ) ) {
 			/* @noinspection PhpIncludeInspection */
 			include_once powerform_plugin_dir() . 'library/class-core.php';
 			include_once powerform_plugin_dir() . 'library/class-addon-loader.php';
-			include_once powerform_plugin_dir() . 'library/calculator/class-calculator.php';
-		}
-
-		/**
-		 * Add option with plugin install date
-		 *
-		 * @since 1.10
-		 */
-		public static function set_free_installation_timestamp() {
-			// We need the install date only on free version
-			if ( POWERFORM_PRO ) {
-				return;
-			}
-
-			$install_date = get_site_option( 'powerform_free_install_date' );
-
-			if ( empty( $install_date ) ) {
-				update_site_option( 'powerform_free_install_date', current_time( 'timestamp' ) );
-			}
 		}
 
 		/**
@@ -409,108 +349,6 @@ if ( ! class_exists( 'Powerform' ) ) {
 			do_action( 'powerform_loaded' );
 		}
 
-		/**
-		 * Include Vendors
-		 *
-		 * @since 1.0
-		 */
-		private function include_vendors() {
-			/*if ( file_exists( powerform_plugin_dir() . 'library/lib/dash-notice/psource-dash-notification.php' ) ) {
-				//load dashboard notice
-				global $psource_notices;
-				$psource_notices[] = array(
-					'id'      => 1000000,
-					'name'    => POWERFORM_PRO ? 'Powerform' : 'Powerform',
-					'screens' => array(
-						'toplevel_page_powerform',
-						'toplevel_page_powerform-network',
-						'powerform_page_powerform-cform',
-						'powerform_page_powerform-cform-network',
-						'powerform_page_powerform-poll',
-						'powerform_page_powerform-poll-network',
-						'powerform_page_powerform-quiz',
-						'powerform_page_powerform-quiz-network',
-						'powerform_page_powerform-settings',
-						'powerform_page_powerform-settings-network',
-						'powerform_page_powerform-cform-wizard',
-						'powerform_page_powerform-cform-wizard-network',
-						'powerform_page_powerform-cform-view',
-						'powerform_page_powerform-cform-view-network',
-						'powerform_page_powerform-poll-wizard',
-						'powerform_page_powerform-poll-wizard-network',
-						'powerform_page_powerform-poll-view',
-						'powerform_page_powerform-poll-view-network',
-						'powerform_page_powerform-nowrong-wizard',
-						'powerform_page_powerform-nowrong-wizard-network',
-						'powerform_page_powerform-knowledge-wizard',
-						'powerform_page_powerform-knowledge-wizard-network',
-						'powerform_page_powerform-quiz-view',
-						'powerform_page_powerform-quiz-view-network',
-					),
-				);
-				/** @noinspection PhpIncludeInspection */
-				//include_once powerform_plugin_dir() . 'library/lib/dash-notice/psource-dash-notification.php';
-			//}
-
-			// un-change-able 5.6.0 requirement, based on lowest version needed on vendors list
-			if ( version_compare( PHP_VERSION, '5.6.0', 'ge' ) ) {
-				/**
-				 * Vendors list
-				 * - Stripe PHP - Min PHP req 5.6.0 (managed internally)
-				 * - Paypal PHP - Min PHP req 5.6.0 (managed internally)
-				 */
-				/** @noinspection PhpIncludeInspection */
-				include_once powerform_plugin_dir() . 'library/external/autoload_psr4.php';
-			}
-
-			/*if ( ! POWERFORM_PRO ) {
-
-				if ( file_exists( powerform_plugin_dir() . 'library/lib/recommended-plugins/notice.php' ) ) {
-
-					require_once powerform_plugin_dir() . 'library/lib/recommended-plugins/notice.php';
-
-					do_action(
-						'psource-recommended-plugins-register-notice',
-						plugin_basename( __FILE__ ), // Plugin basename
-						'Powerform', // Plugin Name
-						array(
-							'toplevel_page_powerform',
-							'toplevel_page_powerform-network',
-							'powerform_page_powerform-cform',
-							'powerform_page_powerform-cform-network',
-							'powerform_page_powerform-poll',
-							'powerform_page_powerform-poll-network',
-							'powerform_page_powerform-quiz',
-							'powerform_page_powerform-quiz-network',
-							'powerform_page_powerform-settings',
-							'powerform_page_powerform-settings-network',
-							'powerform_page_powerform-cform-wizard',
-							'powerform_page_powerform-cform-wizard-network',
-							'powerform_page_powerform-cform-view',
-							'powerform_page_powerform-cform-view-network',
-							'powerform_page_powerform-poll-wizard',
-							'powerform_page_powerform-poll-wizard-network',
-							'powerform_page_powerform-poll-view',
-							'powerform_page_powerform-poll-view-network',
-							'powerform_page_powerform-nowrong-wizard',
-							'powerform_page_powerform-nowrong-wizard-network',
-							'powerform_page_powerform-knowledge-wizard',
-							'powerform_page_powerform-knowledge-wizard-network',
-							'powerform_page_powerform-quiz-view',
-							'powerform_page_powerform-quiz-view-network',
-							'powerform_page_powerform-entries',
-							'powerform_page_powerform-entries-network',
-							'powerform_page_powerform-integrations',
-							'powerform_page_powerform-integrations-network'
-						),
-						array( 'after', '.sui-wrap .sui-header' ) // selector
-					);
-
-				}
-
-			}*/
-
-		}
 
 		/**
 		 * Load language files
@@ -527,9 +365,9 @@ if ( ! class_exists( 'Powerform' ) ) {
 		 * @since 1.6
 		 * @return bool
 		 */
-		public static function is_psource_member() {
-			if ( function_exists( 'is_psource_member' ) ) {
-				return is_psource_member();
+		public static function is_wpmudev_member() {
+			if ( function_exists( 'is_wpmudev_member' ) ) {
+				return is_wpmudev_member();
 			}
 
 			return false;

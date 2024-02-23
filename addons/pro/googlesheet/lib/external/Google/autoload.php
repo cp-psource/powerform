@@ -15,9 +15,8 @@
  * limitations under the License.
  */
 
-function powerform_google_api_php_client_autoload($className)
+function google_api_php_client_autoload($className)
 {
-  $className = str_replace( 'Powerform_', '', $className );
   $classPath = explode('_', $className);
   if ($classPath[0] != 'Google') {
     return;
@@ -29,4 +28,4 @@ function powerform_google_api_php_client_autoload($className)
     require_once($filePath);
   }
 }
-spl_autoload_register('powerform_google_api_php_client_autoload');
+spl_autoload_register('google_api_php_client_autoload');

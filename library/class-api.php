@@ -884,7 +884,7 @@ class Powerform_API {
 		// should not be happened ever! unless storage directly modified
 		// but just in case... to avoid further fields corruption
 		if ( ! $found_in_wrapper ) {
-			return new WP_Error( 'invalid_field', __( 'Ungültiges Feld', Powerform::DOMAIN ), $old_wrapper );
+			return new WP_Error( 'invalid_field', __( 'Invalid field', Powerform::DOMAIN ), $old_wrapper );
 		}
 
 		// unchanged position
@@ -979,7 +979,7 @@ class Powerform_API {
 
 			return true;
 		} else {
-			return new WP_Error( 'invalid', __( 'Ungültiges oder leeres Array mit IDs', Powerform::DOMAIN ) );
+			return new WP_Error( 'invalid', __( 'Invalid or empty array with IDs', Powerform::DOMAIN ) );
 		}
 	}
 
@@ -1001,7 +1001,7 @@ class Powerform_API {
 		$wrapper = $model->delete_field( $id );
 
 		if ( false === $wrapper ) {
-			return new WP_Error( 'missing_field', __( "Feld existiert nicht", Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_field', __( "Field doesn't exist", Powerform::DOMAIN ) );
 		}
 
 		$model->update_fields_by_wrapper( $wrapper );
@@ -1010,7 +1010,7 @@ class Powerform_API {
 		$id = $model->save();
 
 		if ( false === $id ) {
-			return new WP_Error( 'form_save_error', __( 'Beim Speichern des Formulars ist ein Problem aufgetreten', Powerform::DOMAIN ) );
+			return new WP_Error( 'form_save_error', __( 'There was a problem saving the form', Powerform::DOMAIN ) );
 		}
 
 		return $id;
@@ -1033,22 +1033,25 @@ class Powerform_API {
 		self::initialize();
 
 		if ( empty( $form_id ) ) {
-			return new WP_Error( 'missing_form_id', __( 'Formular ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_form_id', __( 'Form ID is required!', Powerform::DOMAIN ) );
 		}
 
 		if ( empty( $setting ) ) {
-			return new WP_Error( 'missing_name', __( 'Einstellungsname ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_name', __( 'Setting name is required!', Powerform::DOMAIN ) );
 		}
 
 		// Load form model
 		$model = Powerform_Custom_Form_Model::model()->load( $form_id );
 
 		if ( ! is_object( $model ) ) {
-			return new WP_Error( 'missing_object', __( "Formularmodell existiert nicht", Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_object', __( "Form model doesn't exist", Powerform::DOMAIN ) );
 		}
 
+		// Load all settings
+		$settings = $model->settings;
+
 		// Set the setting
-		$model->settings[ $setting ] = sanitize_textarea_field( $value );
+		$settings[ $setting ] = sanitize_textarea_field( $value );
 
 		// Save data
 		$id = $model->save();
@@ -1072,18 +1075,18 @@ class Powerform_API {
 		self::initialize();
 
 		if ( empty( $form_id ) ) {
-			return new WP_Error( 'missing_form_id', __( 'Formular ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_form_id', __( 'Form ID is required!', Powerform::DOMAIN ) );
 		}
 
 		if ( empty( $settings ) ) {
-			return new WP_Error( 'missing_settings', __( 'Keine Einstellungen', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_settings', __( 'No settings', Powerform::DOMAIN ) );
 		}
 
 		// Load form model
 		$model = Powerform_Custom_Form_Model::model()->load( $form_id );
 
 		if ( ! is_object( $model ) ) {
-			return new WP_Error( 'missing_object', __( "Formularmodell existiert nicht", Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_object', __( "Form model doesn't exist", Powerform::DOMAIN ) );
 		}
 
 		// Load all settings
@@ -1129,7 +1132,7 @@ class Powerform_API {
 			return array();
 		} else {
 			if ( ! is_array( $poll_ids ) ) {
-				return new WP_Error( 'invalid_arg', __( 'Ungültige Argumente', Powerform::DOMAIN ) );
+				return new WP_Error( 'invalid_arg', __( 'Invalid Arguments', Powerform::DOMAIN ) );
 			}
 
 			foreach ( $poll_ids as $poll_id ) {
@@ -1158,12 +1161,12 @@ class Powerform_API {
 		self::initialize();
 
 		if ( empty( $poll_id ) ) {
-			return new WP_Error( 'missing_id', __( 'Umfrage ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_id', __( 'Poll ID is required!', Powerform::DOMAIN ) );
 		}
 
 		$model = Powerform_Poll_Form_Model::model()->load( $poll_id );
 		if ( ! $model instanceof Powerform_Poll_Form_Model ) {
-			return new WP_Error( 'poll_not_found', __( 'Umfrage nicht gefunden!', Powerform::DOMAIN ) );
+			return new WP_Error( 'poll_not_found', __( 'Poll not found!', Powerform::DOMAIN ) );
 		}
 
 		return $model;
@@ -1197,7 +1200,7 @@ class Powerform_API {
 
 			return true;
 		} else {
-			return new WP_Error( 'not_found', sprintf( __( 'Kann keine Umfrage mit ID finden: %s', Powerform::DOMAIN ), $poll_id ), $poll_id );
+			return new WP_Error( 'not_found', sprintf( __( 'Can not find a poll with id: %s', Powerform::DOMAIN ), $poll_id ), $poll_id );
 		}
 	}
 
@@ -1222,7 +1225,7 @@ class Powerform_API {
 
 			return true;
 		} else {
-			return new WP_Error( 'invalid', __( 'Ungültiges oder leeres Array mit IDs', Powerform::DOMAIN ) );
+			return new WP_Error( 'invalid', __( 'Invalid or empty array with IDs', Powerform::DOMAIN ) );
 		}
 	}
 
@@ -1244,7 +1247,7 @@ class Powerform_API {
 		self::initialize();
 
 		if ( empty( $name ) ) {
-			return new WP_Error( 'missing_name', __( 'Umfragenname ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_name', __( 'Poll name is required!', Powerform::DOMAIN ) );
 		}
 
 		// Create new form model
@@ -1281,7 +1284,7 @@ class Powerform_API {
 		$id = $model->save();
 
 		if ( false === $id ) {
-			return new WP_Error( 'form_save_error', __( 'Beim Speichern der Umfrage ist ein Problem aufgetreten', Powerform::DOMAIN ) );
+			return new WP_Error( 'form_save_error', __( 'There was a problem saving the poll', Powerform::DOMAIN ) );
 		}
 
 		return $id;
@@ -1305,13 +1308,13 @@ class Powerform_API {
 		self::initialize();
 
 		if ( empty( $id ) ) {
-			return new WP_Error( 'missing_id', __( 'Umfrage ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_id', __( 'Poll ID is required!', Powerform::DOMAIN ) );
 		}
 
 		// Create new form model
 		$model = Powerform_Poll_Form_Model::model()->load( $id );
 		if ( ! is_object( $model ) ) {
-			return new WP_Error( 'missing_object', __( "Umfragemodell existiert nicht", Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_object', __( "Poll model doesn't exist", Powerform::DOMAIN ) );
 		}
 
 		// Set the post data
@@ -1349,7 +1352,7 @@ class Powerform_API {
 		$id = $model->save();
 
 		if ( false === $id ) {
-			return new WP_Error( 'form_save_error', __( 'Beim Speichern der Umfrage ist ein Problem aufgetreten', Powerform::DOMAIN ) );
+			return new WP_Error( 'form_save_error', __( 'There was a problem saving the poll', Powerform::DOMAIN ) );
 		}
 
 		return $id;
@@ -1386,7 +1389,7 @@ class Powerform_API {
 			return array();
 		} else {
 			if ( ! is_array( $quiz_ids ) ) {
-				return new WP_Error( 'invalid_arg', __( 'Ungültige Argumente', Powerform::DOMAIN ) );
+				return new WP_Error( 'invalid_arg', __( 'Invalid Arguments', Powerform::DOMAIN ) );
 			}
 
 			foreach ( $quiz_ids as $quiz_id ) {
@@ -1415,13 +1418,13 @@ class Powerform_API {
 		self::initialize();
 
 		if ( empty( $quiz_id ) ) {
-			return new WP_Error( 'missing_id', __( 'Quiz ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_id', __( 'Quiz ID is required!', Powerform::DOMAIN ) );
 		}
 
 		$model = Powerform_Quiz_Form_Model::model()->load( $quiz_id );
 
 		if ( ! $model instanceof Powerform_Quiz_Form_Model ) {
-			return new WP_Error( 'quiz_not_found', __( 'Quiz nicht gefunden!', Powerform::DOMAIN ) );
+			return new WP_Error( 'quiz_not_found', __( 'Quiz Not Found!', Powerform::DOMAIN ) );
 		}
 
 		return $model;
@@ -1455,7 +1458,7 @@ class Powerform_API {
 
 			return true;
 		} else {
-			return new WP_Error( 'not_found', sprintf( __( 'Kann keine Umfrage mit ID finden: %s', Powerform::DOMAIN ), $quiz_id ), $quiz_id );
+			return new WP_Error( 'not_found', sprintf( __( 'Can not find a poll with id: %s', Powerform::DOMAIN ), $quiz_id ), $quiz_id );
 		}
 	}
 
@@ -1480,7 +1483,7 @@ class Powerform_API {
 
 			return true;
 		} else {
-			return new WP_Error( 'invalid', __( 'Ungültiges oder leeres Array mit IDs', Powerform::DOMAIN ) );
+			return new WP_Error( 'invalid', __( 'Invalid or empty array with IDs', Powerform::DOMAIN ) );
 		}
 	}
 
@@ -1505,11 +1508,11 @@ class Powerform_API {
 		self::initialize();
 
 		if ( empty( $name ) ) {
-			return new WP_Error( 'missing_name', __( 'Quizname ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_name', __( 'Quiz name is required!', Powerform::DOMAIN ) );
 		}
 
 		if ( empty( $type ) ) {
-			return new WP_Error( 'missing_type', __( 'Quiztyp ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_type', __( 'Quiz type is required!', Powerform::DOMAIN ) );
 		}
 
 
@@ -1546,7 +1549,7 @@ class Powerform_API {
 		$id = $model->save();
 
 		if ( false === $id ) {
-			return new WP_Error( 'quiz_save_error', __( 'Beim Speichern des Quiz ist ein Problem aufgetreten', Powerform::DOMAIN ) );
+			return new WP_Error( 'quiz_save_error', __( 'There was a problem saving the quiz', Powerform::DOMAIN ) );
 		}
 
 		return $id;
@@ -1572,14 +1575,14 @@ class Powerform_API {
 		self::initialize();
 
 		if ( empty( $id ) ) {
-			return new WP_Error( 'missing_id', __( 'Quiz ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_id', __( 'Quiz ID is required!', Powerform::DOMAIN ) );
 		}
 
 		// Create new form model
 		/** @var Powerform_Quiz_Form_Model $model */
 		$model = Powerform_Quiz_Form_Model::model()->load( $id );
 		if ( ! is_object( $model ) ) {
-			return new WP_Error( 'missing_object', __( "Quizmodell existiert nicht", Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_object', __( "Quiz model doesn't exist", Powerform::DOMAIN ) );
 		}
 
 		// Set the post data
@@ -1607,12 +1610,12 @@ class Powerform_API {
 		if ( $status ) {
 			$model->status = $status;
 		}
-		
+
 		// Save the form
 		$id = $model->save();
 
 		if ( false === $id ) {
-			return new WP_Error( 'quiz_save_error', __( 'Beim Speichern des Quiz ist ein Problem aufgetreten', Powerform::DOMAIN ) );
+			return new WP_Error( 'quiz_save_error', __( 'There was a problem saving the quiz', Powerform::DOMAIN ) );
 		}
 
 		return $id;
@@ -1637,7 +1640,7 @@ class Powerform_API {
 
 		// Check if Form ID is set
 		if ( empty( $form_id ) ) {
-			return new WP_Error( 'missing_form_id', __( 'Formular ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_form_id', __( 'Form ID is required!', Powerform::DOMAIN ) );
 		}
 
 		return Powerform_Form_Entry_Model::get_entries( $form_id );
@@ -1659,12 +1662,12 @@ class Powerform_API {
 
 		// Check if Form ID is set
 		if ( empty( $form_id ) ) {
-			return new WP_Error( 'missing_form_id', __( 'Formular ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_form_id', __( 'Form ID is required!', Powerform::DOMAIN ) );
 		}
 
 		// Check if Entry ID is set
 		if ( empty( $entry_id ) ) {
-			return new WP_Error( 'missing_entry_id', __( 'Eintrags-ID erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_entry_id', __( 'Entry ID is required!', Powerform::DOMAIN ) );
 		}
 
 		return new Powerform_Form_Entry_Model( $entry_id );
@@ -1688,12 +1691,12 @@ class Powerform_API {
 
 		// Check if Form ID is set
 		if ( empty( $form_id ) ) {
-			return new WP_Error( 'missing_form_id', __( 'Formular ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_form_id', __( 'Form ID is required!', Powerform::DOMAIN ) );
 		}
 
 		// Check if Entry ID is set
 		if ( empty( $entry_id ) ) {
-			return new WP_Error( 'missing_entry_id', __( 'Eintrags-ID erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_entry_id', __( 'Entry ID is required!', Powerform::DOMAIN ) );
 		}
 
 		// Delete entry
@@ -1720,12 +1723,12 @@ class Powerform_API {
 
 		// Check if Form ID is set
 		if ( empty( $form_id ) ) {
-			return new WP_Error( 'missing_form_id', __( 'Formular ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_form_id', __( 'Form ID is required!', Powerform::DOMAIN ) );
 		}
 
 		// Check if Entry ID is set
 		if ( empty( $entries_ids ) ) {
-			return new WP_Error( 'missing_entry_id', __( 'Eintrags-IDs sind erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_entry_id', __( 'Entry IDs are required!', Powerform::DOMAIN ) );
 		}
 
 		// Check if entries ids are array and convert to string
@@ -1756,7 +1759,7 @@ class Powerform_API {
 
 		// Check if Form ID is set
 		if ( empty( $form_id ) ) {
-			return new WP_Error( 'missing_form_id', __( 'Formular ID ist erforderlich!', Powerform::DOMAIN ) );
+			return new WP_Error( 'missing_form_id', __( 'Form ID is required!', Powerform::DOMAIN ) );
 		}
 
 		return Powerform_Form_Entry_Model::count_entries( $form_id );
@@ -2204,7 +2207,7 @@ class Powerform_API {
 		);
 
 		if ( ! in_array( $entry_type, $entry_types, true ) ) {
-			return new WP_Error( 'invalid_entry_type', __( 'Ungültiger Eintragstyp.', Powerform::DOMAIN ) );
+			return new WP_Error( 'invalid_entry_type', __( 'Invalid entry type.', Powerform::DOMAIN ) );
 		}
 
 		$entry             = new Powerform_Form_Entry_Model();
@@ -2213,13 +2216,13 @@ class Powerform_API {
 		$entry_saved       = $entry->save();
 
 		if ( ! $entry_saved || empty( $entry->entry_id ) ) {
-			return new WP_Error( 'save_entry_error', __( 'Eintrag konnte nicht gespeichert werden.', Powerform::DOMAIN ) );
+			return new WP_Error( 'save_entry_error', __( 'Failed to save entry.', Powerform::DOMAIN ) );
 		}
 
 		$meta_saved = $entry->set_fields( $entry_meta );
 
 		if ( ! $meta_saved ) {
-			return new WP_Error( 'save_entry_meta_error', __( 'Eintrags-Meta konnte nicht gespeichert werden.', Powerform::DOMAIN ) );
+			return new WP_Error( 'save_entry_meta_error', __( 'Failed to save entry meta.', Powerform::DOMAIN ) );
 		}
 
 		return $entry->entry_id;
@@ -2282,11 +2285,11 @@ class Powerform_API {
 		}
 
 		if ( empty( $entry->entry_id ) ) {
-			return new WP_Error( 'entry_not_found', __( 'Eintrag nicht gefunden.', Powerform::DOMAIN ) );
+			return new WP_Error( 'entry_not_found', __( 'Entry not found.', Powerform::DOMAIN ) );
 		}
 
 		if ( (int) $module_id !== (int) $entry->form_id ) {
-			return new WP_Error( 'entry_not_valid', __( 'Der Eintrag ist für das Modul nicht gültig.', Powerform::DOMAIN ) );
+			return new WP_Error( 'entry_not_valid', __( 'Entry is not valid for module.', Powerform::DOMAIN ) );
 		}
 
 		$current_meta_data = $entry->meta_data;
@@ -2323,7 +2326,7 @@ class Powerform_API {
 		if ( ! empty( $new_entry_meta ) ) {
 			$new_meta_saved = $entry->set_fields( $new_entry_meta );
 			if ( ! $new_meta_saved ) {
-				return new WP_Error( 'save_new_entry_meta_error', __( 'Fehler beim Speichern des neuen Eintrags-Metas.', Powerform::DOMAIN ), $new_entry_meta );
+				return new WP_Error( 'save_new_entry_meta_error', __( 'Failed to save new entry meta.', Powerform::DOMAIN ), $new_entry_meta );
 			}
 		}
 

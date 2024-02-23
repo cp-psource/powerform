@@ -26,21 +26,21 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Translate extends Powerform_Google_Service
+class Google_Service_Translate extends Google_Service
 {
 
 
   public $detections;
   public $languages;
   public $translations;
-  
+
 
   /**
    * Constructs the internal representation of the Translate service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -48,7 +48,7 @@ class Powerform_Google_Service_Translate extends Powerform_Google_Service
     $this->version = 'v2';
     $this->serviceName = 'translate';
 
-    $this->detections = new Powerform_Google_Service_Translate_Detections_Resource(
+    $this->detections = new Google_Service_Translate_Detections_Resource(
         $this,
         $this->serviceName,
         'detections',
@@ -69,7 +69,7 @@ class Powerform_Google_Service_Translate extends Powerform_Google_Service
           )
         )
     );
-    $this->languages = new Powerform_Google_Service_Translate_Languages_Resource(
+    $this->languages = new Google_Service_Translate_Languages_Resource(
         $this,
         $this->serviceName,
         'languages',
@@ -88,7 +88,7 @@ class Powerform_Google_Service_Translate extends Powerform_Google_Service
           )
         )
     );
-    $this->translations = new Powerform_Google_Service_Translate_Translations_Resource(
+    $this->translations = new Google_Service_Translate_Translations_Resource(
         $this,
         $this->serviceName,
         'translations',
@@ -135,11 +135,11 @@ class Powerform_Google_Service_Translate extends Powerform_Google_Service
  * The "detections" collection of methods.
  * Typical usage is:
  *  <code>
- *   $translateService = new Powerform_Google_Service_Translate(...);
+ *   $translateService = new Google_Service_Translate(...);
  *   $detections = $translateService->detections;
  *  </code>
  */
-class Powerform_Google_Service_Translate_Detections_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Translate_Detections_Resource extends Google_Service_Resource
 {
 
   /**
@@ -147,13 +147,13 @@ class Powerform_Google_Service_Translate_Detections_Resource extends Powerform_G
    *
    * @param string $q The text to detect
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Translate_DetectionsListResponse
+   * @return Google_Service_Translate_DetectionsListResponse
    */
   public function listDetections($q, $optParams = array())
   {
     $params = array('q' => $q);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Translate_DetectionsListResponse");
+    return $this->call('list', array($params), "Google_Service_Translate_DetectionsListResponse");
   }
 }
 
@@ -161,11 +161,11 @@ class Powerform_Google_Service_Translate_Detections_Resource extends Powerform_G
  * The "languages" collection of methods.
  * Typical usage is:
  *  <code>
- *   $translateService = new Powerform_Google_Service_Translate(...);
+ *   $translateService = new Google_Service_Translate(...);
  *   $languages = $translateService->languages;
  *  </code>
  */
-class Powerform_Google_Service_Translate_Languages_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Translate_Languages_Resource extends Google_Service_Resource
 {
 
   /**
@@ -176,13 +176,13 @@ class Powerform_Google_Service_Translate_Languages_Resource extends Powerform_Go
    *
    * @opt_param string target the language and collation in which the localized
    * results should be returned
-   * @return Powerform_Google_Service_Translate_LanguagesListResponse
+   * @return Google_Service_Translate_LanguagesListResponse
    */
   public function listLanguages($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Translate_LanguagesListResponse");
+    return $this->call('list', array($params), "Google_Service_Translate_LanguagesListResponse");
   }
 }
 
@@ -190,11 +190,11 @@ class Powerform_Google_Service_Translate_Languages_Resource extends Powerform_Go
  * The "translations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $translateService = new Powerform_Google_Service_Translate(...);
+ *   $translateService = new Google_Service_Translate(...);
  *   $translations = $translateService->translations;
  *  </code>
  */
-class Powerform_Google_Service_Translate_Translations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Translate_Translations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -209,25 +209,25 @@ class Powerform_Google_Service_Translate_Translations_Resource extends Powerform
    * @opt_param string cid The customization id for translate
    * @opt_param string format The format of the text
    * @opt_param string source The source language of the text
-   * @return Powerform_Google_Service_Translate_TranslationsListResponse
+   * @return Google_Service_Translate_TranslationsListResponse
    */
   public function listTranslations($q, $target, $optParams = array())
   {
     $params = array('q' => $q, 'target' => $target);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Translate_TranslationsListResponse");
+    return $this->call('list', array($params), "Google_Service_Translate_TranslationsListResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Translate_DetectionsListResponse extends Powerform_Google_Collection
+class Google_Service_Translate_DetectionsListResponse extends Google_Collection
 {
   protected $collection_key = 'detections';
   protected $internal_gapi_mappings = array(
   );
-  protected $detectionsType = 'Powerform_Google_Service_Translate_DetectionsResourceItems';
+  protected $detectionsType = 'Google_Service_Translate_DetectionsResourceItems';
   protected $detectionsDataType = 'array';
 
 
@@ -241,7 +241,7 @@ class Powerform_Google_Service_Translate_DetectionsListResponse extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Translate_DetectionsResourceItems extends Powerform_Google_Model
+class Google_Service_Translate_DetectionsResourceItems extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -276,12 +276,12 @@ class Powerform_Google_Service_Translate_DetectionsResourceItems extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Translate_LanguagesListResponse extends Powerform_Google_Collection
+class Google_Service_Translate_LanguagesListResponse extends Google_Collection
 {
   protected $collection_key = 'languages';
   protected $internal_gapi_mappings = array(
   );
-  protected $languagesType = 'Powerform_Google_Service_Translate_LanguagesResource';
+  protected $languagesType = 'Google_Service_Translate_LanguagesResource';
   protected $languagesDataType = 'array';
 
 
@@ -295,7 +295,7 @@ class Powerform_Google_Service_Translate_LanguagesListResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Translate_LanguagesResource extends Powerform_Google_Model
+class Google_Service_Translate_LanguagesResource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -321,12 +321,12 @@ class Powerform_Google_Service_Translate_LanguagesResource extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Translate_TranslationsListResponse extends Powerform_Google_Collection
+class Google_Service_Translate_TranslationsListResponse extends Google_Collection
 {
   protected $collection_key = 'translations';
   protected $internal_gapi_mappings = array(
   );
-  protected $translationsType = 'Powerform_Google_Service_Translate_TranslationsResource';
+  protected $translationsType = 'Google_Service_Translate_TranslationsResource';
   protected $translationsDataType = 'array';
 
 
@@ -340,7 +340,7 @@ class Powerform_Google_Service_Translate_TranslationsListResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_Translate_TranslationsResource extends Powerform_Google_Model
+class Google_Service_Translate_TranslationsResource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

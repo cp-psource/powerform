@@ -1,0 +1,16 @@
+<?php if ( powerform_array_value_exists( $properties, 'powerform-poll-border-radius' ) ) { ?> .powerform-poll-
+<?php echo $properties['form_id'] ?>.powerform-design--material { border-radius:
+<?php echo $properties['powerform-poll-border-radius'] ?>px; }
+<?php } else { ?> .powerform-poll-
+<?php echo $properties['form_id'] ?>.powerform-design--material { border-radius: 0; }
+<?php } ?>
+<?php if ( powerform_array_value_exists( $properties, 'powerform-poll-border-width' ) ) { ?> .powerform-poll-
+<?php echo $properties['form_id'] ?>.powerform-design--material { border-width:
+<?php echo $properties['powerform-poll-border-width'] ?>px; }
+<?php } else { ?> .powerform-poll-
+<?php echo $properties['form_id'] ?>.powerform-design--material { border-width: 0; }
+<?php } ?>
+<?php if ( powerform_array_value_exists( $properties, 'powerform-poll-border-style' ) ) { ?> .powerform-poll-
+<?php echo $properties['form_id'] ?>.powerform-design--material { border-style:
+<?php echo $properties['powerform-poll-border-style'] ?>; }
+<?php } ?>

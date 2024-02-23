@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Gmail extends Powerform_Google_Service
+class Google_Service_Gmail extends Google_Service
 {
   /** View and manage your mail. */
   const MAIL_GOOGLE_COM =
@@ -57,14 +57,14 @@ class Powerform_Google_Service_Gmail extends Powerform_Google_Service
   public $users_messages;
   public $users_messages_attachments;
   public $users_threads;
-  
+
 
   /**
    * Constructs the internal representation of the Gmail service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -72,7 +72,7 @@ class Powerform_Google_Service_Gmail extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'gmail';
 
-    $this->users = new Powerform_Google_Service_Gmail_Users_Resource(
+    $this->users = new Google_Service_Gmail_Users_Resource(
         $this,
         $this->serviceName,
         'users',
@@ -112,7 +112,7 @@ class Powerform_Google_Service_Gmail extends Powerform_Google_Service
           )
         )
     );
-    $this->users_drafts = new Powerform_Google_Service_Gmail_UsersDrafts_Resource(
+    $this->users_drafts = new Google_Service_Gmail_UsersDrafts_Resource(
         $this,
         $this->serviceName,
         'drafts',
@@ -209,7 +209,7 @@ class Powerform_Google_Service_Gmail extends Powerform_Google_Service
           )
         )
     );
-    $this->users_history = new Powerform_Google_Service_Gmail_UsersHistory_Resource(
+    $this->users_history = new Google_Service_Gmail_UsersHistory_Resource(
         $this,
         $this->serviceName,
         'history',
@@ -245,7 +245,7 @@ class Powerform_Google_Service_Gmail extends Powerform_Google_Service
           )
         )
     );
-    $this->users_labels = new Powerform_Google_Service_Gmail_UsersLabels_Resource(
+    $this->users_labels = new Google_Service_Gmail_UsersLabels_Resource(
         $this,
         $this->serviceName,
         'labels',
@@ -335,7 +335,7 @@ class Powerform_Google_Service_Gmail extends Powerform_Google_Service
           )
         )
     );
-    $this->users_messages = new Powerform_Google_Service_Gmail_UsersMessages_Resource(
+    $this->users_messages = new Google_Service_Gmail_UsersMessages_Resource(
         $this,
         $this->serviceName,
         'messages',
@@ -514,7 +514,7 @@ class Powerform_Google_Service_Gmail extends Powerform_Google_Service
           )
         )
     );
-    $this->users_messages_attachments = new Powerform_Google_Service_Gmail_UsersMessagesAttachments_Resource(
+    $this->users_messages_attachments = new Google_Service_Gmail_UsersMessagesAttachments_Resource(
         $this,
         $this->serviceName,
         'attachments',
@@ -544,7 +544,7 @@ class Powerform_Google_Service_Gmail extends Powerform_Google_Service
           )
         )
     );
-    $this->users_threads = new Powerform_Google_Service_Gmail_UsersThreads_Resource(
+    $this->users_threads = new Google_Service_Gmail_UsersThreads_Resource(
         $this,
         $this->serviceName,
         'threads',
@@ -677,11 +677,11 @@ class Powerform_Google_Service_Gmail extends Powerform_Google_Service
  * The "users" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gmailService = new Powerform_Google_Service_Gmail(...);
+ *   $gmailService = new Google_Service_Gmail(...);
  *   $users = $gmailService->users;
  *  </code>
  */
-class Powerform_Google_Service_Gmail_Users_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Gmail_Users_Resource extends Google_Service_Resource
 {
 
   /**
@@ -690,13 +690,13 @@ class Powerform_Google_Service_Gmail_Users_Resource extends Powerform_Google_Ser
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Profile
+   * @return Google_Service_Gmail_Profile
    */
   public function getProfile($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('getProfile', array($params), "Powerform_Google_Service_Gmail_Profile");
+    return $this->call('getProfile', array($params), "Google_Service_Gmail_Profile");
   }
 
   /**
@@ -719,15 +719,15 @@ class Powerform_Google_Service_Gmail_Users_Resource extends Powerform_Google_Ser
    *
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
-   * @param Powerform_Google_WatchRequest $postBody
+   * @param Google_WatchRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_WatchResponse
+   * @return Google_Service_Gmail_WatchResponse
    */
-  public function watch($userId, Powerform_Google_Service_Gmail_WatchRequest $postBody, $optParams = array())
+  public function watch($userId, Google_Service_Gmail_WatchRequest $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('watch', array($params), "Powerform_Google_Service_Gmail_WatchResponse");
+    return $this->call('watch', array($params), "Google_Service_Gmail_WatchResponse");
   }
 }
 
@@ -735,11 +735,11 @@ class Powerform_Google_Service_Gmail_Users_Resource extends Powerform_Google_Ser
  * The "drafts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gmailService = new Powerform_Google_Service_Gmail(...);
+ *   $gmailService = new Google_Service_Gmail(...);
  *   $drafts = $gmailService->drafts;
  *  </code>
  */
-class Powerform_Google_Service_Gmail_UsersDrafts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Gmail_UsersDrafts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -747,15 +747,15 @@ class Powerform_Google_Service_Gmail_UsersDrafts_Resource extends Powerform_Goog
    *
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
-   * @param Powerform_Google_Draft $postBody
+   * @param Google_Draft $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Draft
+   * @return Google_Service_Gmail_Draft
    */
-  public function create($userId, Powerform_Google_Service_Gmail_Draft $postBody, $optParams = array())
+  public function create($userId, Google_Service_Gmail_Draft $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Gmail_Draft");
+    return $this->call('create', array($params), "Google_Service_Gmail_Draft");
   }
 
   /**
@@ -783,13 +783,13 @@ class Powerform_Google_Service_Gmail_UsersDrafts_Resource extends Powerform_Goog
    * @param array $optParams Optional parameters.
    *
    * @opt_param string format The format to return the draft in.
-   * @return Powerform_Google_Service_Gmail_Draft
+   * @return Google_Service_Gmail_Draft
    */
   public function get($userId, $id, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Gmail_Draft");
+    return $this->call('get', array($params), "Google_Service_Gmail_Draft");
   }
 
   /**
@@ -802,13 +802,13 @@ class Powerform_Google_Service_Gmail_UsersDrafts_Resource extends Powerform_Goog
    * @opt_param string maxResults Maximum number of drafts to return.
    * @opt_param string pageToken Page token to retrieve a specific page of results
    * in the list.
-   * @return Powerform_Google_Service_Gmail_ListDraftsResponse
+   * @return Google_Service_Gmail_ListDraftsResponse
    */
   public function listUsersDrafts($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Gmail_ListDraftsResponse");
+    return $this->call('list', array($params), "Google_Service_Gmail_ListDraftsResponse");
   }
 
   /**
@@ -817,15 +817,15 @@ class Powerform_Google_Service_Gmail_UsersDrafts_Resource extends Powerform_Goog
    *
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
-   * @param Powerform_Google_Draft $postBody
+   * @param Google_Draft $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Message
+   * @return Google_Service_Gmail_Message
    */
-  public function send($userId, Powerform_Google_Service_Gmail_Draft $postBody, $optParams = array())
+  public function send($userId, Google_Service_Gmail_Draft $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('send', array($params), "Powerform_Google_Service_Gmail_Message");
+    return $this->call('send', array($params), "Google_Service_Gmail_Message");
   }
 
   /**
@@ -834,26 +834,26 @@ class Powerform_Google_Service_Gmail_UsersDrafts_Resource extends Powerform_Goog
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
    * @param string $id The ID of the draft to update.
-   * @param Powerform_Google_Draft $postBody
+   * @param Google_Draft $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Draft
+   * @return Google_Service_Gmail_Draft
    */
-  public function update($userId, $id, Powerform_Google_Service_Gmail_Draft $postBody, $optParams = array())
+  public function update($userId, $id, Google_Service_Gmail_Draft $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Gmail_Draft");
+    return $this->call('update', array($params), "Google_Service_Gmail_Draft");
   }
 }
 /**
  * The "history" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gmailService = new Powerform_Google_Service_Gmail(...);
+ *   $gmailService = new Google_Service_Gmail(...);
  *   $history = $gmailService->history;
  *  </code>
  */
-class Powerform_Google_Service_Gmail_UsersHistory_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Gmail_UsersHistory_Resource extends Google_Service_Resource
 {
 
   /**
@@ -880,24 +880,24 @@ class Powerform_Google_Service_Gmail_UsersHistory_Resource extends Powerform_Goo
    * full sync. If you receive no nextPageToken in the response, there are no
    * updates to retrieve and you can store the returned historyId for a future
    * request.
-   * @return Powerform_Google_Service_Gmail_ListHistoryResponse
+   * @return Google_Service_Gmail_ListHistoryResponse
    */
   public function listUsersHistory($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Gmail_ListHistoryResponse");
+    return $this->call('list', array($params), "Google_Service_Gmail_ListHistoryResponse");
   }
 }
 /**
  * The "labels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gmailService = new Powerform_Google_Service_Gmail(...);
+ *   $gmailService = new Google_Service_Gmail(...);
  *   $labels = $gmailService->labels;
  *  </code>
  */
-class Powerform_Google_Service_Gmail_UsersLabels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Gmail_UsersLabels_Resource extends Google_Service_Resource
 {
 
   /**
@@ -905,15 +905,15 @@ class Powerform_Google_Service_Gmail_UsersLabels_Resource extends Powerform_Goog
    *
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
-   * @param Powerform_Google_Label $postBody
+   * @param Google_Label $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Label
+   * @return Google_Service_Gmail_Label
    */
-  public function create($userId, Powerform_Google_Service_Gmail_Label $postBody, $optParams = array())
+  public function create($userId, Google_Service_Gmail_Label $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Gmail_Label");
+    return $this->call('create', array($params), "Google_Service_Gmail_Label");
   }
 
   /**
@@ -939,13 +939,13 @@ class Powerform_Google_Service_Gmail_UsersLabels_Resource extends Powerform_Goog
    * used to indicate the authenticated user.
    * @param string $id The ID of the label to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Label
+   * @return Google_Service_Gmail_Label
    */
   public function get($userId, $id, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Gmail_Label");
+    return $this->call('get', array($params), "Google_Service_Gmail_Label");
   }
 
   /**
@@ -954,13 +954,13 @@ class Powerform_Google_Service_Gmail_UsersLabels_Resource extends Powerform_Goog
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_ListLabelsResponse
+   * @return Google_Service_Gmail_ListLabelsResponse
    */
   public function listUsersLabels($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Gmail_ListLabelsResponse");
+    return $this->call('list', array($params), "Google_Service_Gmail_ListLabelsResponse");
   }
 
   /**
@@ -970,15 +970,15 @@ class Powerform_Google_Service_Gmail_UsersLabels_Resource extends Powerform_Goog
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
    * @param string $id The ID of the label to update.
-   * @param Powerform_Google_Label $postBody
+   * @param Google_Label $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Label
+   * @return Google_Service_Gmail_Label
    */
-  public function patch($userId, $id, Powerform_Google_Service_Gmail_Label $postBody, $optParams = array())
+  public function patch($userId, $id, Google_Service_Gmail_Label $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Gmail_Label");
+    return $this->call('patch', array($params), "Google_Service_Gmail_Label");
   }
 
   /**
@@ -987,26 +987,26 @@ class Powerform_Google_Service_Gmail_UsersLabels_Resource extends Powerform_Goog
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
    * @param string $id The ID of the label to update.
-   * @param Powerform_Google_Label $postBody
+   * @param Google_Label $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Label
+   * @return Google_Service_Gmail_Label
    */
-  public function update($userId, $id, Powerform_Google_Service_Gmail_Label $postBody, $optParams = array())
+  public function update($userId, $id, Google_Service_Gmail_Label $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Gmail_Label");
+    return $this->call('update', array($params), "Google_Service_Gmail_Label");
   }
 }
 /**
  * The "messages" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gmailService = new Powerform_Google_Service_Gmail(...);
+ *   $gmailService = new Google_Service_Gmail(...);
  *   $messages = $gmailService->messages;
  *  </code>
  */
-class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Gmail_UsersMessages_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1036,13 +1036,13 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
    * @opt_param string format The format to return the message in.
    * @opt_param string metadataHeaders When given and format is METADATA, only
    * include headers specified.
-   * @return Powerform_Google_Service_Gmail_Message
+   * @return Google_Service_Gmail_Message
    */
   public function get($userId, $id, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Gmail_Message");
+    return $this->call('get', array($params), "Google_Service_Gmail_Message");
   }
 
   /**
@@ -1052,7 +1052,7 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
    *
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
-   * @param Powerform_Google_Message $postBody
+   * @param Google_Message $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool deleted Mark the email as permanently deleted (not TRASH) and
@@ -1064,13 +1064,13 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
    * never mark this email as SPAM in the mailbox.
    * @opt_param bool processForCalendar Process calendar invites in the email and
    * add any extracted meetings to the Google Calendar for this user.
-   * @return Powerform_Google_Service_Gmail_Message
+   * @return Google_Service_Gmail_Message
    */
-  public function import($userId, Powerform_Google_Service_Gmail_Message $postBody, $optParams = array())
+  public function import($userId, Google_Service_Gmail_Message $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('import', array($params), "Powerform_Google_Service_Gmail_Message");
+    return $this->call('import', array($params), "Google_Service_Gmail_Message");
   }
 
   /**
@@ -1080,7 +1080,7 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
    *
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
-   * @param Powerform_Google_Message $postBody
+   * @param Google_Message $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool deleted Mark the email as permanently deleted (not TRASH) and
@@ -1088,13 +1088,13 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
    * Google Apps for Work accounts.
    * @opt_param string internalDateSource Source for Gmail's internal date of the
    * message.
-   * @return Powerform_Google_Service_Gmail_Message
+   * @return Google_Service_Gmail_Message
    */
-  public function insert($userId, Powerform_Google_Service_Gmail_Message $postBody, $optParams = array())
+  public function insert($userId, Google_Service_Gmail_Message $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Gmail_Message");
+    return $this->call('insert', array($params), "Google_Service_Gmail_Message");
   }
 
   /**
@@ -1114,13 +1114,13 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
    * @opt_param string q Only return messages matching the specified query.
    * Supports the same query format as the Gmail search box. For example,
    * "from:someuser@example.com rfc822msgid: is:unread".
-   * @return Powerform_Google_Service_Gmail_ListMessagesResponse
+   * @return Google_Service_Gmail_ListMessagesResponse
    */
   public function listUsersMessages($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Gmail_ListMessagesResponse");
+    return $this->call('list', array($params), "Google_Service_Gmail_ListMessagesResponse");
   }
 
   /**
@@ -1129,15 +1129,15 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
    * @param string $id The ID of the message to modify.
-   * @param Powerform_Google_ModifyMessageRequest $postBody
+   * @param Google_ModifyMessageRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Message
+   * @return Google_Service_Gmail_Message
    */
-  public function modify($userId, $id, Powerform_Google_Service_Gmail_ModifyMessageRequest $postBody, $optParams = array())
+  public function modify($userId, $id, Google_Service_Gmail_ModifyMessageRequest $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('modify', array($params), "Powerform_Google_Service_Gmail_Message");
+    return $this->call('modify', array($params), "Google_Service_Gmail_Message");
   }
 
   /**
@@ -1146,15 +1146,15 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
    *
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
-   * @param Powerform_Google_Message $postBody
+   * @param Google_Message $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Message
+   * @return Google_Service_Gmail_Message
    */
-  public function send($userId, Powerform_Google_Service_Gmail_Message $postBody, $optParams = array())
+  public function send($userId, Google_Service_Gmail_Message $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('send', array($params), "Powerform_Google_Service_Gmail_Message");
+    return $this->call('send', array($params), "Google_Service_Gmail_Message");
   }
 
   /**
@@ -1164,13 +1164,13 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
    * used to indicate the authenticated user.
    * @param string $id The ID of the message to Trash.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Message
+   * @return Google_Service_Gmail_Message
    */
   public function trash($userId, $id, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('trash', array($params), "Powerform_Google_Service_Gmail_Message");
+    return $this->call('trash', array($params), "Google_Service_Gmail_Message");
   }
 
   /**
@@ -1180,13 +1180,13 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
    * used to indicate the authenticated user.
    * @param string $id The ID of the message to remove from Trash.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Message
+   * @return Google_Service_Gmail_Message
    */
   public function untrash($userId, $id, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('untrash', array($params), "Powerform_Google_Service_Gmail_Message");
+    return $this->call('untrash', array($params), "Google_Service_Gmail_Message");
   }
 }
 
@@ -1194,11 +1194,11 @@ class Powerform_Google_Service_Gmail_UsersMessages_Resource extends Powerform_Go
  * The "attachments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gmailService = new Powerform_Google_Service_Gmail(...);
+ *   $gmailService = new Google_Service_Gmail(...);
  *   $attachments = $gmailService->attachments;
  *  </code>
  */
-class Powerform_Google_Service_Gmail_UsersMessagesAttachments_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Gmail_UsersMessagesAttachments_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1209,24 +1209,24 @@ class Powerform_Google_Service_Gmail_UsersMessagesAttachments_Resource extends P
    * @param string $messageId The ID of the message containing the attachment.
    * @param string $id The ID of the attachment.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_MessagePartBody
+   * @return Google_Service_Gmail_MessagePartBody
    */
   public function get($userId, $messageId, $id, $optParams = array())
   {
     $params = array('userId' => $userId, 'messageId' => $messageId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Gmail_MessagePartBody");
+    return $this->call('get', array($params), "Google_Service_Gmail_MessagePartBody");
   }
 }
 /**
  * The "threads" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gmailService = new Powerform_Google_Service_Gmail(...);
+ *   $gmailService = new Google_Service_Gmail(...);
  *   $threads = $gmailService->threads;
  *  </code>
  */
-class Powerform_Google_Service_Gmail_UsersThreads_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Gmail_UsersThreads_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1256,13 +1256,13 @@ class Powerform_Google_Service_Gmail_UsersThreads_Resource extends Powerform_Goo
    * @opt_param string format The format to return the messages in.
    * @opt_param string metadataHeaders When given and format is METADATA, only
    * include headers specified.
-   * @return Powerform_Google_Service_Gmail_Thread
+   * @return Google_Service_Gmail_Thread
    */
   public function get($userId, $id, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Gmail_Thread");
+    return $this->call('get', array($params), "Google_Service_Gmail_Thread");
   }
 
   /**
@@ -1282,13 +1282,13 @@ class Powerform_Google_Service_Gmail_UsersThreads_Resource extends Powerform_Goo
    * @opt_param string q Only return threads matching the specified query.
    * Supports the same query format as the Gmail search box. For example,
    * "from:someuser@example.com rfc822msgid: is:unread".
-   * @return Powerform_Google_Service_Gmail_ListThreadsResponse
+   * @return Google_Service_Gmail_ListThreadsResponse
    */
   public function listUsersThreads($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Gmail_ListThreadsResponse");
+    return $this->call('list', array($params), "Google_Service_Gmail_ListThreadsResponse");
   }
 
   /**
@@ -1298,15 +1298,15 @@ class Powerform_Google_Service_Gmail_UsersThreads_Resource extends Powerform_Goo
    * @param string $userId The user's email address. The special value me can be
    * used to indicate the authenticated user.
    * @param string $id The ID of the thread to modify.
-   * @param Powerform_Google_ModifyThreadRequest $postBody
+   * @param Google_ModifyThreadRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Thread
+   * @return Google_Service_Gmail_Thread
    */
-  public function modify($userId, $id, Powerform_Google_Service_Gmail_ModifyThreadRequest $postBody, $optParams = array())
+  public function modify($userId, $id, Google_Service_Gmail_ModifyThreadRequest $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('modify', array($params), "Powerform_Google_Service_Gmail_Thread");
+    return $this->call('modify', array($params), "Google_Service_Gmail_Thread");
   }
 
   /**
@@ -1316,13 +1316,13 @@ class Powerform_Google_Service_Gmail_UsersThreads_Resource extends Powerform_Goo
    * used to indicate the authenticated user.
    * @param string $id The ID of the thread to Trash.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Thread
+   * @return Google_Service_Gmail_Thread
    */
   public function trash($userId, $id, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('trash', array($params), "Powerform_Google_Service_Gmail_Thread");
+    return $this->call('trash', array($params), "Google_Service_Gmail_Thread");
   }
 
   /**
@@ -1332,25 +1332,25 @@ class Powerform_Google_Service_Gmail_UsersThreads_Resource extends Powerform_Goo
    * used to indicate the authenticated user.
    * @param string $id The ID of the thread to remove from Trash.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Gmail_Thread
+   * @return Google_Service_Gmail_Thread
    */
   public function untrash($userId, $id, $optParams = array())
   {
     $params = array('userId' => $userId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('untrash', array($params), "Powerform_Google_Service_Gmail_Thread");
+    return $this->call('untrash', array($params), "Google_Service_Gmail_Thread");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Gmail_Draft extends Powerform_Google_Model
+class Google_Service_Gmail_Draft extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $id;
-  protected $messageType = 'Powerform_Google_Service_Gmail_Message';
+  protected $messageType = 'Google_Service_Gmail_Message';
   protected $messageDataType = '';
 
 
@@ -1362,7 +1362,7 @@ class Powerform_Google_Service_Gmail_Draft extends Powerform_Google_Model
   {
     return $this->id;
   }
-  public function setMessage(Powerform_Google_Service_Gmail_Message $message)
+  public function setMessage(Google_Service_Gmail_Message $message)
   {
     $this->message = $message;
   }
@@ -1372,21 +1372,21 @@ class Powerform_Google_Service_Gmail_Draft extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Gmail_History extends Powerform_Google_Collection
+class Google_Service_Gmail_History extends Google_Collection
 {
   protected $collection_key = 'messagesDeleted';
   protected $internal_gapi_mappings = array(
   );
   public $id;
-  protected $labelsAddedType = 'Powerform_Google_Service_Gmail_HistoryLabelAdded';
+  protected $labelsAddedType = 'Google_Service_Gmail_HistoryLabelAdded';
   protected $labelsAddedDataType = 'array';
-  protected $labelsRemovedType = 'Powerform_Google_Service_Gmail_HistoryLabelRemoved';
+  protected $labelsRemovedType = 'Google_Service_Gmail_HistoryLabelRemoved';
   protected $labelsRemovedDataType = 'array';
-  protected $messagesType = 'Powerform_Google_Service_Gmail_Message';
+  protected $messagesType = 'Google_Service_Gmail_Message';
   protected $messagesDataType = 'array';
-  protected $messagesAddedType = 'Powerform_Google_Service_Gmail_HistoryMessageAdded';
+  protected $messagesAddedType = 'Google_Service_Gmail_HistoryMessageAdded';
   protected $messagesAddedDataType = 'array';
-  protected $messagesDeletedType = 'Powerform_Google_Service_Gmail_HistoryMessageDeleted';
+  protected $messagesDeletedType = 'Google_Service_Gmail_HistoryMessageDeleted';
   protected $messagesDeletedDataType = 'array';
 
 
@@ -1440,13 +1440,13 @@ class Powerform_Google_Service_Gmail_History extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Gmail_HistoryLabelAdded extends Powerform_Google_Collection
+class Google_Service_Gmail_HistoryLabelAdded extends Google_Collection
 {
   protected $collection_key = 'labelIds';
   protected $internal_gapi_mappings = array(
   );
   public $labelIds;
-  protected $messageType = 'Powerform_Google_Service_Gmail_Message';
+  protected $messageType = 'Google_Service_Gmail_Message';
   protected $messageDataType = '';
 
 
@@ -1458,7 +1458,7 @@ class Powerform_Google_Service_Gmail_HistoryLabelAdded extends Powerform_Google_
   {
     return $this->labelIds;
   }
-  public function setMessage(Powerform_Google_Service_Gmail_Message $message)
+  public function setMessage(Google_Service_Gmail_Message $message)
   {
     $this->message = $message;
   }
@@ -1468,13 +1468,13 @@ class Powerform_Google_Service_Gmail_HistoryLabelAdded extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Gmail_HistoryLabelRemoved extends Powerform_Google_Collection
+class Google_Service_Gmail_HistoryLabelRemoved extends Google_Collection
 {
   protected $collection_key = 'labelIds';
   protected $internal_gapi_mappings = array(
   );
   public $labelIds;
-  protected $messageType = 'Powerform_Google_Service_Gmail_Message';
+  protected $messageType = 'Google_Service_Gmail_Message';
   protected $messageDataType = '';
 
 
@@ -1486,7 +1486,7 @@ class Powerform_Google_Service_Gmail_HistoryLabelRemoved extends Powerform_Googl
   {
     return $this->labelIds;
   }
-  public function setMessage(Powerform_Google_Service_Gmail_Message $message)
+  public function setMessage(Google_Service_Gmail_Message $message)
   {
     $this->message = $message;
   }
@@ -1496,15 +1496,15 @@ class Powerform_Google_Service_Gmail_HistoryLabelRemoved extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Gmail_HistoryMessageAdded extends Powerform_Google_Model
+class Google_Service_Gmail_HistoryMessageAdded extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $messageType = 'Powerform_Google_Service_Gmail_Message';
+  protected $messageType = 'Google_Service_Gmail_Message';
   protected $messageDataType = '';
 
 
-  public function setMessage(Powerform_Google_Service_Gmail_Message $message)
+  public function setMessage(Google_Service_Gmail_Message $message)
   {
     $this->message = $message;
   }
@@ -1514,15 +1514,15 @@ class Powerform_Google_Service_Gmail_HistoryMessageAdded extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Gmail_HistoryMessageDeleted extends Powerform_Google_Model
+class Google_Service_Gmail_HistoryMessageDeleted extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $messageType = 'Powerform_Google_Service_Gmail_Message';
+  protected $messageType = 'Google_Service_Gmail_Message';
   protected $messageDataType = '';
 
 
-  public function setMessage(Powerform_Google_Service_Gmail_Message $message)
+  public function setMessage(Google_Service_Gmail_Message $message)
   {
     $this->message = $message;
   }
@@ -1532,7 +1532,7 @@ class Powerform_Google_Service_Gmail_HistoryMessageDeleted extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Gmail_Label extends Powerform_Google_Model
+class Google_Service_Gmail_Label extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1621,12 +1621,12 @@ class Powerform_Google_Service_Gmail_Label extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Gmail_ListDraftsResponse extends Powerform_Google_Collection
+class Google_Service_Gmail_ListDraftsResponse extends Google_Collection
 {
   protected $collection_key = 'drafts';
   protected $internal_gapi_mappings = array(
   );
-  protected $draftsType = 'Powerform_Google_Service_Gmail_Draft';
+  protected $draftsType = 'Google_Service_Gmail_Draft';
   protected $draftsDataType = 'array';
   public $nextPageToken;
   public $resultSizeEstimate;
@@ -1658,12 +1658,12 @@ class Powerform_Google_Service_Gmail_ListDraftsResponse extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Gmail_ListHistoryResponse extends Powerform_Google_Collection
+class Google_Service_Gmail_ListHistoryResponse extends Google_Collection
 {
   protected $collection_key = 'history';
   protected $internal_gapi_mappings = array(
   );
-  protected $historyType = 'Powerform_Google_Service_Gmail_History';
+  protected $historyType = 'Google_Service_Gmail_History';
   protected $historyDataType = 'array';
   public $historyId;
   public $nextPageToken;
@@ -1695,12 +1695,12 @@ class Powerform_Google_Service_Gmail_ListHistoryResponse extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Gmail_ListLabelsResponse extends Powerform_Google_Collection
+class Google_Service_Gmail_ListLabelsResponse extends Google_Collection
 {
   protected $collection_key = 'labels';
   protected $internal_gapi_mappings = array(
   );
-  protected $labelsType = 'Powerform_Google_Service_Gmail_Label';
+  protected $labelsType = 'Google_Service_Gmail_Label';
   protected $labelsDataType = 'array';
 
 
@@ -1714,12 +1714,12 @@ class Powerform_Google_Service_Gmail_ListLabelsResponse extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Gmail_ListMessagesResponse extends Powerform_Google_Collection
+class Google_Service_Gmail_ListMessagesResponse extends Google_Collection
 {
   protected $collection_key = 'messages';
   protected $internal_gapi_mappings = array(
   );
-  protected $messagesType = 'Powerform_Google_Service_Gmail_Message';
+  protected $messagesType = 'Google_Service_Gmail_Message';
   protected $messagesDataType = 'array';
   public $nextPageToken;
   public $resultSizeEstimate;
@@ -1751,14 +1751,14 @@ class Powerform_Google_Service_Gmail_ListMessagesResponse extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Gmail_ListThreadsResponse extends Powerform_Google_Collection
+class Google_Service_Gmail_ListThreadsResponse extends Google_Collection
 {
   protected $collection_key = 'threads';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
   public $resultSizeEstimate;
-  protected $threadsType = 'Powerform_Google_Service_Gmail_Thread';
+  protected $threadsType = 'Google_Service_Gmail_Thread';
   protected $threadsDataType = 'array';
 
 
@@ -1788,7 +1788,7 @@ class Powerform_Google_Service_Gmail_ListThreadsResponse extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Gmail_Message extends Powerform_Google_Collection
+class Google_Service_Gmail_Message extends Google_Collection
 {
   protected $collection_key = 'labelIds';
   protected $internal_gapi_mappings = array(
@@ -1797,7 +1797,7 @@ class Powerform_Google_Service_Gmail_Message extends Powerform_Google_Collection
   public $id;
   public $internalDate;
   public $labelIds;
-  protected $payloadType = 'Powerform_Google_Service_Gmail_MessagePart';
+  protected $payloadType = 'Google_Service_Gmail_MessagePart';
   protected $payloadDataType = '';
   public $raw;
   public $sizeEstimate;
@@ -1837,7 +1837,7 @@ class Powerform_Google_Service_Gmail_Message extends Powerform_Google_Collection
   {
     return $this->labelIds;
   }
-  public function setPayload(Powerform_Google_Service_Gmail_MessagePart $payload)
+  public function setPayload(Google_Service_Gmail_MessagePart $payload)
   {
     $this->payload = $payload;
   }
@@ -1879,23 +1879,23 @@ class Powerform_Google_Service_Gmail_Message extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Gmail_MessagePart extends Powerform_Google_Collection
+class Google_Service_Gmail_MessagePart extends Google_Collection
 {
   protected $collection_key = 'parts';
   protected $internal_gapi_mappings = array(
   );
-  protected $bodyType = 'Powerform_Google_Service_Gmail_MessagePartBody';
+  protected $bodyType = 'Google_Service_Gmail_MessagePartBody';
   protected $bodyDataType = '';
   public $filename;
-  protected $headersType = 'Powerform_Google_Service_Gmail_MessagePartHeader';
+  protected $headersType = 'Google_Service_Gmail_MessagePartHeader';
   protected $headersDataType = 'array';
   public $mimeType;
   public $partId;
-  protected $partsType = 'Powerform_Google_Service_Gmail_MessagePart';
+  protected $partsType = 'Google_Service_Gmail_MessagePart';
   protected $partsDataType = 'array';
 
 
-  public function setBody(Powerform_Google_Service_Gmail_MessagePartBody $body)
+  public function setBody(Google_Service_Gmail_MessagePartBody $body)
   {
     $this->body = $body;
   }
@@ -1945,7 +1945,7 @@ class Powerform_Google_Service_Gmail_MessagePart extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Gmail_MessagePartBody extends Powerform_Google_Model
+class Google_Service_Gmail_MessagePartBody extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1980,7 +1980,7 @@ class Powerform_Google_Service_Gmail_MessagePartBody extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Gmail_MessagePartHeader extends Powerform_Google_Model
+class Google_Service_Gmail_MessagePartHeader extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2006,7 +2006,7 @@ class Powerform_Google_Service_Gmail_MessagePartHeader extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Gmail_ModifyMessageRequest extends Powerform_Google_Collection
+class Google_Service_Gmail_ModifyMessageRequest extends Google_Collection
 {
   protected $collection_key = 'removeLabelIds';
   protected $internal_gapi_mappings = array(
@@ -2033,7 +2033,7 @@ class Powerform_Google_Service_Gmail_ModifyMessageRequest extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Gmail_ModifyThreadRequest extends Powerform_Google_Collection
+class Google_Service_Gmail_ModifyThreadRequest extends Google_Collection
 {
   protected $collection_key = 'removeLabelIds';
   protected $internal_gapi_mappings = array(
@@ -2060,7 +2060,7 @@ class Powerform_Google_Service_Gmail_ModifyThreadRequest extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Gmail_Profile extends Powerform_Google_Model
+class Google_Service_Gmail_Profile extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2104,14 +2104,14 @@ class Powerform_Google_Service_Gmail_Profile extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Gmail_Thread extends Powerform_Google_Collection
+class Google_Service_Gmail_Thread extends Google_Collection
 {
   protected $collection_key = 'messages';
   protected $internal_gapi_mappings = array(
   );
   public $historyId;
   public $id;
-  protected $messagesType = 'Powerform_Google_Service_Gmail_Message';
+  protected $messagesType = 'Google_Service_Gmail_Message';
   protected $messagesDataType = 'array';
   public $snippet;
 
@@ -2150,7 +2150,7 @@ class Powerform_Google_Service_Gmail_Thread extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Gmail_WatchRequest extends Powerform_Google_Collection
+class Google_Service_Gmail_WatchRequest extends Google_Collection
 {
   protected $collection_key = 'labelIds';
   protected $internal_gapi_mappings = array(
@@ -2186,7 +2186,7 @@ class Powerform_Google_Service_Gmail_WatchRequest extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Gmail_WatchResponse extends Powerform_Google_Model
+class Google_Service_Gmail_WatchResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

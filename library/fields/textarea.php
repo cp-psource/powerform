@@ -77,7 +77,7 @@ class Powerform_Textarea extends Powerform_Field {
 			'input_type'  => 'line',
 			'limit_type'  => 'characters',
 			'field_label' => __( 'Text', Powerform::DOMAIN ),
-			'placeholder' => __( "E.g. text placeholder\nYou can add new line", Powerform::DOMAIN ),
+			'placeholder' => __( 'Z.B. Textplatzhalter', Powerform::DOMAIN ),
 		);
 	}
 
@@ -113,82 +113,60 @@ class Powerform_Textarea extends Powerform_Field {
 	 * @return mixed
 	 */
 	public function markup( $field, $settings = array() ) {
-
 		$this->field         = $field;
 		$this->form_settings = $settings;
 
 		$this->init_autofill( $settings );
 
-		$html        = '';
 		$id          = self::get_property( 'element_id', $field );
 		$name        = $id;
 		$ariaid      = $id;
-		$id          = 'powerform-field-' . $id;
+		$id          = $id . '-field';
 		$required    = self::get_property( 'required', $field, false, 'bool' );
-		$default     = esc_html( self::get_property( 'default', $field, false ) );
+		$default     = self::get_property( 'default', $field, false );
 		$placeholder = $this->sanitize_value( self::get_property( 'placeholder', $field ) );
 		$design      = $this->get_form_style( $settings );
-		$label       = esc_html( self::get_property( 'field_label', $field, '' ) );
-		$description = esc_html( self::get_property( 'description', $field, '' ) );
+		$label       = self::get_property( 'field_label', $field, '' );
+		$description = self::get_property( 'description', $field, '' );
 		$limit       = self::get_property( 'limit', $field, 0, 'num' );
 		$limit_type  = self::get_property( 'limit_type', $field, '', 'str' );
-		$editor_type  = self::get_property( 'editor-type', $field, false, 'bool' );
-		$default_height  = self::get_property( 'default-height', $field, false, 140 );
+
+		$html = '';
 
 		$autofill_markup = $this->get_element_autofill_markup_attr( self::get_property( 'element_id', $field ), $this->form_settings );
 
+
 		$textarea = array(
-			'name'        => $name,
-			'placeholder' => $placeholder,
-			'id'          => $id,
-			'class'       => 'powerform-textarea',
-			'height'      => 50,
-			'style'       => 'min-height:' . $default_height . 'px;'
+			'class'           => 'powerform-textarea',
+			'name'            => $name,
+			'placeholder'     => $placeholder,
+			'id'              => $id,
+			'aria-labelledby' => 'powerform-label-' . $ariaid,
 		);
-            
-        // Add maxlength attribute if limit_type is characters
-        if ( ! empty( $limit ) && 'characters' === $limit_type ) {
-            $textarea['maxlength'] = $limit;
-        }
-
-		// Check if Pre-fill parameter used
-		if ( $this->has_prefill( $field ) ) {
-			// We have pre-fill parameter, use its value or $value
-			$default = $this->get_prefill( $field, $default );
-		}
-
 		if ( ! empty( $default ) ) {
 			$textarea['content'] = $default;
 		} elseif ( isset( $autofill_markup['value'] ) ) {
 			$textarea['content'] = $autofill_markup['value'];
 			unset( $autofill_markup['value'] );
 		}
-
 		$textarea = array_merge( $textarea, $autofill_markup );
 
-		$html .= '<div class="powerform-field">';
-		if ( true === $editor_type ) {
-			$html .= self::create_wp_editor( $textarea, $label, '', $required );
-		} else {
-			$html .= self::create_textarea( $textarea, $label, '', $required, $design );
-		}
-		// Counter
+		$html .= self::create_textarea( $textarea, $label, '', $required, $design );
+
+		// counter
 		if ( ! empty( $description ) || ( ! empty( $limit ) && ! empty( $limit_type ) ) ) {
-			$html .= '<span class="powerform-description">';
-
+			$html .= '<div class="powerform-field--helper">';
 			if ( ! empty( $description ) ) {
-				$html .= $description;
+				$html .= sprintf( '<label class="powerform-label--helper">%s</label>', $description );
 			}
-
 			if ( ( ! empty( $limit ) && ! empty( $limit_type ) ) ) {
-				$html .= sprintf( '<span data-limit="%s" data-type="%s">0 / %s</span>', $limit, $limit_type, $limit );
+				$html .= sprintf( '<label class="powerform-label--limit" data-limit="%s" data-type="%s">0 / %s</label>', $limit, $limit_type, $limit );
 			}
-			$html .= '</span>';
+			$html .= '</div>';
 		}
-		$html .= '</div>';
+
 
 		return apply_filters( 'powerform_field_text_markup', $html, $field );
-
 	}
 
 	/**
@@ -199,7 +177,6 @@ class Powerform_Textarea extends Powerform_Field {
 	 */
 	public function get_validation_rules() {
 		$field       = $this->field;
-		$id          = self::get_property( 'element_id', $field );
 		$is_required = $this->is_required( $field );
 		$has_limit   = $this->has_limit( $field );
 		$rules       = '';
@@ -224,7 +201,7 @@ class Powerform_Textarea extends Powerform_Field {
 			$rules .= '},';
 		}
 
-		return apply_filters( 'powerform_field_text_validation_rules', $rules, $id, $field );
+		return $rules;
 	}
 
 	/**
@@ -247,30 +224,30 @@ class Powerform_Textarea extends Powerform_Field {
 			if ( $is_required ) {
 				$required_error = apply_filters(
 					'powerform_text_field_required_validation_message',
-					( ! empty( $required_message ) ? $required_message : __( 'This field is required. Please enter text.', Powerform::DOMAIN ) ),
+					( ! empty( $required_message ) ? $required_message : __( 'Dieses Feld wird benötigt. Bitte gib Text ein', Powerform::DOMAIN ) ),
 					$id,
 					$field
 				);
-				$messages      .= '"required": "' . powerform_addcslashes( $required_error ) . '",' . "\n";
+				$messages       .= '"required": "' . $required_error . '",' . "\n";
 			}
 
 			if ( $has_limit ) {
 				if ( isset( $field['limit_type'] ) && 'characters' === trim( $field['limit_type'] ) ) {
 					$max_length_error = apply_filters(
 						'powerform_text_field_characters_validation_message',
-						__( 'You exceeded the allowed amount of characters. Please check again.', Powerform::DOMAIN ),
+						__( 'Du hast die zulässige Anzahl von Zeichen überschritten. Bitte überprüfe noch einmal', Powerform::DOMAIN ),
 						$id,
 						$field
 					);
-					$messages        .= '"maxlength": "' . powerform_addcslashes( $max_length_error ) . '",' . "\n";
+					$messages         .= '"maxlength": "' . $max_length_error . '",' . "\n";
 				} else {
 					$max_words_error = apply_filters(
 						'powerform_text_field_words_validation_message',
-						__( 'You exceeded the allowed amount of words. Please check again.', Powerform::DOMAIN ),
+						__( 'Du hast die zulässige Anzahl von Wörtern überschritten. Bitte überprüfe noch einmal', Powerform::DOMAIN ),
 						$id,
 						$field
 					);
-					$messages       .= '"maxwords": "' . powerform_addcslashes( $max_words_error ) . '",' . "\n";
+					$messages        .= '"maxwords": "' . $max_words_error . '",' . "\n";
 				}
 			}
 
@@ -287,9 +264,8 @@ class Powerform_Textarea extends Powerform_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$id = self::get_property( 'element_id', $field );
 
 		if ( ! isset( $field['limit'] ) ) {
@@ -301,30 +277,31 @@ class Powerform_Textarea extends Powerform_Field {
 			if ( empty( $data ) ) {
 				$this->validation_message[ $id ] = apply_filters(
 					'powerform_text_field_required_validation_message',
-					( ! empty( $required_message ) ? $required_message : __( 'This field is required. Please enter text.', Powerform::DOMAIN ) ),
+					( ! empty( $required_message ) ? $required_message : __( 'Dieses Feld wird benötigt. Bitte gib Text ein', Powerform::DOMAIN ) ),
 					$id,
 					$field
 				);
 			}
 		}
 		if ( $this->has_limit( $field ) ) {
-			if ( ( isset( $field['limit_type'] ) && 'characters' === trim( $field['limit_type'] ) ) && ( mb_strlen( strip_tags( $data ) ) > $field['limit'] ) ) { // phpcs:ignore
+			if ( ( isset( $field['limit_type'] ) && 'characters' === trim( $field['limit_type'] ) ) && ( strlen( $data ) > $field['limit'] ) ) {
 				$this->validation_message[ $id ] = apply_filters(
 					'powerform_text_field_characters_validation_message',
-					__( 'You exceeded the allowed amount of characters. Please check again.', Powerform::DOMAIN ),
+					__( 'Du hast die zulässige Anzahl von Zeichen überschritten. Bitte überprüfe noch einmal', Powerform::DOMAIN ),
 					$id,
 					$field
 				);
 			} elseif ( ( isset( $field['limit_type'] ) && 'words' === trim( $field['limit_type'] ) ) ) {
-				$words = preg_split( '/[\s]+/', $data );
+				$words = preg_split( "/[\s]+/", $data );
 				if ( is_array( $words ) && count( $words ) > $field['limit'] ) {
 					$this->validation_message[ $id ] = apply_filters(
 						'powerform_text_field_words_validation_message',
-						__( 'You exceeded the allowed amount of words. Please check again.', Powerform::DOMAIN ),
+						__( 'Du hast die zulässige Anzahl von Wörtern überschritten. Bitte überprüfe noch einmal', Powerform::DOMAIN ),
 						$id,
 						$field
 					);
 				}
+
 			}
 		}
 	}
@@ -341,13 +318,8 @@ class Powerform_Textarea extends Powerform_Field {
 	 */
 	public function sanitize( $field, $data ) {
 		$original_data = $data;
-		$editor_type   = self::get_property( 'editor-type', $field, false, 'bool' );
 		// Sanitize
-		if ( true === $editor_type ) {
-			$data = wp_kses_post( $data );
-		} else {
-			$data = powerform_sanitize_field( $data );
-		}
+		$data = powerform_sanitize_field( $data );
 
 		return apply_filters( 'powerform_field_text_sanitize', $data, $field, $original_data );
 	}

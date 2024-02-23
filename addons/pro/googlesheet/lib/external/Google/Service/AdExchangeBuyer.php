@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
+class Google_Service_AdExchangeBuyer extends Google_Service
 {
   /** Manage your Ad Exchange buyer account configuration. */
   const ADEXCHANGE_BUYER =
@@ -43,14 +43,14 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
   public $pretargetingConfig;
   public $products;
   public $proposals;
-  
+
 
   /**
    * Constructs the internal representation of the AdExchangeBuyer service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -58,7 +58,7 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
     $this->version = 'v1.4';
     $this->serviceName = 'adexchangebuyer';
 
-    $this->accounts = new Powerform_Google_Service_AdExchangeBuyer_Accounts_Resource(
+    $this->accounts = new Google_Service_AdExchangeBuyer_Accounts_Resource(
         $this,
         $this->serviceName,
         'accounts',
@@ -102,7 +102,7 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
           )
         )
     );
-    $this->billingInfo = new Powerform_Google_Service_AdExchangeBuyer_BillingInfo_Resource(
+    $this->billingInfo = new Google_Service_AdExchangeBuyer_BillingInfo_Resource(
         $this,
         $this->serviceName,
         'billingInfo',
@@ -126,7 +126,7 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
           )
         )
     );
-    $this->budget = new Powerform_Google_Service_AdExchangeBuyer_Budget_Resource(
+    $this->budget = new Google_Service_AdExchangeBuyer_Budget_Resource(
         $this,
         $this->serviceName,
         'budget',
@@ -181,7 +181,7 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
           )
         )
     );
-    $this->creatives = new Powerform_Google_Service_AdExchangeBuyer_Creatives_Resource(
+    $this->creatives = new Google_Service_AdExchangeBuyer_Creatives_Resource(
         $this,
         $this->serviceName,
         'creatives',
@@ -281,7 +281,7 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
           )
         )
     );
-    $this->marketplacedeals = new Powerform_Google_Service_AdExchangeBuyer_Marketplacedeals_Resource(
+    $this->marketplacedeals = new Google_Service_AdExchangeBuyer_Marketplacedeals_Resource(
         $this,
         $this->serviceName,
         'marketplacedeals',
@@ -331,7 +331,7 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
           )
         )
     );
-    $this->marketplacenotes = new Powerform_Google_Service_AdExchangeBuyer_Marketplacenotes_Resource(
+    $this->marketplacenotes = new Google_Service_AdExchangeBuyer_Marketplacenotes_Resource(
         $this,
         $this->serviceName,
         'marketplacenotes',
@@ -361,7 +361,7 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
           )
         )
     );
-    $this->performanceReport = new Powerform_Google_Service_AdExchangeBuyer_PerformanceReport_Resource(
+    $this->performanceReport = new Google_Service_AdExchangeBuyer_PerformanceReport_Resource(
         $this,
         $this->serviceName,
         'performanceReport',
@@ -399,7 +399,7 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
           )
         )
     );
-    $this->pretargetingConfig = new Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig_Resource(
+    $this->pretargetingConfig = new Google_Service_AdExchangeBuyer_PretargetingConfig_Resource(
         $this,
         $this->serviceName,
         'pretargetingConfig',
@@ -489,7 +489,7 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
           )
         )
     );
-    $this->products = new Powerform_Google_Service_AdExchangeBuyer_Products_Resource(
+    $this->products = new Google_Service_AdExchangeBuyer_Products_Resource(
         $this,
         $this->serviceName,
         'products',
@@ -518,7 +518,7 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
           )
         )
     );
-    $this->proposals = new Powerform_Google_Service_AdExchangeBuyer_Proposals_Resource(
+    $this->proposals = new Google_Service_AdExchangeBuyer_Proposals_Resource(
         $this,
         $this->serviceName,
         'proposals',
@@ -599,11 +599,11 @@ class Powerform_Google_Service_AdExchangeBuyer extends Powerform_Google_Service
  * The "accounts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Powerform_Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
  *   $accounts = $adexchangebuyerService->accounts;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeBuyer_Accounts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeBuyer_Accounts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -611,26 +611,26 @@ class Powerform_Google_Service_AdExchangeBuyer_Accounts_Resource extends Powerfo
    *
    * @param int $id The account id
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Account
+   * @return Google_Service_AdExchangeBuyer_Account
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdExchangeBuyer_Account");
+    return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_Account");
   }
 
   /**
    * Retrieves the authenticated user's list of accounts. (accounts.listAccounts)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_AccountsList
+   * @return Google_Service_AdExchangeBuyer_AccountsList
    */
   public function listAccounts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeBuyer_AccountsList");
+    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_AccountsList");
   }
 
   /**
@@ -638,30 +638,30 @@ class Powerform_Google_Service_AdExchangeBuyer_Accounts_Resource extends Powerfo
    * (accounts.patch)
    *
    * @param int $id The account id
-   * @param Powerform_Google_Account $postBody
+   * @param Google_Account $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Account
+   * @return Google_Service_AdExchangeBuyer_Account
    */
-  public function patch($id, Powerform_Google_Service_AdExchangeBuyer_Account $postBody, $optParams = array())
+  public function patch($id, Google_Service_AdExchangeBuyer_Account $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AdExchangeBuyer_Account");
+    return $this->call('patch', array($params), "Google_Service_AdExchangeBuyer_Account");
   }
 
   /**
    * Updates an existing account. (accounts.update)
    *
    * @param int $id The account id
-   * @param Powerform_Google_Account $postBody
+   * @param Google_Account $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Account
+   * @return Google_Service_AdExchangeBuyer_Account
    */
-  public function update($id, Powerform_Google_Service_AdExchangeBuyer_Account $postBody, $optParams = array())
+  public function update($id, Google_Service_AdExchangeBuyer_Account $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AdExchangeBuyer_Account");
+    return $this->call('update', array($params), "Google_Service_AdExchangeBuyer_Account");
   }
 }
 
@@ -669,11 +669,11 @@ class Powerform_Google_Service_AdExchangeBuyer_Accounts_Resource extends Powerfo
  * The "billingInfo" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Powerform_Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
  *   $billingInfo = $adexchangebuyerService->billingInfo;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeBuyer_BillingInfo_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeBuyer_BillingInfo_Resource extends Google_Service_Resource
 {
 
   /**
@@ -682,13 +682,13 @@ class Powerform_Google_Service_AdExchangeBuyer_BillingInfo_Resource extends Powe
    *
    * @param int $accountId The account id.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_BillingInfo
+   * @return Google_Service_AdExchangeBuyer_BillingInfo
    */
   public function get($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdExchangeBuyer_BillingInfo");
+    return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_BillingInfo");
   }
 
   /**
@@ -696,13 +696,13 @@ class Powerform_Google_Service_AdExchangeBuyer_BillingInfo_Resource extends Powe
    * user. (billingInfo.listBillingInfo)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_BillingInfoList
+   * @return Google_Service_AdExchangeBuyer_BillingInfoList
    */
   public function listBillingInfo($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeBuyer_BillingInfoList");
+    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_BillingInfoList");
   }
 }
 
@@ -710,11 +710,11 @@ class Powerform_Google_Service_AdExchangeBuyer_BillingInfo_Resource extends Powe
  * The "budget" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Powerform_Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
  *   $budget = $adexchangebuyerService->budget;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeBuyer_Budget_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeBuyer_Budget_Resource extends Google_Service_Resource
 {
 
   /**
@@ -724,13 +724,13 @@ class Powerform_Google_Service_AdExchangeBuyer_Budget_Resource extends Powerform
    * @param string $accountId The account id to get the budget information for.
    * @param string $billingId The billing id to get the budget information for.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Budget
+   * @return Google_Service_AdExchangeBuyer_Budget
    */
   public function get($accountId, $billingId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'billingId' => $billingId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdExchangeBuyer_Budget");
+    return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_Budget");
   }
 
   /**
@@ -742,15 +742,15 @@ class Powerform_Google_Service_AdExchangeBuyer_Budget_Resource extends Powerform
    * updated.
    * @param string $billingId The billing id associated with the budget being
    * updated.
-   * @param Powerform_Google_Budget $postBody
+   * @param Google_Budget $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Budget
+   * @return Google_Service_AdExchangeBuyer_Budget
    */
-  public function patch($accountId, $billingId, Powerform_Google_Service_AdExchangeBuyer_Budget $postBody, $optParams = array())
+  public function patch($accountId, $billingId, Google_Service_AdExchangeBuyer_Budget $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'billingId' => $billingId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AdExchangeBuyer_Budget");
+    return $this->call('patch', array($params), "Google_Service_AdExchangeBuyer_Budget");
   }
 
   /**
@@ -762,15 +762,15 @@ class Powerform_Google_Service_AdExchangeBuyer_Budget_Resource extends Powerform
    * updated.
    * @param string $billingId The billing id associated with the budget being
    * updated.
-   * @param Powerform_Google_Budget $postBody
+   * @param Google_Budget $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Budget
+   * @return Google_Service_AdExchangeBuyer_Budget
    */
-  public function update($accountId, $billingId, Powerform_Google_Service_AdExchangeBuyer_Budget $postBody, $optParams = array())
+  public function update($accountId, $billingId, Google_Service_AdExchangeBuyer_Budget $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'billingId' => $billingId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AdExchangeBuyer_Budget");
+    return $this->call('update', array($params), "Google_Service_AdExchangeBuyer_Budget");
   }
 }
 
@@ -778,11 +778,11 @@ class Powerform_Google_Service_AdExchangeBuyer_Budget_Resource extends Powerform
  * The "creatives" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Powerform_Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
  *   $creatives = $adexchangebuyerService->creatives;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeBuyer_Creatives_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeBuyer_Creatives_Resource extends Google_Service_Resource
 {
 
   /**
@@ -807,27 +807,27 @@ class Powerform_Google_Service_AdExchangeBuyer_Creatives_Resource extends Powerf
    * @param int $accountId The id for the account that will serve this creative.
    * @param string $buyerCreativeId The buyer-specific id for this creative.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Creative
+   * @return Google_Service_AdExchangeBuyer_Creative
    */
   public function get($accountId, $buyerCreativeId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'buyerCreativeId' => $buyerCreativeId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdExchangeBuyer_Creative");
+    return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_Creative");
   }
 
   /**
    * Submit a new creative. (creatives.insert)
    *
-   * @param Powerform_Google_Creative $postBody
+   * @param Google_Creative $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Creative
+   * @return Google_Service_AdExchangeBuyer_Creative
    */
-  public function insert(Powerform_Google_Service_AdExchangeBuyer_Creative $postBody, $optParams = array())
+  public function insert(Google_Service_AdExchangeBuyer_Creative $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_AdExchangeBuyer_Creative");
+    return $this->call('insert', array($params), "Google_Service_AdExchangeBuyer_Creative");
   }
 
   /**
@@ -849,13 +849,13 @@ class Powerform_Google_Service_AdExchangeBuyer_Creatives_Resource extends Powerf
    * @opt_param string pageToken A continuation token, used to page through ad
    * clients. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response. Optional.
-   * @return Powerform_Google_Service_AdExchangeBuyer_CreativesList
+   * @return Google_Service_AdExchangeBuyer_CreativesList
    */
   public function listCreatives($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeBuyer_CreativesList");
+    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_CreativesList");
   }
 
   /**
@@ -879,41 +879,41 @@ class Powerform_Google_Service_AdExchangeBuyer_Creatives_Resource extends Powerf
  * The "marketplacedeals" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Powerform_Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
  *   $marketplacedeals = $adexchangebuyerService->marketplacedeals;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeBuyer_Marketplacedeals_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeBuyer_Marketplacedeals_Resource extends Google_Service_Resource
 {
 
   /**
    * Delete the specified deals from the proposal (marketplacedeals.delete)
    *
    * @param string $proposalId The proposalId to delete deals from.
-   * @param Powerform_Google_DeleteOrderDealsRequest $postBody
+   * @param Google_DeleteOrderDealsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_DeleteOrderDealsResponse
+   * @return Google_Service_AdExchangeBuyer_DeleteOrderDealsResponse
    */
-  public function delete($proposalId, Powerform_Google_Service_AdExchangeBuyer_DeleteOrderDealsRequest $postBody, $optParams = array())
+  public function delete($proposalId, Google_Service_AdExchangeBuyer_DeleteOrderDealsRequest $postBody, $optParams = array())
   {
     $params = array('proposalId' => $proposalId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_AdExchangeBuyer_DeleteOrderDealsResponse");
+    return $this->call('delete', array($params), "Google_Service_AdExchangeBuyer_DeleteOrderDealsResponse");
   }
 
   /**
    * Add new deals for the specified proposal (marketplacedeals.insert)
    *
    * @param string $proposalId proposalId for which deals need to be added.
-   * @param Powerform_Google_AddOrderDealsRequest $postBody
+   * @param Google_AddOrderDealsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_AddOrderDealsResponse
+   * @return Google_Service_AdExchangeBuyer_AddOrderDealsResponse
    */
-  public function insert($proposalId, Powerform_Google_Service_AdExchangeBuyer_AddOrderDealsRequest $postBody, $optParams = array())
+  public function insert($proposalId, Google_Service_AdExchangeBuyer_AddOrderDealsRequest $postBody, $optParams = array())
   {
     $params = array('proposalId' => $proposalId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_AdExchangeBuyer_AddOrderDealsResponse");
+    return $this->call('insert', array($params), "Google_Service_AdExchangeBuyer_AddOrderDealsResponse");
   }
 
   /**
@@ -922,13 +922,13 @@ class Powerform_Google_Service_AdExchangeBuyer_Marketplacedeals_Resource extends
    *
    * @param string $proposalId The proposalId to get deals for.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_GetOrderDealsResponse
+   * @return Google_Service_AdExchangeBuyer_GetOrderDealsResponse
    */
   public function listMarketplacedeals($proposalId, $optParams = array())
   {
     $params = array('proposalId' => $proposalId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeBuyer_GetOrderDealsResponse");
+    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_GetOrderDealsResponse");
   }
 
   /**
@@ -936,15 +936,15 @@ class Powerform_Google_Service_AdExchangeBuyer_Marketplacedeals_Resource extends
    * (marketplacedeals.update)
    *
    * @param string $proposalId The proposalId to edit deals on.
-   * @param Powerform_Google_EditAllOrderDealsRequest $postBody
+   * @param Google_EditAllOrderDealsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_EditAllOrderDealsResponse
+   * @return Google_Service_AdExchangeBuyer_EditAllOrderDealsResponse
    */
-  public function update($proposalId, Powerform_Google_Service_AdExchangeBuyer_EditAllOrderDealsRequest $postBody, $optParams = array())
+  public function update($proposalId, Google_Service_AdExchangeBuyer_EditAllOrderDealsRequest $postBody, $optParams = array())
   {
     $params = array('proposalId' => $proposalId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AdExchangeBuyer_EditAllOrderDealsResponse");
+    return $this->call('update', array($params), "Google_Service_AdExchangeBuyer_EditAllOrderDealsResponse");
   }
 }
 
@@ -952,26 +952,26 @@ class Powerform_Google_Service_AdExchangeBuyer_Marketplacedeals_Resource extends
  * The "marketplacenotes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Powerform_Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
  *   $marketplacenotes = $adexchangebuyerService->marketplacenotes;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeBuyer_Marketplacenotes_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeBuyer_Marketplacenotes_Resource extends Google_Service_Resource
 {
 
   /**
    * Add notes to the proposal (marketplacenotes.insert)
    *
    * @param string $proposalId The proposalId to add notes for.
-   * @param Powerform_Google_AddOrderNotesRequest $postBody
+   * @param Google_AddOrderNotesRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_AddOrderNotesResponse
+   * @return Google_Service_AdExchangeBuyer_AddOrderNotesResponse
    */
-  public function insert($proposalId, Powerform_Google_Service_AdExchangeBuyer_AddOrderNotesRequest $postBody, $optParams = array())
+  public function insert($proposalId, Google_Service_AdExchangeBuyer_AddOrderNotesRequest $postBody, $optParams = array())
   {
     $params = array('proposalId' => $proposalId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_AdExchangeBuyer_AddOrderNotesResponse");
+    return $this->call('insert', array($params), "Google_Service_AdExchangeBuyer_AddOrderNotesResponse");
   }
 
   /**
@@ -980,13 +980,13 @@ class Powerform_Google_Service_AdExchangeBuyer_Marketplacenotes_Resource extends
    *
    * @param string $proposalId The proposalId to get notes for.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_GetOrderNotesResponse
+   * @return Google_Service_AdExchangeBuyer_GetOrderNotesResponse
    */
   public function listMarketplacenotes($proposalId, $optParams = array())
   {
     $params = array('proposalId' => $proposalId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeBuyer_GetOrderNotesResponse");
+    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_GetOrderNotesResponse");
   }
 }
 
@@ -994,11 +994,11 @@ class Powerform_Google_Service_AdExchangeBuyer_Marketplacenotes_Resource extends
  * The "performanceReport" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Powerform_Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
  *   $performanceReport = $adexchangebuyerService->performanceReport;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeBuyer_PerformanceReport_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeBuyer_PerformanceReport_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1017,13 +1017,13 @@ class Powerform_Google_Service_AdExchangeBuyer_PerformanceReport_Resource extend
    * @opt_param string pageToken A continuation token, used to page through
    * performance reports. To retrieve the next page, set this parameter to the
    * value of "nextPageToken" from the previous response. Optional.
-   * @return Powerform_Google_Service_AdExchangeBuyer_PerformanceReportList
+   * @return Google_Service_AdExchangeBuyer_PerformanceReportList
    */
   public function listPerformanceReport($accountId, $endDateTime, $startDateTime, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'endDateTime' => $endDateTime, 'startDateTime' => $startDateTime);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeBuyer_PerformanceReportList");
+    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_PerformanceReportList");
   }
 }
 
@@ -1031,11 +1031,11 @@ class Powerform_Google_Service_AdExchangeBuyer_PerformanceReport_Resource extend
  * The "pretargetingConfig" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Powerform_Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
  *   $pretargetingConfig = $adexchangebuyerService->pretargetingConfig;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeBuyer_PretargetingConfig_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1059,13 +1059,13 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig_Resource exten
    * @param string $accountId The account id to get the pretargeting config for.
    * @param string $configId The specific id of the configuration to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig
+   * @return Google_Service_AdExchangeBuyer_PretargetingConfig
    */
   public function get($accountId, $configId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'configId' => $configId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig");
+    return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_PretargetingConfig");
   }
 
   /**
@@ -1073,15 +1073,15 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig_Resource exten
    *
    * @param string $accountId The account id to insert the pretargeting config
    * for.
-   * @param Powerform_Google_PretargetingConfig $postBody
+   * @param Google_PretargetingConfig $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig
+   * @return Google_Service_AdExchangeBuyer_PretargetingConfig
    */
-  public function insert($accountId, Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig $postBody, $optParams = array())
+  public function insert($accountId, Google_Service_AdExchangeBuyer_PretargetingConfig $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig");
+    return $this->call('insert', array($params), "Google_Service_AdExchangeBuyer_PretargetingConfig");
   }
 
   /**
@@ -1090,13 +1090,13 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig_Resource exten
    *
    * @param string $accountId The account id to get the pretargeting configs for.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigList
+   * @return Google_Service_AdExchangeBuyer_PretargetingConfigList
    */
   public function listPretargetingConfig($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigList");
+    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_PretargetingConfigList");
   }
 
   /**
@@ -1106,15 +1106,15 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig_Resource exten
    * @param string $accountId The account id to update the pretargeting config
    * for.
    * @param string $configId The specific id of the configuration to update.
-   * @param Powerform_Google_PretargetingConfig $postBody
+   * @param Google_PretargetingConfig $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig
+   * @return Google_Service_AdExchangeBuyer_PretargetingConfig
    */
-  public function patch($accountId, $configId, Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig $postBody, $optParams = array())
+  public function patch($accountId, $configId, Google_Service_AdExchangeBuyer_PretargetingConfig $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'configId' => $configId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig");
+    return $this->call('patch', array($params), "Google_Service_AdExchangeBuyer_PretargetingConfig");
   }
 
   /**
@@ -1123,15 +1123,15 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig_Resource exten
    * @param string $accountId The account id to update the pretargeting config
    * for.
    * @param string $configId The specific id of the configuration to update.
-   * @param Powerform_Google_PretargetingConfig $postBody
+   * @param Google_PretargetingConfig $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig
+   * @return Google_Service_AdExchangeBuyer_PretargetingConfig
    */
-  public function update($accountId, $configId, Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig $postBody, $optParams = array())
+  public function update($accountId, $configId, Google_Service_AdExchangeBuyer_PretargetingConfig $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'configId' => $configId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig");
+    return $this->call('update', array($params), "Google_Service_AdExchangeBuyer_PretargetingConfig");
   }
 }
 
@@ -1139,11 +1139,11 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig_Resource exten
  * The "products" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Powerform_Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
  *   $products = $adexchangebuyerService->products;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeBuyer_Products_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeBuyer_Products_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1151,13 +1151,13 @@ class Powerform_Google_Service_AdExchangeBuyer_Products_Resource extends Powerfo
    *
    * @param string $productId The id for the product to get the head revision for.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Product
+   * @return Google_Service_AdExchangeBuyer_Product
    */
   public function get($productId, $optParams = array())
   {
     $params = array('productId' => $productId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdExchangeBuyer_Product");
+    return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_Product");
   }
 
   /**
@@ -1166,13 +1166,13 @@ class Powerform_Google_Service_AdExchangeBuyer_Products_Resource extends Powerfo
    * @param array $optParams Optional parameters.
    *
    * @opt_param string pqlQuery The pql query used to query for products.
-   * @return Powerform_Google_Service_AdExchangeBuyer_GetOffersResponse
+   * @return Google_Service_AdExchangeBuyer_GetOffersResponse
    */
   public function search($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('search', array($params), "Powerform_Google_Service_AdExchangeBuyer_GetOffersResponse");
+    return $this->call('search', array($params), "Google_Service_AdExchangeBuyer_GetOffersResponse");
   }
 }
 
@@ -1180,11 +1180,11 @@ class Powerform_Google_Service_AdExchangeBuyer_Products_Resource extends Powerfo
  * The "proposals" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Powerform_Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
  *   $proposals = $adexchangebuyerService->proposals;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeBuyer_Proposals_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeBuyer_Proposals_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1192,27 +1192,27 @@ class Powerform_Google_Service_AdExchangeBuyer_Proposals_Resource extends Powerf
    *
    * @param string $proposalId Id of the proposal to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Proposal
+   * @return Google_Service_AdExchangeBuyer_Proposal
    */
   public function get($proposalId, $optParams = array())
   {
     $params = array('proposalId' => $proposalId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdExchangeBuyer_Proposal");
+    return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_Proposal");
   }
 
   /**
    * Create the given list of proposals (proposals.insert)
    *
-   * @param Powerform_Google_CreateOrdersRequest $postBody
+   * @param Google_CreateOrdersRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_CreateOrdersResponse
+   * @return Google_Service_AdExchangeBuyer_CreateOrdersResponse
    */
-  public function insert(Powerform_Google_Service_AdExchangeBuyer_CreateOrdersRequest $postBody, $optParams = array())
+  public function insert(Google_Service_AdExchangeBuyer_CreateOrdersRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_AdExchangeBuyer_CreateOrdersResponse");
+    return $this->call('insert', array($params), "Google_Service_AdExchangeBuyer_CreateOrdersResponse");
   }
 
   /**
@@ -1225,15 +1225,15 @@ class Powerform_Google_Service_AdExchangeBuyer_Proposals_Resource extends Powerf
    * will be thrown. The caller should then fetch the latest proposal at head
    * revision and retry the update at that revision.
    * @param string $updateAction The proposed action to take on the proposal.
-   * @param Powerform_Google_Proposal $postBody
+   * @param Google_Proposal $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Proposal
+   * @return Google_Service_AdExchangeBuyer_Proposal
    */
-  public function patch($proposalId, $revisionNumber, $updateAction, Powerform_Google_Service_AdExchangeBuyer_Proposal $postBody, $optParams = array())
+  public function patch($proposalId, $revisionNumber, $updateAction, Google_Service_AdExchangeBuyer_Proposal $postBody, $optParams = array())
   {
     $params = array('proposalId' => $proposalId, 'revisionNumber' => $revisionNumber, 'updateAction' => $updateAction, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AdExchangeBuyer_Proposal");
+    return $this->call('patch', array($params), "Google_Service_AdExchangeBuyer_Proposal");
   }
 
   /**
@@ -1242,13 +1242,13 @@ class Powerform_Google_Service_AdExchangeBuyer_Proposals_Resource extends Powerf
    * @param array $optParams Optional parameters.
    *
    * @opt_param string pqlQuery Query string to retrieve specific proposals.
-   * @return Powerform_Google_Service_AdExchangeBuyer_GetOrdersResponse
+   * @return Google_Service_AdExchangeBuyer_GetOrdersResponse
    */
   public function search($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('search', array($params), "Powerform_Google_Service_AdExchangeBuyer_GetOrdersResponse");
+    return $this->call('search', array($params), "Google_Service_AdExchangeBuyer_GetOrdersResponse");
   }
 
   /**
@@ -1260,27 +1260,27 @@ class Powerform_Google_Service_AdExchangeBuyer_Proposals_Resource extends Powerf
    * will be thrown. The caller should then fetch the latest proposal at head
    * revision and retry the update at that revision.
    * @param string $updateAction The proposed action to take on the proposal.
-   * @param Powerform_Google_Proposal $postBody
+   * @param Google_Proposal $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeBuyer_Proposal
+   * @return Google_Service_AdExchangeBuyer_Proposal
    */
-  public function update($proposalId, $revisionNumber, $updateAction, Powerform_Google_Service_AdExchangeBuyer_Proposal $postBody, $optParams = array())
+  public function update($proposalId, $revisionNumber, $updateAction, Google_Service_AdExchangeBuyer_Proposal $postBody, $optParams = array())
   {
     $params = array('proposalId' => $proposalId, 'revisionNumber' => $revisionNumber, 'updateAction' => $updateAction, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AdExchangeBuyer_Proposal");
+    return $this->call('update', array($params), "Google_Service_AdExchangeBuyer_Proposal");
   }
 }
 
 
 
 
-class Powerform_Google_Service_AdExchangeBuyer_Account extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_Account extends Google_Collection
 {
   protected $collection_key = 'bidderLocation';
   protected $internal_gapi_mappings = array(
   );
-  protected $bidderLocationType = 'Powerform_Google_Service_AdExchangeBuyer_AccountBidderLocation';
+  protected $bidderLocationType = 'Google_Service_AdExchangeBuyer_AccountBidderLocation';
   protected $bidderLocationDataType = 'array';
   public $cookieMatchingNid;
   public $cookieMatchingUrl;
@@ -1357,7 +1357,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Account extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_AccountBidderLocation extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_AccountBidderLocation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1392,12 +1392,12 @@ class Powerform_Google_Service_AdExchangeBuyer_AccountBidderLocation extends Pow
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_AccountsList extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_AccountsList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeBuyer_Account';
+  protected $itemsType = 'Google_Service_AdExchangeBuyer_Account';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1420,12 +1420,12 @@ class Powerform_Google_Service_AdExchangeBuyer_AccountsList extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_AddOrderDealsRequest extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_AddOrderDealsRequest extends Google_Collection
 {
   protected $collection_key = 'deals';
   protected $internal_gapi_mappings = array(
   );
-  protected $dealsType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal';
+  protected $dealsType = 'Google_Service_AdExchangeBuyer_MarketplaceDeal';
   protected $dealsDataType = 'array';
   public $proposalRevisionNumber;
   public $updateAction;
@@ -1457,12 +1457,12 @@ class Powerform_Google_Service_AdExchangeBuyer_AddOrderDealsRequest extends Powe
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_AddOrderDealsResponse extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_AddOrderDealsResponse extends Google_Collection
 {
   protected $collection_key = 'deals';
   protected $internal_gapi_mappings = array(
   );
-  protected $dealsType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal';
+  protected $dealsType = 'Google_Service_AdExchangeBuyer_MarketplaceDeal';
   protected $dealsDataType = 'array';
   public $proposalRevisionNumber;
 
@@ -1485,12 +1485,12 @@ class Powerform_Google_Service_AdExchangeBuyer_AddOrderDealsResponse extends Pow
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_AddOrderNotesRequest extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_AddOrderNotesRequest extends Google_Collection
 {
   protected $collection_key = 'notes';
   protected $internal_gapi_mappings = array(
   );
-  protected $notesType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceNote';
+  protected $notesType = 'Google_Service_AdExchangeBuyer_MarketplaceNote';
   protected $notesDataType = 'array';
 
 
@@ -1504,12 +1504,12 @@ class Powerform_Google_Service_AdExchangeBuyer_AddOrderNotesRequest extends Powe
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_AddOrderNotesResponse extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_AddOrderNotesResponse extends Google_Collection
 {
   protected $collection_key = 'notes';
   protected $internal_gapi_mappings = array(
   );
-  protected $notesType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceNote';
+  protected $notesType = 'Google_Service_AdExchangeBuyer_MarketplaceNote';
   protected $notesDataType = 'array';
 
 
@@ -1523,7 +1523,7 @@ class Powerform_Google_Service_AdExchangeBuyer_AddOrderNotesResponse extends Pow
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_BillingInfo extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_BillingInfo extends Google_Collection
 {
   protected $collection_key = 'billingId';
   protected $internal_gapi_mappings = array(
@@ -1568,12 +1568,12 @@ class Powerform_Google_Service_AdExchangeBuyer_BillingInfo extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_BillingInfoList extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_BillingInfoList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeBuyer_BillingInfo';
+  protected $itemsType = 'Google_Service_AdExchangeBuyer_BillingInfo';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1596,7 +1596,7 @@ class Powerform_Google_Service_AdExchangeBuyer_BillingInfoList extends Powerform
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_Budget extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_Budget extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1658,7 +1658,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Budget extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_Buyer extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_Buyer extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1675,7 +1675,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Buyer extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_ContactInformation extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_ContactInformation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1701,12 +1701,12 @@ class Powerform_Google_Service_AdExchangeBuyer_ContactInformation extends Powerf
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreateOrdersRequest extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_CreateOrdersRequest extends Google_Collection
 {
   protected $collection_key = 'proposals';
   protected $internal_gapi_mappings = array(
   );
-  protected $proposalsType = 'Powerform_Google_Service_AdExchangeBuyer_Proposal';
+  protected $proposalsType = 'Google_Service_AdExchangeBuyer_Proposal';
   protected $proposalsDataType = 'array';
   public $webPropertyCode;
 
@@ -1729,12 +1729,12 @@ class Powerform_Google_Service_AdExchangeBuyer_CreateOrdersRequest extends Power
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreateOrdersResponse extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_CreateOrdersResponse extends Google_Collection
 {
   protected $collection_key = 'proposals';
   protected $internal_gapi_mappings = array(
   );
-  protected $proposalsType = 'Powerform_Google_Service_AdExchangeBuyer_Proposal';
+  protected $proposalsType = 'Google_Service_AdExchangeBuyer_Proposal';
   protected $proposalsDataType = 'array';
 
 
@@ -1748,7 +1748,7 @@ class Powerform_Google_Service_AdExchangeBuyer_CreateOrdersResponse extends Powe
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_Creative extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
 {
   protected $collection_key = 'vendorType';
   protected $internal_gapi_mappings = array(
@@ -1763,21 +1763,21 @@ class Powerform_Google_Service_AdExchangeBuyer_Creative extends Powerform_Google
   public $attribute;
   public $buyerCreativeId;
   public $clickThroughUrl;
-  protected $correctionsType = 'Powerform_Google_Service_AdExchangeBuyer_CreativeCorrections';
+  protected $correctionsType = 'Google_Service_AdExchangeBuyer_CreativeCorrections';
   protected $correctionsDataType = 'array';
   public $dealsStatus;
-  protected $filteringReasonsType = 'Powerform_Google_Service_AdExchangeBuyer_CreativeFilteringReasons';
+  protected $filteringReasonsType = 'Google_Service_AdExchangeBuyer_CreativeFilteringReasons';
   protected $filteringReasonsDataType = '';
   public $height;
   public $impressionTrackingUrl;
   public $kind;
-  protected $nativeAdType = 'Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAd';
+  protected $nativeAdType = 'Google_Service_AdExchangeBuyer_CreativeNativeAd';
   protected $nativeAdDataType = '';
   public $openAuctionStatus;
   public $productCategories;
   public $restrictedCategories;
   public $sensitiveCategories;
-  protected $servingRestrictionsType = 'Powerform_Google_Service_AdExchangeBuyer_CreativeServingRestrictions';
+  protected $servingRestrictionsType = 'Google_Service_AdExchangeBuyer_CreativeServingRestrictions';
   protected $servingRestrictionsDataType = 'array';
   public $vendorType;
   public $version;
@@ -1873,7 +1873,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Creative extends Powerform_Google
   {
     return $this->dealsStatus;
   }
-  public function setFilteringReasons(Powerform_Google_Service_AdExchangeBuyer_CreativeFilteringReasons $filteringReasons)
+  public function setFilteringReasons(Google_Service_AdExchangeBuyer_CreativeFilteringReasons $filteringReasons)
   {
     $this->filteringReasons = $filteringReasons;
   }
@@ -1905,7 +1905,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Creative extends Powerform_Google
   {
     return $this->kind;
   }
-  public function setNativeAd(Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAd $nativeAd)
+  public function setNativeAd(Google_Service_AdExchangeBuyer_CreativeNativeAd $nativeAd)
   {
     $this->nativeAd = $nativeAd;
   }
@@ -1987,7 +1987,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Creative extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativeCorrections extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_CreativeCorrections extends Google_Collection
 {
   protected $collection_key = 'details';
   protected $internal_gapi_mappings = array(
@@ -2014,13 +2014,13 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeCorrections extends Power
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativeFilteringReasons extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_CreativeFilteringReasons extends Google_Collection
 {
   protected $collection_key = 'reasons';
   protected $internal_gapi_mappings = array(
   );
   public $date;
-  protected $reasonsType = 'Powerform_Google_Service_AdExchangeBuyer_CreativeFilteringReasonsReasons';
+  protected $reasonsType = 'Google_Service_AdExchangeBuyer_CreativeFilteringReasonsReasons';
   protected $reasonsDataType = 'array';
 
 
@@ -2042,7 +2042,7 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeFilteringReasons extends 
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativeFilteringReasonsReasons extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_CreativeFilteringReasonsReasons extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2068,22 +2068,22 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeFilteringReasonsReasons e
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAd extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_CreativeNativeAd extends Google_Collection
 {
   protected $collection_key = 'impressionTrackingUrl';
   protected $internal_gapi_mappings = array(
   );
   public $advertiser;
-  protected $appIconType = 'Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdAppIcon';
+  protected $appIconType = 'Google_Service_AdExchangeBuyer_CreativeNativeAdAppIcon';
   protected $appIconDataType = '';
   public $body;
   public $callToAction;
   public $clickTrackingUrl;
   public $headline;
-  protected $imageType = 'Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdImage';
+  protected $imageType = 'Google_Service_AdExchangeBuyer_CreativeNativeAdImage';
   protected $imageDataType = '';
   public $impressionTrackingUrl;
-  protected $logoType = 'Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdLogo';
+  protected $logoType = 'Google_Service_AdExchangeBuyer_CreativeNativeAdLogo';
   protected $logoDataType = '';
   public $price;
   public $starRating;
@@ -2098,7 +2098,7 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAd extends Powerfor
   {
     return $this->advertiser;
   }
-  public function setAppIcon(Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdAppIcon $appIcon)
+  public function setAppIcon(Google_Service_AdExchangeBuyer_CreativeNativeAdAppIcon $appIcon)
   {
     $this->appIcon = $appIcon;
   }
@@ -2138,7 +2138,7 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAd extends Powerfor
   {
     return $this->headline;
   }
-  public function setImage(Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdImage $image)
+  public function setImage(Google_Service_AdExchangeBuyer_CreativeNativeAdImage $image)
   {
     $this->image = $image;
   }
@@ -2154,7 +2154,7 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAd extends Powerfor
   {
     return $this->impressionTrackingUrl;
   }
-  public function setLogo(Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdLogo $logo)
+  public function setLogo(Google_Service_AdExchangeBuyer_CreativeNativeAdLogo $logo)
   {
     $this->logo = $logo;
   }
@@ -2188,7 +2188,7 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAd extends Powerfor
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdAppIcon extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_CreativeNativeAdAppIcon extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2223,7 +2223,7 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdAppIcon extends P
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdImage extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_CreativeNativeAdImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2258,7 +2258,7 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdImage extends Pow
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdLogo extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_CreativeNativeAdLogo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2293,14 +2293,14 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeNativeAdLogo extends Powe
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativeServingRestrictions extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_CreativeServingRestrictions extends Google_Collection
 {
   protected $collection_key = 'disapprovalReasons';
   protected $internal_gapi_mappings = array(
   );
-  protected $contextsType = 'Powerform_Google_Service_AdExchangeBuyer_CreativeServingRestrictionsContexts';
+  protected $contextsType = 'Google_Service_AdExchangeBuyer_CreativeServingRestrictionsContexts';
   protected $contextsDataType = 'array';
-  protected $disapprovalReasonsType = 'Powerform_Google_Service_AdExchangeBuyer_CreativeServingRestrictionsDisapprovalReasons';
+  protected $disapprovalReasonsType = 'Google_Service_AdExchangeBuyer_CreativeServingRestrictionsDisapprovalReasons';
   protected $disapprovalReasonsDataType = 'array';
   public $reason;
 
@@ -2331,7 +2331,7 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeServingRestrictions exten
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativeServingRestrictionsContexts extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_CreativeServingRestrictionsContexts extends Google_Collection
 {
   protected $collection_key = 'platform';
   protected $internal_gapi_mappings = array(
@@ -2376,7 +2376,7 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeServingRestrictionsContex
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativeServingRestrictionsDisapprovalReasons extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_CreativeServingRestrictionsDisapprovalReasons extends Google_Collection
 {
   protected $collection_key = 'details';
   protected $internal_gapi_mappings = array(
@@ -2403,12 +2403,12 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativeServingRestrictionsDisapp
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_CreativesList extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_CreativesList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeBuyer_Creative';
+  protected $itemsType = 'Google_Service_AdExchangeBuyer_Creative';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2440,20 +2440,20 @@ class Powerform_Google_Service_AdExchangeBuyer_CreativesList extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_DealTerms extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_DealTerms extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $brandingType;
   public $description;
-  protected $estimatedGrossSpendType = 'Powerform_Google_Service_AdExchangeBuyer_Price';
+  protected $estimatedGrossSpendType = 'Google_Service_AdExchangeBuyer_Price';
   protected $estimatedGrossSpendDataType = '';
   public $estimatedImpressionsPerDay;
-  protected $guaranteedFixedPriceTermsType = 'Powerform_Google_Service_AdExchangeBuyer_DealTermsGuaranteedFixedPriceTerms';
+  protected $guaranteedFixedPriceTermsType = 'Google_Service_AdExchangeBuyer_DealTermsGuaranteedFixedPriceTerms';
   protected $guaranteedFixedPriceTermsDataType = '';
-  protected $nonGuaranteedAuctionTermsType = 'Powerform_Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedAuctionTerms';
+  protected $nonGuaranteedAuctionTermsType = 'Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedAuctionTerms';
   protected $nonGuaranteedAuctionTermsDataType = '';
-  protected $nonGuaranteedFixedPriceTermsType = 'Powerform_Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedFixedPriceTerms';
+  protected $nonGuaranteedFixedPriceTermsType = 'Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedFixedPriceTerms';
   protected $nonGuaranteedFixedPriceTermsDataType = '';
 
 
@@ -2473,7 +2473,7 @@ class Powerform_Google_Service_AdExchangeBuyer_DealTerms extends Powerform_Googl
   {
     return $this->description;
   }
-  public function setEstimatedGrossSpend(Powerform_Google_Service_AdExchangeBuyer_Price $estimatedGrossSpend)
+  public function setEstimatedGrossSpend(Google_Service_AdExchangeBuyer_Price $estimatedGrossSpend)
   {
     $this->estimatedGrossSpend = $estimatedGrossSpend;
   }
@@ -2489,7 +2489,7 @@ class Powerform_Google_Service_AdExchangeBuyer_DealTerms extends Powerform_Googl
   {
     return $this->estimatedImpressionsPerDay;
   }
-  public function setGuaranteedFixedPriceTerms(Powerform_Google_Service_AdExchangeBuyer_DealTermsGuaranteedFixedPriceTerms $guaranteedFixedPriceTerms)
+  public function setGuaranteedFixedPriceTerms(Google_Service_AdExchangeBuyer_DealTermsGuaranteedFixedPriceTerms $guaranteedFixedPriceTerms)
   {
     $this->guaranteedFixedPriceTerms = $guaranteedFixedPriceTerms;
   }
@@ -2497,7 +2497,7 @@ class Powerform_Google_Service_AdExchangeBuyer_DealTerms extends Powerform_Googl
   {
     return $this->guaranteedFixedPriceTerms;
   }
-  public function setNonGuaranteedAuctionTerms(Powerform_Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedAuctionTerms $nonGuaranteedAuctionTerms)
+  public function setNonGuaranteedAuctionTerms(Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedAuctionTerms $nonGuaranteedAuctionTerms)
   {
     $this->nonGuaranteedAuctionTerms = $nonGuaranteedAuctionTerms;
   }
@@ -2505,7 +2505,7 @@ class Powerform_Google_Service_AdExchangeBuyer_DealTerms extends Powerform_Googl
   {
     return $this->nonGuaranteedAuctionTerms;
   }
-  public function setNonGuaranteedFixedPriceTerms(Powerform_Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedFixedPriceTerms $nonGuaranteedFixedPriceTerms)
+  public function setNonGuaranteedFixedPriceTerms(Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedFixedPriceTerms $nonGuaranteedFixedPriceTerms)
   {
     $this->nonGuaranteedFixedPriceTerms = $nonGuaranteedFixedPriceTerms;
   }
@@ -2515,12 +2515,12 @@ class Powerform_Google_Service_AdExchangeBuyer_DealTerms extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_DealTermsGuaranteedFixedPriceTerms extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_DealTermsGuaranteedFixedPriceTerms extends Google_Collection
 {
   protected $collection_key = 'fixedPrices';
   protected $internal_gapi_mappings = array(
   );
-  protected $fixedPricesType = 'Powerform_Google_Service_AdExchangeBuyer_PricePerBuyer';
+  protected $fixedPricesType = 'Google_Service_AdExchangeBuyer_PricePerBuyer';
   protected $fixedPricesDataType = 'array';
   public $guaranteedImpressions;
   public $guaranteedLooks;
@@ -2552,13 +2552,13 @@ class Powerform_Google_Service_AdExchangeBuyer_DealTermsGuaranteedFixedPriceTerm
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedAuctionTerms extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedAuctionTerms extends Google_Collection
 {
   protected $collection_key = 'reservePricePerBuyers';
   protected $internal_gapi_mappings = array(
   );
   public $privateAuctionId;
-  protected $reservePricePerBuyersType = 'Powerform_Google_Service_AdExchangeBuyer_PricePerBuyer';
+  protected $reservePricePerBuyersType = 'Google_Service_AdExchangeBuyer_PricePerBuyer';
   protected $reservePricePerBuyersDataType = 'array';
 
 
@@ -2580,12 +2580,12 @@ class Powerform_Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedAuctionTerm
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedFixedPriceTerms extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedFixedPriceTerms extends Google_Collection
 {
   protected $collection_key = 'fixedPrices';
   protected $internal_gapi_mappings = array(
   );
-  protected $fixedPricesType = 'Powerform_Google_Service_AdExchangeBuyer_PricePerBuyer';
+  protected $fixedPricesType = 'Google_Service_AdExchangeBuyer_PricePerBuyer';
   protected $fixedPricesDataType = 'array';
 
 
@@ -2599,7 +2599,7 @@ class Powerform_Google_Service_AdExchangeBuyer_DealTermsNonGuaranteedFixedPriceT
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_DeleteOrderDealsRequest extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_DeleteOrderDealsRequest extends Google_Collection
 {
   protected $collection_key = 'dealIds';
   protected $internal_gapi_mappings = array(
@@ -2635,12 +2635,12 @@ class Powerform_Google_Service_AdExchangeBuyer_DeleteOrderDealsRequest extends P
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_DeleteOrderDealsResponse extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_DeleteOrderDealsResponse extends Google_Collection
 {
   protected $collection_key = 'deals';
   protected $internal_gapi_mappings = array(
   );
-  protected $dealsType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal';
+  protected $dealsType = 'Google_Service_AdExchangeBuyer_MarketplaceDeal';
   protected $dealsDataType = 'array';
   public $proposalRevisionNumber;
 
@@ -2663,14 +2663,14 @@ class Powerform_Google_Service_AdExchangeBuyer_DeleteOrderDealsResponse extends 
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_DeliveryControl extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_DeliveryControl extends Google_Collection
 {
   protected $collection_key = 'frequencyCaps';
   protected $internal_gapi_mappings = array(
   );
   public $creativeBlockingLevel;
   public $deliveryRateType;
-  protected $frequencyCapsType = 'Powerform_Google_Service_AdExchangeBuyer_DeliveryControlFrequencyCap';
+  protected $frequencyCapsType = 'Google_Service_AdExchangeBuyer_DeliveryControlFrequencyCap';
   protected $frequencyCapsDataType = 'array';
 
 
@@ -2700,7 +2700,7 @@ class Powerform_Google_Service_AdExchangeBuyer_DeliveryControl extends Powerform
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_DeliveryControlFrequencyCap extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_DeliveryControlFrequencyCap extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2735,14 +2735,14 @@ class Powerform_Google_Service_AdExchangeBuyer_DeliveryControlFrequencyCap exten
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_EditAllOrderDealsRequest extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_EditAllOrderDealsRequest extends Google_Collection
 {
   protected $collection_key = 'deals';
   protected $internal_gapi_mappings = array(
   );
-  protected $dealsType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal';
+  protected $dealsType = 'Google_Service_AdExchangeBuyer_MarketplaceDeal';
   protected $dealsDataType = 'array';
-  protected $proposalType = 'Powerform_Google_Service_AdExchangeBuyer_Proposal';
+  protected $proposalType = 'Google_Service_AdExchangeBuyer_Proposal';
   protected $proposalDataType = '';
   public $proposalRevisionNumber;
   public $updateAction;
@@ -2756,7 +2756,7 @@ class Powerform_Google_Service_AdExchangeBuyer_EditAllOrderDealsRequest extends 
   {
     return $this->deals;
   }
-  public function setProposal(Powerform_Google_Service_AdExchangeBuyer_Proposal $proposal)
+  public function setProposal(Google_Service_AdExchangeBuyer_Proposal $proposal)
   {
     $this->proposal = $proposal;
   }
@@ -2782,12 +2782,12 @@ class Powerform_Google_Service_AdExchangeBuyer_EditAllOrderDealsRequest extends 
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_EditAllOrderDealsResponse extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_EditAllOrderDealsResponse extends Google_Collection
 {
   protected $collection_key = 'deals';
   protected $internal_gapi_mappings = array(
   );
-  protected $dealsType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal';
+  protected $dealsType = 'Google_Service_AdExchangeBuyer_MarketplaceDeal';
   protected $dealsDataType = 'array';
 
 
@@ -2801,12 +2801,12 @@ class Powerform_Google_Service_AdExchangeBuyer_EditAllOrderDealsResponse extends
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_GetOffersResponse extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_GetOffersResponse extends Google_Collection
 {
   protected $collection_key = 'products';
   protected $internal_gapi_mappings = array(
   );
-  protected $productsType = 'Powerform_Google_Service_AdExchangeBuyer_Product';
+  protected $productsType = 'Google_Service_AdExchangeBuyer_Product';
   protected $productsDataType = 'array';
 
 
@@ -2820,12 +2820,12 @@ class Powerform_Google_Service_AdExchangeBuyer_GetOffersResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_GetOrderDealsResponse extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_GetOrderDealsResponse extends Google_Collection
 {
   protected $collection_key = 'deals';
   protected $internal_gapi_mappings = array(
   );
-  protected $dealsType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal';
+  protected $dealsType = 'Google_Service_AdExchangeBuyer_MarketplaceDeal';
   protected $dealsDataType = 'array';
 
 
@@ -2839,12 +2839,12 @@ class Powerform_Google_Service_AdExchangeBuyer_GetOrderDealsResponse extends Pow
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_GetOrderNotesResponse extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_GetOrderNotesResponse extends Google_Collection
 {
   protected $collection_key = 'notes';
   protected $internal_gapi_mappings = array(
   );
-  protected $notesType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceNote';
+  protected $notesType = 'Google_Service_AdExchangeBuyer_MarketplaceNote';
   protected $notesDataType = 'array';
 
 
@@ -2858,12 +2858,12 @@ class Powerform_Google_Service_AdExchangeBuyer_GetOrderNotesResponse extends Pow
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_GetOrdersResponse extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_GetOrdersResponse extends Google_Collection
 {
   protected $collection_key = 'proposals';
   protected $internal_gapi_mappings = array(
   );
-  protected $proposalsType = 'Powerform_Google_Service_AdExchangeBuyer_Proposal';
+  protected $proposalsType = 'Google_Service_AdExchangeBuyer_Proposal';
   protected $proposalsDataType = 'array';
 
 
@@ -2877,17 +2877,17 @@ class Powerform_Google_Service_AdExchangeBuyer_GetOrdersResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_MarketplaceDeal extends Google_Collection
 {
   protected $collection_key = 'sharedTargetings';
   protected $internal_gapi_mappings = array(
   );
-  protected $buyerPrivateDataType = 'Powerform_Google_Service_AdExchangeBuyer_PrivateData';
+  protected $buyerPrivateDataType = 'Google_Service_AdExchangeBuyer_PrivateData';
   protected $buyerPrivateDataDataType = '';
   public $creationTimeMs;
   public $creativePreApprovalPolicy;
   public $dealId;
-  protected $deliveryControlType = 'Powerform_Google_Service_AdExchangeBuyer_DeliveryControl';
+  protected $deliveryControlType = 'Google_Service_AdExchangeBuyer_DeliveryControl';
   protected $deliveryControlDataType = '';
   public $externalDealId;
   public $flightEndTimeMs;
@@ -2899,17 +2899,17 @@ class Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal extends Powerform
   public $productId;
   public $productRevisionNumber;
   public $proposalId;
-  protected $sellerContactsType = 'Powerform_Google_Service_AdExchangeBuyer_ContactInformation';
+  protected $sellerContactsType = 'Google_Service_AdExchangeBuyer_ContactInformation';
   protected $sellerContactsDataType = 'array';
-  protected $sharedTargetingsType = 'Powerform_Google_Service_AdExchangeBuyer_SharedTargeting';
+  protected $sharedTargetingsType = 'Google_Service_AdExchangeBuyer_SharedTargeting';
   protected $sharedTargetingsDataType = 'array';
   public $syndicationProduct;
-  protected $termsType = 'Powerform_Google_Service_AdExchangeBuyer_DealTerms';
+  protected $termsType = 'Google_Service_AdExchangeBuyer_DealTerms';
   protected $termsDataType = '';
   public $webPropertyCode;
 
 
-  public function setBuyerPrivateData(Powerform_Google_Service_AdExchangeBuyer_PrivateData $buyerPrivateData)
+  public function setBuyerPrivateData(Google_Service_AdExchangeBuyer_PrivateData $buyerPrivateData)
   {
     $this->buyerPrivateData = $buyerPrivateData;
   }
@@ -2941,7 +2941,7 @@ class Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal extends Powerform
   {
     return $this->dealId;
   }
-  public function setDeliveryControl(Powerform_Google_Service_AdExchangeBuyer_DeliveryControl $deliveryControl)
+  public function setDeliveryControl(Google_Service_AdExchangeBuyer_DeliveryControl $deliveryControl)
   {
     $this->deliveryControl = $deliveryControl;
   }
@@ -3053,7 +3053,7 @@ class Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal extends Powerform
   {
     return $this->syndicationProduct;
   }
-  public function setTerms(Powerform_Google_Service_AdExchangeBuyer_DealTerms $terms)
+  public function setTerms(Google_Service_AdExchangeBuyer_DealTerms $terms)
   {
     $this->terms = $terms;
   }
@@ -3071,17 +3071,17 @@ class Powerform_Google_Service_AdExchangeBuyer_MarketplaceDeal extends Powerform
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_MarketplaceDealParty extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_MarketplaceDealParty extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $buyerType = 'Powerform_Google_Service_AdExchangeBuyer_Buyer';
+  protected $buyerType = 'Google_Service_AdExchangeBuyer_Buyer';
   protected $buyerDataType = '';
-  protected $sellerType = 'Powerform_Google_Service_AdExchangeBuyer_Seller';
+  protected $sellerType = 'Google_Service_AdExchangeBuyer_Seller';
   protected $sellerDataType = '';
 
 
-  public function setBuyer(Powerform_Google_Service_AdExchangeBuyer_Buyer $buyer)
+  public function setBuyer(Google_Service_AdExchangeBuyer_Buyer $buyer)
   {
     $this->buyer = $buyer;
   }
@@ -3089,7 +3089,7 @@ class Powerform_Google_Service_AdExchangeBuyer_MarketplaceDealParty extends Powe
   {
     return $this->buyer;
   }
-  public function setSeller(Powerform_Google_Service_AdExchangeBuyer_Seller $seller)
+  public function setSeller(Google_Service_AdExchangeBuyer_Seller $seller)
   {
     $this->seller = $seller;
   }
@@ -3099,13 +3099,13 @@ class Powerform_Google_Service_AdExchangeBuyer_MarketplaceDealParty extends Powe
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_MarketplaceLabel extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_MarketplaceLabel extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $createTimeMs;
-  protected $deprecatedMarketplaceDealPartyType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceDealParty';
+  protected $deprecatedMarketplaceDealPartyType = 'Google_Service_AdExchangeBuyer_MarketplaceDealParty';
   protected $deprecatedMarketplaceDealPartyDataType = '';
   public $label;
 
@@ -3126,7 +3126,7 @@ class Powerform_Google_Service_AdExchangeBuyer_MarketplaceLabel extends Powerfor
   {
     return $this->createTimeMs;
   }
-  public function setDeprecatedMarketplaceDealParty(Powerform_Google_Service_AdExchangeBuyer_MarketplaceDealParty $deprecatedMarketplaceDealParty)
+  public function setDeprecatedMarketplaceDealParty(Google_Service_AdExchangeBuyer_MarketplaceDealParty $deprecatedMarketplaceDealParty)
   {
     $this->deprecatedMarketplaceDealParty = $deprecatedMarketplaceDealParty;
   }
@@ -3144,7 +3144,7 @@ class Powerform_Google_Service_AdExchangeBuyer_MarketplaceLabel extends Powerfor
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_MarketplaceNote extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_MarketplaceNote extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3224,7 +3224,7 @@ class Powerform_Google_Service_AdExchangeBuyer_MarketplaceNote extends Powerform
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_PerformanceReport extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_PerformanceReport extends Google_Collection
 {
   protected $collection_key = 'hostedMatchStatusRate';
   protected $internal_gapi_mappings = array(
@@ -3431,13 +3431,13 @@ class Powerform_Google_Service_AdExchangeBuyer_PerformanceReport extends Powerfo
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_PerformanceReportList extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_PerformanceReportList extends Google_Collection
 {
   protected $collection_key = 'performanceReport';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $performanceReportType = 'Powerform_Google_Service_AdExchangeBuyer_PerformanceReport';
+  protected $performanceReportType = 'Google_Service_AdExchangeBuyer_PerformanceReport';
   protected $performanceReportDataType = 'array';
 
 
@@ -3459,7 +3459,7 @@ class Powerform_Google_Service_AdExchangeBuyer_PerformanceReportList extends Pow
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_PretargetingConfig extends Google_Collection
 {
   protected $collection_key = 'videoPlayerSizes';
   protected $internal_gapi_mappings = array(
@@ -3468,11 +3468,11 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig extends Powerf
   public $configId;
   public $configName;
   public $creativeType;
-  protected $dimensionsType = 'Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigDimensions';
+  protected $dimensionsType = 'Google_Service_AdExchangeBuyer_PretargetingConfigDimensions';
   protected $dimensionsDataType = 'array';
   public $excludedContentLabels;
   public $excludedGeoCriteriaIds;
-  protected $excludedPlacementsType = 'Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigExcludedPlacements';
+  protected $excludedPlacementsType = 'Google_Service_AdExchangeBuyer_PretargetingConfigExcludedPlacements';
   protected $excludedPlacementsDataType = 'array';
   public $excludedUserLists;
   public $excludedVerticals;
@@ -3483,14 +3483,14 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig extends Powerf
   public $mobileCarriers;
   public $mobileDevices;
   public $mobileOperatingSystemVersions;
-  protected $placementsType = 'Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigPlacements';
+  protected $placementsType = 'Google_Service_AdExchangeBuyer_PretargetingConfigPlacements';
   protected $placementsDataType = 'array';
   public $platforms;
   public $supportedCreativeAttributes;
   public $userLists;
   public $vendorTypes;
   public $verticals;
-  protected $videoPlayerSizesType = 'Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigVideoPlayerSizes';
+  protected $videoPlayerSizesType = 'Google_Service_AdExchangeBuyer_PretargetingConfigVideoPlayerSizes';
   protected $videoPlayerSizesDataType = 'array';
 
 
@@ -3688,7 +3688,7 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig extends Powerf
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigDimensions extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_PretargetingConfigDimensions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3714,7 +3714,7 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigDimensions exte
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigExcludedPlacements extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_PretargetingConfigExcludedPlacements extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3740,12 +3740,12 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigExcludedPlaceme
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigList extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_PretargetingConfigList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeBuyer_PretargetingConfig';
+  protected $itemsType = 'Google_Service_AdExchangeBuyer_PretargetingConfig';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -3768,7 +3768,7 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigList extends Po
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigPlacements extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_PretargetingConfigPlacements extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3794,7 +3794,7 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigPlacements exte
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigVideoPlayerSizes extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_PretargetingConfigVideoPlayerSizes extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3829,7 +3829,7 @@ class Powerform_Google_Service_AdExchangeBuyer_PretargetingConfigVideoPlayerSize
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_Price extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_Price extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3864,17 +3864,17 @@ class Powerform_Google_Service_AdExchangeBuyer_Price extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_PricePerBuyer extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_PricePerBuyer extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $buyerType = 'Powerform_Google_Service_AdExchangeBuyer_Buyer';
+  protected $buyerType = 'Google_Service_AdExchangeBuyer_Buyer';
   protected $buyerDataType = '';
-  protected $priceType = 'Powerform_Google_Service_AdExchangeBuyer_Price';
+  protected $priceType = 'Google_Service_AdExchangeBuyer_Price';
   protected $priceDataType = '';
 
 
-  public function setBuyer(Powerform_Google_Service_AdExchangeBuyer_Buyer $buyer)
+  public function setBuyer(Google_Service_AdExchangeBuyer_Buyer $buyer)
   {
     $this->buyer = $buyer;
   }
@@ -3882,7 +3882,7 @@ class Powerform_Google_Service_AdExchangeBuyer_PricePerBuyer extends Powerform_G
   {
     return $this->buyer;
   }
-  public function setPrice(Powerform_Google_Service_AdExchangeBuyer_Price $price)
+  public function setPrice(Google_Service_AdExchangeBuyer_Price $price)
   {
     $this->price = $price;
   }
@@ -3892,7 +3892,7 @@ class Powerform_Google_Service_AdExchangeBuyer_PricePerBuyer extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_PrivateData extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_PrivateData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3918,32 +3918,32 @@ class Powerform_Google_Service_AdExchangeBuyer_PrivateData extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_Product extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_Product extends Google_Collection
 {
   protected $collection_key = 'sharedTargetings';
   protected $internal_gapi_mappings = array(
   );
   public $creationTimeMs;
-  protected $creatorContactsType = 'Powerform_Google_Service_AdExchangeBuyer_ContactInformation';
+  protected $creatorContactsType = 'Google_Service_AdExchangeBuyer_ContactInformation';
   protected $creatorContactsDataType = 'array';
   public $flightEndTimeMs;
   public $flightStartTimeMs;
   public $hasCreatorSignedOff;
   public $inventorySource;
   public $kind;
-  protected $labelsType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceLabel';
+  protected $labelsType = 'Google_Service_AdExchangeBuyer_MarketplaceLabel';
   protected $labelsDataType = 'array';
   public $lastUpdateTimeMs;
   public $name;
   public $productId;
   public $revisionNumber;
-  protected $sellerType = 'Powerform_Google_Service_AdExchangeBuyer_Seller';
+  protected $sellerType = 'Google_Service_AdExchangeBuyer_Seller';
   protected $sellerDataType = '';
-  protected $sharedTargetingsType = 'Powerform_Google_Service_AdExchangeBuyer_SharedTargeting';
+  protected $sharedTargetingsType = 'Google_Service_AdExchangeBuyer_SharedTargeting';
   protected $sharedTargetingsDataType = 'array';
   public $state;
   public $syndicationProduct;
-  protected $termsType = 'Powerform_Google_Service_AdExchangeBuyer_DealTerms';
+  protected $termsType = 'Google_Service_AdExchangeBuyer_DealTerms';
   protected $termsDataType = '';
   public $webPropertyCode;
 
@@ -4044,7 +4044,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Product extends Powerform_Google_
   {
     return $this->revisionNumber;
   }
-  public function setSeller(Powerform_Google_Service_AdExchangeBuyer_Seller $seller)
+  public function setSeller(Google_Service_AdExchangeBuyer_Seller $seller)
   {
     $this->seller = $seller;
   }
@@ -4076,7 +4076,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Product extends Powerform_Google_
   {
     return $this->syndicationProduct;
   }
-  public function setTerms(Powerform_Google_Service_AdExchangeBuyer_DealTerms $terms)
+  public function setTerms(Google_Service_AdExchangeBuyer_DealTerms $terms)
   {
     $this->terms = $terms;
   }
@@ -4094,18 +4094,18 @@ class Powerform_Google_Service_AdExchangeBuyer_Product extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_Proposal extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_Proposal extends Google_Collection
 {
   protected $collection_key = 'sellerContacts';
   protected $internal_gapi_mappings = array(
   );
-  protected $billedBuyerType = 'Powerform_Google_Service_AdExchangeBuyer_Buyer';
+  protected $billedBuyerType = 'Google_Service_AdExchangeBuyer_Buyer';
   protected $billedBuyerDataType = '';
-  protected $buyerType = 'Powerform_Google_Service_AdExchangeBuyer_Buyer';
+  protected $buyerType = 'Google_Service_AdExchangeBuyer_Buyer';
   protected $buyerDataType = '';
-  protected $buyerContactsType = 'Powerform_Google_Service_AdExchangeBuyer_ContactInformation';
+  protected $buyerContactsType = 'Google_Service_AdExchangeBuyer_ContactInformation';
   protected $buyerContactsDataType = 'array';
-  protected $buyerPrivateDataType = 'Powerform_Google_Service_AdExchangeBuyer_PrivateData';
+  protected $buyerPrivateDataType = 'Google_Service_AdExchangeBuyer_PrivateData';
   protected $buyerPrivateDataDataType = '';
   public $hasBuyerSignedOff;
   public $hasSellerSignedOff;
@@ -4113,7 +4113,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Proposal extends Powerform_Google
   public $isRenegotiating;
   public $isSetupComplete;
   public $kind;
-  protected $labelsType = 'Powerform_Google_Service_AdExchangeBuyer_MarketplaceLabel';
+  protected $labelsType = 'Google_Service_AdExchangeBuyer_MarketplaceLabel';
   protected $labelsDataType = 'array';
   public $lastUpdaterOrCommentorRole;
   public $lastUpdaterRole;
@@ -4123,13 +4123,13 @@ class Powerform_Google_Service_AdExchangeBuyer_Proposal extends Powerform_Google
   public $proposalState;
   public $revisionNumber;
   public $revisionTimeMs;
-  protected $sellerType = 'Powerform_Google_Service_AdExchangeBuyer_Seller';
+  protected $sellerType = 'Google_Service_AdExchangeBuyer_Seller';
   protected $sellerDataType = '';
-  protected $sellerContactsType = 'Powerform_Google_Service_AdExchangeBuyer_ContactInformation';
+  protected $sellerContactsType = 'Google_Service_AdExchangeBuyer_ContactInformation';
   protected $sellerContactsDataType = 'array';
 
 
-  public function setBilledBuyer(Powerform_Google_Service_AdExchangeBuyer_Buyer $billedBuyer)
+  public function setBilledBuyer(Google_Service_AdExchangeBuyer_Buyer $billedBuyer)
   {
     $this->billedBuyer = $billedBuyer;
   }
@@ -4137,7 +4137,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Proposal extends Powerform_Google
   {
     return $this->billedBuyer;
   }
-  public function setBuyer(Powerform_Google_Service_AdExchangeBuyer_Buyer $buyer)
+  public function setBuyer(Google_Service_AdExchangeBuyer_Buyer $buyer)
   {
     $this->buyer = $buyer;
   }
@@ -4153,7 +4153,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Proposal extends Powerform_Google
   {
     return $this->buyerContacts;
   }
-  public function setBuyerPrivateData(Powerform_Google_Service_AdExchangeBuyer_PrivateData $buyerPrivateData)
+  public function setBuyerPrivateData(Google_Service_AdExchangeBuyer_PrivateData $buyerPrivateData)
   {
     $this->buyerPrivateData = $buyerPrivateData;
   }
@@ -4281,7 +4281,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Proposal extends Powerform_Google
   {
     return $this->revisionTimeMs;
   }
-  public function setSeller(Powerform_Google_Service_AdExchangeBuyer_Seller $seller)
+  public function setSeller(Google_Service_AdExchangeBuyer_Seller $seller)
   {
     $this->seller = $seller;
   }
@@ -4299,7 +4299,7 @@ class Powerform_Google_Service_AdExchangeBuyer_Proposal extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_Seller extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_Seller extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4325,14 +4325,14 @@ class Powerform_Google_Service_AdExchangeBuyer_Seller extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_SharedTargeting extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_SharedTargeting extends Google_Collection
 {
   protected $collection_key = 'inclusions';
   protected $internal_gapi_mappings = array(
   );
-  protected $exclusionsType = 'Powerform_Google_Service_AdExchangeBuyer_TargetingValue';
+  protected $exclusionsType = 'Google_Service_AdExchangeBuyer_TargetingValue';
   protected $exclusionsDataType = 'array';
-  protected $inclusionsType = 'Powerform_Google_Service_AdExchangeBuyer_TargetingValue';
+  protected $inclusionsType = 'Google_Service_AdExchangeBuyer_TargetingValue';
   protected $inclusionsDataType = 'array';
   public $key;
 
@@ -4363,19 +4363,19 @@ class Powerform_Google_Service_AdExchangeBuyer_SharedTargeting extends Powerform
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_TargetingValue extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_TargetingValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $creativeSizeValueType = 'Powerform_Google_Service_AdExchangeBuyer_TargetingValueCreativeSize';
+  protected $creativeSizeValueType = 'Google_Service_AdExchangeBuyer_TargetingValueCreativeSize';
   protected $creativeSizeValueDataType = '';
-  protected $dayPartTargetingValueType = 'Powerform_Google_Service_AdExchangeBuyer_TargetingValueDayPartTargeting';
+  protected $dayPartTargetingValueType = 'Google_Service_AdExchangeBuyer_TargetingValueDayPartTargeting';
   protected $dayPartTargetingValueDataType = '';
   public $longValue;
   public $stringValue;
 
 
-  public function setCreativeSizeValue(Powerform_Google_Service_AdExchangeBuyer_TargetingValueCreativeSize $creativeSizeValue)
+  public function setCreativeSizeValue(Google_Service_AdExchangeBuyer_TargetingValueCreativeSize $creativeSizeValue)
   {
     $this->creativeSizeValue = $creativeSizeValue;
   }
@@ -4383,7 +4383,7 @@ class Powerform_Google_Service_AdExchangeBuyer_TargetingValue extends Powerform_
   {
     return $this->creativeSizeValue;
   }
-  public function setDayPartTargetingValue(Powerform_Google_Service_AdExchangeBuyer_TargetingValueDayPartTargeting $dayPartTargetingValue)
+  public function setDayPartTargetingValue(Google_Service_AdExchangeBuyer_TargetingValueDayPartTargeting $dayPartTargetingValue)
   {
     $this->dayPartTargetingValue = $dayPartTargetingValue;
   }
@@ -4409,15 +4409,15 @@ class Powerform_Google_Service_AdExchangeBuyer_TargetingValue extends Powerform_
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_TargetingValueCreativeSize extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_TargetingValueCreativeSize extends Google_Collection
 {
   protected $collection_key = 'companionSizes';
   protected $internal_gapi_mappings = array(
   );
-  protected $companionSizesType = 'Powerform_Google_Service_AdExchangeBuyer_TargetingValueSize';
+  protected $companionSizesType = 'Google_Service_AdExchangeBuyer_TargetingValueSize';
   protected $companionSizesDataType = 'array';
   public $creativeSizeType;
-  protected $sizeType = 'Powerform_Google_Service_AdExchangeBuyer_TargetingValueSize';
+  protected $sizeType = 'Google_Service_AdExchangeBuyer_TargetingValueSize';
   protected $sizeDataType = '';
 
 
@@ -4437,7 +4437,7 @@ class Powerform_Google_Service_AdExchangeBuyer_TargetingValueCreativeSize extend
   {
     return $this->creativeSizeType;
   }
-  public function setSize(Powerform_Google_Service_AdExchangeBuyer_TargetingValueSize $size)
+  public function setSize(Google_Service_AdExchangeBuyer_TargetingValueSize $size)
   {
     $this->size = $size;
   }
@@ -4447,12 +4447,12 @@ class Powerform_Google_Service_AdExchangeBuyer_TargetingValueCreativeSize extend
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_TargetingValueDayPartTargeting extends Powerform_Google_Collection
+class Google_Service_AdExchangeBuyer_TargetingValueDayPartTargeting extends Google_Collection
 {
   protected $collection_key = 'dayParts';
   protected $internal_gapi_mappings = array(
   );
-  protected $dayPartsType = 'Powerform_Google_Service_AdExchangeBuyer_TargetingValueDayPartTargetingDayPart';
+  protected $dayPartsType = 'Google_Service_AdExchangeBuyer_TargetingValueDayPartTargetingDayPart';
   protected $dayPartsDataType = 'array';
   public $timeZoneType;
 
@@ -4475,7 +4475,7 @@ class Powerform_Google_Service_AdExchangeBuyer_TargetingValueDayPartTargeting ex
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_TargetingValueDayPartTargetingDayPart extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_TargetingValueDayPartTargetingDayPart extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4528,7 +4528,7 @@ class Powerform_Google_Service_AdExchangeBuyer_TargetingValueDayPartTargetingDay
   }
 }
 
-class Powerform_Google_Service_AdExchangeBuyer_TargetingValueSize extends Powerform_Google_Model
+class Google_Service_AdExchangeBuyer_TargetingValueSize extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

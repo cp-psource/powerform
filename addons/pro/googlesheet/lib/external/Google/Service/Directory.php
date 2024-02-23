@@ -28,7 +28,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Directory extends Powerform_Google_Service
+class Google_Service_Directory extends Google_Service
 {
   /** View and manage customer related information. */
   const ADMIN_DIRECTORY_CUSTOMER =
@@ -134,14 +134,14 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
   public $users_aliases;
   public $users_photos;
   public $verificationCodes;
-  
+
 
   /**
    * Constructs the internal representation of the Directory service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -149,7 +149,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
     $this->version = 'directory_v1';
     $this->serviceName = 'admin';
 
-    $this->asps = new Powerform_Google_Service_Directory_Asps_Resource(
+    $this->asps = new Google_Service_Directory_Asps_Resource(
         $this,
         $this->serviceName,
         'asps',
@@ -199,7 +199,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->channels = new Powerform_Google_Service_Directory_Channels_Resource(
+    $this->channels = new Google_Service_Directory_Channels_Resource(
         $this,
         $this->serviceName,
         'channels',
@@ -213,7 +213,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->chromeosdevices = new Powerform_Google_Service_Directory_Chromeosdevices_Resource(
+    $this->chromeosdevices = new Google_Service_Directory_Chromeosdevices_Resource(
         $this,
         $this->serviceName,
         'chromeosdevices',
@@ -314,7 +314,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->customers = new Powerform_Google_Service_Directory_Customers_Resource(
+    $this->customers = new Google_Service_Directory_Customers_Resource(
         $this,
         $this->serviceName,
         'customers',
@@ -354,7 +354,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->domainAliases = new Powerform_Google_Service_Directory_DomainAliases_Resource(
+    $this->domainAliases = new Google_Service_Directory_DomainAliases_Resource(
         $this,
         $this->serviceName,
         'domainAliases',
@@ -418,7 +418,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->domains = new Powerform_Google_Service_Directory_Domains_Resource(
+    $this->domains = new Google_Service_Directory_Domains_Resource(
         $this,
         $this->serviceName,
         'domains',
@@ -478,7 +478,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->groups = new Powerform_Google_Service_Directory_Groups_Resource(
+    $this->groups = new Google_Service_Directory_Groups_Resource(
         $this,
         $this->serviceName,
         'groups',
@@ -557,7 +557,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->groups_aliases = new Powerform_Google_Service_Directory_GroupsAliases_Resource(
+    $this->groups_aliases = new Google_Service_Directory_GroupsAliases_Resource(
         $this,
         $this->serviceName,
         'aliases',
@@ -602,7 +602,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->members = new Powerform_Google_Service_Directory_Members_Resource(
+    $this->members = new Google_Service_Directory_Members_Resource(
         $this,
         $this->serviceName,
         'members',
@@ -704,7 +704,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->mobiledevices = new Powerform_Google_Service_Directory_Mobiledevices_Resource(
+    $this->mobiledevices = new Google_Service_Directory_Mobiledevices_Resource(
         $this,
         $this->serviceName,
         'mobiledevices',
@@ -797,7 +797,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->notifications = new Powerform_Google_Service_Directory_Notifications_Resource(
+    $this->notifications = new Google_Service_Directory_Notifications_Resource(
         $this,
         $this->serviceName,
         'notifications',
@@ -889,7 +889,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->orgunits = new Powerform_Google_Service_Directory_Orgunits_Resource(
+    $this->orgunits = new Google_Service_Directory_Orgunits_Resource(
         $this,
         $this->serviceName,
         'orgunits',
@@ -991,7 +991,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->privileges = new Powerform_Google_Service_Directory_Privileges_Resource(
+    $this->privileges = new Google_Service_Directory_Privileges_Resource(
         $this,
         $this->serviceName,
         'privileges',
@@ -1011,7 +1011,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->resources_calendars = new Powerform_Google_Service_Directory_ResourcesCalendars_Resource(
+    $this->resources_calendars = new Google_Service_Directory_ResourcesCalendars_Resource(
         $this,
         $this->serviceName,
         'calendars',
@@ -1109,7 +1109,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->roleAssignments = new Powerform_Google_Service_Directory_RoleAssignments_Resource(
+    $this->roleAssignments = new Google_Service_Directory_RoleAssignments_Resource(
         $this,
         $this->serviceName,
         'roleAssignments',
@@ -1185,7 +1185,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->roles = new Powerform_Google_Service_Directory_Roles_Resource(
+    $this->roles = new Google_Service_Directory_Roles_Resource(
         $this,
         $this->serviceName,
         'roles',
@@ -1283,7 +1283,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->schemas = new Powerform_Google_Service_Directory_Schemas_Resource(
+    $this->schemas = new Google_Service_Directory_Schemas_Resource(
         $this,
         $this->serviceName,
         'schemas',
@@ -1373,7 +1373,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->tokens = new Powerform_Google_Service_Directory_Tokens_Resource(
+    $this->tokens = new Google_Service_Directory_Tokens_Resource(
         $this,
         $this->serviceName,
         'tokens',
@@ -1423,7 +1423,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->users = new Powerform_Google_Service_Directory_Users_Resource(
+    $this->users = new Google_Service_Directory_Users_Resource(
         $this,
         $this->serviceName,
         'users',
@@ -1615,7 +1615,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->users_aliases = new Powerform_Google_Service_Directory_UsersAliases_Resource(
+    $this->users_aliases = new Google_Service_Directory_UsersAliases_Resource(
         $this,
         $this->serviceName,
         'aliases',
@@ -1678,7 +1678,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->users_photos = new Powerform_Google_Service_Directory_UsersPhotos_Resource(
+    $this->users_photos = new Google_Service_Directory_UsersPhotos_Resource(
         $this,
         $this->serviceName,
         'photos',
@@ -1728,7 +1728,7 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
           )
         )
     );
-    $this->verificationCodes = new Powerform_Google_Service_Directory_VerificationCodes_Resource(
+    $this->verificationCodes = new Google_Service_Directory_VerificationCodes_Resource(
         $this,
         $this->serviceName,
         'verificationCodes',
@@ -1776,11 +1776,11 @@ class Powerform_Google_Service_Directory extends Powerform_Google_Service
  * The "asps" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $asps = $adminService->asps;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Asps_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Asps_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1805,13 +1805,13 @@ class Powerform_Google_Service_Directory_Asps_Resource extends Powerform_Google_
    * be the user's primary email address, alias email address, or unique user ID.
    * @param int $codeId The unique ID of the ASP.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Asp
+   * @return Google_Service_Directory_Asp
    */
   public function get($userKey, $codeId, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'codeId' => $codeId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_Asp");
+    return $this->call('get', array($params), "Google_Service_Directory_Asp");
   }
 
   /**
@@ -1820,13 +1820,13 @@ class Powerform_Google_Service_Directory_Asps_Resource extends Powerform_Google_
    * @param string $userKey Identifies the user in the API request. The value can
    * be the user's primary email address, alias email address, or unique user ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Asps
+   * @return Google_Service_Directory_Asps
    */
   public function listAsps($userKey, $optParams = array())
   {
     $params = array('userKey' => $userKey);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Asps");
+    return $this->call('list', array($params), "Google_Service_Directory_Asps");
   }
 }
 
@@ -1834,20 +1834,20 @@ class Powerform_Google_Service_Directory_Asps_Resource extends Powerform_Google_
  * The "channels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $channels = $adminService->channels;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Channels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Channels_Resource extends Google_Service_Resource
 {
 
   /**
    * Stop watching resources through this channel (channels.stop)
    *
-   * @param Powerform_Google_Channel $postBody
+   * @param Google_Channel $postBody
    * @param array $optParams Optional parameters.
    */
-  public function stop(Powerform_Google_Service_Directory_Channel $postBody, $optParams = array())
+  public function stop(Google_Service_Directory_Channel $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -1859,11 +1859,11 @@ class Powerform_Google_Service_Directory_Channels_Resource extends Powerform_Goo
  * The "chromeosdevices" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $chromeosdevices = $adminService->chromeosdevices;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Chromeosdevices_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Chromeosdevices_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1875,13 +1875,13 @@ class Powerform_Google_Service_Directory_Chromeosdevices_Resource extends Powerf
    *
    * @opt_param string projection Restrict information returned to a set of
    * selected fields.
-   * @return Powerform_Google_Service_Directory_ChromeOsDevice
+   * @return Google_Service_Directory_ChromeOsDevice
    */
   public function get($customerId, $deviceId, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'deviceId' => $deviceId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_ChromeOsDevice");
+    return $this->call('get', array($params), "Google_Service_Directory_ChromeOsDevice");
   }
 
   /**
@@ -1900,13 +1900,13 @@ class Powerform_Google_Service_Directory_Chromeosdevices_Resource extends Powerf
    * http://support.google.com/chromeos/a/bin/answer.py?hl=en=1698333
    * @opt_param string sortOrder Whether to return results in ascending or
    * descending order. Only of use when orderBy is also used
-   * @return Powerform_Google_Service_Directory_ChromeOsDevices
+   * @return Google_Service_Directory_ChromeOsDevices
    */
   public function listChromeosdevices($customerId, $optParams = array())
   {
     $params = array('customerId' => $customerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_ChromeOsDevices");
+    return $this->call('list', array($params), "Google_Service_Directory_ChromeOsDevices");
   }
 
   /**
@@ -1915,18 +1915,18 @@ class Powerform_Google_Service_Directory_Chromeosdevices_Resource extends Powerf
    *
    * @param string $customerId Immutable id of the Google Apps account
    * @param string $deviceId Immutable id of Chrome OS Device
-   * @param Powerform_Google_ChromeOsDevice $postBody
+   * @param Google_ChromeOsDevice $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string projection Restrict information returned to a set of
    * selected fields.
-   * @return Powerform_Google_Service_Directory_ChromeOsDevice
+   * @return Google_Service_Directory_ChromeOsDevice
    */
-  public function patch($customerId, $deviceId, Powerform_Google_Service_Directory_ChromeOsDevice $postBody, $optParams = array())
+  public function patch($customerId, $deviceId, Google_Service_Directory_ChromeOsDevice $postBody, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'deviceId' => $deviceId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_ChromeOsDevice");
+    return $this->call('patch', array($params), "Google_Service_Directory_ChromeOsDevice");
   }
 
   /**
@@ -1934,18 +1934,18 @@ class Powerform_Google_Service_Directory_Chromeosdevices_Resource extends Powerf
    *
    * @param string $customerId Immutable id of the Google Apps account
    * @param string $deviceId Immutable id of Chrome OS Device
-   * @param Powerform_Google_ChromeOsDevice $postBody
+   * @param Google_ChromeOsDevice $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string projection Restrict information returned to a set of
    * selected fields.
-   * @return Powerform_Google_Service_Directory_ChromeOsDevice
+   * @return Google_Service_Directory_ChromeOsDevice
    */
-  public function update($customerId, $deviceId, Powerform_Google_Service_Directory_ChromeOsDevice $postBody, $optParams = array())
+  public function update($customerId, $deviceId, Google_Service_Directory_ChromeOsDevice $postBody, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'deviceId' => $deviceId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_ChromeOsDevice");
+    return $this->call('update', array($params), "Google_Service_Directory_ChromeOsDevice");
   }
 }
 
@@ -1953,11 +1953,11 @@ class Powerform_Google_Service_Directory_Chromeosdevices_Resource extends Powerf
  * The "customers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $customers = $adminService->customers;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Customers_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Customers_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1965,43 +1965,43 @@ class Powerform_Google_Service_Directory_Customers_Resource extends Powerform_Go
    *
    * @param string $customerKey Id of the customer to be retrieved
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Customer
+   * @return Google_Service_Directory_Customer
    */
   public function get($customerKey, $optParams = array())
   {
     $params = array('customerKey' => $customerKey);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_Customer");
+    return $this->call('get', array($params), "Google_Service_Directory_Customer");
   }
 
   /**
    * Updates a customer. This method supports patch semantics. (customers.patch)
    *
    * @param string $customerKey Id of the customer to be updated
-   * @param Powerform_Google_Customer $postBody
+   * @param Google_Customer $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Customer
+   * @return Google_Service_Directory_Customer
    */
-  public function patch($customerKey, Powerform_Google_Service_Directory_Customer $postBody, $optParams = array())
+  public function patch($customerKey, Google_Service_Directory_Customer $postBody, $optParams = array())
   {
     $params = array('customerKey' => $customerKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_Customer");
+    return $this->call('patch', array($params), "Google_Service_Directory_Customer");
   }
 
   /**
    * Updates a customer. (customers.update)
    *
    * @param string $customerKey Id of the customer to be updated
-   * @param Powerform_Google_Customer $postBody
+   * @param Google_Customer $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Customer
+   * @return Google_Service_Directory_Customer
    */
-  public function update($customerKey, Powerform_Google_Service_Directory_Customer $postBody, $optParams = array())
+  public function update($customerKey, Google_Service_Directory_Customer $postBody, $optParams = array())
   {
     $params = array('customerKey' => $customerKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_Customer");
+    return $this->call('update', array($params), "Google_Service_Directory_Customer");
   }
 }
 
@@ -2009,11 +2009,11 @@ class Powerform_Google_Service_Directory_Customers_Resource extends Powerform_Go
  * The "domainAliases" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $domainAliases = $adminService->domainAliases;
  *  </code>
  */
-class Powerform_Google_Service_Directory_DomainAliases_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_DomainAliases_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2036,28 +2036,28 @@ class Powerform_Google_Service_Directory_DomainAliases_Resource extends Powerfor
    * @param string $customer Immutable id of the Google Apps account.
    * @param string $domainAliasName Name of domain alias to be retrieved.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_DomainAlias
+   * @return Google_Service_Directory_DomainAlias
    */
   public function get($customer, $domainAliasName, $optParams = array())
   {
     $params = array('customer' => $customer, 'domainAliasName' => $domainAliasName);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_DomainAlias");
+    return $this->call('get', array($params), "Google_Service_Directory_DomainAlias");
   }
 
   /**
    * Inserts a Domain alias of the customer. (domainAliases.insert)
    *
    * @param string $customer Immutable id of the Google Apps account.
-   * @param Powerform_Google_DomainAlias $postBody
+   * @param Google_DomainAlias $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_DomainAlias
+   * @return Google_Service_Directory_DomainAlias
    */
-  public function insert($customer, Powerform_Google_Service_Directory_DomainAlias $postBody, $optParams = array())
+  public function insert($customer, Google_Service_Directory_DomainAlias $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_DomainAlias");
+    return $this->call('insert', array($params), "Google_Service_Directory_DomainAlias");
   }
 
   /**
@@ -2068,13 +2068,13 @@ class Powerform_Google_Service_Directory_DomainAliases_Resource extends Powerfor
    *
    * @opt_param string parentDomainName Name of the parent domain for which domain
    * aliases are to be fetched.
-   * @return Powerform_Google_Service_Directory_DomainAliases
+   * @return Google_Service_Directory_DomainAliases
    */
   public function listDomainAliases($customer, $optParams = array())
   {
     $params = array('customer' => $customer);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_DomainAliases");
+    return $this->call('list', array($params), "Google_Service_Directory_DomainAliases");
   }
 }
 
@@ -2082,11 +2082,11 @@ class Powerform_Google_Service_Directory_DomainAliases_Resource extends Powerfor
  * The "domains" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $domains = $adminService->domains;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Domains_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Domains_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2109,28 +2109,28 @@ class Powerform_Google_Service_Directory_Domains_Resource extends Powerform_Goog
    * @param string $customer Immutable id of the Google Apps account.
    * @param string $domainName Name of domain to be retrieved
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Domains
+   * @return Google_Service_Directory_Domains
    */
   public function get($customer, $domainName, $optParams = array())
   {
     $params = array('customer' => $customer, 'domainName' => $domainName);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_Domains");
+    return $this->call('get', array($params), "Google_Service_Directory_Domains");
   }
 
   /**
    * Inserts a domain of the customer. (domains.insert)
    *
    * @param string $customer Immutable id of the Google Apps account.
-   * @param Powerform_Google_Domains $postBody
+   * @param Google_Domains $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Domains
+   * @return Google_Service_Directory_Domains
    */
-  public function insert($customer, Powerform_Google_Service_Directory_Domains $postBody, $optParams = array())
+  public function insert($customer, Google_Service_Directory_Domains $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_Domains");
+    return $this->call('insert', array($params), "Google_Service_Directory_Domains");
   }
 
   /**
@@ -2138,13 +2138,13 @@ class Powerform_Google_Service_Directory_Domains_Resource extends Powerform_Goog
    *
    * @param string $customer Immutable id of the Google Apps account.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Domains2
+   * @return Google_Service_Directory_Domains2
    */
   public function listDomains($customer, $optParams = array())
   {
     $params = array('customer' => $customer);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Domains2");
+    return $this->call('list', array($params), "Google_Service_Directory_Domains2");
   }
 }
 
@@ -2152,11 +2152,11 @@ class Powerform_Google_Service_Directory_Domains_Resource extends Powerform_Goog
  * The "groups" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $groups = $adminService->groups;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Groups_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Groups_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2177,27 +2177,27 @@ class Powerform_Google_Service_Directory_Groups_Resource extends Powerform_Googl
    *
    * @param string $groupKey Email or immutable Id of the group
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Group
+   * @return Google_Service_Directory_Group
    */
   public function get($groupKey, $optParams = array())
   {
     $params = array('groupKey' => $groupKey);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_Group");
+    return $this->call('get', array($params), "Google_Service_Directory_Group");
   }
 
   /**
    * Create Group (groups.insert)
    *
-   * @param Powerform_Google_Group $postBody
+   * @param Google_Group $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Group
+   * @return Google_Service_Directory_Group
    */
-  public function insert(Powerform_Google_Service_Directory_Group $postBody, $optParams = array())
+  public function insert(Google_Service_Directory_Group $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_Group");
+    return $this->call('insert', array($params), "Google_Service_Directory_Group");
   }
 
   /**
@@ -2216,13 +2216,13 @@ class Powerform_Google_Service_Directory_Groups_Resource extends Powerform_Googl
    * @opt_param string userKey Email or immutable Id of the user if only those
    * groups are to be listed, the given user is a member of. If Id, it should
    * match with id of user object
-   * @return Powerform_Google_Service_Directory_Groups
+   * @return Google_Service_Directory_Groups
    */
   public function listGroups($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Groups");
+    return $this->call('list', array($params), "Google_Service_Directory_Groups");
   }
 
   /**
@@ -2230,15 +2230,15 @@ class Powerform_Google_Service_Directory_Groups_Resource extends Powerform_Googl
    *
    * @param string $groupKey Email or immutable Id of the group. If Id, it should
    * match with id of group object
-   * @param Powerform_Google_Group $postBody
+   * @param Google_Group $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Group
+   * @return Google_Service_Directory_Group
    */
-  public function patch($groupKey, Powerform_Google_Service_Directory_Group $postBody, $optParams = array())
+  public function patch($groupKey, Google_Service_Directory_Group $postBody, $optParams = array())
   {
     $params = array('groupKey' => $groupKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_Group");
+    return $this->call('patch', array($params), "Google_Service_Directory_Group");
   }
 
   /**
@@ -2246,15 +2246,15 @@ class Powerform_Google_Service_Directory_Groups_Resource extends Powerform_Googl
    *
    * @param string $groupKey Email or immutable Id of the group. If Id, it should
    * match with id of group object
-   * @param Powerform_Google_Group $postBody
+   * @param Google_Group $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Group
+   * @return Google_Service_Directory_Group
    */
-  public function update($groupKey, Powerform_Google_Service_Directory_Group $postBody, $optParams = array())
+  public function update($groupKey, Google_Service_Directory_Group $postBody, $optParams = array())
   {
     $params = array('groupKey' => $groupKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_Group");
+    return $this->call('update', array($params), "Google_Service_Directory_Group");
   }
 }
 
@@ -2262,11 +2262,11 @@ class Powerform_Google_Service_Directory_Groups_Resource extends Powerform_Googl
  * The "aliases" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $aliases = $adminService->aliases;
  *  </code>
  */
-class Powerform_Google_Service_Directory_GroupsAliases_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_GroupsAliases_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2287,15 +2287,15 @@ class Powerform_Google_Service_Directory_GroupsAliases_Resource extends Powerfor
    * Add a alias for the group (aliases.insert)
    *
    * @param string $groupKey Email or immutable Id of the group
-   * @param Powerform_Google_Alias $postBody
+   * @param Google_Alias $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Alias
+   * @return Google_Service_Directory_Alias
    */
-  public function insert($groupKey, Powerform_Google_Service_Directory_Alias $postBody, $optParams = array())
+  public function insert($groupKey, Google_Service_Directory_Alias $postBody, $optParams = array())
   {
     $params = array('groupKey' => $groupKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_Alias");
+    return $this->call('insert', array($params), "Google_Service_Directory_Alias");
   }
 
   /**
@@ -2303,13 +2303,13 @@ class Powerform_Google_Service_Directory_GroupsAliases_Resource extends Powerfor
    *
    * @param string $groupKey Email or immutable Id of the group
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Aliases
+   * @return Google_Service_Directory_Aliases
    */
   public function listGroupsAliases($groupKey, $optParams = array())
   {
     $params = array('groupKey' => $groupKey);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Aliases");
+    return $this->call('list', array($params), "Google_Service_Directory_Aliases");
   }
 }
 
@@ -2317,11 +2317,11 @@ class Powerform_Google_Service_Directory_GroupsAliases_Resource extends Powerfor
  * The "members" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $members = $adminService->members;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Members_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Members_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2344,28 +2344,28 @@ class Powerform_Google_Service_Directory_Members_Resource extends Powerform_Goog
    * @param string $groupKey Email or immutable Id of the group
    * @param string $memberKey Email or immutable Id of the member
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Member
+   * @return Google_Service_Directory_Member
    */
   public function get($groupKey, $memberKey, $optParams = array())
   {
     $params = array('groupKey' => $groupKey, 'memberKey' => $memberKey);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_Member");
+    return $this->call('get', array($params), "Google_Service_Directory_Member");
   }
 
   /**
    * Add user to the specified group. (members.insert)
    *
    * @param string $groupKey Email or immutable Id of the group
-   * @param Powerform_Google_Member $postBody
+   * @param Google_Member $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Member
+   * @return Google_Service_Directory_Member
    */
-  public function insert($groupKey, Powerform_Google_Service_Directory_Member $postBody, $optParams = array())
+  public function insert($groupKey, Google_Service_Directory_Member $postBody, $optParams = array())
   {
     $params = array('groupKey' => $groupKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_Member");
+    return $this->call('insert', array($params), "Google_Service_Directory_Member");
   }
 
   /**
@@ -2378,13 +2378,13 @@ class Powerform_Google_Service_Directory_Members_Resource extends Powerform_Goog
    * @opt_param string pageToken Token to specify next page in the list
    * @opt_param string roles Comma separated role values to filter list results
    * on.
-   * @return Powerform_Google_Service_Directory_Members
+   * @return Google_Service_Directory_Members
    */
   public function listMembers($groupKey, $optParams = array())
   {
     $params = array('groupKey' => $groupKey);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Members");
+    return $this->call('list', array($params), "Google_Service_Directory_Members");
   }
 
   /**
@@ -2395,15 +2395,15 @@ class Powerform_Google_Service_Directory_Members_Resource extends Powerform_Goog
    * match with id of group object
    * @param string $memberKey Email or immutable Id of the user. If Id, it should
    * match with id of member object
-   * @param Powerform_Google_Member $postBody
+   * @param Google_Member $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Member
+   * @return Google_Service_Directory_Member
    */
-  public function patch($groupKey, $memberKey, Powerform_Google_Service_Directory_Member $postBody, $optParams = array())
+  public function patch($groupKey, $memberKey, Google_Service_Directory_Member $postBody, $optParams = array())
   {
     $params = array('groupKey' => $groupKey, 'memberKey' => $memberKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_Member");
+    return $this->call('patch', array($params), "Google_Service_Directory_Member");
   }
 
   /**
@@ -2413,15 +2413,15 @@ class Powerform_Google_Service_Directory_Members_Resource extends Powerform_Goog
    * match with id of group object
    * @param string $memberKey Email or immutable Id of the user. If Id, it should
    * match with id of member object
-   * @param Powerform_Google_Member $postBody
+   * @param Google_Member $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Member
+   * @return Google_Service_Directory_Member
    */
-  public function update($groupKey, $memberKey, Powerform_Google_Service_Directory_Member $postBody, $optParams = array())
+  public function update($groupKey, $memberKey, Google_Service_Directory_Member $postBody, $optParams = array())
   {
     $params = array('groupKey' => $groupKey, 'memberKey' => $memberKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_Member");
+    return $this->call('update', array($params), "Google_Service_Directory_Member");
   }
 }
 
@@ -2429,11 +2429,11 @@ class Powerform_Google_Service_Directory_Members_Resource extends Powerform_Goog
  * The "mobiledevices" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $mobiledevices = $adminService->mobiledevices;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Mobiledevices_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Mobiledevices_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2441,10 +2441,10 @@ class Powerform_Google_Service_Directory_Mobiledevices_Resource extends Powerfor
    *
    * @param string $customerId Immutable id of the Google Apps account
    * @param string $resourceId Immutable id of Mobile Device
-   * @param Powerform_Google_MobileDeviceAction $postBody
+   * @param Google_MobileDeviceAction $postBody
    * @param array $optParams Optional parameters.
    */
-  public function action($customerId, $resourceId, Powerform_Google_Service_Directory_MobileDeviceAction $postBody, $optParams = array())
+  public function action($customerId, $resourceId, Google_Service_Directory_MobileDeviceAction $postBody, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'resourceId' => $resourceId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -2474,13 +2474,13 @@ class Powerform_Google_Service_Directory_Mobiledevices_Resource extends Powerfor
    *
    * @opt_param string projection Restrict information returned to a set of
    * selected fields.
-   * @return Powerform_Google_Service_Directory_MobileDevice
+   * @return Google_Service_Directory_MobileDevice
    */
   public function get($customerId, $resourceId, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'resourceId' => $resourceId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_MobileDevice");
+    return $this->call('get', array($params), "Google_Service_Directory_MobileDevice");
   }
 
   /**
@@ -2499,13 +2499,13 @@ class Powerform_Google_Service_Directory_Mobiledevices_Resource extends Powerfor
    * http://support.google.com/a/bin/answer.py?hl=en=1408863#search
    * @opt_param string sortOrder Whether to return results in ascending or
    * descending order. Only of use when orderBy is also used
-   * @return Powerform_Google_Service_Directory_MobileDevices
+   * @return Google_Service_Directory_MobileDevices
    */
   public function listMobiledevices($customerId, $optParams = array())
   {
     $params = array('customerId' => $customerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_MobileDevices");
+    return $this->call('list', array($params), "Google_Service_Directory_MobileDevices");
   }
 }
 
@@ -2513,11 +2513,11 @@ class Powerform_Google_Service_Directory_Mobiledevices_Resource extends Powerfor
  * The "notifications" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $notifications = $adminService->notifications;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Notifications_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Notifications_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2542,13 +2542,13 @@ class Powerform_Google_Service_Directory_Notifications_Resource extends Powerfor
    * customerId is also returned as part of the Users resource.
    * @param string $notificationId The unique ID of the notification.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Notification
+   * @return Google_Service_Directory_Notification
    */
   public function get($customer, $notificationId, $optParams = array())
   {
     $params = array('customer' => $customer, 'notificationId' => $notificationId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_Notification");
+    return $this->call('get', array($params), "Google_Service_Directory_Notification");
   }
 
   /**
@@ -2563,13 +2563,13 @@ class Powerform_Google_Service_Directory_Notifications_Resource extends Powerfor
    * page. The default is 100.
    * @opt_param string pageToken The token to specify the page of results to
    * retrieve.
-   * @return Powerform_Google_Service_Directory_Notifications
+   * @return Google_Service_Directory_Notifications
    */
   public function listNotifications($customer, $optParams = array())
   {
     $params = array('customer' => $customer);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Notifications");
+    return $this->call('list', array($params), "Google_Service_Directory_Notifications");
   }
 
   /**
@@ -2578,15 +2578,15 @@ class Powerform_Google_Service_Directory_Notifications_Resource extends Powerfor
    *
    * @param string $customer The unique ID for the customer's Google account.
    * @param string $notificationId The unique ID of the notification.
-   * @param Powerform_Google_Notification $postBody
+   * @param Google_Notification $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Notification
+   * @return Google_Service_Directory_Notification
    */
-  public function patch($customer, $notificationId, Powerform_Google_Service_Directory_Notification $postBody, $optParams = array())
+  public function patch($customer, $notificationId, Google_Service_Directory_Notification $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'notificationId' => $notificationId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_Notification");
+    return $this->call('patch', array($params), "Google_Service_Directory_Notification");
   }
 
   /**
@@ -2594,15 +2594,15 @@ class Powerform_Google_Service_Directory_Notifications_Resource extends Powerfor
    *
    * @param string $customer The unique ID for the customer's Google account.
    * @param string $notificationId The unique ID of the notification.
-   * @param Powerform_Google_Notification $postBody
+   * @param Google_Notification $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Notification
+   * @return Google_Service_Directory_Notification
    */
-  public function update($customer, $notificationId, Powerform_Google_Service_Directory_Notification $postBody, $optParams = array())
+  public function update($customer, $notificationId, Google_Service_Directory_Notification $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'notificationId' => $notificationId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_Notification");
+    return $this->call('update', array($params), "Google_Service_Directory_Notification");
   }
 }
 
@@ -2610,11 +2610,11 @@ class Powerform_Google_Service_Directory_Notifications_Resource extends Powerfor
  * The "orgunits" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $orgunits = $adminService->orgunits;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Orgunits_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Orgunits_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2637,28 +2637,28 @@ class Powerform_Google_Service_Directory_Orgunits_Resource extends Powerform_Goo
    * @param string $customerId Immutable id of the Google Apps account
    * @param string $orgUnitPath Full path of the organization unit or its Id
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_OrgUnit
+   * @return Google_Service_Directory_OrgUnit
    */
   public function get($customerId, $orgUnitPath, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'orgUnitPath' => $orgUnitPath);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_OrgUnit");
+    return $this->call('get', array($params), "Google_Service_Directory_OrgUnit");
   }
 
   /**
    * Add Organization Unit (orgunits.insert)
    *
    * @param string $customerId Immutable id of the Google Apps account
-   * @param Powerform_Google_OrgUnit $postBody
+   * @param Google_OrgUnit $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_OrgUnit
+   * @return Google_Service_Directory_OrgUnit
    */
-  public function insert($customerId, Powerform_Google_Service_Directory_OrgUnit $postBody, $optParams = array())
+  public function insert($customerId, Google_Service_Directory_OrgUnit $postBody, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_OrgUnit");
+    return $this->call('insert', array($params), "Google_Service_Directory_OrgUnit");
   }
 
   /**
@@ -2671,13 +2671,13 @@ class Powerform_Google_Service_Directory_Orgunits_Resource extends Powerform_Goo
    * Id
    * @opt_param string type Whether to return all sub-organizations or just
    * immediate children
-   * @return Powerform_Google_Service_Directory_OrgUnits
+   * @return Google_Service_Directory_OrgUnits
    */
   public function listOrgunits($customerId, $optParams = array())
   {
     $params = array('customerId' => $customerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_OrgUnits");
+    return $this->call('list', array($params), "Google_Service_Directory_OrgUnits");
   }
 
   /**
@@ -2686,15 +2686,15 @@ class Powerform_Google_Service_Directory_Orgunits_Resource extends Powerform_Goo
    *
    * @param string $customerId Immutable id of the Google Apps account
    * @param string $orgUnitPath Full path of the organization unit or its Id
-   * @param Powerform_Google_OrgUnit $postBody
+   * @param Google_OrgUnit $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_OrgUnit
+   * @return Google_Service_Directory_OrgUnit
    */
-  public function patch($customerId, $orgUnitPath, Powerform_Google_Service_Directory_OrgUnit $postBody, $optParams = array())
+  public function patch($customerId, $orgUnitPath, Google_Service_Directory_OrgUnit $postBody, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'orgUnitPath' => $orgUnitPath, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_OrgUnit");
+    return $this->call('patch', array($params), "Google_Service_Directory_OrgUnit");
   }
 
   /**
@@ -2702,15 +2702,15 @@ class Powerform_Google_Service_Directory_Orgunits_Resource extends Powerform_Goo
    *
    * @param string $customerId Immutable id of the Google Apps account
    * @param string $orgUnitPath Full path of the organization unit or its Id
-   * @param Powerform_Google_OrgUnit $postBody
+   * @param Google_OrgUnit $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_OrgUnit
+   * @return Google_Service_Directory_OrgUnit
    */
-  public function update($customerId, $orgUnitPath, Powerform_Google_Service_Directory_OrgUnit $postBody, $optParams = array())
+  public function update($customerId, $orgUnitPath, Google_Service_Directory_OrgUnit $postBody, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'orgUnitPath' => $orgUnitPath, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_OrgUnit");
+    return $this->call('update', array($params), "Google_Service_Directory_OrgUnit");
   }
 }
 
@@ -2718,11 +2718,11 @@ class Powerform_Google_Service_Directory_Orgunits_Resource extends Powerform_Goo
  * The "privileges" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $privileges = $adminService->privileges;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Privileges_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Privileges_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2731,13 +2731,13 @@ class Powerform_Google_Service_Directory_Privileges_Resource extends Powerform_G
    *
    * @param string $customer Immutable ID of the Google Apps account.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Privileges
+   * @return Google_Service_Directory_Privileges
    */
   public function listPrivileges($customer, $optParams = array())
   {
     $params = array('customer' => $customer);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Privileges");
+    return $this->call('list', array($params), "Google_Service_Directory_Privileges");
   }
 }
 
@@ -2745,11 +2745,11 @@ class Powerform_Google_Service_Directory_Privileges_Resource extends Powerform_G
  * The "resources" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $resources = $adminService->resources;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Resources_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Resources_Resource extends Google_Service_Resource
 {
 }
 
@@ -2757,11 +2757,11 @@ class Powerform_Google_Service_Directory_Resources_Resource extends Powerform_Go
  * The "calendars" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $calendars = $adminService->calendars;
  *  </code>
  */
-class Powerform_Google_Service_Directory_ResourcesCalendars_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_ResourcesCalendars_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2790,13 +2790,13 @@ class Powerform_Google_Service_Directory_ResourcesCalendars_Resource extends Pow
    * @param string $calendarResourceId The unique ID of the calendar resource to
    * retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_CalendarResource
+   * @return Google_Service_Directory_CalendarResource
    */
   public function get($customer, $calendarResourceId, $optParams = array())
   {
     $params = array('customer' => $customer, 'calendarResourceId' => $calendarResourceId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_CalendarResource");
+    return $this->call('get', array($params), "Google_Service_Directory_CalendarResource");
   }
 
   /**
@@ -2805,15 +2805,15 @@ class Powerform_Google_Service_Directory_ResourcesCalendars_Resource extends Pow
    * @param string $customer The unique ID for the customer's Google account. As
    * an account administrator, you can also use the my_customer alias to represent
    * your account's customer ID.
-   * @param Powerform_Google_CalendarResource $postBody
+   * @param Google_CalendarResource $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_CalendarResource
+   * @return Google_Service_Directory_CalendarResource
    */
-  public function insert($customer, Powerform_Google_Service_Directory_CalendarResource $postBody, $optParams = array())
+  public function insert($customer, Google_Service_Directory_CalendarResource $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_CalendarResource");
+    return $this->call('insert', array($params), "Google_Service_Directory_CalendarResource");
   }
 
   /**
@@ -2827,13 +2827,13 @@ class Powerform_Google_Service_Directory_ResourcesCalendars_Resource extends Pow
    *
    * @opt_param int maxResults Maximum number of results to return.
    * @opt_param string pageToken Token to specify the next page in the list.
-   * @return Powerform_Google_Service_Directory_CalendarResources
+   * @return Google_Service_Directory_CalendarResources
    */
   public function listResourcesCalendars($customer, $optParams = array())
   {
     $params = array('customer' => $customer);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_CalendarResources");
+    return $this->call('list', array($params), "Google_Service_Directory_CalendarResources");
   }
 
   /**
@@ -2845,15 +2845,15 @@ class Powerform_Google_Service_Directory_ResourcesCalendars_Resource extends Pow
    * your account's customer ID.
    * @param string $calendarResourceId The unique ID of the calendar resource to
    * update.
-   * @param Powerform_Google_CalendarResource $postBody
+   * @param Google_CalendarResource $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_CalendarResource
+   * @return Google_Service_Directory_CalendarResource
    */
-  public function patch($customer, $calendarResourceId, Powerform_Google_Service_Directory_CalendarResource $postBody, $optParams = array())
+  public function patch($customer, $calendarResourceId, Google_Service_Directory_CalendarResource $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'calendarResourceId' => $calendarResourceId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_CalendarResource");
+    return $this->call('patch', array($params), "Google_Service_Directory_CalendarResource");
   }
 
   /**
@@ -2864,15 +2864,15 @@ class Powerform_Google_Service_Directory_ResourcesCalendars_Resource extends Pow
    * your account's customer ID.
    * @param string $calendarResourceId The unique ID of the calendar resource to
    * update.
-   * @param Powerform_Google_CalendarResource $postBody
+   * @param Google_CalendarResource $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_CalendarResource
+   * @return Google_Service_Directory_CalendarResource
    */
-  public function update($customer, $calendarResourceId, Powerform_Google_Service_Directory_CalendarResource $postBody, $optParams = array())
+  public function update($customer, $calendarResourceId, Google_Service_Directory_CalendarResource $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'calendarResourceId' => $calendarResourceId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_CalendarResource");
+    return $this->call('update', array($params), "Google_Service_Directory_CalendarResource");
   }
 }
 
@@ -2880,11 +2880,11 @@ class Powerform_Google_Service_Directory_ResourcesCalendars_Resource extends Pow
  * The "roleAssignments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $roleAssignments = $adminService->roleAssignments;
  *  </code>
  */
-class Powerform_Google_Service_Directory_RoleAssignments_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_RoleAssignments_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2907,28 +2907,28 @@ class Powerform_Google_Service_Directory_RoleAssignments_Resource extends Powerf
    * @param string $customer Immutable ID of the Google Apps account.
    * @param string $roleAssignmentId Immutable ID of the role assignment.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_RoleAssignment
+   * @return Google_Service_Directory_RoleAssignment
    */
   public function get($customer, $roleAssignmentId, $optParams = array())
   {
     $params = array('customer' => $customer, 'roleAssignmentId' => $roleAssignmentId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_RoleAssignment");
+    return $this->call('get', array($params), "Google_Service_Directory_RoleAssignment");
   }
 
   /**
    * Creates a role assignment. (roleAssignments.insert)
    *
    * @param string $customer Immutable ID of the Google Apps account.
-   * @param Powerform_Google_RoleAssignment $postBody
+   * @param Google_RoleAssignment $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_RoleAssignment
+   * @return Google_Service_Directory_RoleAssignment
    */
-  public function insert($customer, Powerform_Google_Service_Directory_RoleAssignment $postBody, $optParams = array())
+  public function insert($customer, Google_Service_Directory_RoleAssignment $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_RoleAssignment");
+    return $this->call('insert', array($params), "Google_Service_Directory_RoleAssignment");
   }
 
   /**
@@ -2945,13 +2945,13 @@ class Powerform_Google_Service_Directory_RoleAssignments_Resource extends Powerf
    * @opt_param string userKey The user's primary email address, alias email
    * address, or unique user ID. If included in the request, returns role
    * assignments only for this user.
-   * @return Powerform_Google_Service_Directory_RoleAssignments
+   * @return Google_Service_Directory_RoleAssignments
    */
   public function listRoleAssignments($customer, $optParams = array())
   {
     $params = array('customer' => $customer);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_RoleAssignments");
+    return $this->call('list', array($params), "Google_Service_Directory_RoleAssignments");
   }
 }
 
@@ -2959,11 +2959,11 @@ class Powerform_Google_Service_Directory_RoleAssignments_Resource extends Powerf
  * The "roles" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $roles = $adminService->roles;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Roles_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Roles_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2986,28 +2986,28 @@ class Powerform_Google_Service_Directory_Roles_Resource extends Powerform_Google
    * @param string $customer Immutable ID of the Google Apps account.
    * @param string $roleId Immutable ID of the role.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Role
+   * @return Google_Service_Directory_Role
    */
   public function get($customer, $roleId, $optParams = array())
   {
     $params = array('customer' => $customer, 'roleId' => $roleId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_Role");
+    return $this->call('get', array($params), "Google_Service_Directory_Role");
   }
 
   /**
    * Creates a role. (roles.insert)
    *
    * @param string $customer Immutable ID of the Google Apps account.
-   * @param Powerform_Google_Role $postBody
+   * @param Google_Role $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Role
+   * @return Google_Service_Directory_Role
    */
-  public function insert($customer, Powerform_Google_Service_Directory_Role $postBody, $optParams = array())
+  public function insert($customer, Google_Service_Directory_Role $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_Role");
+    return $this->call('insert', array($params), "Google_Service_Directory_Role");
   }
 
   /**
@@ -3018,13 +3018,13 @@ class Powerform_Google_Service_Directory_Roles_Resource extends Powerform_Google
    *
    * @opt_param int maxResults Maximum number of results to return.
    * @opt_param string pageToken Token to specify the next page in the list.
-   * @return Powerform_Google_Service_Directory_Roles
+   * @return Google_Service_Directory_Roles
    */
   public function listRoles($customer, $optParams = array())
   {
     $params = array('customer' => $customer);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Roles");
+    return $this->call('list', array($params), "Google_Service_Directory_Roles");
   }
 
   /**
@@ -3032,15 +3032,15 @@ class Powerform_Google_Service_Directory_Roles_Resource extends Powerform_Google
    *
    * @param string $customer Immutable ID of the Google Apps account.
    * @param string $roleId Immutable ID of the role.
-   * @param Powerform_Google_Role $postBody
+   * @param Google_Role $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Role
+   * @return Google_Service_Directory_Role
    */
-  public function patch($customer, $roleId, Powerform_Google_Service_Directory_Role $postBody, $optParams = array())
+  public function patch($customer, $roleId, Google_Service_Directory_Role $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'roleId' => $roleId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_Role");
+    return $this->call('patch', array($params), "Google_Service_Directory_Role");
   }
 
   /**
@@ -3048,15 +3048,15 @@ class Powerform_Google_Service_Directory_Roles_Resource extends Powerform_Google
    *
    * @param string $customer Immutable ID of the Google Apps account.
    * @param string $roleId Immutable ID of the role.
-   * @param Powerform_Google_Role $postBody
+   * @param Google_Role $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Role
+   * @return Google_Service_Directory_Role
    */
-  public function update($customer, $roleId, Powerform_Google_Service_Directory_Role $postBody, $optParams = array())
+  public function update($customer, $roleId, Google_Service_Directory_Role $postBody, $optParams = array())
   {
     $params = array('customer' => $customer, 'roleId' => $roleId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_Role");
+    return $this->call('update', array($params), "Google_Service_Directory_Role");
   }
 }
 
@@ -3064,11 +3064,11 @@ class Powerform_Google_Service_Directory_Roles_Resource extends Powerform_Google
  * The "schemas" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $schemas = $adminService->schemas;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Schemas_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Schemas_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3091,28 +3091,28 @@ class Powerform_Google_Service_Directory_Schemas_Resource extends Powerform_Goog
    * @param string $customerId Immutable id of the Google Apps account
    * @param string $schemaKey Name or immutable Id of the schema
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Schema
+   * @return Google_Service_Directory_Schema
    */
   public function get($customerId, $schemaKey, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'schemaKey' => $schemaKey);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_Schema");
+    return $this->call('get', array($params), "Google_Service_Directory_Schema");
   }
 
   /**
    * Create schema. (schemas.insert)
    *
    * @param string $customerId Immutable id of the Google Apps account
-   * @param Powerform_Google_Schema $postBody
+   * @param Google_Schema $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Schema
+   * @return Google_Service_Directory_Schema
    */
-  public function insert($customerId, Powerform_Google_Service_Directory_Schema $postBody, $optParams = array())
+  public function insert($customerId, Google_Service_Directory_Schema $postBody, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_Schema");
+    return $this->call('insert', array($params), "Google_Service_Directory_Schema");
   }
 
   /**
@@ -3120,13 +3120,13 @@ class Powerform_Google_Service_Directory_Schemas_Resource extends Powerform_Goog
    *
    * @param string $customerId Immutable id of the Google Apps account
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Schemas
+   * @return Google_Service_Directory_Schemas
    */
   public function listSchemas($customerId, $optParams = array())
   {
     $params = array('customerId' => $customerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Schemas");
+    return $this->call('list', array($params), "Google_Service_Directory_Schemas");
   }
 
   /**
@@ -3134,15 +3134,15 @@ class Powerform_Google_Service_Directory_Schemas_Resource extends Powerform_Goog
    *
    * @param string $customerId Immutable id of the Google Apps account
    * @param string $schemaKey Name or immutable Id of the schema.
-   * @param Powerform_Google_Schema $postBody
+   * @param Google_Schema $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Schema
+   * @return Google_Service_Directory_Schema
    */
-  public function patch($customerId, $schemaKey, Powerform_Google_Service_Directory_Schema $postBody, $optParams = array())
+  public function patch($customerId, $schemaKey, Google_Service_Directory_Schema $postBody, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'schemaKey' => $schemaKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_Schema");
+    return $this->call('patch', array($params), "Google_Service_Directory_Schema");
   }
 
   /**
@@ -3150,15 +3150,15 @@ class Powerform_Google_Service_Directory_Schemas_Resource extends Powerform_Goog
    *
    * @param string $customerId Immutable id of the Google Apps account
    * @param string $schemaKey Name or immutable Id of the schema.
-   * @param Powerform_Google_Schema $postBody
+   * @param Google_Schema $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Schema
+   * @return Google_Service_Directory_Schema
    */
-  public function update($customerId, $schemaKey, Powerform_Google_Service_Directory_Schema $postBody, $optParams = array())
+  public function update($customerId, $schemaKey, Google_Service_Directory_Schema $postBody, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'schemaKey' => $schemaKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_Schema");
+    return $this->call('update', array($params), "Google_Service_Directory_Schema");
   }
 }
 
@@ -3166,11 +3166,11 @@ class Powerform_Google_Service_Directory_Schemas_Resource extends Powerform_Goog
  * The "tokens" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $tokens = $adminService->tokens;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Tokens_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Tokens_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3197,13 +3197,13 @@ class Powerform_Google_Service_Directory_Tokens_Resource extends Powerform_Googl
    * @param string $clientId The Client ID of the application the token is issued
    * to.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Token
+   * @return Google_Service_Directory_Token
    */
   public function get($userKey, $clientId, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'clientId' => $clientId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_Token");
+    return $this->call('get', array($params), "Google_Service_Directory_Token");
   }
 
   /**
@@ -3213,13 +3213,13 @@ class Powerform_Google_Service_Directory_Tokens_Resource extends Powerform_Googl
    * @param string $userKey Identifies the user in the API request. The value can
    * be the user's primary email address, alias email address, or unique user ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Tokens
+   * @return Google_Service_Directory_Tokens
    */
   public function listTokens($userKey, $optParams = array())
   {
     $params = array('userKey' => $userKey);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Tokens");
+    return $this->call('list', array($params), "Google_Service_Directory_Tokens");
   }
 }
 
@@ -3227,11 +3227,11 @@ class Powerform_Google_Service_Directory_Tokens_Resource extends Powerform_Googl
  * The "users" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $users = $adminService->users;
  *  </code>
  */
-class Powerform_Google_Service_Directory_Users_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_Users_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3259,27 +3259,27 @@ class Powerform_Google_Service_Directory_Users_Resource extends Powerform_Google
    * @opt_param string projection What subset of fields to fetch for this user.
    * @opt_param string viewType Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC
    * view of the user.
-   * @return Powerform_Google_Service_Directory_User
+   * @return Google_Service_Directory_User
    */
   public function get($userKey, $optParams = array())
   {
     $params = array('userKey' => $userKey);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_User");
+    return $this->call('get', array($params), "Google_Service_Directory_User");
   }
 
   /**
    * create user. (users.insert)
    *
-   * @param Powerform_Google_User $postBody
+   * @param Google_User $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_User
+   * @return Google_Service_Directory_User
    */
-  public function insert(Powerform_Google_Service_Directory_User $postBody, $optParams = array())
+  public function insert(Google_Service_Directory_User $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_User");
+    return $this->call('insert', array($params), "Google_Service_Directory_User");
   }
 
   /**
@@ -3313,23 +3313,23 @@ class Powerform_Google_Service_Directory_Users_Resource extends Powerform_Google
    * descending order.
    * @opt_param string viewType Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC
    * view of the user.
-   * @return Powerform_Google_Service_Directory_Users
+   * @return Google_Service_Directory_Users
    */
   public function listUsers($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Users");
+    return $this->call('list', array($params), "Google_Service_Directory_Users");
   }
 
   /**
    * change admin status of a user (users.makeAdmin)
    *
    * @param string $userKey Email or immutable Id of the user as admin
-   * @param Powerform_Google_UserMakeAdmin $postBody
+   * @param Google_UserMakeAdmin $postBody
    * @param array $optParams Optional parameters.
    */
-  public function makeAdmin($userKey, Powerform_Google_Service_Directory_UserMakeAdmin $postBody, $optParams = array())
+  public function makeAdmin($userKey, Google_Service_Directory_UserMakeAdmin $postBody, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -3341,25 +3341,25 @@ class Powerform_Google_Service_Directory_Users_Resource extends Powerform_Google
    *
    * @param string $userKey Email or immutable Id of the user. If Id, it should
    * match with id of user object
-   * @param Powerform_Google_User $postBody
+   * @param Google_User $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_User
+   * @return Google_Service_Directory_User
    */
-  public function patch($userKey, Powerform_Google_Service_Directory_User $postBody, $optParams = array())
+  public function patch($userKey, Google_Service_Directory_User $postBody, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_User");
+    return $this->call('patch', array($params), "Google_Service_Directory_User");
   }
 
   /**
    * Undelete a deleted user (users.undelete)
    *
    * @param string $userKey The immutable id of the user
-   * @param Powerform_Google_UserUndelete $postBody
+   * @param Google_UserUndelete $postBody
    * @param array $optParams Optional parameters.
    */
-  public function undelete($userKey, Powerform_Google_Service_Directory_UserUndelete $postBody, $optParams = array())
+  public function undelete($userKey, Google_Service_Directory_UserUndelete $postBody, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -3371,21 +3371,21 @@ class Powerform_Google_Service_Directory_Users_Resource extends Powerform_Google
    *
    * @param string $userKey Email or immutable Id of the user. If Id, it should
    * match with id of user object
-   * @param Powerform_Google_User $postBody
+   * @param Google_User $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_User
+   * @return Google_Service_Directory_User
    */
-  public function update($userKey, Powerform_Google_Service_Directory_User $postBody, $optParams = array())
+  public function update($userKey, Google_Service_Directory_User $postBody, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_User");
+    return $this->call('update', array($params), "Google_Service_Directory_User");
   }
 
   /**
    * Watch for changes in users list (users.watch)
    *
-   * @param Powerform_Google_Channel $postBody
+   * @param Google_Channel $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string customFieldMask Comma-separated list of schema names. All
@@ -3413,13 +3413,13 @@ class Powerform_Google_Service_Directory_Users_Resource extends Powerform_Google
    * descending order.
    * @opt_param string viewType Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC
    * view of the user.
-   * @return Powerform_Google_Service_Directory_Channel
+   * @return Google_Service_Directory_Channel
    */
-  public function watch(Powerform_Google_Service_Directory_Channel $postBody, $optParams = array())
+  public function watch(Google_Service_Directory_Channel $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('watch', array($params), "Powerform_Google_Service_Directory_Channel");
+    return $this->call('watch', array($params), "Google_Service_Directory_Channel");
   }
 }
 
@@ -3427,11 +3427,11 @@ class Powerform_Google_Service_Directory_Users_Resource extends Powerform_Google
  * The "aliases" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $aliases = $adminService->aliases;
  *  </code>
  */
-class Powerform_Google_Service_Directory_UsersAliases_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_UsersAliases_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3452,15 +3452,15 @@ class Powerform_Google_Service_Directory_UsersAliases_Resource extends Powerform
    * Add a alias for the user (aliases.insert)
    *
    * @param string $userKey Email or immutable Id of the user
-   * @param Powerform_Google_Alias $postBody
+   * @param Google_Alias $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_Alias
+   * @return Google_Service_Directory_Alias
    */
-  public function insert($userKey, Powerform_Google_Service_Directory_Alias $postBody, $optParams = array())
+  public function insert($userKey, Google_Service_Directory_Alias $postBody, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Directory_Alias");
+    return $this->call('insert', array($params), "Google_Service_Directory_Alias");
   }
 
   /**
@@ -3471,42 +3471,42 @@ class Powerform_Google_Service_Directory_UsersAliases_Resource extends Powerform
    *
    * @opt_param string event Event on which subscription is intended (if
    * subscribing)
-   * @return Powerform_Google_Service_Directory_Aliases
+   * @return Google_Service_Directory_Aliases
    */
   public function listUsersAliases($userKey, $optParams = array())
   {
     $params = array('userKey' => $userKey);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_Aliases");
+    return $this->call('list', array($params), "Google_Service_Directory_Aliases");
   }
 
   /**
    * Watch for changes in user aliases list (aliases.watch)
    *
    * @param string $userKey Email or immutable Id of the user
-   * @param Powerform_Google_Channel $postBody
+   * @param Google_Channel $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string event Event on which subscription is intended (if
    * subscribing)
-   * @return Powerform_Google_Service_Directory_Channel
+   * @return Google_Service_Directory_Channel
    */
-  public function watch($userKey, Powerform_Google_Service_Directory_Channel $postBody, $optParams = array())
+  public function watch($userKey, Google_Service_Directory_Channel $postBody, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('watch', array($params), "Powerform_Google_Service_Directory_Channel");
+    return $this->call('watch', array($params), "Google_Service_Directory_Channel");
   }
 }
 /**
  * The "photos" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $photos = $adminService->photos;
  *  </code>
  */
-class Powerform_Google_Service_Directory_UsersPhotos_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_UsersPhotos_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3527,13 +3527,13 @@ class Powerform_Google_Service_Directory_UsersPhotos_Resource extends Powerform_
    *
    * @param string $userKey Email or immutable Id of the user
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_UserPhoto
+   * @return Google_Service_Directory_UserPhoto
    */
   public function get($userKey, $optParams = array())
   {
     $params = array('userKey' => $userKey);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Directory_UserPhoto");
+    return $this->call('get', array($params), "Google_Service_Directory_UserPhoto");
   }
 
   /**
@@ -3541,30 +3541,30 @@ class Powerform_Google_Service_Directory_UsersPhotos_Resource extends Powerform_
    * (photos.patch)
    *
    * @param string $userKey Email or immutable Id of the user
-   * @param Powerform_Google_UserPhoto $postBody
+   * @param Google_UserPhoto $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_UserPhoto
+   * @return Google_Service_Directory_UserPhoto
    */
-  public function patch($userKey, Powerform_Google_Service_Directory_UserPhoto $postBody, $optParams = array())
+  public function patch($userKey, Google_Service_Directory_UserPhoto $postBody, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Directory_UserPhoto");
+    return $this->call('patch', array($params), "Google_Service_Directory_UserPhoto");
   }
 
   /**
    * Add a photo for the user (photos.update)
    *
    * @param string $userKey Email or immutable Id of the user
-   * @param Powerform_Google_UserPhoto $postBody
+   * @param Google_UserPhoto $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_UserPhoto
+   * @return Google_Service_Directory_UserPhoto
    */
-  public function update($userKey, Powerform_Google_Service_Directory_UserPhoto $postBody, $optParams = array())
+  public function update($userKey, Google_Service_Directory_UserPhoto $postBody, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Directory_UserPhoto");
+    return $this->call('update', array($params), "Google_Service_Directory_UserPhoto");
   }
 }
 
@@ -3572,11 +3572,11 @@ class Powerform_Google_Service_Directory_UsersPhotos_Resource extends Powerform_
  * The "verificationCodes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Powerform_Google_Service_Directory(...);
+ *   $adminService = new Google_Service_Directory(...);
  *   $verificationCodes = $adminService->verificationCodes;
  *  </code>
  */
-class Powerform_Google_Service_Directory_VerificationCodes_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Directory_VerificationCodes_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3614,20 +3614,20 @@ class Powerform_Google_Service_Directory_VerificationCodes_Resource extends Powe
    * @param string $userKey Identifies the user in the API request. The value can
    * be the user's primary email address, alias email address, or unique user ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Directory_VerificationCodes
+   * @return Google_Service_Directory_VerificationCodes
    */
   public function listVerificationCodes($userKey, $optParams = array())
   {
     $params = array('userKey' => $userKey);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Directory_VerificationCodes");
+    return $this->call('list', array($params), "Google_Service_Directory_VerificationCodes");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Directory_Alias extends Powerform_Google_Model
+class Google_Service_Directory_Alias extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3680,12 +3680,12 @@ class Powerform_Google_Service_Directory_Alias extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Directory_Aliases extends Powerform_Google_Collection
+class Google_Service_Directory_Aliases extends Google_Collection
 {
   protected $collection_key = 'aliases';
   protected $internal_gapi_mappings = array(
   );
-  protected $aliasesType = 'Powerform_Google_Service_Directory_Alias';
+  protected $aliasesType = 'Google_Service_Directory_Alias';
   protected $aliasesDataType = 'array';
   public $etag;
   public $kind;
@@ -3717,7 +3717,7 @@ class Powerform_Google_Service_Directory_Aliases extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Directory_Asp extends Powerform_Google_Model
+class Google_Service_Directory_Asp extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3788,13 +3788,13 @@ class Powerform_Google_Service_Directory_Asp extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Directory_Asps extends Powerform_Google_Collection
+class Google_Service_Directory_Asps extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Directory_Asp';
+  protected $itemsType = 'Google_Service_Directory_Asp';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -3825,7 +3825,7 @@ class Powerform_Google_Service_Directory_Asps extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Directory_CalendarResource extends Powerform_Google_Model
+class Google_Service_Directory_CalendarResource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3896,13 +3896,13 @@ class Powerform_Google_Service_Directory_CalendarResource extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Directory_CalendarResources extends Powerform_Google_Collection
+class Google_Service_Directory_CalendarResources extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Directory_CalendarResource';
+  protected $itemsType = 'Google_Service_Directory_CalendarResource';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3942,7 +3942,7 @@ class Powerform_Google_Service_Directory_CalendarResources extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Directory_Channel extends Powerform_Google_Model
+class Google_Service_Directory_Channel extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4040,12 +4040,12 @@ class Powerform_Google_Service_Directory_Channel extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Directory_ChromeOsDevice extends Powerform_Google_Collection
+class Google_Service_Directory_ChromeOsDevice extends Google_Collection
 {
   protected $collection_key = 'recentUsers';
   protected $internal_gapi_mappings = array(
   );
-  protected $activeTimeRangesType = 'Powerform_Google_Service_Directory_ChromeOsDeviceActiveTimeRanges';
+  protected $activeTimeRangesType = 'Google_Service_Directory_ChromeOsDeviceActiveTimeRanges';
   protected $activeTimeRangesDataType = 'array';
   public $annotatedAssetId;
   public $annotatedLocation;
@@ -4066,7 +4066,7 @@ class Powerform_Google_Service_Directory_ChromeOsDevice extends Powerform_Google
   public $orgUnitPath;
   public $osVersion;
   public $platformVersion;
-  protected $recentUsersType = 'Powerform_Google_Service_Directory_ChromeOsDeviceRecentUsers';
+  protected $recentUsersType = 'Google_Service_Directory_ChromeOsDeviceRecentUsers';
   protected $recentUsersDataType = 'array';
   public $serialNumber;
   public $status;
@@ -4276,7 +4276,7 @@ class Powerform_Google_Service_Directory_ChromeOsDevice extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Directory_ChromeOsDeviceActiveTimeRanges extends Powerform_Google_Model
+class Google_Service_Directory_ChromeOsDeviceActiveTimeRanges extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4302,7 +4302,7 @@ class Powerform_Google_Service_Directory_ChromeOsDeviceActiveTimeRanges extends 
   }
 }
 
-class Powerform_Google_Service_Directory_ChromeOsDeviceRecentUsers extends Powerform_Google_Model
+class Google_Service_Directory_ChromeOsDeviceRecentUsers extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4328,12 +4328,12 @@ class Powerform_Google_Service_Directory_ChromeOsDeviceRecentUsers extends Power
   }
 }
 
-class Powerform_Google_Service_Directory_ChromeOsDevices extends Powerform_Google_Collection
+class Google_Service_Directory_ChromeOsDevices extends Google_Collection
 {
   protected $collection_key = 'chromeosdevices';
   protected $internal_gapi_mappings = array(
   );
-  protected $chromeosdevicesType = 'Powerform_Google_Service_Directory_ChromeOsDevice';
+  protected $chromeosdevicesType = 'Google_Service_Directory_ChromeOsDevice';
   protected $chromeosdevicesDataType = 'array';
   public $etag;
   public $kind;
@@ -4374,7 +4374,7 @@ class Powerform_Google_Service_Directory_ChromeOsDevices extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Directory_Customer extends Powerform_Google_Model
+class Google_Service_Directory_Customer extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4386,7 +4386,7 @@ class Powerform_Google_Service_Directory_Customer extends Powerform_Google_Model
   public $kind;
   public $language;
   public $phoneNumber;
-  protected $postalAddressType = 'Powerform_Google_Service_Directory_CustomerPostalAddress';
+  protected $postalAddressType = 'Google_Service_Directory_CustomerPostalAddress';
   protected $postalAddressDataType = '';
 
 
@@ -4454,7 +4454,7 @@ class Powerform_Google_Service_Directory_Customer extends Powerform_Google_Model
   {
     return $this->phoneNumber;
   }
-  public function setPostalAddress(Powerform_Google_Service_Directory_CustomerPostalAddress $postalAddress)
+  public function setPostalAddress(Google_Service_Directory_CustomerPostalAddress $postalAddress)
   {
     $this->postalAddress = $postalAddress;
   }
@@ -4464,7 +4464,7 @@ class Powerform_Google_Service_Directory_Customer extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Directory_CustomerPostalAddress extends Powerform_Google_Model
+class Google_Service_Directory_CustomerPostalAddress extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4553,7 +4553,7 @@ class Powerform_Google_Service_Directory_CustomerPostalAddress extends Powerform
   }
 }
 
-class Powerform_Google_Service_Directory_DomainAlias extends Powerform_Google_Model
+class Google_Service_Directory_DomainAlias extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4615,12 +4615,12 @@ class Powerform_Google_Service_Directory_DomainAlias extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Directory_DomainAliases extends Powerform_Google_Collection
+class Google_Service_Directory_DomainAliases extends Google_Collection
 {
   protected $collection_key = 'domainAliases';
   protected $internal_gapi_mappings = array(
   );
-  protected $domainAliasesType = 'Powerform_Google_Service_Directory_DomainAlias';
+  protected $domainAliasesType = 'Google_Service_Directory_DomainAlias';
   protected $domainAliasesDataType = 'array';
   public $etag;
   public $kind;
@@ -4652,13 +4652,13 @@ class Powerform_Google_Service_Directory_DomainAliases extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Directory_Domains extends Powerform_Google_Collection
+class Google_Service_Directory_Domains extends Google_Collection
 {
   protected $collection_key = 'domainAliases';
   protected $internal_gapi_mappings = array(
   );
   public $creationTime;
-  protected $domainAliasesType = 'Powerform_Google_Service_Directory_DomainAlias';
+  protected $domainAliasesType = 'Google_Service_Directory_DomainAlias';
   protected $domainAliasesDataType = 'array';
   public $domainName;
   public $etag;
@@ -4725,12 +4725,12 @@ class Powerform_Google_Service_Directory_Domains extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Directory_Domains2 extends Powerform_Google_Collection
+class Google_Service_Directory_Domains2 extends Google_Collection
 {
   protected $collection_key = 'domains';
   protected $internal_gapi_mappings = array(
   );
-  protected $domainsType = 'Powerform_Google_Service_Directory_Domains';
+  protected $domainsType = 'Google_Service_Directory_Domains';
   protected $domainsDataType = 'array';
   public $etag;
   public $kind;
@@ -4762,7 +4762,7 @@ class Powerform_Google_Service_Directory_Domains2 extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Directory_Group extends Powerform_Google_Collection
+class Google_Service_Directory_Group extends Google_Collection
 {
   protected $collection_key = 'nonEditableAliases';
   protected $internal_gapi_mappings = array(
@@ -4861,13 +4861,13 @@ class Powerform_Google_Service_Directory_Group extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Directory_Groups extends Powerform_Google_Collection
+class Google_Service_Directory_Groups extends Google_Collection
 {
   protected $collection_key = 'groups';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $groupsType = 'Powerform_Google_Service_Directory_Group';
+  protected $groupsType = 'Google_Service_Directory_Group';
   protected $groupsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -4907,7 +4907,7 @@ class Powerform_Google_Service_Directory_Groups extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Directory_Member extends Powerform_Google_Model
+class Google_Service_Directory_Member extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4969,14 +4969,14 @@ class Powerform_Google_Service_Directory_Member extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Directory_Members extends Powerform_Google_Collection
+class Google_Service_Directory_Members extends Google_Collection
 {
   protected $collection_key = 'members';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $kind;
-  protected $membersType = 'Powerform_Google_Service_Directory_Member';
+  protected $membersType = 'Google_Service_Directory_Member';
   protected $membersDataType = 'array';
   public $nextPageToken;
 
@@ -5015,13 +5015,13 @@ class Powerform_Google_Service_Directory_Members extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Directory_MobileDevice extends Powerform_Google_Collection
+class Google_Service_Directory_MobileDevice extends Google_Collection
 {
   protected $collection_key = 'otherAccountsInfo';
   protected $internal_gapi_mappings = array(
   );
   public $adbStatus;
-  protected $applicationsType = 'Powerform_Google_Service_Directory_MobileDeviceApplications';
+  protected $applicationsType = 'Google_Service_Directory_MobileDeviceApplications';
   protected $applicationsDataType = 'array';
   public $basebandVersion;
   public $buildNumber;
@@ -5304,7 +5304,7 @@ class Powerform_Google_Service_Directory_MobileDevice extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Directory_MobileDeviceAction extends Powerform_Google_Model
+class Google_Service_Directory_MobileDeviceAction extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5321,7 +5321,7 @@ class Powerform_Google_Service_Directory_MobileDeviceAction extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Directory_MobileDeviceApplications extends Powerform_Google_Collection
+class Google_Service_Directory_MobileDeviceApplications extends Google_Collection
 {
   protected $collection_key = 'permission';
   protected $internal_gapi_mappings = array(
@@ -5375,14 +5375,14 @@ class Powerform_Google_Service_Directory_MobileDeviceApplications extends Powerf
   }
 }
 
-class Powerform_Google_Service_Directory_MobileDevices extends Powerform_Google_Collection
+class Google_Service_Directory_MobileDevices extends Google_Collection
 {
   protected $collection_key = 'mobiledevices';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $kind;
-  protected $mobiledevicesType = 'Powerform_Google_Service_Directory_MobileDevice';
+  protected $mobiledevicesType = 'Google_Service_Directory_MobileDevice';
   protected $mobiledevicesDataType = 'array';
   public $nextPageToken;
 
@@ -5421,7 +5421,7 @@ class Powerform_Google_Service_Directory_MobileDevices extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Directory_Notification extends Powerform_Google_Model
+class Google_Service_Directory_Notification extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5501,13 +5501,13 @@ class Powerform_Google_Service_Directory_Notification extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Directory_Notifications extends Powerform_Google_Collection
+class Google_Service_Directory_Notifications extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Directory_Notification';
+  protected $itemsType = 'Google_Service_Directory_Notification';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -5556,7 +5556,7 @@ class Powerform_Google_Service_Directory_Notifications extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Directory_OrgUnit extends Powerform_Google_Model
+class Google_Service_Directory_OrgUnit extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5645,14 +5645,14 @@ class Powerform_Google_Service_Directory_OrgUnit extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Directory_OrgUnits extends Powerform_Google_Collection
+class Google_Service_Directory_OrgUnits extends Google_Collection
 {
   protected $collection_key = 'organizationUnits';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $kind;
-  protected $organizationUnitsType = 'Powerform_Google_Service_Directory_OrgUnit';
+  protected $organizationUnitsType = 'Google_Service_Directory_OrgUnit';
   protected $organizationUnitsDataType = 'array';
 
 
@@ -5682,12 +5682,12 @@ class Powerform_Google_Service_Directory_OrgUnits extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Directory_Privilege extends Powerform_Google_Collection
+class Google_Service_Directory_Privilege extends Google_Collection
 {
   protected $collection_key = 'childPrivileges';
   protected $internal_gapi_mappings = array(
   );
-  protected $childPrivilegesType = 'Powerform_Google_Service_Directory_Privilege';
+  protected $childPrivilegesType = 'Google_Service_Directory_Privilege';
   protected $childPrivilegesDataType = 'array';
   public $etag;
   public $isOuScopable;
@@ -5755,13 +5755,13 @@ class Powerform_Google_Service_Directory_Privilege extends Powerform_Google_Coll
   }
 }
 
-class Powerform_Google_Service_Directory_Privileges extends Powerform_Google_Collection
+class Google_Service_Directory_Privileges extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Directory_Privilege';
+  protected $itemsType = 'Google_Service_Directory_Privilege';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -5792,7 +5792,7 @@ class Powerform_Google_Service_Directory_Privileges extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Directory_Role extends Powerform_Google_Collection
+class Google_Service_Directory_Role extends Google_Collection
 {
   protected $collection_key = 'rolePrivileges';
   protected $internal_gapi_mappings = array(
@@ -5804,7 +5804,7 @@ class Powerform_Google_Service_Directory_Role extends Powerform_Google_Collectio
   public $roleDescription;
   public $roleId;
   public $roleName;
-  protected $rolePrivilegesType = 'Powerform_Google_Service_Directory_RoleRolePrivileges';
+  protected $rolePrivilegesType = 'Google_Service_Directory_RoleRolePrivileges';
   protected $rolePrivilegesDataType = 'array';
 
 
@@ -5874,7 +5874,7 @@ class Powerform_Google_Service_Directory_Role extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Directory_RoleAssignment extends Powerform_Google_Model
+class Google_Service_Directory_RoleAssignment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5945,13 +5945,13 @@ class Powerform_Google_Service_Directory_RoleAssignment extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Directory_RoleAssignments extends Powerform_Google_Collection
+class Google_Service_Directory_RoleAssignments extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Directory_RoleAssignment';
+  protected $itemsType = 'Google_Service_Directory_RoleAssignment';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -5991,7 +5991,7 @@ class Powerform_Google_Service_Directory_RoleAssignments extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Directory_RoleRolePrivileges extends Powerform_Google_Model
+class Google_Service_Directory_RoleRolePrivileges extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6017,13 +6017,13 @@ class Powerform_Google_Service_Directory_RoleRolePrivileges extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Directory_Roles extends Powerform_Google_Collection
+class Google_Service_Directory_Roles extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Directory_Role';
+  protected $itemsType = 'Google_Service_Directory_Role';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -6063,13 +6063,13 @@ class Powerform_Google_Service_Directory_Roles extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Directory_Schema extends Powerform_Google_Collection
+class Google_Service_Directory_Schema extends Google_Collection
 {
   protected $collection_key = 'fields';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $fieldsType = 'Powerform_Google_Service_Directory_SchemaFieldSpec';
+  protected $fieldsType = 'Google_Service_Directory_SchemaFieldSpec';
   protected $fieldsDataType = 'array';
   public $kind;
   public $schemaId;
@@ -6118,7 +6118,7 @@ class Powerform_Google_Service_Directory_Schema extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Directory_SchemaFieldSpec extends Powerform_Google_Model
+class Google_Service_Directory_SchemaFieldSpec extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6129,7 +6129,7 @@ class Powerform_Google_Service_Directory_SchemaFieldSpec extends Powerform_Googl
   public $indexed;
   public $kind;
   public $multiValued;
-  protected $numericIndexingSpecType = 'Powerform_Google_Service_Directory_SchemaFieldSpecNumericIndexingSpec';
+  protected $numericIndexingSpecType = 'Google_Service_Directory_SchemaFieldSpecNumericIndexingSpec';
   protected $numericIndexingSpecDataType = '';
   public $readAccessType;
 
@@ -6190,7 +6190,7 @@ class Powerform_Google_Service_Directory_SchemaFieldSpec extends Powerform_Googl
   {
     return $this->multiValued;
   }
-  public function setNumericIndexingSpec(Powerform_Google_Service_Directory_SchemaFieldSpecNumericIndexingSpec $numericIndexingSpec)
+  public function setNumericIndexingSpec(Google_Service_Directory_SchemaFieldSpecNumericIndexingSpec $numericIndexingSpec)
   {
     $this->numericIndexingSpec = $numericIndexingSpec;
   }
@@ -6208,7 +6208,7 @@ class Powerform_Google_Service_Directory_SchemaFieldSpec extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Directory_SchemaFieldSpecNumericIndexingSpec extends Powerform_Google_Model
+class Google_Service_Directory_SchemaFieldSpecNumericIndexingSpec extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6234,14 +6234,14 @@ class Powerform_Google_Service_Directory_SchemaFieldSpecNumericIndexingSpec exte
   }
 }
 
-class Powerform_Google_Service_Directory_Schemas extends Powerform_Google_Collection
+class Google_Service_Directory_Schemas extends Google_Collection
 {
   protected $collection_key = 'schemas';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $kind;
-  protected $schemasType = 'Powerform_Google_Service_Directory_Schema';
+  protected $schemasType = 'Google_Service_Directory_Schema';
   protected $schemasDataType = 'array';
 
 
@@ -6271,7 +6271,7 @@ class Powerform_Google_Service_Directory_Schemas extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Directory_Token extends Powerform_Google_Collection
+class Google_Service_Directory_Token extends Google_Collection
 {
   protected $collection_key = 'scopes';
   protected $internal_gapi_mappings = array(
@@ -6352,13 +6352,13 @@ class Powerform_Google_Service_Directory_Token extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Directory_Tokens extends Powerform_Google_Collection
+class Google_Service_Directory_Tokens extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Directory_Token';
+  protected $itemsType = 'Google_Service_Directory_Token';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -6389,7 +6389,7 @@ class Powerform_Google_Service_Directory_Tokens extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Directory_User extends Powerform_Google_Collection
+class Google_Service_Directory_User extends Google_Collection
 {
   protected $collection_key = 'nonEditableAliases';
   protected $internal_gapi_mappings = array(
@@ -6415,7 +6415,7 @@ class Powerform_Google_Service_Directory_User extends Powerform_Google_Collectio
   public $isMailboxSetup;
   public $kind;
   public $lastLoginTime;
-  protected $nameType = 'Powerform_Google_Service_Directory_UserName';
+  protected $nameType = 'Google_Service_Directory_UserName';
   protected $nameDataType = '';
   public $nonEditableAliases;
   public $notes;
@@ -6600,7 +6600,7 @@ class Powerform_Google_Service_Directory_User extends Powerform_Google_Collectio
   {
     return $this->lastLoginTime;
   }
-  public function setName(Powerform_Google_Service_Directory_UserName $name)
+  public function setName(Google_Service_Directory_UserName $name)
   {
     $this->name = $name;
   }
@@ -6714,7 +6714,7 @@ class Powerform_Google_Service_Directory_User extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Directory_UserAbout extends Powerform_Google_Model
+class Google_Service_Directory_UserAbout extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6740,7 +6740,7 @@ class Powerform_Google_Service_Directory_UserAbout extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Directory_UserAddress extends Powerform_Google_Model
+class Google_Service_Directory_UserAddress extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6865,7 +6865,7 @@ class Powerform_Google_Service_Directory_UserAddress extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Directory_UserEmail extends Powerform_Google_Model
+class Google_Service_Directory_UserEmail extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6909,7 +6909,7 @@ class Powerform_Google_Service_Directory_UserEmail extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Directory_UserExternalId extends Powerform_Google_Model
+class Google_Service_Directory_UserExternalId extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6944,7 +6944,7 @@ class Powerform_Google_Service_Directory_UserExternalId extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Directory_UserIm extends Powerform_Google_Model
+class Google_Service_Directory_UserIm extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7006,7 +7006,7 @@ class Powerform_Google_Service_Directory_UserIm extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Directory_UserMakeAdmin extends Powerform_Google_Model
+class Google_Service_Directory_UserMakeAdmin extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7023,7 +7023,7 @@ class Powerform_Google_Service_Directory_UserMakeAdmin extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Directory_UserName extends Powerform_Google_Model
+class Google_Service_Directory_UserName extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7058,7 +7058,7 @@ class Powerform_Google_Service_Directory_UserName extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Directory_UserOrganization extends Powerform_Google_Model
+class Google_Service_Directory_UserOrganization extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7165,7 +7165,7 @@ class Powerform_Google_Service_Directory_UserOrganization extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Directory_UserPhone extends Powerform_Google_Model
+class Google_Service_Directory_UserPhone extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7209,7 +7209,7 @@ class Powerform_Google_Service_Directory_UserPhone extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Directory_UserPhoto extends Powerform_Google_Model
+class Google_Service_Directory_UserPhoto extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7289,7 +7289,7 @@ class Powerform_Google_Service_Directory_UserPhoto extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Directory_UserRelation extends Powerform_Google_Model
+class Google_Service_Directory_UserRelation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7324,7 +7324,7 @@ class Powerform_Google_Service_Directory_UserRelation extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Directory_UserUndelete extends Powerform_Google_Model
+class Google_Service_Directory_UserUndelete extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7341,7 +7341,7 @@ class Powerform_Google_Service_Directory_UserUndelete extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Directory_UserWebsite extends Powerform_Google_Model
+class Google_Service_Directory_UserWebsite extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7385,7 +7385,7 @@ class Powerform_Google_Service_Directory_UserWebsite extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Directory_Users extends Powerform_Google_Collection
+class Google_Service_Directory_Users extends Google_Collection
 {
   protected $collection_key = 'users';
   protected $internal_gapi_mappings = array(
@@ -7395,7 +7395,7 @@ class Powerform_Google_Service_Directory_Users extends Powerform_Google_Collecti
   public $kind;
   public $nextPageToken;
   public $triggerEvent;
-  protected $usersType = 'Powerform_Google_Service_Directory_User';
+  protected $usersType = 'Google_Service_Directory_User';
   protected $usersDataType = 'array';
 
 
@@ -7441,7 +7441,7 @@ class Powerform_Google_Service_Directory_Users extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Directory_VerificationCode extends Powerform_Google_Model
+class Google_Service_Directory_VerificationCode extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7485,13 +7485,13 @@ class Powerform_Google_Service_Directory_VerificationCode extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Directory_VerificationCodes extends Powerform_Google_Collection
+class Google_Service_Directory_VerificationCodes extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Directory_VerificationCode';
+  protected $itemsType = 'Google_Service_Directory_VerificationCode';
   protected $itemsDataType = 'array';
   public $kind;
 

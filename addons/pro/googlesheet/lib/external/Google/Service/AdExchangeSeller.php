@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
+class Google_Service_AdExchangeSeller extends Google_Service
 {
   /** View and manage your Ad Exchange data. */
   const ADEXCHANGE_SELLER =
@@ -46,14 +46,14 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
   public $accounts_reports;
   public $accounts_reports_saved;
   public $accounts_urlchannels;
-  
+
 
   /**
    * Constructs the internal representation of the AdExchangeSeller service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -61,7 +61,7 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
     $this->version = 'v2.0';
     $this->serviceName = 'adexchangeseller';
 
-    $this->accounts = new Powerform_Google_Service_AdExchangeSeller_Accounts_Resource(
+    $this->accounts = new Google_Service_AdExchangeSeller_Accounts_Resource(
         $this,
         $this->serviceName,
         'accounts',
@@ -94,7 +94,7 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_adclients = new Powerform_Google_Service_AdExchangeSeller_AccountsAdclients_Resource(
+    $this->accounts_adclients = new Google_Service_AdExchangeSeller_AccountsAdclients_Resource(
         $this,
         $this->serviceName,
         'adclients',
@@ -122,7 +122,7 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_alerts = new Powerform_Google_Service_AdExchangeSeller_AccountsAlerts_Resource(
+    $this->accounts_alerts = new Google_Service_AdExchangeSeller_AccountsAlerts_Resource(
         $this,
         $this->serviceName,
         'alerts',
@@ -146,7 +146,7 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_customchannels = new Powerform_Google_Service_AdExchangeSeller_AccountsCustomchannels_Resource(
+    $this->accounts_customchannels = new Google_Service_AdExchangeSeller_AccountsCustomchannels_Resource(
         $this,
         $this->serviceName,
         'customchannels',
@@ -199,7 +199,7 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_metadata_dimensions = new Powerform_Google_Service_AdExchangeSeller_AccountsMetadataDimensions_Resource(
+    $this->accounts_metadata_dimensions = new Google_Service_AdExchangeSeller_AccountsMetadataDimensions_Resource(
         $this,
         $this->serviceName,
         'dimensions',
@@ -219,7 +219,7 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_metadata_metrics = new Powerform_Google_Service_AdExchangeSeller_AccountsMetadataMetrics_Resource(
+    $this->accounts_metadata_metrics = new Google_Service_AdExchangeSeller_AccountsMetadataMetrics_Resource(
         $this,
         $this->serviceName,
         'metrics',
@@ -239,7 +239,7 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_preferreddeals = new Powerform_Google_Service_AdExchangeSeller_AccountsPreferreddeals_Resource(
+    $this->accounts_preferreddeals = new Google_Service_AdExchangeSeller_AccountsPreferreddeals_Resource(
         $this,
         $this->serviceName,
         'preferreddeals',
@@ -274,7 +274,7 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_reports = new Powerform_Google_Service_AdExchangeSeller_AccountsReports_Resource(
+    $this->accounts_reports = new Google_Service_AdExchangeSeller_AccountsReports_Resource(
         $this,
         $this->serviceName,
         'reports',
@@ -336,7 +336,7 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_reports_saved = new Powerform_Google_Service_AdExchangeSeller_AccountsReportsSaved_Resource(
+    $this->accounts_reports_saved = new Google_Service_AdExchangeSeller_AccountsReportsSaved_Resource(
         $this,
         $this->serviceName,
         'saved',
@@ -391,7 +391,7 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_urlchannels = new Powerform_Google_Service_AdExchangeSeller_AccountsUrlchannels_Resource(
+    $this->accounts_urlchannels = new Google_Service_AdExchangeSeller_AccountsUrlchannels_Resource(
         $this,
         $this->serviceName,
         'urlchannels',
@@ -432,11 +432,11 @@ class Powerform_Google_Service_AdExchangeSeller extends Powerform_Google_Service
  * The "accounts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $accounts = $adexchangesellerService->accounts;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_Accounts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_Accounts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -445,13 +445,13 @@ class Powerform_Google_Service_AdExchangeSeller_Accounts_Resource extends Powerf
    * @param string $accountId Account to get information about. Tip: 'myaccount'
    * is a valid ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeSeller_Account
+   * @return Google_Service_AdExchangeSeller_Account
    */
   public function get($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdExchangeSeller_Account");
+    return $this->call('get', array($params), "Google_Service_AdExchangeSeller_Account");
   }
 
   /**
@@ -465,13 +465,13 @@ class Powerform_Google_Service_AdExchangeSeller_Accounts_Resource extends Powerf
    * @opt_param string pageToken A continuation token, used to page through
    * accounts. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdExchangeSeller_Accounts
+   * @return Google_Service_AdExchangeSeller_Accounts
    */
   public function listAccounts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeSeller_Accounts");
+    return $this->call('list', array($params), "Google_Service_AdExchangeSeller_Accounts");
   }
 }
 
@@ -479,11 +479,11 @@ class Powerform_Google_Service_AdExchangeSeller_Accounts_Resource extends Powerf
  * The "adclients" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $adclients = $adexchangesellerService->adclients;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_AccountsAdclients_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_AccountsAdclients_Resource extends Google_Service_Resource
 {
 
   /**
@@ -498,24 +498,24 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsAdclients_Resource exten
    * @opt_param string pageToken A continuation token, used to page through ad
    * clients. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdExchangeSeller_AdClients
+   * @return Google_Service_AdExchangeSeller_AdClients
    */
   public function listAccountsAdclients($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeSeller_AdClients");
+    return $this->call('list', array($params), "Google_Service_AdExchangeSeller_AdClients");
   }
 }
 /**
  * The "alerts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $alerts = $adexchangesellerService->alerts;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_AccountsAlerts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_AccountsAlerts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -527,24 +527,24 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsAlerts_Resource extends 
    * @opt_param string locale The locale to use for translating alert messages.
    * The account locale will be used if this is not supplied. The AdSense default
    * (English) will be used if the supplied locale is invalid or unsupported.
-   * @return Powerform_Google_Service_AdExchangeSeller_Alerts
+   * @return Google_Service_AdExchangeSeller_Alerts
    */
   public function listAccountsAlerts($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeSeller_Alerts");
+    return $this->call('list', array($params), "Google_Service_AdExchangeSeller_Alerts");
   }
 }
 /**
  * The "customchannels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $customchannels = $adexchangesellerService->customchannels;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_AccountsCustomchannels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_AccountsCustomchannels_Resource extends Google_Service_Resource
 {
 
   /**
@@ -555,13 +555,13 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsCustomchannels_Resource 
    * @param string $adClientId Ad client which contains the custom channel.
    * @param string $customChannelId Custom channel to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeSeller_CustomChannel
+   * @return Google_Service_AdExchangeSeller_CustomChannel
    */
   public function get($accountId, $adClientId, $customChannelId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId, 'customChannelId' => $customChannelId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdExchangeSeller_CustomChannel");
+    return $this->call('get', array($params), "Google_Service_AdExchangeSeller_CustomChannel");
   }
 
   /**
@@ -577,24 +577,24 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsCustomchannels_Resource 
    * @opt_param string pageToken A continuation token, used to page through custom
    * channels. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdExchangeSeller_CustomChannels
+   * @return Google_Service_AdExchangeSeller_CustomChannels
    */
   public function listAccountsCustomchannels($accountId, $adClientId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeSeller_CustomChannels");
+    return $this->call('list', array($params), "Google_Service_AdExchangeSeller_CustomChannels");
   }
 }
 /**
  * The "metadata" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $metadata = $adexchangesellerService->metadata;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_AccountsMetadata_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_AccountsMetadata_Resource extends Google_Service_Resource
 {
 }
 
@@ -602,11 +602,11 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsMetadata_Resource extend
  * The "dimensions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $dimensions = $adexchangesellerService->dimensions;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_AccountsMetadataDimensions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_AccountsMetadataDimensions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -615,24 +615,24 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsMetadataDimensions_Resou
    *
    * @param string $accountId Account with visibility to the dimensions.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeSeller_Metadata
+   * @return Google_Service_AdExchangeSeller_Metadata
    */
   public function listAccountsMetadataDimensions($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeSeller_Metadata");
+    return $this->call('list', array($params), "Google_Service_AdExchangeSeller_Metadata");
   }
 }
 /**
  * The "metrics" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $metrics = $adexchangesellerService->metrics;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_AccountsMetadataMetrics_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_AccountsMetadataMetrics_Resource extends Google_Service_Resource
 {
 
   /**
@@ -641,24 +641,24 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsMetadataMetrics_Resource
    *
    * @param string $accountId Account with visibility to the metrics.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeSeller_Metadata
+   * @return Google_Service_AdExchangeSeller_Metadata
    */
   public function listAccountsMetadataMetrics($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeSeller_Metadata");
+    return $this->call('list', array($params), "Google_Service_AdExchangeSeller_Metadata");
   }
 }
 /**
  * The "preferreddeals" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $preferreddeals = $adexchangesellerService->preferreddeals;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_AccountsPreferreddeals_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_AccountsPreferreddeals_Resource extends Google_Service_Resource
 {
 
   /**
@@ -668,13 +668,13 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsPreferreddeals_Resource 
    * @param string $accountId Account owning the deal.
    * @param string $dealId Preferred deal to get information about.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeSeller_PreferredDeal
+   * @return Google_Service_AdExchangeSeller_PreferredDeal
    */
   public function get($accountId, $dealId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'dealId' => $dealId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdExchangeSeller_PreferredDeal");
+    return $this->call('get', array($params), "Google_Service_AdExchangeSeller_PreferredDeal");
   }
 
   /**
@@ -683,24 +683,24 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsPreferreddeals_Resource 
    *
    * @param string $accountId Account owning the deals.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdExchangeSeller_PreferredDeals
+   * @return Google_Service_AdExchangeSeller_PreferredDeals
    */
   public function listAccountsPreferreddeals($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeSeller_PreferredDeals");
+    return $this->call('list', array($params), "Google_Service_AdExchangeSeller_PreferredDeals");
   }
 }
 /**
  * The "reports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $reports = $adexchangesellerService->reports;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_AccountsReports_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_AccountsReports_Resource extends Google_Service_Resource
 {
 
   /**
@@ -726,13 +726,13 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsReports_Resource extends
    * resulting report on, optionally prefixed with "+" to sort ascending or "-" to
    * sort descending. If no prefix is specified, the column is sorted ascending.
    * @opt_param string startIndex Index of the first row of report data to return.
-   * @return Powerform_Google_Service_AdExchangeSeller_Report
+   * @return Google_Service_AdExchangeSeller_Report
    */
   public function generate($accountId, $startDate, $endDate, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'startDate' => $startDate, 'endDate' => $endDate);
     $params = array_merge($params, $optParams);
-    return $this->call('generate', array($params), "Powerform_Google_Service_AdExchangeSeller_Report");
+    return $this->call('generate', array($params), "Google_Service_AdExchangeSeller_Report");
   }
 }
 
@@ -740,11 +740,11 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsReports_Resource extends
  * The "saved" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $saved = $adexchangesellerService->saved;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_AccountsReportsSaved_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_AccountsReportsSaved_Resource extends Google_Service_Resource
 {
 
   /**
@@ -760,13 +760,13 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsReportsSaved_Resource ex
    * @opt_param int maxResults The maximum number of rows of report data to
    * return.
    * @opt_param int startIndex Index of the first row of report data to return.
-   * @return Powerform_Google_Service_AdExchangeSeller_Report
+   * @return Google_Service_AdExchangeSeller_Report
    */
   public function generate($accountId, $savedReportId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'savedReportId' => $savedReportId);
     $params = array_merge($params, $optParams);
-    return $this->call('generate', array($params), "Powerform_Google_Service_AdExchangeSeller_Report");
+    return $this->call('generate', array($params), "Google_Service_AdExchangeSeller_Report");
   }
 
   /**
@@ -781,24 +781,24 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsReportsSaved_Resource ex
    * @opt_param string pageToken A continuation token, used to page through saved
    * reports. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdExchangeSeller_SavedReports
+   * @return Google_Service_AdExchangeSeller_SavedReports
    */
   public function listAccountsReportsSaved($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeSeller_SavedReports");
+    return $this->call('list', array($params), "Google_Service_AdExchangeSeller_SavedReports");
   }
 }
 /**
  * The "urlchannels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangesellerService = new Powerform_Google_Service_AdExchangeSeller(...);
+ *   $adexchangesellerService = new Google_Service_AdExchangeSeller(...);
  *   $urlchannels = $adexchangesellerService->urlchannels;
  *  </code>
  */
-class Powerform_Google_Service_AdExchangeSeller_AccountsUrlchannels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdExchangeSeller_AccountsUrlchannels_Resource extends Google_Service_Resource
 {
 
   /**
@@ -814,20 +814,20 @@ class Powerform_Google_Service_AdExchangeSeller_AccountsUrlchannels_Resource ext
    * @opt_param string pageToken A continuation token, used to page through URL
    * channels. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdExchangeSeller_UrlChannels
+   * @return Google_Service_AdExchangeSeller_UrlChannels
    */
   public function listAccountsUrlchannels($accountId, $adClientId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdExchangeSeller_UrlChannels");
+    return $this->call('list', array($params), "Google_Service_AdExchangeSeller_UrlChannels");
   }
 }
 
 
 
 
-class Powerform_Google_Service_AdExchangeSeller_Account extends Powerform_Google_Model
+class Google_Service_AdExchangeSeller_Account extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -862,13 +862,13 @@ class Powerform_Google_Service_AdExchangeSeller_Account extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_Accounts extends Powerform_Google_Collection
+class Google_Service_AdExchangeSeller_Accounts extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeSeller_Account';
+  protected $itemsType = 'Google_Service_AdExchangeSeller_Account';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -908,7 +908,7 @@ class Powerform_Google_Service_AdExchangeSeller_Accounts extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_AdClient extends Powerform_Google_Model
+class Google_Service_AdExchangeSeller_AdClient extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -961,13 +961,13 @@ class Powerform_Google_Service_AdExchangeSeller_AdClient extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_AdClients extends Powerform_Google_Collection
+class Google_Service_AdExchangeSeller_AdClients extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeSeller_AdClient';
+  protected $itemsType = 'Google_Service_AdExchangeSeller_AdClient';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1007,7 +1007,7 @@ class Powerform_Google_Service_AdExchangeSeller_AdClients extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_Alert extends Powerform_Google_Model
+class Google_Service_AdExchangeSeller_Alert extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1060,12 +1060,12 @@ class Powerform_Google_Service_AdExchangeSeller_Alert extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_Alerts extends Powerform_Google_Collection
+class Google_Service_AdExchangeSeller_Alerts extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeSeller_Alert';
+  protected $itemsType = 'Google_Service_AdExchangeSeller_Alert';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1088,7 +1088,7 @@ class Powerform_Google_Service_AdExchangeSeller_Alerts extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_CustomChannel extends Powerform_Google_Model
+class Google_Service_AdExchangeSeller_CustomChannel extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1096,7 +1096,7 @@ class Powerform_Google_Service_AdExchangeSeller_CustomChannel extends Powerform_
   public $id;
   public $kind;
   public $name;
-  protected $targetingInfoType = 'Powerform_Google_Service_AdExchangeSeller_CustomChannelTargetingInfo';
+  protected $targetingInfoType = 'Google_Service_AdExchangeSeller_CustomChannelTargetingInfo';
   protected $targetingInfoDataType = '';
 
 
@@ -1132,7 +1132,7 @@ class Powerform_Google_Service_AdExchangeSeller_CustomChannel extends Powerform_
   {
     return $this->name;
   }
-  public function setTargetingInfo(Powerform_Google_Service_AdExchangeSeller_CustomChannelTargetingInfo $targetingInfo)
+  public function setTargetingInfo(Google_Service_AdExchangeSeller_CustomChannelTargetingInfo $targetingInfo)
   {
     $this->targetingInfo = $targetingInfo;
   }
@@ -1142,7 +1142,7 @@ class Powerform_Google_Service_AdExchangeSeller_CustomChannel extends Powerform_
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_CustomChannelTargetingInfo extends Powerform_Google_Model
+class Google_Service_AdExchangeSeller_CustomChannelTargetingInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1186,13 +1186,13 @@ class Powerform_Google_Service_AdExchangeSeller_CustomChannelTargetingInfo exten
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_CustomChannels extends Powerform_Google_Collection
+class Google_Service_AdExchangeSeller_CustomChannels extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeSeller_CustomChannel';
+  protected $itemsType = 'Google_Service_AdExchangeSeller_CustomChannel';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1232,12 +1232,12 @@ class Powerform_Google_Service_AdExchangeSeller_CustomChannels extends Powerform
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_Metadata extends Powerform_Google_Collection
+class Google_Service_AdExchangeSeller_Metadata extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeSeller_ReportingMetadataEntry';
+  protected $itemsType = 'Google_Service_AdExchangeSeller_ReportingMetadataEntry';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1260,7 +1260,7 @@ class Powerform_Google_Service_AdExchangeSeller_Metadata extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_PreferredDeal extends Powerform_Google_Model
+class Google_Service_AdExchangeSeller_PreferredDeal extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1340,12 +1340,12 @@ class Powerform_Google_Service_AdExchangeSeller_PreferredDeal extends Powerform_
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_PreferredDeals extends Powerform_Google_Collection
+class Google_Service_AdExchangeSeller_PreferredDeals extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeSeller_PreferredDeal';
+  protected $itemsType = 'Google_Service_AdExchangeSeller_PreferredDeal';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1368,13 +1368,13 @@ class Powerform_Google_Service_AdExchangeSeller_PreferredDeals extends Powerform
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_Report extends Powerform_Google_Collection
+class Google_Service_AdExchangeSeller_Report extends Google_Collection
 {
   protected $collection_key = 'warnings';
   protected $internal_gapi_mappings = array(
   );
   public $averages;
-  protected $headersType = 'Powerform_Google_Service_AdExchangeSeller_ReportHeaders';
+  protected $headersType = 'Google_Service_AdExchangeSeller_ReportHeaders';
   protected $headersDataType = 'array';
   public $kind;
   public $rows;
@@ -1441,7 +1441,7 @@ class Powerform_Google_Service_AdExchangeSeller_Report extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_ReportHeaders extends Powerform_Google_Model
+class Google_Service_AdExchangeSeller_ReportHeaders extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1476,7 +1476,7 @@ class Powerform_Google_Service_AdExchangeSeller_ReportHeaders extends Powerform_
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_ReportingMetadataEntry extends Powerform_Google_Collection
+class Google_Service_AdExchangeSeller_ReportingMetadataEntry extends Google_Collection
 {
   protected $collection_key = 'supportedProducts';
   protected $internal_gapi_mappings = array(
@@ -1548,7 +1548,7 @@ class Powerform_Google_Service_AdExchangeSeller_ReportingMetadataEntry extends P
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_SavedReport extends Powerform_Google_Model
+class Google_Service_AdExchangeSeller_SavedReport extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1583,13 +1583,13 @@ class Powerform_Google_Service_AdExchangeSeller_SavedReport extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_SavedReports extends Powerform_Google_Collection
+class Google_Service_AdExchangeSeller_SavedReports extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeSeller_SavedReport';
+  protected $itemsType = 'Google_Service_AdExchangeSeller_SavedReport';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1629,7 +1629,7 @@ class Powerform_Google_Service_AdExchangeSeller_SavedReports extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_UrlChannel extends Powerform_Google_Model
+class Google_Service_AdExchangeSeller_UrlChannel extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1664,13 +1664,13 @@ class Powerform_Google_Service_AdExchangeSeller_UrlChannel extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_AdExchangeSeller_UrlChannels extends Powerform_Google_Collection
+class Google_Service_AdExchangeSeller_UrlChannels extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdExchangeSeller_UrlChannel';
+  protected $itemsType = 'Google_Service_AdExchangeSeller_UrlChannel';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;

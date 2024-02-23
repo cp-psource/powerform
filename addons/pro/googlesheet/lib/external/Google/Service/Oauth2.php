@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Oauth2 extends Powerform_Google_Service
+class Google_Service_Oauth2 extends Google_Service
 {
   /** Know the list of people in your circles, your age range, and language. */
   const PLUS_LOGIN =
@@ -48,9 +48,9 @@ class Powerform_Google_Service_Oauth2 extends Powerform_Google_Service
   /**
    * Constructs the internal representation of the Oauth2 service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -58,7 +58,7 @@ class Powerform_Google_Service_Oauth2 extends Powerform_Google_Service
     $this->version = 'v2';
     $this->serviceName = 'oauth2';
 
-    $this->userinfo = new Powerform_Google_Service_Oauth2_Userinfo_Resource(
+    $this->userinfo = new Google_Service_Oauth2_Userinfo_Resource(
         $this,
         $this->serviceName,
         'userinfo',
@@ -72,7 +72,7 @@ class Powerform_Google_Service_Oauth2 extends Powerform_Google_Service
           )
         )
     );
-    $this->userinfo_v2_me = new Powerform_Google_Service_Oauth2_UserinfoV2Me_Resource(
+    $this->userinfo_v2_me = new Google_Service_Oauth2_UserinfoV2Me_Resource(
         $this,
         $this->serviceName,
         'me',
@@ -86,7 +86,7 @@ class Powerform_Google_Service_Oauth2 extends Powerform_Google_Service
           )
         )
     );
-    $this->base_methods = new Powerform_Google_Service_Resource(
+    $this->base_methods = new Google_Service_Resource(
         $this,
         $this->serviceName,
         '',
@@ -122,13 +122,13 @@ class Powerform_Google_Service_Oauth2 extends Powerform_Google_Service
    * (getCertForOpenIdConnect)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Oauth2_Jwk
+   * @return Google_Service_Oauth2_Jwk
    */
   public function getCertForOpenIdConnect($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->base_methods->call('getCertForOpenIdConnect', array($params), "Powerform_Google_Service_Oauth2_Jwk");
+    return $this->base_methods->call('getCertForOpenIdConnect', array($params), "Google_Service_Oauth2_Jwk");
   }
   /**
    * (tokeninfo)
@@ -138,13 +138,13 @@ class Powerform_Google_Service_Oauth2 extends Powerform_Google_Service
    * @opt_param string access_token
    * @opt_param string id_token
    * @opt_param string token_handle
-   * @return Powerform_Google_Service_Oauth2_Tokeninfo
+   * @return Google_Service_Oauth2_Tokeninfo
    */
   public function tokeninfo($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->base_methods->call('tokeninfo', array($params), "Powerform_Google_Service_Oauth2_Tokeninfo");
+    return $this->base_methods->call('tokeninfo', array($params), "Google_Service_Oauth2_Tokeninfo");
   }
 }
 
@@ -153,24 +153,24 @@ class Powerform_Google_Service_Oauth2 extends Powerform_Google_Service
  * The "userinfo" collection of methods.
  * Typical usage is:
  *  <code>
- *   $oauth2Service = new Powerform_Google_Service_Oauth2(...);
+ *   $oauth2Service = new Google_Service_Oauth2(...);
  *   $userinfo = $oauth2Service->userinfo;
  *  </code>
  */
-class Powerform_Google_Service_Oauth2_Userinfo_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Oauth2_Userinfo_Resource extends Google_Service_Resource
 {
 
   /**
    * (userinfo.get)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Oauth2_Userinfoplus
+   * @return Google_Service_Oauth2_Userinfoplus
    */
   public function get($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Oauth2_Userinfoplus");
+    return $this->call('get', array($params), "Google_Service_Oauth2_Userinfoplus");
   }
 }
 
@@ -178,11 +178,11 @@ class Powerform_Google_Service_Oauth2_Userinfo_Resource extends Powerform_Google
  * The "v2" collection of methods.
  * Typical usage is:
  *  <code>
- *   $oauth2Service = new Powerform_Google_Service_Oauth2(...);
+ *   $oauth2Service = new Google_Service_Oauth2(...);
  *   $v2 = $oauth2Service->v2;
  *  </code>
  */
-class Powerform_Google_Service_Oauth2_UserinfoV2_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Oauth2_UserinfoV2_Resource extends Google_Service_Resource
 {
 }
 
@@ -190,36 +190,36 @@ class Powerform_Google_Service_Oauth2_UserinfoV2_Resource extends Powerform_Goog
  * The "me" collection of methods.
  * Typical usage is:
  *  <code>
- *   $oauth2Service = new Powerform_Google_Service_Oauth2(...);
+ *   $oauth2Service = new Google_Service_Oauth2(...);
  *   $me = $oauth2Service->me;
  *  </code>
  */
-class Powerform_Google_Service_Oauth2_UserinfoV2Me_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Oauth2_UserinfoV2Me_Resource extends Google_Service_Resource
 {
 
   /**
    * (me.get)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Oauth2_Userinfoplus
+   * @return Google_Service_Oauth2_Userinfoplus
    */
   public function get($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Oauth2_Userinfoplus");
+    return $this->call('get', array($params), "Google_Service_Oauth2_Userinfoplus");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Oauth2_Jwk extends Powerform_Google_Collection
+class Google_Service_Oauth2_Jwk extends Google_Collection
 {
   protected $collection_key = 'keys';
   protected $internal_gapi_mappings = array(
   );
-  protected $keysType = 'Powerform_Google_Service_Oauth2_JwkKeys';
+  protected $keysType = 'Google_Service_Oauth2_JwkKeys';
   protected $keysDataType = 'array';
 
 
@@ -233,7 +233,7 @@ class Powerform_Google_Service_Oauth2_Jwk extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Oauth2_JwkKeys extends Powerform_Google_Model
+class Google_Service_Oauth2_JwkKeys extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -295,7 +295,7 @@ class Powerform_Google_Service_Oauth2_JwkKeys extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Oauth2_Tokeninfo extends Powerform_Google_Model
+class Google_Service_Oauth2_Tokeninfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "accessType" => "access_type",
@@ -390,7 +390,7 @@ class Powerform_Google_Service_Oauth2_Tokeninfo extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Oauth2_Userinfoplus extends Powerform_Google_Model
+class Google_Service_Oauth2_Userinfoplus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "familyName" => "family_name",

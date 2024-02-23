@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_AdSense extends Powerform_Google_Service
+class Google_Service_AdSense extends Google_Service
 {
   /** View and manage your AdSense data. */
   const ADSENSE =
@@ -61,14 +61,14 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
   public $reports_saved;
   public $savedadstyles;
   public $urlchannels;
-  
+
 
   /**
    * Constructs the internal representation of the AdSense service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -76,7 +76,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
     $this->version = 'v1.4';
     $this->serviceName = 'adsense';
 
-    $this->accounts = new Powerform_Google_Service_AdSense_Accounts_Resource(
+    $this->accounts = new Google_Service_AdSense_Accounts_Resource(
         $this,
         $this->serviceName,
         'accounts',
@@ -113,7 +113,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_adclients = new Powerform_Google_Service_AdSense_AccountsAdclients_Resource(
+    $this->accounts_adclients = new Google_Service_AdSense_AccountsAdclients_Resource(
         $this,
         $this->serviceName,
         'adclients',
@@ -141,7 +141,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_adunits = new Powerform_Google_Service_AdSense_AccountsAdunits_Resource(
+    $this->accounts_adunits = new Google_Service_AdSense_AccountsAdunits_Resource(
         $this,
         $this->serviceName,
         'adunits',
@@ -218,7 +218,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_adunits_customchannels = new Powerform_Google_Service_AdSense_AccountsAdunitsCustomchannels_Resource(
+    $this->accounts_adunits_customchannels = new Google_Service_AdSense_AccountsAdunitsCustomchannels_Resource(
         $this,
         $this->serviceName,
         'customchannels',
@@ -256,7 +256,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_alerts = new Powerform_Google_Service_AdSense_AccountsAlerts_Resource(
+    $this->accounts_alerts = new Google_Service_AdSense_AccountsAlerts_Resource(
         $this,
         $this->serviceName,
         'alerts',
@@ -295,7 +295,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_customchannels = new Powerform_Google_Service_AdSense_AccountsCustomchannels_Resource(
+    $this->accounts_customchannels = new Google_Service_AdSense_AccountsCustomchannels_Resource(
         $this,
         $this->serviceName,
         'customchannels',
@@ -348,7 +348,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_customchannels_adunits = new Powerform_Google_Service_AdSense_AccountsCustomchannelsAdunits_Resource(
+    $this->accounts_customchannels_adunits = new Google_Service_AdSense_AccountsCustomchannelsAdunits_Resource(
         $this,
         $this->serviceName,
         'adunits',
@@ -390,7 +390,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_payments = new Powerform_Google_Service_AdSense_AccountsPayments_Resource(
+    $this->accounts_payments = new Google_Service_AdSense_AccountsPayments_Resource(
         $this,
         $this->serviceName,
         'payments',
@@ -410,7 +410,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_reports = new Powerform_Google_Service_AdSense_AccountsReports_Resource(
+    $this->accounts_reports = new Google_Service_AdSense_AccountsReports_Resource(
         $this,
         $this->serviceName,
         'reports',
@@ -480,7 +480,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_reports_saved = new Powerform_Google_Service_AdSense_AccountsReportsSaved_Resource(
+    $this->accounts_reports_saved = new Google_Service_AdSense_AccountsReportsSaved_Resource(
         $this,
         $this->serviceName,
         'saved',
@@ -535,7 +535,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_savedadstyles = new Powerform_Google_Service_AdSense_AccountsSavedadstyles_Resource(
+    $this->accounts_savedadstyles = new Google_Service_AdSense_AccountsSavedadstyles_Resource(
         $this,
         $this->serviceName,
         'savedadstyles',
@@ -578,7 +578,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts_urlchannels = new Powerform_Google_Service_AdSense_AccountsUrlchannels_Resource(
+    $this->accounts_urlchannels = new Google_Service_AdSense_AccountsUrlchannels_Resource(
         $this,
         $this->serviceName,
         'urlchannels',
@@ -611,7 +611,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->adclients = new Powerform_Google_Service_AdSense_Adclients_Resource(
+    $this->adclients = new Google_Service_AdSense_Adclients_Resource(
         $this,
         $this->serviceName,
         'adclients',
@@ -634,7 +634,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->adunits = new Powerform_Google_Service_AdSense_Adunits_Resource(
+    $this->adunits = new Google_Service_AdSense_Adunits_Resource(
         $this,
         $this->serviceName,
         'adunits',
@@ -696,7 +696,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->adunits_customchannels = new Powerform_Google_Service_AdSense_AdunitsCustomchannels_Resource(
+    $this->adunits_customchannels = new Google_Service_AdSense_AdunitsCustomchannels_Resource(
         $this,
         $this->serviceName,
         'customchannels',
@@ -729,7 +729,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->alerts = new Powerform_Google_Service_AdSense_Alerts_Resource(
+    $this->alerts = new Google_Service_AdSense_Alerts_Resource(
         $this,
         $this->serviceName,
         'alerts',
@@ -758,7 +758,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->customchannels = new Powerform_Google_Service_AdSense_Customchannels_Resource(
+    $this->customchannels = new Google_Service_AdSense_Customchannels_Resource(
         $this,
         $this->serviceName,
         'customchannels',
@@ -801,7 +801,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->customchannels_adunits = new Powerform_Google_Service_AdSense_CustomchannelsAdunits_Resource(
+    $this->customchannels_adunits = new Google_Service_AdSense_CustomchannelsAdunits_Resource(
         $this,
         $this->serviceName,
         'adunits',
@@ -838,7 +838,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->metadata_dimensions = new Powerform_Google_Service_AdSense_MetadataDimensions_Resource(
+    $this->metadata_dimensions = new Google_Service_AdSense_MetadataDimensions_Resource(
         $this,
         $this->serviceName,
         'dimensions',
@@ -852,7 +852,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->metadata_metrics = new Powerform_Google_Service_AdSense_MetadataMetrics_Resource(
+    $this->metadata_metrics = new Google_Service_AdSense_MetadataMetrics_Resource(
         $this,
         $this->serviceName,
         'metrics',
@@ -866,7 +866,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->payments = new Powerform_Google_Service_AdSense_Payments_Resource(
+    $this->payments = new Google_Service_AdSense_Payments_Resource(
         $this,
         $this->serviceName,
         'payments',
@@ -880,7 +880,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->reports = new Powerform_Google_Service_AdSense_Reports_Resource(
+    $this->reports = new Google_Service_AdSense_Reports_Resource(
         $this,
         $this->serviceName,
         'reports',
@@ -950,7 +950,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->reports_saved = new Powerform_Google_Service_AdSense_ReportsSaved_Resource(
+    $this->reports_saved = new Google_Service_AdSense_ReportsSaved_Resource(
         $this,
         $this->serviceName,
         'saved',
@@ -995,7 +995,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->savedadstyles = new Powerform_Google_Service_AdSense_Savedadstyles_Resource(
+    $this->savedadstyles = new Google_Service_AdSense_Savedadstyles_Resource(
         $this,
         $this->serviceName,
         'savedadstyles',
@@ -1028,7 +1028,7 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
           )
         )
     );
-    $this->urlchannels = new Powerform_Google_Service_AdSense_Urlchannels_Resource(
+    $this->urlchannels = new Google_Service_AdSense_Urlchannels_Resource(
         $this,
         $this->serviceName,
         'urlchannels',
@@ -1064,11 +1064,11 @@ class Powerform_Google_Service_AdSense extends Powerform_Google_Service
  * The "accounts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $accounts = $adsenseService->accounts;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_Accounts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_Accounts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1078,13 +1078,13 @@ class Powerform_Google_Service_AdSense_Accounts_Resource extends Powerform_Googl
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool tree Whether the tree of sub accounts should be returned.
-   * @return Powerform_Google_Service_AdSense_Account
+   * @return Google_Service_AdSense_Account
    */
   public function get($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdSense_Account");
+    return $this->call('get', array($params), "Google_Service_AdSense_Account");
   }
 
   /**
@@ -1097,13 +1097,13 @@ class Powerform_Google_Service_AdSense_Accounts_Resource extends Powerform_Googl
    * @opt_param string pageToken A continuation token, used to page through
    * accounts. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_Accounts
+   * @return Google_Service_AdSense_Accounts
    */
   public function listAccounts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_Accounts");
+    return $this->call('list', array($params), "Google_Service_AdSense_Accounts");
   }
 }
 
@@ -1111,11 +1111,11 @@ class Powerform_Google_Service_AdSense_Accounts_Resource extends Powerform_Googl
  * The "adclients" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $adclients = $adsenseService->adclients;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsAdclients_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsAdclients_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1130,24 +1130,24 @@ class Powerform_Google_Service_AdSense_AccountsAdclients_Resource extends Powerf
    * @opt_param string pageToken A continuation token, used to page through ad
    * clients. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_AdClients
+   * @return Google_Service_AdSense_AdClients
    */
   public function listAccountsAdclients($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_AdClients");
+    return $this->call('list', array($params), "Google_Service_AdSense_AdClients");
   }
 }
 /**
  * The "adunits" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $adunits = $adsenseService->adunits;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsAdunits_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsAdunits_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1158,13 +1158,13 @@ class Powerform_Google_Service_AdSense_AccountsAdunits_Resource extends Powerfor
    * @param string $adClientId Ad client for which to get the ad unit.
    * @param string $adUnitId Ad unit to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_AdUnit
+   * @return Google_Service_AdSense_AdUnit
    */
   public function get($accountId, $adClientId, $adUnitId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId, 'adUnitId' => $adUnitId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdSense_AdUnit");
+    return $this->call('get', array($params), "Google_Service_AdSense_AdUnit");
   }
 
   /**
@@ -1174,13 +1174,13 @@ class Powerform_Google_Service_AdSense_AccountsAdunits_Resource extends Powerfor
    * @param string $adClientId Ad client with contains the ad unit.
    * @param string $adUnitId Ad unit to get the code for.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_AdCode
+   * @return Google_Service_AdSense_AdCode
    */
   public function getAdCode($accountId, $adClientId, $adUnitId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId, 'adUnitId' => $adUnitId);
     $params = array_merge($params, $optParams);
-    return $this->call('getAdCode', array($params), "Powerform_Google_Service_AdSense_AdCode");
+    return $this->call('getAdCode', array($params), "Google_Service_AdSense_AdCode");
   }
 
   /**
@@ -1198,13 +1198,13 @@ class Powerform_Google_Service_AdSense_AccountsAdunits_Resource extends Powerfor
    * @opt_param string pageToken A continuation token, used to page through ad
    * units. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_AdUnits
+   * @return Google_Service_AdSense_AdUnits
    */
   public function listAccountsAdunits($accountId, $adClientId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_AdUnits");
+    return $this->call('list', array($params), "Google_Service_AdSense_AdUnits");
   }
 }
 
@@ -1212,11 +1212,11 @@ class Powerform_Google_Service_AdSense_AccountsAdunits_Resource extends Powerfor
  * The "customchannels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $customchannels = $adsenseService->customchannels;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsAdunitsCustomchannels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsAdunitsCustomchannels_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1233,24 +1233,24 @@ class Powerform_Google_Service_AdSense_AccountsAdunitsCustomchannels_Resource ex
    * @opt_param string pageToken A continuation token, used to page through custom
    * channels. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_CustomChannels
+   * @return Google_Service_AdSense_CustomChannels
    */
   public function listAccountsAdunitsCustomchannels($accountId, $adClientId, $adUnitId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId, 'adUnitId' => $adUnitId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_CustomChannels");
+    return $this->call('list', array($params), "Google_Service_AdSense_CustomChannels");
   }
 }
 /**
  * The "alerts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $alerts = $adsenseService->alerts;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsAlerts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsAlerts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1278,24 +1278,24 @@ class Powerform_Google_Service_AdSense_AccountsAlerts_Resource extends Powerform
    * @opt_param string locale The locale to use for translating alert messages.
    * The account locale will be used if this is not supplied. The AdSense default
    * (English) will be used if the supplied locale is invalid or unsupported.
-   * @return Powerform_Google_Service_AdSense_Alerts
+   * @return Google_Service_AdSense_Alerts
    */
   public function listAccountsAlerts($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_Alerts");
+    return $this->call('list', array($params), "Google_Service_AdSense_Alerts");
   }
 }
 /**
  * The "customchannels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $customchannels = $adsenseService->customchannels;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsCustomchannels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsCustomchannels_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1306,13 +1306,13 @@ class Powerform_Google_Service_AdSense_AccountsCustomchannels_Resource extends P
    * @param string $adClientId Ad client which contains the custom channel.
    * @param string $customChannelId Custom channel to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_CustomChannel
+   * @return Google_Service_AdSense_CustomChannel
    */
   public function get($accountId, $adClientId, $customChannelId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId, 'customChannelId' => $customChannelId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdSense_CustomChannel");
+    return $this->call('get', array($params), "Google_Service_AdSense_CustomChannel");
   }
 
   /**
@@ -1328,13 +1328,13 @@ class Powerform_Google_Service_AdSense_AccountsCustomchannels_Resource extends P
    * @opt_param string pageToken A continuation token, used to page through custom
    * channels. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_CustomChannels
+   * @return Google_Service_AdSense_CustomChannels
    */
   public function listAccountsCustomchannels($accountId, $adClientId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_CustomChannels");
+    return $this->call('list', array($params), "Google_Service_AdSense_CustomChannels");
   }
 }
 
@@ -1342,11 +1342,11 @@ class Powerform_Google_Service_AdSense_AccountsCustomchannels_Resource extends P
  * The "adunits" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $adunits = $adsenseService->adunits;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsCustomchannelsAdunits_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsCustomchannelsAdunits_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1365,24 +1365,24 @@ class Powerform_Google_Service_AdSense_AccountsCustomchannelsAdunits_Resource ex
    * @opt_param string pageToken A continuation token, used to page through ad
    * units. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_AdUnits
+   * @return Google_Service_AdSense_AdUnits
    */
   public function listAccountsCustomchannelsAdunits($accountId, $adClientId, $customChannelId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId, 'customChannelId' => $customChannelId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_AdUnits");
+    return $this->call('list', array($params), "Google_Service_AdSense_AdUnits");
   }
 }
 /**
  * The "payments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $payments = $adsenseService->payments;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsPayments_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsPayments_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1391,24 +1391,24 @@ class Powerform_Google_Service_AdSense_AccountsPayments_Resource extends Powerfo
    *
    * @param string $accountId Account for which to retrieve the payments.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_Payments
+   * @return Google_Service_AdSense_Payments
    */
   public function listAccountsPayments($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_Payments");
+    return $this->call('list', array($params), "Google_Service_AdSense_Payments");
   }
 }
 /**
  * The "reports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $reports = $adsenseService->reports;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsReports_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsReports_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1439,13 +1439,13 @@ class Powerform_Google_Service_AdSense_AccountsReports_Resource extends Powerfor
    * @opt_param bool useTimezoneReporting Whether the report should be generated
    * in the AdSense account's local timezone. If false default PST/PDT timezone
    * will be used.
-   * @return Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponse
+   * @return Google_Service_AdSense_AdsenseReportsGenerateResponse
    */
   public function generate($accountId, $startDate, $endDate, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'startDate' => $startDate, 'endDate' => $endDate);
     $params = array_merge($params, $optParams);
-    return $this->call('generate', array($params), "Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponse");
+    return $this->call('generate', array($params), "Google_Service_AdSense_AdsenseReportsGenerateResponse");
   }
 }
 
@@ -1453,11 +1453,11 @@ class Powerform_Google_Service_AdSense_AccountsReports_Resource extends Powerfor
  * The "saved" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $saved = $adsenseService->saved;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsReportsSaved_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsReportsSaved_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1473,13 +1473,13 @@ class Powerform_Google_Service_AdSense_AccountsReportsSaved_Resource extends Pow
    * @opt_param int maxResults The maximum number of rows of report data to
    * return.
    * @opt_param int startIndex Index of the first row of report data to return.
-   * @return Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponse
+   * @return Google_Service_AdSense_AdsenseReportsGenerateResponse
    */
   public function generate($accountId, $savedReportId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'savedReportId' => $savedReportId);
     $params = array_merge($params, $optParams);
-    return $this->call('generate', array($params), "Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponse");
+    return $this->call('generate', array($params), "Google_Service_AdSense_AdsenseReportsGenerateResponse");
   }
 
   /**
@@ -1494,24 +1494,24 @@ class Powerform_Google_Service_AdSense_AccountsReportsSaved_Resource extends Pow
    * @opt_param string pageToken A continuation token, used to page through saved
    * reports. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_SavedReports
+   * @return Google_Service_AdSense_SavedReports
    */
   public function listAccountsReportsSaved($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_SavedReports");
+    return $this->call('list', array($params), "Google_Service_AdSense_SavedReports");
   }
 }
 /**
  * The "savedadstyles" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $savedadstyles = $adsenseService->savedadstyles;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsSavedadstyles_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsSavedadstyles_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1520,13 +1520,13 @@ class Powerform_Google_Service_AdSense_AccountsSavedadstyles_Resource extends Po
    * @param string $accountId Account for which to get the saved ad style.
    * @param string $savedAdStyleId Saved ad style to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_SavedAdStyle
+   * @return Google_Service_AdSense_SavedAdStyle
    */
   public function get($accountId, $savedAdStyleId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'savedAdStyleId' => $savedAdStyleId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdSense_SavedAdStyle");
+    return $this->call('get', array($params), "Google_Service_AdSense_SavedAdStyle");
   }
 
   /**
@@ -1541,24 +1541,24 @@ class Powerform_Google_Service_AdSense_AccountsSavedadstyles_Resource extends Po
    * @opt_param string pageToken A continuation token, used to page through saved
    * ad styles. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_SavedAdStyles
+   * @return Google_Service_AdSense_SavedAdStyles
    */
   public function listAccountsSavedadstyles($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_SavedAdStyles");
+    return $this->call('list', array($params), "Google_Service_AdSense_SavedAdStyles");
   }
 }
 /**
  * The "urlchannels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $urlchannels = $adsenseService->urlchannels;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AccountsUrlchannels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AccountsUrlchannels_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1574,13 +1574,13 @@ class Powerform_Google_Service_AdSense_AccountsUrlchannels_Resource extends Powe
    * @opt_param string pageToken A continuation token, used to page through URL
    * channels. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_UrlChannels
+   * @return Google_Service_AdSense_UrlChannels
    */
   public function listAccountsUrlchannels($accountId, $adClientId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'adClientId' => $adClientId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_UrlChannels");
+    return $this->call('list', array($params), "Google_Service_AdSense_UrlChannels");
   }
 }
 
@@ -1588,11 +1588,11 @@ class Powerform_Google_Service_AdSense_AccountsUrlchannels_Resource extends Powe
  * The "adclients" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $adclients = $adsenseService->adclients;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_Adclients_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_Adclients_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1605,13 +1605,13 @@ class Powerform_Google_Service_AdSense_Adclients_Resource extends Powerform_Goog
    * @opt_param string pageToken A continuation token, used to page through ad
    * clients. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_AdClients
+   * @return Google_Service_AdSense_AdClients
    */
   public function listAdclients($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_AdClients");
+    return $this->call('list', array($params), "Google_Service_AdSense_AdClients");
   }
 }
 
@@ -1619,11 +1619,11 @@ class Powerform_Google_Service_AdSense_Adclients_Resource extends Powerform_Goog
  * The "adunits" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $adunits = $adsenseService->adunits;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_Adunits_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_Adunits_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1632,13 +1632,13 @@ class Powerform_Google_Service_AdSense_Adunits_Resource extends Powerform_Google
    * @param string $adClientId Ad client for which to get the ad unit.
    * @param string $adUnitId Ad unit to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_AdUnit
+   * @return Google_Service_AdSense_AdUnit
    */
   public function get($adClientId, $adUnitId, $optParams = array())
   {
     $params = array('adClientId' => $adClientId, 'adUnitId' => $adUnitId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdSense_AdUnit");
+    return $this->call('get', array($params), "Google_Service_AdSense_AdUnit");
   }
 
   /**
@@ -1647,13 +1647,13 @@ class Powerform_Google_Service_AdSense_Adunits_Resource extends Powerform_Google
    * @param string $adClientId Ad client with contains the ad unit.
    * @param string $adUnitId Ad unit to get the code for.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_AdCode
+   * @return Google_Service_AdSense_AdCode
    */
   public function getAdCode($adClientId, $adUnitId, $optParams = array())
   {
     $params = array('adClientId' => $adClientId, 'adUnitId' => $adUnitId);
     $params = array_merge($params, $optParams);
-    return $this->call('getAdCode', array($params), "Powerform_Google_Service_AdSense_AdCode");
+    return $this->call('getAdCode', array($params), "Google_Service_AdSense_AdCode");
   }
 
   /**
@@ -1670,13 +1670,13 @@ class Powerform_Google_Service_AdSense_Adunits_Resource extends Powerform_Google
    * @opt_param string pageToken A continuation token, used to page through ad
    * units. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_AdUnits
+   * @return Google_Service_AdSense_AdUnits
    */
   public function listAdunits($adClientId, $optParams = array())
   {
     $params = array('adClientId' => $adClientId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_AdUnits");
+    return $this->call('list', array($params), "Google_Service_AdSense_AdUnits");
   }
 }
 
@@ -1684,11 +1684,11 @@ class Powerform_Google_Service_AdSense_Adunits_Resource extends Powerform_Google
  * The "customchannels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $customchannels = $adsenseService->customchannels;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_AdunitsCustomchannels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_AdunitsCustomchannels_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1704,13 +1704,13 @@ class Powerform_Google_Service_AdSense_AdunitsCustomchannels_Resource extends Po
    * @opt_param string pageToken A continuation token, used to page through custom
    * channels. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_CustomChannels
+   * @return Google_Service_AdSense_CustomChannels
    */
   public function listAdunitsCustomchannels($adClientId, $adUnitId, $optParams = array())
   {
     $params = array('adClientId' => $adClientId, 'adUnitId' => $adUnitId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_CustomChannels");
+    return $this->call('list', array($params), "Google_Service_AdSense_CustomChannels");
   }
 }
 
@@ -1718,11 +1718,11 @@ class Powerform_Google_Service_AdSense_AdunitsCustomchannels_Resource extends Po
  * The "alerts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $alerts = $adsenseService->alerts;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_Alerts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_Alerts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1747,13 +1747,13 @@ class Powerform_Google_Service_AdSense_Alerts_Resource extends Powerform_Google_
    * @opt_param string locale The locale to use for translating alert messages.
    * The account locale will be used if this is not supplied. The AdSense default
    * (English) will be used if the supplied locale is invalid or unsupported.
-   * @return Powerform_Google_Service_AdSense_Alerts
+   * @return Google_Service_AdSense_Alerts
    */
   public function listAlerts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_Alerts");
+    return $this->call('list', array($params), "Google_Service_AdSense_Alerts");
   }
 }
 
@@ -1761,11 +1761,11 @@ class Powerform_Google_Service_AdSense_Alerts_Resource extends Powerform_Google_
  * The "customchannels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $customchannels = $adsenseService->customchannels;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_Customchannels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_Customchannels_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1775,13 +1775,13 @@ class Powerform_Google_Service_AdSense_Customchannels_Resource extends Powerform
    * @param string $adClientId Ad client which contains the custom channel.
    * @param string $customChannelId Custom channel to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_CustomChannel
+   * @return Google_Service_AdSense_CustomChannel
    */
   public function get($adClientId, $customChannelId, $optParams = array())
   {
     $params = array('adClientId' => $adClientId, 'customChannelId' => $customChannelId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdSense_CustomChannel");
+    return $this->call('get', array($params), "Google_Service_AdSense_CustomChannel");
   }
 
   /**
@@ -1796,13 +1796,13 @@ class Powerform_Google_Service_AdSense_Customchannels_Resource extends Powerform
    * @opt_param string pageToken A continuation token, used to page through custom
    * channels. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_CustomChannels
+   * @return Google_Service_AdSense_CustomChannels
    */
   public function listCustomchannels($adClientId, $optParams = array())
   {
     $params = array('adClientId' => $adClientId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_CustomChannels");
+    return $this->call('list', array($params), "Google_Service_AdSense_CustomChannels");
   }
 }
 
@@ -1810,11 +1810,11 @@ class Powerform_Google_Service_AdSense_Customchannels_Resource extends Powerform
  * The "adunits" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $adunits = $adsenseService->adunits;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_CustomchannelsAdunits_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_CustomchannelsAdunits_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1832,13 +1832,13 @@ class Powerform_Google_Service_AdSense_CustomchannelsAdunits_Resource extends Po
    * @opt_param string pageToken A continuation token, used to page through ad
    * units. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_AdUnits
+   * @return Google_Service_AdSense_AdUnits
    */
   public function listCustomchannelsAdunits($adClientId, $customChannelId, $optParams = array())
   {
     $params = array('adClientId' => $adClientId, 'customChannelId' => $customChannelId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_AdUnits");
+    return $this->call('list', array($params), "Google_Service_AdSense_AdUnits");
   }
 }
 
@@ -1846,11 +1846,11 @@ class Powerform_Google_Service_AdSense_CustomchannelsAdunits_Resource extends Po
  * The "metadata" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $metadata = $adsenseService->metadata;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_Metadata_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_Metadata_Resource extends Google_Service_Resource
 {
 }
 
@@ -1858,11 +1858,11 @@ class Powerform_Google_Service_AdSense_Metadata_Resource extends Powerform_Googl
  * The "dimensions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $dimensions = $adsenseService->dimensions;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_MetadataDimensions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_MetadataDimensions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1870,24 +1870,24 @@ class Powerform_Google_Service_AdSense_MetadataDimensions_Resource extends Power
    * (dimensions.listMetadataDimensions)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_Metadata
+   * @return Google_Service_AdSense_Metadata
    */
   public function listMetadataDimensions($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_Metadata");
+    return $this->call('list', array($params), "Google_Service_AdSense_Metadata");
   }
 }
 /**
  * The "metrics" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $metrics = $adsenseService->metrics;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_MetadataMetrics_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_MetadataMetrics_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1895,13 +1895,13 @@ class Powerform_Google_Service_AdSense_MetadataMetrics_Resource extends Powerfor
    * (metrics.listMetadataMetrics)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_Metadata
+   * @return Google_Service_AdSense_Metadata
    */
   public function listMetadataMetrics($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_Metadata");
+    return $this->call('list', array($params), "Google_Service_AdSense_Metadata");
   }
 }
 
@@ -1909,24 +1909,24 @@ class Powerform_Google_Service_AdSense_MetadataMetrics_Resource extends Powerfor
  * The "payments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $payments = $adsenseService->payments;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_Payments_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_Payments_Resource extends Google_Service_Resource
 {
 
   /**
    * List the payments for this AdSense account. (payments.listPayments)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_Payments
+   * @return Google_Service_AdSense_Payments
    */
   public function listPayments($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_Payments");
+    return $this->call('list', array($params), "Google_Service_AdSense_Payments");
   }
 }
 
@@ -1934,11 +1934,11 @@ class Powerform_Google_Service_AdSense_Payments_Resource extends Powerform_Googl
  * The "reports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $reports = $adsenseService->reports;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_Reports_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_Reports_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1969,13 +1969,13 @@ class Powerform_Google_Service_AdSense_Reports_Resource extends Powerform_Google
    * @opt_param bool useTimezoneReporting Whether the report should be generated
    * in the AdSense account's local timezone. If false default PST/PDT timezone
    * will be used.
-   * @return Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponse
+   * @return Google_Service_AdSense_AdsenseReportsGenerateResponse
    */
   public function generate($startDate, $endDate, $optParams = array())
   {
     $params = array('startDate' => $startDate, 'endDate' => $endDate);
     $params = array_merge($params, $optParams);
-    return $this->call('generate', array($params), "Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponse");
+    return $this->call('generate', array($params), "Google_Service_AdSense_AdsenseReportsGenerateResponse");
   }
 }
 
@@ -1983,11 +1983,11 @@ class Powerform_Google_Service_AdSense_Reports_Resource extends Powerform_Google
  * The "saved" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $saved = $adsenseService->saved;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_ReportsSaved_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_ReportsSaved_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2002,13 +2002,13 @@ class Powerform_Google_Service_AdSense_ReportsSaved_Resource extends Powerform_G
    * @opt_param int maxResults The maximum number of rows of report data to
    * return.
    * @opt_param int startIndex Index of the first row of report data to return.
-   * @return Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponse
+   * @return Google_Service_AdSense_AdsenseReportsGenerateResponse
    */
   public function generate($savedReportId, $optParams = array())
   {
     $params = array('savedReportId' => $savedReportId);
     $params = array_merge($params, $optParams);
-    return $this->call('generate', array($params), "Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponse");
+    return $this->call('generate', array($params), "Google_Service_AdSense_AdsenseReportsGenerateResponse");
   }
 
   /**
@@ -2021,13 +2021,13 @@ class Powerform_Google_Service_AdSense_ReportsSaved_Resource extends Powerform_G
    * @opt_param string pageToken A continuation token, used to page through saved
    * reports. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_SavedReports
+   * @return Google_Service_AdSense_SavedReports
    */
   public function listReportsSaved($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_SavedReports");
+    return $this->call('list', array($params), "Google_Service_AdSense_SavedReports");
   }
 }
 
@@ -2035,11 +2035,11 @@ class Powerform_Google_Service_AdSense_ReportsSaved_Resource extends Powerform_G
  * The "savedadstyles" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $savedadstyles = $adsenseService->savedadstyles;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_Savedadstyles_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_Savedadstyles_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2047,13 +2047,13 @@ class Powerform_Google_Service_AdSense_Savedadstyles_Resource extends Powerform_
    *
    * @param string $savedAdStyleId Saved ad style to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AdSense_SavedAdStyle
+   * @return Google_Service_AdSense_SavedAdStyle
    */
   public function get($savedAdStyleId, $optParams = array())
   {
     $params = array('savedAdStyleId' => $savedAdStyleId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AdSense_SavedAdStyle");
+    return $this->call('get', array($params), "Google_Service_AdSense_SavedAdStyle");
   }
 
   /**
@@ -2067,13 +2067,13 @@ class Powerform_Google_Service_AdSense_Savedadstyles_Resource extends Powerform_
    * @opt_param string pageToken A continuation token, used to page through saved
    * ad styles. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_SavedAdStyles
+   * @return Google_Service_AdSense_SavedAdStyles
    */
   public function listSavedadstyles($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_SavedAdStyles");
+    return $this->call('list', array($params), "Google_Service_AdSense_SavedAdStyles");
   }
 }
 
@@ -2081,11 +2081,11 @@ class Powerform_Google_Service_AdSense_Savedadstyles_Resource extends Powerform_
  * The "urlchannels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adsenseService = new Powerform_Google_Service_AdSense(...);
+ *   $adsenseService = new Google_Service_AdSense(...);
  *   $urlchannels = $adsenseService->urlchannels;
  *  </code>
  */
-class Powerform_Google_Service_AdSense_Urlchannels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AdSense_Urlchannels_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2100,20 +2100,20 @@ class Powerform_Google_Service_AdSense_Urlchannels_Resource extends Powerform_Go
    * @opt_param string pageToken A continuation token, used to page through URL
    * channels. To retrieve the next page, set this parameter to the value of
    * "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_AdSense_UrlChannels
+   * @return Google_Service_AdSense_UrlChannels
    */
   public function listUrlchannels($adClientId, $optParams = array())
   {
     $params = array('adClientId' => $adClientId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AdSense_UrlChannels");
+    return $this->call('list', array($params), "Google_Service_AdSense_UrlChannels");
   }
 }
 
 
 
 
-class Powerform_Google_Service_AdSense_Account extends Powerform_Google_Collection
+class Google_Service_AdSense_Account extends Google_Collection
 {
   protected $collection_key = 'subAccounts';
   protected $internal_gapi_mappings = array(
@@ -2124,7 +2124,7 @@ class Powerform_Google_Service_AdSense_Account extends Powerform_Google_Collecti
   public $kind;
   public $name;
   public $premium;
-  protected $subAccountsType = 'Powerform_Google_Service_AdSense_Account';
+  protected $subAccountsType = 'Google_Service_AdSense_Account';
   protected $subAccountsDataType = 'array';
   public $timezone;
 
@@ -2187,13 +2187,13 @@ class Powerform_Google_Service_AdSense_Account extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_AdSense_Accounts extends Powerform_Google_Collection
+class Google_Service_AdSense_Accounts extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdSense_Account';
+  protected $itemsType = 'Google_Service_AdSense_Account';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2233,7 +2233,7 @@ class Powerform_Google_Service_AdSense_Accounts extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_AdSense_AdClient extends Powerform_Google_Model
+class Google_Service_AdSense_AdClient extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2295,13 +2295,13 @@ class Powerform_Google_Service_AdSense_AdClient extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_AdSense_AdClients extends Powerform_Google_Collection
+class Google_Service_AdSense_AdClients extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdSense_AdClient';
+  protected $itemsType = 'Google_Service_AdSense_AdClient';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2341,7 +2341,7 @@ class Powerform_Google_Service_AdSense_AdClients extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_AdSense_AdCode extends Powerform_Google_Model
+class Google_Service_AdSense_AdCode extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2367,19 +2367,19 @@ class Powerform_Google_Service_AdSense_AdCode extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_AdSense_AdStyle extends Powerform_Google_Model
+class Google_Service_AdSense_AdStyle extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $colorsType = 'Powerform_Google_Service_AdSense_AdStyleColors';
+  protected $colorsType = 'Google_Service_AdSense_AdStyleColors';
   protected $colorsDataType = '';
   public $corners;
-  protected $fontType = 'Powerform_Google_Service_AdSense_AdStyleFont';
+  protected $fontType = 'Google_Service_AdSense_AdStyleFont';
   protected $fontDataType = '';
   public $kind;
 
 
-  public function setColors(Powerform_Google_Service_AdSense_AdStyleColors $colors)
+  public function setColors(Google_Service_AdSense_AdStyleColors $colors)
   {
     $this->colors = $colors;
   }
@@ -2395,7 +2395,7 @@ class Powerform_Google_Service_AdSense_AdStyle extends Powerform_Google_Model
   {
     return $this->corners;
   }
-  public function setFont(Powerform_Google_Service_AdSense_AdStyleFont $font)
+  public function setFont(Google_Service_AdSense_AdStyleFont $font)
   {
     $this->font = $font;
   }
@@ -2413,7 +2413,7 @@ class Powerform_Google_Service_AdSense_AdStyle extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_AdSense_AdStyleColors extends Powerform_Google_Model
+class Google_Service_AdSense_AdStyleColors extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2466,7 +2466,7 @@ class Powerform_Google_Service_AdSense_AdStyleColors extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_AdSense_AdStyleFont extends Powerform_Google_Model
+class Google_Service_AdSense_AdStyleFont extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2492,20 +2492,20 @@ class Powerform_Google_Service_AdSense_AdStyleFont extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_AdSense_AdUnit extends Powerform_Google_Model
+class Google_Service_AdSense_AdUnit extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $code;
-  protected $contentAdsSettingsType = 'Powerform_Google_Service_AdSense_AdUnitContentAdsSettings';
+  protected $contentAdsSettingsType = 'Google_Service_AdSense_AdUnitContentAdsSettings';
   protected $contentAdsSettingsDataType = '';
-  protected $customStyleType = 'Powerform_Google_Service_AdSense_AdStyle';
+  protected $customStyleType = 'Google_Service_AdSense_AdStyle';
   protected $customStyleDataType = '';
-  protected $feedAdsSettingsType = 'Powerform_Google_Service_AdSense_AdUnitFeedAdsSettings';
+  protected $feedAdsSettingsType = 'Google_Service_AdSense_AdUnitFeedAdsSettings';
   protected $feedAdsSettingsDataType = '';
   public $id;
   public $kind;
-  protected $mobileContentAdsSettingsType = 'Powerform_Google_Service_AdSense_AdUnitMobileContentAdsSettings';
+  protected $mobileContentAdsSettingsType = 'Google_Service_AdSense_AdUnitMobileContentAdsSettings';
   protected $mobileContentAdsSettingsDataType = '';
   public $name;
   public $savedStyleId;
@@ -2520,7 +2520,7 @@ class Powerform_Google_Service_AdSense_AdUnit extends Powerform_Google_Model
   {
     return $this->code;
   }
-  public function setContentAdsSettings(Powerform_Google_Service_AdSense_AdUnitContentAdsSettings $contentAdsSettings)
+  public function setContentAdsSettings(Google_Service_AdSense_AdUnitContentAdsSettings $contentAdsSettings)
   {
     $this->contentAdsSettings = $contentAdsSettings;
   }
@@ -2528,7 +2528,7 @@ class Powerform_Google_Service_AdSense_AdUnit extends Powerform_Google_Model
   {
     return $this->contentAdsSettings;
   }
-  public function setCustomStyle(Powerform_Google_Service_AdSense_AdStyle $customStyle)
+  public function setCustomStyle(Google_Service_AdSense_AdStyle $customStyle)
   {
     $this->customStyle = $customStyle;
   }
@@ -2536,7 +2536,7 @@ class Powerform_Google_Service_AdSense_AdUnit extends Powerform_Google_Model
   {
     return $this->customStyle;
   }
-  public function setFeedAdsSettings(Powerform_Google_Service_AdSense_AdUnitFeedAdsSettings $feedAdsSettings)
+  public function setFeedAdsSettings(Google_Service_AdSense_AdUnitFeedAdsSettings $feedAdsSettings)
   {
     $this->feedAdsSettings = $feedAdsSettings;
   }
@@ -2560,7 +2560,7 @@ class Powerform_Google_Service_AdSense_AdUnit extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setMobileContentAdsSettings(Powerform_Google_Service_AdSense_AdUnitMobileContentAdsSettings $mobileContentAdsSettings)
+  public function setMobileContentAdsSettings(Google_Service_AdSense_AdUnitMobileContentAdsSettings $mobileContentAdsSettings)
   {
     $this->mobileContentAdsSettings = $mobileContentAdsSettings;
   }
@@ -2594,17 +2594,17 @@ class Powerform_Google_Service_AdSense_AdUnit extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_AdSense_AdUnitContentAdsSettings extends Powerform_Google_Model
+class Google_Service_AdSense_AdUnitContentAdsSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $backupOptionType = 'Powerform_Google_Service_AdSense_AdUnitContentAdsSettingsBackupOption';
+  protected $backupOptionType = 'Google_Service_AdSense_AdUnitContentAdsSettingsBackupOption';
   protected $backupOptionDataType = '';
   public $size;
   public $type;
 
 
-  public function setBackupOption(Powerform_Google_Service_AdSense_AdUnitContentAdsSettingsBackupOption $backupOption)
+  public function setBackupOption(Google_Service_AdSense_AdUnitContentAdsSettingsBackupOption $backupOption)
   {
     $this->backupOption = $backupOption;
   }
@@ -2630,7 +2630,7 @@ class Powerform_Google_Service_AdSense_AdUnitContentAdsSettings extends Powerfor
   }
 }
 
-class Powerform_Google_Service_AdSense_AdUnitContentAdsSettingsBackupOption extends Powerform_Google_Model
+class Google_Service_AdSense_AdUnitContentAdsSettingsBackupOption extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2665,7 +2665,7 @@ class Powerform_Google_Service_AdSense_AdUnitContentAdsSettingsBackupOption exte
   }
 }
 
-class Powerform_Google_Service_AdSense_AdUnitFeedAdsSettings extends Powerform_Google_Model
+class Google_Service_AdSense_AdUnitFeedAdsSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2709,7 +2709,7 @@ class Powerform_Google_Service_AdSense_AdUnitFeedAdsSettings extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_AdSense_AdUnitMobileContentAdsSettings extends Powerform_Google_Model
+class Google_Service_AdSense_AdUnitMobileContentAdsSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2753,13 +2753,13 @@ class Powerform_Google_Service_AdSense_AdUnitMobileContentAdsSettings extends Po
   }
 }
 
-class Powerform_Google_Service_AdSense_AdUnits extends Powerform_Google_Collection
+class Google_Service_AdSense_AdUnits extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdSense_AdUnit';
+  protected $itemsType = 'Google_Service_AdSense_AdUnit';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2799,14 +2799,14 @@ class Powerform_Google_Service_AdSense_AdUnits extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponse extends Powerform_Google_Collection
+class Google_Service_AdSense_AdsenseReportsGenerateResponse extends Google_Collection
 {
   protected $collection_key = 'warnings';
   protected $internal_gapi_mappings = array(
   );
   public $averages;
   public $endDate;
-  protected $headersType = 'Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponseHeaders';
+  protected $headersType = 'Google_Service_AdSense_AdsenseReportsGenerateResponseHeaders';
   protected $headersDataType = 'array';
   public $kind;
   public $rows;
@@ -2890,7 +2890,7 @@ class Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponse extends Po
   }
 }
 
-class Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponseHeaders extends Powerform_Google_Model
+class Google_Service_AdSense_AdsenseReportsGenerateResponseHeaders extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2925,7 +2925,7 @@ class Powerform_Google_Service_AdSense_AdsenseReportsGenerateResponseHeaders ext
   }
 }
 
-class Powerform_Google_Service_AdSense_Alert extends Powerform_Google_Model
+class Google_Service_AdSense_Alert extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2987,12 +2987,12 @@ class Powerform_Google_Service_AdSense_Alert extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_AdSense_Alerts extends Powerform_Google_Collection
+class Google_Service_AdSense_Alerts extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AdSense_Alert';
+  protected $itemsType = 'Google_Service_AdSense_Alert';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -3015,7 +3015,7 @@ class Powerform_Google_Service_AdSense_Alerts extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_AdSense_CustomChannel extends Powerform_Google_Model
+class Google_Service_AdSense_CustomChannel extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3023,7 +3023,7 @@ class Powerform_Google_Service_AdSense_CustomChannel extends Powerform_Google_Mo
   public $id;
   public $kind;
   public $name;
-  protected $targetingInfoType = 'Powerform_Google_Service_AdSense_CustomChannelTargetingInfo';
+  protected $targetingInfoType = 'Google_Service_AdSense_CustomChannelTargetingInfo';
   protected $targetingInfoDataType = '';
 
 
@@ -3059,7 +3059,7 @@ class Powerform_Google_Service_AdSense_CustomChannel extends Powerform_Google_Mo
   {
     return $this->name;
   }
-  public function setTargetingInfo(Powerform_Google_Service_AdSense_CustomChannelTargetingInfo $targetingInfo)
+  public function setTargetingInfo(Google_Service_AdSense_CustomChannelTargetingInfo $targetingInfo)
   {
     $this->targetingInfo = $targetingInfo;
   }
@@ -3069,7 +3069,7 @@ class Powerform_Google_Service_AdSense_CustomChannel extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_AdSense_CustomChannelTargetingInfo extends Powerform_Google_Model
+class Google_Service_AdSense_CustomChannelTargetingInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3113,13 +3113,13 @@ class Powerform_Google_Service_AdSense_CustomChannelTargetingInfo extends Powerf
   }
 }
 
-class Powerform_Google_Service_AdSense_CustomChannels extends Powerform_Google_Collection
+class Google_Service_AdSense_CustomChannels extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdSense_CustomChannel';
+  protected $itemsType = 'Google_Service_AdSense_CustomChannel';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3159,12 +3159,12 @@ class Powerform_Google_Service_AdSense_CustomChannels extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_AdSense_Metadata extends Powerform_Google_Collection
+class Google_Service_AdSense_Metadata extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AdSense_ReportingMetadataEntry';
+  protected $itemsType = 'Google_Service_AdSense_ReportingMetadataEntry';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -3187,7 +3187,7 @@ class Powerform_Google_Service_AdSense_Metadata extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_AdSense_Payment extends Powerform_Google_Model
+class Google_Service_AdSense_Payment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3240,12 +3240,12 @@ class Powerform_Google_Service_AdSense_Payment extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_AdSense_Payments extends Powerform_Google_Collection
+class Google_Service_AdSense_Payments extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AdSense_Payment';
+  protected $itemsType = 'Google_Service_AdSense_Payment';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -3268,7 +3268,7 @@ class Powerform_Google_Service_AdSense_Payments extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_AdSense_ReportingMetadataEntry extends Powerform_Google_Collection
+class Google_Service_AdSense_ReportingMetadataEntry extends Google_Collection
 {
   protected $collection_key = 'supportedProducts';
   protected $internal_gapi_mappings = array(
@@ -3340,18 +3340,18 @@ class Powerform_Google_Service_AdSense_ReportingMetadataEntry extends Powerform_
   }
 }
 
-class Powerform_Google_Service_AdSense_SavedAdStyle extends Powerform_Google_Model
+class Google_Service_AdSense_SavedAdStyle extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $adStyleType = 'Powerform_Google_Service_AdSense_AdStyle';
+  protected $adStyleType = 'Google_Service_AdSense_AdStyle';
   protected $adStyleDataType = '';
   public $id;
   public $kind;
   public $name;
 
 
-  public function setAdStyle(Powerform_Google_Service_AdSense_AdStyle $adStyle)
+  public function setAdStyle(Google_Service_AdSense_AdStyle $adStyle)
   {
     $this->adStyle = $adStyle;
   }
@@ -3385,13 +3385,13 @@ class Powerform_Google_Service_AdSense_SavedAdStyle extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_AdSense_SavedAdStyles extends Powerform_Google_Collection
+class Google_Service_AdSense_SavedAdStyles extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdSense_SavedAdStyle';
+  protected $itemsType = 'Google_Service_AdSense_SavedAdStyle';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3431,7 +3431,7 @@ class Powerform_Google_Service_AdSense_SavedAdStyles extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_AdSense_SavedReport extends Powerform_Google_Model
+class Google_Service_AdSense_SavedReport extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3466,13 +3466,13 @@ class Powerform_Google_Service_AdSense_SavedReport extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_AdSense_SavedReports extends Powerform_Google_Collection
+class Google_Service_AdSense_SavedReports extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdSense_SavedReport';
+  protected $itemsType = 'Google_Service_AdSense_SavedReport';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3512,7 +3512,7 @@ class Powerform_Google_Service_AdSense_SavedReports extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_AdSense_UrlChannel extends Powerform_Google_Model
+class Google_Service_AdSense_UrlChannel extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3547,13 +3547,13 @@ class Powerform_Google_Service_AdSense_UrlChannel extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_AdSense_UrlChannels extends Powerform_Google_Collection
+class Google_Service_AdSense_UrlChannels extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_AdSense_UrlChannel';
+  protected $itemsType = 'Google_Service_AdSense_UrlChannel';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;

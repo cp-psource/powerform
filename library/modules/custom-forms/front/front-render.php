@@ -47,13 +47,6 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	public $model = null;
 
 	/**
-	 * Model data
-	 *
-	 * @var Powerform_Custom_Form_Model
-	 */
-	public $lead_model = null;
-
-	/**
 	 * Styles to be enqueued
 	 *
 	 * @var array
@@ -105,10 +98,9 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @param bool $is_preview
 	 * @param bool $data
 	 * @param bool $hide If true, display: none will be added on the form markup and later removed with JS
-	 * @param array $quiz_model
-	 * @param array $is_ajax
 	 */
-	public function display( $id, $is_preview = false, $data = false, $hide = true, $quiz_model = null ) {
+	public function display( $id, $is_preview = false, $data = false, $hide = true ) {
+
 		if ( $data && ! empty( $data ) ) {
 			$this->model = Powerform_Custom_Form_Model::model()->load_preview( $id, $data );
 			// its preview!
@@ -121,47 +113,23 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 			}
 		}
 
-		if ( isset( $this->model->settings["form-type"] ) && "leads" === $this->model->settings["form-type"] && is_null( $quiz_model ) ) {
-			return;
-		}
-
-		$is_ajax_load = $this->is_ajax_load( $is_preview );
-
-		if ( $quiz_model ) {
-		  $this->lead_model = $quiz_model;
-		  $is_ajax_load = isset( $this->lead_model->settings['use_ajax_load'] ) ? $this->lead_model->settings['use_ajax_load'] : false;
-		}
-
 		$this->maybe_define_cache_constants();
 
 		// TODO: make preview and ajax load working similar
 
 		// preview force using ajax
-
-		// hide login/registration form if a user is already logged in
-		$hide_form = $hidden_form_message = false;
-		if ( isset( $this->model->settings['form-type'] ) && in_array( $this->model->settings['form-type'], array('login', 'registration') ) && is_user_logged_in() ) {
-			// Option 'Is a form hide?'
-			$hide_option = 'hide-'. $this->model->settings['form-type'] .'-form';
-			$hide_form = ( isset( $this->model->settings[ $hide_option ] ) && '1' === $this->model->settings[ $hide_option ] ) ? true : false;
-			// Display message if a form is hidden
-			$hide_form_message_option = 'hidden-'. $this->model->settings['form-type'] .'-form-message';
-			$hidden_form_message = isset( $this->model->settings[$hide_form_message_option] ) && ! empty( $this->model->settings[$hide_form_message_option] )
-				? $this->model->settings[$hide_form_message_option]
-				: false;
-		}
+		$is_ajax_load = $this->is_ajax_load( $is_preview );
 
 		if ( $is_ajax_load ) {
 			$this->generate_render_id( $id );
-			if ( ! $this->lead_model ) {
-				$this->get_form_placeholder( esc_attr( $id ), true );
-			}
+			$this->get_form_placeholder( $id, true );
 			$this->enqueue_form_scripts( $is_preview, $is_ajax_load );
 
 			return;
 		}
 
-		if ( $this->is_displayable( $is_preview ) && ! $hide_form ) {
+		if ( $this->is_displayable( $is_preview ) ) {
+
 			echo $this->get_html( $hide, $is_preview );// wpcs xss ok.
 
 			if ( is_admin() || $is_preview ) {
@@ -175,8 +143,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 			}
 
 			$this->enqueue_form_scripts( $is_preview );
-		} elseif ( $hide_form && $hidden_form_message ) {
-			echo $this->render_hidden_form_message( $hidden_form_message );
+
 		}
 	}
 
@@ -191,96 +158,13 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 		if ( ! isset( self::$render_ids[ $this->model->id ] ) ) {
 			self::$render_ids[ $this->model->id ] = 0;
 		}
-
+		$content = '<div class="powerform-cform-response-message">';
 		ob_start();
 		do_action( 'powerform_cform_post_message', $this->model->id, self::$render_ids[ $this->model->id ] ); //prints html, so we need to capture this
-		$error = ob_get_clean();
+		$content .= ob_get_clean();
+		$content .= '</div>';
 
-		if ( ! empty( $error ) ) {
-			return $error;
-		}
-
-		$wrapper = '<div class="powerform-response-message" aria-hidden="true"></div>';
-
-		return $wrapper;
-	}
-
-	/**
-	 * Footer handle
-	 *
-	 * @since 1.12
-	 */
-	public function render_form_authentication() {
-
-		$wrapper = '';
-		// These are unique IDs.
-		$module_id = 'powerform-module-' . $this->model->id . '-authentication';
-		$title_id  = $module_id . '-title';
-		$label_id  = $module_id . '-label';
-		$input_id  = $module_id . '-input';
-		$notice_id = $module_id . '-notice';
-
-		$form_type  = isset( $this->model->settings['form-type'] ) ? $this->model->settings['form-type'] : '';
-
-		if ( 'login' !== $form_type )
-		    return '';
-
-		if ( is_multisite() ) {
-			$login_header_url   = network_home_url();
-			$login_header_title = get_network()->site_name;
-		} else {
-			$login_header_url   = __( 'https://wordpress.org/' );
-			$login_header_title = __( 'Powered by WordPress' );
-		}
-
-		$defender_data  = powerform_defender_compatibility();
-		$settings       = $defender_data['two_fa_settings'];
-		$custom_graphic = ! $defender_data['is_free'] && $settings->custom_graphic
-			? $settings->custom_graphic_url
-			: $defender_data['img_dir_url'] . '2factor-disabled.svg';
-
-		$app_text = isset( $settings->app_text )
-			? $settings->app_text
-			: esc_html__( 'Öffne die Google Authenticator-App und gib den 6-stelligen Passcode ein.', Powerform::DOMAIN );
-
-		$wrapper .= '<div class="powerform-authentication">';
-
-			$wrapper .= '<div role="dialog" id="' . $module_id . '" class="powerform-authentication-content" aria-modal="true" aria-labelledby="' . $title_id . '">';
-
-				$wrapper .= '<h1 id="' . $title_id . '"><a href="' . esc_url( $login_header_url ) . '" title="' . esc_attr( $login_header_title ) . '" style="background-image: url(' . $custom_graphic . ');">' . esc_html__( 'Zum Anmelden authentifizieren', Powerform::DOMAIN ) . '</a></h1>';
-
-				$wrapper .= '<div role="alert" id="' . $notice_id . '" class="powerform-authentication-notice" data-error-message="' . esc_html__( 'Der Passcode war falsch.', Powerform::DOMAIN ) . '"></div>';
-
-				$wrapper .= '<div class="powerform-authentication-box">';
-
-					$wrapper .= '<p>';
-						$wrapper .= '<label for="' . $input_id . '" id="' . $label_id . '">' . $app_text . '</label>';
-						$wrapper .= '<input type="text" name="auth-code" value="" id="' . $input_id . '" aria-labelledby="' . $label_id . '" autocomplete="off" disabled />';
-					$wrapper .= '</p>';
-
-					$wrapper .= '<p class="powerform-authentication-button">';
-						$wrapper .= '<button role="button" class="authentication-button">' . esc_html__( 'Authentifizieren', Powerform::DOMAIN ) . '</button>';
-					$wrapper .= '</p>';
-
-				$wrapper .= '</div>';
-
-				$wrapper .= '<p class="powerform-authentication-nav"><a id="lostPhone" class="lost-device-url" href="#">' . esc_html__( 'Hast du Dein Gerät verloren? ', Powerform::DOMAIN ) . '</a>';
-				$wrapper .= '<img class="def-ajaxloader" src="' . $defender_data['img_dir_url'] . 'spinner.svg"/>';
-				$wrapper .='<strong class="notification"></strong>';
-				$wrapper .='</p>';
-
-				global $interim_login;
-				if ( ! $interim_login ) {
-					$link_back_to = sprintf( _x( '&larr; Zurück zu %s', Powerform::DOMAIN ), get_bloginfo( 'title', 'display' ) );
-					$wrapper .= '<p class="powerform-authentication-backtolog"><a class="auth-back" href="#">' . $link_back_to . '</a></p>';
-				}
-
-			$wrapper .= '</div>';
-
-		$wrapper .= '</div>';
-
-		return $wrapper;
-
+		return $content;
 	}
 
 	/**
@@ -294,19 +178,16 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	public function enqueue_form_scripts( $is_preview, $is_ajax_load = false ) {
 		$is_ajax_load = $is_preview || $is_ajax_load;
 
-		// Load assets conditionally
-		$assets = new Powerform_Assets_Enqueue_Form( $this->model, $is_ajax_load );
-		$assets->load_assets();
+		// Core scripts and styles always included!
+		powerform_print_front_styles( POWERFORM_VERSION );
+		powerform_print_front_scripts( POWERFORM_VERSION );
 
 		// Load reCaptcha scripts
 		if ( $this->has_captcha() ) {
-			$first_captcha    = $this->find_first_captcha();
-			$site_language    = get_locale();
-			$captcha_language = get_option( "powerform_captcha_language", "" );
-			$global_language  = ! empty( $captcha_language ) ? $captcha_language : $site_language;
-			$language         = Powerform_Field::get_property( 'language', $first_captcha, $global_language );
-			$language         = ! empty( $language ) ? $language : $global_language;
-			$src              = 'https://www.google.com/recaptcha/api.js?hl=' . $language . '&onload=powerform_render_captcha&render=explicit';
+			$first_captcha = $this->find_first_captcha();
+			$language      = get_option( "powerform_captcha_language", "en" );
+			$language      = Powerform_Field::get_property( 'language', $first_captcha, $language );
+			$src           = 'https://www.google.com/recaptcha/api.js?hl=' . $language . '&onload=powerform_render_captcha&render=explicit';
 
 			if ( ! $is_ajax_load ) {
 				wp_enqueue_script(
@@ -324,29 +205,12 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 					'load' => 'grecaptcha',
 				);
 			}
+
 		}
 
-		// Load Stripe scripts
-		if ( $this->has_stripe() ) {
-			$src = 'https://js.stripe.com/v3/';
-
-			if ( ! $is_ajax_load ) {
-				wp_enqueue_script(
-					'powerform-stripe',
-					$src,
-					array( 'jquery' ),
-					POWERFORM_VERSION,
-					true
-				);
-			} else {
-				// load later via ajax to avoid cache
-				$this->scripts['powerform-stripe'] = array(
-					'src'  => $src,
-					'on'   => 'window',
-					'load' => 'StripeCheckout',
-				);
-			}
-		}
+		// todo: solve this
+		// load date picker scripts always
+		wp_enqueue_script( 'jquery-ui-datepicker' );
 
 		// load int-tels
 		if ( $this->has_phone() ) {
@@ -356,7 +220,10 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 			$script_src     = powerform_plugin_url() . 'assets/js/library/intlTelInput.min.js';
 			$script_version = POWERFORM_VERSION;
 
-			if ( $is_ajax_load ) {
+			if ( ! $is_ajax_load ) {
+				wp_enqueue_style( 'intlTelInput-powerform-css', $style_src, array(), $style_version ); // intlTelInput
+				wp_enqueue_script( 'powerform-intlTelInput', $script_src, array( 'jquery' ), $script_version, false ); // intlTelInput
+			} else {
 				// load later via ajax to avoid cache
 				$this->styles['intlTelInput-powerform-css'] = array( 'src' => add_query_arg( 'ver', $style_version, $style_src ) );
 				$this->scripts['powerform-intlTelInput']    = array(
@@ -365,59 +232,19 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 					'load' => 'intlTelInput',
 				);
 			}
+
 		}
-//
-//		// FIELD: calculation picker.
-//		if ( $this->has_field_type( 'calculation' )
-//		     || $this->has_field_type( 'currency' )
-//		     || $this->has_field_type( 'number' ) ) {
-//				  if ( $is_ajax_load ) {
-//					$mask_src = powerform_plugin_url() . 'assets/js/library/jquery.mask.js';
-//					// load later via ajax to avoid cache
-//					$this->scripts['powerform-mask'] = array(
-//						'src'  => $mask_src,
-//						'on'   => 'window',
-//						'load' => 'mask',
-//					);
-//	  			}
-//		}
-
-		// Load Paypal scripts
-		if ( $this->has_paypal() ) {
-			$paypal_src = $this->paypal_script_argument( 'https://www.paypal.com/sdk/js' );
-			if ( ! $is_ajax_load ) {
-				wp_enqueue_script(
-					'powerform-paypal-' . $this->model->id,
-					$paypal_src,
-					array( 'jquery' ),
-					POWERFORM_VERSION,
-					true
-				);
-			} else {
-				// load later via ajax to avoid cache
-				$this->scripts['powerform-paypal-' . $this->model->id ] = array(
-					'src'  => $paypal_src,
-					'on'   => 'window',
-					'id'   => $this->model->id,
-					'load' => 'PayPalCheckout',
-				);
-			}
-
-			add_action( 'wp_footer', array( $this, 'print_paypal_scripts' ), 9999 );
-		}
-
 
 		// todo: solve this
 		// load buttons css
 		wp_enqueue_style( 'buttons' );
 
-		if ( $this->has_postdata() || $this->has_editor()) {
+		if ( $this->has_postdata() ) {
 			if ( $is_ajax_load ) {
 				if ( class_exists( '_WP_Editors' ) ) {
-					global $wp_scripts;
 					ob_start();
 					_WP_Editors::enqueue_scripts();
-					$wp_scripts->do_footer_items();
+					print_footer_scripts();
 					_WP_Editors::editor_js();
 					$this->script .= ob_get_clean();
 				}
@@ -444,89 +271,19 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 				} else {
 					// load later via ajax to avoid cache
 					$this->styles[ 'powerform-font-' . sanitize_title( $font_name ) . '-css' ] = array( 'src' => $google_font_url );
+
 				}
 				$loaded_fonts[] = sanitize_title( $font_name );
 			}
 		}
-
-		/**
-		 * Filter enqueue form styles
-		 *
-		 * @since 1.13
-		 *
-		 * @param bool $is_preview
-		 * @param bool $is_ajax_load
-		 */
-		$this->styles = apply_filters( 'powerform_enqueue_form_styles', $this->styles, $is_preview, $is_ajax_load );
-
-		/**
-		 * Filter enqueue form scripts
-		 *
-		 * @since 1.13
-		 *
-		 * @param bool $is_preview
-		 * @param bool $is_ajax_load
-		 */
-		$this->scripts = apply_filters( 'powerform_enqueue_form_scripts', $this->scripts, $is_preview, $is_ajax_load );
-
-		/**
-		 * Filter enqueue form inline script
-		 *
-		 * @since 1.13
-		 *
-		 * @param bool $is_preview
-		 * @param bool $is_ajax_load
-		 */
-		$this->script = apply_filters( 'powerform_enqueue_form_script', $this->script, $is_preview, $is_ajax_load );
 
 		//Load Front Render Scripts
 		//render front script of form front end initialization
 		if ( ! $is_ajax_load ) {
 			add_action( 'wp_footer', array( $this, 'powerform_render_front_scripts' ), 9999 );
 		}
-		add_action( 'admin_footer', array( $this, 'powerform_render_front_scripts' ), 9999 );
+
 	}
-
-	/**
-	 * PayPal Script url parameters
-	 *
-	 * @param $script
-	 *
-	 * @return string
-	 */
-	public function paypal_script_argument( $script ) {
-		$paypal_setting = $this->get_paypal_properties();
-		if ( ! empty( $paypal_setting ) ) {
-			$arg        = array();
-			$card_array = array( 'visa', 'mastercard', 'amex', 'discover', 'jcb', 'elo', 'hiper' );
-			if ( 'live' === $paypal_setting['mode'] ) {
-				$arg['client-id'] = $paypal_setting['live_id'];
-			} else {
-				$arg['client-id'] = esc_html( $paypal_setting['sandbox_id'] );
-			}
-			if ( ! empty( $paypal_setting['currency'] ) ) {
-				$arg['currency'] = $paypal_setting['currency'];
-			}
-			if ( ! empty( $paypal_setting['locale'] ) ) {
-				$arg['locale'] = $paypal_setting['locale'];
-			}
-			foreach ( $card_array as $card ) {
-				if ( ! empty( $paypal_setting[ $card ] ) ) {
-					$cards[] = $card;
-				}
-			}
-			if ( ! empty( $cards ) ) {
-				$arg['disable-card'] = implode( ',', $cards );
-			}
-			if ( 'enable' === $paypal_setting['debug_mode'] ) {
-				$arg['debug'] = 'true';
-			}
-			$script = add_query_arg( $arg, $script );
-		}
-
-		return $script;
-	}
-
 
 	/**
 	 * Render shortcode
@@ -546,12 +303,6 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 
 		$is_preview = isset( $atts['is_preview'] ) ? $atts['is_preview'] : false;
 		$is_preview = filter_var( $is_preview, FILTER_VALIDATE_BOOLEAN );
-
-		if ( $is_preview === false && powerform_is_page_builder_preview() ) {
-			$is_preview = true;
-		}
-
-		$is_preview = apply_filters( 'powerform_render_shortcode_is_preview', $is_preview );
 
 		$preview_data = isset( $atts['preview_data'] ) ? $atts['preview_data'] : array();
 
@@ -650,30 +401,6 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	}
 
 	/**
-	 * Get Pagination field
-	 *
-	 * @since 1.6
-	 *
-	 * @return array
-	 */
-	public function get_pagination_field() {
-		$settings = $this->get_form_settings();
-
-		if ( ! isset( $settings[ 'paginationData' ] ) ) {
-			$settings[ 'paginationData' ] = array();
-		}
-		$defaults = array(
-			'element_id' => 'pagination',
-			'type'       => 'pagination',
-			'conditions' => array(),
-		);
-
-		$submit_data = array_merge( $defaults, $settings[ 'paginationData' ] );
-
-		return $submit_data;
-	}
-
-	/**
 	 * Return before wrapper markup
 	 *
 	 * @since 1.0
@@ -683,13 +410,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @return mixed
 	 */
 	public function render_wrapper_before( $wrapper ) {
-		$class = 'powerform-row';
-
-		if ( $this->is_only_hidden( $wrapper ) ) {
-			$class .= ' powerform-hidden';
-		}
-
-		$html = sprintf( '<div class="%1$s">', $class );
+		$html = '<div class="powerform-row">';
 
 		return apply_filters( 'powerform_before_wrapper_markup', $html, $wrapper );
 	}
@@ -721,39 +442,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 			$ajax_form = true;
 		}
 
-		$extra_class = $ajax_form ? 'powerform_ajax' : '';
-
-		if ( isset( $this->lead_model->id ) ) {
-			$extra_class .= ' powerform-leads-form';
-		}
-
-		return $extra_class;
-	}
-
-	/**
-	 * Return true if we have only hidden field in the row
-	 *
-	 * @since 1.7
-	 * @return bool
-	 */
-	public function is_only_hidden( $wrapper ) {
-		// We don't have any fields, abort
-		if ( ! isset( $wrapper['fields'] ) ) {
-			return false;
-		}
-
-		// We have more than one field in the row, abort
-		if ( count( $wrapper['fields'] ) > 1 ) {
-			return false;
-		}
-
-		// Check if the field type is hidden
-		if ( "hidden" === $wrapper['fields'][0]['type'] || "paypal" === $wrapper['fields'][0]['type'] ) {
-			// Field type is hidden, return true
-			return true;
-		}
-
-		return false;
+		return $ajax_form ? 'powerform_ajax' : '';
 	}
 
 	/**
@@ -766,27 +455,17 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @return string|void
 	 */
 	public function render_fields( $render = true ) {
-		$html             = '';
-		$step             = 1;
-		$pagination_field = array();
+		$html = '';
+		$step = 1;
 
-		$wrappers = apply_filters( 'powerform_cform_render_fields', $this->get_wrappers(), $this->model->id );
+		$wrappers = $this->get_wrappers();
 
 		$html .= $this->do_before_render_form_fields_for_addons();
 
 		// Check if we have pagination field
 		if ( $this->has_pagination() ) {
-			if ( ! empty( $wrappers ) ) {
-				foreach ( $wrappers as $key => $wrapper ) {
-					foreach ( $wrapper['fields'] as $fields ) {
-						if ( $this->is_pagination( $fields ) ) {
-							$pagination_field[] = $fields;
-						}
-					}
-				}
-			}
+			$html .= $this->pagination_start();
 			$html .= $this->pagination_header();
-			$html .= $this->pagination_start( $pagination_field );
 			$html .= $this->pagination_content_start();
 		}
 
@@ -826,8 +505,9 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 				if ( $has_pagination ) {
 					$html .= $this->pagination_content_end();
 					if ( isset( $field ) ) {
-						$html .= $this->pagination_step( $step, $field, $pagination_field );
+						$html .= $this->pagination_step( $step, $field );
 					}
+					$html .= $this->pagination_header();
 					$html .= $this->pagination_content_start();
 					$step ++;
 				}
@@ -863,7 +543,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	public function is_pagination_row( $wrapper ) {
 		$is_single = $this->is_single_field( $wrapper );
 
-		if ( $is_single && isset( $wrapper['fields'][0]['type'] ) && "page-break" === $wrapper['fields'][0]['type'] ) {
+		if ( $is_single && isset( $wrapper['fields'][0]['type'] ) && "pagination" === $wrapper['fields'][0]['type'] ) {
 			return true;
 		}
 
@@ -894,6 +574,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @return string
 	 */
 	public function pagination_header() {
+
 		$type           = $this->get_pagination_type();
 		$has_pagination = $this->has_pagination_header();
 
@@ -902,40 +583,37 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 		}
 
 		if ( 'bar' === $type ) {
-			$html = '<div class="powerform-pagination-progress" aria-hidden="true"></div>';
+
+			$html = '<div class="powerform-pagination--bar"></div>';
+
 		} else {
-			$html = '<div role="tablist" class="powerform-pagination-steps" aria-label="Pagination"></div>';
+
+			$html = '<ol class="powerform-pagination--nav"></ol>';
+
 		}
 
 		return apply_filters( 'powerform_pagination_header_markup', $html );
+
 	}
 
 	/**
 	 * Return pagination start markup
 	 *
-	 * @param $element
-	 *
 	 * @since 1.0
 	 * @return string
 	 */
-	public function pagination_start( $element = array() ) {
+	public function pagination_start() {
 
 		$form_settings = $this->get_form_settings();
-		$label         = __( 'Fertig', Powerform::DOMAIN );
-		$element_id    = ! empty( $element ) ? $element[0]['element_id'] : '';
+		$label         = __( "Fertig", Powerform::DOMAIN );
 
-		if ( isset( $form_settings[ 'paginationData' ][ 'last-steps' ] ) ) {
-			$label = $form_settings[ 'paginationData' ][ 'last-steps' ];
+		if ( isset( $form_settings['pagination-step-label'] ) ) {
+			$label = $form_settings['pagination-step-label'];
 		}
 
-		$html = sprintf(
-			'<div tabindex="0" role="tabpanel" id="powerform-custom-form-%3$s--page-0" class="powerform-pagination powerform-pagination-start" aria-labelledby="powerform-custom-form-%3$s--page-0-label" data-step="0" data-label="%1$s" data-name="%2$s">',
-			$label,
-			$element_id,
-			$form_settings['form_id']
-		);
+		$html = sprintf( '<div class="powerform-pagination powerform-pagination-start" data-step="0" data-label="%1$s">', $label );
 
-		return apply_filters( 'powerform_pagination_start_markup', $html, $label, $element_id );
+		return apply_filters( 'powerform_pagination_start_markup', $html, $label );
 
 	}
 
@@ -950,21 +628,20 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 */
 	public function get_pagination_properties() {
 
-		$form_fields         = $this->get_fields();
-		$pagination_settings = $this->get_pagination_field();
+		$form_settings = $this->get_form_settings();
+
 		$properties = array(
-			'has-pagination'           => $this->has_pagination(),
-			'pagination-header-design' => 'show',
-			'pagination-header'        => 'nav',
-			'last-steps'               => __( "Fertig", Powerform::DOMAIN ),
-			'last-previous'            => __( "Bisherige", Powerform::DOMAIN ),
-			'pagination-labels'        => 'default',
-			'has-paypal'               => $this->has_paypal(),
+			'has-pagination'                => $this->has_pagination(),
+			'pagination-header-design'      => 'off',
+			'pagination-step-label'         => __( "Fertig", Powerform::DOMAIN ),
+			'pagination-labels'             => 'none',
+			'pagination-footer-button-text' => __( "Zurück", Powerform::DOMAIN ),
+			'pagination-right-button-text'  => __( "Weiter", Powerform::DOMAIN ),
 		);
 
 		foreach ( $properties as $property => $value ) {
-			if ( isset( $pagination_settings[ $property ] ) ) {
-				$new_value = $pagination_settings[ $property ];
+			if ( isset( $form_settings[ $property ] ) ) {
+				$new_value = $form_settings[ $property ];
 				if ( is_bool( $value ) ) {
 					// return boolean
 					$new_value = filter_var( $new_value, FILTER_VALIDATE_BOOLEAN );
@@ -976,16 +653,6 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 				}
 				$properties[ $property ] = $new_value;
 			}
-			foreach ( $form_fields as $form_field ) {
-				if ( $this->is_pagination( $form_field ) ) {
-					$element                             = $form_field['element_id'];
-					$properties[ $element ]['prev-text'] = isset( $pagination_settings[ $element . '-previous' ] ) ? $pagination_settings[ $element . '-previous' ] : 'Previous';
-					$properties[ $element ]['next-text'] = isset( $pagination_settings[ $element . '-next' ] ) ? $pagination_settings[ $element . '-next' ] : 'Next';
-				}
-				if ( $this->is_paypal( $form_field ) ) {
-					$properties['paypal-id'] = $form_field['element_id'];
-				}
-			}
 		}
 
 		$form_id = $this->model->id;
@@ -996,49 +663,9 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 		 * @since 1.1
 		 *
 		 * @param array $properties
-		 * @param int $form_id Current Form ID
+		 * @param int   $form_id Current Form ID
 		 */
 		$properties = apply_filters( 'powerform_pagination_properties', $properties, $form_id );
-
-		return $properties;
-
-	}
-
-	/**
-	 * Get paypal Properties as array
-	 *
-	 * @since 1.1
-	 *
-	 *
-	 * @return array
-	 */
-	public function get_paypal_properties() {
-		global $wp;
-		$form_fields = $this->get_fields();
-		$paypal      = new Powerform_PayPal_Express();
-		foreach ( $form_fields as $form_field ) {
-			if ( $this->is_paypal( $form_field ) ) {
-				foreach ( $form_field as $key => $field ) {
-					$properties[ $key ] = $field;
-				}
-			}
-		}
-		$properties['live_id']      = $paypal->get_live_id();
-		$properties['sandbox_id']   = $paypal->get_sandbox_id();
-		$properties['redirect_url'] = home_url( $wp->request );
-
-		$form_id               = $this->model->id;
-		$properties['form_id'] = $form_id;
-
-		/**
-		 * Filter PayPal properties
-		 *
-		 * @since 1.1
-		 *
-		 * @param array $properties
-		 * @param int $form_id Current Form ID
-		 */
-		$properties = apply_filters( 'powerform_paypal_properties', $properties, $form_id );
 
 		return $properties;
 
@@ -1112,8 +739,8 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 			$html
 				=
 				sprintf( '<button class="' . $class
-						 . '" style="display: none;" disabled><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">%s</span></button>',
-					$button );
+				         . '" style="display: none;" disabled><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">%s</span></button>',
+				         $button );
 		}
 
 		return apply_filters( 'powerform_pagination_submit_markup', $html );
@@ -1138,36 +765,18 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 *
 	 * @param $step
 	 * @param $field
-	 * @param $pagination
 	 *
 	 * @return string
 	 */
-	public function pagination_step( $step, $field, $pagination ) {
-		$form_settings = $this->get_form_settings();
-		$label = sprintf( '%s %s', __( "Seite ", Powerform::DOMAIN ), $step );
-		$pagination_settings = $this->get_pagination_field();
-		if ( isset( $pagination_settings[ $field['element_id'] . '-steps' ] ) ) {
-			$label = $pagination_settings[ $field['element_id'] . '-steps' ];
-		}
-		$element_id = '';
-		if ( ! empty( $pagination ) ) {
-			for ( $i = $step; $i <= count( $pagination ); $i ++ ) {
-				if ( isset( $pagination[ $i ]['element_id'] ) && ( $field['element_id'] !== $pagination[ $i ]['element_id'] ) ) {
-					$element_id = $pagination[ $i ]['element_id'];
-					break;
-				}
-			}
+	public function pagination_step( $step, $field ) {
+		$label = sprintf( '%s %s', __( "Schritt", Powerform::DOMAIN ), $step );
+		if ( isset( $field['pagination-label'] ) ) {
+			$label = $field['pagination-label'];
 		}
 
-		$html = sprintf(
-			'</div><div tabindex="0" role="tabpanel" id="powerform-custom-form-%4$s--page-%1$s" class="powerform-pagination" aria-labelledby="powerform-custom-form-%4$s--page-%1$s-label" aria-hidden="true" data-step="%1$s" data-label="%2$s" data-name="%3$s" hidden>',
-			$step,
-			$label,
-			$element_id,
-			$form_settings['form_id']
-		);
+		$html = sprintf( '</div><div class="powerform-pagination" data-step="%1$s" data-label="%2$s">', $step, $label );
 
-		return apply_filters( 'powerform_pagination_step_markup', $html, $step, $label, $element_id );
+		return apply_filters( 'powerform_pagination_step_markup', $html, $step, $label );
 	}
 
 	/**
@@ -1417,20 +1026,19 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 		/** @var Powerform_Field $field_object */
 		$field_object              = powerform_get_field( $type );
 		$has_phone_character_limit = ( ( isset( $field['phone_validation'] ) && $field['phone_validation'] )
-									   && ( isset( $field['validation'] )
-											&& 'character_limit' === $field['validation'] ) );
+		                               && ( isset( $field['phone_validation_type'] )
+		                                    && 'character_limit' === $field['phone_validation_type'] ) );
 
 		if ( ( isset( $field['description'] ) && ! empty( $field['description'] ) ) || isset( $field['text_limit'] ) || $has_phone_character_limit ) {
 
-			$html = sprintf( '<div class="powerform-description">' );
+			$html = sprintf( '<div class="powerform-field--helper">' );
 
 			if ( isset( $field['description'] ) && ! empty( $field['description'] ) ) {
 				$description = $this->sanitize_output( $field['description'] );
 				if ( "false" === $description ) {
 					$description = '';
 				}
-
-				$html .= $description;
+				$html .= sprintf( '<label class="powerform-label--helper">%s</label>', $description );
 			}
 
 			if ( ( isset( $field['text_limit'] ) || isset( $field['phone_limit'] ) ) && isset( $field['limit'] ) && $field_object->has_counter || $has_phone_character_limit ) {
@@ -1440,7 +1048,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 						$limit = 10;
 					}
 					$limit_type = isset( $field['limit_type'] ) ? $field['limit_type'] : '';
-					$html       .= sprintf( '<span data-limit="%s" data-type="%s">0 / %s</span>', $limit, $limit_type, $limit );
+					$html       .= sprintf( '<label class="powerform-label--limit" data-limit="%s" data-type="%s">0 / %s</label>', $limit, $limit_type, $limit );
 				}
 			}
 
@@ -1466,7 +1074,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 		$cols  = $this->get_cols( $field );
 		$id    = $this->get_id( $field );
 
-		$html = sprintf( '<div id="%s" class="powerform-col powerform-col-%s %s">', $id, $cols, $class );
+		$html = sprintf( '<div id="%s" class="powerform-col powerform-col-%s"><div class="%s">', $id, $cols, $class );
 
 		return apply_filters( 'powerform_before_field_markup', $html, $class );
 	}
@@ -1481,7 +1089,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @return mixed
 	 */
 	public function render_field_after( $field ) {
-		$html = sprintf( '</div>' );
+		$html = sprintf( '</div></div>' );
 
 		return apply_filters( 'powerform_after_field_markup', $html, $field );
 	}
@@ -1604,11 +1212,11 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	public function get_fields_style() {
 		$form_settings = $this->get_form_settings();
 
-		if ( isset( $form_settings['fields-style'] ) ) {
-			return $form_settings['fields-style'];
+		if ( ! isset( $form_settings['fields-style'] ) ) {
+			return 'open';
 		}
 
-		return 'open';
+		return $form_settings['fields-style'];
 	}
 
 	/**
@@ -1715,7 +1323,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 
 		if ( ! empty( $fields ) ) {
 			foreach ( $fields as $field ) {
-				if ( "page-break" === $field["type"] ) {
+				if ( "pagination" === $field["type"] ) {
 					return true;
 				}
 			}
@@ -1734,24 +1342,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @return bool
 	 */
 	public function is_pagination( $field ) {
-		if ( isset( $field["type"] ) && "page-break" === $field["type"] ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Return if field is paypal
-	 *
-	 * @since 1.0
-	 *
-	 * @param $field
-	 *
-	 * @return bool
-	 */
-	public function is_paypal( $field ) {
-		if ( isset( $field["type"] ) && "paypal" === $field["type"] ) {
+		if ( isset( $field["type"] ) && "pagination" === $field["type"] ) {
 			return true;
 		}
 
@@ -1769,10 +1360,10 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 */
 	public function get_classes( $field ) {
 
-		$class = '';
+		$class = 'powerform-field';
 
 		if ( isset( $field['custom-class'] ) && ! empty( $field['custom-class'] ) ) {
-			$class .= ' ' . esc_html( $field['custom-class'] );
+			$class .= ' ' . $field['custom-class'];
 		}
 
 		return $class;
@@ -1815,36 +1406,6 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	}
 
 	/**
-	 * Compare element_id with precision elements
-	 *
-	 * @since 1.13
-	 *
-	 * @param string $element_id
-	 *
-	 * @return bool
-	 */
-	public function compare_element_id_with_precision_elements( $element_id ) {
-		return false !== strpos( $element_id, 'calculation-' )
-			|| false !== strpos( $element_id, 'currency-' );
-	}
-
-	/**
-	 * Change condition value with specified precision
-	 *
-	 * @since 1.13
-	 *
-	 * @param string $condition_value
-	 * @param array $field
-	 *
-	 * @return string
-	 */
-	public function change_condition_value_with_precision( $condition_value, $field ) {
-		$precision   = Powerform_Field::get_property( 'precision', $field, 2 );
-
-		return sprintf( "%.{$precision}f", $condition_value );
-	}
-
-	/**
 	 * Return fields conditions for JS
 	 *
 	 * @since 1.0
@@ -1871,14 +1432,6 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 					$field_conditions = isset( $field['conditions'] ) ? $field['conditions'] : array();
 
 					foreach ( $field_conditions as $condition ) {
-						if ( $this->compare_element_id_with_precision_elements( $condition['element_id'] ) ) {
-							foreach ( $fields as $key => $field_array ) {
-								if ( $field_array['element_id'] === $condition['element_id'] ) {
-									$condition['value'] = $this->change_condition_value_with_precision( $condition['value'], $field_array );
-									break;
-								}
-							}
-						}
 						$new_condition = array(
 							'field'    => $condition['element_id'],
 							'operator' => $condition['rule'],
@@ -1945,7 +1498,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 
 		if ( ! empty( $fields ) ) {
 			foreach ( $fields as $field ) {
-				if ( "paypal" === $field["type"] ) {
+				if ( "product" === $field["type"] && ( ! isset( $field["product_free"] ) ) ) {
 					$selling ++;
 				}
 			}
@@ -1961,44 +1514,29 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @return mixed
 	 */
 	public function get_button_markup() {
-
-		$html   = '';
 		$button = $this->get_submit_button_text();
 
 		$custom_class = $this->get_submit_custom_clas();
 
-		$class = 'powerform-button powerform-button-submit';
+		$class = 'powerform-button';
 
 		if ( $custom_class && ! empty( $custom_class ) ) {
 			$class .= ' ' . $custom_class;
 		}
 
-		$html .= '<div class="powerform-row powerform-row-last">';
-
-		$html .= '<div class="powerform-col">';
-
+		$html = '<div class="powerform-row">';
+		$html .= '<div class="powerform-col powerform-col-12">';
 		$html .= '<div id="submit" class="powerform-field">';
 
-		$html .= sprintf( '<button class="%s">', $class );
-
-		if ( 'material' === $this->get_form_design() ) {
-
-			$html .= sprintf( '<span>%s</span>', $button );
-
-			$html .= '<span aria-hidden="true"></span>';
-
+		if ( $this->get_form_design() !== 'material' ) {
+			$html .= sprintf( '<button id="powerform-submit" class="' . $class . '">%s</button>', $button );
 		} else {
-
-			$html .= $button;
-
+			$html .= sprintf( '<button id="powerform-submit" class="' . $class
+			                  . '"><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">%s</span></button>',
+			                  $button );
 		}
-
-		$html .= '</button>';
-
 		$html .= '</div>';
-
 		$html .= '</div>';
-
 		$html .= '</div>';
 
 		return apply_filters( 'powerform_render_button_markup', $html, $button );
@@ -2014,32 +1552,12 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @return mixed
 	 */
 	public function get_paypal_button_markup( $form_id ) {
-
-		$html        = '';
-		$custom_form = Powerform_Custom_Form_Model::model()->load( $form_id );
-		if ( is_object( $custom_form ) ) {
-			$fields      = $custom_form->get_fields();
-			foreach ( $fields as $field ) {
-
-				$field_array = $field->to_formatted_array();
-				$field_type  = $field_array['type'];
-
-				if ( 'paypal' === $field_type ) {
-
-					$id   = Powerform_Field::get_property( 'element_id', $field_array );
-
-					$html = '<div class="powerform-row powerform-paypal-row">';
-					$html .= '<div class="powerform-col powerform-col-12">';
-					$html .= '<div class="powerform-field">';
-					$html .= '<div id="paypal-button-container-' . $form_id . '" class="' . $id . '-payment powerform-button-paypal">';
-					$html .= '</div>';
-					$html .= '</div>';
-					$html .= '</div>';
-					$html .= '</div>';
-
-				}
-			}
-		}
+		$html = '<div class="powerform-row">';
+		$html .= '<div class="powerform-col powerform-col-12">';
+		$html .= '<div class="powerform-field" id="paypal-button-container-' . $form_id . '">';
+		$html .= '</div>';
+		$html .= '</div>';
+		$html .= '</div>';
 
 		return apply_filters( 'powerform_render_button_markup', $html );
 	}
@@ -2050,7 +1568,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @since 1.0
 	 *
 	 * @param        $form_id
-	 * @param bool $render
+	 * @param bool   $render
 	 *
 	 * @return mixed|void
 	 */
@@ -2059,7 +1577,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 		$nonce      = $this->nonce_field( 'powerform_submit_form', 'powerform_nonce' );
 		$post_id    = $this->get_post_id();
 		$has_paypal = $this->has_paypal();
-		$form_type  = isset( $this->model->settings['form-type'] ) ? $this->model->settings['form-type'] : '';
+
 		if ( $has_paypal ) {
 			if ( ! ( self::$paypal instanceof Powerform_Paypal_Express ) ) {
 				self::$paypal = new Powerform_Paypal_Express();
@@ -2077,28 +1595,13 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 			}
 		}
 
-
 		$html .= $nonce;
 		$html .= sprintf( '<input type="hidden" name="form_id" value="%s">', $form_id );
 		$html .= sprintf( '<input type="hidden" name="page_id" value="%s">', $post_id );
-		$html .= sprintf( '<input type="hidden" name="form_type" value="%s">', $form_type );
 		$html .= sprintf( '<input type="hidden" name="current_url" value="%s">', powerform_get_current_url() );
 		if ( isset( self::$render_ids[ $form_id ] ) ) {
 			$html .= sprintf( '<input type="hidden" name="render_id" value="%s">', self::$render_ids[ $form_id ] );
 		}
-		if ( $this->has_multiupload() ) {
-			$html .= sprintf( '<input type="hidden" name="powerform-multifile-hidden" class="powerform-multifile-hidden">' );
-		}
-
-		if ( $this->is_login_form() ) {
-			$redirect_url = ! empty( $this->model->settings['redirect-url'] ) ? $this->model->settings['redirect-url'] : admin_url();
-			$redirect_url = powerform_replace_variables( $redirect_url, $form_id );
-			$html         .= sprintf( '<input type="hidden" name="redirect_to" value="%s">', $redirect_url );
-		}
-
-		if ( isset( $this->lead_model->id ) ) {
-			$html .= sprintf( '<input type="hidden" name="lead_quiz" value="%s">', $this->lead_model->id );
-        }
 
 		if ( $this->is_preview ) {
 			$html .= sprintf( '<input type="hidden" name="action" value="%s">', "powerform_submit_preview_form_custom-forms" );
@@ -2163,10 +1666,10 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 *
 	 * @since 1.0
 	 *
-	 * @param string $html - the button html
-	 * @param int $form_id - the current form id
-	 * @param int $post_id - the current post id
-	 * @param string $nonce - the nonce field
+	 * @param string $html    - the button html
+	 * @param int    $form_id - the current form id
+	 * @param int    $post_id - the current post id
+	 * @param string $nonce   - the nonce field
 	 *
 	 * @return string $html
 	 */
@@ -2263,12 +1766,6 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 				}
 
 				$properties = $style_property['settings'];
-				$paypal_properties = $this->get_pp_field_properties();
-
-				// Merge paypal properties to styles ( width & height are used in the styles )
-				if ( ! empty( $paypal_properties ) ) {
-					$properties = array_merge( $properties, $paypal_properties );
-				}
 
 				// use this to properly check font settings is enabled
 				$properties['fonts_settings'] = array();
@@ -2297,10 +1794,10 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 					} else {
 
 						$properties['custom_css'] = powerform_prepare_css( $properties['custom_css'],
-							'.powerform-custom-form-' . $properties['form_id'] . '.powerform-design--' . $properties['form-style'] . ' ',
-							false,
-							true,
-							'powerform-custom-form' );
+						                                                    '.powerform-custom-form-' . $properties['form_id'] . '.powerform-design--' . $properties['form-style'] . ' ',
+						                                                    false,
+						                                                    true,
+						                                                    'powerform-custom-form' );
 
 					}
 				}
@@ -2312,8 +1809,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 
 				if ( isset( $properties['form_id'] ) && strlen( $trimmed_styles ) > 0 ) {
 					?>
-					<style type="text/css"
-						   id="powerform-custom-form-styles-<?php echo esc_attr( $properties['form_id'] ); ?>">
+					<style type="text/css" id="powerform-custom-form-styles-<?php echo esc_attr( $properties['form_id'] ); ?>">
 						<?php echo wp_strip_all_tags( $trimmed_styles ); // phpcs:ignore ?>
 					</style>
 
@@ -2321,42 +1817,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 				}
 			}
 		}
-	}
 
-	/**
-	 * Get PayPal field properties
-	 *
-	 * @since 1.7.1
-	 *
-	 * @return array
-	 */
-	public function get_pp_field_properties() {
-		$fields = $this->get_fields();
-		$props = array();
-
-		foreach( $fields as $field ) {
-
-			if ( "paypal" === $field['type'] ) {
-
-				if ( isset( $field['width' ] ) ) {
-					$props['paypal-width'] = $field['width'];
-				}
-
-				if ( isset( $field['height'] ) ) {
-					$props['paypal-height'] = $field['height'];
-				}
-
-				if ( isset( $field['layout'] ) ) {
-					$props['paypal-layout'] = $field['layout'];
-				}
-
-				if ( isset( $field['tagline'] ) ) {
-					$props['paypal-tagline'] = $field['tagline'];
-				}
-			}
-		}
-
-		return $props;
 	}
 
 	/**
@@ -2366,8 +1827,8 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @return bool
 	 */
 	public function has_pagination_header() {
-		$settings = $this->get_pagination_field();
-		$is_active = "show";
+		$settings  = $this->get_form_settings();
+		$is_active = "off";
 
 		if ( isset( $settings['pagination-header-design'] ) ) {
 			$is_active = $settings['pagination-header-design'];
@@ -2387,10 +1848,8 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @return string
 	 */
 	public function get_pagination_type() {
-		$settings = $this->get_pagination_field();
-        if ( ! isset( $settings['pagination-header'] ) ) {
-            return 'nav';
-        }
+		$settings = $this->get_form_settings();
+
 		return $settings['pagination-header'];
 	}
 
@@ -2412,7 +1871,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @since 1.0.5
 	 */
 	public function get_strings_for_calendar() {
-		$calendar['days']   = array(
+		$days = array(
 			esc_html__( 'So', Powerform::DOMAIN ),
 			esc_html__( 'Mo', Powerform::DOMAIN ),
 			esc_html__( 'Di', Powerform::DOMAIN ),
@@ -2421,22 +1880,8 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 			esc_html__( 'Fr', Powerform::DOMAIN ),
 			esc_html__( 'Sa', Powerform::DOMAIN ),
 		);
-		$calendar['months'] = array(
-			esc_html__( 'Jan', Powerform::DOMAIN ),
-			esc_html__( 'Feb', Powerform::DOMAIN ),
-			esc_html__( 'Mar', Powerform::DOMAIN ),
-			esc_html__( 'Apr', Powerform::DOMAIN ),
-			esc_html__( 'Mai', Powerform::DOMAIN ),
-			esc_html__( 'Jun', Powerform::DOMAIN ),
-			esc_html__( 'Jul', Powerform::DOMAIN ),
-			esc_html__( 'Aug', Powerform::DOMAIN ),
-			esc_html__( 'Sep', Powerform::DOMAIN ),
-			esc_html__( 'Okt', Powerform::DOMAIN ),
-			esc_html__( 'Nov', Powerform::DOMAIN ),
-			esc_html__( 'Dez', Powerform::DOMAIN ),
-		);
 
-		return json_encode( $calendar );
+		return '"' . implode( '","', $days ) . '"';
 	}
 
 	/**
@@ -2531,22 +1976,8 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 				?>
 				window.Powerform_Cform_Paginations[<?php echo esc_attr( $form_properties['id'] ); ?>] =
 				<?php echo wp_json_encode( $pagination_config ); ?>;
-
-				var runPowerformFront = function () {
-					jQuery('#powerform-module-<?php echo esc_attr( $form_properties['id'] ); ?>[data-powerform-render="<?php echo esc_attr( $form_properties['render_id'] ); ?>"]')
-						.powerformFront(<?php echo wp_json_encode( $options ); ?>);
-				}
-
-				runPowerformFront();
-
-				if (window.elementorFrontend) {
-					if (typeof elementorFrontend.hooks !== "undefined") {
-						elementorFrontend.hooks.addAction('frontend/element_ready/global', function () {
-							runPowerformFront();
-						});
-					}
-				}
-
+				jQuery('#powerform-module-<?php echo esc_attr( $form_properties['id'] ); ?>[data-powerform-render="<?php echo esc_attr( $form_properties['render_id'] ); ?>"]')
+					.powerformFront(<?php echo wp_json_encode( $options ); ?>);
 				<?php
 				}
 				}
@@ -2560,15 +1991,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 				if (typeof PowerformFormHider !== 'undefined') {
 					var powerformFront = jQuery(PowerformFormHider.selector).data('powerformFront');
 					if (typeof powerformFront !== 'undefined') {
-						jQuery(powerformFront.powerform_selector).find('.powerform-row').hide();
-						jQuery(powerformFront.powerform_selector).find('.powerform-pagination-steps').hide();
-						jQuery(powerformFront.powerform_selector).find('.powerform-pagination-footer').hide();
-					}
-				}
-				if (typeof PowerformFormNewTabRedirect !== 'undefined') {
-					var powerformFront = PowerformFormNewTabRedirect.url;
-					if (typeof powerformFront !== 'undefined') {
-						window.open(PowerformFormNewTabRedirect.url, '_blank');
+						powerformFront.hide();
 					}
 				}
 			});
@@ -2722,7 +2145,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 		 * @since 1.2
 		 *
 		 * @param array $fonts
-		 * @param int $form_id
+		 * @param int   $form_id
 		 * @param array $settings form settings
 		 */
 		$fonts = apply_filters( 'powerform_custom_form_google_fonts', $fonts, $form_id, $settings );
@@ -2799,9 +2222,8 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @return bool
 	 */
 	public function is_displayable( $is_preview ) {
-        $status = isset( $this->lead_model->status ) ? $this->lead_model->status : $this->model->status;
 
-		if ( $this->model instanceof Powerform_Custom_Form_Model && ( $is_preview || Powerform_Custom_Form_Model::STATUS_PUBLISH === $status ) ) {
+		if ( $this->model instanceof Powerform_Custom_Form_Model && ( $is_preview || Powerform_Custom_Form_Model::STATUS_PUBLISH === $this->model->status ) ) {
 			$this->generate_render_id( $this->model->id );
 
 			return true;
@@ -2825,120 +2247,30 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 			return array();
 		}
 
-		$autoclose      = true;
+		$autoclose = true;
 		$autoclose_time = 5000;
 
-		if ( isset( $form_properties['settings']['autoclose'] ) ) {
+		if( isset( $form_properties['settings']['autoclose'] ) ) {
 			$autoclose = $form_properties['settings']['autoclose'];
 		}
 
-		if ( isset( $form_properties['settings']['autoclose-time'] ) && ! empty( $form_properties['settings']['autoclose-time'] ) ) {
+		if( isset( $form_properties['settings']['autoclose-time'] ) && ! empty( $form_properties['settings']['autoclose-time'] ) ) {
 			$autoclose_time = $form_properties['settings']['autoclose-time'] * 1000;
 		}
 
 		$options = array(
-			'form_type'           => $this->get_form_type(),
-			'inline_validation'   => filter_var( $form_properties['inline_validation'], FILTER_VALIDATE_BOOLEAN ),
-			'rules'               => $form_properties['validation_rules'],
-			// this is string, todo: refactor this to array (ALL FIELDS will be affected) to avoid client JSON.parse
-			'messages'            => $form_properties['validation_messages'],
-			// this is string, todo: refactor this to array (ALL FIELDS will be affected)  to avoid client JSON.parse
-			'conditions'          => $form_properties['conditions'],
-			'calendar'            => $this->get_strings_for_calendar(),
-			// this is string, todo: refactor this to array to (ALL FIELDS will be affected)  avoid client JSON.parse
-			'pagination_config'   => $form_properties['pagination'],
-			'paypal_config'       => $form_properties['paypal_payment'],
-			'powerform_fields'   => array_keys( powerform_fields_to_array() ),
-			'max_nested_formula'  => powerform_calculator_get_max_nested_formula(),
-			'general_messages'    => array(
-				'calculation_error'            => Powerform_Calculation::default_error_message(),
-				'payment_require_ssl_error'    => apply_filters(
-					'powerform_payment_require_ssl_error_message',
-					__( 'SSL erforderlich, um dieses Formular zu senden, überprüfe bitte Deine URL.', Powerform::DOMAIN )
-				),
-				'payment_require_amount_error' => __( 'Der PayPal-Betrag muss größer als 0 sein.', Powerform::DOMAIN ),
-			),
-			'payment_require_ssl' => $this->model->is_payment_require_ssl(),
-			'fadeout'             => $autoclose,
-			'fadeout_time'        => $autoclose_time,
-			'has_loader'          => $this->form_has_loader( $form_properties ),
-			'loader_label'		  => $this->get_loader_label( $form_properties ),
-			'calcs_memoize_time'  => $this->get_memoize_time(),
-			'is_reset_enabled'    => $this->is_reset_enabled(),
+			'form_type'         => $this->get_form_type(),
+			'inline_validation' => filter_var( $form_properties['inline_validation'], FILTER_VALIDATE_BOOLEAN ),
+			'rules'             => $form_properties['validation_rules'], // this is string, todo: refactor this to array (ALL FIELDS will be affected) to avoid client JSON.parse
+			'messages'          => $form_properties['validation_messages'], // this is string, todo: refactor this to array (ALL FIELDS will be affected)  to avoid client JSON.parse
+			'conditions'        => $form_properties['conditions'],
+			'calendar'          => $this->get_strings_for_calendar(), // this is string, todo: refactor this to array to (ALL FIELDS will be affected)  avoid client JSON.parse
+			'pagination_config' => $form_properties['pagination'],
+			'fadeout'           => $autoclose,
+			'fadeout_time'      => $autoclose_time,
 		);
 
-		if ( ! empty( $this->lead_model ) && $this->has_lead( $this->lead_model->settings ) ) {
-			$options['hasLeads']       = $this->has_lead( $this->lead_model->settings );
-			$options['form_placement'] = $this->get_form_placement( $this->lead_model->settings );
-			$options['leads_id']       = $this->get_leads_id( $this->lead_model->settings );
-			$options['quiz_id']        = $this->lead_model->id;
-        }
-
 		return $options;
-	}
-
-	/**
-	 * Return calculations time in ms
-	 *
-	 * @since 1.11
-	 *
-	 * @return mixed
-	 */
-	public function get_memoize_time() {
-		$default = 300; // Memoize time in ms
-
-		$time = apply_filters( 'powerform_calculation_memoize_time', $default );
-
-		return $time;
-	}
-
-	/**
-	 * Return if form reset after submit is enabled
-	 *
-	 * @since 1.12
-	 *
-	 * @return mixed
-	 */
-	public function is_reset_enabled() {
-		$default = true; // Memoize time in ms
-
-		$value = apply_filters( 'powerform_is_form_reset_enabled', $default );
-
-		return $value;
-	}
-
-	/**
-	 * Return if form has submission loader enabled
-	 *
-	 * @param $properties
-	 *
-	 * @since 1.7.1
-	 *
-	 * @return bool
-	 */
-	public function form_has_loader( $properties ) {
-		if ( isset( $properties['settings' ]['submission-indicator'] ) && "show" === $properties['settings' ]['submission-indicator'] ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Return loader label
-	 *
-	 * @param $properties
-	 *
-	 * @since 1.7.1
-	 *
-	 * @return mixed
-	 */
-	public function get_loader_label( $properties ) {
-		if ( isset( $properties['settings' ]['indicator-label'] ) ) {
-			return $properties['settings' ]['indicator-label'];
-		}
-
-		return __( "Einreichen...", Powerform::DOMAIN  );
 	}
 
 	/**
@@ -2948,98 +2280,22 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 * @since 1.6.2 add $extra as arg
 	 *
 	 * @param       $id
-	 * @param bool $is_preview
-	 * @param bool $data
-	 * @param bool $hide
+	 * @param bool  $is_preview
+	 * @param bool  $data
+	 * @param bool  $hide
 	 * @param array $last_submit_data
 	 * @param array $extra
-	 * @param array $quiz_id
 	 *
 	 * @return array
 	 */
-	public function ajax_display( $id, $is_preview = false, $data = false, $hide = true, $last_submit_data = array(), $extra = array(), $quiz_id = 0 ) {
-		//The first module and preview for it
-		$id = isset( $id ) ? intval( $id ) : null;
-
-		if ( ( is_null( $id ) || $id <= 0 ) && $is_preview && $data ) {
-			$fields = $settings = [];
-			$title  = '';
-
-			$form_model = new Powerform_Custom_Form_Model();
-			$status = Powerform_Custom_Form_Model::STATUS_PUBLISH;
-
-			// Build the fields
-			if ( isset( $data ) ) {
-				$fields = powerform_sanitize_field( $data['wrappers'] );
-				unset( $data['wrappers'] );
-
-				$title = !empty( $data['settings']['formName'] ) ? sanitize_text_field( $data['settings']['formName'] ) : $title;
-			}
-			if ( isset( $data['settings'] ) ) {
-				// Sanitize settings
-				$settings = powerform_sanitize_field( $data['settings'] );
-				$form_model->set_var_in_array( 'name', 'formName', $settings );
-			}else{
-				$form_model->set_var_in_array( 'name', 'formName', $data, 'powerform_sanitize_field' );
-			}
-
-			foreach ( $fields as $row ) {
-				foreach ( $row['fields'] as $f ) {
-					$field          = new Powerform_Form_Field_Model();
-					$field->form_id = $row['wrapper_id'];
-					$field->slug    = $f['element_id'];
-					$field->import( $f );
-					$form_model->add_field( $field );
-				}
-			}
-
-			// Sanitize custom css
-			if ( isset( $data['settings']['custom_css'] ) ) {
-				$settings['custom_css'] = sanitize_textarea_field( $data['settings']['custom_css'] );
-			}
-
-			// Sanitize thank you message
-			if ( isset( $data['settings']['thankyou-message'] ) ) {
-				$settings['thankyou-message'] = $data['settings']['thankyou-message'];
-			}
-
-			// Sanitize user email message
-			if ( isset( $data['settings']['user-email-editor'] ) ) {
-				$settings['user-email-editor'] = $data['settings']['user-email-editor'];
-			}
-
-			// Sanitize admin email message
-			if ( isset( $data['settings']['admin-email-editor'] ) ) {
-				$settings['admin-email-editor'] = $data['settings']['admin-email-editor'];
-			}
-
-			$settings['formName'] = $title;
-
-			$settings['version']  = '1.0';
-			$form_model->settings = $settings;
-
-			$form_model->status = $status;
-
-			$this->model = $form_model;
-			$this->model->id = $id;
-		} elseif ( $data && ! empty( $data ) ) {
+	public function ajax_display( $id, $is_preview = false, $data = false, $hide = true, $last_submit_data = array(), $extra = array() ) {
+		if ( $data && ! empty( $data ) ) {
 			$this->model = Powerform_Custom_Form_Model::model()->load_preview( $id, $data );
 			// its preview!
-			if ( is_object( $this->model ) ) {
-				$this->model->id = $id;
-			}
+			$this->model->id = $id;
 		} else {
 			$this->model = Powerform_Custom_Form_Model::model()->load( $id );
 		}
-
-		$is_ajax_load = $this->model->is_ajax_load( $is_preview );
-
-		if ( ! empty( $quiz_id ) ) {
-			$this->lead_model = Powerform_Quiz_Form_Model::model()->load( $quiz_id );
-			if ( ! $is_preview ) {
-				$is_ajax_load = isset( $this->lead_model->settings['use_ajax_load'] ) ? $this->lead_model->settings['use_ajax_load'] : false;
-			}
-        }
 
 		$response = array(
 			'html'         => '',
@@ -3054,7 +2310,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 			return $response;
 		}
 
-		if ( ! $is_ajax_load ) {
+		if ( ! $this->model->is_ajax_load( $is_preview ) ) {
 			// return nothing
 			return $response;
 		}
@@ -3085,7 +2341,7 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 
 		$response['options'] = $this->get_front_init_options( $properties );
 
-		$this->enqueue_form_scripts( $is_preview, $is_ajax_load );
+		$this->enqueue_form_scripts( $is_preview, $this->is_ajax_load() );
 
 		$response['styles']  = $this->styles;
 		$response['scripts'] = $this->scripts;
@@ -3114,8 +2370,9 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 	 */
 	public function get_html( $hide = true, $is_preview = false ) {
 		ob_start();
-		if ( $this->model->form_is_visible( $is_preview ) ) {
+		if ( $this->model->form_is_visible() ) {
 			add_filter( 'powerform_render_form_submit_markup', array( $this, 'render_honeypot_field' ), 10, 4 );
+
 			// Render form
 			$this->render( $this->model->id, $hide, $is_preview );
 
@@ -3129,18 +2386,21 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 				'validation_messages' => $this->inline_messages,
 				'settings'            => $this->get_form_settings(),
 				'pagination'          => $this->get_pagination_properties(),
-				'paypal_payment'      => $this->get_paypal_properties(),
 				'fonts_settings'      => $this->get_google_fonts(),
 			);
 		} else {
-			$form_settings = $this->get_form_settings(); ?>
-            <div class="powerform-custom-form">
-                 <?php if ( isset( $form_settings['expire_message'] ) && '' !== $form_settings['expire_message'] ) {
-                    $message = $form_settings['expire_message']; ?>
-                    <label class="powerform-label--info"><span><?php echo esc_html( $message ); ?></span></label>
-                 <?php } ?>
-            </div>
-		<?php }
+			$form_settings = $this->get_form_settings();
+
+			if ( isset( $form_settings['expire_message'] ) && '' !== $form_settings['expire_message'] ) {
+
+				$message = $form_settings['expire_message']; ?>
+
+				<div class="powerform-custom-form"><label class="powerform-label--info"><span><?php echo esc_html( $message ); ?></span></label></div>
+
+				<?php
+
+			}
+		}
 
 		$html = ob_get_clean();
 
@@ -3186,203 +2446,5 @@ class Powerform_CForm_Front extends Powerform_Render_Form {
 
 		return false;
 	}
-
-	/**
-	 * Check if form has a stripe field
-	 *
-	 * @since 1.7
-	 * @return bool
-	 */
-	public function has_stripe() {
-		$fields = $this->get_fields();
-
-		if ( ! empty( $fields ) ) {
-			foreach ( $fields as $field ) {
-				if ( "stripe" === $field["type"] ) {
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Check if form has a editor field
-	 *
-	 * @since 1.7
-	 * @return bool
-	 */
-	public function has_editor() {
-		$fields = $this->get_fields();
-
-		if ( ! empty( $fields ) ) {
-			foreach ( $fields as $field ) {
-				$editor_type  = Powerform_Field::get_property( 'editor-type', $field, false, 'bool' );
-				if ( "textarea" === $field["type"] && true === $editor_type ) {
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Check if form given field type
-	 *
-	 * @since 1.14
-	 * @return bool
-	 */
-	public function has_field_type( $type ) {
-		$fields = $this->get_fields();
-
-		if ( ! empty( $fields ) ) {
-			foreach ( $fields as $field ) {
-				if ( $type === $field["type"] ) {
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-	/**
-     * Check login form
-     *
-	 * @return bool
-	 */
-	public function is_login_form() {
-	    $settings = $this->model->settings;
-
-	    if ( isset( $settings['form-type'] ) && 'login' === $settings['form-type'] ) {
-	        return true;
-        }
-
-	    return false;
-    }
-
-	/**
-	 * Render a message if form is hidden
-	 *
-	 * @since 1.11
-	 *
-	 * @param string $hidden_form_message
-	 *
-	 * @return string
-	 */
-	public function render_hidden_form_message( $hidden_form_message ) {
-		return apply_filters( 'powerform_render_hidden_form_message', $hidden_form_message );
-	}
-
-	/**
-	 * Check if Custom form has upload field
-	 *
-	 * @since 1.7
-	 * @return bool
-	 */
-	public function has_multiupload() {
-		$fields = $this->get_fields();
-
-		if ( ! empty( $fields ) ) {
-			foreach ( $fields as $field ) {
-				if ( isset( $field['type'] ) && 'upload' === $field['type'] &&
-				     isset( $field['file-type'] ) && 'multiple' === $field['file-type']
-				) {
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Check has lead
-     *
-	 * @param array $form_settings
-	 *
-	 * @return bool
-	 */
-	public function has_lead( $form_settings ) {
-
-		if ( isset( $form_settings['hasLeads'] ) && $form_settings['hasLeads'] ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Check has lead
-	 *
-     * @param array $form_settings
-     *
-	 * @return bool
-	 */
-	public function get_leads_id( $form_settings ) {
-		$leadsId = 0;
-
-		if ( $this->has_lead( $form_settings ) && isset( $form_settings['leadsId'] ) ) {
-			$leadsId = $form_settings['leadsId'];
-		}
-
-		return $leadsId;
-	}
-	/**
-	 * Check has lead
-	 *
-     * @param array $form_settings
-     *
-	 * @return bool
-	 */
-	public function get_form_placement( $form_settings ) {
-		$placement = '';
-
-		if ( $this->has_lead( $form_settings ) && ! isset( $form_settings['form-placement'] ) ) {
-			$placement = 'beginning';
-		}
-
-		if ( $this->has_lead( $form_settings ) && isset( $form_settings['form-placement'] ) ) {
-			$placement = $form_settings['form-placement'];
-		}
-
-		return $placement;
-	}
-
-	/**
-	 * Check has lead skip
-     *
-     * @param array $form_settings
-	 *
-	 * @return bool
-	 */
-	public function has_skip_form( $form_settings ) {
-	    $skip_text = '';
-
-	    if ( $this->has_lead( $form_settings ) && isset( $form_settings['skip-form'] ) && $form_settings['skip-form'] ) {
-		    $skip_text = isset( $form_settings['skip-text'] ) ? $form_settings['skip-text'] : __( "Überspringen und fortfahren", Powerform::DOMAIN );
-		}
-
-		return $skip_text;
-	}
-
-	/**
-     * Render skip form content
-     *
-	 * @return string
-	 */
-	public function render_skip_form_content() {
-		$html = '';
-		$lead_settings = isset( $this->lead_model->settings ) ? $this->lead_model->settings : array();
-		if ( ! empty( $lead_settings ) && $this->has_skip_form( $lead_settings ) ) {
-			$html .= '<div class="powerform-quiz--skip powerform-lead-form-skip">';
-			$html .= sprintf( '<button>%s</button>', $this->has_skip_form( $lead_settings ) );
-			$html .= '</div>';
-		}
-
-		return $html;
-    }
 
 }

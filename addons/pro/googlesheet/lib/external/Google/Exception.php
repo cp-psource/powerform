@@ -15,6 +15,6 @@
  * limitations under the License.
  */
 
-class Powerform_Google_Exception extends Exception
+class Google_Exception extends Exception
 {
 }

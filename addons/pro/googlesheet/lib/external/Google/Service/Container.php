@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Container extends Powerform_Google_Service
+class Google_Service_Container extends Google_Service
 {
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
@@ -36,14 +36,14 @@ class Powerform_Google_Service_Container extends Powerform_Google_Service
   public $projects_zones;
   public $projects_zones_clusters;
   public $projects_zones_operations;
-  
+
 
   /**
    * Constructs the internal representation of the Container service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://container.googleapis.com/';
@@ -51,7 +51,7 @@ class Powerform_Google_Service_Container extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'container';
 
-    $this->projects_zones = new Powerform_Google_Service_Container_ProjectsZones_Resource(
+    $this->projects_zones = new Google_Service_Container_ProjectsZones_Resource(
         $this,
         $this->serviceName,
         'zones',
@@ -76,7 +76,7 @@ class Powerform_Google_Service_Container extends Powerform_Google_Service
           )
         )
     );
-    $this->projects_zones_clusters = new Powerform_Google_Service_Container_ProjectsZonesClusters_Resource(
+    $this->projects_zones_clusters = new Google_Service_Container_ProjectsZonesClusters_Resource(
         $this,
         $this->serviceName,
         'clusters',
@@ -176,7 +176,7 @@ class Powerform_Google_Service_Container extends Powerform_Google_Service
           )
         )
     );
-    $this->projects_zones_operations = new Powerform_Google_Service_Container_ProjectsZonesOperations_Resource(
+    $this->projects_zones_operations = new Google_Service_Container_ProjectsZonesOperations_Resource(
         $this,
         $this->serviceName,
         'operations',
@@ -229,11 +229,11 @@ class Powerform_Google_Service_Container extends Powerform_Google_Service
  * The "projects" collection of methods.
  * Typical usage is:
  *  <code>
- *   $containerService = new Powerform_Google_Service_Container(...);
+ *   $containerService = new Google_Service_Container(...);
  *   $projects = $containerService->projects;
  *  </code>
  */
-class Powerform_Google_Service_Container_Projects_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Container_Projects_Resource extends Google_Service_Resource
 {
 }
 
@@ -241,11 +241,11 @@ class Powerform_Google_Service_Container_Projects_Resource extends Powerform_Goo
  * The "zones" collection of methods.
  * Typical usage is:
  *  <code>
- *   $containerService = new Powerform_Google_Service_Container(...);
+ *   $containerService = new Google_Service_Container(...);
  *   $zones = $containerService->zones;
  *  </code>
  */
-class Powerform_Google_Service_Container_ProjectsZones_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Container_ProjectsZones_Resource extends Google_Service_Resource
 {
 
   /**
@@ -258,13 +258,13 @@ class Powerform_Google_Service_Container_ProjectsZones_Resource extends Powerfor
    * [zone](/compute/docs/zones#available) to return operations for, or "-" for
    * all zones.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Container_ServerConfig
+   * @return Google_Service_Container_ServerConfig
    */
   public function getServerconfig($projectId, $zone, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('getServerconfig', array($params), "Powerform_Google_Service_Container_ServerConfig");
+    return $this->call('getServerconfig', array($params), "Google_Service_Container_ServerConfig");
   }
 }
 
@@ -272,11 +272,11 @@ class Powerform_Google_Service_Container_ProjectsZones_Resource extends Powerfor
  * The "clusters" collection of methods.
  * Typical usage is:
  *  <code>
- *   $containerService = new Powerform_Google_Service_Container(...);
+ *   $containerService = new Google_Service_Container(...);
  *   $clusters = $containerService->clusters;
  *  </code>
  */
-class Powerform_Google_Service_Container_ProjectsZonesClusters_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Container_ProjectsZonesClusters_Resource extends Google_Service_Resource
 {
 
   /**
@@ -293,15 +293,15 @@ class Powerform_Google_Service_Container_ProjectsZonesClusters_Resource extends 
    * number](https://developers.google.com/console/help/new/#projectnumber).
    * @param string $zone The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
-   * @param Powerform_Google_CreateClusterRequest $postBody
+   * @param Google_CreateClusterRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Container_Operation
+   * @return Google_Service_Container_Operation
    */
-  public function create($projectId, $zone, Powerform_Google_Service_Container_CreateClusterRequest $postBody, $optParams = array())
+  public function create($projectId, $zone, Google_Service_Container_CreateClusterRequest $postBody, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'zone' => $zone, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Container_Operation");
+    return $this->call('create', array($params), "Google_Service_Container_Operation");
   }
 
   /**
@@ -315,13 +315,13 @@ class Powerform_Google_Service_Container_ProjectsZonesClusters_Resource extends 
    * [zone](/compute/docs/zones#available) in which the cluster resides.
    * @param string $clusterId The name of the cluster to delete.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Container_Operation
+   * @return Google_Service_Container_Operation
    */
   public function delete($projectId, $zone, $clusterId, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'zone' => $zone, 'clusterId' => $clusterId);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Container_Operation");
+    return $this->call('delete', array($params), "Google_Service_Container_Operation");
   }
 
   /**
@@ -333,13 +333,13 @@ class Powerform_Google_Service_Container_ProjectsZonesClusters_Resource extends 
    * [zone](/compute/docs/zones#available) in which the cluster resides.
    * @param string $clusterId The name of the cluster to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Container_Cluster
+   * @return Google_Service_Container_Cluster
    */
   public function get($projectId, $zone, $clusterId, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'zone' => $zone, 'clusterId' => $clusterId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Container_Cluster");
+    return $this->call('get', array($params), "Google_Service_Container_Cluster");
   }
 
   /**
@@ -352,13 +352,13 @@ class Powerform_Google_Service_Container_ProjectsZonesClusters_Resource extends 
    * [zone](/compute/docs/zones#available) in which the cluster resides, or "-"
    * for all zones.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Container_ListClustersResponse
+   * @return Google_Service_Container_ListClustersResponse
    */
   public function listProjectsZonesClusters($projectId, $zone, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Container_ListClustersResponse");
+    return $this->call('list', array($params), "Google_Service_Container_ListClustersResponse");
   }
 
   /**
@@ -369,26 +369,26 @@ class Powerform_Google_Service_Container_ProjectsZonesClusters_Resource extends 
    * @param string $zone The name of the Google Compute Engine
    * [zone](/compute/docs/zones#available) in which the cluster resides.
    * @param string $clusterId The name of the cluster to upgrade.
-   * @param Powerform_Google_UpdateClusterRequest $postBody
+   * @param Google_UpdateClusterRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Container_Operation
+   * @return Google_Service_Container_Operation
    */
-  public function update($projectId, $zone, $clusterId, Powerform_Google_Service_Container_UpdateClusterRequest $postBody, $optParams = array())
+  public function update($projectId, $zone, $clusterId, Google_Service_Container_UpdateClusterRequest $postBody, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'zone' => $zone, 'clusterId' => $clusterId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Container_Operation");
+    return $this->call('update', array($params), "Google_Service_Container_Operation");
   }
 }
 /**
  * The "operations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $containerService = new Powerform_Google_Service_Container(...);
+ *   $containerService = new Google_Service_Container(...);
  *   $operations = $containerService->operations;
  *  </code>
  */
-class Powerform_Google_Service_Container_ProjectsZonesOperations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Container_ProjectsZonesOperations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -400,13 +400,13 @@ class Powerform_Google_Service_Container_ProjectsZonesOperations_Resource extend
    * [zone](/compute/docs/zones#available) in which the cluster resides.
    * @param string $operationId The server-assigned `name` of the operation.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Container_Operation
+   * @return Google_Service_Container_Operation
    */
   public function get($projectId, $zone, $operationId, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'zone' => $zone, 'operationId' => $operationId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Container_Operation");
+    return $this->call('get', array($params), "Google_Service_Container_Operation");
   }
 
   /**
@@ -419,20 +419,20 @@ class Powerform_Google_Service_Container_ProjectsZonesOperations_Resource extend
    * [zone](/compute/docs/zones#available) to return operations for, or "-" for
    * all zones.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Container_ListOperationsResponse
+   * @return Google_Service_Container_ListOperationsResponse
    */
   public function listProjectsZonesOperations($projectId, $zone, $optParams = array())
   {
     $params = array('projectId' => $projectId, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Container_ListOperationsResponse");
+    return $this->call('list', array($params), "Google_Service_Container_ListOperationsResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Container_Cluster extends Powerform_Google_Collection
+class Google_Service_Container_Cluster extends Google_Collection
 {
   protected $collection_key = 'instanceGroupUrls';
   protected $internal_gapi_mappings = array(
@@ -447,12 +447,12 @@ class Powerform_Google_Service_Container_Cluster extends Powerform_Google_Collec
   public $initialNodeCount;
   public $instanceGroupUrls;
   public $loggingService;
-  protected $masterAuthType = 'Powerform_Google_Service_Container_MasterAuth';
+  protected $masterAuthType = 'Google_Service_Container_MasterAuth';
   protected $masterAuthDataType = '';
   public $monitoringService;
   public $name;
   public $network;
-  protected $nodeConfigType = 'Powerform_Google_Service_Container_NodeConfig';
+  protected $nodeConfigType = 'Google_Service_Container_NodeConfig';
   protected $nodeConfigDataType = '';
   public $nodeIpv4CidrSize;
   public $selfLink;
@@ -542,7 +542,7 @@ class Powerform_Google_Service_Container_Cluster extends Powerform_Google_Collec
   {
     return $this->loggingService;
   }
-  public function setMasterAuth(Powerform_Google_Service_Container_MasterAuth $masterAuth)
+  public function setMasterAuth(Google_Service_Container_MasterAuth $masterAuth)
   {
     $this->masterAuth = $masterAuth;
   }
@@ -574,7 +574,7 @@ class Powerform_Google_Service_Container_Cluster extends Powerform_Google_Collec
   {
     return $this->network;
   }
-  public function setNodeConfig(Powerform_Google_Service_Container_NodeConfig $nodeConfig)
+  public function setNodeConfig(Google_Service_Container_NodeConfig $nodeConfig)
   {
     $this->nodeConfig = $nodeConfig;
   }
@@ -632,7 +632,7 @@ class Powerform_Google_Service_Container_Cluster extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Container_ClusterUpdate extends Powerform_Google_Model
+class Google_Service_Container_ClusterUpdate extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -649,15 +649,15 @@ class Powerform_Google_Service_Container_ClusterUpdate extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Container_CreateClusterRequest extends Powerform_Google_Model
+class Google_Service_Container_CreateClusterRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $clusterType = 'Powerform_Google_Service_Container_Cluster';
+  protected $clusterType = 'Google_Service_Container_Cluster';
   protected $clusterDataType = '';
 
 
-  public function setCluster(Powerform_Google_Service_Container_Cluster $cluster)
+  public function setCluster(Google_Service_Container_Cluster $cluster)
   {
     $this->cluster = $cluster;
   }
@@ -667,12 +667,12 @@ class Powerform_Google_Service_Container_CreateClusterRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Container_ListClustersResponse extends Powerform_Google_Collection
+class Google_Service_Container_ListClustersResponse extends Google_Collection
 {
   protected $collection_key = 'clusters';
   protected $internal_gapi_mappings = array(
   );
-  protected $clustersType = 'Powerform_Google_Service_Container_Cluster';
+  protected $clustersType = 'Google_Service_Container_Cluster';
   protected $clustersDataType = 'array';
 
 
@@ -686,12 +686,12 @@ class Powerform_Google_Service_Container_ListClustersResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Container_ListOperationsResponse extends Powerform_Google_Collection
+class Google_Service_Container_ListOperationsResponse extends Google_Collection
 {
   protected $collection_key = 'operations';
   protected $internal_gapi_mappings = array(
   );
-  protected $operationsType = 'Powerform_Google_Service_Container_Operation';
+  protected $operationsType = 'Google_Service_Container_Operation';
   protected $operationsDataType = 'array';
 
 
@@ -705,7 +705,7 @@ class Powerform_Google_Service_Container_ListOperationsResponse extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Container_MasterAuth extends Powerform_Google_Model
+class Google_Service_Container_MasterAuth extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -758,7 +758,7 @@ class Powerform_Google_Service_Container_MasterAuth extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Container_NodeConfig extends Powerform_Google_Collection
+class Google_Service_Container_NodeConfig extends Google_Collection
 {
   protected $collection_key = 'oauthScopes';
   protected $internal_gapi_mappings = array(
@@ -794,7 +794,7 @@ class Powerform_Google_Service_Container_NodeConfig extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Container_Operation extends Powerform_Google_Model
+class Google_Service_Container_Operation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -865,7 +865,7 @@ class Powerform_Google_Service_Container_Operation extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Container_ServerConfig extends Powerform_Google_Collection
+class Google_Service_Container_ServerConfig extends Google_Collection
 {
   protected $collection_key = 'validNodeVersions';
   protected $internal_gapi_mappings = array(
@@ -892,15 +892,15 @@ class Powerform_Google_Service_Container_ServerConfig extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Container_UpdateClusterRequest extends Powerform_Google_Model
+class Google_Service_Container_UpdateClusterRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $updateType = 'Powerform_Google_Service_Container_ClusterUpdate';
+  protected $updateType = 'Google_Service_Container_ClusterUpdate';
   protected $updateDataType = '';
 
 
-  public function setUpdate(Powerform_Google_Service_Container_ClusterUpdate $update)
+  public function setUpdate(Google_Service_Container_ClusterUpdate $update)
   {
     $this->update = $update;
   }

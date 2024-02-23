@@ -30,19 +30,19 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Cloudsearch extends Powerform_Google_Service
+class Google_Service_Cloudsearch extends Google_Service
 {
 
 
 
-  
+
 
   /**
    * Constructs the internal representation of the Cloudsearch service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = '';

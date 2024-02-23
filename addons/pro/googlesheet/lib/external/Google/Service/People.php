@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_People extends Powerform_Google_Service
+class Google_Service_People extends Google_Service
 {
   /** Manage your contacts. */
   const CONTACTS =
@@ -59,14 +59,14 @@ class Powerform_Google_Service_People extends Powerform_Google_Service
 
   public $people;
   public $people_connections;
-  
+
 
   /**
    * Constructs the internal representation of the People service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://people.googleapis.com/';
@@ -74,7 +74,7 @@ class Powerform_Google_Service_People extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'people';
 
-    $this->people = new Powerform_Google_Service_People_People_Resource(
+    $this->people = new Google_Service_People_People_Resource(
         $this,
         $this->serviceName,
         'people',
@@ -112,7 +112,7 @@ class Powerform_Google_Service_People extends Powerform_Google_Service
           )
         )
     );
-    $this->people_connections = new Powerform_Google_Service_People_PeopleConnections_Resource(
+    $this->people_connections = new Google_Service_People_PeopleConnections_Resource(
         $this,
         $this->serviceName,
         'connections',
@@ -160,11 +160,11 @@ class Powerform_Google_Service_People extends Powerform_Google_Service
  * The "people" collection of methods.
  * Typical usage is:
  *  <code>
- *   $peopleService = new Powerform_Google_Service_People(...);
+ *   $peopleService = new Google_Service_People(...);
  *   $people = $peopleService->people;
  *  </code>
  */
-class Powerform_Google_Service_People_People_Resource extends Powerform_Google_Service_Resource
+class Google_Service_People_People_Resource extends Google_Service_Resource
 {
 
   /**
@@ -184,13 +184,13 @@ class Powerform_Google_Service_People_People_Resource extends Powerform_Google_S
    * be included in the response. Omitting this field will include all fields.
    * Each path should start with `person.`: for example, `person.names` or
    * `person.photos`.
-   * @return Powerform_Google_Service_People_Person
+   * @return Google_Service_People_Person
    */
   public function get($resourceName, $optParams = array())
   {
     $params = array('resourceName' => $resourceName);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_People_Person");
+    return $this->call('get', array($params), "Google_Service_People_Person");
   }
 
   /**
@@ -208,13 +208,13 @@ class Powerform_Google_Service_People_People_Resource extends Powerform_Google_S
    * [`people.connections.list`](/people/api/rest/v1/people.connections/list), of
    * one of the people to provide information about. You can include this
    * parameter up to 50 times in one request.
-   * @return Powerform_Google_Service_People_GetPeopleResponse
+   * @return Google_Service_People_GetPeopleResponse
    */
   public function getBatchGet($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('getBatchGet', array($params), "Powerform_Google_Service_People_GetPeopleResponse");
+    return $this->call('getBatchGet', array($params), "Google_Service_People_GetPeopleResponse");
   }
 }
 
@@ -222,11 +222,11 @@ class Powerform_Google_Service_People_People_Resource extends Powerform_Google_S
  * The "connections" collection of methods.
  * Typical usage is:
  *  <code>
- *   $peopleService = new Powerform_Google_Service_People(...);
+ *   $peopleService = new Google_Service_People(...);
  *   $connections = $peopleService->connections;
  *  </code>
  */
-class Powerform_Google_Service_People_PeopleConnections_Resource extends Powerform_Google_Service_Resource
+class Google_Service_People_PeopleConnections_Resource extends Google_Service_Resource
 {
 
   /**
@@ -249,20 +249,20 @@ class Powerform_Google_Service_People_PeopleConnections_Resource extends Powerfo
    * Each path should start with `person.`: for example, `person.names` or
    * `person.photos`.
    * @opt_param string pageToken The token of the page to be returned.
-   * @return Powerform_Google_Service_People_ListConnectionsResponse
+   * @return Google_Service_People_ListConnectionsResponse
    */
   public function listPeopleConnections($resourceName, $optParams = array())
   {
     $params = array('resourceName' => $resourceName);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_People_ListConnectionsResponse");
+    return $this->call('list', array($params), "Google_Service_People_ListConnectionsResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_People_Address extends Powerform_Google_Model
+class Google_Service_People_Address extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -272,7 +272,7 @@ class Powerform_Google_Service_People_Address extends Powerform_Google_Model
   public $extendedAddress;
   public $formattedType;
   public $formattedValue;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $poBox;
   public $postalCode;
@@ -329,7 +329,7 @@ class Powerform_Google_Service_People_Address extends Powerform_Google_Model
   {
     return $this->formattedValue;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -379,16 +379,16 @@ class Powerform_Google_Service_People_Address extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Biography extends Powerform_Google_Model
+class Google_Service_People_Biography extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
 
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -406,18 +406,18 @@ class Powerform_Google_Service_People_Biography extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Birthday extends Powerform_Google_Model
+class Google_Service_People_Birthday extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $dateType = 'Powerform_Google_Service_People_Date';
+  protected $dateType = 'Google_Service_People_Date';
   protected $dateDataType = '';
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $text;
 
 
-  public function setDate(Powerform_Google_Service_People_Date $date)
+  public function setDate(Google_Service_People_Date $date)
   {
     $this->date = $date;
   }
@@ -425,7 +425,7 @@ class Powerform_Google_Service_People_Birthday extends Powerform_Google_Model
   {
     return $this->date;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -443,16 +443,16 @@ class Powerform_Google_Service_People_Birthday extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_BraggingRights extends Powerform_Google_Model
+class Google_Service_People_BraggingRights extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
 
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -470,7 +470,7 @@ class Powerform_Google_Service_People_BraggingRights extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_People_ContactGroupMembership extends Powerform_Google_Model
+class Google_Service_People_ContactGroupMembership extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -487,12 +487,12 @@ class Powerform_Google_Service_People_ContactGroupMembership extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_People_CoverPhoto extends Powerform_Google_Model
+class Google_Service_People_CoverPhoto extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $default;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $url;
 
@@ -505,7 +505,7 @@ class Powerform_Google_Service_People_CoverPhoto extends Powerform_Google_Model
   {
     return $this->default;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -523,7 +523,7 @@ class Powerform_Google_Service_People_CoverPhoto extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Date extends Powerform_Google_Model
+class Google_Service_People_Date extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -558,7 +558,7 @@ class Powerform_Google_Service_People_Date extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_DomainMembership extends Powerform_Google_Model
+class Google_Service_People_DomainMembership extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -575,12 +575,12 @@ class Powerform_Google_Service_People_DomainMembership extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_People_EmailAddress extends Powerform_Google_Model
+class Google_Service_People_EmailAddress extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $formattedType;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $type;
   public $value;
@@ -594,7 +594,7 @@ class Powerform_Google_Service_People_EmailAddress extends Powerform_Google_Mode
   {
     return $this->formattedType;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -620,19 +620,19 @@ class Powerform_Google_Service_People_EmailAddress extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_People_Event extends Powerform_Google_Model
+class Google_Service_People_Event extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $dateType = 'Powerform_Google_Service_People_Date';
+  protected $dateType = 'Google_Service_People_Date';
   protected $dateDataType = '';
   public $formattedType;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $type;
 
 
-  public function setDate(Powerform_Google_Service_People_Date $date)
+  public function setDate(Google_Service_People_Date $date)
   {
     $this->date = $date;
   }
@@ -648,7 +648,7 @@ class Powerform_Google_Service_People_Event extends Powerform_Google_Model
   {
     return $this->formattedType;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -666,12 +666,12 @@ class Powerform_Google_Service_People_Event extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_FieldMetadata extends Powerform_Google_Model
+class Google_Service_People_FieldMetadata extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $primary;
-  protected $sourceType = 'Powerform_Google_Service_People_Source';
+  protected $sourceType = 'Google_Service_People_Source';
   protected $sourceDataType = '';
   public $verified;
 
@@ -684,7 +684,7 @@ class Powerform_Google_Service_People_FieldMetadata extends Powerform_Google_Mod
   {
     return $this->primary;
   }
-  public function setSource(Powerform_Google_Service_People_Source $source)
+  public function setSource(Google_Service_People_Source $source)
   {
     $this->source = $source;
   }
@@ -702,12 +702,12 @@ class Powerform_Google_Service_People_FieldMetadata extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_People_Gender extends Powerform_Google_Model
+class Google_Service_People_Gender extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $formattedValue;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
@@ -720,7 +720,7 @@ class Powerform_Google_Service_People_Gender extends Powerform_Google_Model
   {
     return $this->formattedValue;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -738,12 +738,12 @@ class Powerform_Google_Service_People_Gender extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_GetPeopleResponse extends Powerform_Google_Collection
+class Google_Service_People_GetPeopleResponse extends Google_Collection
 {
   protected $collection_key = 'responses';
   protected $internal_gapi_mappings = array(
   );
-  protected $responsesType = 'Powerform_Google_Service_People_PersonResponse';
+  protected $responsesType = 'Google_Service_People_PersonResponse';
   protected $responsesDataType = 'array';
 
 
@@ -757,13 +757,13 @@ class Powerform_Google_Service_People_GetPeopleResponse extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_People_ImClient extends Powerform_Google_Model
+class Google_Service_People_ImClient extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $formattedProtocol;
   public $formattedType;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $protocol;
   public $type;
@@ -786,7 +786,7 @@ class Powerform_Google_Service_People_ImClient extends Powerform_Google_Model
   {
     return $this->formattedType;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -820,16 +820,16 @@ class Powerform_Google_Service_People_ImClient extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Interest extends Powerform_Google_Model
+class Google_Service_People_Interest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
 
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -847,12 +847,12 @@ class Powerform_Google_Service_People_Interest extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_ListConnectionsResponse extends Powerform_Google_Collection
+class Google_Service_People_ListConnectionsResponse extends Google_Collection
 {
   protected $collection_key = 'connections';
   protected $internal_gapi_mappings = array(
   );
-  protected $connectionsType = 'Powerform_Google_Service_People_Person';
+  protected $connectionsType = 'Google_Service_People_Person';
   protected $connectionsDataType = 'array';
   public $nextPageToken;
   public $nextSyncToken;
@@ -884,16 +884,16 @@ class Powerform_Google_Service_People_ListConnectionsResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_People_Locale extends Powerform_Google_Model
+class Google_Service_People_Locale extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
 
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -911,19 +911,19 @@ class Powerform_Google_Service_People_Locale extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Membership extends Powerform_Google_Model
+class Google_Service_People_Membership extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $contactGroupMembershipType = 'Powerform_Google_Service_People_ContactGroupMembership';
+  protected $contactGroupMembershipType = 'Google_Service_People_ContactGroupMembership';
   protected $contactGroupMembershipDataType = '';
-  protected $domainMembershipType = 'Powerform_Google_Service_People_DomainMembership';
+  protected $domainMembershipType = 'Google_Service_People_DomainMembership';
   protected $domainMembershipDataType = '';
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
 
 
-  public function setContactGroupMembership(Powerform_Google_Service_People_ContactGroupMembership $contactGroupMembership)
+  public function setContactGroupMembership(Google_Service_People_ContactGroupMembership $contactGroupMembership)
   {
     $this->contactGroupMembership = $contactGroupMembership;
   }
@@ -931,7 +931,7 @@ class Powerform_Google_Service_People_Membership extends Powerform_Google_Model
   {
     return $this->contactGroupMembership;
   }
-  public function setDomainMembership(Powerform_Google_Service_People_DomainMembership $domainMembership)
+  public function setDomainMembership(Google_Service_People_DomainMembership $domainMembership)
   {
     $this->domainMembership = $domainMembership;
   }
@@ -939,7 +939,7 @@ class Powerform_Google_Service_People_Membership extends Powerform_Google_Model
   {
     return $this->domainMembership;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -949,7 +949,7 @@ class Powerform_Google_Service_People_Membership extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Name extends Powerform_Google_Model
+class Google_Service_People_Name extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -958,7 +958,7 @@ class Powerform_Google_Service_People_Name extends Powerform_Google_Model
   public $givenName;
   public $honorificPrefix;
   public $honorificSuffix;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $middleName;
   public $phoneticFamilyName;
@@ -1008,7 +1008,7 @@ class Powerform_Google_Service_People_Name extends Powerform_Google_Model
   {
     return $this->honorificSuffix;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1066,17 +1066,17 @@ class Powerform_Google_Service_People_Name extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Nickname extends Powerform_Google_Model
+class Google_Service_People_Nickname extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $type;
   public $value;
 
 
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1102,16 +1102,16 @@ class Powerform_Google_Service_People_Nickname extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Occupation extends Powerform_Google_Model
+class Google_Service_People_Occupation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
 
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1129,23 +1129,23 @@ class Powerform_Google_Service_People_Occupation extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Organization extends Powerform_Google_Model
+class Google_Service_People_Organization extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $current;
   public $department;
   public $domain;
-  protected $endDateType = 'Powerform_Google_Service_People_Date';
+  protected $endDateType = 'Google_Service_People_Date';
   protected $endDateDataType = '';
   public $formattedType;
   public $jobDescription;
   public $location;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $name;
   public $phoneticName;
-  protected $startDateType = 'Powerform_Google_Service_People_Date';
+  protected $startDateType = 'Google_Service_People_Date';
   protected $startDateDataType = '';
   public $symbol;
   public $title;
@@ -1176,7 +1176,7 @@ class Powerform_Google_Service_People_Organization extends Powerform_Google_Mode
   {
     return $this->domain;
   }
-  public function setEndDate(Powerform_Google_Service_People_Date $endDate)
+  public function setEndDate(Google_Service_People_Date $endDate)
   {
     $this->endDate = $endDate;
   }
@@ -1208,7 +1208,7 @@ class Powerform_Google_Service_People_Organization extends Powerform_Google_Mode
   {
     return $this->location;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1232,7 +1232,7 @@ class Powerform_Google_Service_People_Organization extends Powerform_Google_Mode
   {
     return $this->phoneticName;
   }
-  public function setStartDate(Powerform_Google_Service_People_Date $startDate)
+  public function setStartDate(Google_Service_People_Date $startDate)
   {
     $this->startDate = $startDate;
   }
@@ -1266,65 +1266,65 @@ class Powerform_Google_Service_People_Organization extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_People_Person extends Powerform_Google_Collection
+class Google_Service_People_Person extends Google_Collection
 {
   protected $collection_key = 'urls';
   protected $internal_gapi_mappings = array(
   );
-  protected $addressesType = 'Powerform_Google_Service_People_Address';
+  protected $addressesType = 'Google_Service_People_Address';
   protected $addressesDataType = 'array';
   public $ageRange;
-  protected $biographiesType = 'Powerform_Google_Service_People_Biography';
+  protected $biographiesType = 'Google_Service_People_Biography';
   protected $biographiesDataType = 'array';
-  protected $birthdaysType = 'Powerform_Google_Service_People_Birthday';
+  protected $birthdaysType = 'Google_Service_People_Birthday';
   protected $birthdaysDataType = 'array';
-  protected $braggingRightsType = 'Powerform_Google_Service_People_BraggingRights';
+  protected $braggingRightsType = 'Google_Service_People_BraggingRights';
   protected $braggingRightsDataType = 'array';
-  protected $coverPhotosType = 'Powerform_Google_Service_People_CoverPhoto';
+  protected $coverPhotosType = 'Google_Service_People_CoverPhoto';
   protected $coverPhotosDataType = 'array';
-  protected $emailAddressesType = 'Powerform_Google_Service_People_EmailAddress';
+  protected $emailAddressesType = 'Google_Service_People_EmailAddress';
   protected $emailAddressesDataType = 'array';
   public $etag;
-  protected $eventsType = 'Powerform_Google_Service_People_Event';
+  protected $eventsType = 'Google_Service_People_Event';
   protected $eventsDataType = 'array';
-  protected $gendersType = 'Powerform_Google_Service_People_Gender';
+  protected $gendersType = 'Google_Service_People_Gender';
   protected $gendersDataType = 'array';
-  protected $imClientsType = 'Powerform_Google_Service_People_ImClient';
+  protected $imClientsType = 'Google_Service_People_ImClient';
   protected $imClientsDataType = 'array';
-  protected $interestsType = 'Powerform_Google_Service_People_Interest';
+  protected $interestsType = 'Google_Service_People_Interest';
   protected $interestsDataType = 'array';
-  protected $localesType = 'Powerform_Google_Service_People_Locale';
+  protected $localesType = 'Google_Service_People_Locale';
   protected $localesDataType = 'array';
-  protected $membershipsType = 'Powerform_Google_Service_People_Membership';
+  protected $membershipsType = 'Google_Service_People_Membership';
   protected $membershipsDataType = 'array';
-  protected $metadataType = 'Powerform_Google_Service_People_PersonMetadata';
+  protected $metadataType = 'Google_Service_People_PersonMetadata';
   protected $metadataDataType = '';
-  protected $namesType = 'Powerform_Google_Service_People_Name';
+  protected $namesType = 'Google_Service_People_Name';
   protected $namesDataType = 'array';
-  protected $nicknamesType = 'Powerform_Google_Service_People_Nickname';
+  protected $nicknamesType = 'Google_Service_People_Nickname';
   protected $nicknamesDataType = 'array';
-  protected $occupationsType = 'Powerform_Google_Service_People_Occupation';
+  protected $occupationsType = 'Google_Service_People_Occupation';
   protected $occupationsDataType = 'array';
-  protected $organizationsType = 'Powerform_Google_Service_People_Organization';
+  protected $organizationsType = 'Google_Service_People_Organization';
   protected $organizationsDataType = 'array';
-  protected $phoneNumbersType = 'Powerform_Google_Service_People_PhoneNumber';
+  protected $phoneNumbersType = 'Google_Service_People_PhoneNumber';
   protected $phoneNumbersDataType = 'array';
-  protected $photosType = 'Powerform_Google_Service_People_Photo';
+  protected $photosType = 'Google_Service_People_Photo';
   protected $photosDataType = 'array';
-  protected $relationsType = 'Powerform_Google_Service_People_Relation';
+  protected $relationsType = 'Google_Service_People_Relation';
   protected $relationsDataType = 'array';
-  protected $relationshipInterestsType = 'Powerform_Google_Service_People_RelationshipInterest';
+  protected $relationshipInterestsType = 'Google_Service_People_RelationshipInterest';
   protected $relationshipInterestsDataType = 'array';
-  protected $relationshipStatusesType = 'Powerform_Google_Service_People_RelationshipStatus';
+  protected $relationshipStatusesType = 'Google_Service_People_RelationshipStatus';
   protected $relationshipStatusesDataType = 'array';
-  protected $residencesType = 'Powerform_Google_Service_People_Residence';
+  protected $residencesType = 'Google_Service_People_Residence';
   protected $residencesDataType = 'array';
   public $resourceName;
-  protected $skillsType = 'Powerform_Google_Service_People_Skill';
+  protected $skillsType = 'Google_Service_People_Skill';
   protected $skillsDataType = 'array';
-  protected $taglinesType = 'Powerform_Google_Service_People_Tagline';
+  protected $taglinesType = 'Google_Service_People_Tagline';
   protected $taglinesDataType = 'array';
-  protected $urlsType = 'Powerform_Google_Service_People_Url';
+  protected $urlsType = 'Google_Service_People_Url';
   protected $urlsDataType = 'array';
 
 
@@ -1440,7 +1440,7 @@ class Powerform_Google_Service_People_Person extends Powerform_Google_Collection
   {
     return $this->memberships;
   }
-  public function setMetadata(Powerform_Google_Service_People_PersonMetadata $metadata)
+  public function setMetadata(Google_Service_People_PersonMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1562,7 +1562,7 @@ class Powerform_Google_Service_People_Person extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_People_PersonMetadata extends Powerform_Google_Collection
+class Google_Service_People_PersonMetadata extends Google_Collection
 {
   protected $collection_key = 'sources';
   protected $internal_gapi_mappings = array(
@@ -1570,7 +1570,7 @@ class Powerform_Google_Service_People_PersonMetadata extends Powerform_Google_Co
   public $deleted;
   public $objectType;
   public $previousResourceNames;
-  protected $sourcesType = 'Powerform_Google_Service_People_Source';
+  protected $sourcesType = 'Google_Service_People_Source';
   protected $sourcesDataType = 'array';
 
 
@@ -1608,12 +1608,12 @@ class Powerform_Google_Service_People_PersonMetadata extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_People_PersonResponse extends Powerform_Google_Model
+class Google_Service_People_PersonResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $httpStatusCode;
-  protected $personType = 'Powerform_Google_Service_People_Person';
+  protected $personType = 'Google_Service_People_Person';
   protected $personDataType = '';
   public $requestedResourceName;
 
@@ -1626,7 +1626,7 @@ class Powerform_Google_Service_People_PersonResponse extends Powerform_Google_Mo
   {
     return $this->httpStatusCode;
   }
-  public function setPerson(Powerform_Google_Service_People_Person $person)
+  public function setPerson(Google_Service_People_Person $person)
   {
     $this->person = $person;
   }
@@ -1644,13 +1644,13 @@ class Powerform_Google_Service_People_PersonResponse extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_People_PhoneNumber extends Powerform_Google_Model
+class Google_Service_People_PhoneNumber extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $canonicalForm;
   public $formattedType;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $type;
   public $value;
@@ -1672,7 +1672,7 @@ class Powerform_Google_Service_People_PhoneNumber extends Powerform_Google_Model
   {
     return $this->formattedType;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1698,16 +1698,16 @@ class Powerform_Google_Service_People_PhoneNumber extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Photo extends Powerform_Google_Model
+class Google_Service_People_Photo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $url;
 
 
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1725,12 +1725,12 @@ class Powerform_Google_Service_People_Photo extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Relation extends Powerform_Google_Model
+class Google_Service_People_Relation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $formattedType;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $person;
   public $type;
@@ -1744,7 +1744,7 @@ class Powerform_Google_Service_People_Relation extends Powerform_Google_Model
   {
     return $this->formattedType;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1770,12 +1770,12 @@ class Powerform_Google_Service_People_Relation extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_RelationshipInterest extends Powerform_Google_Model
+class Google_Service_People_RelationshipInterest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $formattedValue;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
@@ -1788,7 +1788,7 @@ class Powerform_Google_Service_People_RelationshipInterest extends Powerform_Goo
   {
     return $this->formattedValue;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1806,12 +1806,12 @@ class Powerform_Google_Service_People_RelationshipInterest extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_People_RelationshipStatus extends Powerform_Google_Model
+class Google_Service_People_RelationshipStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $formattedValue;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
@@ -1824,7 +1824,7 @@ class Powerform_Google_Service_People_RelationshipStatus extends Powerform_Googl
   {
     return $this->formattedValue;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1842,12 +1842,12 @@ class Powerform_Google_Service_People_RelationshipStatus extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_People_Residence extends Powerform_Google_Model
+class Google_Service_People_Residence extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $current;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
@@ -1860,7 +1860,7 @@ class Powerform_Google_Service_People_Residence extends Powerform_Google_Model
   {
     return $this->current;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1878,16 +1878,16 @@ class Powerform_Google_Service_People_Residence extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Skill extends Powerform_Google_Model
+class Google_Service_People_Skill extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
 
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1905,7 +1905,7 @@ class Powerform_Google_Service_People_Skill extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Source extends Powerform_Google_Model
+class Google_Service_People_Source extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1931,16 +1931,16 @@ class Powerform_Google_Service_People_Source extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Tagline extends Powerform_Google_Model
+class Google_Service_People_Tagline extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $value;
 
 
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -1958,12 +1958,12 @@ class Powerform_Google_Service_People_Tagline extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_People_Url extends Powerform_Google_Model
+class Google_Service_People_Url extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $formattedType;
-  protected $metadataType = 'Powerform_Google_Service_People_FieldMetadata';
+  protected $metadataType = 'Google_Service_People_FieldMetadata';
   protected $metadataDataType = '';
   public $type;
   public $value;
@@ -1977,7 +1977,7 @@ class Powerform_Google_Service_People_Url extends Powerform_Google_Model
   {
     return $this->formattedType;
   }
-  public function setMetadata(Powerform_Google_Service_People_FieldMetadata $metadata)
+  public function setMetadata(Google_Service_People_FieldMetadata $metadata)
   {
     $this->metadata = $metadata;
   }

@@ -3,7 +3,7 @@
     <!-- Select -->
     <script type="text/template" id="builder-field-select-tpl">
 
-        <select class="psource-form-field--select" style="width: 100%;" {{ field.required ? 'required' : '' }}>
+        <select class="wpmudev-form-field--select" style="width: 100%;" {{ field.required ? 'required' : '' }}>
 
 		{[ _.each( field.options, function( value, key ){ ]}
 			<option>{{ value.label }}</option>
@@ -15,7 +15,7 @@
 
     <script type="text/template" id="builder-field-input-tpl">
 
-        <input type="{{ field.type }}" class="psource-form-field--{{ field.type }}" {{ field.required ? 'required' : '' }}>
+        <input type="{{ field.type }}" class="wpmudev-form-field--{{ field.type }}" {{ field.required ? 'required' : '' }}>
 
     </script>
 
@@ -23,9 +23,9 @@
 
         {[ _.each( field.options, function( value, key ){ ]}
 
-        <div class="psource-form-field--checkbox">
+        <div class="wpmudev-form-field--checkbox">
 
-            <div class="psource-checkbox--design">
+            <div class="wpmudev-checkbox--design">
 
                 <input type="checkbox" id="{{ value.id }}">
 
@@ -33,7 +33,7 @@
 
             </div>
 
-            <label for="{{ value.id }}" class="psource-checkbox--label">{{ value.label }}</label>
+            <label for="{{ value.id }}" class="wpmudev-checkbox--label">{{ value.label }}</label>
 
         </div>
 
@@ -102,7 +102,7 @@
     <script type="text/template" id="settings-field-date-multiple-tpl">
         <label for="restrict-date" class="sui-label">{{ Powerform.l10n.options.custom_date }}</label>
         <div class="sui-date">
-            <input type="text" class="sui-form-control powerform-field-singular powerform-datepicker" name="date_multiple" value="" placeholder="Pick a date" title="" id="">
+            <input type="text" class="sui-form-control powerform-field-singular powerform-datepicker" name="date_multiple" value="" placeholder="Wähle ein Datum" title="" id="">
             <button class="sui-button-icon powerform-date-add" aria-label="{{ Powerform.l10n.options.add }}">
 				<i class="sui-icon-plus" aria-hidden="true"></i>
 			</button>
@@ -115,7 +115,7 @@
 
     <!-- Date Multiple (value structure) -->
     <script type="text/template" id="settings-field-date-multiple-row-tpl">
-        <li class="psource-date-choice" data-index="{{ index }}">
+        <li class="wpmudev-date-choice" data-index="{{ index }}">
             {{ value.value }}
             <button class="sui-button-icon powerform-date-kill" aria-label="{{ Powerform.l10n.options.delete }}">
 				<i class="sui-icon-trash" aria-hidden="true"></i>
@@ -125,52 +125,52 @@
 
     <!-- Multi Product -->
     <script type="text/template" id="settings-field-product-multiple-tpl">
-        <div class="psource-multiproduct">
-            <div class="psource-multiproduct--empty">
+        <div class="wpmudev-multiproduct">
+            <div class="wpmudev-multiproduct--empty">
                 <p>{{ Powerform.l10n.product.add_variation }}</p>
             </div>
-            <ul class="psource-multiproduct--list">
+            <ul class="wpmudev-multiproduct--list">
                 {{ childs }}
             </ul>
-            <div class="psource-multiproduct--actions">
-                <div class="psource-toggle">
-                    <div class="psource-toggle--design">
+            <div class="wpmudev-multiproduct--actions">
+                <div class="wpmudev-toggle">
+                    <div class="wpmudev-toggle--design">
                         <input class="powerform-field-singular powerform-field-required" id="list-all-variations" name="list_variations" value="true" title="List all variations" type="checkbox" {[ if( list_variations==="true" || list_variations===t rue ) { ]}checked="checked"
                             {[ } ]}>
                         <label for="list-all-variations"></label>
                     </div>
-                    <label for="list-all-variations" class="psource-toggle--label psource-label-list-variations psource-label--sm psource-label-container">{{ Powerform.l10n.product.use_list }}</label>
+                    <label for="list-all-variations" class="wpmudev-toggle--label wpmudev-label-list-variations wpmudev-label--sm wpmudev-label-container">{{ Powerform.l10n.product.use_list }}</label>
                 </div>
-                <button class="psource-button psource-button-sm psource-button-ghost psource-add-variation">{{ Powerform.l10n.product.add_variation }}</button>
+                <button class="wpmudev-button wpmudev-button-sm wpmudev-button-ghost wpmudev-add-variation">{{ Powerform.l10n.product.add_variation }}</button>
             </div>
         </div>
     </script>
 
     <!-- Multi Product (child structure) -->
     <script type="text/template" id="settings-field-product-multiple-row-tpl">
-        <li class="psource-list--item" data-index="{{ index }}">
-            <div class="psource-product">
-                <div class="psource-browse">
-                    <label class="psource-label">{{ Powerform.l10n.product.image }}</label>
-                    <div class="psource-browse--preview">
-                        <button class="psource-preview--image psource-open_media">
-							<span class="psource-get_image" style="background-image: url( '{{ row.image }}' );"></span>
+        <li class="wpmudev-list--item" data-index="{{ index }}">
+            <div class="wpmudev-product">
+                <div class="wpmudev-browse">
+                    <label class="wpmudev-label">{{ Powerform.l10n.product.image }}</label>
+                    <div class="wpmudev-browse--preview">
+                        <button class="wpmudev-preview--image wpmudev-open_media">
+							<span class="wpmudev-get_image" style="background-image: url( '{{ row.image }}' );"></span>
 						</button>
                     </div>
                 </div>
-                <div class="psource-option">
-                    <label class="psource-label">{{ Powerform.l10n.product.name }}</label>
-                    <input type="text" class="powerform-field-singular psource-input psource-add-name" value="{{ row.label }}" />
+                <div class="wpmudev-option">
+                    <label class="wpmudev-label">{{ Powerform.l10n.product.name }}</label>
+                    <input type="text" class="powerform-field-singular wpmudev-input wpmudev-add-name" value="{{ row.label }}" />
                 </div>
-                <div class="psource-option">
-                    <label class="psource-label">{{ Powerform.l10n.product.price }}</label>
-                    <input type="number" class="powerform-field-singular psource-input psource-add-price" value="{{ row.value }}" />
+                <div class="wpmudev-option">
+                    <label class="wpmudev-label">{{ Powerform.l10n.product.price }}</label>
+                    <input type="number" class="powerform-field-singular wpmudev-input wpmudev-add-price" value="{{ row.value }}" />
                 </div>
             </div>
-            <div class="psource-item--kill">
-                <button class="psource-action--kill">
+            <div class="wpmudev-item--kill">
+                <button class="wpmudev-action--kill">
 					<span class="wpdui-icon wpdui-icon-trash" aria-hidden="true"></span>
-					<span class="psource-text">{{ Powerform.l10n.sidebar.delete }}</span>
+					<span class="wpmudev-text">{{ Powerform.l10n.sidebar.delete }}</span>
 				</button>
             </div>
         </li>
@@ -178,28 +178,28 @@
 
     <!-- List Product -->
     <script type="text/template" id="settings-field-product-list-tpl">
-        <div class="psource-option--productList">
-            <div class="psource-productList--items">
+        <div class="wpmudev-option--productList">
+            <div class="wpmudev-productList--items">
                 {{ childs }}
             </div>
-            <div class="psource-productList--action">
-                <button class="psource-button psource-button-sm psource-button-ghost psource-add-product">Add Product Field</button>
+            <div class="wpmudev-productList--action">
+                <button class="wpmudev-button wpmudev-button-sm wpmudev-button-ghost wpmudev-add-product">Add Product Field</button>
             </div>
         </div>
     </script>
 
     <!-- List Product (child structure) -->
     <script type="text/template" id="settings-field-product-list-row-tpl">
-        <div class="psource-productList--item" data-index="{{ index }}">
-            <select class="psource-select psource-product-select">
+        <div class="wpmudev-productList--item" data-index="{{ index }}">
+            <select class="wpmudev-select wpmudev-product-select">
 				{[ _.each( products, function ( product ) { ]}
 					<option value="{{ product.element_id }}" {[ if( row.value === product.element_id ) { ]}selected="selected"{[ } ]}>{{ product.label }}</option>
 				{[ }) ]}
 			</select>
-            <div class="psource-product--kill">
-                <button class="psource-action--kill">
+            <div class="wpmudev-product--kill">
+                <button class="wpmudev-action--kill">
 					<span class="wpdui-icon wpdui-icon-trash" aria-hidden="true"></span>
-					<span class="psource-sr-only">{{ Powerform.l10n.sidebar.delete }}</span>
+					<span class="wpmudev-sr-only">{{ Powerform.l10n.sidebar.delete }}</span>
 				</button>
             </div>
         </div>
@@ -248,7 +248,7 @@
 
                 <div class="fui-answer-cell block">
                     <div class="fui-answer-type-text">
-                        <input type="text" class="sui-form-control psource-answer-value" value="{{ row.title }}" placeholder="{{ Powerform.l10n.options.placeholder_answer }}">
+                        <input type="text" class="sui-form-control wpmudev-answer-value" value="{{ row.title }}" placeholder="{{ Powerform.l10n.options.placeholder_answer }}">
                         <button class="fui-answer-delete sui-tooltip" data-tooltip="{{ Powerform.l10n.options.trash_answer }}">
 							<i class="sui-icon-trash sui-fw" aria-hidden="true"></i>
 						</button>
@@ -256,7 +256,7 @@
                     {[ if( row.use_extra === true ) { ]}
                     <div class="sui-form-field">
                         <label class="sui-label">{{ Powerform.l10n.polls.custom_input_placeholder_label }}</label>
-                        <input type="text" class="sui-form-control psource-answer-placeholder" value="{{ row.extra }}" placeholder="{{ Powerform.l10n.polls.custom_input_placeholder }}">
+                        <input type="text" class="sui-form-control wpmudev-answer-placeholder" value="{{ row.extra }}" placeholder="{{ Powerform.l10n.polls.custom_input_placeholder }}">
                     </div>
                     {[ } ]}
                 </div>
@@ -299,15 +299,15 @@
 
             <p class="fui-limit-block-600 fui-limit-block-center">{{ Powerform.l10n.options.multiqs_empty }}</p>
 
-            <button class="sui-button sui-button-primary psource-add-question">{{ Powerform.l10n.options.add_question }}</button>
+            <button class="sui-button sui-button-primary wpmudev-add-question">{{ Powerform.l10n.options.add_question }}</button>
 
         </div>
 
-        <ul class="fui-multi-question psource-multiqs--questions">
+        <ul class="fui-multi-question wpmudev-multiqs--questions">
 
             {{ childs }}
 
-            <li class="fui-question"><button class="sui-button sui-button-primary psource-add-question">{{ Powerform.l10n.options.add_new_question }}</button></li>
+            <li class="fui-question"><button class="sui-button sui-button-primary wpmudev-add-question">{{ Powerform.l10n.options.add_new_question }}</button></li>
 
         </ul>
 
@@ -324,7 +324,7 @@
 
                 <span class="fui-question-input">
 
-					<input type="text" id="powerform-quiz-question-{{ index }}" class="sui-form-control psource-question-title" value="{{ row.title }}" size="1">
+					<input type="text" id="powerform-quiz-question-{{ index }}" class="sui-form-control wpmudev-question-title" value="{{ row.title }}" size="1">
 
 					<span class="fui-question-delete sui-tooltip" aria-label="{{ Powerform.l10n.options.delete }}" data-tooltip="{{ Powerform.l10n.options.delete_question }}"><i class="sui-icon-cross-close" aria-hidden="true"></i></span>
 
@@ -342,7 +342,7 @@
                     </span>
                     <div class="fui-browse {{ row.image ? 'fui-browse-has-image' : ''}}">
                         <div class="fui-browse-cell">
-                            <input readonly="readonly" class="psource-url--input psource-question-image" type="url" value="{{ row.image }}" placeholder="{{ Powerform.l10n.options.placeholder_image }}" />
+                            <input readonly="readonly" class="wpmudev-url--input wpmudev-question-image" type="url" value="{{ row.image }}" placeholder="{{ Powerform.l10n.options.placeholder_image }}" />
                         </div>
                         <div class="fui-browse-cell-fit fui-browse-delete">
                             <button class="sui-tooltip" data-tooltip="{{ Powerform.l10n.options.remove_image }}" aria-label="{{ Powerform.l10n.options.remove_image }}"><i class="sui-icon-cross-close" aria-hidden="true"></i></button>
@@ -406,7 +406,7 @@
 				</span>
 
                 <div class="fui-answer-cell fui-answer-type-text">
-                    <input type="text" class="sui-form-control psource-answer-value" value="{{ row.title }}" placeholder="{{ Powerform.l10n.options.placeholder_answer }}">
+                    <input type="text" class="sui-form-control wpmudev-answer-value" value="{{ row.title }}" placeholder="{{ Powerform.l10n.options.placeholder_answer }}">
                     <button class="fui-answer-delete sui-tooltip" data-tooltip="{{ Powerform.l10n.options.trash_answer }}">
 						<i class="sui-icon-trash sui-fw" aria-hidden="true"></i>
 					</button>
@@ -453,7 +453,7 @@
                 <div class="fui-answer-cell-fit">
 
                     {[ if( type === "nowrong" ) { ]}
-                    <select class="fui-select-sm psource-quiz-results">
+                    <select class="fui-select-sm wpmudev-quiz-results">
 							<option value="">{{ Powerform.l10n.options.select_result }}</option>
 							{[ _.each( results, function ( result ) { ]}
 								<option value="{{ result.slug }}" {[ if( row.result === result.slug ) { ]}selected="selected"{[ } ]}>{{ result.title }}</option>
@@ -516,8 +516,8 @@
             <div class="sui-form-field">
                 <label class="sui-label">{{ Powerform.l10n.options.title }}</label>
                 <span class="fui-result-input">
-					<input type="text" class="sui-form-control psource-result-title" value="{{ row.title }}">
-					<span class="fui-result-delete sui-tooltip" aria-label="Delete" data-tooltip="{{ Powerform.l10n.options.delete_result }}"><i class="sui-icon-cross-close" aria-hidden="true"></i></span>
+					<input type="text" class="sui-form-control wpmudev-result-title" value="{{ row.title }}">
+					<span class="fui-result-delete sui-tooltip" aria-label="Löschen" data-tooltip="{{ Powerform.l10n.options.delete_result }}"><i class="sui-icon-cross-close" aria-hidden="true"></i></span>
                 </span>
             </div>
 
@@ -529,7 +529,7 @@
                     </span>
                     <div class="fui-browse {{ row.image ? 'fui-browse-has-image' : ''}}">
                         <div class="fui-browse-cell">
-                            <input class="psource-url--input psource-result-image" type="url" value="{{ row.image }}" placeholder="{{ Powerform.l10n.options.placeholder_image }}" />
+                            <input class="wpmudev-url--input wpmudev-result-image" type="url" value="{{ row.image }}" placeholder="{{ Powerform.l10n.options.placeholder_image }}" />
                         </div>
                         <div class="fui-browse-cell-fit fui-browse-delete">
                             <button class="sui-tooltip" data-tooltip="{{ Powerform.l10n.options.remove_image }}" aria-label="{{ Powerform.l10n.options.remove_image }}"><i class="sui-icon-cross-close" aria-hidden="true"></i></button>

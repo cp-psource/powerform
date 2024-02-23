@@ -32,19 +32,19 @@ class Powerform_WP_User_Autofill_Provider extends Powerform_Autofill_Provider_Ab
 	public function __construct() {
 		$attributes_map = array(
 			'display_name' => array(
-				'name'         => __( 'Display Name', Powerform::DOMAIN ),
+				'name'         => __( 'Anzeigename', Powerform::DOMAIN ),
 				'value_getter' => array( $this, 'get_value_display_name' ),
 			),
 			'first_name'   => array(
-				'name'         => __( 'First Name', Powerform::DOMAIN ),
+				'name'         => __( 'Vorname', Powerform::DOMAIN ),
 				'value_getter' => array( $this, 'get_value_firstname' ),
 			),
 			'last_name'    => array(
-				'name'         => __( 'Last Name', Powerform::DOMAIN ),
+				'name'         => __( 'Nachname', Powerform::DOMAIN ),
 				'value_getter' => array( $this, 'get_value_lastname' ),
 			),
 			'description'  => array(
-				'name'         => __( 'Description', Powerform::DOMAIN ),
+				'name'         => __( 'Beschreibung', Powerform::DOMAIN ),
 				'value_getter' => array( $this, 'get_value_description' ),
 			),
 			'email'        => array(
@@ -52,7 +52,7 @@ class Powerform_WP_User_Autofill_Provider extends Powerform_Autofill_Provider_Ab
 				'value_getter' => array( $this, 'get_value_email' ),
 			),
 			'login'        => array(
-				'name'         => __( 'Username', Powerform::DOMAIN ),
+				'name'         => __( 'Benutzername', Powerform::DOMAIN ),
 				'value_getter' => array( $this, 'get_value_login' ),
 			),
 		);

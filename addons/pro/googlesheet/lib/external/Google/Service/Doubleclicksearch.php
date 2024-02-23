@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Doubleclicksearch extends Powerform_Google_Service
+class Google_Service_Doubleclicksearch extends Google_Service
 {
   /** View and manage your advertising data in DoubleClick Search. */
   const DOUBLECLICKSEARCH =
@@ -36,14 +36,14 @@ class Powerform_Google_Service_Doubleclicksearch extends Powerform_Google_Servic
   public $conversion;
   public $reports;
   public $savedColumns;
-  
+
 
   /**
    * Constructs the internal representation of the Doubleclicksearch service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -51,7 +51,7 @@ class Powerform_Google_Service_Doubleclicksearch extends Powerform_Google_Servic
     $this->version = 'v2';
     $this->serviceName = 'doubleclicksearch';
 
-    $this->conversion = new Powerform_Google_Service_Doubleclicksearch_Conversion_Resource(
+    $this->conversion = new Google_Service_Doubleclicksearch_Conversion_Resource(
         $this,
         $this->serviceName,
         'conversion',
@@ -169,7 +169,7 @@ class Powerform_Google_Service_Doubleclicksearch extends Powerform_Google_Servic
           )
         )
     );
-    $this->reports = new Powerform_Google_Service_Doubleclicksearch_Reports_Resource(
+    $this->reports = new Google_Service_Doubleclicksearch_Reports_Resource(
         $this,
         $this->serviceName,
         'reports',
@@ -212,7 +212,7 @@ class Powerform_Google_Service_Doubleclicksearch extends Powerform_Google_Servic
           )
         )
     );
-    $this->savedColumns = new Powerform_Google_Service_Doubleclicksearch_SavedColumns_Resource(
+    $this->savedColumns = new Google_Service_Doubleclicksearch_SavedColumns_Resource(
         $this,
         $this->serviceName,
         'savedColumns',
@@ -245,11 +245,11 @@ class Powerform_Google_Service_Doubleclicksearch extends Powerform_Google_Servic
  * The "conversion" collection of methods.
  * Typical usage is:
  *  <code>
- *   $doubleclicksearchService = new Powerform_Google_Service_Doubleclicksearch(...);
+ *   $doubleclicksearchService = new Google_Service_Doubleclicksearch(...);
  *   $conversion = $doubleclicksearchService->conversion;
  *  </code>
  */
-class Powerform_Google_Service_Doubleclicksearch_Conversion_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Doubleclicksearch_Conversion_Resource extends Google_Service_Resource
 {
 
   /**
@@ -272,28 +272,28 @@ class Powerform_Google_Service_Doubleclicksearch_Conversion_Resource extends Pow
    * @opt_param string adId Numeric ID of the ad.
    * @opt_param string campaignId Numeric ID of the campaign.
    * @opt_param string criterionId Numeric ID of the criterion.
-   * @return Powerform_Google_Service_Doubleclicksearch_ConversionList
+   * @return Google_Service_Doubleclicksearch_ConversionList
    */
   public function get($agencyId, $advertiserId, $engineAccountId, $endDate, $rowCount, $startDate, $startRow, $optParams = array())
   {
     $params = array('agencyId' => $agencyId, 'advertiserId' => $advertiserId, 'engineAccountId' => $engineAccountId, 'endDate' => $endDate, 'rowCount' => $rowCount, 'startDate' => $startDate, 'startRow' => $startRow);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Doubleclicksearch_ConversionList");
+    return $this->call('get', array($params), "Google_Service_Doubleclicksearch_ConversionList");
   }
 
   /**
    * Inserts a batch of new conversions into DoubleClick Search.
    * (conversion.insert)
    *
-   * @param Powerform_Google_ConversionList $postBody
+   * @param Google_ConversionList $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Doubleclicksearch_ConversionList
+   * @return Google_Service_Doubleclicksearch_ConversionList
    */
-  public function insert(Powerform_Google_Service_Doubleclicksearch_ConversionList $postBody, $optParams = array())
+  public function insert(Google_Service_Doubleclicksearch_ConversionList $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Doubleclicksearch_ConversionList");
+    return $this->call('insert', array($params), "Google_Service_Doubleclicksearch_ConversionList");
   }
 
   /**
@@ -310,44 +310,44 @@ class Powerform_Google_Service_Doubleclicksearch_Conversion_Resource extends Pow
    * conversions. Format is yyyymmdd.
    * @param string $startRow The 0-based starting index for retrieving conversions
    * results.
-   * @param Powerform_Google_ConversionList $postBody
+   * @param Google_ConversionList $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Doubleclicksearch_ConversionList
+   * @return Google_Service_Doubleclicksearch_ConversionList
    */
-  public function patch($advertiserId, $agencyId, $endDate, $engineAccountId, $rowCount, $startDate, $startRow, Powerform_Google_Service_Doubleclicksearch_ConversionList $postBody, $optParams = array())
+  public function patch($advertiserId, $agencyId, $endDate, $engineAccountId, $rowCount, $startDate, $startRow, Google_Service_Doubleclicksearch_ConversionList $postBody, $optParams = array())
   {
     $params = array('advertiserId' => $advertiserId, 'agencyId' => $agencyId, 'endDate' => $endDate, 'engineAccountId' => $engineAccountId, 'rowCount' => $rowCount, 'startDate' => $startDate, 'startRow' => $startRow, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Doubleclicksearch_ConversionList");
+    return $this->call('patch', array($params), "Google_Service_Doubleclicksearch_ConversionList");
   }
 
   /**
    * Updates a batch of conversions in DoubleClick Search. (conversion.update)
    *
-   * @param Powerform_Google_ConversionList $postBody
+   * @param Google_ConversionList $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Doubleclicksearch_ConversionList
+   * @return Google_Service_Doubleclicksearch_ConversionList
    */
-  public function update(Powerform_Google_Service_Doubleclicksearch_ConversionList $postBody, $optParams = array())
+  public function update(Google_Service_Doubleclicksearch_ConversionList $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Doubleclicksearch_ConversionList");
+    return $this->call('update', array($params), "Google_Service_Doubleclicksearch_ConversionList");
   }
 
   /**
    * Updates the availabilities of a batch of floodlight activities in DoubleClick
    * Search. (conversion.updateAvailability)
    *
-   * @param Powerform_Google_UpdateAvailabilityRequest $postBody
+   * @param Google_UpdateAvailabilityRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Doubleclicksearch_UpdateAvailabilityResponse
+   * @return Google_Service_Doubleclicksearch_UpdateAvailabilityResponse
    */
-  public function updateAvailability(Powerform_Google_Service_Doubleclicksearch_UpdateAvailabilityRequest $postBody, $optParams = array())
+  public function updateAvailability(Google_Service_Doubleclicksearch_UpdateAvailabilityRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('updateAvailability', array($params), "Powerform_Google_Service_Doubleclicksearch_UpdateAvailabilityResponse");
+    return $this->call('updateAvailability', array($params), "Google_Service_Doubleclicksearch_UpdateAvailabilityResponse");
   }
 }
 
@@ -355,25 +355,25 @@ class Powerform_Google_Service_Doubleclicksearch_Conversion_Resource extends Pow
  * The "reports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $doubleclicksearchService = new Powerform_Google_Service_Doubleclicksearch(...);
+ *   $doubleclicksearchService = new Google_Service_Doubleclicksearch(...);
  *   $reports = $doubleclicksearchService->reports;
  *  </code>
  */
-class Powerform_Google_Service_Doubleclicksearch_Reports_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Doubleclicksearch_Reports_Resource extends Google_Service_Resource
 {
 
   /**
    * Generates and returns a report immediately. (reports.generate)
    *
-   * @param Powerform_Google_ReportRequest $postBody
+   * @param Google_ReportRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Doubleclicksearch_Report
+   * @return Google_Service_Doubleclicksearch_Report
    */
-  public function generate(Powerform_Google_Service_Doubleclicksearch_ReportRequest $postBody, $optParams = array())
+  public function generate(Google_Service_Doubleclicksearch_ReportRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('generate', array($params), "Powerform_Google_Service_Doubleclicksearch_Report");
+    return $this->call('generate', array($params), "Google_Service_Doubleclicksearch_Report");
   }
 
   /**
@@ -381,13 +381,13 @@ class Powerform_Google_Service_Doubleclicksearch_Reports_Resource extends Powerf
    *
    * @param string $reportId ID of the report request being polled.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Doubleclicksearch_Report
+   * @return Google_Service_Doubleclicksearch_Report
    */
   public function get($reportId, $optParams = array())
   {
     $params = array('reportId' => $reportId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Doubleclicksearch_Report");
+    return $this->call('get', array($params), "Google_Service_Doubleclicksearch_Report");
   }
 
   /**
@@ -407,15 +407,15 @@ class Powerform_Google_Service_Doubleclicksearch_Reports_Resource extends Powerf
   /**
    * Inserts a report request into the reporting system. (reports.request)
    *
-   * @param Powerform_Google_ReportRequest $postBody
+   * @param Google_ReportRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Doubleclicksearch_Report
+   * @return Google_Service_Doubleclicksearch_Report
    */
-  public function request(Powerform_Google_Service_Doubleclicksearch_ReportRequest $postBody, $optParams = array())
+  public function request(Google_Service_Doubleclicksearch_ReportRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('request', array($params), "Powerform_Google_Service_Doubleclicksearch_Report");
+    return $this->call('request', array($params), "Google_Service_Doubleclicksearch_Report");
   }
 }
 
@@ -423,11 +423,11 @@ class Powerform_Google_Service_Doubleclicksearch_Reports_Resource extends Powerf
  * The "savedColumns" collection of methods.
  * Typical usage is:
  *  <code>
- *   $doubleclicksearchService = new Powerform_Google_Service_Doubleclicksearch(...);
+ *   $doubleclicksearchService = new Google_Service_Doubleclicksearch(...);
  *   $savedColumns = $doubleclicksearchService->savedColumns;
  *  </code>
  */
-class Powerform_Google_Service_Doubleclicksearch_SavedColumns_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Doubleclicksearch_SavedColumns_Resource extends Google_Service_Resource
 {
 
   /**
@@ -437,20 +437,20 @@ class Powerform_Google_Service_Doubleclicksearch_SavedColumns_Resource extends P
    * @param string $agencyId DS ID of the agency.
    * @param string $advertiserId DS ID of the advertiser.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Doubleclicksearch_SavedColumnList
+   * @return Google_Service_Doubleclicksearch_SavedColumnList
    */
   public function listSavedColumns($agencyId, $advertiserId, $optParams = array())
   {
     $params = array('agencyId' => $agencyId, 'advertiserId' => $advertiserId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Doubleclicksearch_SavedColumnList");
+    return $this->call('list', array($params), "Google_Service_Doubleclicksearch_SavedColumnList");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Doubleclicksearch_Availability extends Powerform_Google_Model
+class Google_Service_Doubleclicksearch_Availability extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -512,7 +512,7 @@ class Powerform_Google_Service_Doubleclicksearch_Availability extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_Conversion extends Powerform_Google_Collection
+class Google_Service_Doubleclicksearch_Conversion extends Google_Collection
 {
   protected $collection_key = 'customMetric';
   protected $internal_gapi_mappings = array(
@@ -531,9 +531,9 @@ class Powerform_Google_Service_Doubleclicksearch_Conversion extends Powerform_Go
   public $countMillis;
   public $criterionId;
   public $currencyCode;
-  protected $customDimensionType = 'Powerform_Google_Service_Doubleclicksearch_CustomDimension';
+  protected $customDimensionType = 'Google_Service_Doubleclicksearch_CustomDimension';
   protected $customDimensionDataType = 'array';
-  protected $customMetricType = 'Powerform_Google_Service_Doubleclicksearch_CustomMetric';
+  protected $customMetricType = 'Google_Service_Doubleclicksearch_CustomMetric';
   protected $customMetricDataType = 'array';
   public $deviceType;
   public $dsConversionId;
@@ -820,12 +820,12 @@ class Powerform_Google_Service_Doubleclicksearch_Conversion extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_ConversionList extends Powerform_Google_Collection
+class Google_Service_Doubleclicksearch_ConversionList extends Google_Collection
 {
   protected $collection_key = 'conversion';
   protected $internal_gapi_mappings = array(
   );
-  protected $conversionType = 'Powerform_Google_Service_Doubleclicksearch_Conversion';
+  protected $conversionType = 'Google_Service_Doubleclicksearch_Conversion';
   protected $conversionDataType = 'array';
   public $kind;
 
@@ -848,7 +848,7 @@ class Powerform_Google_Service_Doubleclicksearch_ConversionList extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_CustomDimension extends Powerform_Google_Model
+class Google_Service_Doubleclicksearch_CustomDimension extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -874,7 +874,7 @@ class Powerform_Google_Service_Doubleclicksearch_CustomDimension extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_CustomMetric extends Powerform_Google_Model
+class Google_Service_Doubleclicksearch_CustomMetric extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -900,17 +900,17 @@ class Powerform_Google_Service_Doubleclicksearch_CustomMetric extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_Report extends Powerform_Google_Collection
+class Google_Service_Doubleclicksearch_Report extends Google_Collection
 {
   protected $collection_key = 'rows';
   protected $internal_gapi_mappings = array(
   );
-  protected $filesType = 'Powerform_Google_Service_Doubleclicksearch_ReportFiles';
+  protected $filesType = 'Google_Service_Doubleclicksearch_ReportFiles';
   protected $filesDataType = 'array';
   public $id;
   public $isReportReady;
   public $kind;
-  protected $requestType = 'Powerform_Google_Service_Doubleclicksearch_ReportRequest';
+  protected $requestType = 'Google_Service_Doubleclicksearch_ReportRequest';
   protected $requestDataType = '';
   public $rowCount;
   public $rows;
@@ -950,7 +950,7 @@ class Powerform_Google_Service_Doubleclicksearch_Report extends Powerform_Google
   {
     return $this->kind;
   }
-  public function setRequest(Powerform_Google_Service_Doubleclicksearch_ReportRequest $request)
+  public function setRequest(Google_Service_Doubleclicksearch_ReportRequest $request)
   {
     $this->request = $request;
   }
@@ -992,7 +992,7 @@ class Powerform_Google_Service_Doubleclicksearch_Report extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_ReportApiColumnSpec extends Powerform_Google_Model
+class Google_Service_Doubleclicksearch_ReportApiColumnSpec extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1090,7 +1090,7 @@ class Powerform_Google_Service_Doubleclicksearch_ReportApiColumnSpec extends Pow
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_ReportFiles extends Powerform_Google_Model
+class Google_Service_Doubleclicksearch_ReportFiles extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1116,28 +1116,28 @@ class Powerform_Google_Service_Doubleclicksearch_ReportFiles extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_ReportRequest extends Powerform_Google_Collection
+class Google_Service_Doubleclicksearch_ReportRequest extends Google_Collection
 {
   protected $collection_key = 'orderBy';
   protected $internal_gapi_mappings = array(
   );
-  protected $columnsType = 'Powerform_Google_Service_Doubleclicksearch_ReportApiColumnSpec';
+  protected $columnsType = 'Google_Service_Doubleclicksearch_ReportApiColumnSpec';
   protected $columnsDataType = 'array';
   public $downloadFormat;
-  protected $filtersType = 'Powerform_Google_Service_Doubleclicksearch_ReportRequestFilters';
+  protected $filtersType = 'Google_Service_Doubleclicksearch_ReportRequestFilters';
   protected $filtersDataType = 'array';
   public $includeDeletedEntities;
   public $includeRemovedEntities;
   public $maxRowsPerFile;
-  protected $orderByType = 'Powerform_Google_Service_Doubleclicksearch_ReportRequestOrderBy';
+  protected $orderByType = 'Google_Service_Doubleclicksearch_ReportRequestOrderBy';
   protected $orderByDataType = 'array';
-  protected $reportScopeType = 'Powerform_Google_Service_Doubleclicksearch_ReportRequestReportScope';
+  protected $reportScopeType = 'Google_Service_Doubleclicksearch_ReportRequestReportScope';
   protected $reportScopeDataType = '';
   public $reportType;
   public $rowCount;
   public $startRow;
   public $statisticsCurrency;
-  protected $timeRangeType = 'Powerform_Google_Service_Doubleclicksearch_ReportRequestTimeRange';
+  protected $timeRangeType = 'Google_Service_Doubleclicksearch_ReportRequestTimeRange';
   protected $timeRangeDataType = '';
   public $verifySingleTimeZone;
 
@@ -1198,7 +1198,7 @@ class Powerform_Google_Service_Doubleclicksearch_ReportRequest extends Powerform
   {
     return $this->orderBy;
   }
-  public function setReportScope(Powerform_Google_Service_Doubleclicksearch_ReportRequestReportScope $reportScope)
+  public function setReportScope(Google_Service_Doubleclicksearch_ReportRequestReportScope $reportScope)
   {
     $this->reportScope = $reportScope;
   }
@@ -1238,7 +1238,7 @@ class Powerform_Google_Service_Doubleclicksearch_ReportRequest extends Powerform
   {
     return $this->statisticsCurrency;
   }
-  public function setTimeRange(Powerform_Google_Service_Doubleclicksearch_ReportRequestTimeRange $timeRange)
+  public function setTimeRange(Google_Service_Doubleclicksearch_ReportRequestTimeRange $timeRange)
   {
     $this->timeRange = $timeRange;
   }
@@ -1256,18 +1256,18 @@ class Powerform_Google_Service_Doubleclicksearch_ReportRequest extends Powerform
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_ReportRequestFilters extends Powerform_Google_Collection
+class Google_Service_Doubleclicksearch_ReportRequestFilters extends Google_Collection
 {
   protected $collection_key = 'values';
   protected $internal_gapi_mappings = array(
   );
-  protected $columnType = 'Powerform_Google_Service_Doubleclicksearch_ReportApiColumnSpec';
+  protected $columnType = 'Google_Service_Doubleclicksearch_ReportApiColumnSpec';
   protected $columnDataType = '';
   public $operator;
   public $values;
 
 
-  public function setColumn(Powerform_Google_Service_Doubleclicksearch_ReportApiColumnSpec $column)
+  public function setColumn(Google_Service_Doubleclicksearch_ReportApiColumnSpec $column)
   {
     $this->column = $column;
   }
@@ -1293,16 +1293,16 @@ class Powerform_Google_Service_Doubleclicksearch_ReportRequestFilters extends Po
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_ReportRequestOrderBy extends Powerform_Google_Model
+class Google_Service_Doubleclicksearch_ReportRequestOrderBy extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $columnType = 'Powerform_Google_Service_Doubleclicksearch_ReportApiColumnSpec';
+  protected $columnType = 'Google_Service_Doubleclicksearch_ReportApiColumnSpec';
   protected $columnDataType = '';
   public $sortOrder;
 
 
-  public function setColumn(Powerform_Google_Service_Doubleclicksearch_ReportApiColumnSpec $column)
+  public function setColumn(Google_Service_Doubleclicksearch_ReportApiColumnSpec $column)
   {
     $this->column = $column;
   }
@@ -1320,7 +1320,7 @@ class Powerform_Google_Service_Doubleclicksearch_ReportRequestOrderBy extends Po
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_ReportRequestReportScope extends Powerform_Google_Model
+class Google_Service_Doubleclicksearch_ReportRequestReportScope extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1391,7 +1391,7 @@ class Powerform_Google_Service_Doubleclicksearch_ReportRequestReportScope extend
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_ReportRequestTimeRange extends Powerform_Google_Model
+class Google_Service_Doubleclicksearch_ReportRequestTimeRange extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1435,7 +1435,7 @@ class Powerform_Google_Service_Doubleclicksearch_ReportRequestTimeRange extends 
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_SavedColumn extends Powerform_Google_Model
+class Google_Service_Doubleclicksearch_SavedColumn extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1470,12 +1470,12 @@ class Powerform_Google_Service_Doubleclicksearch_SavedColumn extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_SavedColumnList extends Powerform_Google_Collection
+class Google_Service_Doubleclicksearch_SavedColumnList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Doubleclicksearch_SavedColumn';
+  protected $itemsType = 'Google_Service_Doubleclicksearch_SavedColumn';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1498,12 +1498,12 @@ class Powerform_Google_Service_Doubleclicksearch_SavedColumnList extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_UpdateAvailabilityRequest extends Powerform_Google_Collection
+class Google_Service_Doubleclicksearch_UpdateAvailabilityRequest extends Google_Collection
 {
   protected $collection_key = 'availabilities';
   protected $internal_gapi_mappings = array(
   );
-  protected $availabilitiesType = 'Powerform_Google_Service_Doubleclicksearch_Availability';
+  protected $availabilitiesType = 'Google_Service_Doubleclicksearch_Availability';
   protected $availabilitiesDataType = 'array';
 
 
@@ -1517,12 +1517,12 @@ class Powerform_Google_Service_Doubleclicksearch_UpdateAvailabilityRequest exten
   }
 }
 
-class Powerform_Google_Service_Doubleclicksearch_UpdateAvailabilityResponse extends Powerform_Google_Collection
+class Google_Service_Doubleclicksearch_UpdateAvailabilityResponse extends Google_Collection
 {
   protected $collection_key = 'availabilities';
   protected $internal_gapi_mappings = array(
   );
-  protected $availabilitiesType = 'Powerform_Google_Service_Doubleclicksearch_Availability';
+  protected $availabilitiesType = 'Google_Service_Doubleclicksearch_Availability';
   protected $availabilitiesDataType = 'array';
 
 

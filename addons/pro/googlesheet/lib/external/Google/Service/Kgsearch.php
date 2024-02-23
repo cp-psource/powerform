@@ -27,19 +27,19 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Kgsearch extends Powerform_Google_Service
+class Google_Service_Kgsearch extends Google_Service
 {
 
 
   public $entities;
-  
+
 
   /**
    * Constructs the internal representation of the Kgsearch service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://kgsearch.googleapis.com/';
@@ -47,7 +47,7 @@ class Powerform_Google_Service_Kgsearch extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'kgsearch';
 
-    $this->entities = new Powerform_Google_Service_Kgsearch_Entities_Resource(
+    $this->entities = new Google_Service_Kgsearch_Entities_Resource(
         $this,
         $this->serviceName,
         'entities',
@@ -101,11 +101,11 @@ class Powerform_Google_Service_Kgsearch extends Powerform_Google_Service
  * The "entities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $kgsearchService = new Powerform_Google_Service_Kgsearch(...);
+ *   $kgsearchService = new Google_Service_Kgsearch(...);
  *   $entities = $kgsearchService->entities;
  *  </code>
  */
-class Powerform_Google_Service_Kgsearch_Entities_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Kgsearch_Entities_Resource extends Google_Service_Resource
 {
 
   /**
@@ -126,20 +126,20 @@ class Powerform_Google_Service_Kgsearch_Entities_Resource extends Powerform_Goog
    * @opt_param bool prefix Enables prefix match against names and aliases of
    * entities
    * @opt_param int limit Limits the number of entities to be returned.
-   * @return Powerform_Google_Service_Kgsearch_SearchResponse
+   * @return Google_Service_Kgsearch_SearchResponse
    */
   public function search($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('search', array($params), "Powerform_Google_Service_Kgsearch_SearchResponse");
+    return $this->call('search', array($params), "Google_Service_Kgsearch_SearchResponse");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Kgsearch_SearchResponse extends Powerform_Google_Collection
+class Google_Service_Kgsearch_SearchResponse extends Google_Collection
 {
   protected $collection_key = 'itemListElement';
   protected $internal_gapi_mappings = array(

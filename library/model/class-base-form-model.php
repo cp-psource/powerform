@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Author: Hoang Ngo
+ * Author: DerN3rd
  *
  * @property  string $status
  */
@@ -42,12 +42,6 @@ abstract class Powerform_Base_Form_Model {
 	public $settings = array();
 
 	/**
-	 * Form notification
-	 * array
-	 */
-	public $notifications = array();
-
-	/**
 	 * WP_Post
 	 */
 	public $raw;
@@ -76,6 +70,7 @@ abstract class Powerform_Base_Form_Model {
 		$maps      = array_merge( $this->get_default_maps(), $this->get_maps() );
 		$post_data = array();
 		$meta_data = array();
+
 		if ( ! empty( $maps ) ) {
 			foreach ( $maps as $map ) {
 				$attribute = $map['property'];
@@ -288,12 +283,6 @@ abstract class Powerform_Base_Form_Model {
 			$args['post_status'] = $status;
 		}
 
-		if ( 'powerform_forms' === $this->post_type ) {
-			$args['meta_key']     = 'powerform_form_meta';
-			$args['meta_value']   = 'form-type";s:5:"leads"';
-			$args['meta_compare'] = 'NOT LIKE';
-		}
-
 		$query  = new WP_Query( $args );
 		$models = array();
 
@@ -345,54 +334,6 @@ abstract class Powerform_Base_Form_Model {
 	}
 
 	/**
-	 * Get modules from field id
-	 *
-	 * @since 1.9
-	 *
-	 * @return array
-	 */
-	public function get_models_by_field( $id ) {
-		$modules = array();
-		$data    = $this->get_models( 999 );
-
-		foreach ( $data as $model ) {
-			if ( $model->get_field( $id ) ) {
-				$modules[] = array(
-					'id'      => $model->id,
-					'title'   => $model->name,
-					'version' => $model->version
-				);
-			}
-		}
-
-		return $modules;
-	}
-
-	/**
-	 * Get modules from field id & version
-	 *
-	 * @since 1.9
-	 *
-	 * @return array
-	 */
-	public function get_models_by_field_and_version( $id, $version ) {
-		$modules   = array();
-		$data      = $this->get_models(999);
-
-		foreach ( array_filter( $data ) as $model ) {
-			if ( $model->get_field( $id ) && version_compare( $model->settings['version'], $version, 'lt' ) ) {
-				$modules[] = array(
-					'id'      => $model->id,
-					'title'   => $model->name,
-					'version' => $model->settings['version']
-				);
-			}
-		}
-
-		return $modules;
-	}
-
-	/**
 	 * Get Models
 	 *
 	 * @since 1.0
@@ -436,7 +377,6 @@ abstract class Powerform_Base_Form_Model {
 			$object        = new $class();
 			$meta          = get_post_meta( $post->ID, self::META_KEY, true );
 			$maps          = array_merge( $this->get_default_maps(), $this->get_maps() );
-			$fields        = ! empty( $meta['fields'] ) ? $meta['fields'] : array();
 			$form_settings = array(
 				'version'                    => '1.0',
 				'cform-section-border-color' => '#E9E9E9',
@@ -459,7 +399,7 @@ abstract class Powerform_Base_Form_Model {
 						$att                = $map['field'];
 						$object->$attribute = $post->$att;
 					} else {
-						if ( ! empty( $meta['fields'] ) && 'fields' === $map['field'] ) {
+						if ( 'fields' === $map['field'] ) {
 							foreach ( $meta['fields'] as $field_data ) {
 								$field          = new Powerform_Form_Field_Model( $form_settings );
 								$field->form_id = $post->ID;
@@ -477,26 +417,19 @@ abstract class Powerform_Base_Form_Model {
 				}
 			}
 
-			$form_settings = $object->settings;
-			if ( ! isset( $form_settings['form_id'] ) ) {
-				$form_settings['form_id'] = $object->id;
-			}
-
 			// Migrate settings Custom Form
 			if ( 'powerform_forms' === $this->post_type ) {
-				$object->settings      = Powerform_Migration::migrate_custom_form_settings( $form_settings, $fields );
-				$object->notifications = Powerform_Migration::migrate_custom_form_notifications( $object->notifications, $form_settings, $meta );
+				$object->settings = Powerform_Migration::migrate_custom_form_settings( $object->settings );
 			}
 
 			// Migrate settings Polls
 			if ( 'powerform_polls' === $this->post_type ) {
-				$object->settings = Powerform_Migration::migrate_polls_settings( $form_settings );
+				$object->settings = Powerform_Migration::migrate_polls_settings( $object->settings );
 			}
 
 			// Migrate settings Polls
 			if ( 'powerform_quizzes' === $this->post_type ) {
-				$object->settings      = Powerform_Migration::migrate_quizzes_settings( $form_settings );
-				$object->notifications = Powerform_Migration::migrate_quizzes_notifications( $object->notifications, $form_settings, $meta );
+				$object->settings = Powerform_Migration::migrate_quizzes_settings( $object->settings );
 			}
 
 			$object->raw = $post;
@@ -601,18 +534,15 @@ abstract class Powerform_Base_Form_Model {
 			}
 		}
 
-		$settings      = $this->settings;
-		$notifications = $this->notifications;
-		$data          = array_merge(
+		$settings = $this->settings;
+		$data     = array_merge(
 			array(
 				'wrappers' => array(
 					'fields' => $wrappers,
 				),
 			),
-			$settings,
-			$notifications
-		);
-		$ret           = array(
+			$settings );
+		$ret      = array(
 			'formName' => $this->name,
 			'data'     => $data,
 		);
@@ -658,11 +588,6 @@ abstract class Powerform_Base_Form_Model {
 				'type'     => 'meta',
 				'property' => 'client_id',
 				'field'    => 'client_id',
-			),
-			array(
-				'type'     => 'meta',
-				'property' => 'notifications',
-				'field'    => 'notifications',
 			),
 		);
 	}
@@ -768,11 +693,11 @@ abstract class Powerform_Base_Form_Model {
 	public static function create_from_import_data( $import_data, $module = __CLASS__ ) {
 		try {
 			if ( ! Powerform::is_import_export_feature_enabled() ) {
-				throw new Exception( __( 'Export Import feature disabled', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Export Importfunktion deaktiviert', Powerform::DOMAIN ) );
 			}
 
 			if ( ! is_callable( array( $module, 'model' ) ) ) {
-				throw new Exception( __( 'Model loader for importer does not exist.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Modelllader für Importeur existiert nicht.', Powerform::DOMAIN ) );
 			}
 
 			// call static method ::model
@@ -789,21 +714,21 @@ abstract class Powerform_Base_Form_Model {
 			do_action( 'powerform_before_create_model_from_import_data', $import_data, $module );
 
 			if ( ! isset( $import_data['type'] ) || empty( $import_data['type'] ) ) {
-				throw new Exception( __( 'Invalid format of import data type', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Ungültiges Format des Importdatentyps', Powerform::DOMAIN ) );
 			}
 
 			$meta = ( isset( $import_data['data'] ) ? $import_data['data'] : array() );
 
 			if ( empty( $meta ) ) {
-				throw new Exception( __( 'Invalid format of import data', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Ungültiges Format der Importdaten', Powerform::DOMAIN ) );
 			}
 
 			if ( ! isset( $meta['settings'] ) || empty( $meta['settings'] ) ) {
-				throw new Exception( __( 'Invalid format of import data settings', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Ungültiges Format der Einstellungen für Importdaten', Powerform::DOMAIN ) );
 			}
 
 			if ( ! isset( $meta['settings']['formName'] ) || empty( $meta['settings']['formName'] ) ) {
-				throw new Exception( __( 'Invalid format of import data name', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Ungültiges Format des Importdatennamens', Powerform::DOMAIN ) );
 			}
 
 			$form_name = $meta['settings']['formName'];
@@ -850,21 +775,9 @@ abstract class Powerform_Base_Form_Model {
 			$model = $model->load( $post_id );
 
 			if ( ! $model instanceof $module ) {
-				throw new Exception( __( 'Failed to load imported Powerform model', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Importiertes Powerform-Modell konnte nicht geladen werden', Powerform::DOMAIN ) );
 			}
 
-
-			/**
-			 * Action called after module imported
-			 *
-			 * @since 1.11
-			 *
-			 * @param int    $post_id - module id
-			 * @param string $post_status - module status
-			 * @param object $model - module model
-			 *
-			 */
-			do_action( 'powerform_' . $type . '_action_imported', $post_id, $post_status, $model );
 		} catch ( Exception $e ) {
 			$code = $e->getCode();
 			if ( empty( $code ) ) {
@@ -953,41 +866,6 @@ abstract class Powerform_Base_Form_Model {
 		 * @return bool
 		 */
 		$enabled = apply_filters( 'powerform_module_is_use_donotcachepage_constant', $enabled );
-
-		return $enabled;
-	}
-
-	/**
-	 * Check if the result enable for share
-	 *
-	 * @since 1.7
-	 * @return bool
-	 */
-	public function is_entry_share_enabled() {
-		$module_id   = (int) $this->id;
-		$module_type = $this->post_type;
-
-		// from settings
-		$settings_enabled = get_option( 'powerform_module_enable_share_entry', false );
-
-		// from constant
-		$enabled = defined( 'POWERFORM_MODULE_ENABLE_SHARE_ENTRY' ) && POWERFORM_MODULE_ENABLE_SHARE_ENTRY;
-
-		// if one is true, then its enabled
-		$enabled = $settings_enabled || $enabled;
-
-		/**
-		 * Filter flag is use `ENABLE_SHARE_ENTRY` of module
-		 *
-		 * @since  1.7
-		 *
-		 * @param bool   $enabled
-		 * @param int    $module_id
-		 * @param string $module_type
-		 *
-		 * @return bool
-		 */
-		$enabled = apply_filters( 'powerform_module_is_entry_share_enabled', $enabled, $module_id, $module_type );
 
 		return $enabled;
 	}

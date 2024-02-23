@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_SiteVerification extends Powerform_Google_Service
+class Google_Service_SiteVerification extends Google_Service
 {
   /** Manage the list of sites and domains you control. */
   const SITEVERIFICATION =
@@ -36,14 +36,14 @@ class Powerform_Google_Service_SiteVerification extends Powerform_Google_Service
       "https://www.googleapis.com/auth/siteverification.verify_only";
 
   public $webResource;
-  
+
 
   /**
    * Constructs the internal representation of the SiteVerification service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -51,7 +51,7 @@ class Powerform_Google_Service_SiteVerification extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'siteVerification';
 
-    $this->webResource = new Powerform_Google_Service_SiteVerification_WebResource_Resource(
+    $this->webResource = new Google_Service_SiteVerification_WebResource_Resource(
         $this,
         $this->serviceName,
         'webResource',
@@ -127,11 +127,11 @@ class Powerform_Google_Service_SiteVerification extends Powerform_Google_Service
  * The "webResource" collection of methods.
  * Typical usage is:
  *  <code>
- *   $siteVerificationService = new Powerform_Google_Service_SiteVerification(...);
+ *   $siteVerificationService = new Google_Service_SiteVerification(...);
  *   $webResource = $siteVerificationService->webResource;
  *  </code>
  */
-class Powerform_Google_Service_SiteVerification_WebResource_Resource extends Powerform_Google_Service_Resource
+class Google_Service_SiteVerification_WebResource_Resource extends Google_Service_Resource
 {
 
   /**
@@ -152,28 +152,28 @@ class Powerform_Google_Service_SiteVerification_WebResource_Resource extends Pow
    *
    * @param string $id The id of a verified site or domain.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource
+   * @return Google_Service_SiteVerification_SiteVerificationWebResourceResource
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource");
+    return $this->call('get', array($params), "Google_Service_SiteVerification_SiteVerificationWebResourceResource");
   }
 
   /**
    * Get a verification token for placing on a website or domain.
    * (webResource.getToken)
    *
-   * @param Powerform_Google_SiteVerificationWebResourceGettokenRequest $postBody
+   * @param Google_SiteVerificationWebResourceGettokenRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGettokenResponse
+   * @return Google_Service_SiteVerification_SiteVerificationWebResourceGettokenResponse
    */
-  public function getToken(Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGettokenRequest $postBody, $optParams = array())
+  public function getToken(Google_Service_SiteVerification_SiteVerificationWebResourceGettokenRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('getToken', array($params), "Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGettokenResponse");
+    return $this->call('getToken', array($params), "Google_Service_SiteVerification_SiteVerificationWebResourceGettokenResponse");
   }
 
   /**
@@ -181,15 +181,15 @@ class Powerform_Google_Service_SiteVerification_WebResource_Resource extends Pow
    *
    * @param string $verificationMethod The method to use for verifying a site or
    * domain.
-   * @param Powerform_Google_SiteVerificationWebResourceResource $postBody
+   * @param Google_SiteVerificationWebResourceResource $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource
+   * @return Google_Service_SiteVerification_SiteVerificationWebResourceResource
    */
-  public function insert($verificationMethod, Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource $postBody, $optParams = array())
+  public function insert($verificationMethod, Google_Service_SiteVerification_SiteVerificationWebResourceResource $postBody, $optParams = array())
   {
     $params = array('verificationMethod' => $verificationMethod, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource");
+    return $this->call('insert', array($params), "Google_Service_SiteVerification_SiteVerificationWebResourceResource");
   }
 
   /**
@@ -197,13 +197,13 @@ class Powerform_Google_Service_SiteVerification_WebResource_Resource extends Pow
    * (webResource.listWebResource)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceListResponse
+   * @return Google_Service_SiteVerification_SiteVerificationWebResourceListResponse
    */
   public function listWebResource($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceListResponse");
+    return $this->call('list', array($params), "Google_Service_SiteVerification_SiteVerificationWebResourceListResponse");
   }
 
   /**
@@ -211,46 +211,46 @@ class Powerform_Google_Service_SiteVerification_WebResource_Resource extends Pow
    * patch semantics. (webResource.patch)
    *
    * @param string $id The id of a verified site or domain.
-   * @param Powerform_Google_SiteVerificationWebResourceResource $postBody
+   * @param Google_SiteVerificationWebResourceResource $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource
+   * @return Google_Service_SiteVerification_SiteVerificationWebResourceResource
    */
-  public function patch($id, Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource $postBody, $optParams = array())
+  public function patch($id, Google_Service_SiteVerification_SiteVerificationWebResourceResource $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource");
+    return $this->call('patch', array($params), "Google_Service_SiteVerification_SiteVerificationWebResourceResource");
   }
 
   /**
    * Modify the list of owners for your website or domain. (webResource.update)
    *
    * @param string $id The id of a verified site or domain.
-   * @param Powerform_Google_SiteVerificationWebResourceResource $postBody
+   * @param Google_SiteVerificationWebResourceResource $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource
+   * @return Google_Service_SiteVerification_SiteVerificationWebResourceResource
    */
-  public function update($id, Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource $postBody, $optParams = array())
+  public function update($id, Google_Service_SiteVerification_SiteVerificationWebResourceResource $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource");
+    return $this->call('update', array($params), "Google_Service_SiteVerification_SiteVerificationWebResourceResource");
   }
 }
 
 
 
 
-class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGettokenRequest extends Powerform_Google_Model
+class Google_Service_SiteVerification_SiteVerificationWebResourceGettokenRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $siteType = 'Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGettokenRequestSite';
+  protected $siteType = 'Google_Service_SiteVerification_SiteVerificationWebResourceGettokenRequestSite';
   protected $siteDataType = '';
   public $verificationMethod;
 
 
-  public function setSite(Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGettokenRequestSite $site)
+  public function setSite(Google_Service_SiteVerification_SiteVerificationWebResourceGettokenRequestSite $site)
   {
     $this->site = $site;
   }
@@ -268,7 +268,7 @@ class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGetto
   }
 }
 
-class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGettokenRequestSite extends Powerform_Google_Model
+class Google_Service_SiteVerification_SiteVerificationWebResourceGettokenRequestSite extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -294,7 +294,7 @@ class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGetto
   }
 }
 
-class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGettokenResponse extends Powerform_Google_Model
+class Google_Service_SiteVerification_SiteVerificationWebResourceGettokenResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -320,12 +320,12 @@ class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceGetto
   }
 }
 
-class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceListResponse extends Powerform_Google_Collection
+class Google_Service_SiteVerification_SiteVerificationWebResourceListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource';
+  protected $itemsType = 'Google_Service_SiteVerification_SiteVerificationWebResourceResource';
   protected $itemsDataType = 'array';
 
 
@@ -339,14 +339,14 @@ class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceListR
   }
 }
 
-class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResource extends Powerform_Google_Collection
+class Google_Service_SiteVerification_SiteVerificationWebResourceResource extends Google_Collection
 {
   protected $collection_key = 'owners';
   protected $internal_gapi_mappings = array(
   );
   public $id;
   public $owners;
-  protected $siteType = 'Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResourceSite';
+  protected $siteType = 'Google_Service_SiteVerification_SiteVerificationWebResourceResourceSite';
   protected $siteDataType = '';
 
 
@@ -366,7 +366,7 @@ class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResou
   {
     return $this->owners;
   }
-  public function setSite(Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResourceSite $site)
+  public function setSite(Google_Service_SiteVerification_SiteVerificationWebResourceResourceSite $site)
   {
     $this->site = $site;
   }
@@ -376,7 +376,7 @@ class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResou
   }
 }
 
-class Powerform_Google_Service_SiteVerification_SiteVerificationWebResourceResourceSite extends Powerform_Google_Model
+class Google_Service_SiteVerification_SiteVerificationWebResourceResourceSite extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

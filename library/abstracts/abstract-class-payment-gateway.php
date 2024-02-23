@@ -44,7 +44,8 @@ abstract class Powerform_Payment_Gateway {
 
 		// Handle purchases
 		if ( $this->_enabled ) {
-			add_filter( 'powerform_cform_process_purchase', array( $this, '_handle_purchase' ), 10, 5 );
+			add_filter( 'powerform_cform_process_purchase', array( $this, '_handle_purchase'), 10, 5 );
+			add_action( 'wp_footer', array( $this, 'gateway_footer_scripts' ) );
 		}
 	}
 

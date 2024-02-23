@@ -26,21 +26,21 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_AppState extends Powerform_Google_Service
+class Google_Service_AppState extends Google_Service
 {
   /** View and manage your data for this application. */
   const APPSTATE =
       "https://www.googleapis.com/auth/appstate";
 
   public $states;
-  
+
 
   /**
    * Constructs the internal representation of the AppState service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -48,7 +48,7 @@ class Powerform_Google_Service_AppState extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'appstate';
 
-    $this->states = new Powerform_Google_Service_AppState_States_Resource(
+    $this->states = new Google_Service_AppState_States_Resource(
         $this,
         $this->serviceName,
         'states',
@@ -123,11 +123,11 @@ class Powerform_Google_Service_AppState extends Powerform_Google_Service
  * The "states" collection of methods.
  * Typical usage is:
  *  <code>
- *   $appstateService = new Powerform_Google_Service_AppState(...);
+ *   $appstateService = new Google_Service_AppState(...);
  *   $states = $appstateService->states;
  *  </code>
  */
-class Powerform_Google_Service_AppState_States_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AppState_States_Resource extends Google_Service_Resource
 {
 
   /**
@@ -140,13 +140,13 @@ class Powerform_Google_Service_AppState_States_Resource extends Powerform_Google
    *
    * @opt_param string currentDataVersion The version of the data to be cleared.
    * Version strings are returned by the server.
-   * @return Powerform_Google_Service_AppState_WriteResult
+   * @return Google_Service_AppState_WriteResult
    */
   public function clear($stateKey, $optParams = array())
   {
     $params = array('stateKey' => $stateKey);
     $params = array_merge($params, $optParams);
-    return $this->call('clear', array($params), "Powerform_Google_Service_AppState_WriteResult");
+    return $this->call('clear', array($params), "Google_Service_AppState_WriteResult");
   }
 
   /**
@@ -172,13 +172,13 @@ class Powerform_Google_Service_AppState_States_Resource extends Powerform_Google
    *
    * @param int $stateKey The key for the data to be retrieved.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AppState_GetResponse
+   * @return Google_Service_AppState_GetResponse
    */
   public function get($stateKey, $optParams = array())
   {
     $params = array('stateKey' => $stateKey);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AppState_GetResponse");
+    return $this->call('get', array($params), "Google_Service_AppState_GetResponse");
   }
 
   /**
@@ -188,13 +188,13 @@ class Powerform_Google_Service_AppState_States_Resource extends Powerform_Google
    *
    * @opt_param bool includeData Whether to include the full data in addition to
    * the version number
-   * @return Powerform_Google_Service_AppState_ListResponse
+   * @return Google_Service_AppState_ListResponse
    */
   public function listStates($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AppState_ListResponse");
+    return $this->call('list', array($params), "Google_Service_AppState_ListResponse");
   }
 
   /**
@@ -203,7 +203,7 @@ class Powerform_Google_Service_AppState_States_Resource extends Powerform_Google
    * of concurrent writes. Maximum per-key size is 128KB. (states.update)
    *
    * @param int $stateKey The key for the data to be retrieved.
-   * @param Powerform_Google_UpdateRequest $postBody
+   * @param Google_UpdateRequest $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string currentStateVersion The version of the app state your
@@ -211,20 +211,20 @@ class Powerform_Google_Service_AppState_States_Resource extends Powerform_Google
    * version, this method will return a conflict error. If there is no data stored
    * on the server for this key, the update will succeed irrespective of the value
    * of this parameter.
-   * @return Powerform_Google_Service_AppState_WriteResult
+   * @return Google_Service_AppState_WriteResult
    */
-  public function update($stateKey, Powerform_Google_Service_AppState_UpdateRequest $postBody, $optParams = array())
+  public function update($stateKey, Google_Service_AppState_UpdateRequest $postBody, $optParams = array())
   {
     $params = array('stateKey' => $stateKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AppState_WriteResult");
+    return $this->call('update', array($params), "Google_Service_AppState_WriteResult");
   }
 }
 
 
 
 
-class Powerform_Google_Service_AppState_GetResponse extends Powerform_Google_Model
+class Google_Service_AppState_GetResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -268,12 +268,12 @@ class Powerform_Google_Service_AppState_GetResponse extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_AppState_ListResponse extends Powerform_Google_Collection
+class Google_Service_AppState_ListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_AppState_GetResponse';
+  protected $itemsType = 'Google_Service_AppState_GetResponse';
   protected $itemsDataType = 'array';
   public $kind;
   public $maximumKeyCount;
@@ -305,7 +305,7 @@ class Powerform_Google_Service_AppState_ListResponse extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_AppState_UpdateRequest extends Powerform_Google_Model
+class Google_Service_AppState_UpdateRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -331,7 +331,7 @@ class Powerform_Google_Service_AppState_UpdateRequest extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_AppState_WriteResult extends Powerform_Google_Model
+class Google_Service_AppState_WriteResult extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

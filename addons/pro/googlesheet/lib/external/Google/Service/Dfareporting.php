@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
+class Google_Service_Dfareporting extends Google_Service
 {
   /** View and manage DoubleClick for Advertisers reports. */
   const DFAREPORTING =
@@ -92,14 +92,14 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
   public $userRolePermissionGroups;
   public $userRolePermissions;
   public $userRoles;
-  
+
 
   /**
    * Constructs the internal representation of the Dfareporting service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -107,7 +107,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
     $this->version = 'v2.4';
     $this->serviceName = 'dfareporting';
 
-    $this->accountActiveAdSummaries = new Powerform_Google_Service_Dfareporting_AccountActiveAdSummaries_Resource(
+    $this->accountActiveAdSummaries = new Google_Service_Dfareporting_AccountActiveAdSummaries_Resource(
         $this,
         $this->serviceName,
         'accountActiveAdSummaries',
@@ -132,7 +132,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->accountPermissionGroups = new Powerform_Google_Service_Dfareporting_AccountPermissionGroups_Resource(
+    $this->accountPermissionGroups = new Google_Service_Dfareporting_AccountPermissionGroups_Resource(
         $this,
         $this->serviceName,
         'accountPermissionGroups',
@@ -167,7 +167,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->accountPermissions = new Powerform_Google_Service_Dfareporting_AccountPermissions_Resource(
+    $this->accountPermissions = new Google_Service_Dfareporting_AccountPermissions_Resource(
         $this,
         $this->serviceName,
         'accountPermissions',
@@ -202,7 +202,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->accountUserProfiles = new Powerform_Google_Service_Dfareporting_AccountUserProfiles_Resource(
+    $this->accountUserProfiles = new Google_Service_Dfareporting_AccountUserProfiles_Resource(
         $this,
         $this->serviceName,
         'accountUserProfiles',
@@ -309,7 +309,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->accounts = new Powerform_Google_Service_Dfareporting_Accounts_Resource(
+    $this->accounts = new Google_Service_Dfareporting_Accounts_Resource(
         $this,
         $this->serviceName,
         'accounts',
@@ -398,7 +398,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->ads = new Powerform_Google_Service_Dfareporting_Ads_Resource(
+    $this->ads = new Google_Service_Dfareporting_Ads_Resource(
         $this,
         $this->serviceName,
         'ads',
@@ -574,7 +574,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->advertiserGroups = new Powerform_Google_Service_Dfareporting_AdvertiserGroups_Resource(
+    $this->advertiserGroups = new Google_Service_Dfareporting_AdvertiserGroups_Resource(
         $this,
         $this->serviceName,
         'advertiserGroups',
@@ -684,7 +684,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->advertisers = new Powerform_Google_Service_Dfareporting_Advertisers_Resource(
+    $this->advertisers = new Google_Service_Dfareporting_Advertisers_Resource(
         $this,
         $this->serviceName,
         'advertisers',
@@ -805,7 +805,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->browsers = new Powerform_Google_Service_Dfareporting_Browsers_Resource(
+    $this->browsers = new Google_Service_Dfareporting_Browsers_Resource(
         $this,
         $this->serviceName,
         'browsers',
@@ -825,7 +825,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->campaignCreativeAssociations = new Powerform_Google_Service_Dfareporting_CampaignCreativeAssociations_Resource(
+    $this->campaignCreativeAssociations = new Google_Service_Dfareporting_CampaignCreativeAssociations_Resource(
         $this,
         $this->serviceName,
         'campaignCreativeAssociations',
@@ -877,7 +877,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->campaigns = new Powerform_Google_Service_Dfareporting_Campaigns_Resource(
+    $this->campaigns = new Google_Service_Dfareporting_Campaigns_Resource(
         $this,
         $this->serviceName,
         'campaigns',
@@ -1013,7 +1013,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->changeLogs = new Powerform_Google_Service_Dfareporting_ChangeLogs_Resource(
+    $this->changeLogs = new Google_Service_Dfareporting_ChangeLogs_Resource(
         $this,
         $this->serviceName,
         'changeLogs',
@@ -1091,7 +1091,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->cities = new Powerform_Google_Service_Dfareporting_Cities_Resource(
+    $this->cities = new Google_Service_Dfareporting_Cities_Resource(
         $this,
         $this->serviceName,
         'cities',
@@ -1130,7 +1130,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->connectionTypes = new Powerform_Google_Service_Dfareporting_ConnectionTypes_Resource(
+    $this->connectionTypes = new Google_Service_Dfareporting_ConnectionTypes_Resource(
         $this,
         $this->serviceName,
         'connectionTypes',
@@ -1165,7 +1165,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->contentCategories = new Powerform_Google_Service_Dfareporting_ContentCategories_Resource(
+    $this->contentCategories = new Google_Service_Dfareporting_ContentCategories_Resource(
         $this,
         $this->serviceName,
         'contentCategories',
@@ -1275,7 +1275,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->countries = new Powerform_Google_Service_Dfareporting_Countries_Resource(
+    $this->countries = new Google_Service_Dfareporting_Countries_Resource(
         $this,
         $this->serviceName,
         'countries',
@@ -1310,7 +1310,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->creativeAssets = new Powerform_Google_Service_Dfareporting_CreativeAssets_Resource(
+    $this->creativeAssets = new Google_Service_Dfareporting_CreativeAssets_Resource(
         $this,
         $this->serviceName,
         'creativeAssets',
@@ -1335,7 +1335,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->creativeFieldValues = new Powerform_Google_Service_Dfareporting_CreativeFieldValues_Resource(
+    $this->creativeFieldValues = new Google_Service_Dfareporting_CreativeFieldValues_Resource(
         $this,
         $this->serviceName,
         'creativeFieldValues',
@@ -1475,7 +1475,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->creativeFields = new Powerform_Google_Service_Dfareporting_CreativeFields_Resource(
+    $this->creativeFields = new Google_Service_Dfareporting_CreativeFields_Resource(
         $this,
         $this->serviceName,
         'creativeFields',
@@ -1590,7 +1590,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->creativeGroups = new Powerform_Google_Service_Dfareporting_CreativeGroups_Resource(
+    $this->creativeGroups = new Google_Service_Dfareporting_CreativeGroups_Resource(
         $this,
         $this->serviceName,
         'creativeGroups',
@@ -1694,7 +1694,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->creatives = new Powerform_Google_Service_Dfareporting_Creatives_Resource(
+    $this->creatives = new Google_Service_Dfareporting_Creatives_Resource(
         $this,
         $this->serviceName,
         'creatives',
@@ -1834,7 +1834,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->dimensionValues = new Powerform_Google_Service_Dfareporting_DimensionValues_Resource(
+    $this->dimensionValues = new Google_Service_Dfareporting_DimensionValues_Resource(
         $this,
         $this->serviceName,
         'dimensionValues',
@@ -1862,7 +1862,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->directorySiteContacts = new Powerform_Google_Service_Dfareporting_DirectorySiteContacts_Resource(
+    $this->directorySiteContacts = new Google_Service_Dfareporting_DirectorySiteContacts_Resource(
         $this,
         $this->serviceName,
         'directorySiteContacts',
@@ -1927,7 +1927,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->directorySites = new Powerform_Google_Service_Dfareporting_DirectorySites_Resource(
+    $this->directorySites = new Google_Service_Dfareporting_DirectorySites_Resource(
         $this,
         $this->serviceName,
         'directorySites',
@@ -2025,7 +2025,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->eventTags = new Powerform_Google_Service_Dfareporting_EventTags_Resource(
+    $this->eventTags = new Google_Service_Dfareporting_EventTags_Resource(
         $this,
         $this->serviceName,
         'eventTags',
@@ -2152,7 +2152,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->files = new Powerform_Google_Service_Dfareporting_Files_Resource(
+    $this->files = new Google_Service_Dfareporting_Files_Resource(
         $this,
         $this->serviceName,
         'files',
@@ -2207,7 +2207,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->floodlightActivities = new Powerform_Google_Service_Dfareporting_FloodlightActivities_Resource(
+    $this->floodlightActivities = new Google_Service_Dfareporting_FloodlightActivities_Resource(
         $this,
         $this->serviceName,
         'floodlightActivities',
@@ -2360,7 +2360,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->floodlightActivityGroups = new Powerform_Google_Service_Dfareporting_FloodlightActivityGroups_Resource(
+    $this->floodlightActivityGroups = new Google_Service_Dfareporting_FloodlightActivityGroups_Resource(
         $this,
         $this->serviceName,
         'floodlightActivityGroups',
@@ -2467,7 +2467,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->floodlightConfigurations = new Powerform_Google_Service_Dfareporting_FloodlightConfigurations_Resource(
+    $this->floodlightConfigurations = new Google_Service_Dfareporting_FloodlightConfigurations_Resource(
         $this,
         $this->serviceName,
         'floodlightConfigurations',
@@ -2532,7 +2532,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->inventoryItems = new Powerform_Google_Service_Dfareporting_InventoryItems_Resource(
+    $this->inventoryItems = new Google_Service_Dfareporting_InventoryItems_Resource(
         $this,
         $this->serviceName,
         'inventoryItems',
@@ -2616,7 +2616,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->landingPages = new Powerform_Google_Service_Dfareporting_LandingPages_Resource(
+    $this->landingPages = new Google_Service_Dfareporting_LandingPages_Resource(
         $this,
         $this->serviceName,
         'landingPages',
@@ -2731,7 +2731,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->metros = new Powerform_Google_Service_Dfareporting_Metros_Resource(
+    $this->metros = new Google_Service_Dfareporting_Metros_Resource(
         $this,
         $this->serviceName,
         'metros',
@@ -2751,7 +2751,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->mobileCarriers = new Powerform_Google_Service_Dfareporting_MobileCarriers_Resource(
+    $this->mobileCarriers = new Google_Service_Dfareporting_MobileCarriers_Resource(
         $this,
         $this->serviceName,
         'mobileCarriers',
@@ -2786,7 +2786,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->operatingSystemVersions = new Powerform_Google_Service_Dfareporting_OperatingSystemVersions_Resource(
+    $this->operatingSystemVersions = new Google_Service_Dfareporting_OperatingSystemVersions_Resource(
         $this,
         $this->serviceName,
         'operatingSystemVersions',
@@ -2821,7 +2821,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->operatingSystems = new Powerform_Google_Service_Dfareporting_OperatingSystems_Resource(
+    $this->operatingSystems = new Google_Service_Dfareporting_OperatingSystems_Resource(
         $this,
         $this->serviceName,
         'operatingSystems',
@@ -2856,7 +2856,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->orderDocuments = new Powerform_Google_Service_Dfareporting_OrderDocuments_Resource(
+    $this->orderDocuments = new Google_Service_Dfareporting_OrderDocuments_Resource(
         $this,
         $this->serviceName,
         'orderDocuments',
@@ -2940,7 +2940,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->orders = new Powerform_Google_Service_Dfareporting_Orders_Resource(
+    $this->orders = new Google_Service_Dfareporting_Orders_Resource(
         $this,
         $this->serviceName,
         'orders',
@@ -3015,7 +3015,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->placementGroups = new Powerform_Google_Service_Dfareporting_PlacementGroups_Resource(
+    $this->placementGroups = new Google_Service_Dfareporting_PlacementGroups_Resource(
         $this,
         $this->serviceName,
         'placementGroups',
@@ -3169,7 +3169,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->placementStrategies = new Powerform_Google_Service_Dfareporting_PlacementStrategies_Resource(
+    $this->placementStrategies = new Google_Service_Dfareporting_PlacementStrategies_Resource(
         $this,
         $this->serviceName,
         'placementStrategies',
@@ -3279,7 +3279,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->placements = new Powerform_Google_Service_Dfareporting_Placements_Resource(
+    $this->placements = new Google_Service_Dfareporting_Placements_Resource(
         $this,
         $this->serviceName,
         'placements',
@@ -3472,7 +3472,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->platformTypes = new Powerform_Google_Service_Dfareporting_PlatformTypes_Resource(
+    $this->platformTypes = new Google_Service_Dfareporting_PlatformTypes_Resource(
         $this,
         $this->serviceName,
         'platformTypes',
@@ -3507,7 +3507,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->postalCodes = new Powerform_Google_Service_Dfareporting_PostalCodes_Resource(
+    $this->postalCodes = new Google_Service_Dfareporting_PostalCodes_Resource(
         $this,
         $this->serviceName,
         'postalCodes',
@@ -3542,7 +3542,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->projects = new Powerform_Google_Service_Dfareporting_Projects_Resource(
+    $this->projects = new Google_Service_Dfareporting_Projects_Resource(
         $this,
         $this->serviceName,
         'projects',
@@ -3607,7 +3607,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->regions = new Powerform_Google_Service_Dfareporting_Regions_Resource(
+    $this->regions = new Google_Service_Dfareporting_Regions_Resource(
         $this,
         $this->serviceName,
         'regions',
@@ -3627,7 +3627,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->remarketingListShares = new Powerform_Google_Service_Dfareporting_RemarketingListShares_Resource(
+    $this->remarketingListShares = new Google_Service_Dfareporting_RemarketingListShares_Resource(
         $this,
         $this->serviceName,
         'remarketingListShares',
@@ -3677,7 +3677,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->remarketingLists = new Powerform_Google_Service_Dfareporting_RemarketingLists_Resource(
+    $this->remarketingLists = new Google_Service_Dfareporting_RemarketingLists_Resource(
         $this,
         $this->serviceName,
         'remarketingLists',
@@ -3780,7 +3780,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->reports = new Powerform_Google_Service_Dfareporting_Reports_Resource(
+    $this->reports = new Google_Service_Dfareporting_Reports_Resource(
         $this,
         $this->serviceName,
         'reports',
@@ -3909,7 +3909,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->reports_compatibleFields = new Powerform_Google_Service_Dfareporting_ReportsCompatibleFields_Resource(
+    $this->reports_compatibleFields = new Google_Service_Dfareporting_ReportsCompatibleFields_Resource(
         $this,
         $this->serviceName,
         'compatibleFields',
@@ -3929,7 +3929,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->reports_files = new Powerform_Google_Service_Dfareporting_ReportsFiles_Resource(
+    $this->reports_files = new Google_Service_Dfareporting_ReportsFiles_Resource(
         $this,
         $this->serviceName,
         'files',
@@ -3990,7 +3990,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->sites = new Powerform_Google_Service_Dfareporting_Sites_Resource(
+    $this->sites = new Google_Service_Dfareporting_Sites_Resource(
         $this,
         $this->serviceName,
         'sites',
@@ -4123,7 +4123,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->sizes = new Powerform_Google_Service_Dfareporting_Sizes_Resource(
+    $this->sizes = new Google_Service_Dfareporting_Sizes_Resource(
         $this,
         $this->serviceName,
         'sizes',
@@ -4185,7 +4185,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->subaccounts = new Powerform_Google_Service_Dfareporting_Subaccounts_Resource(
+    $this->subaccounts = new Google_Service_Dfareporting_Subaccounts_Resource(
         $this,
         $this->serviceName,
         'subaccounts',
@@ -4280,7 +4280,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->targetableRemarketingLists = new Powerform_Google_Service_Dfareporting_TargetableRemarketingLists_Resource(
+    $this->targetableRemarketingLists = new Google_Service_Dfareporting_TargetableRemarketingLists_Resource(
         $this,
         $this->serviceName,
         'targetableRemarketingLists',
@@ -4344,7 +4344,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->userProfiles = new Powerform_Google_Service_Dfareporting_UserProfiles_Resource(
+    $this->userProfiles = new Google_Service_Dfareporting_UserProfiles_Resource(
         $this,
         $this->serviceName,
         'userProfiles',
@@ -4368,7 +4368,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->userRolePermissionGroups = new Powerform_Google_Service_Dfareporting_UserRolePermissionGroups_Resource(
+    $this->userRolePermissionGroups = new Google_Service_Dfareporting_UserRolePermissionGroups_Resource(
         $this,
         $this->serviceName,
         'userRolePermissionGroups',
@@ -4403,7 +4403,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->userRolePermissions = new Powerform_Google_Service_Dfareporting_UserRolePermissions_Resource(
+    $this->userRolePermissions = new Google_Service_Dfareporting_UserRolePermissions_Resource(
         $this,
         $this->serviceName,
         'userRolePermissions',
@@ -4443,7 +4443,7 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
           )
         )
     );
-    $this->userRoles = new Powerform_Google_Service_Dfareporting_UserRoles_Resource(
+    $this->userRoles = new Google_Service_Dfareporting_UserRoles_Resource(
         $this,
         $this->serviceName,
         'userRoles',
@@ -4569,11 +4569,11 @@ class Powerform_Google_Service_Dfareporting extends Powerform_Google_Service
  * The "accountActiveAdSummaries" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $accountActiveAdSummaries = $dfareportingService->accountActiveAdSummaries;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_AccountActiveAdSummaries_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_AccountActiveAdSummaries_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4583,13 +4583,13 @@ class Powerform_Google_Service_Dfareporting_AccountActiveAdSummaries_Resource ex
    * @param string $profileId User profile ID associated with this request.
    * @param string $summaryAccountId Account ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AccountActiveAdSummary
+   * @return Google_Service_Dfareporting_AccountActiveAdSummary
    */
   public function get($profileId, $summaryAccountId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'summaryAccountId' => $summaryAccountId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_AccountActiveAdSummary");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_AccountActiveAdSummary");
   }
 }
 
@@ -4597,11 +4597,11 @@ class Powerform_Google_Service_Dfareporting_AccountActiveAdSummaries_Resource ex
  * The "accountPermissionGroups" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $accountPermissionGroups = $dfareportingService->accountPermissionGroups;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_AccountPermissionGroups_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_AccountPermissionGroups_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4610,13 +4610,13 @@ class Powerform_Google_Service_Dfareporting_AccountPermissionGroups_Resource ext
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Account permission group ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AccountPermissionGroup
+   * @return Google_Service_Dfareporting_AccountPermissionGroup
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_AccountPermissionGroup");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_AccountPermissionGroup");
   }
 
   /**
@@ -4625,13 +4625,13 @@ class Powerform_Google_Service_Dfareporting_AccountPermissionGroups_Resource ext
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AccountPermissionGroupsListResponse
+   * @return Google_Service_Dfareporting_AccountPermissionGroupsListResponse
    */
   public function listAccountPermissionGroups($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_AccountPermissionGroupsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_AccountPermissionGroupsListResponse");
   }
 }
 
@@ -4639,11 +4639,11 @@ class Powerform_Google_Service_Dfareporting_AccountPermissionGroups_Resource ext
  * The "accountPermissions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $accountPermissions = $dfareportingService->accountPermissions;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_AccountPermissions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_AccountPermissions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4652,13 +4652,13 @@ class Powerform_Google_Service_Dfareporting_AccountPermissions_Resource extends 
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Account permission ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AccountPermission
+   * @return Google_Service_Dfareporting_AccountPermission
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_AccountPermission");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_AccountPermission");
   }
 
   /**
@@ -4667,13 +4667,13 @@ class Powerform_Google_Service_Dfareporting_AccountPermissions_Resource extends 
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AccountPermissionsListResponse
+   * @return Google_Service_Dfareporting_AccountPermissionsListResponse
    */
   public function listAccountPermissions($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_AccountPermissionsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_AccountPermissionsListResponse");
   }
 }
 
@@ -4681,11 +4681,11 @@ class Powerform_Google_Service_Dfareporting_AccountPermissions_Resource extends 
  * The "accountUserProfiles" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $accountUserProfiles = $dfareportingService->accountUserProfiles;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_AccountUserProfiles_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_AccountUserProfiles_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4694,28 +4694,28 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfiles_Resource extends
    * @param string $profileId User profile ID associated with this request.
    * @param string $id User profile ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AccountUserProfile
+   * @return Google_Service_Dfareporting_AccountUserProfile
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_AccountUserProfile");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_AccountUserProfile");
   }
 
   /**
    * Inserts a new account user profile. (accountUserProfiles.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_AccountUserProfile $postBody
+   * @param Google_AccountUserProfile $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AccountUserProfile
+   * @return Google_Service_Dfareporting_AccountUserProfile
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_AccountUserProfile $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_AccountUserProfile $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_AccountUserProfile");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_AccountUserProfile");
   }
 
   /**
@@ -4743,13 +4743,13 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfiles_Resource extends
    * subaccount ID.
    * @opt_param string userRoleId Select only user profiles with the specified
    * user role ID.
-   * @return Powerform_Google_Service_Dfareporting_AccountUserProfilesListResponse
+   * @return Google_Service_Dfareporting_AccountUserProfilesListResponse
    */
   public function listAccountUserProfiles($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_AccountUserProfilesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_AccountUserProfilesListResponse");
   }
 
   /**
@@ -4758,30 +4758,30 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfiles_Resource extends
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id User profile ID.
-   * @param Powerform_Google_AccountUserProfile $postBody
+   * @param Google_AccountUserProfile $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AccountUserProfile
+   * @return Google_Service_Dfareporting_AccountUserProfile
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_AccountUserProfile $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_AccountUserProfile $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_AccountUserProfile");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_AccountUserProfile");
   }
 
   /**
    * Updates an existing account user profile. (accountUserProfiles.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_AccountUserProfile $postBody
+   * @param Google_AccountUserProfile $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AccountUserProfile
+   * @return Google_Service_Dfareporting_AccountUserProfile
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_AccountUserProfile $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_AccountUserProfile $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_AccountUserProfile");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_AccountUserProfile");
   }
 }
 
@@ -4789,11 +4789,11 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfiles_Resource extends
  * The "accounts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $accounts = $dfareportingService->accounts;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Accounts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Accounts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4802,13 +4802,13 @@ class Powerform_Google_Service_Dfareporting_Accounts_Resource extends Powerform_
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Account ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Account
+   * @return Google_Service_Dfareporting_Account
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Account");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Account");
   }
 
   /**
@@ -4831,13 +4831,13 @@ class Powerform_Google_Service_Dfareporting_Accounts_Resource extends Powerform_
    * match objects with name "my account", "account 2015", or simply "account".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_AccountsListResponse
+   * @return Google_Service_Dfareporting_AccountsListResponse
    */
   public function listAccounts($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_AccountsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_AccountsListResponse");
   }
 
   /**
@@ -4846,30 +4846,30 @@ class Powerform_Google_Service_Dfareporting_Accounts_Resource extends Powerform_
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Account ID.
-   * @param Powerform_Google_Account $postBody
+   * @param Google_Account $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Account
+   * @return Google_Service_Dfareporting_Account
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_Account $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_Account $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_Account");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_Account");
   }
 
   /**
    * Updates an existing account. (accounts.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Account $postBody
+   * @param Google_Account $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Account
+   * @return Google_Service_Dfareporting_Account
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_Account $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_Account $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_Account");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_Account");
   }
 }
 
@@ -4877,11 +4877,11 @@ class Powerform_Google_Service_Dfareporting_Accounts_Resource extends Powerform_
  * The "ads" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $ads = $dfareportingService->ads;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Ads_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Ads_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4890,28 +4890,28 @@ class Powerform_Google_Service_Dfareporting_Ads_Resource extends Powerform_Googl
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Ad ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Ad
+   * @return Google_Service_Dfareporting_Ad
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Ad");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Ad");
   }
 
   /**
    * Inserts a new ad. (ads.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Ad $postBody
+   * @param Google_Ad $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Ad
+   * @return Google_Service_Dfareporting_Ad
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_Ad $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_Ad $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_Ad");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_Ad");
   }
 
   /**
@@ -4965,13 +4965,13 @@ class Powerform_Google_Service_Dfareporting_Ads_Resource extends Powerform_Googl
    * @opt_param bool sslCompliant Select only ads that are SSL-compliant.
    * @opt_param bool sslRequired Select only ads that require SSL.
    * @opt_param string type Select only ads with these types.
-   * @return Powerform_Google_Service_Dfareporting_AdsListResponse
+   * @return Google_Service_Dfareporting_AdsListResponse
    */
   public function listAds($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_AdsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_AdsListResponse");
   }
 
   /**
@@ -4979,30 +4979,30 @@ class Powerform_Google_Service_Dfareporting_Ads_Resource extends Powerform_Googl
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Ad ID.
-   * @param Powerform_Google_Ad $postBody
+   * @param Google_Ad $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Ad
+   * @return Google_Service_Dfareporting_Ad
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_Ad $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_Ad $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_Ad");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_Ad");
   }
 
   /**
    * Updates an existing ad. (ads.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Ad $postBody
+   * @param Google_Ad $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Ad
+   * @return Google_Service_Dfareporting_Ad
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_Ad $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_Ad $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_Ad");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_Ad");
   }
 }
 
@@ -5010,11 +5010,11 @@ class Powerform_Google_Service_Dfareporting_Ads_Resource extends Powerform_Googl
  * The "advertiserGroups" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $advertiserGroups = $dfareportingService->advertiserGroups;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_AdvertiserGroups_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_AdvertiserGroups_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5037,28 +5037,28 @@ class Powerform_Google_Service_Dfareporting_AdvertiserGroups_Resource extends Po
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Advertiser group ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AdvertiserGroup
+   * @return Google_Service_Dfareporting_AdvertiserGroup
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_AdvertiserGroup");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_AdvertiserGroup");
   }
 
   /**
    * Inserts a new advertiser group. (advertiserGroups.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_AdvertiserGroup $postBody
+   * @param Google_AdvertiserGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AdvertiserGroup
+   * @return Google_Service_Dfareporting_AdvertiserGroup
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_AdvertiserGroup $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_AdvertiserGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_AdvertiserGroup");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_AdvertiserGroup");
   }
 
   /**
@@ -5081,13 +5081,13 @@ class Powerform_Google_Service_Dfareporting_AdvertiserGroups_Resource extends Po
    * advertisergroup", "advertisergroup 2015", or simply "advertisergroup".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_AdvertiserGroupsListResponse
+   * @return Google_Service_Dfareporting_AdvertiserGroupsListResponse
    */
   public function listAdvertiserGroups($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_AdvertiserGroupsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_AdvertiserGroupsListResponse");
   }
 
   /**
@@ -5096,30 +5096,30 @@ class Powerform_Google_Service_Dfareporting_AdvertiserGroups_Resource extends Po
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Advertiser group ID.
-   * @param Powerform_Google_AdvertiserGroup $postBody
+   * @param Google_AdvertiserGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AdvertiserGroup
+   * @return Google_Service_Dfareporting_AdvertiserGroup
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_AdvertiserGroup $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_AdvertiserGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_AdvertiserGroup");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_AdvertiserGroup");
   }
 
   /**
    * Updates an existing advertiser group. (advertiserGroups.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_AdvertiserGroup $postBody
+   * @param Google_AdvertiserGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_AdvertiserGroup
+   * @return Google_Service_Dfareporting_AdvertiserGroup
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_AdvertiserGroup $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_AdvertiserGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_AdvertiserGroup");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_AdvertiserGroup");
   }
 }
 
@@ -5127,11 +5127,11 @@ class Powerform_Google_Service_Dfareporting_AdvertiserGroups_Resource extends Po
  * The "advertisers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $advertisers = $dfareportingService->advertisers;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Advertisers_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Advertisers_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5140,28 +5140,28 @@ class Powerform_Google_Service_Dfareporting_Advertisers_Resource extends Powerfo
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Advertiser ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Advertiser
+   * @return Google_Service_Dfareporting_Advertiser
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Advertiser");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Advertiser");
   }
 
   /**
    * Inserts a new advertiser. (advertisers.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Advertiser $postBody
+   * @param Google_Advertiser $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Advertiser
+   * @return Google_Service_Dfareporting_Advertiser
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_Advertiser $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_Advertiser $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_Advertiser");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_Advertiser");
   }
 
   /**
@@ -5195,13 +5195,13 @@ class Powerform_Google_Service_Dfareporting_Advertisers_Resource extends Powerfo
    * @opt_param string status Select only advertisers with the specified status.
    * @opt_param string subaccountId Select only advertisers with these subaccount
    * IDs.
-   * @return Powerform_Google_Service_Dfareporting_AdvertisersListResponse
+   * @return Google_Service_Dfareporting_AdvertisersListResponse
    */
   public function listAdvertisers($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_AdvertisersListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_AdvertisersListResponse");
   }
 
   /**
@@ -5210,30 +5210,30 @@ class Powerform_Google_Service_Dfareporting_Advertisers_Resource extends Powerfo
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Advertiser ID.
-   * @param Powerform_Google_Advertiser $postBody
+   * @param Google_Advertiser $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Advertiser
+   * @return Google_Service_Dfareporting_Advertiser
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_Advertiser $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_Advertiser $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_Advertiser");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_Advertiser");
   }
 
   /**
    * Updates an existing advertiser. (advertisers.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Advertiser $postBody
+   * @param Google_Advertiser $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Advertiser
+   * @return Google_Service_Dfareporting_Advertiser
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_Advertiser $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_Advertiser $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_Advertiser");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_Advertiser");
   }
 }
 
@@ -5241,11 +5241,11 @@ class Powerform_Google_Service_Dfareporting_Advertisers_Resource extends Powerfo
  * The "browsers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $browsers = $dfareportingService->browsers;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Browsers_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Browsers_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5253,13 +5253,13 @@ class Powerform_Google_Service_Dfareporting_Browsers_Resource extends Powerform_
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_BrowsersListResponse
+   * @return Google_Service_Dfareporting_BrowsersListResponse
    */
   public function listBrowsers($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_BrowsersListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_BrowsersListResponse");
   }
 }
 
@@ -5267,11 +5267,11 @@ class Powerform_Google_Service_Dfareporting_Browsers_Resource extends Powerform_
  * The "campaignCreativeAssociations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $campaignCreativeAssociations = $dfareportingService->campaignCreativeAssociations;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_CampaignCreativeAssociations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_CampaignCreativeAssociations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5281,15 +5281,15 @@ class Powerform_Google_Service_Dfareporting_CampaignCreativeAssociations_Resourc
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $campaignId Campaign ID in this association.
-   * @param Powerform_Google_CampaignCreativeAssociation $postBody
+   * @param Google_CampaignCreativeAssociation $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CampaignCreativeAssociation
+   * @return Google_Service_Dfareporting_CampaignCreativeAssociation
    */
-  public function insert($profileId, $campaignId, Powerform_Google_Service_Dfareporting_CampaignCreativeAssociation $postBody, $optParams = array())
+  public function insert($profileId, $campaignId, Google_Service_Dfareporting_CampaignCreativeAssociation $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'campaignId' => $campaignId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_CampaignCreativeAssociation");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_CampaignCreativeAssociation");
   }
 
   /**
@@ -5304,13 +5304,13 @@ class Powerform_Google_Service_Dfareporting_CampaignCreativeAssociations_Resourc
    * @opt_param string pageToken Value of the nextPageToken from the previous
    * result page.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_CampaignCreativeAssociationsListResponse
+   * @return Google_Service_Dfareporting_CampaignCreativeAssociationsListResponse
    */
   public function listCampaignCreativeAssociations($profileId, $campaignId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'campaignId' => $campaignId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_CampaignCreativeAssociationsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_CampaignCreativeAssociationsListResponse");
   }
 }
 
@@ -5318,11 +5318,11 @@ class Powerform_Google_Service_Dfareporting_CampaignCreativeAssociations_Resourc
  * The "campaigns" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $campaigns = $dfareportingService->campaigns;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Campaigns_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Campaigns_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5331,13 +5331,13 @@ class Powerform_Google_Service_Dfareporting_Campaigns_Resource extends Powerform
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Campaign ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Campaign
+   * @return Google_Service_Dfareporting_Campaign
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Campaign");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Campaign");
   }
 
   /**
@@ -5348,15 +5348,15 @@ class Powerform_Google_Service_Dfareporting_Campaigns_Resource extends Powerform
    * campaign. Must be less than 256 characters long.
    * @param string $defaultLandingPageUrl Default landing page URL for this new
    * campaign.
-   * @param Powerform_Google_Campaign $postBody
+   * @param Google_Campaign $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Campaign
+   * @return Google_Service_Dfareporting_Campaign
    */
-  public function insert($profileId, $defaultLandingPageName, $defaultLandingPageUrl, Powerform_Google_Service_Dfareporting_Campaign $postBody, $optParams = array())
+  public function insert($profileId, $defaultLandingPageName, $defaultLandingPageUrl, Google_Service_Dfareporting_Campaign $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'defaultLandingPageName' => $defaultLandingPageName, 'defaultLandingPageUrl' => $defaultLandingPageUrl, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_Campaign");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_Campaign");
   }
 
   /**
@@ -5391,13 +5391,13 @@ class Powerform_Google_Service_Dfareporting_Campaigns_Resource extends Powerform
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
    * @opt_param string subaccountId Select only campaigns that belong to this
    * subaccount.
-   * @return Powerform_Google_Service_Dfareporting_CampaignsListResponse
+   * @return Google_Service_Dfareporting_CampaignsListResponse
    */
   public function listCampaigns($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_CampaignsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_CampaignsListResponse");
   }
 
   /**
@@ -5406,30 +5406,30 @@ class Powerform_Google_Service_Dfareporting_Campaigns_Resource extends Powerform
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Campaign ID.
-   * @param Powerform_Google_Campaign $postBody
+   * @param Google_Campaign $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Campaign
+   * @return Google_Service_Dfareporting_Campaign
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_Campaign $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_Campaign $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_Campaign");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_Campaign");
   }
 
   /**
    * Updates an existing campaign. (campaigns.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Campaign $postBody
+   * @param Google_Campaign $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Campaign
+   * @return Google_Service_Dfareporting_Campaign
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_Campaign $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_Campaign $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_Campaign");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_Campaign");
   }
 }
 
@@ -5437,11 +5437,11 @@ class Powerform_Google_Service_Dfareporting_Campaigns_Resource extends Powerform
  * The "changeLogs" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $changeLogs = $dfareportingService->changeLogs;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_ChangeLogs_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_ChangeLogs_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5450,13 +5450,13 @@ class Powerform_Google_Service_Dfareporting_ChangeLogs_Resource extends Powerfor
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Change log ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_ChangeLog
+   * @return Google_Service_Dfareporting_ChangeLog
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_ChangeLog");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_ChangeLog");
   }
 
   /**
@@ -5489,13 +5489,13 @@ class Powerform_Google_Service_Dfareporting_ChangeLogs_Resource extends Powerfor
    * name, old or new values match the search string.
    * @opt_param string userProfileIds Select only change logs with these user
    * profile IDs.
-   * @return Powerform_Google_Service_Dfareporting_ChangeLogsListResponse
+   * @return Google_Service_Dfareporting_ChangeLogsListResponse
    */
   public function listChangeLogs($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_ChangeLogsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_ChangeLogsListResponse");
   }
 }
 
@@ -5503,11 +5503,11 @@ class Powerform_Google_Service_Dfareporting_ChangeLogs_Resource extends Powerfor
  * The "cities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $cities = $dfareportingService->cities;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Cities_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Cities_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5521,13 +5521,13 @@ class Powerform_Google_Service_Dfareporting_Cities_Resource extends Powerform_Go
    * @opt_param string namePrefix Select only cities with names starting with this
    * prefix.
    * @opt_param string regionDartIds Select only cities from these regions.
-   * @return Powerform_Google_Service_Dfareporting_CitiesListResponse
+   * @return Google_Service_Dfareporting_CitiesListResponse
    */
   public function listCities($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_CitiesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_CitiesListResponse");
   }
 }
 
@@ -5535,11 +5535,11 @@ class Powerform_Google_Service_Dfareporting_Cities_Resource extends Powerform_Go
  * The "connectionTypes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $connectionTypes = $dfareportingService->connectionTypes;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_ConnectionTypes_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_ConnectionTypes_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5548,13 +5548,13 @@ class Powerform_Google_Service_Dfareporting_ConnectionTypes_Resource extends Pow
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Connection type ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_ConnectionType
+   * @return Google_Service_Dfareporting_ConnectionType
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_ConnectionType");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_ConnectionType");
   }
 
   /**
@@ -5562,13 +5562,13 @@ class Powerform_Google_Service_Dfareporting_ConnectionTypes_Resource extends Pow
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_ConnectionTypesListResponse
+   * @return Google_Service_Dfareporting_ConnectionTypesListResponse
    */
   public function listConnectionTypes($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_ConnectionTypesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_ConnectionTypesListResponse");
   }
 }
 
@@ -5576,11 +5576,11 @@ class Powerform_Google_Service_Dfareporting_ConnectionTypes_Resource extends Pow
  * The "contentCategories" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $contentCategories = $dfareportingService->contentCategories;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_ContentCategories_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_ContentCategories_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5603,28 +5603,28 @@ class Powerform_Google_Service_Dfareporting_ContentCategories_Resource extends P
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Content category ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_ContentCategory
+   * @return Google_Service_Dfareporting_ContentCategory
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_ContentCategory");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_ContentCategory");
   }
 
   /**
    * Inserts a new content category. (contentCategories.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_ContentCategory $postBody
+   * @param Google_ContentCategory $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_ContentCategory
+   * @return Google_Service_Dfareporting_ContentCategory
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_ContentCategory $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_ContentCategory $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_ContentCategory");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_ContentCategory");
   }
 
   /**
@@ -5647,13 +5647,13 @@ class Powerform_Google_Service_Dfareporting_ContentCategories_Resource extends P
    * "my contentcategory", "contentcategory 2015", or simply "contentcategory".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_ContentCategoriesListResponse
+   * @return Google_Service_Dfareporting_ContentCategoriesListResponse
    */
   public function listContentCategories($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_ContentCategoriesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_ContentCategoriesListResponse");
   }
 
   /**
@@ -5662,30 +5662,30 @@ class Powerform_Google_Service_Dfareporting_ContentCategories_Resource extends P
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Content category ID.
-   * @param Powerform_Google_ContentCategory $postBody
+   * @param Google_ContentCategory $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_ContentCategory
+   * @return Google_Service_Dfareporting_ContentCategory
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_ContentCategory $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_ContentCategory $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_ContentCategory");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_ContentCategory");
   }
 
   /**
    * Updates an existing content category. (contentCategories.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_ContentCategory $postBody
+   * @param Google_ContentCategory $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_ContentCategory
+   * @return Google_Service_Dfareporting_ContentCategory
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_ContentCategory $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_ContentCategory $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_ContentCategory");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_ContentCategory");
   }
 }
 
@@ -5693,11 +5693,11 @@ class Powerform_Google_Service_Dfareporting_ContentCategories_Resource extends P
  * The "countries" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $countries = $dfareportingService->countries;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Countries_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Countries_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5706,13 +5706,13 @@ class Powerform_Google_Service_Dfareporting_Countries_Resource extends Powerform
    * @param string $profileId User profile ID associated with this request.
    * @param string $dartId Country DART ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Country
+   * @return Google_Service_Dfareporting_Country
    */
   public function get($profileId, $dartId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'dartId' => $dartId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Country");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Country");
   }
 
   /**
@@ -5720,13 +5720,13 @@ class Powerform_Google_Service_Dfareporting_Countries_Resource extends Powerform
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CountriesListResponse
+   * @return Google_Service_Dfareporting_CountriesListResponse
    */
   public function listCountries($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_CountriesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_CountriesListResponse");
   }
 }
 
@@ -5734,11 +5734,11 @@ class Powerform_Google_Service_Dfareporting_Countries_Resource extends Powerform
  * The "creativeAssets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $creativeAssets = $dfareportingService->creativeAssets;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_CreativeAssets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_CreativeAssets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5747,15 +5747,15 @@ class Powerform_Google_Service_Dfareporting_CreativeAssets_Resource extends Powe
    * @param string $profileId User profile ID associated with this request.
    * @param string $advertiserId Advertiser ID of this creative. This is a
    * required field.
-   * @param Powerform_Google_CreativeAssetMetadata $postBody
+   * @param Google_CreativeAssetMetadata $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeAssetMetadata
+   * @return Google_Service_Dfareporting_CreativeAssetMetadata
    */
-  public function insert($profileId, $advertiserId, Powerform_Google_Service_Dfareporting_CreativeAssetMetadata $postBody, $optParams = array())
+  public function insert($profileId, $advertiserId, Google_Service_Dfareporting_CreativeAssetMetadata $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'advertiserId' => $advertiserId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_CreativeAssetMetadata");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_CreativeAssetMetadata");
   }
 }
 
@@ -5763,11 +5763,11 @@ class Powerform_Google_Service_Dfareporting_CreativeAssets_Resource extends Powe
  * The "creativeFieldValues" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $creativeFieldValues = $dfareportingService->creativeFieldValues;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_CreativeFieldValues_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_CreativeFieldValues_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5794,13 +5794,13 @@ class Powerform_Google_Service_Dfareporting_CreativeFieldValues_Resource extends
    * value.
    * @param string $id Creative Field Value ID
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeFieldValue
+   * @return Google_Service_Dfareporting_CreativeFieldValue
    */
   public function get($profileId, $creativeFieldId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'creativeFieldId' => $creativeFieldId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_CreativeFieldValue");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_CreativeFieldValue");
   }
 
   /**
@@ -5809,15 +5809,15 @@ class Powerform_Google_Service_Dfareporting_CreativeFieldValues_Resource extends
    * @param string $profileId User profile ID associated with this request.
    * @param string $creativeFieldId Creative field ID for this creative field
    * value.
-   * @param Powerform_Google_CreativeFieldValue $postBody
+   * @param Google_CreativeFieldValue $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeFieldValue
+   * @return Google_Service_Dfareporting_CreativeFieldValue
    */
-  public function insert($profileId, $creativeFieldId, Powerform_Google_Service_Dfareporting_CreativeFieldValue $postBody, $optParams = array())
+  public function insert($profileId, $creativeFieldId, Google_Service_Dfareporting_CreativeFieldValue $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'creativeFieldId' => $creativeFieldId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_CreativeFieldValue");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_CreativeFieldValue");
   }
 
   /**
@@ -5837,13 +5837,13 @@ class Powerform_Google_Service_Dfareporting_CreativeFieldValues_Resource extends
    * their values. Wildcards (e.g. *) are not allowed.
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_CreativeFieldValuesListResponse
+   * @return Google_Service_Dfareporting_CreativeFieldValuesListResponse
    */
   public function listCreativeFieldValues($profileId, $creativeFieldId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'creativeFieldId' => $creativeFieldId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_CreativeFieldValuesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_CreativeFieldValuesListResponse");
   }
 
   /**
@@ -5854,15 +5854,15 @@ class Powerform_Google_Service_Dfareporting_CreativeFieldValues_Resource extends
    * @param string $creativeFieldId Creative field ID for this creative field
    * value.
    * @param string $id Creative Field Value ID
-   * @param Powerform_Google_CreativeFieldValue $postBody
+   * @param Google_CreativeFieldValue $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeFieldValue
+   * @return Google_Service_Dfareporting_CreativeFieldValue
    */
-  public function patch($profileId, $creativeFieldId, $id, Powerform_Google_Service_Dfareporting_CreativeFieldValue $postBody, $optParams = array())
+  public function patch($profileId, $creativeFieldId, $id, Google_Service_Dfareporting_CreativeFieldValue $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'creativeFieldId' => $creativeFieldId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_CreativeFieldValue");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_CreativeFieldValue");
   }
 
   /**
@@ -5871,15 +5871,15 @@ class Powerform_Google_Service_Dfareporting_CreativeFieldValues_Resource extends
    * @param string $profileId User profile ID associated with this request.
    * @param string $creativeFieldId Creative field ID for this creative field
    * value.
-   * @param Powerform_Google_CreativeFieldValue $postBody
+   * @param Google_CreativeFieldValue $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeFieldValue
+   * @return Google_Service_Dfareporting_CreativeFieldValue
    */
-  public function update($profileId, $creativeFieldId, Powerform_Google_Service_Dfareporting_CreativeFieldValue $postBody, $optParams = array())
+  public function update($profileId, $creativeFieldId, Google_Service_Dfareporting_CreativeFieldValue $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'creativeFieldId' => $creativeFieldId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_CreativeFieldValue");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_CreativeFieldValue");
   }
 }
 
@@ -5887,11 +5887,11 @@ class Powerform_Google_Service_Dfareporting_CreativeFieldValues_Resource extends
  * The "creativeFields" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $creativeFields = $dfareportingService->creativeFields;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_CreativeFields_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_CreativeFields_Resource extends Google_Service_Resource
 {
 
   /**
@@ -5914,28 +5914,28 @@ class Powerform_Google_Service_Dfareporting_CreativeFields_Resource extends Powe
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Creative Field ID
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeField
+   * @return Google_Service_Dfareporting_CreativeField
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_CreativeField");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_CreativeField");
   }
 
   /**
    * Inserts a new creative field. (creativeFields.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_CreativeField $postBody
+   * @param Google_CreativeField $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeField
+   * @return Google_Service_Dfareporting_CreativeField
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_CreativeField $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_CreativeField $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_CreativeField");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_CreativeField");
   }
 
   /**
@@ -5961,13 +5961,13 @@ class Powerform_Google_Service_Dfareporting_CreativeFields_Resource extends Powe
    * simply "creativefield".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_CreativeFieldsListResponse
+   * @return Google_Service_Dfareporting_CreativeFieldsListResponse
    */
   public function listCreativeFields($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_CreativeFieldsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_CreativeFieldsListResponse");
   }
 
   /**
@@ -5976,30 +5976,30 @@ class Powerform_Google_Service_Dfareporting_CreativeFields_Resource extends Powe
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Creative Field ID
-   * @param Powerform_Google_CreativeField $postBody
+   * @param Google_CreativeField $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeField
+   * @return Google_Service_Dfareporting_CreativeField
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_CreativeField $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_CreativeField $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_CreativeField");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_CreativeField");
   }
 
   /**
    * Updates an existing creative field. (creativeFields.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_CreativeField $postBody
+   * @param Google_CreativeField $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeField
+   * @return Google_Service_Dfareporting_CreativeField
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_CreativeField $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_CreativeField $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_CreativeField");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_CreativeField");
   }
 }
 
@@ -6007,11 +6007,11 @@ class Powerform_Google_Service_Dfareporting_CreativeFields_Resource extends Powe
  * The "creativeGroups" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $creativeGroups = $dfareportingService->creativeGroups;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_CreativeGroups_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_CreativeGroups_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6020,28 +6020,28 @@ class Powerform_Google_Service_Dfareporting_CreativeGroups_Resource extends Powe
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Creative group ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeGroup
+   * @return Google_Service_Dfareporting_CreativeGroup
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_CreativeGroup");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_CreativeGroup");
   }
 
   /**
    * Inserts a new creative group. (creativeGroups.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_CreativeGroup $postBody
+   * @param Google_CreativeGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeGroup
+   * @return Google_Service_Dfareporting_CreativeGroup
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_CreativeGroup $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_CreativeGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_CreativeGroup");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_CreativeGroup");
   }
 
   /**
@@ -6069,13 +6069,13 @@ class Powerform_Google_Service_Dfareporting_CreativeGroups_Resource extends Powe
    * simply "creativegroup".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_CreativeGroupsListResponse
+   * @return Google_Service_Dfareporting_CreativeGroupsListResponse
    */
   public function listCreativeGroups($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_CreativeGroupsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_CreativeGroupsListResponse");
   }
 
   /**
@@ -6084,30 +6084,30 @@ class Powerform_Google_Service_Dfareporting_CreativeGroups_Resource extends Powe
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Creative group ID.
-   * @param Powerform_Google_CreativeGroup $postBody
+   * @param Google_CreativeGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeGroup
+   * @return Google_Service_Dfareporting_CreativeGroup
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_CreativeGroup $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_CreativeGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_CreativeGroup");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_CreativeGroup");
   }
 
   /**
    * Updates an existing creative group. (creativeGroups.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_CreativeGroup $postBody
+   * @param Google_CreativeGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CreativeGroup
+   * @return Google_Service_Dfareporting_CreativeGroup
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_CreativeGroup $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_CreativeGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_CreativeGroup");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_CreativeGroup");
   }
 }
 
@@ -6115,11 +6115,11 @@ class Powerform_Google_Service_Dfareporting_CreativeGroups_Resource extends Powe
  * The "creatives" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $creatives = $dfareportingService->creatives;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Creatives_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Creatives_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6128,28 +6128,28 @@ class Powerform_Google_Service_Dfareporting_Creatives_Resource extends Powerform
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Creative ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Creative
+   * @return Google_Service_Dfareporting_Creative
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Creative");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Creative");
   }
 
   /**
    * Inserts a new creative. (creatives.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Creative $postBody
+   * @param Google_Creative $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Creative
+   * @return Google_Service_Dfareporting_Creative
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_Creative $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_Creative $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_Creative");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_Creative");
   }
 
   /**
@@ -6187,13 +6187,13 @@ class Powerform_Google_Service_Dfareporting_Creatives_Resource extends Powerform
    * @opt_param string studioCreativeId Select only creatives corresponding to
    * this Studio creative ID.
    * @opt_param string types Select only creatives with these creative types.
-   * @return Powerform_Google_Service_Dfareporting_CreativesListResponse
+   * @return Google_Service_Dfareporting_CreativesListResponse
    */
   public function listCreatives($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_CreativesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_CreativesListResponse");
   }
 
   /**
@@ -6202,30 +6202,30 @@ class Powerform_Google_Service_Dfareporting_Creatives_Resource extends Powerform
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Creative ID.
-   * @param Powerform_Google_Creative $postBody
+   * @param Google_Creative $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Creative
+   * @return Google_Service_Dfareporting_Creative
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_Creative $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_Creative $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_Creative");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_Creative");
   }
 
   /**
    * Updates an existing creative. (creatives.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Creative $postBody
+   * @param Google_Creative $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Creative
+   * @return Google_Service_Dfareporting_Creative
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_Creative $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_Creative $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_Creative");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_Creative");
   }
 }
 
@@ -6233,11 +6233,11 @@ class Powerform_Google_Service_Dfareporting_Creatives_Resource extends Powerform
  * The "dimensionValues" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $dimensionValues = $dfareportingService->dimensionValues;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_DimensionValues_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_DimensionValues_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6245,19 +6245,19 @@ class Powerform_Google_Service_Dfareporting_DimensionValues_Resource extends Pow
    * (dimensionValues.query)
    *
    * @param string $profileId The DFA user profile ID.
-   * @param Powerform_Google_DimensionValueRequest $postBody
+   * @param Google_DimensionValueRequest $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param int maxResults Maximum number of results to return.
    * @opt_param string pageToken The value of the nextToken from the previous
    * result page.
-   * @return Powerform_Google_Service_Dfareporting_DimensionValueList
+   * @return Google_Service_Dfareporting_DimensionValueList
    */
-  public function query($profileId, Powerform_Google_Service_Dfareporting_DimensionValueRequest $postBody, $optParams = array())
+  public function query($profileId, Google_Service_Dfareporting_DimensionValueRequest $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('query', array($params), "Powerform_Google_Service_Dfareporting_DimensionValueList");
+    return $this->call('query', array($params), "Google_Service_Dfareporting_DimensionValueList");
   }
 }
 
@@ -6265,11 +6265,11 @@ class Powerform_Google_Service_Dfareporting_DimensionValues_Resource extends Pow
  * The "directorySiteContacts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $directorySiteContacts = $dfareportingService->directorySiteContacts;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_DirectorySiteContacts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_DirectorySiteContacts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6278,13 +6278,13 @@ class Powerform_Google_Service_Dfareporting_DirectorySiteContacts_Resource exten
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Directory site contact ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_DirectorySiteContact
+   * @return Google_Service_Dfareporting_DirectorySiteContact
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_DirectorySiteContact");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_DirectorySiteContact");
   }
 
   /**
@@ -6310,13 +6310,13 @@ class Powerform_Google_Service_Dfareporting_DirectorySiteContacts_Resource exten
    * site contact 2015", or simply "directory site contact".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_DirectorySiteContactsListResponse
+   * @return Google_Service_Dfareporting_DirectorySiteContactsListResponse
    */
   public function listDirectorySiteContacts($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_DirectorySiteContactsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_DirectorySiteContactsListResponse");
   }
 }
 
@@ -6324,11 +6324,11 @@ class Powerform_Google_Service_Dfareporting_DirectorySiteContacts_Resource exten
  * The "directorySites" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $directorySites = $dfareportingService->directorySites;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_DirectorySites_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_DirectorySites_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6337,28 +6337,28 @@ class Powerform_Google_Service_Dfareporting_DirectorySites_Resource extends Powe
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Directory site ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_DirectorySite
+   * @return Google_Service_Dfareporting_DirectorySite
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_DirectorySite");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_DirectorySite");
   }
 
   /**
    * Inserts a new directory site. (directorySites.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_DirectorySite $postBody
+   * @param Google_DirectorySite $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_DirectorySite
+   * @return Google_Service_Dfareporting_DirectorySite
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_DirectorySite $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_DirectorySite $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_DirectorySite");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_DirectorySite");
   }
 
   /**
@@ -6393,13 +6393,13 @@ class Powerform_Google_Service_Dfareporting_DirectorySites_Resource extends Powe
    * directory site", "directory site 2015" or simply, "directory site".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_DirectorySitesListResponse
+   * @return Google_Service_Dfareporting_DirectorySitesListResponse
    */
   public function listDirectorySites($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_DirectorySitesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_DirectorySitesListResponse");
   }
 }
 
@@ -6407,11 +6407,11 @@ class Powerform_Google_Service_Dfareporting_DirectorySites_Resource extends Powe
  * The "eventTags" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $eventTags = $dfareportingService->eventTags;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_EventTags_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_EventTags_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6434,28 +6434,28 @@ class Powerform_Google_Service_Dfareporting_EventTags_Resource extends Powerform
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Event tag ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_EventTag
+   * @return Google_Service_Dfareporting_EventTag
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_EventTag");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_EventTag");
   }
 
   /**
    * Inserts a new event tag. (eventTags.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_EventTag $postBody
+   * @param Google_EventTag $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_EventTag
+   * @return Google_Service_Dfareporting_EventTag
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_EventTag $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_EventTag $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_EventTag");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_EventTag");
   }
 
   /**
@@ -6497,13 +6497,13 @@ class Powerform_Google_Service_Dfareporting_EventTags_Resource extends Powerform
    * simply "eventtag".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_EventTagsListResponse
+   * @return Google_Service_Dfareporting_EventTagsListResponse
    */
   public function listEventTags($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_EventTagsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_EventTagsListResponse");
   }
 
   /**
@@ -6512,30 +6512,30 @@ class Powerform_Google_Service_Dfareporting_EventTags_Resource extends Powerform
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Event tag ID.
-   * @param Powerform_Google_EventTag $postBody
+   * @param Google_EventTag $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_EventTag
+   * @return Google_Service_Dfareporting_EventTag
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_EventTag $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_EventTag $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_EventTag");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_EventTag");
   }
 
   /**
    * Updates an existing event tag. (eventTags.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_EventTag $postBody
+   * @param Google_EventTag $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_EventTag
+   * @return Google_Service_Dfareporting_EventTag
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_EventTag $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_EventTag $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_EventTag");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_EventTag");
   }
 }
 
@@ -6543,11 +6543,11 @@ class Powerform_Google_Service_Dfareporting_EventTags_Resource extends Powerform
  * The "files" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $files = $dfareportingService->files;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Files_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Files_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6556,13 +6556,13 @@ class Powerform_Google_Service_Dfareporting_Files_Resource extends Powerform_Goo
    * @param string $reportId The ID of the report.
    * @param string $fileId The ID of the report file.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_DfareportingFile
+   * @return Google_Service_Dfareporting_DfareportingFile
    */
   public function get($reportId, $fileId, $optParams = array())
   {
     $params = array('reportId' => $reportId, 'fileId' => $fileId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_DfareportingFile");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_DfareportingFile");
   }
 
   /**
@@ -6578,13 +6578,13 @@ class Powerform_Google_Service_Dfareporting_Files_Resource extends Powerform_Goo
    * default is 'MINE'.
    * @opt_param string sortField The field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is 'DESCENDING'.
-   * @return Powerform_Google_Service_Dfareporting_FileList
+   * @return Google_Service_Dfareporting_FileList
    */
   public function listFiles($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_FileList");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_FileList");
   }
 }
 
@@ -6592,11 +6592,11 @@ class Powerform_Google_Service_Dfareporting_Files_Resource extends Powerform_Goo
  * The "floodlightActivities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $floodlightActivities = $dfareportingService->floodlightActivities;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_FloodlightActivities_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_FloodlightActivities_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6621,13 +6621,13 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivities_Resource extend
    *
    * @opt_param string floodlightActivityId Floodlight activity ID for which we
    * want to generate a tag.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivitiesGenerateTagResponse
+   * @return Google_Service_Dfareporting_FloodlightActivitiesGenerateTagResponse
    */
   public function generatetag($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('generatetag', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivitiesGenerateTagResponse");
+    return $this->call('generatetag', array($params), "Google_Service_Dfareporting_FloodlightActivitiesGenerateTagResponse");
   }
 
   /**
@@ -6636,28 +6636,28 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivities_Resource extend
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Floodlight activity ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivity
+   * @return Google_Service_Dfareporting_FloodlightActivity
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivity");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_FloodlightActivity");
   }
 
   /**
    * Inserts a new floodlight activity. (floodlightActivities.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_FloodlightActivity $postBody
+   * @param Google_FloodlightActivity $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivity
+   * @return Google_Service_Dfareporting_FloodlightActivity
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_FloodlightActivity $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_FloodlightActivity $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivity");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_FloodlightActivity");
   }
 
   /**
@@ -6699,13 +6699,13 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivities_Resource extend
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
    * @opt_param string tagString Select only floodlight activities with the
    * specified tag string.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivitiesListResponse
+   * @return Google_Service_Dfareporting_FloodlightActivitiesListResponse
    */
   public function listFloodlightActivities($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivitiesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_FloodlightActivitiesListResponse");
   }
 
   /**
@@ -6714,30 +6714,30 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivities_Resource extend
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Floodlight activity ID.
-   * @param Powerform_Google_FloodlightActivity $postBody
+   * @param Google_FloodlightActivity $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivity
+   * @return Google_Service_Dfareporting_FloodlightActivity
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_FloodlightActivity $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_FloodlightActivity $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivity");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_FloodlightActivity");
   }
 
   /**
    * Updates an existing floodlight activity. (floodlightActivities.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_FloodlightActivity $postBody
+   * @param Google_FloodlightActivity $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivity
+   * @return Google_Service_Dfareporting_FloodlightActivity
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_FloodlightActivity $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_FloodlightActivity $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivity");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_FloodlightActivity");
   }
 }
 
@@ -6745,11 +6745,11 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivities_Resource extend
  * The "floodlightActivityGroups" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $floodlightActivityGroups = $dfareportingService->floodlightActivityGroups;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_FloodlightActivityGroups_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_FloodlightActivityGroups_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6758,28 +6758,28 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityGroups_Resource ex
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Floodlight activity Group ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivityGroup
+   * @return Google_Service_Dfareporting_FloodlightActivityGroup
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivityGroup");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_FloodlightActivityGroup");
   }
 
   /**
    * Inserts a new floodlight activity group. (floodlightActivityGroups.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_FloodlightActivityGroup $postBody
+   * @param Google_FloodlightActivityGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivityGroup
+   * @return Google_Service_Dfareporting_FloodlightActivityGroup
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_FloodlightActivityGroup $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_FloodlightActivityGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivityGroup");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_FloodlightActivityGroup");
   }
 
   /**
@@ -6814,13 +6814,13 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityGroups_Resource ex
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
    * @opt_param string type Select only floodlight activity groups with the
    * specified floodlight activity group type.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivityGroupsListResponse
+   * @return Google_Service_Dfareporting_FloodlightActivityGroupsListResponse
    */
   public function listFloodlightActivityGroups($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivityGroupsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_FloodlightActivityGroupsListResponse");
   }
 
   /**
@@ -6829,15 +6829,15 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityGroups_Resource ex
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Floodlight activity Group ID.
-   * @param Powerform_Google_FloodlightActivityGroup $postBody
+   * @param Google_FloodlightActivityGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivityGroup
+   * @return Google_Service_Dfareporting_FloodlightActivityGroup
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_FloodlightActivityGroup $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_FloodlightActivityGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivityGroup");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_FloodlightActivityGroup");
   }
 
   /**
@@ -6845,15 +6845,15 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityGroups_Resource ex
    * (floodlightActivityGroups.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_FloodlightActivityGroup $postBody
+   * @param Google_FloodlightActivityGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightActivityGroup
+   * @return Google_Service_Dfareporting_FloodlightActivityGroup
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_FloodlightActivityGroup $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_FloodlightActivityGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_FloodlightActivityGroup");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_FloodlightActivityGroup");
   }
 }
 
@@ -6861,11 +6861,11 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityGroups_Resource ex
  * The "floodlightConfigurations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $floodlightConfigurations = $dfareportingService->floodlightConfigurations;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_FloodlightConfigurations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_FloodlightConfigurations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6874,13 +6874,13 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfigurations_Resource ex
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Floodlight configuration ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightConfiguration
+   * @return Google_Service_Dfareporting_FloodlightConfiguration
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_FloodlightConfiguration");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_FloodlightConfiguration");
   }
 
   /**
@@ -6892,13 +6892,13 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfigurations_Resource ex
    *
    * @opt_param string ids Set of IDs of floodlight configurations to retrieve.
    * Required field; otherwise an empty list will be returned.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightConfigurationsListResponse
+   * @return Google_Service_Dfareporting_FloodlightConfigurationsListResponse
    */
   public function listFloodlightConfigurations($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_FloodlightConfigurationsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_FloodlightConfigurationsListResponse");
   }
 
   /**
@@ -6907,15 +6907,15 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfigurations_Resource ex
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Floodlight configuration ID.
-   * @param Powerform_Google_FloodlightConfiguration $postBody
+   * @param Google_FloodlightConfiguration $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightConfiguration
+   * @return Google_Service_Dfareporting_FloodlightConfiguration
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_FloodlightConfiguration $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_FloodlightConfiguration $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_FloodlightConfiguration");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_FloodlightConfiguration");
   }
 
   /**
@@ -6923,15 +6923,15 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfigurations_Resource ex
    * (floodlightConfigurations.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_FloodlightConfiguration $postBody
+   * @param Google_FloodlightConfiguration $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_FloodlightConfiguration
+   * @return Google_Service_Dfareporting_FloodlightConfiguration
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_FloodlightConfiguration $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_FloodlightConfiguration $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_FloodlightConfiguration");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_FloodlightConfiguration");
   }
 }
 
@@ -6939,11 +6939,11 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfigurations_Resource ex
  * The "inventoryItems" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $inventoryItems = $dfareportingService->inventoryItems;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_InventoryItems_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_InventoryItems_Resource extends Google_Service_Resource
 {
 
   /**
@@ -6953,13 +6953,13 @@ class Powerform_Google_Service_Dfareporting_InventoryItems_Resource extends Powe
    * @param string $projectId Project ID for order documents.
    * @param string $id Inventory item ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_InventoryItem
+   * @return Google_Service_Dfareporting_InventoryItem
    */
   public function get($profileId, $projectId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'projectId' => $projectId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_InventoryItem");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_InventoryItem");
   }
 
   /**
@@ -6982,13 +6982,13 @@ class Powerform_Google_Service_Dfareporting_InventoryItems_Resource extends Powe
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
    * @opt_param string type Select only inventory items with this type.
-   * @return Powerform_Google_Service_Dfareporting_InventoryItemsListResponse
+   * @return Google_Service_Dfareporting_InventoryItemsListResponse
    */
   public function listInventoryItems($profileId, $projectId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'projectId' => $projectId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_InventoryItemsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_InventoryItemsListResponse");
   }
 }
 
@@ -6996,11 +6996,11 @@ class Powerform_Google_Service_Dfareporting_InventoryItems_Resource extends Powe
  * The "landingPages" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $landingPages = $dfareportingService->landingPages;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_LandingPages_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_LandingPages_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7025,13 +7025,13 @@ class Powerform_Google_Service_Dfareporting_LandingPages_Resource extends Powerf
    * @param string $campaignId Landing page campaign ID.
    * @param string $id Landing page ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_LandingPage
+   * @return Google_Service_Dfareporting_LandingPage
    */
   public function get($profileId, $campaignId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'campaignId' => $campaignId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_LandingPage");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_LandingPage");
   }
 
   /**
@@ -7039,15 +7039,15 @@ class Powerform_Google_Service_Dfareporting_LandingPages_Resource extends Powerf
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $campaignId Landing page campaign ID.
-   * @param Powerform_Google_LandingPage $postBody
+   * @param Google_LandingPage $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_LandingPage
+   * @return Google_Service_Dfareporting_LandingPage
    */
-  public function insert($profileId, $campaignId, Powerform_Google_Service_Dfareporting_LandingPage $postBody, $optParams = array())
+  public function insert($profileId, $campaignId, Google_Service_Dfareporting_LandingPage $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'campaignId' => $campaignId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_LandingPage");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_LandingPage");
   }
 
   /**
@@ -7057,13 +7057,13 @@ class Powerform_Google_Service_Dfareporting_LandingPages_Resource extends Powerf
    * @param string $profileId User profile ID associated with this request.
    * @param string $campaignId Landing page campaign ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_LandingPagesListResponse
+   * @return Google_Service_Dfareporting_LandingPagesListResponse
    */
   public function listLandingPages($profileId, $campaignId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'campaignId' => $campaignId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_LandingPagesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_LandingPagesListResponse");
   }
 
   /**
@@ -7073,15 +7073,15 @@ class Powerform_Google_Service_Dfareporting_LandingPages_Resource extends Powerf
    * @param string $profileId User profile ID associated with this request.
    * @param string $campaignId Landing page campaign ID.
    * @param string $id Landing page ID.
-   * @param Powerform_Google_LandingPage $postBody
+   * @param Google_LandingPage $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_LandingPage
+   * @return Google_Service_Dfareporting_LandingPage
    */
-  public function patch($profileId, $campaignId, $id, Powerform_Google_Service_Dfareporting_LandingPage $postBody, $optParams = array())
+  public function patch($profileId, $campaignId, $id, Google_Service_Dfareporting_LandingPage $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'campaignId' => $campaignId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_LandingPage");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_LandingPage");
   }
 
   /**
@@ -7089,15 +7089,15 @@ class Powerform_Google_Service_Dfareporting_LandingPages_Resource extends Powerf
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $campaignId Landing page campaign ID.
-   * @param Powerform_Google_LandingPage $postBody
+   * @param Google_LandingPage $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_LandingPage
+   * @return Google_Service_Dfareporting_LandingPage
    */
-  public function update($profileId, $campaignId, Powerform_Google_Service_Dfareporting_LandingPage $postBody, $optParams = array())
+  public function update($profileId, $campaignId, Google_Service_Dfareporting_LandingPage $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'campaignId' => $campaignId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_LandingPage");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_LandingPage");
   }
 }
 
@@ -7105,11 +7105,11 @@ class Powerform_Google_Service_Dfareporting_LandingPages_Resource extends Powerf
  * The "metros" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $metros = $dfareportingService->metros;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Metros_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Metros_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7117,13 +7117,13 @@ class Powerform_Google_Service_Dfareporting_Metros_Resource extends Powerform_Go
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_MetrosListResponse
+   * @return Google_Service_Dfareporting_MetrosListResponse
    */
   public function listMetros($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_MetrosListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_MetrosListResponse");
   }
 }
 
@@ -7131,11 +7131,11 @@ class Powerform_Google_Service_Dfareporting_Metros_Resource extends Powerform_Go
  * The "mobileCarriers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $mobileCarriers = $dfareportingService->mobileCarriers;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_MobileCarriers_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_MobileCarriers_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7144,13 +7144,13 @@ class Powerform_Google_Service_Dfareporting_MobileCarriers_Resource extends Powe
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Mobile carrier ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_MobileCarrier
+   * @return Google_Service_Dfareporting_MobileCarrier
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_MobileCarrier");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_MobileCarrier");
   }
 
   /**
@@ -7158,13 +7158,13 @@ class Powerform_Google_Service_Dfareporting_MobileCarriers_Resource extends Powe
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_MobileCarriersListResponse
+   * @return Google_Service_Dfareporting_MobileCarriersListResponse
    */
   public function listMobileCarriers($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_MobileCarriersListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_MobileCarriersListResponse");
   }
 }
 
@@ -7172,11 +7172,11 @@ class Powerform_Google_Service_Dfareporting_MobileCarriers_Resource extends Powe
  * The "operatingSystemVersions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $operatingSystemVersions = $dfareportingService->operatingSystemVersions;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_OperatingSystemVersions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_OperatingSystemVersions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7185,13 +7185,13 @@ class Powerform_Google_Service_Dfareporting_OperatingSystemVersions_Resource ext
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Operating system version ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_OperatingSystemVersion
+   * @return Google_Service_Dfareporting_OperatingSystemVersion
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_OperatingSystemVersion");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_OperatingSystemVersion");
   }
 
   /**
@@ -7200,13 +7200,13 @@ class Powerform_Google_Service_Dfareporting_OperatingSystemVersions_Resource ext
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_OperatingSystemVersionsListResponse
+   * @return Google_Service_Dfareporting_OperatingSystemVersionsListResponse
    */
   public function listOperatingSystemVersions($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_OperatingSystemVersionsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_OperatingSystemVersionsListResponse");
   }
 }
 
@@ -7214,11 +7214,11 @@ class Powerform_Google_Service_Dfareporting_OperatingSystemVersions_Resource ext
  * The "operatingSystems" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $operatingSystems = $dfareportingService->operatingSystems;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_OperatingSystems_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_OperatingSystems_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7227,13 +7227,13 @@ class Powerform_Google_Service_Dfareporting_OperatingSystems_Resource extends Po
    * @param string $profileId User profile ID associated with this request.
    * @param string $dartId Operating system DART ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_OperatingSystem
+   * @return Google_Service_Dfareporting_OperatingSystem
    */
   public function get($profileId, $dartId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'dartId' => $dartId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_OperatingSystem");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_OperatingSystem");
   }
 
   /**
@@ -7242,13 +7242,13 @@ class Powerform_Google_Service_Dfareporting_OperatingSystems_Resource extends Po
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_OperatingSystemsListResponse
+   * @return Google_Service_Dfareporting_OperatingSystemsListResponse
    */
   public function listOperatingSystems($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_OperatingSystemsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_OperatingSystemsListResponse");
   }
 }
 
@@ -7256,11 +7256,11 @@ class Powerform_Google_Service_Dfareporting_OperatingSystems_Resource extends Po
  * The "orderDocuments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $orderDocuments = $dfareportingService->orderDocuments;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_OrderDocuments_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_OrderDocuments_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7270,13 +7270,13 @@ class Powerform_Google_Service_Dfareporting_OrderDocuments_Resource extends Powe
    * @param string $projectId Project ID for order documents.
    * @param string $id Order document ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_OrderDocument
+   * @return Google_Service_Dfareporting_OrderDocument
    */
   public function get($profileId, $projectId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'projectId' => $projectId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_OrderDocument");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_OrderDocument");
   }
 
   /**
@@ -7306,13 +7306,13 @@ class Powerform_Google_Service_Dfareporting_OrderDocuments_Resource extends Powe
    * these sites.
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_OrderDocumentsListResponse
+   * @return Google_Service_Dfareporting_OrderDocumentsListResponse
    */
   public function listOrderDocuments($profileId, $projectId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'projectId' => $projectId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_OrderDocumentsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_OrderDocumentsListResponse");
   }
 }
 
@@ -7320,11 +7320,11 @@ class Powerform_Google_Service_Dfareporting_OrderDocuments_Resource extends Powe
  * The "orders" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $orders = $dfareportingService->orders;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Orders_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Orders_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7334,13 +7334,13 @@ class Powerform_Google_Service_Dfareporting_Orders_Resource extends Powerform_Go
    * @param string $projectId Project ID for orders.
    * @param string $id Order ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Order
+   * @return Google_Service_Dfareporting_Order
    */
   public function get($profileId, $projectId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'projectId' => $projectId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Order");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Order");
   }
 
   /**
@@ -7364,13 +7364,13 @@ class Powerform_Google_Service_Dfareporting_Orders_Resource extends Powerform_Go
    * site IDs.
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_OrdersListResponse
+   * @return Google_Service_Dfareporting_OrdersListResponse
    */
   public function listOrders($profileId, $projectId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'projectId' => $projectId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_OrdersListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_OrdersListResponse");
   }
 }
 
@@ -7378,11 +7378,11 @@ class Powerform_Google_Service_Dfareporting_Orders_Resource extends Powerform_Go
  * The "placementGroups" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $placementGroups = $dfareportingService->placementGroups;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_PlacementGroups_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_PlacementGroups_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7391,28 +7391,28 @@ class Powerform_Google_Service_Dfareporting_PlacementGroups_Resource extends Pow
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Placement group ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PlacementGroup
+   * @return Google_Service_Dfareporting_PlacementGroup
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_PlacementGroup");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_PlacementGroup");
   }
 
   /**
    * Inserts a new placement group. (placementGroups.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_PlacementGroup $postBody
+   * @param Google_PlacementGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PlacementGroup
+   * @return Google_Service_Dfareporting_PlacementGroup
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_PlacementGroup $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_PlacementGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_PlacementGroup");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_PlacementGroup");
   }
 
   /**
@@ -7469,13 +7469,13 @@ class Powerform_Google_Service_Dfareporting_PlacementGroups_Resource extends Pow
    * with these sites.
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_PlacementGroupsListResponse
+   * @return Google_Service_Dfareporting_PlacementGroupsListResponse
    */
   public function listPlacementGroups($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_PlacementGroupsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_PlacementGroupsListResponse");
   }
 
   /**
@@ -7484,30 +7484,30 @@ class Powerform_Google_Service_Dfareporting_PlacementGroups_Resource extends Pow
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Placement group ID.
-   * @param Powerform_Google_PlacementGroup $postBody
+   * @param Google_PlacementGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PlacementGroup
+   * @return Google_Service_Dfareporting_PlacementGroup
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_PlacementGroup $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_PlacementGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_PlacementGroup");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_PlacementGroup");
   }
 
   /**
    * Updates an existing placement group. (placementGroups.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_PlacementGroup $postBody
+   * @param Google_PlacementGroup $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PlacementGroup
+   * @return Google_Service_Dfareporting_PlacementGroup
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_PlacementGroup $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_PlacementGroup $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_PlacementGroup");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_PlacementGroup");
   }
 }
 
@@ -7515,11 +7515,11 @@ class Powerform_Google_Service_Dfareporting_PlacementGroups_Resource extends Pow
  * The "placementStrategies" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $placementStrategies = $dfareportingService->placementStrategies;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_PlacementStrategies_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_PlacementStrategies_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7542,28 +7542,28 @@ class Powerform_Google_Service_Dfareporting_PlacementStrategies_Resource extends
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Placement strategy ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PlacementStrategy
+   * @return Google_Service_Dfareporting_PlacementStrategy
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_PlacementStrategy");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_PlacementStrategy");
   }
 
   /**
    * Inserts a new placement strategy. (placementStrategies.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_PlacementStrategy $postBody
+   * @param Google_PlacementStrategy $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PlacementStrategy
+   * @return Google_Service_Dfareporting_PlacementStrategy
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_PlacementStrategy $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_PlacementStrategy $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_PlacementStrategy");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_PlacementStrategy");
   }
 
   /**
@@ -7587,13 +7587,13 @@ class Powerform_Google_Service_Dfareporting_PlacementStrategies_Resource extends
    * "placementstrategy".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_PlacementStrategiesListResponse
+   * @return Google_Service_Dfareporting_PlacementStrategiesListResponse
    */
   public function listPlacementStrategies($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_PlacementStrategiesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_PlacementStrategiesListResponse");
   }
 
   /**
@@ -7602,30 +7602,30 @@ class Powerform_Google_Service_Dfareporting_PlacementStrategies_Resource extends
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Placement strategy ID.
-   * @param Powerform_Google_PlacementStrategy $postBody
+   * @param Google_PlacementStrategy $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PlacementStrategy
+   * @return Google_Service_Dfareporting_PlacementStrategy
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_PlacementStrategy $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_PlacementStrategy $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_PlacementStrategy");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_PlacementStrategy");
   }
 
   /**
    * Updates an existing placement strategy. (placementStrategies.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_PlacementStrategy $postBody
+   * @param Google_PlacementStrategy $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PlacementStrategy
+   * @return Google_Service_Dfareporting_PlacementStrategy
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_PlacementStrategy $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_PlacementStrategy $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_PlacementStrategy");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_PlacementStrategy");
   }
 }
 
@@ -7633,11 +7633,11 @@ class Powerform_Google_Service_Dfareporting_PlacementStrategies_Resource extends
  * The "placements" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $placements = $dfareportingService->placements;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Placements_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Placements_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7650,13 +7650,13 @@ class Powerform_Google_Service_Dfareporting_Placements_Resource extends Powerfor
    * This is a required field.
    * @opt_param string placementIds Generate tags for these placements.
    * @opt_param string tagFormats Tag formats to generate for these placements.
-   * @return Powerform_Google_Service_Dfareporting_PlacementsGenerateTagsResponse
+   * @return Google_Service_Dfareporting_PlacementsGenerateTagsResponse
    */
   public function generatetags($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('generatetags', array($params), "Powerform_Google_Service_Dfareporting_PlacementsGenerateTagsResponse");
+    return $this->call('generatetags', array($params), "Google_Service_Dfareporting_PlacementsGenerateTagsResponse");
   }
 
   /**
@@ -7665,28 +7665,28 @@ class Powerform_Google_Service_Dfareporting_Placements_Resource extends Powerfor
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Placement ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Placement
+   * @return Google_Service_Dfareporting_Placement
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Placement");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Placement");
   }
 
   /**
    * Inserts a new placement. (placements.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Placement $postBody
+   * @param Google_Placement $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Placement
+   * @return Google_Service_Dfareporting_Placement
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_Placement $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_Placement $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_Placement");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_Placement");
   }
 
   /**
@@ -7749,13 +7749,13 @@ class Powerform_Google_Service_Dfareporting_Placements_Resource extends Powerfor
    * these sizes.
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_PlacementsListResponse
+   * @return Google_Service_Dfareporting_PlacementsListResponse
    */
   public function listPlacements($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_PlacementsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_PlacementsListResponse");
   }
 
   /**
@@ -7764,30 +7764,30 @@ class Powerform_Google_Service_Dfareporting_Placements_Resource extends Powerfor
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Placement ID.
-   * @param Powerform_Google_Placement $postBody
+   * @param Google_Placement $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Placement
+   * @return Google_Service_Dfareporting_Placement
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_Placement $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_Placement $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_Placement");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_Placement");
   }
 
   /**
    * Updates an existing placement. (placements.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Placement $postBody
+   * @param Google_Placement $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Placement
+   * @return Google_Service_Dfareporting_Placement
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_Placement $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_Placement $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_Placement");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_Placement");
   }
 }
 
@@ -7795,11 +7795,11 @@ class Powerform_Google_Service_Dfareporting_Placements_Resource extends Powerfor
  * The "platformTypes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $platformTypes = $dfareportingService->platformTypes;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_PlatformTypes_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_PlatformTypes_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7808,13 +7808,13 @@ class Powerform_Google_Service_Dfareporting_PlatformTypes_Resource extends Power
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Platform type ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PlatformType
+   * @return Google_Service_Dfareporting_PlatformType
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_PlatformType");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_PlatformType");
   }
 
   /**
@@ -7822,13 +7822,13 @@ class Powerform_Google_Service_Dfareporting_PlatformTypes_Resource extends Power
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PlatformTypesListResponse
+   * @return Google_Service_Dfareporting_PlatformTypesListResponse
    */
   public function listPlatformTypes($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_PlatformTypesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_PlatformTypesListResponse");
   }
 }
 
@@ -7836,11 +7836,11 @@ class Powerform_Google_Service_Dfareporting_PlatformTypes_Resource extends Power
  * The "postalCodes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $postalCodes = $dfareportingService->postalCodes;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_PostalCodes_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_PostalCodes_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7849,13 +7849,13 @@ class Powerform_Google_Service_Dfareporting_PostalCodes_Resource extends Powerfo
    * @param string $profileId User profile ID associated with this request.
    * @param string $code Postal code ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PostalCode
+   * @return Google_Service_Dfareporting_PostalCode
    */
   public function get($profileId, $code, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'code' => $code);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_PostalCode");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_PostalCode");
   }
 
   /**
@@ -7863,13 +7863,13 @@ class Powerform_Google_Service_Dfareporting_PostalCodes_Resource extends Powerfo
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_PostalCodesListResponse
+   * @return Google_Service_Dfareporting_PostalCodesListResponse
    */
   public function listPostalCodes($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_PostalCodesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_PostalCodesListResponse");
   }
 }
 
@@ -7877,11 +7877,11 @@ class Powerform_Google_Service_Dfareporting_PostalCodes_Resource extends Powerfo
  * The "projects" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $projects = $dfareportingService->projects;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Projects_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Projects_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7890,13 +7890,13 @@ class Powerform_Google_Service_Dfareporting_Projects_Resource extends Powerform_
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Project ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Project
+   * @return Google_Service_Dfareporting_Project
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Project");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Project");
   }
 
   /**
@@ -7919,13 +7919,13 @@ class Powerform_Google_Service_Dfareporting_Projects_Resource extends Powerform_
    * match projects with name "my project", "project 2015", or simply "project".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_ProjectsListResponse
+   * @return Google_Service_Dfareporting_ProjectsListResponse
    */
   public function listProjects($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_ProjectsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_ProjectsListResponse");
   }
 }
 
@@ -7933,11 +7933,11 @@ class Powerform_Google_Service_Dfareporting_Projects_Resource extends Powerform_
  * The "regions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $regions = $dfareportingService->regions;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Regions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Regions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7945,13 +7945,13 @@ class Powerform_Google_Service_Dfareporting_Regions_Resource extends Powerform_G
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_RegionsListResponse
+   * @return Google_Service_Dfareporting_RegionsListResponse
    */
   public function listRegions($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_RegionsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_RegionsListResponse");
   }
 }
 
@@ -7959,11 +7959,11 @@ class Powerform_Google_Service_Dfareporting_Regions_Resource extends Powerform_G
  * The "remarketingListShares" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $remarketingListShares = $dfareportingService->remarketingListShares;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_RemarketingListShares_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_RemarketingListShares_Resource extends Google_Service_Resource
 {
 
   /**
@@ -7973,13 +7973,13 @@ class Powerform_Google_Service_Dfareporting_RemarketingListShares_Resource exten
    * @param string $profileId User profile ID associated with this request.
    * @param string $remarketingListId Remarketing list ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_RemarketingListShare
+   * @return Google_Service_Dfareporting_RemarketingListShare
    */
   public function get($profileId, $remarketingListId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'remarketingListId' => $remarketingListId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_RemarketingListShare");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_RemarketingListShare");
   }
 
   /**
@@ -7988,30 +7988,30 @@ class Powerform_Google_Service_Dfareporting_RemarketingListShares_Resource exten
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $remarketingListId Remarketing list ID.
-   * @param Powerform_Google_RemarketingListShare $postBody
+   * @param Google_RemarketingListShare $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_RemarketingListShare
+   * @return Google_Service_Dfareporting_RemarketingListShare
    */
-  public function patch($profileId, $remarketingListId, Powerform_Google_Service_Dfareporting_RemarketingListShare $postBody, $optParams = array())
+  public function patch($profileId, $remarketingListId, Google_Service_Dfareporting_RemarketingListShare $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'remarketingListId' => $remarketingListId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_RemarketingListShare");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_RemarketingListShare");
   }
 
   /**
    * Updates an existing remarketing list share. (remarketingListShares.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_RemarketingListShare $postBody
+   * @param Google_RemarketingListShare $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_RemarketingListShare
+   * @return Google_Service_Dfareporting_RemarketingListShare
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_RemarketingListShare $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_RemarketingListShare $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_RemarketingListShare");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_RemarketingListShare");
   }
 }
 
@@ -8019,11 +8019,11 @@ class Powerform_Google_Service_Dfareporting_RemarketingListShares_Resource exten
  * The "remarketingLists" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $remarketingLists = $dfareportingService->remarketingLists;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_RemarketingLists_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_RemarketingLists_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8032,28 +8032,28 @@ class Powerform_Google_Service_Dfareporting_RemarketingLists_Resource extends Po
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Remarketing list ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_RemarketingList
+   * @return Google_Service_Dfareporting_RemarketingList
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_RemarketingList");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_RemarketingList");
   }
 
   /**
    * Inserts a new remarketing list. (remarketingLists.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_RemarketingList $postBody
+   * @param Google_RemarketingList $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_RemarketingList
+   * @return Google_Service_Dfareporting_RemarketingList
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_RemarketingList $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_RemarketingList $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_RemarketingList");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_RemarketingList");
   }
 
   /**
@@ -8080,13 +8080,13 @@ class Powerform_Google_Service_Dfareporting_RemarketingLists_Resource extends Po
    * result page.
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_RemarketingListsListResponse
+   * @return Google_Service_Dfareporting_RemarketingListsListResponse
    */
   public function listRemarketingLists($profileId, $advertiserId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'advertiserId' => $advertiserId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_RemarketingListsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_RemarketingListsListResponse");
   }
 
   /**
@@ -8095,30 +8095,30 @@ class Powerform_Google_Service_Dfareporting_RemarketingLists_Resource extends Po
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Remarketing list ID.
-   * @param Powerform_Google_RemarketingList $postBody
+   * @param Google_RemarketingList $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_RemarketingList
+   * @return Google_Service_Dfareporting_RemarketingList
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_RemarketingList $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_RemarketingList $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_RemarketingList");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_RemarketingList");
   }
 
   /**
    * Updates an existing remarketing list. (remarketingLists.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_RemarketingList $postBody
+   * @param Google_RemarketingList $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_RemarketingList
+   * @return Google_Service_Dfareporting_RemarketingList
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_RemarketingList $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_RemarketingList $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_RemarketingList");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_RemarketingList");
   }
 }
 
@@ -8126,11 +8126,11 @@ class Powerform_Google_Service_Dfareporting_RemarketingLists_Resource extends Po
  * The "reports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $reports = $dfareportingService->reports;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Reports_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Reports_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8153,28 +8153,28 @@ class Powerform_Google_Service_Dfareporting_Reports_Resource extends Powerform_G
    * @param string $profileId The DFA user profile ID.
    * @param string $reportId The ID of the report.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Report
+   * @return Google_Service_Dfareporting_Report
    */
   public function get($profileId, $reportId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'reportId' => $reportId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Report");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Report");
   }
 
   /**
    * Creates a report. (reports.insert)
    *
    * @param string $profileId The DFA user profile ID.
-   * @param Powerform_Google_Report $postBody
+   * @param Google_Report $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Report
+   * @return Google_Service_Dfareporting_Report
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_Report $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_Report $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_Report");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_Report");
   }
 
   /**
@@ -8190,13 +8190,13 @@ class Powerform_Google_Service_Dfareporting_Reports_Resource extends Powerform_G
    * default is 'MINE'.
    * @opt_param string sortField The field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is 'DESCENDING'.
-   * @return Powerform_Google_Service_Dfareporting_ReportList
+   * @return Google_Service_Dfareporting_ReportList
    */
   public function listReports($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_ReportList");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_ReportList");
   }
 
   /**
@@ -8204,15 +8204,15 @@ class Powerform_Google_Service_Dfareporting_Reports_Resource extends Powerform_G
    *
    * @param string $profileId The DFA user profile ID.
    * @param string $reportId The ID of the report.
-   * @param Powerform_Google_Report $postBody
+   * @param Google_Report $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Report
+   * @return Google_Service_Dfareporting_Report
    */
-  public function patch($profileId, $reportId, Powerform_Google_Service_Dfareporting_Report $postBody, $optParams = array())
+  public function patch($profileId, $reportId, Google_Service_Dfareporting_Report $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'reportId' => $reportId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_Report");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_Report");
   }
 
   /**
@@ -8224,13 +8224,13 @@ class Powerform_Google_Service_Dfareporting_Reports_Resource extends Powerform_G
    *
    * @opt_param bool synchronous If set and true, tries to run the report
    * synchronously.
-   * @return Powerform_Google_Service_Dfareporting_DfareportingFile
+   * @return Google_Service_Dfareporting_DfareportingFile
    */
   public function run($profileId, $reportId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'reportId' => $reportId);
     $params = array_merge($params, $optParams);
-    return $this->call('run', array($params), "Powerform_Google_Service_Dfareporting_DfareportingFile");
+    return $this->call('run', array($params), "Google_Service_Dfareporting_DfareportingFile");
   }
 
   /**
@@ -8238,15 +8238,15 @@ class Powerform_Google_Service_Dfareporting_Reports_Resource extends Powerform_G
    *
    * @param string $profileId The DFA user profile ID.
    * @param string $reportId The ID of the report.
-   * @param Powerform_Google_Report $postBody
+   * @param Google_Report $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Report
+   * @return Google_Service_Dfareporting_Report
    */
-  public function update($profileId, $reportId, Powerform_Google_Service_Dfareporting_Report $postBody, $optParams = array())
+  public function update($profileId, $reportId, Google_Service_Dfareporting_Report $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'reportId' => $reportId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_Report");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_Report");
   }
 }
 
@@ -8254,11 +8254,11 @@ class Powerform_Google_Service_Dfareporting_Reports_Resource extends Powerform_G
  * The "compatibleFields" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $compatibleFields = $dfareportingService->compatibleFields;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_ReportsCompatibleFields_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_ReportsCompatibleFields_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8267,26 +8267,26 @@ class Powerform_Google_Service_Dfareporting_ReportsCompatibleFields_Resource ext
    * report and user permissions. (compatibleFields.query)
    *
    * @param string $profileId The DFA user profile ID.
-   * @param Powerform_Google_Report $postBody
+   * @param Google_Report $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_CompatibleFields
+   * @return Google_Service_Dfareporting_CompatibleFields
    */
-  public function query($profileId, Powerform_Google_Service_Dfareporting_Report $postBody, $optParams = array())
+  public function query($profileId, Google_Service_Dfareporting_Report $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('query', array($params), "Powerform_Google_Service_Dfareporting_CompatibleFields");
+    return $this->call('query', array($params), "Google_Service_Dfareporting_CompatibleFields");
   }
 }
 /**
  * The "files" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $files = $dfareportingService->files;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_ReportsFiles_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_ReportsFiles_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8296,13 +8296,13 @@ class Powerform_Google_Service_Dfareporting_ReportsFiles_Resource extends Powerf
    * @param string $reportId The ID of the report.
    * @param string $fileId The ID of the report file.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_DfareportingFile
+   * @return Google_Service_Dfareporting_DfareportingFile
    */
   public function get($profileId, $reportId, $fileId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'reportId' => $reportId, 'fileId' => $fileId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_DfareportingFile");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_DfareportingFile");
   }
 
   /**
@@ -8317,13 +8317,13 @@ class Powerform_Google_Service_Dfareporting_ReportsFiles_Resource extends Powerf
    * result page.
    * @opt_param string sortField The field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is 'DESCENDING'.
-   * @return Powerform_Google_Service_Dfareporting_FileList
+   * @return Google_Service_Dfareporting_FileList
    */
   public function listReportsFiles($profileId, $reportId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'reportId' => $reportId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_FileList");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_FileList");
   }
 }
 
@@ -8331,11 +8331,11 @@ class Powerform_Google_Service_Dfareporting_ReportsFiles_Resource extends Powerf
  * The "sites" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $sites = $dfareportingService->sites;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Sites_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Sites_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8344,28 +8344,28 @@ class Powerform_Google_Service_Dfareporting_Sites_Resource extends Powerform_Goo
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Site ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Site
+   * @return Google_Service_Dfareporting_Site
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Site");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Site");
   }
 
   /**
    * Inserts a new site. (sites.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Site $postBody
+   * @param Google_Site $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Site
+   * @return Google_Service_Dfareporting_Site
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_Site $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_Site $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_Site");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_Site");
   }
 
   /**
@@ -8400,13 +8400,13 @@ class Powerform_Google_Service_Dfareporting_Sites_Resource extends Powerform_Goo
    * @opt_param string subaccountId Select only sites with this subaccount ID.
    * @opt_param bool unmappedSite Select only sites that have not been mapped to a
    * directory site.
-   * @return Powerform_Google_Service_Dfareporting_SitesListResponse
+   * @return Google_Service_Dfareporting_SitesListResponse
    */
   public function listSites($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_SitesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_SitesListResponse");
   }
 
   /**
@@ -8414,30 +8414,30 @@ class Powerform_Google_Service_Dfareporting_Sites_Resource extends Powerform_Goo
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Site ID.
-   * @param Powerform_Google_Site $postBody
+   * @param Google_Site $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Site
+   * @return Google_Service_Dfareporting_Site
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_Site $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_Site $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_Site");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_Site");
   }
 
   /**
    * Updates an existing site. (sites.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Site $postBody
+   * @param Google_Site $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Site
+   * @return Google_Service_Dfareporting_Site
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_Site $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_Site $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_Site");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_Site");
   }
 }
 
@@ -8445,11 +8445,11 @@ class Powerform_Google_Service_Dfareporting_Sites_Resource extends Powerform_Goo
  * The "sizes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $sizes = $dfareportingService->sizes;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Sizes_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Sizes_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8458,28 +8458,28 @@ class Powerform_Google_Service_Dfareporting_Sizes_Resource extends Powerform_Goo
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Size ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Size
+   * @return Google_Service_Dfareporting_Size
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Size");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Size");
   }
 
   /**
    * Inserts a new size. (sizes.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Size $postBody
+   * @param Google_Size $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Size
+   * @return Google_Service_Dfareporting_Size
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_Size $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_Size $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_Size");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_Size");
   }
 
   /**
@@ -8492,13 +8492,13 @@ class Powerform_Google_Service_Dfareporting_Sizes_Resource extends Powerform_Goo
    * @opt_param bool iabStandard Select only IAB standard sizes.
    * @opt_param string ids Select only sizes with these IDs.
    * @opt_param int width Select only sizes with this width.
-   * @return Powerform_Google_Service_Dfareporting_SizesListResponse
+   * @return Google_Service_Dfareporting_SizesListResponse
    */
   public function listSizes($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_SizesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_SizesListResponse");
   }
 }
 
@@ -8506,11 +8506,11 @@ class Powerform_Google_Service_Dfareporting_Sizes_Resource extends Powerform_Goo
  * The "subaccounts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $subaccounts = $dfareportingService->subaccounts;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_Subaccounts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_Subaccounts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8519,28 +8519,28 @@ class Powerform_Google_Service_Dfareporting_Subaccounts_Resource extends Powerfo
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Subaccount ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Subaccount
+   * @return Google_Service_Dfareporting_Subaccount
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_Subaccount");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_Subaccount");
   }
 
   /**
    * Inserts a new subaccount. (subaccounts.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Subaccount $postBody
+   * @param Google_Subaccount $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Subaccount
+   * @return Google_Service_Dfareporting_Subaccount
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_Subaccount $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_Subaccount $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_Subaccount");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_Subaccount");
   }
 
   /**
@@ -8562,13 +8562,13 @@ class Powerform_Google_Service_Dfareporting_Subaccounts_Resource extends Powerfo
    * or simply "subaccount".
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_SubaccountsListResponse
+   * @return Google_Service_Dfareporting_SubaccountsListResponse
    */
   public function listSubaccounts($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_SubaccountsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_SubaccountsListResponse");
   }
 
   /**
@@ -8577,30 +8577,30 @@ class Powerform_Google_Service_Dfareporting_Subaccounts_Resource extends Powerfo
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Subaccount ID.
-   * @param Powerform_Google_Subaccount $postBody
+   * @param Google_Subaccount $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Subaccount
+   * @return Google_Service_Dfareporting_Subaccount
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_Subaccount $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_Subaccount $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_Subaccount");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_Subaccount");
   }
 
   /**
    * Updates an existing subaccount. (subaccounts.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_Subaccount $postBody
+   * @param Google_Subaccount $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_Subaccount
+   * @return Google_Service_Dfareporting_Subaccount
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_Subaccount $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_Subaccount $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_Subaccount");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_Subaccount");
   }
 }
 
@@ -8608,11 +8608,11 @@ class Powerform_Google_Service_Dfareporting_Subaccounts_Resource extends Powerfo
  * The "targetableRemarketingLists" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $targetableRemarketingLists = $dfareportingService->targetableRemarketingLists;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_TargetableRemarketingLists_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_TargetableRemarketingLists_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8621,13 +8621,13 @@ class Powerform_Google_Service_Dfareporting_TargetableRemarketingLists_Resource 
    * @param string $profileId User profile ID associated with this request.
    * @param string $id Remarketing list ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_TargetableRemarketingList
+   * @return Google_Service_Dfareporting_TargetableRemarketingList
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_TargetableRemarketingList");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_TargetableRemarketingList");
   }
 
   /**
@@ -8653,13 +8653,13 @@ class Powerform_Google_Service_Dfareporting_TargetableRemarketingLists_Resource 
    * result page.
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
-   * @return Powerform_Google_Service_Dfareporting_TargetableRemarketingListsListResponse
+   * @return Google_Service_Dfareporting_TargetableRemarketingListsListResponse
    */
   public function listTargetableRemarketingLists($profileId, $advertiserId, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'advertiserId' => $advertiserId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_TargetableRemarketingListsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_TargetableRemarketingListsListResponse");
   }
 }
 
@@ -8667,11 +8667,11 @@ class Powerform_Google_Service_Dfareporting_TargetableRemarketingLists_Resource 
  * The "userProfiles" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $userProfiles = $dfareportingService->userProfiles;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_UserProfiles_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_UserProfiles_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8679,26 +8679,26 @@ class Powerform_Google_Service_Dfareporting_UserProfiles_Resource extends Powerf
    *
    * @param string $profileId The user profile ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_UserProfile
+   * @return Google_Service_Dfareporting_UserProfile
    */
   public function get($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_UserProfile");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_UserProfile");
   }
 
   /**
    * Retrieves list of user profiles for a user. (userProfiles.listUserProfiles)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_UserProfileList
+   * @return Google_Service_Dfareporting_UserProfileList
    */
   public function listUserProfiles($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_UserProfileList");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_UserProfileList");
   }
 }
 
@@ -8706,11 +8706,11 @@ class Powerform_Google_Service_Dfareporting_UserProfiles_Resource extends Powerf
  * The "userRolePermissionGroups" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $userRolePermissionGroups = $dfareportingService->userRolePermissionGroups;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_UserRolePermissionGroups_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_UserRolePermissionGroups_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8719,13 +8719,13 @@ class Powerform_Google_Service_Dfareporting_UserRolePermissionGroups_Resource ex
    * @param string $profileId User profile ID associated with this request.
    * @param string $id User role permission group ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_UserRolePermissionGroup
+   * @return Google_Service_Dfareporting_UserRolePermissionGroup
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_UserRolePermissionGroup");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_UserRolePermissionGroup");
   }
 
   /**
@@ -8734,13 +8734,13 @@ class Powerform_Google_Service_Dfareporting_UserRolePermissionGroups_Resource ex
    *
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_UserRolePermissionGroupsListResponse
+   * @return Google_Service_Dfareporting_UserRolePermissionGroupsListResponse
    */
   public function listUserRolePermissionGroups($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_UserRolePermissionGroupsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_UserRolePermissionGroupsListResponse");
   }
 }
 
@@ -8748,11 +8748,11 @@ class Powerform_Google_Service_Dfareporting_UserRolePermissionGroups_Resource ex
  * The "userRolePermissions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $userRolePermissions = $dfareportingService->userRolePermissions;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_UserRolePermissions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_UserRolePermissions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8761,13 +8761,13 @@ class Powerform_Google_Service_Dfareporting_UserRolePermissions_Resource extends
    * @param string $profileId User profile ID associated with this request.
    * @param string $id User role permission ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_UserRolePermission
+   * @return Google_Service_Dfareporting_UserRolePermission
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_UserRolePermission");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_UserRolePermission");
   }
 
   /**
@@ -8778,13 +8778,13 @@ class Powerform_Google_Service_Dfareporting_UserRolePermissions_Resource extends
    * @param array $optParams Optional parameters.
    *
    * @opt_param string ids Select only user role permissions with these IDs.
-   * @return Powerform_Google_Service_Dfareporting_UserRolePermissionsListResponse
+   * @return Google_Service_Dfareporting_UserRolePermissionsListResponse
    */
   public function listUserRolePermissions($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_UserRolePermissionsListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_UserRolePermissionsListResponse");
   }
 }
 
@@ -8792,11 +8792,11 @@ class Powerform_Google_Service_Dfareporting_UserRolePermissions_Resource extends
  * The "userRoles" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dfareportingService = new Powerform_Google_Service_Dfareporting(...);
+ *   $dfareportingService = new Google_Service_Dfareporting(...);
  *   $userRoles = $dfareportingService->userRoles;
  *  </code>
  */
-class Powerform_Google_Service_Dfareporting_UserRoles_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dfareporting_UserRoles_Resource extends Google_Service_Resource
 {
 
   /**
@@ -8819,28 +8819,28 @@ class Powerform_Google_Service_Dfareporting_UserRoles_Resource extends Powerform
    * @param string $profileId User profile ID associated with this request.
    * @param string $id User role ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_UserRole
+   * @return Google_Service_Dfareporting_UserRole
    */
   public function get($profileId, $id, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Dfareporting_UserRole");
+    return $this->call('get', array($params), "Google_Service_Dfareporting_UserRole");
   }
 
   /**
    * Inserts a new user role. (userRoles.insert)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_UserRole $postBody
+   * @param Google_UserRole $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_UserRole
+   * @return Google_Service_Dfareporting_UserRole
    */
-  public function insert($profileId, Powerform_Google_Service_Dfareporting_UserRole $postBody, $optParams = array())
+  public function insert($profileId, Google_Service_Dfareporting_UserRole $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Dfareporting_UserRole");
+    return $this->call('insert', array($params), "Google_Service_Dfareporting_UserRole");
   }
 
   /**
@@ -8866,13 +8866,13 @@ class Powerform_Google_Service_Dfareporting_UserRoles_Resource extends Powerform
    * @opt_param string sortOrder Order of sorted results, default is ASCENDING.
    * @opt_param string subaccountId Select only user roles that belong to this
    * subaccount.
-   * @return Powerform_Google_Service_Dfareporting_UserRolesListResponse
+   * @return Google_Service_Dfareporting_UserRolesListResponse
    */
   public function listUserRoles($profileId, $optParams = array())
   {
     $params = array('profileId' => $profileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Dfareporting_UserRolesListResponse");
+    return $this->call('list', array($params), "Google_Service_Dfareporting_UserRolesListResponse");
   }
 
   /**
@@ -8881,37 +8881,37 @@ class Powerform_Google_Service_Dfareporting_UserRoles_Resource extends Powerform
    *
    * @param string $profileId User profile ID associated with this request.
    * @param string $id User role ID.
-   * @param Powerform_Google_UserRole $postBody
+   * @param Google_UserRole $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_UserRole
+   * @return Google_Service_Dfareporting_UserRole
    */
-  public function patch($profileId, $id, Powerform_Google_Service_Dfareporting_UserRole $postBody, $optParams = array())
+  public function patch($profileId, $id, Google_Service_Dfareporting_UserRole $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Dfareporting_UserRole");
+    return $this->call('patch', array($params), "Google_Service_Dfareporting_UserRole");
   }
 
   /**
    * Updates an existing user role. (userRoles.update)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param Powerform_Google_UserRole $postBody
+   * @param Google_UserRole $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dfareporting_UserRole
+   * @return Google_Service_Dfareporting_UserRole
    */
-  public function update($profileId, Powerform_Google_Service_Dfareporting_UserRole $postBody, $optParams = array())
+  public function update($profileId, Google_Service_Dfareporting_UserRole $postBody, $optParams = array())
   {
     $params = array('profileId' => $profileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Dfareporting_UserRole");
+    return $this->call('update', array($params), "Google_Service_Dfareporting_UserRole");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Dfareporting_Account extends Powerform_Google_Collection
+class Google_Service_Dfareporting_Account extends Google_Collection
 {
   protected $collection_key = 'availablePermissionIds';
   protected $internal_gapi_mappings = array(
@@ -8933,7 +8933,7 @@ class Powerform_Google_Service_Dfareporting_Account extends Powerform_Google_Col
   public $maximumImageSize;
   public $name;
   public $nielsenOcrEnabled;
-  protected $reportsConfigurationType = 'Powerform_Google_Service_Dfareporting_ReportsConfiguration';
+  protected $reportsConfigurationType = 'Google_Service_Dfareporting_ReportsConfiguration';
   protected $reportsConfigurationDataType = '';
   public $teaserSizeLimit;
 
@@ -9074,7 +9074,7 @@ class Powerform_Google_Service_Dfareporting_Account extends Powerform_Google_Col
   {
     return $this->nielsenOcrEnabled;
   }
-  public function setReportsConfiguration(Powerform_Google_Service_Dfareporting_ReportsConfiguration $reportsConfiguration)
+  public function setReportsConfiguration(Google_Service_Dfareporting_ReportsConfiguration $reportsConfiguration)
   {
     $this->reportsConfiguration = $reportsConfiguration;
   }
@@ -9092,7 +9092,7 @@ class Powerform_Google_Service_Dfareporting_Account extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AccountActiveAdSummary extends Powerform_Google_Model
+class Google_Service_Dfareporting_AccountActiveAdSummary extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9145,7 +9145,7 @@ class Powerform_Google_Service_Dfareporting_AccountActiveAdSummary extends Power
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AccountPermission extends Powerform_Google_Collection
+class Google_Service_Dfareporting_AccountPermission extends Google_Collection
 {
   protected $collection_key = 'accountProfiles';
   protected $internal_gapi_mappings = array(
@@ -9208,7 +9208,7 @@ class Powerform_Google_Service_Dfareporting_AccountPermission extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AccountPermissionGroup extends Powerform_Google_Model
+class Google_Service_Dfareporting_AccountPermissionGroup extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9243,12 +9243,12 @@ class Powerform_Google_Service_Dfareporting_AccountPermissionGroup extends Power
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AccountPermissionGroupsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_AccountPermissionGroupsListResponse extends Google_Collection
 {
   protected $collection_key = 'accountPermissionGroups';
   protected $internal_gapi_mappings = array(
   );
-  protected $accountPermissionGroupsType = 'Powerform_Google_Service_Dfareporting_AccountPermissionGroup';
+  protected $accountPermissionGroupsType = 'Google_Service_Dfareporting_AccountPermissionGroup';
   protected $accountPermissionGroupsDataType = 'array';
   public $kind;
 
@@ -9271,12 +9271,12 @@ class Powerform_Google_Service_Dfareporting_AccountPermissionGroupsListResponse 
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AccountPermissionsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_AccountPermissionsListResponse extends Google_Collection
 {
   protected $collection_key = 'accountPermissions';
   protected $internal_gapi_mappings = array(
   );
-  protected $accountPermissionsType = 'Powerform_Google_Service_Dfareporting_AccountPermission';
+  protected $accountPermissionsType = 'Google_Service_Dfareporting_AccountPermission';
   protected $accountPermissionsDataType = 'array';
   public $kind;
 
@@ -9299,15 +9299,15 @@ class Powerform_Google_Service_Dfareporting_AccountPermissionsListResponse exten
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AccountUserProfile extends Powerform_Google_Model
+class Google_Service_Dfareporting_AccountUserProfile extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $active;
-  protected $advertiserFilterType = 'Powerform_Google_Service_Dfareporting_ObjectFilter';
+  protected $advertiserFilterType = 'Google_Service_Dfareporting_ObjectFilter';
   protected $advertiserFilterDataType = '';
-  protected $campaignFilterType = 'Powerform_Google_Service_Dfareporting_ObjectFilter';
+  protected $campaignFilterType = 'Google_Service_Dfareporting_ObjectFilter';
   protected $campaignFilterDataType = '';
   public $comments;
   public $email;
@@ -9315,12 +9315,12 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfile extends Powerform
   public $kind;
   public $locale;
   public $name;
-  protected $siteFilterType = 'Powerform_Google_Service_Dfareporting_ObjectFilter';
+  protected $siteFilterType = 'Google_Service_Dfareporting_ObjectFilter';
   protected $siteFilterDataType = '';
   public $subaccountId;
   public $traffickerType;
   public $userAccessType;
-  protected $userRoleFilterType = 'Powerform_Google_Service_Dfareporting_ObjectFilter';
+  protected $userRoleFilterType = 'Google_Service_Dfareporting_ObjectFilter';
   protected $userRoleFilterDataType = '';
   public $userRoleId;
 
@@ -9341,7 +9341,7 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfile extends Powerform
   {
     return $this->active;
   }
-  public function setAdvertiserFilter(Powerform_Google_Service_Dfareporting_ObjectFilter $advertiserFilter)
+  public function setAdvertiserFilter(Google_Service_Dfareporting_ObjectFilter $advertiserFilter)
   {
     $this->advertiserFilter = $advertiserFilter;
   }
@@ -9349,7 +9349,7 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfile extends Powerform
   {
     return $this->advertiserFilter;
   }
-  public function setCampaignFilter(Powerform_Google_Service_Dfareporting_ObjectFilter $campaignFilter)
+  public function setCampaignFilter(Google_Service_Dfareporting_ObjectFilter $campaignFilter)
   {
     $this->campaignFilter = $campaignFilter;
   }
@@ -9405,7 +9405,7 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfile extends Powerform
   {
     return $this->name;
   }
-  public function setSiteFilter(Powerform_Google_Service_Dfareporting_ObjectFilter $siteFilter)
+  public function setSiteFilter(Google_Service_Dfareporting_ObjectFilter $siteFilter)
   {
     $this->siteFilter = $siteFilter;
   }
@@ -9437,7 +9437,7 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfile extends Powerform
   {
     return $this->userAccessType;
   }
-  public function setUserRoleFilter(Powerform_Google_Service_Dfareporting_ObjectFilter $userRoleFilter)
+  public function setUserRoleFilter(Google_Service_Dfareporting_ObjectFilter $userRoleFilter)
   {
     $this->userRoleFilter = $userRoleFilter;
   }
@@ -9455,12 +9455,12 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfile extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AccountUserProfilesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_AccountUserProfilesListResponse extends Google_Collection
 {
   protected $collection_key = 'accountUserProfiles';
   protected $internal_gapi_mappings = array(
   );
-  protected $accountUserProfilesType = 'Powerform_Google_Service_Dfareporting_AccountUserProfile';
+  protected $accountUserProfilesType = 'Google_Service_Dfareporting_AccountUserProfile';
   protected $accountUserProfilesDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -9492,12 +9492,12 @@ class Powerform_Google_Service_Dfareporting_AccountUserProfilesListResponse exte
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AccountsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_AccountsListResponse extends Google_Collection
 {
   protected $collection_key = 'accounts';
   protected $internal_gapi_mappings = array(
   );
-  protected $accountsType = 'Powerform_Google_Service_Dfareporting_Account';
+  protected $accountsType = 'Google_Service_Dfareporting_Account';
   protected $accountsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -9529,12 +9529,12 @@ class Powerform_Google_Service_Dfareporting_AccountsListResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Activities extends Powerform_Google_Collection
+class Google_Service_Dfareporting_Activities extends Google_Collection
 {
   protected $collection_key = 'metricNames';
   protected $internal_gapi_mappings = array(
   );
-  protected $filtersType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $filtersType = 'Google_Service_Dfareporting_DimensionValue';
   protected $filtersDataType = 'array';
   public $kind;
   public $metricNames;
@@ -9566,7 +9566,7 @@ class Powerform_Google_Service_Dfareporting_Activities extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collection
+class Google_Service_Dfareporting_Ad extends Google_Collection
 {
   protected $collection_key = 'placementAssignments';
   protected $internal_gapi_mappings = array(
@@ -9574,57 +9574,57 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   public $accountId;
   public $active;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $archived;
   public $audienceSegmentId;
   public $campaignId;
-  protected $campaignIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $campaignIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $campaignIdDimensionValueDataType = '';
-  protected $clickThroughUrlType = 'Powerform_Google_Service_Dfareporting_ClickThroughUrl';
+  protected $clickThroughUrlType = 'Google_Service_Dfareporting_ClickThroughUrl';
   protected $clickThroughUrlDataType = '';
-  protected $clickThroughUrlSuffixPropertiesType = 'Powerform_Google_Service_Dfareporting_ClickThroughUrlSuffixProperties';
+  protected $clickThroughUrlSuffixPropertiesType = 'Google_Service_Dfareporting_ClickThroughUrlSuffixProperties';
   protected $clickThroughUrlSuffixPropertiesDataType = '';
   public $comments;
   public $compatibility;
-  protected $createInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $createInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $createInfoDataType = '';
-  protected $creativeGroupAssignmentsType = 'Powerform_Google_Service_Dfareporting_CreativeGroupAssignment';
+  protected $creativeGroupAssignmentsType = 'Google_Service_Dfareporting_CreativeGroupAssignment';
   protected $creativeGroupAssignmentsDataType = 'array';
-  protected $creativeRotationType = 'Powerform_Google_Service_Dfareporting_CreativeRotation';
+  protected $creativeRotationType = 'Google_Service_Dfareporting_CreativeRotation';
   protected $creativeRotationDataType = '';
-  protected $dayPartTargetingType = 'Powerform_Google_Service_Dfareporting_DayPartTargeting';
+  protected $dayPartTargetingType = 'Google_Service_Dfareporting_DayPartTargeting';
   protected $dayPartTargetingDataType = '';
-  protected $defaultClickThroughEventTagPropertiesType = 'Powerform_Google_Service_Dfareporting_DefaultClickThroughEventTagProperties';
+  protected $defaultClickThroughEventTagPropertiesType = 'Google_Service_Dfareporting_DefaultClickThroughEventTagProperties';
   protected $defaultClickThroughEventTagPropertiesDataType = '';
-  protected $deliveryScheduleType = 'Powerform_Google_Service_Dfareporting_DeliverySchedule';
+  protected $deliveryScheduleType = 'Google_Service_Dfareporting_DeliverySchedule';
   protected $deliveryScheduleDataType = '';
   public $dynamicClickTracker;
   public $endTime;
-  protected $eventTagOverridesType = 'Powerform_Google_Service_Dfareporting_EventTagOverride';
+  protected $eventTagOverridesType = 'Google_Service_Dfareporting_EventTagOverride';
   protected $eventTagOverridesDataType = 'array';
-  protected $geoTargetingType = 'Powerform_Google_Service_Dfareporting_GeoTargeting';
+  protected $geoTargetingType = 'Google_Service_Dfareporting_GeoTargeting';
   protected $geoTargetingDataType = '';
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
-  protected $keyValueTargetingExpressionType = 'Powerform_Google_Service_Dfareporting_KeyValueTargetingExpression';
+  protected $keyValueTargetingExpressionType = 'Google_Service_Dfareporting_KeyValueTargetingExpression';
   protected $keyValueTargetingExpressionDataType = '';
   public $kind;
-  protected $lastModifiedInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $lastModifiedInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $lastModifiedInfoDataType = '';
   public $name;
-  protected $placementAssignmentsType = 'Powerform_Google_Service_Dfareporting_PlacementAssignment';
+  protected $placementAssignmentsType = 'Google_Service_Dfareporting_PlacementAssignment';
   protected $placementAssignmentsDataType = 'array';
-  protected $remarketingListExpressionType = 'Powerform_Google_Service_Dfareporting_ListTargetingExpression';
+  protected $remarketingListExpressionType = 'Google_Service_Dfareporting_ListTargetingExpression';
   protected $remarketingListExpressionDataType = '';
-  protected $sizeType = 'Powerform_Google_Service_Dfareporting_Size';
+  protected $sizeType = 'Google_Service_Dfareporting_Size';
   protected $sizeDataType = '';
   public $sslCompliant;
   public $sslRequired;
   public $startTime;
   public $subaccountId;
-  protected $technologyTargetingType = 'Powerform_Google_Service_Dfareporting_TechnologyTargeting';
+  protected $technologyTargetingType = 'Google_Service_Dfareporting_TechnologyTargeting';
   protected $technologyTargetingDataType = '';
   public $type;
 
@@ -9653,7 +9653,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -9685,7 +9685,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->campaignId;
   }
-  public function setCampaignIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $campaignIdDimensionValue)
+  public function setCampaignIdDimensionValue(Google_Service_Dfareporting_DimensionValue $campaignIdDimensionValue)
   {
     $this->campaignIdDimensionValue = $campaignIdDimensionValue;
   }
@@ -9693,7 +9693,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->campaignIdDimensionValue;
   }
-  public function setClickThroughUrl(Powerform_Google_Service_Dfareporting_ClickThroughUrl $clickThroughUrl)
+  public function setClickThroughUrl(Google_Service_Dfareporting_ClickThroughUrl $clickThroughUrl)
   {
     $this->clickThroughUrl = $clickThroughUrl;
   }
@@ -9701,7 +9701,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->clickThroughUrl;
   }
-  public function setClickThroughUrlSuffixProperties(Powerform_Google_Service_Dfareporting_ClickThroughUrlSuffixProperties $clickThroughUrlSuffixProperties)
+  public function setClickThroughUrlSuffixProperties(Google_Service_Dfareporting_ClickThroughUrlSuffixProperties $clickThroughUrlSuffixProperties)
   {
     $this->clickThroughUrlSuffixProperties = $clickThroughUrlSuffixProperties;
   }
@@ -9725,7 +9725,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->compatibility;
   }
-  public function setCreateInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $createInfo)
+  public function setCreateInfo(Google_Service_Dfareporting_LastModifiedInfo $createInfo)
   {
     $this->createInfo = $createInfo;
   }
@@ -9741,7 +9741,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->creativeGroupAssignments;
   }
-  public function setCreativeRotation(Powerform_Google_Service_Dfareporting_CreativeRotation $creativeRotation)
+  public function setCreativeRotation(Google_Service_Dfareporting_CreativeRotation $creativeRotation)
   {
     $this->creativeRotation = $creativeRotation;
   }
@@ -9749,7 +9749,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->creativeRotation;
   }
-  public function setDayPartTargeting(Powerform_Google_Service_Dfareporting_DayPartTargeting $dayPartTargeting)
+  public function setDayPartTargeting(Google_Service_Dfareporting_DayPartTargeting $dayPartTargeting)
   {
     $this->dayPartTargeting = $dayPartTargeting;
   }
@@ -9757,7 +9757,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->dayPartTargeting;
   }
-  public function setDefaultClickThroughEventTagProperties(Powerform_Google_Service_Dfareporting_DefaultClickThroughEventTagProperties $defaultClickThroughEventTagProperties)
+  public function setDefaultClickThroughEventTagProperties(Google_Service_Dfareporting_DefaultClickThroughEventTagProperties $defaultClickThroughEventTagProperties)
   {
     $this->defaultClickThroughEventTagProperties = $defaultClickThroughEventTagProperties;
   }
@@ -9765,7 +9765,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->defaultClickThroughEventTagProperties;
   }
-  public function setDeliverySchedule(Powerform_Google_Service_Dfareporting_DeliverySchedule $deliverySchedule)
+  public function setDeliverySchedule(Google_Service_Dfareporting_DeliverySchedule $deliverySchedule)
   {
     $this->deliverySchedule = $deliverySchedule;
   }
@@ -9797,7 +9797,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->eventTagOverrides;
   }
-  public function setGeoTargeting(Powerform_Google_Service_Dfareporting_GeoTargeting $geoTargeting)
+  public function setGeoTargeting(Google_Service_Dfareporting_GeoTargeting $geoTargeting)
   {
     $this->geoTargeting = $geoTargeting;
   }
@@ -9813,7 +9813,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -9821,7 +9821,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->idDimensionValue;
   }
-  public function setKeyValueTargetingExpression(Powerform_Google_Service_Dfareporting_KeyValueTargetingExpression $keyValueTargetingExpression)
+  public function setKeyValueTargetingExpression(Google_Service_Dfareporting_KeyValueTargetingExpression $keyValueTargetingExpression)
   {
     $this->keyValueTargetingExpression = $keyValueTargetingExpression;
   }
@@ -9837,7 +9837,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->kind;
   }
-  public function setLastModifiedInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
+  public function setLastModifiedInfo(Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
   {
     $this->lastModifiedInfo = $lastModifiedInfo;
   }
@@ -9861,7 +9861,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->placementAssignments;
   }
-  public function setRemarketingListExpression(Powerform_Google_Service_Dfareporting_ListTargetingExpression $remarketingListExpression)
+  public function setRemarketingListExpression(Google_Service_Dfareporting_ListTargetingExpression $remarketingListExpression)
   {
     $this->remarketingListExpression = $remarketingListExpression;
   }
@@ -9869,7 +9869,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->remarketingListExpression;
   }
-  public function setSize(Powerform_Google_Service_Dfareporting_Size $size)
+  public function setSize(Google_Service_Dfareporting_Size $size)
   {
     $this->size = $size;
   }
@@ -9909,7 +9909,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   {
     return $this->subaccountId;
   }
-  public function setTechnologyTargeting(Powerform_Google_Service_Dfareporting_TechnologyTargeting $technologyTargeting)
+  public function setTechnologyTargeting(Google_Service_Dfareporting_TechnologyTargeting $technologyTargeting)
   {
     $this->technologyTargeting = $technologyTargeting;
   }
@@ -9927,7 +9927,7 @@ class Powerform_Google_Service_Dfareporting_Ad extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AdSlot extends Powerform_Google_Model
+class Google_Service_Dfareporting_AdSlot extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10007,12 +10007,12 @@ class Powerform_Google_Service_Dfareporting_AdSlot extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AdsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_AdsListResponse extends Google_Collection
 {
   protected $collection_key = 'ads';
   protected $internal_gapi_mappings = array(
   );
-  protected $adsType = 'Powerform_Google_Service_Dfareporting_Ad';
+  protected $adsType = 'Google_Service_Dfareporting_Ad';
   protected $adsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -10044,7 +10044,7 @@ class Powerform_Google_Service_Dfareporting_AdsListResponse extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Advertiser extends Powerform_Google_Model
+class Google_Service_Dfareporting_Advertiser extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10054,10 +10054,10 @@ class Powerform_Google_Service_Dfareporting_Advertiser extends Powerform_Google_
   public $defaultClickThroughEventTagId;
   public $defaultEmail;
   public $floodlightConfigurationId;
-  protected $floodlightConfigurationIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $floodlightConfigurationIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $floodlightConfigurationIdDimensionValueDataType = '';
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
   public $kind;
   public $name;
@@ -10115,7 +10115,7 @@ class Powerform_Google_Service_Dfareporting_Advertiser extends Powerform_Google_
   {
     return $this->floodlightConfigurationId;
   }
-  public function setFloodlightConfigurationIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $floodlightConfigurationIdDimensionValue)
+  public function setFloodlightConfigurationIdDimensionValue(Google_Service_Dfareporting_DimensionValue $floodlightConfigurationIdDimensionValue)
   {
     $this->floodlightConfigurationIdDimensionValue = $floodlightConfigurationIdDimensionValue;
   }
@@ -10131,7 +10131,7 @@ class Powerform_Google_Service_Dfareporting_Advertiser extends Powerform_Google_
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -10189,7 +10189,7 @@ class Powerform_Google_Service_Dfareporting_Advertiser extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AdvertiserGroup extends Powerform_Google_Model
+class Google_Service_Dfareporting_AdvertiserGroup extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10233,12 +10233,12 @@ class Powerform_Google_Service_Dfareporting_AdvertiserGroup extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AdvertiserGroupsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_AdvertiserGroupsListResponse extends Google_Collection
 {
   protected $collection_key = 'advertiserGroups';
   protected $internal_gapi_mappings = array(
   );
-  protected $advertiserGroupsType = 'Powerform_Google_Service_Dfareporting_AdvertiserGroup';
+  protected $advertiserGroupsType = 'Google_Service_Dfareporting_AdvertiserGroup';
   protected $advertiserGroupsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -10270,12 +10270,12 @@ class Powerform_Google_Service_Dfareporting_AdvertiserGroupsListResponse extends
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AdvertisersListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_AdvertisersListResponse extends Google_Collection
 {
   protected $collection_key = 'advertisers';
   protected $internal_gapi_mappings = array(
   );
-  protected $advertisersType = 'Powerform_Google_Service_Dfareporting_Advertiser';
+  protected $advertisersType = 'Google_Service_Dfareporting_Advertiser';
   protected $advertisersDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -10307,7 +10307,7 @@ class Powerform_Google_Service_Dfareporting_AdvertisersListResponse extends Powe
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AudienceSegment extends Powerform_Google_Model
+class Google_Service_Dfareporting_AudienceSegment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10342,12 +10342,12 @@ class Powerform_Google_Service_Dfareporting_AudienceSegment extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_AudienceSegmentGroup extends Powerform_Google_Collection
+class Google_Service_Dfareporting_AudienceSegmentGroup extends Google_Collection
 {
   protected $collection_key = 'audienceSegments';
   protected $internal_gapi_mappings = array(
   );
-  protected $audienceSegmentsType = 'Powerform_Google_Service_Dfareporting_AudienceSegment';
+  protected $audienceSegmentsType = 'Google_Service_Dfareporting_AudienceSegment';
   protected $audienceSegmentsDataType = 'array';
   public $id;
   public $name;
@@ -10379,7 +10379,7 @@ class Powerform_Google_Service_Dfareporting_AudienceSegmentGroup extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Browser extends Powerform_Google_Model
+class Google_Service_Dfareporting_Browser extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10441,12 +10441,12 @@ class Powerform_Google_Service_Dfareporting_Browser extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Dfareporting_BrowsersListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_BrowsersListResponse extends Google_Collection
 {
   protected $collection_key = 'browsers';
   protected $internal_gapi_mappings = array(
   );
-  protected $browsersType = 'Powerform_Google_Service_Dfareporting_Browser';
+  protected $browsersType = 'Google_Service_Dfareporting_Browser';
   protected $browsersDataType = 'array';
   public $kind;
 
@@ -10469,44 +10469,44 @@ class Powerform_Google_Service_Dfareporting_BrowsersListResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Campaign extends Powerform_Google_Collection
+class Google_Service_Dfareporting_Campaign extends Google_Collection
 {
   protected $collection_key = 'traffickerEmails';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
-  protected $additionalCreativeOptimizationConfigurationsType = 'Powerform_Google_Service_Dfareporting_CreativeOptimizationConfiguration';
+  protected $additionalCreativeOptimizationConfigurationsType = 'Google_Service_Dfareporting_CreativeOptimizationConfiguration';
   protected $additionalCreativeOptimizationConfigurationsDataType = 'array';
   public $advertiserGroupId;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $archived;
-  protected $audienceSegmentGroupsType = 'Powerform_Google_Service_Dfareporting_AudienceSegmentGroup';
+  protected $audienceSegmentGroupsType = 'Google_Service_Dfareporting_AudienceSegmentGroup';
   protected $audienceSegmentGroupsDataType = 'array';
   public $billingInvoiceCode;
-  protected $clickThroughUrlSuffixPropertiesType = 'Powerform_Google_Service_Dfareporting_ClickThroughUrlSuffixProperties';
+  protected $clickThroughUrlSuffixPropertiesType = 'Google_Service_Dfareporting_ClickThroughUrlSuffixProperties';
   protected $clickThroughUrlSuffixPropertiesDataType = '';
   public $comment;
   public $comscoreVceEnabled;
-  protected $createInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $createInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $createInfoDataType = '';
   public $creativeGroupIds;
-  protected $creativeOptimizationConfigurationType = 'Powerform_Google_Service_Dfareporting_CreativeOptimizationConfiguration';
+  protected $creativeOptimizationConfigurationType = 'Google_Service_Dfareporting_CreativeOptimizationConfiguration';
   protected $creativeOptimizationConfigurationDataType = '';
-  protected $defaultClickThroughEventTagPropertiesType = 'Powerform_Google_Service_Dfareporting_DefaultClickThroughEventTagProperties';
+  protected $defaultClickThroughEventTagPropertiesType = 'Google_Service_Dfareporting_DefaultClickThroughEventTagProperties';
   protected $defaultClickThroughEventTagPropertiesDataType = '';
   public $endDate;
-  protected $eventTagOverridesType = 'Powerform_Google_Service_Dfareporting_EventTagOverride';
+  protected $eventTagOverridesType = 'Google_Service_Dfareporting_EventTagOverride';
   protected $eventTagOverridesDataType = 'array';
   public $externalId;
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
   public $kind;
-  protected $lastModifiedInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $lastModifiedInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $lastModifiedInfoDataType = '';
-  protected $lookbackConfigurationType = 'Powerform_Google_Service_Dfareporting_LookbackConfiguration';
+  protected $lookbackConfigurationType = 'Google_Service_Dfareporting_LookbackConfiguration';
   protected $lookbackConfigurationDataType = '';
   public $name;
   public $nielsenOcrEnabled;
@@ -10547,7 +10547,7 @@ class Powerform_Google_Service_Dfareporting_Campaign extends Powerform_Google_Co
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -10579,7 +10579,7 @@ class Powerform_Google_Service_Dfareporting_Campaign extends Powerform_Google_Co
   {
     return $this->billingInvoiceCode;
   }
-  public function setClickThroughUrlSuffixProperties(Powerform_Google_Service_Dfareporting_ClickThroughUrlSuffixProperties $clickThroughUrlSuffixProperties)
+  public function setClickThroughUrlSuffixProperties(Google_Service_Dfareporting_ClickThroughUrlSuffixProperties $clickThroughUrlSuffixProperties)
   {
     $this->clickThroughUrlSuffixProperties = $clickThroughUrlSuffixProperties;
   }
@@ -10603,7 +10603,7 @@ class Powerform_Google_Service_Dfareporting_Campaign extends Powerform_Google_Co
   {
     return $this->comscoreVceEnabled;
   }
-  public function setCreateInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $createInfo)
+  public function setCreateInfo(Google_Service_Dfareporting_LastModifiedInfo $createInfo)
   {
     $this->createInfo = $createInfo;
   }
@@ -10619,7 +10619,7 @@ class Powerform_Google_Service_Dfareporting_Campaign extends Powerform_Google_Co
   {
     return $this->creativeGroupIds;
   }
-  public function setCreativeOptimizationConfiguration(Powerform_Google_Service_Dfareporting_CreativeOptimizationConfiguration $creativeOptimizationConfiguration)
+  public function setCreativeOptimizationConfiguration(Google_Service_Dfareporting_CreativeOptimizationConfiguration $creativeOptimizationConfiguration)
   {
     $this->creativeOptimizationConfiguration = $creativeOptimizationConfiguration;
   }
@@ -10627,7 +10627,7 @@ class Powerform_Google_Service_Dfareporting_Campaign extends Powerform_Google_Co
   {
     return $this->creativeOptimizationConfiguration;
   }
-  public function setDefaultClickThroughEventTagProperties(Powerform_Google_Service_Dfareporting_DefaultClickThroughEventTagProperties $defaultClickThroughEventTagProperties)
+  public function setDefaultClickThroughEventTagProperties(Google_Service_Dfareporting_DefaultClickThroughEventTagProperties $defaultClickThroughEventTagProperties)
   {
     $this->defaultClickThroughEventTagProperties = $defaultClickThroughEventTagProperties;
   }
@@ -10667,7 +10667,7 @@ class Powerform_Google_Service_Dfareporting_Campaign extends Powerform_Google_Co
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -10683,7 +10683,7 @@ class Powerform_Google_Service_Dfareporting_Campaign extends Powerform_Google_Co
   {
     return $this->kind;
   }
-  public function setLastModifiedInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
+  public function setLastModifiedInfo(Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
   {
     $this->lastModifiedInfo = $lastModifiedInfo;
   }
@@ -10691,7 +10691,7 @@ class Powerform_Google_Service_Dfareporting_Campaign extends Powerform_Google_Co
   {
     return $this->lastModifiedInfo;
   }
-  public function setLookbackConfiguration(Powerform_Google_Service_Dfareporting_LookbackConfiguration $lookbackConfiguration)
+  public function setLookbackConfiguration(Google_Service_Dfareporting_LookbackConfiguration $lookbackConfiguration)
   {
     $this->lookbackConfiguration = $lookbackConfiguration;
   }
@@ -10741,7 +10741,7 @@ class Powerform_Google_Service_Dfareporting_Campaign extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CampaignCreativeAssociation extends Powerform_Google_Model
+class Google_Service_Dfareporting_CampaignCreativeAssociation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10767,12 +10767,12 @@ class Powerform_Google_Service_Dfareporting_CampaignCreativeAssociation extends 
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CampaignCreativeAssociationsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CampaignCreativeAssociationsListResponse extends Google_Collection
 {
   protected $collection_key = 'campaignCreativeAssociations';
   protected $internal_gapi_mappings = array(
   );
-  protected $campaignCreativeAssociationsType = 'Powerform_Google_Service_Dfareporting_CampaignCreativeAssociation';
+  protected $campaignCreativeAssociationsType = 'Google_Service_Dfareporting_CampaignCreativeAssociation';
   protected $campaignCreativeAssociationsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -10804,12 +10804,12 @@ class Powerform_Google_Service_Dfareporting_CampaignCreativeAssociationsListResp
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CampaignsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CampaignsListResponse extends Google_Collection
 {
   protected $collection_key = 'campaigns';
   protected $internal_gapi_mappings = array(
   );
-  protected $campaignsType = 'Powerform_Google_Service_Dfareporting_Campaign';
+  protected $campaignsType = 'Google_Service_Dfareporting_Campaign';
   protected $campaignsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -10841,7 +10841,7 @@ class Powerform_Google_Service_Dfareporting_CampaignsListResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ChangeLog extends Powerform_Google_Model
+class Google_Service_Dfareporting_ChangeLog extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10975,12 +10975,12 @@ class Powerform_Google_Service_Dfareporting_ChangeLog extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ChangeLogsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ChangeLogsListResponse extends Google_Collection
 {
   protected $collection_key = 'changeLogs';
   protected $internal_gapi_mappings = array(
   );
-  protected $changeLogsType = 'Powerform_Google_Service_Dfareporting_ChangeLog';
+  protected $changeLogsType = 'Google_Service_Dfareporting_ChangeLog';
   protected $changeLogsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -11012,12 +11012,12 @@ class Powerform_Google_Service_Dfareporting_ChangeLogsListResponse extends Power
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CitiesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CitiesListResponse extends Google_Collection
 {
   protected $collection_key = 'cities';
   protected $internal_gapi_mappings = array(
   );
-  protected $citiesType = 'Powerform_Google_Service_Dfareporting_City';
+  protected $citiesType = 'Google_Service_Dfareporting_City';
   protected $citiesDataType = 'array';
   public $kind;
 
@@ -11040,7 +11040,7 @@ class Powerform_Google_Service_Dfareporting_CitiesListResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_City extends Powerform_Google_Model
+class Google_Service_Dfareporting_City extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11129,7 +11129,7 @@ class Powerform_Google_Service_Dfareporting_City extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ClickTag extends Powerform_Google_Model
+class Google_Service_Dfareporting_ClickTag extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11164,7 +11164,7 @@ class Powerform_Google_Service_Dfareporting_ClickTag extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ClickThroughUrl extends Powerform_Google_Model
+class Google_Service_Dfareporting_ClickThroughUrl extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11208,7 +11208,7 @@ class Powerform_Google_Service_Dfareporting_ClickThroughUrl extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ClickThroughUrlSuffixProperties extends Powerform_Google_Model
+class Google_Service_Dfareporting_ClickThroughUrlSuffixProperties extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11234,16 +11234,16 @@ class Powerform_Google_Service_Dfareporting_ClickThroughUrlSuffixProperties exte
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CompanionClickThroughOverride extends Powerform_Google_Model
+class Google_Service_Dfareporting_CompanionClickThroughOverride extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $clickThroughUrlType = 'Powerform_Google_Service_Dfareporting_ClickThroughUrl';
+  protected $clickThroughUrlType = 'Google_Service_Dfareporting_ClickThroughUrl';
   protected $clickThroughUrlDataType = '';
   public $creativeId;
 
 
-  public function setClickThroughUrl(Powerform_Google_Service_Dfareporting_ClickThroughUrl $clickThroughUrl)
+  public function setClickThroughUrl(Google_Service_Dfareporting_ClickThroughUrl $clickThroughUrl)
   {
     $this->clickThroughUrl = $clickThroughUrl;
   }
@@ -11261,24 +11261,24 @@ class Powerform_Google_Service_Dfareporting_CompanionClickThroughOverride extend
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CompatibleFields extends Powerform_Google_Model
+class Google_Service_Dfareporting_CompatibleFields extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $crossDimensionReachReportCompatibleFieldsType = 'Powerform_Google_Service_Dfareporting_CrossDimensionReachReportCompatibleFields';
+  protected $crossDimensionReachReportCompatibleFieldsType = 'Google_Service_Dfareporting_CrossDimensionReachReportCompatibleFields';
   protected $crossDimensionReachReportCompatibleFieldsDataType = '';
-  protected $floodlightReportCompatibleFieldsType = 'Powerform_Google_Service_Dfareporting_FloodlightReportCompatibleFields';
+  protected $floodlightReportCompatibleFieldsType = 'Google_Service_Dfareporting_FloodlightReportCompatibleFields';
   protected $floodlightReportCompatibleFieldsDataType = '';
   public $kind;
-  protected $pathToConversionReportCompatibleFieldsType = 'Powerform_Google_Service_Dfareporting_PathToConversionReportCompatibleFields';
+  protected $pathToConversionReportCompatibleFieldsType = 'Google_Service_Dfareporting_PathToConversionReportCompatibleFields';
   protected $pathToConversionReportCompatibleFieldsDataType = '';
-  protected $reachReportCompatibleFieldsType = 'Powerform_Google_Service_Dfareporting_ReachReportCompatibleFields';
+  protected $reachReportCompatibleFieldsType = 'Google_Service_Dfareporting_ReachReportCompatibleFields';
   protected $reachReportCompatibleFieldsDataType = '';
-  protected $reportCompatibleFieldsType = 'Powerform_Google_Service_Dfareporting_ReportCompatibleFields';
+  protected $reportCompatibleFieldsType = 'Google_Service_Dfareporting_ReportCompatibleFields';
   protected $reportCompatibleFieldsDataType = '';
 
 
-  public function setCrossDimensionReachReportCompatibleFields(Powerform_Google_Service_Dfareporting_CrossDimensionReachReportCompatibleFields $crossDimensionReachReportCompatibleFields)
+  public function setCrossDimensionReachReportCompatibleFields(Google_Service_Dfareporting_CrossDimensionReachReportCompatibleFields $crossDimensionReachReportCompatibleFields)
   {
     $this->crossDimensionReachReportCompatibleFields = $crossDimensionReachReportCompatibleFields;
   }
@@ -11286,7 +11286,7 @@ class Powerform_Google_Service_Dfareporting_CompatibleFields extends Powerform_G
   {
     return $this->crossDimensionReachReportCompatibleFields;
   }
-  public function setFloodlightReportCompatibleFields(Powerform_Google_Service_Dfareporting_FloodlightReportCompatibleFields $floodlightReportCompatibleFields)
+  public function setFloodlightReportCompatibleFields(Google_Service_Dfareporting_FloodlightReportCompatibleFields $floodlightReportCompatibleFields)
   {
     $this->floodlightReportCompatibleFields = $floodlightReportCompatibleFields;
   }
@@ -11302,7 +11302,7 @@ class Powerform_Google_Service_Dfareporting_CompatibleFields extends Powerform_G
   {
     return $this->kind;
   }
-  public function setPathToConversionReportCompatibleFields(Powerform_Google_Service_Dfareporting_PathToConversionReportCompatibleFields $pathToConversionReportCompatibleFields)
+  public function setPathToConversionReportCompatibleFields(Google_Service_Dfareporting_PathToConversionReportCompatibleFields $pathToConversionReportCompatibleFields)
   {
     $this->pathToConversionReportCompatibleFields = $pathToConversionReportCompatibleFields;
   }
@@ -11310,7 +11310,7 @@ class Powerform_Google_Service_Dfareporting_CompatibleFields extends Powerform_G
   {
     return $this->pathToConversionReportCompatibleFields;
   }
-  public function setReachReportCompatibleFields(Powerform_Google_Service_Dfareporting_ReachReportCompatibleFields $reachReportCompatibleFields)
+  public function setReachReportCompatibleFields(Google_Service_Dfareporting_ReachReportCompatibleFields $reachReportCompatibleFields)
   {
     $this->reachReportCompatibleFields = $reachReportCompatibleFields;
   }
@@ -11318,7 +11318,7 @@ class Powerform_Google_Service_Dfareporting_CompatibleFields extends Powerform_G
   {
     return $this->reachReportCompatibleFields;
   }
-  public function setReportCompatibleFields(Powerform_Google_Service_Dfareporting_ReportCompatibleFields $reportCompatibleFields)
+  public function setReportCompatibleFields(Google_Service_Dfareporting_ReportCompatibleFields $reportCompatibleFields)
   {
     $this->reportCompatibleFields = $reportCompatibleFields;
   }
@@ -11328,7 +11328,7 @@ class Powerform_Google_Service_Dfareporting_CompatibleFields extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ConnectionType extends Powerform_Google_Model
+class Google_Service_Dfareporting_ConnectionType extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11363,12 +11363,12 @@ class Powerform_Google_Service_Dfareporting_ConnectionType extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ConnectionTypesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ConnectionTypesListResponse extends Google_Collection
 {
   protected $collection_key = 'connectionTypes';
   protected $internal_gapi_mappings = array(
   );
-  protected $connectionTypesType = 'Powerform_Google_Service_Dfareporting_ConnectionType';
+  protected $connectionTypesType = 'Google_Service_Dfareporting_ConnectionType';
   protected $connectionTypesDataType = 'array';
   public $kind;
 
@@ -11391,12 +11391,12 @@ class Powerform_Google_Service_Dfareporting_ConnectionTypesListResponse extends 
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ContentCategoriesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ContentCategoriesListResponse extends Google_Collection
 {
   protected $collection_key = 'contentCategories';
   protected $internal_gapi_mappings = array(
   );
-  protected $contentCategoriesType = 'Powerform_Google_Service_Dfareporting_ContentCategory';
+  protected $contentCategoriesType = 'Google_Service_Dfareporting_ContentCategory';
   protected $contentCategoriesDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -11428,7 +11428,7 @@ class Powerform_Google_Service_Dfareporting_ContentCategoriesListResponse extend
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ContentCategory extends Powerform_Google_Model
+class Google_Service_Dfareporting_ContentCategory extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11472,12 +11472,12 @@ class Powerform_Google_Service_Dfareporting_ContentCategory extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CountriesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CountriesListResponse extends Google_Collection
 {
   protected $collection_key = 'countries';
   protected $internal_gapi_mappings = array(
   );
-  protected $countriesType = 'Powerform_Google_Service_Dfareporting_Country';
+  protected $countriesType = 'Google_Service_Dfareporting_Country';
   protected $countriesDataType = 'array';
   public $kind;
 
@@ -11500,7 +11500,7 @@ class Powerform_Google_Service_Dfareporting_CountriesListResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Country extends Powerform_Google_Model
+class Google_Service_Dfareporting_Country extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11553,7 +11553,7 @@ class Powerform_Google_Service_Dfareporting_Country extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Creative extends Powerform_Google_Collection
+class Google_Service_Dfareporting_Creative extends Google_Collection
 {
   protected $collection_key = 'timerCustomEvents';
   protected $internal_gapi_mappings = array(
@@ -11574,43 +11574,43 @@ class Powerform_Google_Service_Dfareporting_Creative extends Powerform_Google_Co
   public $backupImageClickThroughUrl;
   public $backupImageFeatures;
   public $backupImageReportingLabel;
-  protected $backupImageTargetWindowType = 'Powerform_Google_Service_Dfareporting_TargetWindow';
+  protected $backupImageTargetWindowType = 'Google_Service_Dfareporting_TargetWindow';
   protected $backupImageTargetWindowDataType = '';
-  protected $clickTagsType = 'Powerform_Google_Service_Dfareporting_ClickTag';
+  protected $clickTagsType = 'Google_Service_Dfareporting_ClickTag';
   protected $clickTagsDataType = 'array';
   public $commercialId;
   public $companionCreatives;
   public $compatibility;
   public $convertFlashToHtml5;
-  protected $counterCustomEventsType = 'Powerform_Google_Service_Dfareporting_CreativeCustomEvent';
+  protected $counterCustomEventsType = 'Google_Service_Dfareporting_CreativeCustomEvent';
   protected $counterCustomEventsDataType = 'array';
-  protected $creativeAssetsType = 'Powerform_Google_Service_Dfareporting_CreativeAsset';
+  protected $creativeAssetsType = 'Google_Service_Dfareporting_CreativeAsset';
   protected $creativeAssetsDataType = 'array';
-  protected $creativeFieldAssignmentsType = 'Powerform_Google_Service_Dfareporting_CreativeFieldAssignment';
+  protected $creativeFieldAssignmentsType = 'Google_Service_Dfareporting_CreativeFieldAssignment';
   protected $creativeFieldAssignmentsDataType = 'array';
   public $customKeyValues;
-  protected $exitCustomEventsType = 'Powerform_Google_Service_Dfareporting_CreativeCustomEvent';
+  protected $exitCustomEventsType = 'Google_Service_Dfareporting_CreativeCustomEvent';
   protected $exitCustomEventsDataType = 'array';
-  protected $fsCommandType = 'Powerform_Google_Service_Dfareporting_FsCommand';
+  protected $fsCommandType = 'Google_Service_Dfareporting_FsCommand';
   protected $fsCommandDataType = '';
   public $htmlCode;
   public $htmlCodeLocked;
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
   public $kind;
-  protected $lastModifiedInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $lastModifiedInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $lastModifiedInfoDataType = '';
   public $latestTraffickedCreativeId;
   public $name;
   public $overrideCss;
   public $redirectUrl;
   public $renderingId;
-  protected $renderingIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $renderingIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $renderingIdDimensionValueDataType = '';
   public $requiredFlashPluginVersion;
   public $requiredFlashVersion;
-  protected $sizeType = 'Powerform_Google_Service_Dfareporting_Size';
+  protected $sizeType = 'Google_Service_Dfareporting_Size';
   protected $sizeDataType = '';
   public $skippable;
   public $sslCompliant;
@@ -11621,9 +11621,9 @@ class Powerform_Google_Service_Dfareporting_Creative extends Powerform_Google_Co
   public $subaccountId;
   public $thirdPartyBackupImageImpressionsUrl;
   public $thirdPartyRichMediaImpressionsUrl;
-  protected $thirdPartyUrlsType = 'Powerform_Google_Service_Dfareporting_ThirdPartyTrackingUrl';
+  protected $thirdPartyUrlsType = 'Google_Service_Dfareporting_ThirdPartyTrackingUrl';
   protected $thirdPartyUrlsDataType = 'array';
-  protected $timerCustomEventsType = 'Powerform_Google_Service_Dfareporting_CreativeCustomEvent';
+  protected $timerCustomEventsType = 'Google_Service_Dfareporting_CreativeCustomEvent';
   protected $timerCustomEventsDataType = 'array';
   public $totalFileSize;
   public $type;
@@ -11752,7 +11752,7 @@ class Powerform_Google_Service_Dfareporting_Creative extends Powerform_Google_Co
   {
     return $this->backupImageReportingLabel;
   }
-  public function setBackupImageTargetWindow(Powerform_Google_Service_Dfareporting_TargetWindow $backupImageTargetWindow)
+  public function setBackupImageTargetWindow(Google_Service_Dfareporting_TargetWindow $backupImageTargetWindow)
   {
     $this->backupImageTargetWindow = $backupImageTargetWindow;
   }
@@ -11840,7 +11840,7 @@ class Powerform_Google_Service_Dfareporting_Creative extends Powerform_Google_Co
   {
     return $this->exitCustomEvents;
   }
-  public function setFsCommand(Powerform_Google_Service_Dfareporting_FsCommand $fsCommand)
+  public function setFsCommand(Google_Service_Dfareporting_FsCommand $fsCommand)
   {
     $this->fsCommand = $fsCommand;
   }
@@ -11872,7 +11872,7 @@ class Powerform_Google_Service_Dfareporting_Creative extends Powerform_Google_Co
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -11888,7 +11888,7 @@ class Powerform_Google_Service_Dfareporting_Creative extends Powerform_Google_Co
   {
     return $this->kind;
   }
-  public function setLastModifiedInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
+  public function setLastModifiedInfo(Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
   {
     $this->lastModifiedInfo = $lastModifiedInfo;
   }
@@ -11936,7 +11936,7 @@ class Powerform_Google_Service_Dfareporting_Creative extends Powerform_Google_Co
   {
     return $this->renderingId;
   }
-  public function setRenderingIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $renderingIdDimensionValue)
+  public function setRenderingIdDimensionValue(Google_Service_Dfareporting_DimensionValue $renderingIdDimensionValue)
   {
     $this->renderingIdDimensionValue = $renderingIdDimensionValue;
   }
@@ -11960,7 +11960,7 @@ class Powerform_Google_Service_Dfareporting_Creative extends Powerform_Google_Co
   {
     return $this->requiredFlashVersion;
   }
-  public function setSize(Powerform_Google_Service_Dfareporting_Size $size)
+  public function setSize(Google_Service_Dfareporting_Size $size)
   {
     $this->size = $size;
   }
@@ -12098,7 +12098,7 @@ class Powerform_Google_Service_Dfareporting_Creative extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CreativeAsset extends Google_Collection
 {
   protected $collection_key = 'detectedFeatures';
   protected $internal_gapi_mappings = array(
@@ -12107,20 +12107,20 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   public $active;
   public $alignment;
   public $artworkType;
-  protected $assetIdentifierType = 'Powerform_Google_Service_Dfareporting_CreativeAssetId';
+  protected $assetIdentifierType = 'Google_Service_Dfareporting_CreativeAssetId';
   protected $assetIdentifierDataType = '';
-  protected $backupImageExitType = 'Powerform_Google_Service_Dfareporting_CreativeCustomEvent';
+  protected $backupImageExitType = 'Google_Service_Dfareporting_CreativeCustomEvent';
   protected $backupImageExitDataType = '';
   public $bitRate;
   public $childAssetType;
-  protected $collapsedSizeType = 'Powerform_Google_Service_Dfareporting_Size';
+  protected $collapsedSizeType = 'Google_Service_Dfareporting_Size';
   protected $collapsedSizeDataType = '';
   public $customStartTimeValue;
   public $detectedFeatures;
   public $displayType;
   public $duration;
   public $durationType;
-  protected $expandedDimensionType = 'Powerform_Google_Service_Dfareporting_Size';
+  protected $expandedDimensionType = 'Google_Service_Dfareporting_Size';
   protected $expandedDimensionDataType = '';
   public $fileSize;
   public $flashVersion;
@@ -12129,10 +12129,10 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   public $horizontallyLocked;
   public $id;
   public $mimeType;
-  protected $offsetType = 'Powerform_Google_Service_Dfareporting_OffsetPosition';
+  protected $offsetType = 'Google_Service_Dfareporting_OffsetPosition';
   protected $offsetDataType = '';
   public $originalBackup;
-  protected $positionType = 'Powerform_Google_Service_Dfareporting_OffsetPosition';
+  protected $positionType = 'Google_Service_Dfareporting_OffsetPosition';
   protected $positionDataType = '';
   public $positionLeftUnit;
   public $positionTopUnit;
@@ -12140,7 +12140,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   public $pushdown;
   public $pushdownDuration;
   public $role;
-  protected $sizeType = 'Powerform_Google_Service_Dfareporting_Size';
+  protected $sizeType = 'Google_Service_Dfareporting_Size';
   protected $sizeDataType = '';
   public $sslCompliant;
   public $startTimeType;
@@ -12186,7 +12186,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   {
     return $this->artworkType;
   }
-  public function setAssetIdentifier(Powerform_Google_Service_Dfareporting_CreativeAssetId $assetIdentifier)
+  public function setAssetIdentifier(Google_Service_Dfareporting_CreativeAssetId $assetIdentifier)
   {
     $this->assetIdentifier = $assetIdentifier;
   }
@@ -12194,7 +12194,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   {
     return $this->assetIdentifier;
   }
-  public function setBackupImageExit(Powerform_Google_Service_Dfareporting_CreativeCustomEvent $backupImageExit)
+  public function setBackupImageExit(Google_Service_Dfareporting_CreativeCustomEvent $backupImageExit)
   {
     $this->backupImageExit = $backupImageExit;
   }
@@ -12218,7 +12218,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   {
     return $this->childAssetType;
   }
-  public function setCollapsedSize(Powerform_Google_Service_Dfareporting_Size $collapsedSize)
+  public function setCollapsedSize(Google_Service_Dfareporting_Size $collapsedSize)
   {
     $this->collapsedSize = $collapsedSize;
   }
@@ -12266,7 +12266,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   {
     return $this->durationType;
   }
-  public function setExpandedDimension(Powerform_Google_Service_Dfareporting_Size $expandedDimension)
+  public function setExpandedDimension(Google_Service_Dfareporting_Size $expandedDimension)
   {
     $this->expandedDimension = $expandedDimension;
   }
@@ -12330,7 +12330,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   {
     return $this->mimeType;
   }
-  public function setOffset(Powerform_Google_Service_Dfareporting_OffsetPosition $offset)
+  public function setOffset(Google_Service_Dfareporting_OffsetPosition $offset)
   {
     $this->offset = $offset;
   }
@@ -12346,7 +12346,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   {
     return $this->originalBackup;
   }
-  public function setPosition(Powerform_Google_Service_Dfareporting_OffsetPosition $position)
+  public function setPosition(Google_Service_Dfareporting_OffsetPosition $position)
   {
     $this->position = $position;
   }
@@ -12402,7 +12402,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   {
     return $this->role;
   }
-  public function setSize(Powerform_Google_Service_Dfareporting_Size $size)
+  public function setSize(Google_Service_Dfareporting_Size $size)
   {
     $this->size = $size;
   }
@@ -12492,7 +12492,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAsset extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeAssetId extends Powerform_Google_Model
+class Google_Service_Dfareporting_CreativeAssetId extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -12518,21 +12518,21 @@ class Powerform_Google_Service_Dfareporting_CreativeAssetId extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeAssetMetadata extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CreativeAssetMetadata extends Google_Collection
 {
   protected $collection_key = 'warnedValidationRules';
   protected $internal_gapi_mappings = array(
   );
-  protected $assetIdentifierType = 'Powerform_Google_Service_Dfareporting_CreativeAssetId';
+  protected $assetIdentifierType = 'Google_Service_Dfareporting_CreativeAssetId';
   protected $assetIdentifierDataType = '';
-  protected $clickTagsType = 'Powerform_Google_Service_Dfareporting_ClickTag';
+  protected $clickTagsType = 'Google_Service_Dfareporting_ClickTag';
   protected $clickTagsDataType = 'array';
   public $detectedFeatures;
   public $kind;
   public $warnedValidationRules;
 
 
-  public function setAssetIdentifier(Powerform_Google_Service_Dfareporting_CreativeAssetId $assetIdentifier)
+  public function setAssetIdentifier(Google_Service_Dfareporting_CreativeAssetId $assetIdentifier)
   {
     $this->assetIdentifier = $assetIdentifier;
   }
@@ -12574,24 +12574,24 @@ class Powerform_Google_Service_Dfareporting_CreativeAssetMetadata extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeAssignment extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CreativeAssignment extends Google_Collection
 {
   protected $collection_key = 'richMediaExitOverrides';
   protected $internal_gapi_mappings = array(
   );
   public $active;
   public $applyEventTags;
-  protected $clickThroughUrlType = 'Powerform_Google_Service_Dfareporting_ClickThroughUrl';
+  protected $clickThroughUrlType = 'Google_Service_Dfareporting_ClickThroughUrl';
   protected $clickThroughUrlDataType = '';
-  protected $companionCreativeOverridesType = 'Powerform_Google_Service_Dfareporting_CompanionClickThroughOverride';
+  protected $companionCreativeOverridesType = 'Google_Service_Dfareporting_CompanionClickThroughOverride';
   protected $companionCreativeOverridesDataType = 'array';
-  protected $creativeGroupAssignmentsType = 'Powerform_Google_Service_Dfareporting_CreativeGroupAssignment';
+  protected $creativeGroupAssignmentsType = 'Google_Service_Dfareporting_CreativeGroupAssignment';
   protected $creativeGroupAssignmentsDataType = 'array';
   public $creativeId;
-  protected $creativeIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $creativeIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $creativeIdDimensionValueDataType = '';
   public $endTime;
-  protected $richMediaExitOverridesType = 'Powerform_Google_Service_Dfareporting_RichMediaExitOverride';
+  protected $richMediaExitOverridesType = 'Google_Service_Dfareporting_RichMediaExitOverride';
   protected $richMediaExitOverridesDataType = 'array';
   public $sequence;
   public $sslCompliant;
@@ -12615,7 +12615,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAssignment extends Powerform
   {
     return $this->applyEventTags;
   }
-  public function setClickThroughUrl(Powerform_Google_Service_Dfareporting_ClickThroughUrl $clickThroughUrl)
+  public function setClickThroughUrl(Google_Service_Dfareporting_ClickThroughUrl $clickThroughUrl)
   {
     $this->clickThroughUrl = $clickThroughUrl;
   }
@@ -12647,7 +12647,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAssignment extends Powerform
   {
     return $this->creativeId;
   }
-  public function setCreativeIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $creativeIdDimensionValue)
+  public function setCreativeIdDimensionValue(Google_Service_Dfareporting_DimensionValue $creativeIdDimensionValue)
   {
     $this->creativeIdDimensionValue = $creativeIdDimensionValue;
   }
@@ -12705,7 +12705,7 @@ class Powerform_Google_Service_Dfareporting_CreativeAssignment extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeCustomEvent extends Powerform_Google_Model
+class Google_Service_Dfareporting_CreativeCustomEvent extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -12716,7 +12716,7 @@ class Powerform_Google_Service_Dfareporting_CreativeCustomEvent extends Powerfor
   public $artworkType;
   public $exitUrl;
   public $id;
-  protected $popupWindowPropertiesType = 'Powerform_Google_Service_Dfareporting_PopupWindowProperties';
+  protected $popupWindowPropertiesType = 'Google_Service_Dfareporting_PopupWindowProperties';
   protected $popupWindowPropertiesDataType = '';
   public $targetType;
   public $videoReportingId;
@@ -12778,7 +12778,7 @@ class Powerform_Google_Service_Dfareporting_CreativeCustomEvent extends Powerfor
   {
     return $this->id;
   }
-  public function setPopupWindowProperties(Powerform_Google_Service_Dfareporting_PopupWindowProperties $popupWindowProperties)
+  public function setPopupWindowProperties(Google_Service_Dfareporting_PopupWindowProperties $popupWindowProperties)
   {
     $this->popupWindowProperties = $popupWindowProperties;
   }
@@ -12804,13 +12804,13 @@ class Powerform_Google_Service_Dfareporting_CreativeCustomEvent extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeField extends Powerform_Google_Model
+class Google_Service_Dfareporting_CreativeField extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $id;
   public $kind;
@@ -12834,7 +12834,7 @@ class Powerform_Google_Service_Dfareporting_CreativeField extends Powerform_Goog
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -12876,7 +12876,7 @@ class Powerform_Google_Service_Dfareporting_CreativeField extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeFieldAssignment extends Powerform_Google_Model
+class Google_Service_Dfareporting_CreativeFieldAssignment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -12902,7 +12902,7 @@ class Powerform_Google_Service_Dfareporting_CreativeFieldAssignment extends Powe
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeFieldValue extends Powerform_Google_Model
+class Google_Service_Dfareporting_CreativeFieldValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -12937,12 +12937,12 @@ class Powerform_Google_Service_Dfareporting_CreativeFieldValue extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeFieldValuesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CreativeFieldValuesListResponse extends Google_Collection
 {
   protected $collection_key = 'creativeFieldValues';
   protected $internal_gapi_mappings = array(
   );
-  protected $creativeFieldValuesType = 'Powerform_Google_Service_Dfareporting_CreativeFieldValue';
+  protected $creativeFieldValuesType = 'Google_Service_Dfareporting_CreativeFieldValue';
   protected $creativeFieldValuesDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -12974,12 +12974,12 @@ class Powerform_Google_Service_Dfareporting_CreativeFieldValuesListResponse exte
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeFieldsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CreativeFieldsListResponse extends Google_Collection
 {
   protected $collection_key = 'creativeFields';
   protected $internal_gapi_mappings = array(
   );
-  protected $creativeFieldsType = 'Powerform_Google_Service_Dfareporting_CreativeField';
+  protected $creativeFieldsType = 'Google_Service_Dfareporting_CreativeField';
   protected $creativeFieldsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -13011,13 +13011,13 @@ class Powerform_Google_Service_Dfareporting_CreativeFieldsListResponse extends P
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeGroup extends Powerform_Google_Model
+class Google_Service_Dfareporting_CreativeGroup extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $groupNumber;
   public $id;
@@ -13042,7 +13042,7 @@ class Powerform_Google_Service_Dfareporting_CreativeGroup extends Powerform_Goog
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -13092,7 +13092,7 @@ class Powerform_Google_Service_Dfareporting_CreativeGroup extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeGroupAssignment extends Powerform_Google_Model
+class Google_Service_Dfareporting_CreativeGroupAssignment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13118,12 +13118,12 @@ class Powerform_Google_Service_Dfareporting_CreativeGroupAssignment extends Powe
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeGroupsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CreativeGroupsListResponse extends Google_Collection
 {
   protected $collection_key = 'creativeGroups';
   protected $internal_gapi_mappings = array(
   );
-  protected $creativeGroupsType = 'Powerform_Google_Service_Dfareporting_CreativeGroup';
+  protected $creativeGroupsType = 'Google_Service_Dfareporting_CreativeGroup';
   protected $creativeGroupsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -13155,14 +13155,14 @@ class Powerform_Google_Service_Dfareporting_CreativeGroupsListResponse extends P
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeOptimizationConfiguration extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CreativeOptimizationConfiguration extends Google_Collection
 {
   protected $collection_key = 'optimizationActivitys';
   protected $internal_gapi_mappings = array(
   );
   public $id;
   public $name;
-  protected $optimizationActivitysType = 'Powerform_Google_Service_Dfareporting_OptimizationActivity';
+  protected $optimizationActivitysType = 'Google_Service_Dfareporting_OptimizationActivity';
   protected $optimizationActivitysDataType = 'array';
   public $optimizationModel;
 
@@ -13201,12 +13201,12 @@ class Powerform_Google_Service_Dfareporting_CreativeOptimizationConfiguration ex
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeRotation extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CreativeRotation extends Google_Collection
 {
   protected $collection_key = 'creativeAssignments';
   protected $internal_gapi_mappings = array(
   );
-  protected $creativeAssignmentsType = 'Powerform_Google_Service_Dfareporting_CreativeAssignment';
+  protected $creativeAssignmentsType = 'Google_Service_Dfareporting_CreativeAssignment';
   protected $creativeAssignmentsDataType = 'array';
   public $creativeOptimizationConfigurationId;
   public $type;
@@ -13247,7 +13247,7 @@ class Powerform_Google_Service_Dfareporting_CreativeRotation extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativeSettings extends Powerform_Google_Model
+class Google_Service_Dfareporting_CreativeSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13273,12 +13273,12 @@ class Powerform_Google_Service_Dfareporting_CreativeSettings extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CreativesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CreativesListResponse extends Google_Collection
 {
   protected $collection_key = 'creatives';
   protected $internal_gapi_mappings = array(
   );
-  protected $creativesType = 'Powerform_Google_Service_Dfareporting_Creative';
+  protected $creativesType = 'Google_Service_Dfareporting_Creative';
   protected $creativesDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -13310,19 +13310,19 @@ class Powerform_Google_Service_Dfareporting_CreativesListResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CrossDimensionReachReportCompatibleFields extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CrossDimensionReachReportCompatibleFields extends Google_Collection
 {
   protected $collection_key = 'overlapMetrics';
   protected $internal_gapi_mappings = array(
   );
-  protected $breakdownType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $breakdownType = 'Google_Service_Dfareporting_Dimension';
   protected $breakdownDataType = 'array';
-  protected $dimensionFiltersType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $dimensionFiltersType = 'Google_Service_Dfareporting_Dimension';
   protected $dimensionFiltersDataType = 'array';
   public $kind;
-  protected $metricsType = 'Powerform_Google_Service_Dfareporting_Metric';
+  protected $metricsType = 'Google_Service_Dfareporting_Metric';
   protected $metricsDataType = 'array';
-  protected $overlapMetricsType = 'Powerform_Google_Service_Dfareporting_Metric';
+  protected $overlapMetricsType = 'Google_Service_Dfareporting_Metric';
   protected $overlapMetricsDataType = 'array';
 
 
@@ -13368,12 +13368,12 @@ class Powerform_Google_Service_Dfareporting_CrossDimensionReachReportCompatibleF
   }
 }
 
-class Powerform_Google_Service_Dfareporting_CustomRichMediaEvents extends Powerform_Google_Collection
+class Google_Service_Dfareporting_CustomRichMediaEvents extends Google_Collection
 {
   protected $collection_key = 'filteredEventIds';
   protected $internal_gapi_mappings = array(
   );
-  protected $filteredEventIdsType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $filteredEventIdsType = 'Google_Service_Dfareporting_DimensionValue';
   protected $filteredEventIdsDataType = 'array';
   public $kind;
 
@@ -13396,7 +13396,7 @@ class Powerform_Google_Service_Dfareporting_CustomRichMediaEvents extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DateRange extends Powerform_Google_Model
+class Google_Service_Dfareporting_DateRange extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13440,7 +13440,7 @@ class Powerform_Google_Service_Dfareporting_DateRange extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DayPartTargeting extends Powerform_Google_Collection
+class Google_Service_Dfareporting_DayPartTargeting extends Google_Collection
 {
   protected $collection_key = 'hoursOfDay';
   protected $internal_gapi_mappings = array(
@@ -13476,7 +13476,7 @@ class Powerform_Google_Service_Dfareporting_DayPartTargeting extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DefaultClickThroughEventTagProperties extends Powerform_Google_Model
+class Google_Service_Dfareporting_DefaultClickThroughEventTagProperties extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13502,18 +13502,18 @@ class Powerform_Google_Service_Dfareporting_DefaultClickThroughEventTagPropertie
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DeliverySchedule extends Powerform_Google_Model
+class Google_Service_Dfareporting_DeliverySchedule extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $frequencyCapType = 'Powerform_Google_Service_Dfareporting_FrequencyCap';
+  protected $frequencyCapType = 'Google_Service_Dfareporting_FrequencyCap';
   protected $frequencyCapDataType = '';
   public $hardCutoff;
   public $impressionRatio;
   public $priority;
 
 
-  public function setFrequencyCap(Powerform_Google_Service_Dfareporting_FrequencyCap $frequencyCap)
+  public function setFrequencyCap(Google_Service_Dfareporting_FrequencyCap $frequencyCap)
   {
     $this->frequencyCap = $frequencyCap;
   }
@@ -13547,11 +13547,11 @@ class Powerform_Google_Service_Dfareporting_DeliverySchedule extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DfareportingFile extends Powerform_Google_Model
+class Google_Service_Dfareporting_DfareportingFile extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $dateRangeType = 'Powerform_Google_Service_Dfareporting_DateRange';
+  protected $dateRangeType = 'Google_Service_Dfareporting_DateRange';
   protected $dateRangeDataType = '';
   public $etag;
   public $fileName;
@@ -13561,11 +13561,11 @@ class Powerform_Google_Service_Dfareporting_DfareportingFile extends Powerform_G
   public $lastModifiedTime;
   public $reportId;
   public $status;
-  protected $urlsType = 'Powerform_Google_Service_Dfareporting_DfareportingFileUrls';
+  protected $urlsType = 'Google_Service_Dfareporting_DfareportingFileUrls';
   protected $urlsDataType = '';
 
 
-  public function setDateRange(Powerform_Google_Service_Dfareporting_DateRange $dateRange)
+  public function setDateRange(Google_Service_Dfareporting_DateRange $dateRange)
   {
     $this->dateRange = $dateRange;
   }
@@ -13637,7 +13637,7 @@ class Powerform_Google_Service_Dfareporting_DfareportingFile extends Powerform_G
   {
     return $this->status;
   }
-  public function setUrls(Powerform_Google_Service_Dfareporting_DfareportingFileUrls $urls)
+  public function setUrls(Google_Service_Dfareporting_DfareportingFileUrls $urls)
   {
     $this->urls = $urls;
   }
@@ -13647,7 +13647,7 @@ class Powerform_Google_Service_Dfareporting_DfareportingFile extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DfareportingFileUrls extends Powerform_Google_Model
+class Google_Service_Dfareporting_DfareportingFileUrls extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13673,7 +13673,7 @@ class Powerform_Google_Service_Dfareporting_DfareportingFileUrls extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DfpSettings extends Powerform_Google_Model
+class Google_Service_Dfareporting_DfpSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "dfpNetworkCode" => "dfp_network_code",
@@ -13728,7 +13728,7 @@ class Powerform_Google_Service_Dfareporting_DfpSettings extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Dimension extends Powerform_Google_Model
+class Google_Service_Dfareporting_Dimension extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13754,7 +13754,7 @@ class Powerform_Google_Service_Dfareporting_Dimension extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DimensionFilter extends Powerform_Google_Model
+class Google_Service_Dfareporting_DimensionFilter extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13789,7 +13789,7 @@ class Powerform_Google_Service_Dfareporting_DimensionFilter extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DimensionValue extends Powerform_Google_Model
+class Google_Service_Dfareporting_DimensionValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13851,13 +13851,13 @@ class Powerform_Google_Service_Dfareporting_DimensionValue extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DimensionValueList extends Powerform_Google_Collection
+class Google_Service_Dfareporting_DimensionValueList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $itemsType = 'Google_Service_Dfareporting_DimensionValue';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -13897,14 +13897,14 @@ class Powerform_Google_Service_Dfareporting_DimensionValueList extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DimensionValueRequest extends Powerform_Google_Collection
+class Google_Service_Dfareporting_DimensionValueRequest extends Google_Collection
 {
   protected $collection_key = 'filters';
   protected $internal_gapi_mappings = array(
   );
   public $dimensionName;
   public $endDate;
-  protected $filtersType = 'Powerform_Google_Service_Dfareporting_DimensionFilter';
+  protected $filtersType = 'Google_Service_Dfareporting_DimensionFilter';
   protected $filtersDataType = 'array';
   public $kind;
   public $startDate;
@@ -13952,26 +13952,26 @@ class Powerform_Google_Service_Dfareporting_DimensionValueRequest extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DirectorySite extends Powerform_Google_Collection
+class Google_Service_Dfareporting_DirectorySite extends Google_Collection
 {
   protected $collection_key = 'interstitialTagFormats';
   protected $internal_gapi_mappings = array(
   );
   public $active;
-  protected $contactAssignmentsType = 'Powerform_Google_Service_Dfareporting_DirectorySiteContactAssignment';
+  protected $contactAssignmentsType = 'Google_Service_Dfareporting_DirectorySiteContactAssignment';
   protected $contactAssignmentsDataType = 'array';
   public $countryId;
   public $currencyId;
   public $description;
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
   public $inpageTagFormats;
   public $interstitialTagFormats;
   public $kind;
   public $name;
   public $parentId;
-  protected $settingsType = 'Powerform_Google_Service_Dfareporting_DirectorySiteSettings';
+  protected $settingsType = 'Google_Service_Dfareporting_DirectorySiteSettings';
   protected $settingsDataType = '';
   public $url;
 
@@ -14024,7 +14024,7 @@ class Powerform_Google_Service_Dfareporting_DirectorySite extends Powerform_Goog
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -14072,7 +14072,7 @@ class Powerform_Google_Service_Dfareporting_DirectorySite extends Powerform_Goog
   {
     return $this->parentId;
   }
-  public function setSettings(Powerform_Google_Service_Dfareporting_DirectorySiteSettings $settings)
+  public function setSettings(Google_Service_Dfareporting_DirectorySiteSettings $settings)
   {
     $this->settings = $settings;
   }
@@ -14090,7 +14090,7 @@ class Powerform_Google_Service_Dfareporting_DirectorySite extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DirectorySiteContact extends Powerform_Google_Model
+class Google_Service_Dfareporting_DirectorySiteContact extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -14188,7 +14188,7 @@ class Powerform_Google_Service_Dfareporting_DirectorySiteContact extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DirectorySiteContactAssignment extends Powerform_Google_Model
+class Google_Service_Dfareporting_DirectorySiteContactAssignment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -14214,12 +14214,12 @@ class Powerform_Google_Service_Dfareporting_DirectorySiteContactAssignment exten
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DirectorySiteContactsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_DirectorySiteContactsListResponse extends Google_Collection
 {
   protected $collection_key = 'directorySiteContacts';
   protected $internal_gapi_mappings = array(
   );
-  protected $directorySiteContactsType = 'Powerform_Google_Service_Dfareporting_DirectorySiteContact';
+  protected $directorySiteContactsType = 'Google_Service_Dfareporting_DirectorySiteContact';
   protected $directorySiteContactsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -14251,14 +14251,14 @@ class Powerform_Google_Service_Dfareporting_DirectorySiteContactsListResponse ex
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DirectorySiteSettings extends Powerform_Google_Model
+class Google_Service_Dfareporting_DirectorySiteSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "dfpSettings" => "dfp_settings",
         "instreamVideoPlacementAccepted" => "instream_video_placement_accepted",
   );
   public $activeViewOptOut;
-  protected $dfpSettingsType = 'Powerform_Google_Service_Dfareporting_DfpSettings';
+  protected $dfpSettingsType = 'Google_Service_Dfareporting_DfpSettings';
   protected $dfpSettingsDataType = '';
   public $instreamVideoPlacementAccepted;
   public $interstitialPlacementAccepted;
@@ -14275,7 +14275,7 @@ class Powerform_Google_Service_Dfareporting_DirectorySiteSettings extends Powerf
   {
     return $this->activeViewOptOut;
   }
-  public function setDfpSettings(Powerform_Google_Service_Dfareporting_DfpSettings $dfpSettings)
+  public function setDfpSettings(Google_Service_Dfareporting_DfpSettings $dfpSettings)
   {
     $this->dfpSettings = $dfpSettings;
   }
@@ -14325,12 +14325,12 @@ class Powerform_Google_Service_Dfareporting_DirectorySiteSettings extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_DirectorySitesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_DirectorySitesListResponse extends Google_Collection
 {
   protected $collection_key = 'directorySites';
   protected $internal_gapi_mappings = array(
   );
-  protected $directorySitesType = 'Powerform_Google_Service_Dfareporting_DirectorySite';
+  protected $directorySitesType = 'Google_Service_Dfareporting_DirectorySite';
   protected $directorySitesDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -14362,17 +14362,17 @@ class Powerform_Google_Service_Dfareporting_DirectorySitesListResponse extends P
   }
 }
 
-class Powerform_Google_Service_Dfareporting_EventTag extends Powerform_Google_Collection
+class Google_Service_Dfareporting_EventTag extends Google_Collection
 {
   protected $collection_key = 'siteIds';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $campaignId;
-  protected $campaignIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $campaignIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $campaignIdDimensionValueDataType = '';
   public $enabledByDefault;
   public $excludeFromAdxRequests;
@@ -14405,7 +14405,7 @@ class Powerform_Google_Service_Dfareporting_EventTag extends Powerform_Google_Co
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -14421,7 +14421,7 @@ class Powerform_Google_Service_Dfareporting_EventTag extends Powerform_Google_Co
   {
     return $this->campaignId;
   }
-  public function setCampaignIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $campaignIdDimensionValue)
+  public function setCampaignIdDimensionValue(Google_Service_Dfareporting_DimensionValue $campaignIdDimensionValue)
   {
     $this->campaignIdDimensionValue = $campaignIdDimensionValue;
   }
@@ -14535,7 +14535,7 @@ class Powerform_Google_Service_Dfareporting_EventTag extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Dfareporting_EventTagOverride extends Powerform_Google_Model
+class Google_Service_Dfareporting_EventTagOverride extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -14561,12 +14561,12 @@ class Powerform_Google_Service_Dfareporting_EventTagOverride extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Dfareporting_EventTagsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_EventTagsListResponse extends Google_Collection
 {
   protected $collection_key = 'eventTags';
   protected $internal_gapi_mappings = array(
   );
-  protected $eventTagsType = 'Powerform_Google_Service_Dfareporting_EventTag';
+  protected $eventTagsType = 'Google_Service_Dfareporting_EventTag';
   protected $eventTagsDataType = 'array';
   public $kind;
 
@@ -14589,13 +14589,13 @@ class Powerform_Google_Service_Dfareporting_EventTagsListResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FileList extends Powerform_Google_Collection
+class Google_Service_Dfareporting_FileList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Dfareporting_DfareportingFile';
+  protected $itemsType = 'Google_Service_Dfareporting_DfareportingFile';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -14635,7 +14635,7 @@ class Powerform_Google_Service_Dfareporting_FileList extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Flight extends Powerform_Google_Model
+class Google_Service_Dfareporting_Flight extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -14679,7 +14679,7 @@ class Powerform_Google_Service_Dfareporting_Flight extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FloodlightActivitiesGenerateTagResponse extends Powerform_Google_Model
+class Google_Service_Dfareporting_FloodlightActivitiesGenerateTagResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -14705,12 +14705,12 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivitiesGenerateTagRespo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FloodlightActivitiesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_FloodlightActivitiesListResponse extends Google_Collection
 {
   protected $collection_key = 'floodlightActivities';
   protected $internal_gapi_mappings = array(
   );
-  protected $floodlightActivitiesType = 'Powerform_Google_Service_Dfareporting_FloodlightActivity';
+  protected $floodlightActivitiesType = 'Google_Service_Dfareporting_FloodlightActivity';
   protected $floodlightActivitiesDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -14742,18 +14742,18 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivitiesListResponse ext
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FloodlightActivity extends Powerform_Google_Collection
+class Google_Service_Dfareporting_FloodlightActivity extends Google_Collection
 {
   protected $collection_key = 'userDefinedVariableTypes';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $cacheBustingType;
   public $countingMethod;
-  protected $defaultTagsType = 'Powerform_Google_Service_Dfareporting_FloodlightActivityDynamicTag';
+  protected $defaultTagsType = 'Google_Service_Dfareporting_FloodlightActivityDynamicTag';
   protected $defaultTagsDataType = 'array';
   public $expectedUrl;
   public $floodlightActivityGroupId;
@@ -14761,17 +14761,17 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivity extends Powerform
   public $floodlightActivityGroupTagString;
   public $floodlightActivityGroupType;
   public $floodlightConfigurationId;
-  protected $floodlightConfigurationIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $floodlightConfigurationIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $floodlightConfigurationIdDimensionValueDataType = '';
   public $hidden;
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
   public $imageTagEnabled;
   public $kind;
   public $name;
   public $notes;
-  protected $publisherTagsType = 'Powerform_Google_Service_Dfareporting_FloodlightActivityPublisherDynamicTag';
+  protected $publisherTagsType = 'Google_Service_Dfareporting_FloodlightActivityPublisherDynamicTag';
   protected $publisherTagsDataType = 'array';
   public $secure;
   public $sslCompliant;
@@ -14798,7 +14798,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivity extends Powerform
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -14878,7 +14878,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivity extends Powerform
   {
     return $this->floodlightConfigurationId;
   }
-  public function setFloodlightConfigurationIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $floodlightConfigurationIdDimensionValue)
+  public function setFloodlightConfigurationIdDimensionValue(Google_Service_Dfareporting_DimensionValue $floodlightConfigurationIdDimensionValue)
   {
     $this->floodlightConfigurationIdDimensionValue = $floodlightConfigurationIdDimensionValue;
   }
@@ -14902,7 +14902,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivity extends Powerform
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -15008,7 +15008,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivity extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FloodlightActivityDynamicTag extends Powerform_Google_Model
+class Google_Service_Dfareporting_FloodlightActivityDynamicTag extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -15043,19 +15043,19 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityDynamicTag extends
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FloodlightActivityGroup extends Powerform_Google_Model
+class Google_Service_Dfareporting_FloodlightActivityGroup extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $floodlightConfigurationId;
-  protected $floodlightConfigurationIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $floodlightConfigurationIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $floodlightConfigurationIdDimensionValueDataType = '';
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
   public $kind;
   public $name;
@@ -15080,7 +15080,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityGroup extends Powe
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -15096,7 +15096,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityGroup extends Powe
   {
     return $this->floodlightConfigurationId;
   }
-  public function setFloodlightConfigurationIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $floodlightConfigurationIdDimensionValue)
+  public function setFloodlightConfigurationIdDimensionValue(Google_Service_Dfareporting_DimensionValue $floodlightConfigurationIdDimensionValue)
   {
     $this->floodlightConfigurationIdDimensionValue = $floodlightConfigurationIdDimensionValue;
   }
@@ -15112,7 +15112,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityGroup extends Powe
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -15162,12 +15162,12 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityGroup extends Powe
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FloodlightActivityGroupsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_FloodlightActivityGroupsListResponse extends Google_Collection
 {
   protected $collection_key = 'floodlightActivityGroups';
   protected $internal_gapi_mappings = array(
   );
-  protected $floodlightActivityGroupsType = 'Powerform_Google_Service_Dfareporting_FloodlightActivityGroup';
+  protected $floodlightActivityGroupsType = 'Google_Service_Dfareporting_FloodlightActivityGroup';
   protected $floodlightActivityGroupsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -15199,16 +15199,16 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityGroupsListResponse
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FloodlightActivityPublisherDynamicTag extends Powerform_Google_Model
+class Google_Service_Dfareporting_FloodlightActivityPublisherDynamicTag extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $clickThrough;
   public $directorySiteId;
-  protected $dynamicTagType = 'Powerform_Google_Service_Dfareporting_FloodlightActivityDynamicTag';
+  protected $dynamicTagType = 'Google_Service_Dfareporting_FloodlightActivityDynamicTag';
   protected $dynamicTagDataType = '';
   public $siteId;
-  protected $siteIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $siteIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $siteIdDimensionValueDataType = '';
   public $viewThrough;
 
@@ -15229,7 +15229,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityPublisherDynamicTa
   {
     return $this->directorySiteId;
   }
-  public function setDynamicTag(Powerform_Google_Service_Dfareporting_FloodlightActivityDynamicTag $dynamicTag)
+  public function setDynamicTag(Google_Service_Dfareporting_FloodlightActivityDynamicTag $dynamicTag)
   {
     $this->dynamicTag = $dynamicTag;
   }
@@ -15245,7 +15245,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityPublisherDynamicTa
   {
     return $this->siteId;
   }
-  public function setSiteIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $siteIdDimensionValue)
+  public function setSiteIdDimensionValue(Google_Service_Dfareporting_DimensionValue $siteIdDimensionValue)
   {
     $this->siteIdDimensionValue = $siteIdDimensionValue;
   }
@@ -15263,35 +15263,35 @@ class Powerform_Google_Service_Dfareporting_FloodlightActivityPublisherDynamicTa
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FloodlightConfiguration extends Powerform_Google_Collection
+class Google_Service_Dfareporting_FloodlightConfiguration extends Google_Collection
 {
   protected $collection_key = 'userDefinedVariableConfigurations';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $analyticsDataSharingEnabled;
   public $exposureToConversionEnabled;
   public $firstDayOfWeek;
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
   public $inAppAttributionTrackingEnabled;
   public $kind;
-  protected $lookbackConfigurationType = 'Powerform_Google_Service_Dfareporting_LookbackConfiguration';
+  protected $lookbackConfigurationType = 'Google_Service_Dfareporting_LookbackConfiguration';
   protected $lookbackConfigurationDataType = '';
   public $naturalSearchConversionAttributionOption;
-  protected $omnitureSettingsType = 'Powerform_Google_Service_Dfareporting_OmnitureSettings';
+  protected $omnitureSettingsType = 'Google_Service_Dfareporting_OmnitureSettings';
   protected $omnitureSettingsDataType = '';
   public $standardVariableTypes;
   public $subaccountId;
-  protected $tagSettingsType = 'Powerform_Google_Service_Dfareporting_TagSettings';
+  protected $tagSettingsType = 'Google_Service_Dfareporting_TagSettings';
   protected $tagSettingsDataType = '';
-  protected $thirdPartyAuthenticationTokensType = 'Powerform_Google_Service_Dfareporting_ThirdPartyAuthenticationToken';
+  protected $thirdPartyAuthenticationTokensType = 'Google_Service_Dfareporting_ThirdPartyAuthenticationToken';
   protected $thirdPartyAuthenticationTokensDataType = 'array';
-  protected $userDefinedVariableConfigurationsType = 'Powerform_Google_Service_Dfareporting_UserDefinedVariableConfiguration';
+  protected $userDefinedVariableConfigurationsType = 'Google_Service_Dfareporting_UserDefinedVariableConfiguration';
   protected $userDefinedVariableConfigurationsDataType = 'array';
 
 
@@ -15311,7 +15311,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfiguration extends Powe
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -15351,7 +15351,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfiguration extends Powe
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -15375,7 +15375,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfiguration extends Powe
   {
     return $this->kind;
   }
-  public function setLookbackConfiguration(Powerform_Google_Service_Dfareporting_LookbackConfiguration $lookbackConfiguration)
+  public function setLookbackConfiguration(Google_Service_Dfareporting_LookbackConfiguration $lookbackConfiguration)
   {
     $this->lookbackConfiguration = $lookbackConfiguration;
   }
@@ -15391,7 +15391,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfiguration extends Powe
   {
     return $this->naturalSearchConversionAttributionOption;
   }
-  public function setOmnitureSettings(Powerform_Google_Service_Dfareporting_OmnitureSettings $omnitureSettings)
+  public function setOmnitureSettings(Google_Service_Dfareporting_OmnitureSettings $omnitureSettings)
   {
     $this->omnitureSettings = $omnitureSettings;
   }
@@ -15415,7 +15415,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfiguration extends Powe
   {
     return $this->subaccountId;
   }
-  public function setTagSettings(Powerform_Google_Service_Dfareporting_TagSettings $tagSettings)
+  public function setTagSettings(Google_Service_Dfareporting_TagSettings $tagSettings)
   {
     $this->tagSettings = $tagSettings;
   }
@@ -15441,12 +15441,12 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfiguration extends Powe
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FloodlightConfigurationsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_FloodlightConfigurationsListResponse extends Google_Collection
 {
   protected $collection_key = 'floodlightConfigurations';
   protected $internal_gapi_mappings = array(
   );
-  protected $floodlightConfigurationsType = 'Powerform_Google_Service_Dfareporting_FloodlightConfiguration';
+  protected $floodlightConfigurationsType = 'Google_Service_Dfareporting_FloodlightConfiguration';
   protected $floodlightConfigurationsDataType = 'array';
   public $kind;
 
@@ -15469,17 +15469,17 @@ class Powerform_Google_Service_Dfareporting_FloodlightConfigurationsListResponse
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FloodlightReportCompatibleFields extends Powerform_Google_Collection
+class Google_Service_Dfareporting_FloodlightReportCompatibleFields extends Google_Collection
 {
   protected $collection_key = 'metrics';
   protected $internal_gapi_mappings = array(
   );
-  protected $dimensionFiltersType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $dimensionFiltersType = 'Google_Service_Dfareporting_Dimension';
   protected $dimensionFiltersDataType = 'array';
-  protected $dimensionsType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $dimensionsType = 'Google_Service_Dfareporting_Dimension';
   protected $dimensionsDataType = 'array';
   public $kind;
-  protected $metricsType = 'Powerform_Google_Service_Dfareporting_Metric';
+  protected $metricsType = 'Google_Service_Dfareporting_Metric';
   protected $metricsDataType = 'array';
 
 
@@ -15517,7 +15517,7 @@ class Powerform_Google_Service_Dfareporting_FloodlightReportCompatibleFields ext
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FrequencyCap extends Powerform_Google_Model
+class Google_Service_Dfareporting_FrequencyCap extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -15543,7 +15543,7 @@ class Powerform_Google_Service_Dfareporting_FrequencyCap extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Dfareporting_FsCommand extends Powerform_Google_Model
+class Google_Service_Dfareporting_FsCommand extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -15596,21 +15596,21 @@ class Powerform_Google_Service_Dfareporting_FsCommand extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Dfareporting_GeoTargeting extends Powerform_Google_Collection
+class Google_Service_Dfareporting_GeoTargeting extends Google_Collection
 {
   protected $collection_key = 'regions';
   protected $internal_gapi_mappings = array(
   );
-  protected $citiesType = 'Powerform_Google_Service_Dfareporting_City';
+  protected $citiesType = 'Google_Service_Dfareporting_City';
   protected $citiesDataType = 'array';
-  protected $countriesType = 'Powerform_Google_Service_Dfareporting_Country';
+  protected $countriesType = 'Google_Service_Dfareporting_Country';
   protected $countriesDataType = 'array';
   public $excludeCountries;
-  protected $metrosType = 'Powerform_Google_Service_Dfareporting_Metro';
+  protected $metrosType = 'Google_Service_Dfareporting_Metro';
   protected $metrosDataType = 'array';
-  protected $postalCodesType = 'Powerform_Google_Service_Dfareporting_PostalCode';
+  protected $postalCodesType = 'Google_Service_Dfareporting_PostalCode';
   protected $postalCodesDataType = 'array';
-  protected $regionsType = 'Powerform_Google_Service_Dfareporting_Region';
+  protected $regionsType = 'Google_Service_Dfareporting_Region';
   protected $regionsDataType = 'array';
 
 
@@ -15664,13 +15664,13 @@ class Powerform_Google_Service_Dfareporting_GeoTargeting extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Dfareporting_InventoryItem extends Powerform_Google_Collection
+class Google_Service_Dfareporting_InventoryItem extends Google_Collection
 {
   protected $collection_key = 'adSlots';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
-  protected $adSlotsType = 'Powerform_Google_Service_Dfareporting_AdSlot';
+  protected $adSlotsType = 'Google_Service_Dfareporting_AdSlot';
   protected $adSlotsDataType = 'array';
   public $advertiserId;
   public $contentCategoryId;
@@ -15679,13 +15679,13 @@ class Powerform_Google_Service_Dfareporting_InventoryItem extends Powerform_Goog
   public $id;
   public $inPlan;
   public $kind;
-  protected $lastModifiedInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $lastModifiedInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $lastModifiedInfoDataType = '';
   public $name;
   public $negotiationChannelId;
   public $orderId;
   public $placementStrategyId;
-  protected $pricingType = 'Powerform_Google_Service_Dfareporting_Pricing';
+  protected $pricingType = 'Google_Service_Dfareporting_Pricing';
   protected $pricingDataType = '';
   public $projectId;
   public $rfpId;
@@ -15766,7 +15766,7 @@ class Powerform_Google_Service_Dfareporting_InventoryItem extends Powerform_Goog
   {
     return $this->kind;
   }
-  public function setLastModifiedInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
+  public function setLastModifiedInfo(Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
   {
     $this->lastModifiedInfo = $lastModifiedInfo;
   }
@@ -15806,7 +15806,7 @@ class Powerform_Google_Service_Dfareporting_InventoryItem extends Powerform_Goog
   {
     return $this->placementStrategyId;
   }
-  public function setPricing(Powerform_Google_Service_Dfareporting_Pricing $pricing)
+  public function setPricing(Google_Service_Dfareporting_Pricing $pricing)
   {
     $this->pricing = $pricing;
   }
@@ -15856,12 +15856,12 @@ class Powerform_Google_Service_Dfareporting_InventoryItem extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Dfareporting_InventoryItemsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_InventoryItemsListResponse extends Google_Collection
 {
   protected $collection_key = 'inventoryItems';
   protected $internal_gapi_mappings = array(
   );
-  protected $inventoryItemsType = 'Powerform_Google_Service_Dfareporting_InventoryItem';
+  protected $inventoryItemsType = 'Google_Service_Dfareporting_InventoryItem';
   protected $inventoryItemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -15893,7 +15893,7 @@ class Powerform_Google_Service_Dfareporting_InventoryItemsListResponse extends P
   }
 }
 
-class Powerform_Google_Service_Dfareporting_KeyValueTargetingExpression extends Powerform_Google_Model
+class Google_Service_Dfareporting_KeyValueTargetingExpression extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -15910,7 +15910,7 @@ class Powerform_Google_Service_Dfareporting_KeyValueTargetingExpression extends 
   }
 }
 
-class Powerform_Google_Service_Dfareporting_LandingPage extends Powerform_Google_Model
+class Google_Service_Dfareporting_LandingPage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -15963,13 +15963,13 @@ class Powerform_Google_Service_Dfareporting_LandingPage extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Dfareporting_LandingPagesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_LandingPagesListResponse extends Google_Collection
 {
   protected $collection_key = 'landingPages';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $landingPagesType = 'Powerform_Google_Service_Dfareporting_LandingPage';
+  protected $landingPagesType = 'Google_Service_Dfareporting_LandingPage';
   protected $landingPagesDataType = 'array';
 
 
@@ -15991,7 +15991,7 @@ class Powerform_Google_Service_Dfareporting_LandingPagesListResponse extends Pow
   }
 }
 
-class Powerform_Google_Service_Dfareporting_LastModifiedInfo extends Powerform_Google_Model
+class Google_Service_Dfareporting_LastModifiedInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16008,12 +16008,12 @@ class Powerform_Google_Service_Dfareporting_LastModifiedInfo extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ListPopulationClause extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ListPopulationClause extends Google_Collection
 {
   protected $collection_key = 'terms';
   protected $internal_gapi_mappings = array(
   );
-  protected $termsType = 'Powerform_Google_Service_Dfareporting_ListPopulationTerm';
+  protected $termsType = 'Google_Service_Dfareporting_ListPopulationTerm';
   protected $termsDataType = 'array';
 
 
@@ -16027,14 +16027,14 @@ class Powerform_Google_Service_Dfareporting_ListPopulationClause extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ListPopulationRule extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ListPopulationRule extends Google_Collection
 {
   protected $collection_key = 'listPopulationClauses';
   protected $internal_gapi_mappings = array(
   );
   public $floodlightActivityId;
   public $floodlightActivityName;
-  protected $listPopulationClausesType = 'Powerform_Google_Service_Dfareporting_ListPopulationClause';
+  protected $listPopulationClausesType = 'Google_Service_Dfareporting_ListPopulationClause';
   protected $listPopulationClausesDataType = 'array';
 
 
@@ -16064,7 +16064,7 @@ class Powerform_Google_Service_Dfareporting_ListPopulationRule extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ListPopulationTerm extends Powerform_Google_Model
+class Google_Service_Dfareporting_ListPopulationTerm extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16144,7 +16144,7 @@ class Powerform_Google_Service_Dfareporting_ListPopulationTerm extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ListTargetingExpression extends Powerform_Google_Model
+class Google_Service_Dfareporting_ListTargetingExpression extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16161,7 +16161,7 @@ class Powerform_Google_Service_Dfareporting_ListTargetingExpression extends Powe
   }
 }
 
-class Powerform_Google_Service_Dfareporting_LookbackConfiguration extends Powerform_Google_Model
+class Google_Service_Dfareporting_LookbackConfiguration extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16187,7 +16187,7 @@ class Powerform_Google_Service_Dfareporting_LookbackConfiguration extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Metric extends Powerform_Google_Model
+class Google_Service_Dfareporting_Metric extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16213,7 +16213,7 @@ class Powerform_Google_Service_Dfareporting_Metric extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Metro extends Powerform_Google_Model
+class Google_Service_Dfareporting_Metro extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16284,13 +16284,13 @@ class Powerform_Google_Service_Dfareporting_Metro extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Dfareporting_MetrosListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_MetrosListResponse extends Google_Collection
 {
   protected $collection_key = 'metros';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $metrosType = 'Powerform_Google_Service_Dfareporting_Metro';
+  protected $metrosType = 'Google_Service_Dfareporting_Metro';
   protected $metrosDataType = 'array';
 
 
@@ -16312,7 +16312,7 @@ class Powerform_Google_Service_Dfareporting_MetrosListResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_MobileCarrier extends Powerform_Google_Model
+class Google_Service_Dfareporting_MobileCarrier extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16365,13 +16365,13 @@ class Powerform_Google_Service_Dfareporting_MobileCarrier extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Dfareporting_MobileCarriersListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_MobileCarriersListResponse extends Google_Collection
 {
   protected $collection_key = 'mobileCarriers';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $mobileCarriersType = 'Powerform_Google_Service_Dfareporting_MobileCarrier';
+  protected $mobileCarriersType = 'Google_Service_Dfareporting_MobileCarrier';
   protected $mobileCarriersDataType = 'array';
 
 
@@ -16393,7 +16393,7 @@ class Powerform_Google_Service_Dfareporting_MobileCarriersListResponse extends P
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ObjectFilter extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ObjectFilter extends Google_Collection
 {
   protected $collection_key = 'objectIds';
   protected $internal_gapi_mappings = array(
@@ -16429,7 +16429,7 @@ class Powerform_Google_Service_Dfareporting_ObjectFilter extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OffsetPosition extends Powerform_Google_Model
+class Google_Service_Dfareporting_OffsetPosition extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16455,7 +16455,7 @@ class Powerform_Google_Service_Dfareporting_OffsetPosition extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OmnitureSettings extends Powerform_Google_Model
+class Google_Service_Dfareporting_OmnitureSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16481,7 +16481,7 @@ class Powerform_Google_Service_Dfareporting_OmnitureSettings extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OperatingSystem extends Powerform_Google_Model
+class Google_Service_Dfareporting_OperatingSystem extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16534,7 +16534,7 @@ class Powerform_Google_Service_Dfareporting_OperatingSystem extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OperatingSystemVersion extends Powerform_Google_Model
+class Google_Service_Dfareporting_OperatingSystemVersion extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16543,7 +16543,7 @@ class Powerform_Google_Service_Dfareporting_OperatingSystemVersion extends Power
   public $majorVersion;
   public $minorVersion;
   public $name;
-  protected $operatingSystemType = 'Powerform_Google_Service_Dfareporting_OperatingSystem';
+  protected $operatingSystemType = 'Google_Service_Dfareporting_OperatingSystem';
   protected $operatingSystemDataType = '';
 
 
@@ -16587,7 +16587,7 @@ class Powerform_Google_Service_Dfareporting_OperatingSystemVersion extends Power
   {
     return $this->name;
   }
-  public function setOperatingSystem(Powerform_Google_Service_Dfareporting_OperatingSystem $operatingSystem)
+  public function setOperatingSystem(Google_Service_Dfareporting_OperatingSystem $operatingSystem)
   {
     $this->operatingSystem = $operatingSystem;
   }
@@ -16597,13 +16597,13 @@ class Powerform_Google_Service_Dfareporting_OperatingSystemVersion extends Power
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OperatingSystemVersionsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_OperatingSystemVersionsListResponse extends Google_Collection
 {
   protected $collection_key = 'operatingSystemVersions';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $operatingSystemVersionsType = 'Powerform_Google_Service_Dfareporting_OperatingSystemVersion';
+  protected $operatingSystemVersionsType = 'Google_Service_Dfareporting_OperatingSystemVersion';
   protected $operatingSystemVersionsDataType = 'array';
 
 
@@ -16625,13 +16625,13 @@ class Powerform_Google_Service_Dfareporting_OperatingSystemVersionsListResponse 
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OperatingSystemsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_OperatingSystemsListResponse extends Google_Collection
 {
   protected $collection_key = 'operatingSystems';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $operatingSystemsType = 'Powerform_Google_Service_Dfareporting_OperatingSystem';
+  protected $operatingSystemsType = 'Google_Service_Dfareporting_OperatingSystem';
   protected $operatingSystemsDataType = 'array';
 
 
@@ -16653,12 +16653,12 @@ class Powerform_Google_Service_Dfareporting_OperatingSystemsListResponse extends
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OptimizationActivity extends Powerform_Google_Model
+class Google_Service_Dfareporting_OptimizationActivity extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $floodlightActivityId;
-  protected $floodlightActivityIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $floodlightActivityIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $floodlightActivityIdDimensionValueDataType = '';
   public $weight;
 
@@ -16671,7 +16671,7 @@ class Powerform_Google_Service_Dfareporting_OptimizationActivity extends Powerfo
   {
     return $this->floodlightActivityId;
   }
-  public function setFloodlightActivityIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $floodlightActivityIdDimensionValue)
+  public function setFloodlightActivityIdDimensionValue(Google_Service_Dfareporting_DimensionValue $floodlightActivityIdDimensionValue)
   {
     $this->floodlightActivityIdDimensionValue = $floodlightActivityIdDimensionValue;
   }
@@ -16689,7 +16689,7 @@ class Powerform_Google_Service_Dfareporting_OptimizationActivity extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Order extends Powerform_Google_Collection
+class Google_Service_Dfareporting_Order extends Google_Collection
 {
   protected $collection_key = 'siteNames';
   protected $internal_gapi_mappings = array(
@@ -16700,11 +16700,11 @@ class Powerform_Google_Service_Dfareporting_Order extends Powerform_Google_Colle
   public $buyerInvoiceId;
   public $buyerOrganizationName;
   public $comments;
-  protected $contactsType = 'Powerform_Google_Service_Dfareporting_OrderContact';
+  protected $contactsType = 'Google_Service_Dfareporting_OrderContact';
   protected $contactsDataType = 'array';
   public $id;
   public $kind;
-  protected $lastModifiedInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $lastModifiedInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $lastModifiedInfoDataType = '';
   public $name;
   public $notes;
@@ -16790,7 +16790,7 @@ class Powerform_Google_Service_Dfareporting_Order extends Powerform_Google_Colle
   {
     return $this->kind;
   }
-  public function setLastModifiedInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
+  public function setLastModifiedInfo(Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
   {
     $this->lastModifiedInfo = $lastModifiedInfo;
   }
@@ -16880,7 +16880,7 @@ class Powerform_Google_Service_Dfareporting_Order extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OrderContact extends Powerform_Google_Model
+class Google_Service_Dfareporting_OrderContact extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -16933,7 +16933,7 @@ class Powerform_Google_Service_Dfareporting_OrderContact extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OrderDocument extends Powerform_Google_Collection
+class Google_Service_Dfareporting_OrderDocument extends Google_Collection
 {
   protected $collection_key = 'lastSentRecipients';
   protected $internal_gapi_mappings = array(
@@ -16943,7 +16943,7 @@ class Powerform_Google_Service_Dfareporting_OrderDocument extends Powerform_Goog
   public $amendedOrderDocumentId;
   public $approvedByUserProfileIds;
   public $cancelled;
-  protected $createdInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $createdInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $createdInfoDataType = '';
   public $effectiveDate;
   public $id;
@@ -16998,7 +16998,7 @@ class Powerform_Google_Service_Dfareporting_OrderDocument extends Powerform_Goog
   {
     return $this->cancelled;
   }
-  public function setCreatedInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $createdInfo)
+  public function setCreatedInfo(Google_Service_Dfareporting_LastModifiedInfo $createdInfo)
   {
     $this->createdInfo = $createdInfo;
   }
@@ -17096,14 +17096,14 @@ class Powerform_Google_Service_Dfareporting_OrderDocument extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OrderDocumentsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_OrderDocumentsListResponse extends Google_Collection
 {
   protected $collection_key = 'orderDocuments';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $orderDocumentsType = 'Powerform_Google_Service_Dfareporting_OrderDocument';
+  protected $orderDocumentsType = 'Google_Service_Dfareporting_OrderDocument';
   protected $orderDocumentsDataType = 'array';
 
 
@@ -17133,14 +17133,14 @@ class Powerform_Google_Service_Dfareporting_OrderDocumentsListResponse extends P
   }
 }
 
-class Powerform_Google_Service_Dfareporting_OrdersListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_OrdersListResponse extends Google_Collection
 {
   protected $collection_key = 'orders';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $ordersType = 'Powerform_Google_Service_Dfareporting_Order';
+  protected $ordersType = 'Google_Service_Dfareporting_Order';
   protected $ordersDataType = 'array';
 
 
@@ -17170,19 +17170,19 @@ class Powerform_Google_Service_Dfareporting_OrdersListResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PathToConversionReportCompatibleFields extends Powerform_Google_Collection
+class Google_Service_Dfareporting_PathToConversionReportCompatibleFields extends Google_Collection
 {
   protected $collection_key = 'perInteractionDimensions';
   protected $internal_gapi_mappings = array(
   );
-  protected $conversionDimensionsType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $conversionDimensionsType = 'Google_Service_Dfareporting_Dimension';
   protected $conversionDimensionsDataType = 'array';
-  protected $customFloodlightVariablesType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $customFloodlightVariablesType = 'Google_Service_Dfareporting_Dimension';
   protected $customFloodlightVariablesDataType = 'array';
   public $kind;
-  protected $metricsType = 'Powerform_Google_Service_Dfareporting_Metric';
+  protected $metricsType = 'Google_Service_Dfareporting_Metric';
   protected $metricsDataType = 'array';
-  protected $perInteractionDimensionsType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $perInteractionDimensionsType = 'Google_Service_Dfareporting_Dimension';
   protected $perInteractionDimensionsDataType = 'array';
 
 
@@ -17228,59 +17228,59 @@ class Powerform_Google_Service_Dfareporting_PathToConversionReportCompatibleFiel
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_Collection
+class Google_Service_Dfareporting_Placement extends Google_Collection
 {
   protected $collection_key = 'tagFormats';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $archived;
   public $campaignId;
-  protected $campaignIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $campaignIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $campaignIdDimensionValueDataType = '';
   public $comment;
   public $compatibility;
   public $contentCategoryId;
-  protected $createInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $createInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $createInfoDataType = '';
   public $directorySiteId;
-  protected $directorySiteIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $directorySiteIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $directorySiteIdDimensionValueDataType = '';
   public $externalId;
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
   public $keyName;
   public $kind;
-  protected $lastModifiedInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $lastModifiedInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $lastModifiedInfoDataType = '';
-  protected $lookbackConfigurationType = 'Powerform_Google_Service_Dfareporting_LookbackConfiguration';
+  protected $lookbackConfigurationType = 'Google_Service_Dfareporting_LookbackConfiguration';
   protected $lookbackConfigurationDataType = '';
   public $name;
   public $paymentApproved;
   public $paymentSource;
   public $placementGroupId;
-  protected $placementGroupIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $placementGroupIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $placementGroupIdDimensionValueDataType = '';
   public $placementStrategyId;
-  protected $pricingScheduleType = 'Powerform_Google_Service_Dfareporting_PricingSchedule';
+  protected $pricingScheduleType = 'Google_Service_Dfareporting_PricingSchedule';
   protected $pricingScheduleDataType = '';
   public $primary;
-  protected $publisherUpdateInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $publisherUpdateInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $publisherUpdateInfoDataType = '';
   public $siteId;
-  protected $siteIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $siteIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $siteIdDimensionValueDataType = '';
-  protected $sizeType = 'Powerform_Google_Service_Dfareporting_Size';
+  protected $sizeType = 'Google_Service_Dfareporting_Size';
   protected $sizeDataType = '';
   public $sslRequired;
   public $status;
   public $subaccountId;
   public $tagFormats;
-  protected $tagSettingType = 'Powerform_Google_Service_Dfareporting_TagSetting';
+  protected $tagSettingType = 'Google_Service_Dfareporting_TagSetting';
   protected $tagSettingDataType = '';
 
 
@@ -17300,7 +17300,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -17324,7 +17324,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->campaignId;
   }
-  public function setCampaignIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $campaignIdDimensionValue)
+  public function setCampaignIdDimensionValue(Google_Service_Dfareporting_DimensionValue $campaignIdDimensionValue)
   {
     $this->campaignIdDimensionValue = $campaignIdDimensionValue;
   }
@@ -17356,7 +17356,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->contentCategoryId;
   }
-  public function setCreateInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $createInfo)
+  public function setCreateInfo(Google_Service_Dfareporting_LastModifiedInfo $createInfo)
   {
     $this->createInfo = $createInfo;
   }
@@ -17372,7 +17372,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->directorySiteId;
   }
-  public function setDirectorySiteIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $directorySiteIdDimensionValue)
+  public function setDirectorySiteIdDimensionValue(Google_Service_Dfareporting_DimensionValue $directorySiteIdDimensionValue)
   {
     $this->directorySiteIdDimensionValue = $directorySiteIdDimensionValue;
   }
@@ -17396,7 +17396,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -17420,7 +17420,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->kind;
   }
-  public function setLastModifiedInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
+  public function setLastModifiedInfo(Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
   {
     $this->lastModifiedInfo = $lastModifiedInfo;
   }
@@ -17428,7 +17428,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->lastModifiedInfo;
   }
-  public function setLookbackConfiguration(Powerform_Google_Service_Dfareporting_LookbackConfiguration $lookbackConfiguration)
+  public function setLookbackConfiguration(Google_Service_Dfareporting_LookbackConfiguration $lookbackConfiguration)
   {
     $this->lookbackConfiguration = $lookbackConfiguration;
   }
@@ -17468,7 +17468,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->placementGroupId;
   }
-  public function setPlacementGroupIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $placementGroupIdDimensionValue)
+  public function setPlacementGroupIdDimensionValue(Google_Service_Dfareporting_DimensionValue $placementGroupIdDimensionValue)
   {
     $this->placementGroupIdDimensionValue = $placementGroupIdDimensionValue;
   }
@@ -17484,7 +17484,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->placementStrategyId;
   }
-  public function setPricingSchedule(Powerform_Google_Service_Dfareporting_PricingSchedule $pricingSchedule)
+  public function setPricingSchedule(Google_Service_Dfareporting_PricingSchedule $pricingSchedule)
   {
     $this->pricingSchedule = $pricingSchedule;
   }
@@ -17500,7 +17500,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->primary;
   }
-  public function setPublisherUpdateInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $publisherUpdateInfo)
+  public function setPublisherUpdateInfo(Google_Service_Dfareporting_LastModifiedInfo $publisherUpdateInfo)
   {
     $this->publisherUpdateInfo = $publisherUpdateInfo;
   }
@@ -17516,7 +17516,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->siteId;
   }
-  public function setSiteIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $siteIdDimensionValue)
+  public function setSiteIdDimensionValue(Google_Service_Dfareporting_DimensionValue $siteIdDimensionValue)
   {
     $this->siteIdDimensionValue = $siteIdDimensionValue;
   }
@@ -17524,7 +17524,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->siteIdDimensionValue;
   }
-  public function setSize(Powerform_Google_Service_Dfareporting_Size $size)
+  public function setSize(Google_Service_Dfareporting_Size $size)
   {
     $this->size = $size;
   }
@@ -17564,7 +17564,7 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   {
     return $this->tagFormats;
   }
-  public function setTagSetting(Powerform_Google_Service_Dfareporting_TagSetting $tagSetting)
+  public function setTagSetting(Google_Service_Dfareporting_TagSetting $tagSetting)
   {
     $this->tagSetting = $tagSetting;
   }
@@ -17574,13 +17574,13 @@ class Powerform_Google_Service_Dfareporting_Placement extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PlacementAssignment extends Powerform_Google_Model
+class Google_Service_Dfareporting_PlacementAssignment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $active;
   public $placementId;
-  protected $placementIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $placementIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $placementIdDimensionValueDataType = '';
   public $sslRequired;
 
@@ -17601,7 +17601,7 @@ class Powerform_Google_Service_Dfareporting_PlacementAssignment extends Powerfor
   {
     return $this->placementId;
   }
-  public function setPlacementIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $placementIdDimensionValue)
+  public function setPlacementIdDimensionValue(Google_Service_Dfareporting_DimensionValue $placementIdDimensionValue)
   {
     $this->placementIdDimensionValue = $placementIdDimensionValue;
   }
@@ -17619,44 +17619,44 @@ class Powerform_Google_Service_Dfareporting_PlacementAssignment extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Google_Collection
+class Google_Service_Dfareporting_PlacementGroup extends Google_Collection
 {
   protected $collection_key = 'childPlacementIds';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $archived;
   public $campaignId;
-  protected $campaignIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $campaignIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $campaignIdDimensionValueDataType = '';
   public $childPlacementIds;
   public $comment;
   public $contentCategoryId;
-  protected $createInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $createInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $createInfoDataType = '';
   public $directorySiteId;
-  protected $directorySiteIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $directorySiteIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $directorySiteIdDimensionValueDataType = '';
   public $externalId;
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
   public $kind;
-  protected $lastModifiedInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $lastModifiedInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $lastModifiedInfoDataType = '';
   public $name;
   public $placementGroupType;
   public $placementStrategyId;
-  protected $pricingScheduleType = 'Powerform_Google_Service_Dfareporting_PricingSchedule';
+  protected $pricingScheduleType = 'Google_Service_Dfareporting_PricingSchedule';
   protected $pricingScheduleDataType = '';
   public $primaryPlacementId;
-  protected $primaryPlacementIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $primaryPlacementIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $primaryPlacementIdDimensionValueDataType = '';
   public $siteId;
-  protected $siteIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $siteIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $siteIdDimensionValueDataType = '';
   public $subaccountId;
 
@@ -17677,7 +17677,7 @@ class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Goo
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -17701,7 +17701,7 @@ class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Goo
   {
     return $this->campaignId;
   }
-  public function setCampaignIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $campaignIdDimensionValue)
+  public function setCampaignIdDimensionValue(Google_Service_Dfareporting_DimensionValue $campaignIdDimensionValue)
   {
     $this->campaignIdDimensionValue = $campaignIdDimensionValue;
   }
@@ -17733,7 +17733,7 @@ class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Goo
   {
     return $this->contentCategoryId;
   }
-  public function setCreateInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $createInfo)
+  public function setCreateInfo(Google_Service_Dfareporting_LastModifiedInfo $createInfo)
   {
     $this->createInfo = $createInfo;
   }
@@ -17749,7 +17749,7 @@ class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Goo
   {
     return $this->directorySiteId;
   }
-  public function setDirectorySiteIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $directorySiteIdDimensionValue)
+  public function setDirectorySiteIdDimensionValue(Google_Service_Dfareporting_DimensionValue $directorySiteIdDimensionValue)
   {
     $this->directorySiteIdDimensionValue = $directorySiteIdDimensionValue;
   }
@@ -17773,7 +17773,7 @@ class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Goo
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -17789,7 +17789,7 @@ class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Goo
   {
     return $this->kind;
   }
-  public function setLastModifiedInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
+  public function setLastModifiedInfo(Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
   {
     $this->lastModifiedInfo = $lastModifiedInfo;
   }
@@ -17821,7 +17821,7 @@ class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Goo
   {
     return $this->placementStrategyId;
   }
-  public function setPricingSchedule(Powerform_Google_Service_Dfareporting_PricingSchedule $pricingSchedule)
+  public function setPricingSchedule(Google_Service_Dfareporting_PricingSchedule $pricingSchedule)
   {
     $this->pricingSchedule = $pricingSchedule;
   }
@@ -17837,7 +17837,7 @@ class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Goo
   {
     return $this->primaryPlacementId;
   }
-  public function setPrimaryPlacementIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $primaryPlacementIdDimensionValue)
+  public function setPrimaryPlacementIdDimensionValue(Google_Service_Dfareporting_DimensionValue $primaryPlacementIdDimensionValue)
   {
     $this->primaryPlacementIdDimensionValue = $primaryPlacementIdDimensionValue;
   }
@@ -17853,7 +17853,7 @@ class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Goo
   {
     return $this->siteId;
   }
-  public function setSiteIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $siteIdDimensionValue)
+  public function setSiteIdDimensionValue(Google_Service_Dfareporting_DimensionValue $siteIdDimensionValue)
   {
     $this->siteIdDimensionValue = $siteIdDimensionValue;
   }
@@ -17871,14 +17871,14 @@ class Powerform_Google_Service_Dfareporting_PlacementGroup extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PlacementGroupsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_PlacementGroupsListResponse extends Google_Collection
 {
   protected $collection_key = 'placementGroups';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $placementGroupsType = 'Powerform_Google_Service_Dfareporting_PlacementGroup';
+  protected $placementGroupsType = 'Google_Service_Dfareporting_PlacementGroup';
   protected $placementGroupsDataType = 'array';
 
 
@@ -17908,14 +17908,14 @@ class Powerform_Google_Service_Dfareporting_PlacementGroupsListResponse extends 
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PlacementStrategiesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_PlacementStrategiesListResponse extends Google_Collection
 {
   protected $collection_key = 'placementStrategies';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $placementStrategiesType = 'Powerform_Google_Service_Dfareporting_PlacementStrategy';
+  protected $placementStrategiesType = 'Google_Service_Dfareporting_PlacementStrategy';
   protected $placementStrategiesDataType = 'array';
 
 
@@ -17945,7 +17945,7 @@ class Powerform_Google_Service_Dfareporting_PlacementStrategiesListResponse exte
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PlacementStrategy extends Powerform_Google_Model
+class Google_Service_Dfareporting_PlacementStrategy extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -17989,13 +17989,13 @@ class Powerform_Google_Service_Dfareporting_PlacementStrategy extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PlacementTag extends Powerform_Google_Collection
+class Google_Service_Dfareporting_PlacementTag extends Google_Collection
 {
   protected $collection_key = 'tagDatas';
   protected $internal_gapi_mappings = array(
   );
   public $placementId;
-  protected $tagDatasType = 'Powerform_Google_Service_Dfareporting_TagData';
+  protected $tagDatasType = 'Google_Service_Dfareporting_TagData';
   protected $tagDatasDataType = 'array';
 
 
@@ -18017,13 +18017,13 @@ class Powerform_Google_Service_Dfareporting_PlacementTag extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PlacementsGenerateTagsResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_PlacementsGenerateTagsResponse extends Google_Collection
 {
   protected $collection_key = 'placementTags';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $placementTagsType = 'Powerform_Google_Service_Dfareporting_PlacementTag';
+  protected $placementTagsType = 'Google_Service_Dfareporting_PlacementTag';
   protected $placementTagsDataType = 'array';
 
 
@@ -18045,14 +18045,14 @@ class Powerform_Google_Service_Dfareporting_PlacementsGenerateTagsResponse exten
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PlacementsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_PlacementsListResponse extends Google_Collection
 {
   protected $collection_key = 'placements';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $placementsType = 'Powerform_Google_Service_Dfareporting_Placement';
+  protected $placementsType = 'Google_Service_Dfareporting_Placement';
   protected $placementsDataType = 'array';
 
 
@@ -18082,7 +18082,7 @@ class Powerform_Google_Service_Dfareporting_PlacementsListResponse extends Power
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PlatformType extends Powerform_Google_Model
+class Google_Service_Dfareporting_PlatformType extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -18117,13 +18117,13 @@ class Powerform_Google_Service_Dfareporting_PlatformType extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PlatformTypesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_PlatformTypesListResponse extends Google_Collection
 {
   protected $collection_key = 'platformTypes';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $platformTypesType = 'Powerform_Google_Service_Dfareporting_PlatformType';
+  protected $platformTypesType = 'Google_Service_Dfareporting_PlatformType';
   protected $platformTypesDataType = 'array';
 
 
@@ -18145,13 +18145,13 @@ class Powerform_Google_Service_Dfareporting_PlatformTypesListResponse extends Po
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PopupWindowProperties extends Powerform_Google_Model
+class Google_Service_Dfareporting_PopupWindowProperties extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $dimensionType = 'Powerform_Google_Service_Dfareporting_Size';
+  protected $dimensionType = 'Google_Service_Dfareporting_Size';
   protected $dimensionDataType = '';
-  protected $offsetType = 'Powerform_Google_Service_Dfareporting_OffsetPosition';
+  protected $offsetType = 'Google_Service_Dfareporting_OffsetPosition';
   protected $offsetDataType = '';
   public $positionType;
   public $showAddressBar;
@@ -18162,7 +18162,7 @@ class Powerform_Google_Service_Dfareporting_PopupWindowProperties extends Powerf
   public $title;
 
 
-  public function setDimension(Powerform_Google_Service_Dfareporting_Size $dimension)
+  public function setDimension(Google_Service_Dfareporting_Size $dimension)
   {
     $this->dimension = $dimension;
   }
@@ -18170,7 +18170,7 @@ class Powerform_Google_Service_Dfareporting_PopupWindowProperties extends Powerf
   {
     return $this->dimension;
   }
-  public function setOffset(Powerform_Google_Service_Dfareporting_OffsetPosition $offset)
+  public function setOffset(Google_Service_Dfareporting_OffsetPosition $offset)
   {
     $this->offset = $offset;
   }
@@ -18236,7 +18236,7 @@ class Powerform_Google_Service_Dfareporting_PopupWindowProperties extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PostalCode extends Powerform_Google_Model
+class Google_Service_Dfareporting_PostalCode extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -18289,13 +18289,13 @@ class Powerform_Google_Service_Dfareporting_PostalCode extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PostalCodesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_PostalCodesListResponse extends Google_Collection
 {
   protected $collection_key = 'postalCodes';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $postalCodesType = 'Powerform_Google_Service_Dfareporting_PostalCode';
+  protected $postalCodesType = 'Google_Service_Dfareporting_PostalCode';
   protected $postalCodesDataType = 'array';
 
 
@@ -18317,14 +18317,14 @@ class Powerform_Google_Service_Dfareporting_PostalCodesListResponse extends Powe
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Pricing extends Powerform_Google_Collection
+class Google_Service_Dfareporting_Pricing extends Google_Collection
 {
   protected $collection_key = 'flights';
   protected $internal_gapi_mappings = array(
   );
   public $capCostType;
   public $endDate;
-  protected $flightsType = 'Powerform_Google_Service_Dfareporting_Flight';
+  protected $flightsType = 'Google_Service_Dfareporting_Flight';
   protected $flightsDataType = 'array';
   public $groupType;
   public $pricingType;
@@ -18381,7 +18381,7 @@ class Powerform_Google_Service_Dfareporting_Pricing extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PricingSchedule extends Powerform_Google_Collection
+class Google_Service_Dfareporting_PricingSchedule extends Google_Collection
 {
   protected $collection_key = 'pricingPeriods';
   protected $internal_gapi_mappings = array(
@@ -18391,7 +18391,7 @@ class Powerform_Google_Service_Dfareporting_PricingSchedule extends Powerform_Go
   public $endDate;
   public $flighted;
   public $floodlightActivityId;
-  protected $pricingPeriodsType = 'Powerform_Google_Service_Dfareporting_PricingSchedulePricingPeriod';
+  protected $pricingPeriodsType = 'Google_Service_Dfareporting_PricingSchedulePricingPeriod';
   protected $pricingPeriodsDataType = 'array';
   public $pricingType;
   public $startDate;
@@ -18472,7 +18472,7 @@ class Powerform_Google_Service_Dfareporting_PricingSchedule extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_PricingSchedulePricingPeriod extends Powerform_Google_Model
+class Google_Service_Dfareporting_PricingSchedulePricingPeriod extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -18525,7 +18525,7 @@ class Powerform_Google_Service_Dfareporting_PricingSchedulePricingPeriod extends
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Project extends Powerform_Google_Model
+class Google_Service_Dfareporting_Project extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -18539,7 +18539,7 @@ class Powerform_Google_Service_Dfareporting_Project extends Powerform_Google_Mod
   public $endDate;
   public $id;
   public $kind;
-  protected $lastModifiedInfoType = 'Powerform_Google_Service_Dfareporting_LastModifiedInfo';
+  protected $lastModifiedInfoType = 'Google_Service_Dfareporting_LastModifiedInfo';
   protected $lastModifiedInfoDataType = '';
   public $name;
   public $overview;
@@ -18633,7 +18633,7 @@ class Powerform_Google_Service_Dfareporting_Project extends Powerform_Google_Mod
   {
     return $this->kind;
   }
-  public function setLastModifiedInfo(Powerform_Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
+  public function setLastModifiedInfo(Google_Service_Dfareporting_LastModifiedInfo $lastModifiedInfo)
   {
     $this->lastModifiedInfo = $lastModifiedInfo;
   }
@@ -18723,14 +18723,14 @@ class Powerform_Google_Service_Dfareporting_Project extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ProjectsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ProjectsListResponse extends Google_Collection
 {
   protected $collection_key = 'projects';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $projectsType = 'Powerform_Google_Service_Dfareporting_Project';
+  protected $projectsType = 'Google_Service_Dfareporting_Project';
   protected $projectsDataType = 'array';
 
 
@@ -18760,21 +18760,21 @@ class Powerform_Google_Service_Dfareporting_ProjectsListResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReachReportCompatibleFields extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ReachReportCompatibleFields extends Google_Collection
 {
   protected $collection_key = 'reachByFrequencyMetrics';
   protected $internal_gapi_mappings = array(
   );
-  protected $dimensionFiltersType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $dimensionFiltersType = 'Google_Service_Dfareporting_Dimension';
   protected $dimensionFiltersDataType = 'array';
-  protected $dimensionsType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $dimensionsType = 'Google_Service_Dfareporting_Dimension';
   protected $dimensionsDataType = 'array';
   public $kind;
-  protected $metricsType = 'Powerform_Google_Service_Dfareporting_Metric';
+  protected $metricsType = 'Google_Service_Dfareporting_Metric';
   protected $metricsDataType = 'array';
-  protected $pivotedActivityMetricsType = 'Powerform_Google_Service_Dfareporting_Metric';
+  protected $pivotedActivityMetricsType = 'Google_Service_Dfareporting_Metric';
   protected $pivotedActivityMetricsDataType = 'array';
-  protected $reachByFrequencyMetricsType = 'Powerform_Google_Service_Dfareporting_Metric';
+  protected $reachByFrequencyMetricsType = 'Google_Service_Dfareporting_Metric';
   protected $reachByFrequencyMetricsDataType = 'array';
 
 
@@ -18828,7 +18828,7 @@ class Powerform_Google_Service_Dfareporting_ReachReportCompatibleFields extends 
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Recipient extends Powerform_Google_Model
+class Google_Service_Dfareporting_Recipient extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -18863,7 +18863,7 @@ class Powerform_Google_Service_Dfareporting_Recipient extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Region extends Powerform_Google_Model
+class Google_Service_Dfareporting_Region extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -18925,13 +18925,13 @@ class Powerform_Google_Service_Dfareporting_Region extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Dfareporting_RegionsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_RegionsListResponse extends Google_Collection
 {
   protected $collection_key = 'regions';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $regionsType = 'Powerform_Google_Service_Dfareporting_Region';
+  protected $regionsType = 'Google_Service_Dfareporting_Region';
   protected $regionsDataType = 'array';
 
 
@@ -18953,20 +18953,20 @@ class Powerform_Google_Service_Dfareporting_RegionsListResponse extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Dfareporting_RemarketingList extends Powerform_Google_Model
+class Google_Service_Dfareporting_RemarketingList extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $active;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $description;
   public $id;
   public $kind;
   public $lifeSpan;
-  protected $listPopulationRuleType = 'Powerform_Google_Service_Dfareporting_ListPopulationRule';
+  protected $listPopulationRuleType = 'Google_Service_Dfareporting_ListPopulationRule';
   protected $listPopulationRuleDataType = '';
   public $listSize;
   public $listSource;
@@ -18998,7 +18998,7 @@ class Powerform_Google_Service_Dfareporting_RemarketingList extends Powerform_Go
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -19038,7 +19038,7 @@ class Powerform_Google_Service_Dfareporting_RemarketingList extends Powerform_Go
   {
     return $this->lifeSpan;
   }
-  public function setListPopulationRule(Powerform_Google_Service_Dfareporting_ListPopulationRule $listPopulationRule)
+  public function setListPopulationRule(Google_Service_Dfareporting_ListPopulationRule $listPopulationRule)
   {
     $this->listPopulationRule = $listPopulationRule;
   }
@@ -19080,7 +19080,7 @@ class Powerform_Google_Service_Dfareporting_RemarketingList extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_RemarketingListShare extends Powerform_Google_Collection
+class Google_Service_Dfareporting_RemarketingListShare extends Google_Collection
 {
   protected $collection_key = 'sharedAdvertiserIds';
   protected $internal_gapi_mappings = array(
@@ -19125,14 +19125,14 @@ class Powerform_Google_Service_Dfareporting_RemarketingListShare extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_RemarketingListsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_RemarketingListsListResponse extends Google_Collection
 {
   protected $collection_key = 'remarketingLists';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $remarketingListsType = 'Powerform_Google_Service_Dfareporting_RemarketingList';
+  protected $remarketingListsType = 'Google_Service_Dfareporting_RemarketingList';
   protected $remarketingListsDataType = 'array';
 
 
@@ -19162,20 +19162,20 @@ class Powerform_Google_Service_Dfareporting_RemarketingListsListResponse extends
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Report extends Powerform_Google_Model
+class Google_Service_Dfareporting_Report extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
-  protected $criteriaType = 'Powerform_Google_Service_Dfareporting_ReportCriteria';
+  protected $criteriaType = 'Google_Service_Dfareporting_ReportCriteria';
   protected $criteriaDataType = '';
-  protected $crossDimensionReachCriteriaType = 'Powerform_Google_Service_Dfareporting_ReportCrossDimensionReachCriteria';
+  protected $crossDimensionReachCriteriaType = 'Google_Service_Dfareporting_ReportCrossDimensionReachCriteria';
   protected $crossDimensionReachCriteriaDataType = '';
-  protected $deliveryType = 'Powerform_Google_Service_Dfareporting_ReportDelivery';
+  protected $deliveryType = 'Google_Service_Dfareporting_ReportDelivery';
   protected $deliveryDataType = '';
   public $etag;
   public $fileName;
-  protected $floodlightCriteriaType = 'Powerform_Google_Service_Dfareporting_ReportFloodlightCriteria';
+  protected $floodlightCriteriaType = 'Google_Service_Dfareporting_ReportFloodlightCriteria';
   protected $floodlightCriteriaDataType = '';
   public $format;
   public $id;
@@ -19183,11 +19183,11 @@ class Powerform_Google_Service_Dfareporting_Report extends Powerform_Google_Mode
   public $lastModifiedTime;
   public $name;
   public $ownerProfileId;
-  protected $pathToConversionCriteriaType = 'Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteria';
+  protected $pathToConversionCriteriaType = 'Google_Service_Dfareporting_ReportPathToConversionCriteria';
   protected $pathToConversionCriteriaDataType = '';
-  protected $reachCriteriaType = 'Powerform_Google_Service_Dfareporting_ReportReachCriteria';
+  protected $reachCriteriaType = 'Google_Service_Dfareporting_ReportReachCriteria';
   protected $reachCriteriaDataType = '';
-  protected $scheduleType = 'Powerform_Google_Service_Dfareporting_ReportSchedule';
+  protected $scheduleType = 'Google_Service_Dfareporting_ReportSchedule';
   protected $scheduleDataType = '';
   public $subAccountId;
   public $type;
@@ -19201,7 +19201,7 @@ class Powerform_Google_Service_Dfareporting_Report extends Powerform_Google_Mode
   {
     return $this->accountId;
   }
-  public function setCriteria(Powerform_Google_Service_Dfareporting_ReportCriteria $criteria)
+  public function setCriteria(Google_Service_Dfareporting_ReportCriteria $criteria)
   {
     $this->criteria = $criteria;
   }
@@ -19209,7 +19209,7 @@ class Powerform_Google_Service_Dfareporting_Report extends Powerform_Google_Mode
   {
     return $this->criteria;
   }
-  public function setCrossDimensionReachCriteria(Powerform_Google_Service_Dfareporting_ReportCrossDimensionReachCriteria $crossDimensionReachCriteria)
+  public function setCrossDimensionReachCriteria(Google_Service_Dfareporting_ReportCrossDimensionReachCriteria $crossDimensionReachCriteria)
   {
     $this->crossDimensionReachCriteria = $crossDimensionReachCriteria;
   }
@@ -19217,7 +19217,7 @@ class Powerform_Google_Service_Dfareporting_Report extends Powerform_Google_Mode
   {
     return $this->crossDimensionReachCriteria;
   }
-  public function setDelivery(Powerform_Google_Service_Dfareporting_ReportDelivery $delivery)
+  public function setDelivery(Google_Service_Dfareporting_ReportDelivery $delivery)
   {
     $this->delivery = $delivery;
   }
@@ -19241,7 +19241,7 @@ class Powerform_Google_Service_Dfareporting_Report extends Powerform_Google_Mode
   {
     return $this->fileName;
   }
-  public function setFloodlightCriteria(Powerform_Google_Service_Dfareporting_ReportFloodlightCriteria $floodlightCriteria)
+  public function setFloodlightCriteria(Google_Service_Dfareporting_ReportFloodlightCriteria $floodlightCriteria)
   {
     $this->floodlightCriteria = $floodlightCriteria;
   }
@@ -19297,7 +19297,7 @@ class Powerform_Google_Service_Dfareporting_Report extends Powerform_Google_Mode
   {
     return $this->ownerProfileId;
   }
-  public function setPathToConversionCriteria(Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteria $pathToConversionCriteria)
+  public function setPathToConversionCriteria(Google_Service_Dfareporting_ReportPathToConversionCriteria $pathToConversionCriteria)
   {
     $this->pathToConversionCriteria = $pathToConversionCriteria;
   }
@@ -19305,7 +19305,7 @@ class Powerform_Google_Service_Dfareporting_Report extends Powerform_Google_Mode
   {
     return $this->pathToConversionCriteria;
   }
-  public function setReachCriteria(Powerform_Google_Service_Dfareporting_ReportReachCriteria $reachCriteria)
+  public function setReachCriteria(Google_Service_Dfareporting_ReportReachCriteria $reachCriteria)
   {
     $this->reachCriteria = $reachCriteria;
   }
@@ -19313,7 +19313,7 @@ class Powerform_Google_Service_Dfareporting_Report extends Powerform_Google_Mode
   {
     return $this->reachCriteria;
   }
-  public function setSchedule(Powerform_Google_Service_Dfareporting_ReportSchedule $schedule)
+  public function setSchedule(Google_Service_Dfareporting_ReportSchedule $schedule)
   {
     $this->schedule = $schedule;
   }
@@ -19339,19 +19339,19 @@ class Powerform_Google_Service_Dfareporting_Report extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportCompatibleFields extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ReportCompatibleFields extends Google_Collection
 {
   protected $collection_key = 'pivotedActivityMetrics';
   protected $internal_gapi_mappings = array(
   );
-  protected $dimensionFiltersType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $dimensionFiltersType = 'Google_Service_Dfareporting_Dimension';
   protected $dimensionFiltersDataType = 'array';
-  protected $dimensionsType = 'Powerform_Google_Service_Dfareporting_Dimension';
+  protected $dimensionsType = 'Google_Service_Dfareporting_Dimension';
   protected $dimensionsDataType = 'array';
   public $kind;
-  protected $metricsType = 'Powerform_Google_Service_Dfareporting_Metric';
+  protected $metricsType = 'Google_Service_Dfareporting_Metric';
   protected $metricsDataType = 'array';
-  protected $pivotedActivityMetricsType = 'Powerform_Google_Service_Dfareporting_Metric';
+  protected $pivotedActivityMetricsType = 'Google_Service_Dfareporting_Metric';
   protected $pivotedActivityMetricsDataType = 'array';
 
 
@@ -19397,25 +19397,25 @@ class Powerform_Google_Service_Dfareporting_ReportCompatibleFields extends Power
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportCriteria extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ReportCriteria extends Google_Collection
 {
   protected $collection_key = 'metricNames';
   protected $internal_gapi_mappings = array(
   );
-  protected $activitiesType = 'Powerform_Google_Service_Dfareporting_Activities';
+  protected $activitiesType = 'Google_Service_Dfareporting_Activities';
   protected $activitiesDataType = '';
-  protected $customRichMediaEventsType = 'Powerform_Google_Service_Dfareporting_CustomRichMediaEvents';
+  protected $customRichMediaEventsType = 'Google_Service_Dfareporting_CustomRichMediaEvents';
   protected $customRichMediaEventsDataType = '';
-  protected $dateRangeType = 'Powerform_Google_Service_Dfareporting_DateRange';
+  protected $dateRangeType = 'Google_Service_Dfareporting_DateRange';
   protected $dateRangeDataType = '';
-  protected $dimensionFiltersType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $dimensionFiltersType = 'Google_Service_Dfareporting_DimensionValue';
   protected $dimensionFiltersDataType = 'array';
-  protected $dimensionsType = 'Powerform_Google_Service_Dfareporting_SortedDimension';
+  protected $dimensionsType = 'Google_Service_Dfareporting_SortedDimension';
   protected $dimensionsDataType = 'array';
   public $metricNames;
 
 
-  public function setActivities(Powerform_Google_Service_Dfareporting_Activities $activities)
+  public function setActivities(Google_Service_Dfareporting_Activities $activities)
   {
     $this->activities = $activities;
   }
@@ -19423,7 +19423,7 @@ class Powerform_Google_Service_Dfareporting_ReportCriteria extends Powerform_Goo
   {
     return $this->activities;
   }
-  public function setCustomRichMediaEvents(Powerform_Google_Service_Dfareporting_CustomRichMediaEvents $customRichMediaEvents)
+  public function setCustomRichMediaEvents(Google_Service_Dfareporting_CustomRichMediaEvents $customRichMediaEvents)
   {
     $this->customRichMediaEvents = $customRichMediaEvents;
   }
@@ -19431,7 +19431,7 @@ class Powerform_Google_Service_Dfareporting_ReportCriteria extends Powerform_Goo
   {
     return $this->customRichMediaEvents;
   }
-  public function setDateRange(Powerform_Google_Service_Dfareporting_DateRange $dateRange)
+  public function setDateRange(Google_Service_Dfareporting_DateRange $dateRange)
   {
     $this->dateRange = $dateRange;
   }
@@ -19465,17 +19465,17 @@ class Powerform_Google_Service_Dfareporting_ReportCriteria extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportCrossDimensionReachCriteria extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ReportCrossDimensionReachCriteria extends Google_Collection
 {
   protected $collection_key = 'overlapMetricNames';
   protected $internal_gapi_mappings = array(
   );
-  protected $breakdownType = 'Powerform_Google_Service_Dfareporting_SortedDimension';
+  protected $breakdownType = 'Google_Service_Dfareporting_SortedDimension';
   protected $breakdownDataType = 'array';
-  protected $dateRangeType = 'Powerform_Google_Service_Dfareporting_DateRange';
+  protected $dateRangeType = 'Google_Service_Dfareporting_DateRange';
   protected $dateRangeDataType = '';
   public $dimension;
-  protected $dimensionFiltersType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $dimensionFiltersType = 'Google_Service_Dfareporting_DimensionValue';
   protected $dimensionFiltersDataType = 'array';
   public $metricNames;
   public $overlapMetricNames;
@@ -19490,7 +19490,7 @@ class Powerform_Google_Service_Dfareporting_ReportCrossDimensionReachCriteria ex
   {
     return $this->breakdown;
   }
-  public function setDateRange(Powerform_Google_Service_Dfareporting_DateRange $dateRange)
+  public function setDateRange(Google_Service_Dfareporting_DateRange $dateRange)
   {
     $this->dateRange = $dateRange;
   }
@@ -19540,7 +19540,7 @@ class Powerform_Google_Service_Dfareporting_ReportCrossDimensionReachCriteria ex
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportDelivery extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ReportDelivery extends Google_Collection
 {
   protected $collection_key = 'recipients';
   protected $internal_gapi_mappings = array(
@@ -19548,7 +19548,7 @@ class Powerform_Google_Service_Dfareporting_ReportDelivery extends Powerform_Goo
   public $emailOwner;
   public $emailOwnerDeliveryType;
   public $message;
-  protected $recipientsType = 'Powerform_Google_Service_Dfareporting_Recipient';
+  protected $recipientsType = 'Google_Service_Dfareporting_Recipient';
   protected $recipientsDataType = 'array';
 
 
@@ -19586,23 +19586,23 @@ class Powerform_Google_Service_Dfareporting_ReportDelivery extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportFloodlightCriteria extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ReportFloodlightCriteria extends Google_Collection
 {
   protected $collection_key = 'metricNames';
   protected $internal_gapi_mappings = array(
   );
-  protected $customRichMediaEventsType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $customRichMediaEventsType = 'Google_Service_Dfareporting_DimensionValue';
   protected $customRichMediaEventsDataType = 'array';
-  protected $dateRangeType = 'Powerform_Google_Service_Dfareporting_DateRange';
+  protected $dateRangeType = 'Google_Service_Dfareporting_DateRange';
   protected $dateRangeDataType = '';
-  protected $dimensionFiltersType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $dimensionFiltersType = 'Google_Service_Dfareporting_DimensionValue';
   protected $dimensionFiltersDataType = 'array';
-  protected $dimensionsType = 'Powerform_Google_Service_Dfareporting_SortedDimension';
+  protected $dimensionsType = 'Google_Service_Dfareporting_SortedDimension';
   protected $dimensionsDataType = 'array';
-  protected $floodlightConfigIdType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $floodlightConfigIdType = 'Google_Service_Dfareporting_DimensionValue';
   protected $floodlightConfigIdDataType = '';
   public $metricNames;
-  protected $reportPropertiesType = 'Powerform_Google_Service_Dfareporting_ReportFloodlightCriteriaReportProperties';
+  protected $reportPropertiesType = 'Google_Service_Dfareporting_ReportFloodlightCriteriaReportProperties';
   protected $reportPropertiesDataType = '';
 
 
@@ -19614,7 +19614,7 @@ class Powerform_Google_Service_Dfareporting_ReportFloodlightCriteria extends Pow
   {
     return $this->customRichMediaEvents;
   }
-  public function setDateRange(Powerform_Google_Service_Dfareporting_DateRange $dateRange)
+  public function setDateRange(Google_Service_Dfareporting_DateRange $dateRange)
   {
     $this->dateRange = $dateRange;
   }
@@ -19638,7 +19638,7 @@ class Powerform_Google_Service_Dfareporting_ReportFloodlightCriteria extends Pow
   {
     return $this->dimensions;
   }
-  public function setFloodlightConfigId(Powerform_Google_Service_Dfareporting_DimensionValue $floodlightConfigId)
+  public function setFloodlightConfigId(Google_Service_Dfareporting_DimensionValue $floodlightConfigId)
   {
     $this->floodlightConfigId = $floodlightConfigId;
   }
@@ -19654,7 +19654,7 @@ class Powerform_Google_Service_Dfareporting_ReportFloodlightCriteria extends Pow
   {
     return $this->metricNames;
   }
-  public function setReportProperties(Powerform_Google_Service_Dfareporting_ReportFloodlightCriteriaReportProperties $reportProperties)
+  public function setReportProperties(Google_Service_Dfareporting_ReportFloodlightCriteriaReportProperties $reportProperties)
   {
     $this->reportProperties = $reportProperties;
   }
@@ -19664,7 +19664,7 @@ class Powerform_Google_Service_Dfareporting_ReportFloodlightCriteria extends Pow
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportFloodlightCriteriaReportProperties extends Powerform_Google_Model
+class Google_Service_Dfareporting_ReportFloodlightCriteriaReportProperties extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -19699,13 +19699,13 @@ class Powerform_Google_Service_Dfareporting_ReportFloodlightCriteriaReportProper
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportList extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ReportList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Dfareporting_Report';
+  protected $itemsType = 'Google_Service_Dfareporting_Report';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -19745,27 +19745,27 @@ class Powerform_Google_Service_Dfareporting_ReportList extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteria extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ReportPathToConversionCriteria extends Google_Collection
 {
   protected $collection_key = 'perInteractionDimensions';
   protected $internal_gapi_mappings = array(
   );
-  protected $activityFiltersType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $activityFiltersType = 'Google_Service_Dfareporting_DimensionValue';
   protected $activityFiltersDataType = 'array';
-  protected $conversionDimensionsType = 'Powerform_Google_Service_Dfareporting_SortedDimension';
+  protected $conversionDimensionsType = 'Google_Service_Dfareporting_SortedDimension';
   protected $conversionDimensionsDataType = 'array';
-  protected $customFloodlightVariablesType = 'Powerform_Google_Service_Dfareporting_SortedDimension';
+  protected $customFloodlightVariablesType = 'Google_Service_Dfareporting_SortedDimension';
   protected $customFloodlightVariablesDataType = 'array';
-  protected $customRichMediaEventsType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $customRichMediaEventsType = 'Google_Service_Dfareporting_DimensionValue';
   protected $customRichMediaEventsDataType = 'array';
-  protected $dateRangeType = 'Powerform_Google_Service_Dfareporting_DateRange';
+  protected $dateRangeType = 'Google_Service_Dfareporting_DateRange';
   protected $dateRangeDataType = '';
-  protected $floodlightConfigIdType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $floodlightConfigIdType = 'Google_Service_Dfareporting_DimensionValue';
   protected $floodlightConfigIdDataType = '';
   public $metricNames;
-  protected $perInteractionDimensionsType = 'Powerform_Google_Service_Dfareporting_SortedDimension';
+  protected $perInteractionDimensionsType = 'Google_Service_Dfareporting_SortedDimension';
   protected $perInteractionDimensionsDataType = 'array';
-  protected $reportPropertiesType = 'Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteriaReportProperties';
+  protected $reportPropertiesType = 'Google_Service_Dfareporting_ReportPathToConversionCriteriaReportProperties';
   protected $reportPropertiesDataType = '';
 
 
@@ -19801,7 +19801,7 @@ class Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteria exten
   {
     return $this->customRichMediaEvents;
   }
-  public function setDateRange(Powerform_Google_Service_Dfareporting_DateRange $dateRange)
+  public function setDateRange(Google_Service_Dfareporting_DateRange $dateRange)
   {
     $this->dateRange = $dateRange;
   }
@@ -19809,7 +19809,7 @@ class Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteria exten
   {
     return $this->dateRange;
   }
-  public function setFloodlightConfigId(Powerform_Google_Service_Dfareporting_DimensionValue $floodlightConfigId)
+  public function setFloodlightConfigId(Google_Service_Dfareporting_DimensionValue $floodlightConfigId)
   {
     $this->floodlightConfigId = $floodlightConfigId;
   }
@@ -19833,7 +19833,7 @@ class Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteria exten
   {
     return $this->perInteractionDimensions;
   }
-  public function setReportProperties(Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteriaReportProperties $reportProperties)
+  public function setReportProperties(Google_Service_Dfareporting_ReportPathToConversionCriteriaReportProperties $reportProperties)
   {
     $this->reportProperties = $reportProperties;
   }
@@ -19843,7 +19843,7 @@ class Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteria exten
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteriaReportProperties extends Powerform_Google_Model
+class Google_Service_Dfareporting_ReportPathToConversionCriteriaReportProperties extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -19932,27 +19932,27 @@ class Powerform_Google_Service_Dfareporting_ReportPathToConversionCriteriaReport
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportReachCriteria extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ReportReachCriteria extends Google_Collection
 {
   protected $collection_key = 'reachByFrequencyMetricNames';
   protected $internal_gapi_mappings = array(
   );
-  protected $activitiesType = 'Powerform_Google_Service_Dfareporting_Activities';
+  protected $activitiesType = 'Google_Service_Dfareporting_Activities';
   protected $activitiesDataType = '';
-  protected $customRichMediaEventsType = 'Powerform_Google_Service_Dfareporting_CustomRichMediaEvents';
+  protected $customRichMediaEventsType = 'Google_Service_Dfareporting_CustomRichMediaEvents';
   protected $customRichMediaEventsDataType = '';
-  protected $dateRangeType = 'Powerform_Google_Service_Dfareporting_DateRange';
+  protected $dateRangeType = 'Google_Service_Dfareporting_DateRange';
   protected $dateRangeDataType = '';
-  protected $dimensionFiltersType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $dimensionFiltersType = 'Google_Service_Dfareporting_DimensionValue';
   protected $dimensionFiltersDataType = 'array';
-  protected $dimensionsType = 'Powerform_Google_Service_Dfareporting_SortedDimension';
+  protected $dimensionsType = 'Google_Service_Dfareporting_SortedDimension';
   protected $dimensionsDataType = 'array';
   public $enableAllDimensionCombinations;
   public $metricNames;
   public $reachByFrequencyMetricNames;
 
 
-  public function setActivities(Powerform_Google_Service_Dfareporting_Activities $activities)
+  public function setActivities(Google_Service_Dfareporting_Activities $activities)
   {
     $this->activities = $activities;
   }
@@ -19960,7 +19960,7 @@ class Powerform_Google_Service_Dfareporting_ReportReachCriteria extends Powerfor
   {
     return $this->activities;
   }
-  public function setCustomRichMediaEvents(Powerform_Google_Service_Dfareporting_CustomRichMediaEvents $customRichMediaEvents)
+  public function setCustomRichMediaEvents(Google_Service_Dfareporting_CustomRichMediaEvents $customRichMediaEvents)
   {
     $this->customRichMediaEvents = $customRichMediaEvents;
   }
@@ -19968,7 +19968,7 @@ class Powerform_Google_Service_Dfareporting_ReportReachCriteria extends Powerfor
   {
     return $this->customRichMediaEvents;
   }
-  public function setDateRange(Powerform_Google_Service_Dfareporting_DateRange $dateRange)
+  public function setDateRange(Google_Service_Dfareporting_DateRange $dateRange)
   {
     $this->dateRange = $dateRange;
   }
@@ -20018,7 +20018,7 @@ class Powerform_Google_Service_Dfareporting_ReportReachCriteria extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportSchedule extends Powerform_Google_Collection
+class Google_Service_Dfareporting_ReportSchedule extends Google_Collection
 {
   protected $collection_key = 'repeatsOnWeekDays';
   protected $internal_gapi_mappings = array(
@@ -20090,12 +20090,12 @@ class Powerform_Google_Service_Dfareporting_ReportSchedule extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ReportsConfiguration extends Powerform_Google_Model
+class Google_Service_Dfareporting_ReportsConfiguration extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $exposureToConversionEnabled;
-  protected $lookbackConfigurationType = 'Powerform_Google_Service_Dfareporting_LookbackConfiguration';
+  protected $lookbackConfigurationType = 'Google_Service_Dfareporting_LookbackConfiguration';
   protected $lookbackConfigurationDataType = '';
   public $reportGenerationTimeZoneId;
 
@@ -20108,7 +20108,7 @@ class Powerform_Google_Service_Dfareporting_ReportsConfiguration extends Powerfo
   {
     return $this->exposureToConversionEnabled;
   }
-  public function setLookbackConfiguration(Powerform_Google_Service_Dfareporting_LookbackConfiguration $lookbackConfiguration)
+  public function setLookbackConfiguration(Google_Service_Dfareporting_LookbackConfiguration $lookbackConfiguration)
   {
     $this->lookbackConfiguration = $lookbackConfiguration;
   }
@@ -20126,7 +20126,7 @@ class Powerform_Google_Service_Dfareporting_ReportsConfiguration extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Dfareporting_RichMediaExitOverride extends Powerform_Google_Model
+class Google_Service_Dfareporting_RichMediaExitOverride extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -20161,7 +20161,7 @@ class Powerform_Google_Service_Dfareporting_RichMediaExitOverride extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Site extends Powerform_Google_Collection
+class Google_Service_Dfareporting_Site extends Google_Collection
 {
   protected $collection_key = 'siteContacts';
   protected $internal_gapi_mappings = array(
@@ -20169,17 +20169,17 @@ class Powerform_Google_Service_Dfareporting_Site extends Powerform_Google_Collec
   public $accountId;
   public $approved;
   public $directorySiteId;
-  protected $directorySiteIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $directorySiteIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $directorySiteIdDimensionValueDataType = '';
   public $id;
-  protected $idDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
   public $keyName;
   public $kind;
   public $name;
-  protected $siteContactsType = 'Powerform_Google_Service_Dfareporting_SiteContact';
+  protected $siteContactsType = 'Google_Service_Dfareporting_SiteContact';
   protected $siteContactsDataType = 'array';
-  protected $siteSettingsType = 'Powerform_Google_Service_Dfareporting_SiteSettings';
+  protected $siteSettingsType = 'Google_Service_Dfareporting_SiteSettings';
   protected $siteSettingsDataType = '';
   public $subaccountId;
 
@@ -20208,7 +20208,7 @@ class Powerform_Google_Service_Dfareporting_Site extends Powerform_Google_Collec
   {
     return $this->directorySiteId;
   }
-  public function setDirectorySiteIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $directorySiteIdDimensionValue)
+  public function setDirectorySiteIdDimensionValue(Google_Service_Dfareporting_DimensionValue $directorySiteIdDimensionValue)
   {
     $this->directorySiteIdDimensionValue = $directorySiteIdDimensionValue;
   }
@@ -20224,7 +20224,7 @@ class Powerform_Google_Service_Dfareporting_Site extends Powerform_Google_Collec
   {
     return $this->id;
   }
-  public function setIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $idDimensionValue)
+  public function setIdDimensionValue(Google_Service_Dfareporting_DimensionValue $idDimensionValue)
   {
     $this->idDimensionValue = $idDimensionValue;
   }
@@ -20264,7 +20264,7 @@ class Powerform_Google_Service_Dfareporting_Site extends Powerform_Google_Collec
   {
     return $this->siteContacts;
   }
-  public function setSiteSettings(Powerform_Google_Service_Dfareporting_SiteSettings $siteSettings)
+  public function setSiteSettings(Google_Service_Dfareporting_SiteSettings $siteSettings)
   {
     $this->siteSettings = $siteSettings;
   }
@@ -20282,7 +20282,7 @@ class Powerform_Google_Service_Dfareporting_Site extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Dfareporting_SiteContact extends Powerform_Google_Model
+class Google_Service_Dfareporting_SiteContact extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -20362,18 +20362,18 @@ class Powerform_Google_Service_Dfareporting_SiteContact extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Dfareporting_SiteSettings extends Powerform_Google_Model
+class Google_Service_Dfareporting_SiteSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $activeViewOptOut;
-  protected $creativeSettingsType = 'Powerform_Google_Service_Dfareporting_CreativeSettings';
+  protected $creativeSettingsType = 'Google_Service_Dfareporting_CreativeSettings';
   protected $creativeSettingsDataType = '';
   public $disableBrandSafeAds;
   public $disableNewCookie;
-  protected $lookbackConfigurationType = 'Powerform_Google_Service_Dfareporting_LookbackConfiguration';
+  protected $lookbackConfigurationType = 'Google_Service_Dfareporting_LookbackConfiguration';
   protected $lookbackConfigurationDataType = '';
-  protected $tagSettingType = 'Powerform_Google_Service_Dfareporting_TagSetting';
+  protected $tagSettingType = 'Google_Service_Dfareporting_TagSetting';
   protected $tagSettingDataType = '';
   public $videoActiveViewOptOut;
 
@@ -20386,7 +20386,7 @@ class Powerform_Google_Service_Dfareporting_SiteSettings extends Powerform_Googl
   {
     return $this->activeViewOptOut;
   }
-  public function setCreativeSettings(Powerform_Google_Service_Dfareporting_CreativeSettings $creativeSettings)
+  public function setCreativeSettings(Google_Service_Dfareporting_CreativeSettings $creativeSettings)
   {
     $this->creativeSettings = $creativeSettings;
   }
@@ -20410,7 +20410,7 @@ class Powerform_Google_Service_Dfareporting_SiteSettings extends Powerform_Googl
   {
     return $this->disableNewCookie;
   }
-  public function setLookbackConfiguration(Powerform_Google_Service_Dfareporting_LookbackConfiguration $lookbackConfiguration)
+  public function setLookbackConfiguration(Google_Service_Dfareporting_LookbackConfiguration $lookbackConfiguration)
   {
     $this->lookbackConfiguration = $lookbackConfiguration;
   }
@@ -20418,7 +20418,7 @@ class Powerform_Google_Service_Dfareporting_SiteSettings extends Powerform_Googl
   {
     return $this->lookbackConfiguration;
   }
-  public function setTagSetting(Powerform_Google_Service_Dfareporting_TagSetting $tagSetting)
+  public function setTagSetting(Google_Service_Dfareporting_TagSetting $tagSetting)
   {
     $this->tagSetting = $tagSetting;
   }
@@ -20436,14 +20436,14 @@ class Powerform_Google_Service_Dfareporting_SiteSettings extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Dfareporting_SitesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_SitesListResponse extends Google_Collection
 {
   protected $collection_key = 'sites';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $sitesType = 'Powerform_Google_Service_Dfareporting_Site';
+  protected $sitesType = 'Google_Service_Dfareporting_Site';
   protected $sitesDataType = 'array';
 
 
@@ -20473,7 +20473,7 @@ class Powerform_Google_Service_Dfareporting_SitesListResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Size extends Powerform_Google_Model
+class Google_Service_Dfareporting_Size extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -20526,13 +20526,13 @@ class Powerform_Google_Service_Dfareporting_Size extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Dfareporting_SizesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_SizesListResponse extends Google_Collection
 {
   protected $collection_key = 'sizes';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $sizesType = 'Powerform_Google_Service_Dfareporting_Size';
+  protected $sizesType = 'Google_Service_Dfareporting_Size';
   protected $sizesDataType = 'array';
 
 
@@ -20554,7 +20554,7 @@ class Powerform_Google_Service_Dfareporting_SizesListResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Dfareporting_SortedDimension extends Powerform_Google_Model
+class Google_Service_Dfareporting_SortedDimension extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -20589,7 +20589,7 @@ class Powerform_Google_Service_Dfareporting_SortedDimension extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_Subaccount extends Powerform_Google_Collection
+class Google_Service_Dfareporting_Subaccount extends Google_Collection
 {
   protected $collection_key = 'availablePermissionIds';
   protected $internal_gapi_mappings = array(
@@ -20643,14 +20643,14 @@ class Powerform_Google_Service_Dfareporting_Subaccount extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Dfareporting_SubaccountsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_SubaccountsListResponse extends Google_Collection
 {
   protected $collection_key = 'subaccounts';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $subaccountsType = 'Powerform_Google_Service_Dfareporting_Subaccount';
+  protected $subaccountsType = 'Google_Service_Dfareporting_Subaccount';
   protected $subaccountsDataType = 'array';
 
 
@@ -20680,7 +20680,7 @@ class Powerform_Google_Service_Dfareporting_SubaccountsListResponse extends Powe
   }
 }
 
-class Powerform_Google_Service_Dfareporting_TagData extends Powerform_Google_Model
+class Google_Service_Dfareporting_TagData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -20733,7 +20733,7 @@ class Powerform_Google_Service_Dfareporting_TagData extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Dfareporting_TagSetting extends Powerform_Google_Model
+class Google_Service_Dfareporting_TagSetting extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -20777,7 +20777,7 @@ class Powerform_Google_Service_Dfareporting_TagSetting extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Dfareporting_TagSettings extends Powerform_Google_Model
+class Google_Service_Dfareporting_TagSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -20803,7 +20803,7 @@ class Powerform_Google_Service_Dfareporting_TagSettings extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Dfareporting_TargetWindow extends Powerform_Google_Model
+class Google_Service_Dfareporting_TargetWindow extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -20829,14 +20829,14 @@ class Powerform_Google_Service_Dfareporting_TargetWindow extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Dfareporting_TargetableRemarketingList extends Powerform_Google_Model
+class Google_Service_Dfareporting_TargetableRemarketingList extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
   public $active;
   public $advertiserId;
-  protected $advertiserIdDimensionValueType = 'Powerform_Google_Service_Dfareporting_DimensionValue';
+  protected $advertiserIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $advertiserIdDimensionValueDataType = '';
   public $description;
   public $id;
@@ -20872,7 +20872,7 @@ class Powerform_Google_Service_Dfareporting_TargetableRemarketingList extends Po
   {
     return $this->advertiserId;
   }
-  public function setAdvertiserIdDimensionValue(Powerform_Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
+  public function setAdvertiserIdDimensionValue(Google_Service_Dfareporting_DimensionValue $advertiserIdDimensionValue)
   {
     $this->advertiserIdDimensionValue = $advertiserIdDimensionValue;
   }
@@ -20946,14 +20946,14 @@ class Powerform_Google_Service_Dfareporting_TargetableRemarketingList extends Po
   }
 }
 
-class Powerform_Google_Service_Dfareporting_TargetableRemarketingListsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_TargetableRemarketingListsListResponse extends Google_Collection
 {
   protected $collection_key = 'targetableRemarketingLists';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $targetableRemarketingListsType = 'Powerform_Google_Service_Dfareporting_TargetableRemarketingList';
+  protected $targetableRemarketingListsType = 'Google_Service_Dfareporting_TargetableRemarketingList';
   protected $targetableRemarketingListsDataType = 'array';
 
 
@@ -20983,22 +20983,22 @@ class Powerform_Google_Service_Dfareporting_TargetableRemarketingListsListRespon
   }
 }
 
-class Powerform_Google_Service_Dfareporting_TechnologyTargeting extends Powerform_Google_Collection
+class Google_Service_Dfareporting_TechnologyTargeting extends Google_Collection
 {
   protected $collection_key = 'platformTypes';
   protected $internal_gapi_mappings = array(
   );
-  protected $browsersType = 'Powerform_Google_Service_Dfareporting_Browser';
+  protected $browsersType = 'Google_Service_Dfareporting_Browser';
   protected $browsersDataType = 'array';
-  protected $connectionTypesType = 'Powerform_Google_Service_Dfareporting_ConnectionType';
+  protected $connectionTypesType = 'Google_Service_Dfareporting_ConnectionType';
   protected $connectionTypesDataType = 'array';
-  protected $mobileCarriersType = 'Powerform_Google_Service_Dfareporting_MobileCarrier';
+  protected $mobileCarriersType = 'Google_Service_Dfareporting_MobileCarrier';
   protected $mobileCarriersDataType = 'array';
-  protected $operatingSystemVersionsType = 'Powerform_Google_Service_Dfareporting_OperatingSystemVersion';
+  protected $operatingSystemVersionsType = 'Google_Service_Dfareporting_OperatingSystemVersion';
   protected $operatingSystemVersionsDataType = 'array';
-  protected $operatingSystemsType = 'Powerform_Google_Service_Dfareporting_OperatingSystem';
+  protected $operatingSystemsType = 'Google_Service_Dfareporting_OperatingSystem';
   protected $operatingSystemsDataType = 'array';
-  protected $platformTypesType = 'Powerform_Google_Service_Dfareporting_PlatformType';
+  protected $platformTypesType = 'Google_Service_Dfareporting_PlatformType';
   protected $platformTypesDataType = 'array';
 
 
@@ -21052,7 +21052,7 @@ class Powerform_Google_Service_Dfareporting_TechnologyTargeting extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ThirdPartyAuthenticationToken extends Powerform_Google_Model
+class Google_Service_Dfareporting_ThirdPartyAuthenticationToken extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -21078,7 +21078,7 @@ class Powerform_Google_Service_Dfareporting_ThirdPartyAuthenticationToken extend
   }
 }
 
-class Powerform_Google_Service_Dfareporting_ThirdPartyTrackingUrl extends Powerform_Google_Model
+class Google_Service_Dfareporting_ThirdPartyTrackingUrl extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -21104,7 +21104,7 @@ class Powerform_Google_Service_Dfareporting_ThirdPartyTrackingUrl extends Powerf
   }
 }
 
-class Powerform_Google_Service_Dfareporting_UserDefinedVariableConfiguration extends Powerform_Google_Model
+class Google_Service_Dfareporting_UserDefinedVariableConfiguration extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -21139,7 +21139,7 @@ class Powerform_Google_Service_Dfareporting_UserDefinedVariableConfiguration ext
   }
 }
 
-class Powerform_Google_Service_Dfareporting_UserProfile extends Powerform_Google_Model
+class Google_Service_Dfareporting_UserProfile extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -21219,13 +21219,13 @@ class Powerform_Google_Service_Dfareporting_UserProfile extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Dfareporting_UserProfileList extends Powerform_Google_Collection
+class Google_Service_Dfareporting_UserProfileList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Dfareporting_UserProfile';
+  protected $itemsType = 'Google_Service_Dfareporting_UserProfile';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -21256,7 +21256,7 @@ class Powerform_Google_Service_Dfareporting_UserProfileList extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Dfareporting_UserRole extends Powerform_Google_Collection
+class Google_Service_Dfareporting_UserRole extends Google_Collection
 {
   protected $collection_key = 'permissions';
   protected $internal_gapi_mappings = array(
@@ -21267,7 +21267,7 @@ class Powerform_Google_Service_Dfareporting_UserRole extends Powerform_Google_Co
   public $kind;
   public $name;
   public $parentUserRoleId;
-  protected $permissionsType = 'Powerform_Google_Service_Dfareporting_UserRolePermission';
+  protected $permissionsType = 'Google_Service_Dfareporting_UserRolePermission';
   protected $permissionsDataType = 'array';
   public $subaccountId;
 
@@ -21338,7 +21338,7 @@ class Powerform_Google_Service_Dfareporting_UserRole extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Dfareporting_UserRolePermission extends Powerform_Google_Model
+class Google_Service_Dfareporting_UserRolePermission extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -21391,7 +21391,7 @@ class Powerform_Google_Service_Dfareporting_UserRolePermission extends Powerform
   }
 }
 
-class Powerform_Google_Service_Dfareporting_UserRolePermissionGroup extends Powerform_Google_Model
+class Google_Service_Dfareporting_UserRolePermissionGroup extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -21426,13 +21426,13 @@ class Powerform_Google_Service_Dfareporting_UserRolePermissionGroup extends Powe
   }
 }
 
-class Powerform_Google_Service_Dfareporting_UserRolePermissionGroupsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_UserRolePermissionGroupsListResponse extends Google_Collection
 {
   protected $collection_key = 'userRolePermissionGroups';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $userRolePermissionGroupsType = 'Powerform_Google_Service_Dfareporting_UserRolePermissionGroup';
+  protected $userRolePermissionGroupsType = 'Google_Service_Dfareporting_UserRolePermissionGroup';
   protected $userRolePermissionGroupsDataType = 'array';
 
 
@@ -21454,13 +21454,13 @@ class Powerform_Google_Service_Dfareporting_UserRolePermissionGroupsListResponse
   }
 }
 
-class Powerform_Google_Service_Dfareporting_UserRolePermissionsListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_UserRolePermissionsListResponse extends Google_Collection
 {
   protected $collection_key = 'userRolePermissions';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $userRolePermissionsType = 'Powerform_Google_Service_Dfareporting_UserRolePermission';
+  protected $userRolePermissionsType = 'Google_Service_Dfareporting_UserRolePermission';
   protected $userRolePermissionsDataType = 'array';
 
 
@@ -21482,14 +21482,14 @@ class Powerform_Google_Service_Dfareporting_UserRolePermissionsListResponse exte
   }
 }
 
-class Powerform_Google_Service_Dfareporting_UserRolesListResponse extends Powerform_Google_Collection
+class Google_Service_Dfareporting_UserRolesListResponse extends Google_Collection
 {
   protected $collection_key = 'userRoles';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $userRolesType = 'Powerform_Google_Service_Dfareporting_UserRole';
+  protected $userRolesType = 'Google_Service_Dfareporting_UserRole';
   protected $userRolesDataType = 'array';
 
 

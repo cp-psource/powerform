@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
+class Google_Service_SQLAdmin extends Google_Service
 {
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
@@ -43,14 +43,14 @@ class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
   public $sslCerts;
   public $tiers;
   public $users;
-  
+
 
   /**
    * Constructs the internal representation of the SQLAdmin service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -58,7 +58,7 @@ class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
     $this->version = 'v1beta4';
     $this->serviceName = 'sqladmin';
 
-    $this->backupRuns = new Powerform_Google_Service_SQLAdmin_BackupRuns_Resource(
+    $this->backupRuns = new Google_Service_SQLAdmin_BackupRuns_Resource(
         $this,
         $this->serviceName,
         'backupRuns',
@@ -131,7 +131,7 @@ class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
           )
         )
     );
-    $this->databases = new Powerform_Google_Service_SQLAdmin_Databases_Resource(
+    $this->databases = new Google_Service_SQLAdmin_Databases_Resource(
         $this,
         $this->serviceName,
         'databases',
@@ -251,7 +251,7 @@ class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
           )
         )
     );
-    $this->flags = new Powerform_Google_Service_SQLAdmin_Flags_Resource(
+    $this->flags = new Google_Service_SQLAdmin_Flags_Resource(
         $this,
         $this->serviceName,
         'flags',
@@ -265,7 +265,7 @@ class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
           )
         )
     );
-    $this->instances = new Powerform_Google_Service_SQLAdmin_Instances_Resource(
+    $this->instances = new Google_Service_SQLAdmin_Instances_Resource(
         $this,
         $this->serviceName,
         'instances',
@@ -513,7 +513,7 @@ class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
           )
         )
     );
-    $this->operations = new Powerform_Google_Service_SQLAdmin_Operations_Resource(
+    $this->operations = new Google_Service_SQLAdmin_Operations_Resource(
         $this,
         $this->serviceName,
         'operations',
@@ -561,7 +561,7 @@ class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
           )
         )
     );
-    $this->sslCerts = new Powerform_Google_Service_SQLAdmin_SslCerts_Resource(
+    $this->sslCerts = new Google_Service_SQLAdmin_SslCerts_Resource(
         $this,
         $this->serviceName,
         'sslCerts',
@@ -656,7 +656,7 @@ class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
           )
         )
     );
-    $this->tiers = new Powerform_Google_Service_SQLAdmin_Tiers_Resource(
+    $this->tiers = new Google_Service_SQLAdmin_Tiers_Resource(
         $this,
         $this->serviceName,
         'tiers',
@@ -676,7 +676,7 @@ class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
           )
         )
     );
-    $this->users = new Powerform_Google_Service_SQLAdmin_Users_Resource(
+    $this->users = new Google_Service_SQLAdmin_Users_Resource(
         $this,
         $this->serviceName,
         'users',
@@ -774,11 +774,11 @@ class Powerform_Google_Service_SQLAdmin extends Powerform_Google_Service
  * The "backupRuns" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sqladminService = new Powerform_Google_Service_SQLAdmin(...);
+ *   $sqladminService = new Google_Service_SQLAdmin(...);
  *   $backupRuns = $sqladminService->backupRuns;
  *  </code>
  */
-class Powerform_Google_Service_SQLAdmin_BackupRuns_Resource extends Powerform_Google_Service_Resource
+class Google_Service_SQLAdmin_BackupRuns_Resource extends Google_Service_Resource
 {
 
   /**
@@ -790,13 +790,13 @@ class Powerform_Google_Service_SQLAdmin_BackupRuns_Resource extends Powerform_Go
    * @param string $id The ID of the Backup Run to delete. To find a Backup Run
    * ID, use the list method.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function delete($project, $instance, $id, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('delete', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -808,13 +808,13 @@ class Powerform_Google_Service_SQLAdmin_BackupRuns_Resource extends Powerform_Go
    * project ID.
    * @param string $id The ID of this Backup Run.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_BackupRun
+   * @return Google_Service_SQLAdmin_BackupRun
    */
   public function get($project, $instance, $id, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_SQLAdmin_BackupRun");
+    return $this->call('get', array($params), "Google_Service_SQLAdmin_BackupRun");
   }
 
   /**
@@ -830,13 +830,13 @@ class Powerform_Google_Service_SQLAdmin_BackupRuns_Resource extends Powerform_Go
    * @opt_param int maxResults Maximum number of backup runs per response.
    * @opt_param string pageToken A previously-returned page token representing
    * part of the larger set of results to view.
-   * @return Powerform_Google_Service_SQLAdmin_BackupRunsListResponse
+   * @return Google_Service_SQLAdmin_BackupRunsListResponse
    */
   public function listBackupRuns($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_SQLAdmin_BackupRunsListResponse");
+    return $this->call('list', array($params), "Google_Service_SQLAdmin_BackupRunsListResponse");
   }
 }
 
@@ -844,11 +844,11 @@ class Powerform_Google_Service_SQLAdmin_BackupRuns_Resource extends Powerform_Go
  * The "databases" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sqladminService = new Powerform_Google_Service_SQLAdmin(...);
+ *   $sqladminService = new Google_Service_SQLAdmin(...);
  *   $databases = $sqladminService->databases;
  *  </code>
  */
-class Powerform_Google_Service_SQLAdmin_Databases_Resource extends Powerform_Google_Service_Resource
+class Google_Service_SQLAdmin_Databases_Resource extends Google_Service_Resource
 {
 
   /**
@@ -860,13 +860,13 @@ class Powerform_Google_Service_SQLAdmin_Databases_Resource extends Powerform_Goo
    * project ID.
    * @param string $database Name of the database to be deleted in the instance.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function delete($project, $instance, $database, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'database' => $database);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('delete', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -878,13 +878,13 @@ class Powerform_Google_Service_SQLAdmin_Databases_Resource extends Powerform_Goo
    * project ID.
    * @param string $database Name of the database in the instance.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Database
+   * @return Google_Service_SQLAdmin_Database
    */
   public function get($project, $instance, $database, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'database' => $database);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_SQLAdmin_Database");
+    return $this->call('get', array($params), "Google_Service_SQLAdmin_Database");
   }
 
   /**
@@ -894,15 +894,15 @@ class Powerform_Google_Service_SQLAdmin_Databases_Resource extends Powerform_Goo
    * @param string $project Project ID of the project that contains the instance.
    * @param string $instance Database instance ID. This does not include the
    * project ID.
-   * @param Powerform_Google_Database $postBody
+   * @param Google_Database $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function insert($project, $instance, Powerform_Google_Service_SQLAdmin_Database $postBody, $optParams = array())
+  public function insert($project, $instance, Google_Service_SQLAdmin_Database $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('insert', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -914,13 +914,13 @@ class Powerform_Google_Service_SQLAdmin_Databases_Resource extends Powerform_Goo
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_DatabasesListResponse
+   * @return Google_Service_SQLAdmin_DatabasesListResponse
    */
   public function listDatabases($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_SQLAdmin_DatabasesListResponse");
+    return $this->call('list', array($params), "Google_Service_SQLAdmin_DatabasesListResponse");
   }
 
   /**
@@ -931,15 +931,15 @@ class Powerform_Google_Service_SQLAdmin_Databases_Resource extends Powerform_Goo
    * @param string $instance Database instance ID. This does not include the
    * project ID.
    * @param string $database Name of the database to be updated in the instance.
-   * @param Powerform_Google_Database $postBody
+   * @param Google_Database $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function patch($project, $instance, $database, Powerform_Google_Service_SQLAdmin_Database $postBody, $optParams = array())
+  public function patch($project, $instance, $database, Google_Service_SQLAdmin_Database $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'database' => $database, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('patch', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -950,15 +950,15 @@ class Powerform_Google_Service_SQLAdmin_Databases_Resource extends Powerform_Goo
    * @param string $instance Database instance ID. This does not include the
    * project ID.
    * @param string $database Name of the database to be updated in the instance.
-   * @param Powerform_Google_Database $postBody
+   * @param Google_Database $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function update($project, $instance, $database, Powerform_Google_Service_SQLAdmin_Database $postBody, $optParams = array())
+  public function update($project, $instance, $database, Google_Service_SQLAdmin_Database $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'database' => $database, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('update', array($params), "Google_Service_SQLAdmin_Operation");
   }
 }
 
@@ -966,11 +966,11 @@ class Powerform_Google_Service_SQLAdmin_Databases_Resource extends Powerform_Goo
  * The "flags" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sqladminService = new Powerform_Google_Service_SQLAdmin(...);
+ *   $sqladminService = new Google_Service_SQLAdmin(...);
  *   $flags = $sqladminService->flags;
  *  </code>
  */
-class Powerform_Google_Service_SQLAdmin_Flags_Resource extends Powerform_Google_Service_Resource
+class Google_Service_SQLAdmin_Flags_Resource extends Google_Service_Resource
 {
 
   /**
@@ -978,13 +978,13 @@ class Powerform_Google_Service_SQLAdmin_Flags_Resource extends Powerform_Google_
    * (flags.listFlags)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_FlagsListResponse
+   * @return Google_Service_SQLAdmin_FlagsListResponse
    */
   public function listFlags($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_SQLAdmin_FlagsListResponse");
+    return $this->call('list', array($params), "Google_Service_SQLAdmin_FlagsListResponse");
   }
 }
 
@@ -992,11 +992,11 @@ class Powerform_Google_Service_SQLAdmin_Flags_Resource extends Powerform_Google_
  * The "instances" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sqladminService = new Powerform_Google_Service_SQLAdmin(...);
+ *   $sqladminService = new Google_Service_SQLAdmin(...);
  *   $instances = $sqladminService->instances;
  *  </code>
  */
-class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Google_Service_Resource
+class Google_Service_SQLAdmin_Instances_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1007,15 +1007,15 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * SQL instance.
    * @param string $instance The ID of the Cloud SQL instance to be cloned
    * (source). This does not include the project ID.
-   * @param Powerform_Google_InstancesCloneRequest $postBody
+   * @param Google_InstancesCloneRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function cloneInstances($project, $instance, Powerform_Google_Service_SQLAdmin_InstancesCloneRequest $postBody, $optParams = array())
+  public function cloneInstances($project, $instance, Google_Service_SQLAdmin_InstancesCloneRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('clone', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('clone', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1026,13 +1026,13 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function delete($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('delete', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1043,15 +1043,15 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * to be exported.
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
-   * @param Powerform_Google_InstancesExportRequest $postBody
+   * @param Google_InstancesExportRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function export($project, $instance, Powerform_Google_Service_SQLAdmin_InstancesExportRequest $postBody, $optParams = array())
+  public function export($project, $instance, Google_Service_SQLAdmin_InstancesExportRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('export', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('export', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1060,15 +1060,15 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $project ID of the project that contains the read replica.
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
-   * @param Powerform_Google_InstancesFailoverRequest $postBody
+   * @param Google_InstancesFailoverRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function failover($project, $instance, Powerform_Google_Service_SQLAdmin_InstancesFailoverRequest $postBody, $optParams = array())
+  public function failover($project, $instance, Google_Service_SQLAdmin_InstancesFailoverRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('failover', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('failover', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1079,13 +1079,13 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $instance Database instance ID. This does not include the
    * project ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_DatabaseInstance
+   * @return Google_Service_SQLAdmin_DatabaseInstance
    */
   public function get($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_SQLAdmin_DatabaseInstance");
+    return $this->call('get', array($params), "Google_Service_SQLAdmin_DatabaseInstance");
   }
 
   /**
@@ -1095,15 +1095,15 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $project Project ID of the project that contains the instance.
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
-   * @param Powerform_Google_InstancesImportRequest $postBody
+   * @param Google_InstancesImportRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function import($project, $instance, Powerform_Google_Service_SQLAdmin_InstancesImportRequest $postBody, $optParams = array())
+  public function import($project, $instance, Google_Service_SQLAdmin_InstancesImportRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('import', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('import', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1111,15 +1111,15 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    *
    * @param string $project Project ID of the project to which the newly created
    * Cloud SQL instances should belong.
-   * @param Powerform_Google_DatabaseInstance $postBody
+   * @param Google_DatabaseInstance $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function insert($project, Powerform_Google_Service_SQLAdmin_DatabaseInstance $postBody, $optParams = array())
+  public function insert($project, Google_Service_SQLAdmin_DatabaseInstance $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('insert', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1134,13 +1134,13 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * response.
    * @opt_param string pageToken A previously-returned page token representing
    * part of the larger set of results to view.
-   * @return Powerform_Google_Service_SQLAdmin_InstancesListResponse
+   * @return Google_Service_SQLAdmin_InstancesListResponse
    */
   public function listInstances($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_SQLAdmin_InstancesListResponse");
+    return $this->call('list', array($params), "Google_Service_SQLAdmin_InstancesListResponse");
   }
 
   /**
@@ -1152,15 +1152,15 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $project Project ID of the project that contains the instance.
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
-   * @param Powerform_Google_DatabaseInstance $postBody
+   * @param Google_DatabaseInstance $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function patch($project, $instance, Powerform_Google_Service_SQLAdmin_DatabaseInstance $postBody, $optParams = array())
+  public function patch($project, $instance, Google_Service_SQLAdmin_DatabaseInstance $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('patch', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1170,13 +1170,13 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $project ID of the project that contains the read replica.
    * @param string $instance Cloud SQL read replica instance name.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function promoteReplica($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('promoteReplica', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('promoteReplica', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1189,13 +1189,13 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function resetSslConfig($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('resetSslConfig', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('resetSslConfig', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1206,13 +1206,13 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function restart($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('restart', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('restart', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1221,15 +1221,15 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $project Project ID of the project that contains the instance.
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
-   * @param Powerform_Google_InstancesRestoreBackupRequest $postBody
+   * @param Google_InstancesRestoreBackupRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function restoreBackup($project, $instance, Powerform_Google_Service_SQLAdmin_InstancesRestoreBackupRequest $postBody, $optParams = array())
+  public function restoreBackup($project, $instance, Google_Service_SQLAdmin_InstancesRestoreBackupRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('restoreBackup', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('restoreBackup', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1238,13 +1238,13 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $project ID of the project that contains the read replica.
    * @param string $instance Cloud SQL read replica instance name.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function startReplica($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('startReplica', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('startReplica', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1253,13 +1253,13 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $project ID of the project that contains the read replica.
    * @param string $instance Cloud SQL read replica instance name.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function stopReplica($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('stopReplica', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('stopReplica', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1270,15 +1270,15 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
    * @param string $project Project ID of the project that contains the instance.
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
-   * @param Powerform_Google_DatabaseInstance $postBody
+   * @param Google_DatabaseInstance $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function update($project, $instance, Powerform_Google_Service_SQLAdmin_DatabaseInstance $postBody, $optParams = array())
+  public function update($project, $instance, Google_Service_SQLAdmin_DatabaseInstance $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('update', array($params), "Google_Service_SQLAdmin_Operation");
   }
 }
 
@@ -1286,11 +1286,11 @@ class Powerform_Google_Service_SQLAdmin_Instances_Resource extends Powerform_Goo
  * The "operations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sqladminService = new Powerform_Google_Service_SQLAdmin(...);
+ *   $sqladminService = new Google_Service_SQLAdmin(...);
  *   $operations = $sqladminService->operations;
  *  </code>
  */
-class Powerform_Google_Service_SQLAdmin_Operations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_SQLAdmin_Operations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1300,13 +1300,13 @@ class Powerform_Google_Service_SQLAdmin_Operations_Resource extends Powerform_Go
    * @param string $project Project ID of the project that contains the instance.
    * @param string $operation Instance operation ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function get($project, $operation, $optParams = array())
   {
     $params = array('project' => $project, 'operation' => $operation);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('get', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1322,13 +1322,13 @@ class Powerform_Google_Service_SQLAdmin_Operations_Resource extends Powerform_Go
    * @opt_param string maxResults Maximum number of operations per response.
    * @opt_param string pageToken A previously-returned page token representing
    * part of the larger set of results to view.
-   * @return Powerform_Google_Service_SQLAdmin_OperationsListResponse
+   * @return Google_Service_SQLAdmin_OperationsListResponse
    */
   public function listOperations($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_SQLAdmin_OperationsListResponse");
+    return $this->call('list', array($params), "Google_Service_SQLAdmin_OperationsListResponse");
   }
 }
 
@@ -1336,11 +1336,11 @@ class Powerform_Google_Service_SQLAdmin_Operations_Resource extends Powerform_Go
  * The "sslCerts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sqladminService = new Powerform_Google_Service_SQLAdmin(...);
+ *   $sqladminService = new Google_Service_SQLAdmin(...);
  *   $sslCerts = $sqladminService->sslCerts;
  *  </code>
  */
-class Powerform_Google_Service_SQLAdmin_SslCerts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_SQLAdmin_SslCerts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1352,15 +1352,15 @@ class Powerform_Google_Service_SQLAdmin_SslCerts_Resource extends Powerform_Goog
    * @param string $project Project ID of the Cloud SQL project.
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
-   * @param Powerform_Google_SslCertsCreateEphemeralRequest $postBody
+   * @param Google_SslCertsCreateEphemeralRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_SslCert
+   * @return Google_Service_SQLAdmin_SslCert
    */
-  public function createEphemeral($project, $instance, Powerform_Google_Service_SQLAdmin_SslCertsCreateEphemeralRequest $postBody, $optParams = array())
+  public function createEphemeral($project, $instance, Google_Service_SQLAdmin_SslCertsCreateEphemeralRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('createEphemeral', array($params), "Powerform_Google_Service_SQLAdmin_SslCert");
+    return $this->call('createEphemeral', array($params), "Google_Service_SQLAdmin_SslCert");
   }
 
   /**
@@ -1373,13 +1373,13 @@ class Powerform_Google_Service_SQLAdmin_SslCerts_Resource extends Powerform_Goog
    * project ID.
    * @param string $sha1Fingerprint Sha1 FingerPrint.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function delete($project, $instance, $sha1Fingerprint, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'sha1Fingerprint' => $sha1Fingerprint);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('delete', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1392,13 +1392,13 @@ class Powerform_Google_Service_SQLAdmin_SslCerts_Resource extends Powerform_Goog
    * project ID.
    * @param string $sha1Fingerprint Sha1 FingerPrint.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_SslCert
+   * @return Google_Service_SQLAdmin_SslCert
    */
   public function get($project, $instance, $sha1Fingerprint, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'sha1Fingerprint' => $sha1Fingerprint);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_SQLAdmin_SslCert");
+    return $this->call('get', array($params), "Google_Service_SQLAdmin_SslCert");
   }
 
   /**
@@ -1410,15 +1410,15 @@ class Powerform_Google_Service_SQLAdmin_SslCerts_Resource extends Powerform_Goog
    * Cloud SQL instances should belong.
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
-   * @param Powerform_Google_SslCertsInsertRequest $postBody
+   * @param Google_SslCertsInsertRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_SslCertsInsertResponse
+   * @return Google_Service_SQLAdmin_SslCertsInsertResponse
    */
-  public function insert($project, $instance, Powerform_Google_Service_SQLAdmin_SslCertsInsertRequest $postBody, $optParams = array())
+  public function insert($project, $instance, Google_Service_SQLAdmin_SslCertsInsertRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_SQLAdmin_SslCertsInsertResponse");
+    return $this->call('insert', array($params), "Google_Service_SQLAdmin_SslCertsInsertResponse");
   }
 
   /**
@@ -1430,13 +1430,13 @@ class Powerform_Google_Service_SQLAdmin_SslCerts_Resource extends Powerform_Goog
    * @param string $instance Cloud SQL instance ID. This does not include the
    * project ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_SslCertsListResponse
+   * @return Google_Service_SQLAdmin_SslCertsListResponse
    */
   public function listSslCerts($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_SQLAdmin_SslCertsListResponse");
+    return $this->call('list', array($params), "Google_Service_SQLAdmin_SslCertsListResponse");
   }
 }
 
@@ -1444,11 +1444,11 @@ class Powerform_Google_Service_SQLAdmin_SslCerts_Resource extends Powerform_Goog
  * The "tiers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sqladminService = new Powerform_Google_Service_SQLAdmin(...);
+ *   $sqladminService = new Google_Service_SQLAdmin(...);
  *   $tiers = $sqladminService->tiers;
  *  </code>
  */
-class Powerform_Google_Service_SQLAdmin_Tiers_Resource extends Powerform_Google_Service_Resource
+class Google_Service_SQLAdmin_Tiers_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1457,13 +1457,13 @@ class Powerform_Google_Service_SQLAdmin_Tiers_Resource extends Powerform_Google_
    *
    * @param string $project Project ID of the project for which to list tiers.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_TiersListResponse
+   * @return Google_Service_SQLAdmin_TiersListResponse
    */
   public function listTiers($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_SQLAdmin_TiersListResponse");
+    return $this->call('list', array($params), "Google_Service_SQLAdmin_TiersListResponse");
   }
 }
 
@@ -1471,11 +1471,11 @@ class Powerform_Google_Service_SQLAdmin_Tiers_Resource extends Powerform_Google_
  * The "users" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sqladminService = new Powerform_Google_Service_SQLAdmin(...);
+ *   $sqladminService = new Google_Service_SQLAdmin(...);
  *   $users = $sqladminService->users;
  *  </code>
  */
-class Powerform_Google_Service_SQLAdmin_Users_Resource extends Powerform_Google_Service_Resource
+class Google_Service_SQLAdmin_Users_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1487,13 +1487,13 @@ class Powerform_Google_Service_SQLAdmin_Users_Resource extends Powerform_Google_
    * @param string $host Host of the user in the instance.
    * @param string $name Name of the user in the instance.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
   public function delete($project, $instance, $host, $name, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'host' => $host, 'name' => $name);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('delete', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1502,15 +1502,15 @@ class Powerform_Google_Service_SQLAdmin_Users_Resource extends Powerform_Google_
    * @param string $project Project ID of the project that contains the instance.
    * @param string $instance Database instance ID. This does not include the
    * project ID.
-   * @param Powerform_Google_User $postBody
+   * @param Google_User $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function insert($project, $instance, Powerform_Google_Service_SQLAdmin_User $postBody, $optParams = array())
+  public function insert($project, $instance, Google_Service_SQLAdmin_User $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('insert', array($params), "Google_Service_SQLAdmin_Operation");
   }
 
   /**
@@ -1520,13 +1520,13 @@ class Powerform_Google_Service_SQLAdmin_Users_Resource extends Powerform_Google_
    * @param string $instance Database instance ID. This does not include the
    * project ID.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_UsersListResponse
+   * @return Google_Service_SQLAdmin_UsersListResponse
    */
   public function listUsers($project, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_SQLAdmin_UsersListResponse");
+    return $this->call('list', array($params), "Google_Service_SQLAdmin_UsersListResponse");
   }
 
   /**
@@ -1537,22 +1537,22 @@ class Powerform_Google_Service_SQLAdmin_Users_Resource extends Powerform_Google_
    * project ID.
    * @param string $host Host of the user in the instance.
    * @param string $name Name of the user in the instance.
-   * @param Powerform_Google_User $postBody
+   * @param Google_User $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_SQLAdmin_Operation
+   * @return Google_Service_SQLAdmin_Operation
    */
-  public function update($project, $instance, $host, $name, Powerform_Google_Service_SQLAdmin_User $postBody, $optParams = array())
+  public function update($project, $instance, $host, $name, Google_Service_SQLAdmin_User $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'instance' => $instance, 'host' => $host, 'name' => $name, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_SQLAdmin_Operation");
+    return $this->call('update', array($params), "Google_Service_SQLAdmin_Operation");
   }
 }
 
 
 
 
-class Powerform_Google_Service_SQLAdmin_AclEntry extends Powerform_Google_Model
+class Google_Service_SQLAdmin_AclEntry extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1596,7 +1596,7 @@ class Powerform_Google_Service_SQLAdmin_AclEntry extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_BackupConfiguration extends Powerform_Google_Model
+class Google_Service_SQLAdmin_BackupConfiguration extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1640,13 +1640,13 @@ class Powerform_Google_Service_SQLAdmin_BackupConfiguration extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_BackupRun extends Powerform_Google_Model
+class Google_Service_SQLAdmin_BackupRun extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $endTime;
   public $enqueuedTime;
-  protected $errorType = 'Powerform_Google_Service_SQLAdmin_OperationError';
+  protected $errorType = 'Google_Service_SQLAdmin_OperationError';
   protected $errorDataType = '';
   public $id;
   public $instance;
@@ -1673,7 +1673,7 @@ class Powerform_Google_Service_SQLAdmin_BackupRun extends Powerform_Google_Model
   {
     return $this->enqueuedTime;
   }
-  public function setError(Powerform_Google_Service_SQLAdmin_OperationError $error)
+  public function setError(Google_Service_SQLAdmin_OperationError $error)
   {
     $this->error = $error;
   }
@@ -1739,12 +1739,12 @@ class Powerform_Google_Service_SQLAdmin_BackupRun extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_BackupRunsListResponse extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_BackupRunsListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_SQLAdmin_BackupRun';
+  protected $itemsType = 'Google_Service_SQLAdmin_BackupRun';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1776,7 +1776,7 @@ class Powerform_Google_Service_SQLAdmin_BackupRunsListResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_BinLogCoordinates extends Powerform_Google_Model
+class Google_Service_SQLAdmin_BinLogCoordinates extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1811,17 +1811,17 @@ class Powerform_Google_Service_SQLAdmin_BinLogCoordinates extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_CloneContext extends Powerform_Google_Model
+class Google_Service_SQLAdmin_CloneContext extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $binLogCoordinatesType = 'Powerform_Google_Service_SQLAdmin_BinLogCoordinates';
+  protected $binLogCoordinatesType = 'Google_Service_SQLAdmin_BinLogCoordinates';
   protected $binLogCoordinatesDataType = '';
   public $destinationInstanceName;
   public $kind;
 
 
-  public function setBinLogCoordinates(Powerform_Google_Service_SQLAdmin_BinLogCoordinates $binLogCoordinates)
+  public function setBinLogCoordinates(Google_Service_SQLAdmin_BinLogCoordinates $binLogCoordinates)
   {
     $this->binLogCoordinates = $binLogCoordinates;
   }
@@ -1847,7 +1847,7 @@ class Powerform_Google_Service_SQLAdmin_CloneContext extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_Database extends Powerform_Google_Model
+class Google_Service_SQLAdmin_Database extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1927,7 +1927,7 @@ class Powerform_Google_Service_SQLAdmin_Database extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_DatabaseFlags extends Powerform_Google_Model
+class Google_Service_SQLAdmin_DatabaseFlags extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1953,7 +1953,7 @@ class Powerform_Google_Service_SQLAdmin_DatabaseFlags extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_DatabaseInstance extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_DatabaseInstance extends Google_Collection
 {
   protected $collection_key = 'replicaNames';
   protected $internal_gapi_mappings = array(
@@ -1961,28 +1961,28 @@ class Powerform_Google_Service_SQLAdmin_DatabaseInstance extends Powerform_Googl
   public $currentDiskSize;
   public $databaseVersion;
   public $etag;
-  protected $failoverReplicaType = 'Powerform_Google_Service_SQLAdmin_DatabaseInstanceFailoverReplica';
+  protected $failoverReplicaType = 'Google_Service_SQLAdmin_DatabaseInstanceFailoverReplica';
   protected $failoverReplicaDataType = '';
   public $instanceType;
-  protected $ipAddressesType = 'Powerform_Google_Service_SQLAdmin_IpMapping';
+  protected $ipAddressesType = 'Google_Service_SQLAdmin_IpMapping';
   protected $ipAddressesDataType = 'array';
   public $ipv6Address;
   public $kind;
   public $masterInstanceName;
   public $maxDiskSize;
   public $name;
-  protected $onPremisesConfigurationType = 'Powerform_Google_Service_SQLAdmin_OnPremisesConfiguration';
+  protected $onPremisesConfigurationType = 'Google_Service_SQLAdmin_OnPremisesConfiguration';
   protected $onPremisesConfigurationDataType = '';
   public $project;
   public $region;
-  protected $replicaConfigurationType = 'Powerform_Google_Service_SQLAdmin_ReplicaConfiguration';
+  protected $replicaConfigurationType = 'Google_Service_SQLAdmin_ReplicaConfiguration';
   protected $replicaConfigurationDataType = '';
   public $replicaNames;
   public $selfLink;
-  protected $serverCaCertType = 'Powerform_Google_Service_SQLAdmin_SslCert';
+  protected $serverCaCertType = 'Google_Service_SQLAdmin_SslCert';
   protected $serverCaCertDataType = '';
   public $serviceAccountEmailAddress;
-  protected $settingsType = 'Powerform_Google_Service_SQLAdmin_Settings';
+  protected $settingsType = 'Google_Service_SQLAdmin_Settings';
   protected $settingsDataType = '';
   public $state;
 
@@ -2011,7 +2011,7 @@ class Powerform_Google_Service_SQLAdmin_DatabaseInstance extends Powerform_Googl
   {
     return $this->etag;
   }
-  public function setFailoverReplica(Powerform_Google_Service_SQLAdmin_DatabaseInstanceFailoverReplica $failoverReplica)
+  public function setFailoverReplica(Google_Service_SQLAdmin_DatabaseInstanceFailoverReplica $failoverReplica)
   {
     $this->failoverReplica = $failoverReplica;
   }
@@ -2075,7 +2075,7 @@ class Powerform_Google_Service_SQLAdmin_DatabaseInstance extends Powerform_Googl
   {
     return $this->name;
   }
-  public function setOnPremisesConfiguration(Powerform_Google_Service_SQLAdmin_OnPremisesConfiguration $onPremisesConfiguration)
+  public function setOnPremisesConfiguration(Google_Service_SQLAdmin_OnPremisesConfiguration $onPremisesConfiguration)
   {
     $this->onPremisesConfiguration = $onPremisesConfiguration;
   }
@@ -2099,7 +2099,7 @@ class Powerform_Google_Service_SQLAdmin_DatabaseInstance extends Powerform_Googl
   {
     return $this->region;
   }
-  public function setReplicaConfiguration(Powerform_Google_Service_SQLAdmin_ReplicaConfiguration $replicaConfiguration)
+  public function setReplicaConfiguration(Google_Service_SQLAdmin_ReplicaConfiguration $replicaConfiguration)
   {
     $this->replicaConfiguration = $replicaConfiguration;
   }
@@ -2123,7 +2123,7 @@ class Powerform_Google_Service_SQLAdmin_DatabaseInstance extends Powerform_Googl
   {
     return $this->selfLink;
   }
-  public function setServerCaCert(Powerform_Google_Service_SQLAdmin_SslCert $serverCaCert)
+  public function setServerCaCert(Google_Service_SQLAdmin_SslCert $serverCaCert)
   {
     $this->serverCaCert = $serverCaCert;
   }
@@ -2139,7 +2139,7 @@ class Powerform_Google_Service_SQLAdmin_DatabaseInstance extends Powerform_Googl
   {
     return $this->serviceAccountEmailAddress;
   }
-  public function setSettings(Powerform_Google_Service_SQLAdmin_Settings $settings)
+  public function setSettings(Google_Service_SQLAdmin_Settings $settings)
   {
     $this->settings = $settings;
   }
@@ -2157,7 +2157,7 @@ class Powerform_Google_Service_SQLAdmin_DatabaseInstance extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_DatabaseInstanceFailoverReplica extends Powerform_Google_Model
+class Google_Service_SQLAdmin_DatabaseInstanceFailoverReplica extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2183,12 +2183,12 @@ class Powerform_Google_Service_SQLAdmin_DatabaseInstanceFailoverReplica extends 
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_DatabasesListResponse extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_DatabasesListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_SQLAdmin_Database';
+  protected $itemsType = 'Google_Service_SQLAdmin_Database';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -2211,22 +2211,22 @@ class Powerform_Google_Service_SQLAdmin_DatabasesListResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_ExportContext extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_ExportContext extends Google_Collection
 {
   protected $collection_key = 'databases';
   protected $internal_gapi_mappings = array(
   );
-  protected $csvExportOptionsType = 'Powerform_Google_Service_SQLAdmin_ExportContextCsvExportOptions';
+  protected $csvExportOptionsType = 'Google_Service_SQLAdmin_ExportContextCsvExportOptions';
   protected $csvExportOptionsDataType = '';
   public $databases;
   public $fileType;
   public $kind;
-  protected $sqlExportOptionsType = 'Powerform_Google_Service_SQLAdmin_ExportContextSqlExportOptions';
+  protected $sqlExportOptionsType = 'Google_Service_SQLAdmin_ExportContextSqlExportOptions';
   protected $sqlExportOptionsDataType = '';
   public $uri;
 
 
-  public function setCsvExportOptions(Powerform_Google_Service_SQLAdmin_ExportContextCsvExportOptions $csvExportOptions)
+  public function setCsvExportOptions(Google_Service_SQLAdmin_ExportContextCsvExportOptions $csvExportOptions)
   {
     $this->csvExportOptions = $csvExportOptions;
   }
@@ -2258,7 +2258,7 @@ class Powerform_Google_Service_SQLAdmin_ExportContext extends Powerform_Google_C
   {
     return $this->kind;
   }
-  public function setSqlExportOptions(Powerform_Google_Service_SQLAdmin_ExportContextSqlExportOptions $sqlExportOptions)
+  public function setSqlExportOptions(Google_Service_SQLAdmin_ExportContextSqlExportOptions $sqlExportOptions)
   {
     $this->sqlExportOptions = $sqlExportOptions;
   }
@@ -2276,7 +2276,7 @@ class Powerform_Google_Service_SQLAdmin_ExportContext extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_ExportContextCsvExportOptions extends Powerform_Google_Model
+class Google_Service_SQLAdmin_ExportContextCsvExportOptions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2293,7 +2293,7 @@ class Powerform_Google_Service_SQLAdmin_ExportContextCsvExportOptions extends Po
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_ExportContextSqlExportOptions extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_ExportContextSqlExportOptions extends Google_Collection
 {
   protected $collection_key = 'tables';
   protected $internal_gapi_mappings = array(
@@ -2320,7 +2320,7 @@ class Powerform_Google_Service_SQLAdmin_ExportContextSqlExportOptions extends Po
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_FailoverContext extends Powerform_Google_Model
+class Google_Service_SQLAdmin_FailoverContext extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2346,7 +2346,7 @@ class Powerform_Google_Service_SQLAdmin_FailoverContext extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_Flag extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_Flag extends Google_Collection
 {
   protected $collection_key = 'appliesTo';
   protected $internal_gapi_mappings = array(
@@ -2427,12 +2427,12 @@ class Powerform_Google_Service_SQLAdmin_Flag extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_FlagsListResponse extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_FlagsListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_SQLAdmin_Flag';
+  protected $itemsType = 'Google_Service_SQLAdmin_Flag';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -2455,11 +2455,11 @@ class Powerform_Google_Service_SQLAdmin_FlagsListResponse extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_ImportContext extends Powerform_Google_Model
+class Google_Service_SQLAdmin_ImportContext extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $csvImportOptionsType = 'Powerform_Google_Service_SQLAdmin_ImportContextCsvImportOptions';
+  protected $csvImportOptionsType = 'Google_Service_SQLAdmin_ImportContextCsvImportOptions';
   protected $csvImportOptionsDataType = '';
   public $database;
   public $fileType;
@@ -2467,7 +2467,7 @@ class Powerform_Google_Service_SQLAdmin_ImportContext extends Powerform_Google_M
   public $uri;
 
 
-  public function setCsvImportOptions(Powerform_Google_Service_SQLAdmin_ImportContextCsvImportOptions $csvImportOptions)
+  public function setCsvImportOptions(Google_Service_SQLAdmin_ImportContextCsvImportOptions $csvImportOptions)
   {
     $this->csvImportOptions = $csvImportOptions;
   }
@@ -2509,7 +2509,7 @@ class Powerform_Google_Service_SQLAdmin_ImportContext extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_ImportContextCsvImportOptions extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_ImportContextCsvImportOptions extends Google_Collection
 {
   protected $collection_key = 'columns';
   protected $internal_gapi_mappings = array(
@@ -2536,15 +2536,15 @@ class Powerform_Google_Service_SQLAdmin_ImportContextCsvImportOptions extends Po
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_InstancesCloneRequest extends Powerform_Google_Model
+class Google_Service_SQLAdmin_InstancesCloneRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $cloneContextType = 'Powerform_Google_Service_SQLAdmin_CloneContext';
+  protected $cloneContextType = 'Google_Service_SQLAdmin_CloneContext';
   protected $cloneContextDataType = '';
 
 
-  public function setCloneContext(Powerform_Google_Service_SQLAdmin_CloneContext $cloneContext)
+  public function setCloneContext(Google_Service_SQLAdmin_CloneContext $cloneContext)
   {
     $this->cloneContext = $cloneContext;
   }
@@ -2554,15 +2554,15 @@ class Powerform_Google_Service_SQLAdmin_InstancesCloneRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_InstancesExportRequest extends Powerform_Google_Model
+class Google_Service_SQLAdmin_InstancesExportRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $exportContextType = 'Powerform_Google_Service_SQLAdmin_ExportContext';
+  protected $exportContextType = 'Google_Service_SQLAdmin_ExportContext';
   protected $exportContextDataType = '';
 
 
-  public function setExportContext(Powerform_Google_Service_SQLAdmin_ExportContext $exportContext)
+  public function setExportContext(Google_Service_SQLAdmin_ExportContext $exportContext)
   {
     $this->exportContext = $exportContext;
   }
@@ -2572,15 +2572,15 @@ class Powerform_Google_Service_SQLAdmin_InstancesExportRequest extends Powerform
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_InstancesFailoverRequest extends Powerform_Google_Model
+class Google_Service_SQLAdmin_InstancesFailoverRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $failoverContextType = 'Powerform_Google_Service_SQLAdmin_FailoverContext';
+  protected $failoverContextType = 'Google_Service_SQLAdmin_FailoverContext';
   protected $failoverContextDataType = '';
 
 
-  public function setFailoverContext(Powerform_Google_Service_SQLAdmin_FailoverContext $failoverContext)
+  public function setFailoverContext(Google_Service_SQLAdmin_FailoverContext $failoverContext)
   {
     $this->failoverContext = $failoverContext;
   }
@@ -2590,15 +2590,15 @@ class Powerform_Google_Service_SQLAdmin_InstancesFailoverRequest extends Powerfo
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_InstancesImportRequest extends Powerform_Google_Model
+class Google_Service_SQLAdmin_InstancesImportRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $importContextType = 'Powerform_Google_Service_SQLAdmin_ImportContext';
+  protected $importContextType = 'Google_Service_SQLAdmin_ImportContext';
   protected $importContextDataType = '';
 
 
-  public function setImportContext(Powerform_Google_Service_SQLAdmin_ImportContext $importContext)
+  public function setImportContext(Google_Service_SQLAdmin_ImportContext $importContext)
   {
     $this->importContext = $importContext;
   }
@@ -2608,12 +2608,12 @@ class Powerform_Google_Service_SQLAdmin_InstancesImportRequest extends Powerform
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_InstancesListResponse extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_InstancesListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_SQLAdmin_DatabaseInstance';
+  protected $itemsType = 'Google_Service_SQLAdmin_DatabaseInstance';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2645,15 +2645,15 @@ class Powerform_Google_Service_SQLAdmin_InstancesListResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_InstancesRestoreBackupRequest extends Powerform_Google_Model
+class Google_Service_SQLAdmin_InstancesRestoreBackupRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $restoreBackupContextType = 'Powerform_Google_Service_SQLAdmin_RestoreBackupContext';
+  protected $restoreBackupContextType = 'Google_Service_SQLAdmin_RestoreBackupContext';
   protected $restoreBackupContextDataType = '';
 
 
-  public function setRestoreBackupContext(Powerform_Google_Service_SQLAdmin_RestoreBackupContext $restoreBackupContext)
+  public function setRestoreBackupContext(Google_Service_SQLAdmin_RestoreBackupContext $restoreBackupContext)
   {
     $this->restoreBackupContext = $restoreBackupContext;
   }
@@ -2663,12 +2663,12 @@ class Powerform_Google_Service_SQLAdmin_InstancesRestoreBackupRequest extends Po
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_IpConfiguration extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_IpConfiguration extends Google_Collection
 {
   protected $collection_key = 'authorizedNetworks';
   protected $internal_gapi_mappings = array(
   );
-  protected $authorizedNetworksType = 'Powerform_Google_Service_SQLAdmin_AclEntry';
+  protected $authorizedNetworksType = 'Google_Service_SQLAdmin_AclEntry';
   protected $authorizedNetworksDataType = 'array';
   public $ipv4Enabled;
   public $requireSsl;
@@ -2700,7 +2700,7 @@ class Powerform_Google_Service_SQLAdmin_IpConfiguration extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_IpMapping extends Powerform_Google_Model
+class Google_Service_SQLAdmin_IpMapping extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2726,7 +2726,7 @@ class Powerform_Google_Service_SQLAdmin_IpMapping extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_LocationPreference extends Powerform_Google_Model
+class Google_Service_SQLAdmin_LocationPreference extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2761,7 +2761,7 @@ class Powerform_Google_Service_SQLAdmin_LocationPreference extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_MaintenanceWindow extends Powerform_Google_Model
+class Google_Service_SQLAdmin_MaintenanceWindow extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2805,7 +2805,7 @@ class Powerform_Google_Service_SQLAdmin_MaintenanceWindow extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_MySqlReplicaConfiguration extends Powerform_Google_Model
+class Google_Service_SQLAdmin_MySqlReplicaConfiguration extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2912,7 +2912,7 @@ class Powerform_Google_Service_SQLAdmin_MySqlReplicaConfiguration extends Powerf
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_OnPremisesConfiguration extends Powerform_Google_Model
+class Google_Service_SQLAdmin_OnPremisesConfiguration extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2938,16 +2938,16 @@ class Powerform_Google_Service_SQLAdmin_OnPremisesConfiguration extends Powerfor
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_Operation extends Powerform_Google_Model
+class Google_Service_SQLAdmin_Operation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $endTime;
-  protected $errorType = 'Powerform_Google_Service_SQLAdmin_OperationErrors';
+  protected $errorType = 'Google_Service_SQLAdmin_OperationErrors';
   protected $errorDataType = '';
-  protected $exportContextType = 'Powerform_Google_Service_SQLAdmin_ExportContext';
+  protected $exportContextType = 'Google_Service_SQLAdmin_ExportContext';
   protected $exportContextDataType = '';
-  protected $importContextType = 'Powerform_Google_Service_SQLAdmin_ImportContext';
+  protected $importContextType = 'Google_Service_SQLAdmin_ImportContext';
   protected $importContextDataType = '';
   public $insertTime;
   public $kind;
@@ -2970,7 +2970,7 @@ class Powerform_Google_Service_SQLAdmin_Operation extends Powerform_Google_Model
   {
     return $this->endTime;
   }
-  public function setError(Powerform_Google_Service_SQLAdmin_OperationErrors $error)
+  public function setError(Google_Service_SQLAdmin_OperationErrors $error)
   {
     $this->error = $error;
   }
@@ -2978,7 +2978,7 @@ class Powerform_Google_Service_SQLAdmin_Operation extends Powerform_Google_Model
   {
     return $this->error;
   }
-  public function setExportContext(Powerform_Google_Service_SQLAdmin_ExportContext $exportContext)
+  public function setExportContext(Google_Service_SQLAdmin_ExportContext $exportContext)
   {
     $this->exportContext = $exportContext;
   }
@@ -2986,7 +2986,7 @@ class Powerform_Google_Service_SQLAdmin_Operation extends Powerform_Google_Model
   {
     return $this->exportContext;
   }
-  public function setImportContext(Powerform_Google_Service_SQLAdmin_ImportContext $importContext)
+  public function setImportContext(Google_Service_SQLAdmin_ImportContext $importContext)
   {
     $this->importContext = $importContext;
   }
@@ -3084,7 +3084,7 @@ class Powerform_Google_Service_SQLAdmin_Operation extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_OperationError extends Powerform_Google_Model
+class Google_Service_SQLAdmin_OperationError extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3119,12 +3119,12 @@ class Powerform_Google_Service_SQLAdmin_OperationError extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_OperationErrors extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_OperationErrors extends Google_Collection
 {
   protected $collection_key = 'errors';
   protected $internal_gapi_mappings = array(
   );
-  protected $errorsType = 'Powerform_Google_Service_SQLAdmin_OperationError';
+  protected $errorsType = 'Google_Service_SQLAdmin_OperationError';
   protected $errorsDataType = 'array';
   public $kind;
 
@@ -3147,12 +3147,12 @@ class Powerform_Google_Service_SQLAdmin_OperationErrors extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_OperationsListResponse extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_OperationsListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_SQLAdmin_Operation';
+  protected $itemsType = 'Google_Service_SQLAdmin_Operation';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3184,13 +3184,13 @@ class Powerform_Google_Service_SQLAdmin_OperationsListResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_ReplicaConfiguration extends Powerform_Google_Model
+class Google_Service_SQLAdmin_ReplicaConfiguration extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $failoverTarget;
   public $kind;
-  protected $mysqlReplicaConfigurationType = 'Powerform_Google_Service_SQLAdmin_MySqlReplicaConfiguration';
+  protected $mysqlReplicaConfigurationType = 'Google_Service_SQLAdmin_MySqlReplicaConfiguration';
   protected $mysqlReplicaConfigurationDataType = '';
 
 
@@ -3210,7 +3210,7 @@ class Powerform_Google_Service_SQLAdmin_ReplicaConfiguration extends Powerform_G
   {
     return $this->kind;
   }
-  public function setMysqlReplicaConfiguration(Powerform_Google_Service_SQLAdmin_MySqlReplicaConfiguration $mysqlReplicaConfiguration)
+  public function setMysqlReplicaConfiguration(Google_Service_SQLAdmin_MySqlReplicaConfiguration $mysqlReplicaConfiguration)
   {
     $this->mysqlReplicaConfiguration = $mysqlReplicaConfiguration;
   }
@@ -3220,7 +3220,7 @@ class Powerform_Google_Service_SQLAdmin_ReplicaConfiguration extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_RestoreBackupContext extends Powerform_Google_Model
+class Google_Service_SQLAdmin_RestoreBackupContext extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3255,27 +3255,27 @@ class Powerform_Google_Service_SQLAdmin_RestoreBackupContext extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_Settings extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_Settings extends Google_Collection
 {
   protected $collection_key = 'databaseFlags';
   protected $internal_gapi_mappings = array(
   );
   public $activationPolicy;
   public $authorizedGaeApplications;
-  protected $backupConfigurationType = 'Powerform_Google_Service_SQLAdmin_BackupConfiguration';
+  protected $backupConfigurationType = 'Google_Service_SQLAdmin_BackupConfiguration';
   protected $backupConfigurationDataType = '';
   public $crashSafeReplicationEnabled;
   public $dataDiskSizeGb;
   public $dataDiskType;
-  protected $databaseFlagsType = 'Powerform_Google_Service_SQLAdmin_DatabaseFlags';
+  protected $databaseFlagsType = 'Google_Service_SQLAdmin_DatabaseFlags';
   protected $databaseFlagsDataType = 'array';
   public $databaseReplicationEnabled;
-  protected $ipConfigurationType = 'Powerform_Google_Service_SQLAdmin_IpConfiguration';
+  protected $ipConfigurationType = 'Google_Service_SQLAdmin_IpConfiguration';
   protected $ipConfigurationDataType = '';
   public $kind;
-  protected $locationPreferenceType = 'Powerform_Google_Service_SQLAdmin_LocationPreference';
+  protected $locationPreferenceType = 'Google_Service_SQLAdmin_LocationPreference';
   protected $locationPreferenceDataType = '';
-  protected $maintenanceWindowType = 'Powerform_Google_Service_SQLAdmin_MaintenanceWindow';
+  protected $maintenanceWindowType = 'Google_Service_SQLAdmin_MaintenanceWindow';
   protected $maintenanceWindowDataType = '';
   public $pricingPlan;
   public $replicationType;
@@ -3299,7 +3299,7 @@ class Powerform_Google_Service_SQLAdmin_Settings extends Powerform_Google_Collec
   {
     return $this->authorizedGaeApplications;
   }
-  public function setBackupConfiguration(Powerform_Google_Service_SQLAdmin_BackupConfiguration $backupConfiguration)
+  public function setBackupConfiguration(Google_Service_SQLAdmin_BackupConfiguration $backupConfiguration)
   {
     $this->backupConfiguration = $backupConfiguration;
   }
@@ -3347,7 +3347,7 @@ class Powerform_Google_Service_SQLAdmin_Settings extends Powerform_Google_Collec
   {
     return $this->databaseReplicationEnabled;
   }
-  public function setIpConfiguration(Powerform_Google_Service_SQLAdmin_IpConfiguration $ipConfiguration)
+  public function setIpConfiguration(Google_Service_SQLAdmin_IpConfiguration $ipConfiguration)
   {
     $this->ipConfiguration = $ipConfiguration;
   }
@@ -3363,7 +3363,7 @@ class Powerform_Google_Service_SQLAdmin_Settings extends Powerform_Google_Collec
   {
     return $this->kind;
   }
-  public function setLocationPreference(Powerform_Google_Service_SQLAdmin_LocationPreference $locationPreference)
+  public function setLocationPreference(Google_Service_SQLAdmin_LocationPreference $locationPreference)
   {
     $this->locationPreference = $locationPreference;
   }
@@ -3371,7 +3371,7 @@ class Powerform_Google_Service_SQLAdmin_Settings extends Powerform_Google_Collec
   {
     return $this->locationPreference;
   }
-  public function setMaintenanceWindow(Powerform_Google_Service_SQLAdmin_MaintenanceWindow $maintenanceWindow)
+  public function setMaintenanceWindow(Google_Service_SQLAdmin_MaintenanceWindow $maintenanceWindow)
   {
     $this->maintenanceWindow = $maintenanceWindow;
   }
@@ -3413,7 +3413,7 @@ class Powerform_Google_Service_SQLAdmin_Settings extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_SslCert extends Powerform_Google_Model
+class Google_Service_SQLAdmin_SslCert extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3502,16 +3502,16 @@ class Powerform_Google_Service_SQLAdmin_SslCert extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_SslCertDetail extends Powerform_Google_Model
+class Google_Service_SQLAdmin_SslCertDetail extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $certInfoType = 'Powerform_Google_Service_SQLAdmin_SslCert';
+  protected $certInfoType = 'Google_Service_SQLAdmin_SslCert';
   protected $certInfoDataType = '';
   public $certPrivateKey;
 
 
-  public function setCertInfo(Powerform_Google_Service_SQLAdmin_SslCert $certInfo)
+  public function setCertInfo(Google_Service_SQLAdmin_SslCert $certInfo)
   {
     $this->certInfo = $certInfo;
   }
@@ -3529,7 +3529,7 @@ class Powerform_Google_Service_SQLAdmin_SslCertDetail extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_SslCertsCreateEphemeralRequest extends Powerform_Google_Model
+class Google_Service_SQLAdmin_SslCertsCreateEphemeralRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "publicKey" => "public_key",
@@ -3547,7 +3547,7 @@ class Powerform_Google_Service_SQLAdmin_SslCertsCreateEphemeralRequest extends P
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_SslCertsInsertRequest extends Powerform_Google_Model
+class Google_Service_SQLAdmin_SslCertsInsertRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3564,18 +3564,18 @@ class Powerform_Google_Service_SQLAdmin_SslCertsInsertRequest extends Powerform_
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_SslCertsInsertResponse extends Powerform_Google_Model
+class Google_Service_SQLAdmin_SslCertsInsertResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $clientCertType = 'Powerform_Google_Service_SQLAdmin_SslCertDetail';
+  protected $clientCertType = 'Google_Service_SQLAdmin_SslCertDetail';
   protected $clientCertDataType = '';
   public $kind;
-  protected $serverCaCertType = 'Powerform_Google_Service_SQLAdmin_SslCert';
+  protected $serverCaCertType = 'Google_Service_SQLAdmin_SslCert';
   protected $serverCaCertDataType = '';
 
 
-  public function setClientCert(Powerform_Google_Service_SQLAdmin_SslCertDetail $clientCert)
+  public function setClientCert(Google_Service_SQLAdmin_SslCertDetail $clientCert)
   {
     $this->clientCert = $clientCert;
   }
@@ -3591,7 +3591,7 @@ class Powerform_Google_Service_SQLAdmin_SslCertsInsertResponse extends Powerform
   {
     return $this->kind;
   }
-  public function setServerCaCert(Powerform_Google_Service_SQLAdmin_SslCert $serverCaCert)
+  public function setServerCaCert(Google_Service_SQLAdmin_SslCert $serverCaCert)
   {
     $this->serverCaCert = $serverCaCert;
   }
@@ -3601,12 +3601,12 @@ class Powerform_Google_Service_SQLAdmin_SslCertsInsertResponse extends Powerform
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_SslCertsListResponse extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_SslCertsListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_SQLAdmin_SslCert';
+  protected $itemsType = 'Google_Service_SQLAdmin_SslCert';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -3629,7 +3629,7 @@ class Powerform_Google_Service_SQLAdmin_SslCertsListResponse extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_Tier extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_Tier extends Google_Collection
 {
   protected $collection_key = 'region';
   protected $internal_gapi_mappings = array(
@@ -3685,12 +3685,12 @@ class Powerform_Google_Service_SQLAdmin_Tier extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_TiersListResponse extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_TiersListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_SQLAdmin_Tier';
+  protected $itemsType = 'Google_Service_SQLAdmin_Tier';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -3713,7 +3713,7 @@ class Powerform_Google_Service_SQLAdmin_TiersListResponse extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_User extends Powerform_Google_Model
+class Google_Service_SQLAdmin_User extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3784,12 +3784,12 @@ class Powerform_Google_Service_SQLAdmin_User extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_SQLAdmin_UsersListResponse extends Powerform_Google_Collection
+class Google_Service_SQLAdmin_UsersListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_SQLAdmin_User';
+  protected $itemsType = 'Google_Service_SQLAdmin_User';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;

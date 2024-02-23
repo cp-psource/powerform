@@ -1,7 +1,7 @@
 <?php
-$section              = isset( $_GET['section'] ) ? sanitize_text_field( $_GET['section'] ) : 'dashboard';
+$section              = isset( $_GET['section'] ) ? $_GET['section'] : 'dashboard'; // wpcs csrf ok.
 $nonce                = wp_create_nonce( 'powerform_save_popup_uninstall_settings' );
-$powerform_uninstall = get_option( 'powerform_uninstall_clear_data', false );
+$powerform_uninstall = get_option( "powerform_uninstall_clear_data", false );
 
 ?>
 
@@ -18,7 +18,7 @@ $powerform_uninstall = get_option( 'powerform_uninstall_clear_data', false );
 
 				<div class="sui-box-settings-col-1">
 					<span class="sui-settings-label"><?php esc_html_e( 'Deinstallation', Powerform::DOMAIN ); ?></span>
-					<span class="sui-description"><?php esc_html_e( 'Was möchtest Du bei der Deinstallation dieses Plugins mit den Einstellungen und Daten Deines Plugins tun?', Powerform::DOMAIN ); ?></span>
+					<span class="sui-description"><?php esc_html_e( 'Was möchtest Du mit den Plugindaten tun, wenn Du dieses Plugin deinstallierst?', Powerform::DOMAIN ); ?></span>
 				</div>
 
 				<div class="sui-box-settings-col-2">
@@ -28,18 +28,18 @@ $powerform_uninstall = get_option( 'powerform_uninstall_clear_data', false );
 
 							<label for="delete_uninstall-false" class="sui-tab-item<?php echo $powerform_uninstall ? '' : ' active'; ?>">
 								<input type="radio"
-									name="delete_uninstall"
-									value="false"
-									id="delete_uninstall-false"
+								       name="delete_uninstall"
+								       value="false"
+								       id="delete_uninstall-false"
 									<?php echo esc_attr( checked( $powerform_uninstall, false ) ); ?> />
-								<?php esc_html_e( 'Erhalten', Powerform::DOMAIN ); ?>
+								<?php esc_html_e( 'Bewahren', Powerform::DOMAIN ); ?>
 							</label>
 
 							<label for="delete_uninstall-true" class="sui-tab-item<?php echo $powerform_uninstall ? ' active' : ''; ?>">
 								<input type="radio"
-									name="delete_uninstall"
-									value="true"
-									id="delete_uninstall-true"
+								       name="delete_uninstall"
+								       value="true"
+								       id="delete_uninstall-true"
 									<?php echo esc_attr( checked( $powerform_uninstall, true ) ); ?> />
 								<?php esc_html_e( 'Zurücksetzen', Powerform::DOMAIN ); ?>
 							</label>
@@ -60,11 +60,11 @@ $powerform_uninstall = get_option( 'powerform_uninstall_clear_data', false );
 
 				<div class="sui-box-settings-col-2">
 					<button
-							class="sui-button sui-button-ghost psource-open-modal"
+							class="sui-button sui-button-ghost wpmudev-open-modal"
 							data-modal="reset-plugin-settings"
 							data-modal-title="<?php esc_attr_e( 'Plugin zurücksetzen', Powerform::DOMAIN ); ?>"
 							data-modal-content="<?php esc_attr_e( 'Möchtest Du das Plugin wirklich auf den Standardzustand zurücksetzen?', Powerform::DOMAIN ); ?>"
-							data-nonce="<?php echo esc_attr( wp_create_nonce( 'powerformSettingsRequest' ) ); ?>"
+							data-nonce="<?php echo wp_create_nonce( 'powerformSettingsRequest' ); // WPCS: XSS ok. ?>"
 					>
 
 						<span class="sui-loading-text">
@@ -74,12 +74,10 @@ $powerform_uninstall = get_option( 'powerform_uninstall_clear_data', false );
 
 					</button>
 					<span class="sui-description">
-						<?php
-						esc_html_e(
-							'Hinweis: Dadurch werden alle derzeit vorhandenen Formulare/Umfragen/Tests gelöscht und alle Einstellungen auf ihren Standardstatus zurückgesetzt.',
+						<?php esc_html_e(
+							'Hinweis: Dadurch werden alle Formulare/Umfragen/Tests, die Du derzeit hast, gelöscht und alle Einstellungen auf den Standardzustand zurückgesetzt.',
 							Powerform::DOMAIN
-						);
-						?>
+						); ?>
 					</span>
 				</div>
 
@@ -91,8 +89,8 @@ $powerform_uninstall = get_option( 'powerform_uninstall_clear_data', false );
 
 			<div class="sui-actions-right">
 
-				<button class="sui-button sui-button-blue psource-action-done" data-title="<?php esc_attr_e( 'Dateneinstellungen', Powerform::DOMAIN ); ?>" data-action="uninstall_settings"
-						data-nonce="<?php echo esc_attr( $nonce ); ?>">
+				<button class="sui-button sui-button-blue wpmudev-action-done" data-title="<?php esc_attr_e( "Dateneinstellungen", Powerform::DOMAIN ); ?>" data-action="uninstall_settings"
+				        data-nonce="<?php echo esc_attr( $nonce ); ?>">
 					<span class="sui-loading-text"><?php esc_html_e( 'Einstellungen speichern', Powerform::DOMAIN ); ?></span>
 					<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>
 				</button>

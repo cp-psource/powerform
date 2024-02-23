@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Resourceviews extends Powerform_Google_Service
+class Google_Service_Resourceviews extends Google_Service
 {
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
@@ -50,14 +50,14 @@ class Powerform_Google_Service_Resourceviews extends Powerform_Google_Service
 
   public $zoneOperations;
   public $zoneViews;
-  
+
 
   /**
    * Constructs the internal representation of the Resourceviews service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -65,7 +65,7 @@ class Powerform_Google_Service_Resourceviews extends Powerform_Google_Service
     $this->version = 'v1beta2';
     $this->serviceName = 'resourceviews';
 
-    $this->zoneOperations = new Powerform_Google_Service_Resourceviews_ZoneOperations_Resource(
+    $this->zoneOperations = new Google_Service_Resourceviews_ZoneOperations_Resource(
         $this,
         $this->serviceName,
         'zoneOperations',
@@ -122,7 +122,7 @@ class Powerform_Google_Service_Resourceviews extends Powerform_Google_Service
           )
         )
     );
-    $this->zoneViews = new Powerform_Google_Service_Resourceviews_ZoneViews_Resource(
+    $this->zoneViews = new Google_Service_Resourceviews_ZoneViews_Resource(
         $this,
         $this->serviceName,
         'zoneViews',
@@ -342,11 +342,11 @@ class Powerform_Google_Service_Resourceviews extends Powerform_Google_Service
  * The "zoneOperations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $resourceviewsService = new Powerform_Google_Service_Resourceviews(...);
+ *   $resourceviewsService = new Google_Service_Resourceviews(...);
  *   $zoneOperations = $resourceviewsService->zoneOperations;
  *  </code>
  */
-class Powerform_Google_Service_Resourceviews_ZoneOperations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Resourceviews_ZoneOperations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -357,13 +357,13 @@ class Powerform_Google_Service_Resourceviews_ZoneOperations_Resource extends Pow
    * @param string $zone Name of the zone scoping this request.
    * @param string $operation Name of the operation resource to return.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Resourceviews_Operation
+   * @return Google_Service_Resourceviews_Operation
    */
   public function get($project, $zone, $operation, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'operation' => $operation);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Resourceviews_Operation");
+    return $this->call('get', array($params), "Google_Service_Resourceviews_Operation");
   }
 
   /**
@@ -380,13 +380,13 @@ class Powerform_Google_Service_Resourceviews_ZoneOperations_Resource extends Pow
    * returned. Maximum value is 500 and default value is 500.
    * @opt_param string pageToken Optional. Tag returned by a previous list request
    * truncated by maxResults. Used to continue a previous list request.
-   * @return Powerform_Google_Service_Resourceviews_OperationList
+   * @return Google_Service_Resourceviews_OperationList
    */
   public function listZoneOperations($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Resourceviews_OperationList");
+    return $this->call('list', array($params), "Google_Service_Resourceviews_OperationList");
   }
 }
 
@@ -394,11 +394,11 @@ class Powerform_Google_Service_Resourceviews_ZoneOperations_Resource extends Pow
  * The "zoneViews" collection of methods.
  * Typical usage is:
  *  <code>
- *   $resourceviewsService = new Powerform_Google_Service_Resourceviews(...);
+ *   $resourceviewsService = new Google_Service_Resourceviews(...);
  *   $zoneViews = $resourceviewsService->zoneViews;
  *  </code>
  */
-class Powerform_Google_Service_Resourceviews_ZoneViews_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Resourceviews_ZoneViews_Resource extends Google_Service_Resource
 {
 
   /**
@@ -407,15 +407,15 @@ class Powerform_Google_Service_Resourceviews_ZoneViews_Resource extends Powerfor
    * @param string $project The project name of the resource view.
    * @param string $zone The zone name of the resource view.
    * @param string $resourceView The name of the resource view.
-   * @param Powerform_Google_ZoneViewsAddResourcesRequest $postBody
+   * @param Google_ZoneViewsAddResourcesRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Resourceviews_Operation
+   * @return Google_Service_Resourceviews_Operation
    */
-  public function addResources($project, $zone, $resourceView, Powerform_Google_Service_Resourceviews_ZoneViewsAddResourcesRequest $postBody, $optParams = array())
+  public function addResources($project, $zone, $resourceView, Google_Service_Resourceviews_ZoneViewsAddResourcesRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'resourceView' => $resourceView, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('addResources', array($params), "Powerform_Google_Service_Resourceviews_Operation");
+    return $this->call('addResources', array($params), "Google_Service_Resourceviews_Operation");
   }
 
   /**
@@ -425,13 +425,13 @@ class Powerform_Google_Service_Resourceviews_ZoneViews_Resource extends Powerfor
    * @param string $zone The zone name of the resource view.
    * @param string $resourceView The name of the resource view.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Resourceviews_Operation
+   * @return Google_Service_Resourceviews_Operation
    */
   public function delete($project, $zone, $resourceView, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'resourceView' => $resourceView);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Resourceviews_Operation");
+    return $this->call('delete', array($params), "Google_Service_Resourceviews_Operation");
   }
 
   /**
@@ -441,13 +441,13 @@ class Powerform_Google_Service_Resourceviews_ZoneViews_Resource extends Powerfor
    * @param string $zone The zone name of the resource view.
    * @param string $resourceView The name of the resource view.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Resourceviews_ResourceView
+   * @return Google_Service_Resourceviews_ResourceView
    */
   public function get($project, $zone, $resourceView, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'resourceView' => $resourceView);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Resourceviews_ResourceView");
+    return $this->call('get', array($params), "Google_Service_Resourceviews_ResourceView");
   }
 
   /**
@@ -461,13 +461,13 @@ class Powerform_Google_Service_Resourceviews_ZoneViews_Resource extends Powerfor
    *
    * @opt_param string resourceName The name of the resource if user wants to get
    * the service information of the resource.
-   * @return Powerform_Google_Service_Resourceviews_ZoneViewsGetServiceResponse
+   * @return Google_Service_Resourceviews_ZoneViewsGetServiceResponse
    */
   public function getService($project, $zone, $resourceView, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'resourceView' => $resourceView);
     $params = array_merge($params, $optParams);
-    return $this->call('getService', array($params), "Powerform_Google_Service_Resourceviews_ZoneViewsGetServiceResponse");
+    return $this->call('getService', array($params), "Google_Service_Resourceviews_ZoneViewsGetServiceResponse");
   }
 
   /**
@@ -475,15 +475,15 @@ class Powerform_Google_Service_Resourceviews_ZoneViews_Resource extends Powerfor
    *
    * @param string $project The project name of the resource view.
    * @param string $zone The zone name of the resource view.
-   * @param Powerform_Google_ResourceView $postBody
+   * @param Google_ResourceView $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Resourceviews_Operation
+   * @return Google_Service_Resourceviews_Operation
    */
-  public function insert($project, $zone, Powerform_Google_Service_Resourceviews_ResourceView $postBody, $optParams = array())
+  public function insert($project, $zone, Google_Service_Resourceviews_ResourceView $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Resourceviews_Operation");
+    return $this->call('insert', array($params), "Google_Service_Resourceviews_Operation");
   }
 
   /**
@@ -498,13 +498,13 @@ class Powerform_Google_Service_Resourceviews_ZoneViews_Resource extends Powerfor
    * @opt_param string pageToken Specifies a nextPageToken returned by a previous
    * list request. This token can be used to request the next page of results from
    * a previous list request.
-   * @return Powerform_Google_Service_Resourceviews_ZoneViewsList
+   * @return Google_Service_Resourceviews_ZoneViewsList
    */
   public function listZoneViews($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Resourceviews_ZoneViewsList");
+    return $this->call('list', array($params), "Google_Service_Resourceviews_ZoneViewsList");
   }
 
   /**
@@ -528,13 +528,13 @@ class Powerform_Google_Service_Resourceviews_ZoneViews_Resource extends Powerfor
    * @opt_param string serviceName The service name to return in the response. It
    * is optional and if it is not set, all the service end points will be
    * returned.
-   * @return Powerform_Google_Service_Resourceviews_ZoneViewsListResourcesResponse
+   * @return Google_Service_Resourceviews_ZoneViewsListResourcesResponse
    */
   public function listResources($project, $zone, $resourceView, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'resourceView' => $resourceView);
     $params = array_merge($params, $optParams);
-    return $this->call('listResources', array($params), "Powerform_Google_Service_Resourceviews_ZoneViewsListResourcesResponse");
+    return $this->call('listResources', array($params), "Google_Service_Resourceviews_ZoneViewsListResourcesResponse");
   }
 
   /**
@@ -543,15 +543,15 @@ class Powerform_Google_Service_Resourceviews_ZoneViews_Resource extends Powerfor
    * @param string $project The project name of the resource view.
    * @param string $zone The zone name of the resource view.
    * @param string $resourceView The name of the resource view.
-   * @param Powerform_Google_ZoneViewsRemoveResourcesRequest $postBody
+   * @param Google_ZoneViewsRemoveResourcesRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Resourceviews_Operation
+   * @return Google_Service_Resourceviews_Operation
    */
-  public function removeResources($project, $zone, $resourceView, Powerform_Google_Service_Resourceviews_ZoneViewsRemoveResourcesRequest $postBody, $optParams = array())
+  public function removeResources($project, $zone, $resourceView, Google_Service_Resourceviews_ZoneViewsRemoveResourcesRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'resourceView' => $resourceView, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('removeResources', array($params), "Powerform_Google_Service_Resourceviews_Operation");
+    return $this->call('removeResources', array($params), "Google_Service_Resourceviews_Operation");
   }
 
   /**
@@ -561,22 +561,22 @@ class Powerform_Google_Service_Resourceviews_ZoneViews_Resource extends Powerfor
    * @param string $project The project name of the resource view.
    * @param string $zone The zone name of the resource view.
    * @param string $resourceView The name of the resource view.
-   * @param Powerform_Google_ZoneViewsSetServiceRequest $postBody
+   * @param Google_ZoneViewsSetServiceRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Resourceviews_Operation
+   * @return Google_Service_Resourceviews_Operation
    */
-  public function setService($project, $zone, $resourceView, Powerform_Google_Service_Resourceviews_ZoneViewsSetServiceRequest $postBody, $optParams = array())
+  public function setService($project, $zone, $resourceView, Google_Service_Resourceviews_ZoneViewsSetServiceRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'resourceView' => $resourceView, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('setService', array($params), "Powerform_Google_Service_Resourceviews_Operation");
+    return $this->call('setService', array($params), "Google_Service_Resourceviews_Operation");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Resourceviews_Label extends Powerform_Google_Model
+class Google_Service_Resourceviews_Label extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -602,7 +602,7 @@ class Powerform_Google_Service_Resourceviews_Label extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Resourceviews_ListResourceResponseItem extends Powerform_Google_Model
+class Google_Service_Resourceviews_ListResourceResponseItem extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -628,7 +628,7 @@ class Powerform_Google_Service_Resourceviews_ListResourceResponseItem extends Po
   }
 }
 
-class Powerform_Google_Service_Resourceviews_Operation extends Powerform_Google_Collection
+class Google_Service_Resourceviews_Operation extends Google_Collection
 {
   protected $collection_key = 'warnings';
   protected $internal_gapi_mappings = array(
@@ -636,7 +636,7 @@ class Powerform_Google_Service_Resourceviews_Operation extends Powerform_Google_
   public $clientOperationId;
   public $creationTimestamp;
   public $endTime;
-  protected $errorType = 'Powerform_Google_Service_Resourceviews_OperationError';
+  protected $errorType = 'Google_Service_Resourceviews_OperationError';
   protected $errorDataType = '';
   public $httpErrorMessage;
   public $httpErrorStatusCode;
@@ -654,7 +654,7 @@ class Powerform_Google_Service_Resourceviews_Operation extends Powerform_Google_
   public $targetId;
   public $targetLink;
   public $user;
-  protected $warningsType = 'Powerform_Google_Service_Resourceviews_OperationWarnings';
+  protected $warningsType = 'Google_Service_Resourceviews_OperationWarnings';
   protected $warningsDataType = 'array';
   public $zone;
 
@@ -683,7 +683,7 @@ class Powerform_Google_Service_Resourceviews_Operation extends Powerform_Google_
   {
     return $this->endTime;
   }
-  public function setError(Powerform_Google_Service_Resourceviews_OperationError $error)
+  public function setError(Google_Service_Resourceviews_OperationError $error)
   {
     $this->error = $error;
   }
@@ -837,12 +837,12 @@ class Powerform_Google_Service_Resourceviews_Operation extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Resourceviews_OperationError extends Powerform_Google_Collection
+class Google_Service_Resourceviews_OperationError extends Google_Collection
 {
   protected $collection_key = 'errors';
   protected $internal_gapi_mappings = array(
   );
-  protected $errorsType = 'Powerform_Google_Service_Resourceviews_OperationErrorErrors';
+  protected $errorsType = 'Google_Service_Resourceviews_OperationErrorErrors';
   protected $errorsDataType = 'array';
 
 
@@ -856,7 +856,7 @@ class Powerform_Google_Service_Resourceviews_OperationError extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Resourceviews_OperationErrorErrors extends Powerform_Google_Model
+class Google_Service_Resourceviews_OperationErrorErrors extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -891,13 +891,13 @@ class Powerform_Google_Service_Resourceviews_OperationErrorErrors extends Powerf
   }
 }
 
-class Powerform_Google_Service_Resourceviews_OperationList extends Powerform_Google_Collection
+class Google_Service_Resourceviews_OperationList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $id;
-  protected $itemsType = 'Powerform_Google_Service_Resourceviews_Operation';
+  protected $itemsType = 'Google_Service_Resourceviews_Operation';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -946,13 +946,13 @@ class Powerform_Google_Service_Resourceviews_OperationList extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Resourceviews_OperationWarnings extends Powerform_Google_Collection
+class Google_Service_Resourceviews_OperationWarnings extends Google_Collection
 {
   protected $collection_key = 'data';
   protected $internal_gapi_mappings = array(
   );
   public $code;
-  protected $dataType = 'Powerform_Google_Service_Resourceviews_OperationWarningsData';
+  protected $dataType = 'Google_Service_Resourceviews_OperationWarningsData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -983,7 +983,7 @@ class Powerform_Google_Service_Resourceviews_OperationWarnings extends Powerform
   }
 }
 
-class Powerform_Google_Service_Resourceviews_OperationWarningsData extends Powerform_Google_Model
+class Google_Service_Resourceviews_OperationWarningsData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1009,19 +1009,19 @@ class Powerform_Google_Service_Resourceviews_OperationWarningsData extends Power
   }
 }
 
-class Powerform_Google_Service_Resourceviews_ResourceView extends Powerform_Google_Collection
+class Google_Service_Resourceviews_ResourceView extends Google_Collection
 {
   protected $collection_key = 'resources';
   protected $internal_gapi_mappings = array(
   );
   public $creationTimestamp;
   public $description;
-  protected $endpointsType = 'Powerform_Google_Service_Resourceviews_ServiceEndpoint';
+  protected $endpointsType = 'Google_Service_Resourceviews_ServiceEndpoint';
   protected $endpointsDataType = 'array';
   public $fingerprint;
   public $id;
   public $kind;
-  protected $labelsType = 'Powerform_Google_Service_Resourceviews_Label';
+  protected $labelsType = 'Google_Service_Resourceviews_Label';
   protected $labelsDataType = 'array';
   public $name;
   public $network;
@@ -1128,7 +1128,7 @@ class Powerform_Google_Service_Resourceviews_ResourceView extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Resourceviews_ServiceEndpoint extends Powerform_Google_Model
+class Google_Service_Resourceviews_ServiceEndpoint extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1154,7 +1154,7 @@ class Powerform_Google_Service_Resourceviews_ServiceEndpoint extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Resourceviews_ZoneViewsAddResourcesRequest extends Powerform_Google_Collection
+class Google_Service_Resourceviews_ZoneViewsAddResourcesRequest extends Google_Collection
 {
   protected $collection_key = 'resources';
   protected $internal_gapi_mappings = array(
@@ -1172,12 +1172,12 @@ class Powerform_Google_Service_Resourceviews_ZoneViewsAddResourcesRequest extend
   }
 }
 
-class Powerform_Google_Service_Resourceviews_ZoneViewsGetServiceResponse extends Powerform_Google_Collection
+class Google_Service_Resourceviews_ZoneViewsGetServiceResponse extends Google_Collection
 {
   protected $collection_key = 'endpoints';
   protected $internal_gapi_mappings = array(
   );
-  protected $endpointsType = 'Powerform_Google_Service_Resourceviews_ServiceEndpoint';
+  protected $endpointsType = 'Google_Service_Resourceviews_ServiceEndpoint';
   protected $endpointsDataType = 'array';
   public $fingerprint;
 
@@ -1200,12 +1200,12 @@ class Powerform_Google_Service_Resourceviews_ZoneViewsGetServiceResponse extends
   }
 }
 
-class Powerform_Google_Service_Resourceviews_ZoneViewsList extends Powerform_Google_Collection
+class Google_Service_Resourceviews_ZoneViewsList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Resourceviews_ResourceView';
+  protected $itemsType = 'Google_Service_Resourceviews_ResourceView';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1246,12 +1246,12 @@ class Powerform_Google_Service_Resourceviews_ZoneViewsList extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Resourceviews_ZoneViewsListResourcesResponse extends Powerform_Google_Collection
+class Google_Service_Resourceviews_ZoneViewsListResourcesResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Resourceviews_ListResourceResponseItem';
+  protected $itemsType = 'Google_Service_Resourceviews_ListResourceResponseItem';
   protected $itemsDataType = 'array';
   public $network;
   public $nextPageToken;
@@ -1283,7 +1283,7 @@ class Powerform_Google_Service_Resourceviews_ZoneViewsListResourcesResponse exte
   }
 }
 
-class Powerform_Google_Service_Resourceviews_ZoneViewsRemoveResourcesRequest extends Powerform_Google_Collection
+class Google_Service_Resourceviews_ZoneViewsRemoveResourcesRequest extends Google_Collection
 {
   protected $collection_key = 'resources';
   protected $internal_gapi_mappings = array(
@@ -1301,12 +1301,12 @@ class Powerform_Google_Service_Resourceviews_ZoneViewsRemoveResourcesRequest ext
   }
 }
 
-class Powerform_Google_Service_Resourceviews_ZoneViewsSetServiceRequest extends Powerform_Google_Collection
+class Google_Service_Resourceviews_ZoneViewsSetServiceRequest extends Google_Collection
 {
   protected $collection_key = 'endpoints';
   protected $internal_gapi_mappings = array(
   );
-  protected $endpointsType = 'Powerform_Google_Service_Resourceviews_ServiceEndpoint';
+  protected $endpointsType = 'Google_Service_Resourceviews_ServiceEndpoint';
   protected $endpointsDataType = 'array';
   public $fingerprint;
   public $resourceName;

@@ -4,7 +4,7 @@ $vars = array(
 	'connected_account' => array(),
 	'auth_url'          => '',
 	'token'             => '',
-	'is_connected'      => false,
+	'is_connected'             => false,
 );
 /** @var array $template_vars */
 foreach ( $template_vars as $key => $val ) {
@@ -12,12 +12,7 @@ foreach ( $template_vars as $key => $val ) {
 }
 ?>
 <div class="integration-header">
-	<h3 class="sui-box-title" id="dialogTitle2">
-		<?php
-		/* translators: ... */
-		echo esc_html( sprintf( __( 'Connect %1$s', Powerform::DOMAIN ), 'Trello' ) );
-		?>
-	</h3>
+	<h3 class="sui-box-title" id="dialogTitle2"><?php echo esc_html( sprintf( __( 'Connect %1$s', Powerform::DOMAIN ), 'Trello' ) ); ?></h3>
 	<?php if ( ! empty( $vars['connected_account'] ) ) : ?>
 		<p><?php esc_html_e( 'Your Trello account is now authorized', Powerform::DOMAIN ); ?> </p>
 		<strong><?php echo esc_html( $vars['connected_account']['email'] ); ?></strong>

@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Replicapool extends Powerform_Google_Service
+class Google_Service_Replicapool extends Google_Service
 {
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
@@ -44,14 +44,14 @@ class Powerform_Google_Service_Replicapool extends Powerform_Google_Service
 
   public $instanceGroupManagers;
   public $zoneOperations;
-  
+
 
   /**
    * Constructs the internal representation of the Replicapool service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -59,7 +59,7 @@ class Powerform_Google_Service_Replicapool extends Powerform_Google_Service
     $this->version = 'v1beta2';
     $this->serviceName = 'replicapool';
 
-    $this->instanceGroupManagers = new Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource(
+    $this->instanceGroupManagers = new Google_Service_Replicapool_InstanceGroupManagers_Resource(
         $this,
         $this->serviceName,
         'instanceGroupManagers',
@@ -281,7 +281,7 @@ class Powerform_Google_Service_Replicapool extends Powerform_Google_Service
           )
         )
     );
-    $this->zoneOperations = new Powerform_Google_Service_Replicapool_ZoneOperations_Resource(
+    $this->zoneOperations = new Google_Service_Replicapool_ZoneOperations_Resource(
         $this,
         $this->serviceName,
         'zoneOperations',
@@ -346,11 +346,11 @@ class Powerform_Google_Service_Replicapool extends Powerform_Google_Service
  * The "instanceGroupManagers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $replicapoolService = new Powerform_Google_Service_Replicapool(...);
+ *   $replicapoolService = new Google_Service_Replicapool(...);
  *   $instanceGroupManagers = $replicapoolService->instanceGroupManagers;
  *  </code>
  */
-class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Replicapool_InstanceGroupManagers_Resource extends Google_Service_Resource
 {
 
   /**
@@ -362,15 +362,15 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
    * @param string $zone The name of the zone in which the instance group manager
    * resides.
    * @param string $instanceGroupManager The name of the instance group manager.
-   * @param Powerform_Google_InstanceGroupManagersAbandonInstancesRequest $postBody
+   * @param Google_InstanceGroupManagersAbandonInstancesRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapool_Operation
+   * @return Google_Service_Replicapool_Operation
    */
-  public function abandonInstances($project, $zone, $instanceGroupManager, Powerform_Google_Service_Replicapool_InstanceGroupManagersAbandonInstancesRequest $postBody, $optParams = array())
+  public function abandonInstances($project, $zone, $instanceGroupManager, Google_Service_Replicapool_InstanceGroupManagersAbandonInstancesRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('abandonInstances', array($params), "Powerform_Google_Service_Replicapool_Operation");
+    return $this->call('abandonInstances', array($params), "Google_Service_Replicapool_Operation");
   }
 
   /**
@@ -385,13 +385,13 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
    * @param string $instanceGroupManager Name of the Instance Group Manager
    * resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapool_Operation
+   * @return Google_Service_Replicapool_Operation
    */
   public function delete($project, $zone, $instanceGroupManager, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Powerform_Google_Service_Replicapool_Operation");
+    return $this->call('delete', array($params), "Google_Service_Replicapool_Operation");
   }
 
   /**
@@ -404,15 +404,15 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
    * @param string $zone The name of the zone in which the instance group manager
    * resides.
    * @param string $instanceGroupManager The name of the instance group manager.
-   * @param Powerform_Google_InstanceGroupManagersDeleteInstancesRequest $postBody
+   * @param Google_InstanceGroupManagersDeleteInstancesRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapool_Operation
+   * @return Google_Service_Replicapool_Operation
    */
-  public function deleteInstances($project, $zone, $instanceGroupManager, Powerform_Google_Service_Replicapool_InstanceGroupManagersDeleteInstancesRequest $postBody, $optParams = array())
+  public function deleteInstances($project, $zone, $instanceGroupManager, Google_Service_Replicapool_InstanceGroupManagersDeleteInstancesRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('deleteInstances', array($params), "Powerform_Google_Service_Replicapool_Operation");
+    return $this->call('deleteInstances', array($params), "Google_Service_Replicapool_Operation");
   }
 
   /**
@@ -424,13 +424,13 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
    * resides.
    * @param string $instanceGroupManager Name of the instance resource to return.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapool_InstanceGroupManager
+   * @return Google_Service_Replicapool_InstanceGroupManager
    */
   public function get($project, $zone, $instanceGroupManager, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Replicapool_InstanceGroupManager");
+    return $this->call('get', array($params), "Google_Service_Replicapool_InstanceGroupManager");
   }
 
   /**
@@ -441,15 +441,15 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
    * @param string $zone The name of the zone in which the instance group manager
    * resides.
    * @param int $size Number of instances that should exist.
-   * @param Powerform_Google_InstanceGroupManager $postBody
+   * @param Google_InstanceGroupManager $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapool_Operation
+   * @return Google_Service_Replicapool_Operation
    */
-  public function insert($project, $zone, $size, Powerform_Google_Service_Replicapool_InstanceGroupManager $postBody, $optParams = array())
+  public function insert($project, $zone, $size, Google_Service_Replicapool_InstanceGroupManager $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'size' => $size, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Replicapool_Operation");
+    return $this->call('insert', array($params), "Google_Service_Replicapool_Operation");
   }
 
   /**
@@ -467,13 +467,13 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
    * returned. Maximum value is 500 and default value is 500.
    * @opt_param string pageToken Optional. Tag returned by a previous list request
    * truncated by maxResults. Used to continue a previous list request.
-   * @return Powerform_Google_Service_Replicapool_InstanceGroupManagerList
+   * @return Google_Service_Replicapool_InstanceGroupManagerList
    */
   public function listInstanceGroupManagers($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Replicapool_InstanceGroupManagerList");
+    return $this->call('list', array($params), "Google_Service_Replicapool_InstanceGroupManagerList");
   }
 
   /**
@@ -485,15 +485,15 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
    * @param string $zone The name of the zone in which the instance group manager
    * resides.
    * @param string $instanceGroupManager The name of the instance group manager.
-   * @param Powerform_Google_InstanceGroupManagersRecreateInstancesRequest $postBody
+   * @param Google_InstanceGroupManagersRecreateInstancesRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapool_Operation
+   * @return Google_Service_Replicapool_Operation
    */
-  public function recreateInstances($project, $zone, $instanceGroupManager, Powerform_Google_Service_Replicapool_InstanceGroupManagersRecreateInstancesRequest $postBody, $optParams = array())
+  public function recreateInstances($project, $zone, $instanceGroupManager, Google_Service_Replicapool_InstanceGroupManagersRecreateInstancesRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('recreateInstances', array($params), "Powerform_Google_Service_Replicapool_Operation");
+    return $this->call('recreateInstances', array($params), "Google_Service_Replicapool_Operation");
   }
 
   /**
@@ -509,13 +509,13 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
    * @param int $size Number of instances that should exist in this Instance Group
    * Manager.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapool_Operation
+   * @return Google_Service_Replicapool_Operation
    */
   public function resize($project, $zone, $instanceGroupManager, $size, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager, 'size' => $size);
     $params = array_merge($params, $optParams);
-    return $this->call('resize', array($params), "Powerform_Google_Service_Replicapool_Operation");
+    return $this->call('resize', array($params), "Google_Service_Replicapool_Operation");
   }
 
   /**
@@ -527,15 +527,15 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
    * @param string $zone The name of the zone in which the instance group manager
    * resides.
    * @param string $instanceGroupManager The name of the instance group manager.
-   * @param Powerform_Google_InstanceGroupManagersSetInstanceTemplateRequest $postBody
+   * @param Google_InstanceGroupManagersSetInstanceTemplateRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapool_Operation
+   * @return Google_Service_Replicapool_Operation
    */
-  public function setInstanceTemplate($project, $zone, $instanceGroupManager, Powerform_Google_Service_Replicapool_InstanceGroupManagersSetInstanceTemplateRequest $postBody, $optParams = array())
+  public function setInstanceTemplate($project, $zone, $instanceGroupManager, Google_Service_Replicapool_InstanceGroupManagersSetInstanceTemplateRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('setInstanceTemplate', array($params), "Powerform_Google_Service_Replicapool_Operation");
+    return $this->call('setInstanceTemplate', array($params), "Google_Service_Replicapool_Operation");
   }
 
   /**
@@ -547,15 +547,15 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
    * @param string $zone The name of the zone in which the instance group manager
    * resides.
    * @param string $instanceGroupManager The name of the instance group manager.
-   * @param Powerform_Google_InstanceGroupManagersSetTargetPoolsRequest $postBody
+   * @param Google_InstanceGroupManagersSetTargetPoolsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapool_Operation
+   * @return Google_Service_Replicapool_Operation
    */
-  public function setTargetPools($project, $zone, $instanceGroupManager, Powerform_Google_Service_Replicapool_InstanceGroupManagersSetTargetPoolsRequest $postBody, $optParams = array())
+  public function setTargetPools($project, $zone, $instanceGroupManager, Google_Service_Replicapool_InstanceGroupManagersSetTargetPoolsRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('setTargetPools', array($params), "Powerform_Google_Service_Replicapool_Operation");
+    return $this->call('setTargetPools', array($params), "Google_Service_Replicapool_Operation");
   }
 }
 
@@ -563,11 +563,11 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagers_Resource extend
  * The "zoneOperations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $replicapoolService = new Powerform_Google_Service_Replicapool(...);
+ *   $replicapoolService = new Google_Service_Replicapool(...);
  *   $zoneOperations = $replicapoolService->zoneOperations;
  *  </code>
  */
-class Powerform_Google_Service_Replicapool_ZoneOperations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Replicapool_ZoneOperations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -578,13 +578,13 @@ class Powerform_Google_Service_Replicapool_ZoneOperations_Resource extends Power
    * @param string $zone Name of the zone scoping this request.
    * @param string $operation Name of the operation resource to return.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapool_Operation
+   * @return Google_Service_Replicapool_Operation
    */
   public function get($project, $zone, $operation, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'operation' => $operation);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Replicapool_Operation");
+    return $this->call('get', array($params), "Google_Service_Replicapool_Operation");
   }
 
   /**
@@ -601,25 +601,25 @@ class Powerform_Google_Service_Replicapool_ZoneOperations_Resource extends Power
    * returned. Maximum value is 500 and default value is 500.
    * @opt_param string pageToken Optional. Tag returned by a previous list request
    * truncated by maxResults. Used to continue a previous list request.
-   * @return Powerform_Google_Service_Replicapool_OperationList
+   * @return Google_Service_Replicapool_OperationList
    */
   public function listZoneOperations($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Replicapool_OperationList");
+    return $this->call('list', array($params), "Google_Service_Replicapool_OperationList");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Replicapool_InstanceGroupManager extends Powerform_Google_Collection
+class Google_Service_Replicapool_InstanceGroupManager extends Google_Collection
 {
   protected $collection_key = 'targetPools';
   protected $internal_gapi_mappings = array(
   );
-  protected $autoHealingPoliciesType = 'Powerform_Google_Service_Replicapool_ReplicaPoolAutoHealingPolicy';
+  protected $autoHealingPoliciesType = 'Google_Service_Replicapool_ReplicaPoolAutoHealingPolicy';
   protected $autoHealingPoliciesDataType = 'array';
   public $baseInstanceName;
   public $creationTimestamp;
@@ -750,13 +750,13 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManager extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Replicapool_InstanceGroupManagerList extends Powerform_Google_Collection
+class Google_Service_Replicapool_InstanceGroupManagerList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $id;
-  protected $itemsType = 'Powerform_Google_Service_Replicapool_InstanceGroupManager';
+  protected $itemsType = 'Google_Service_Replicapool_InstanceGroupManager';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -805,7 +805,7 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagerList extends Powe
   }
 }
 
-class Powerform_Google_Service_Replicapool_InstanceGroupManagersAbandonInstancesRequest extends Powerform_Google_Collection
+class Google_Service_Replicapool_InstanceGroupManagersAbandonInstancesRequest extends Google_Collection
 {
   protected $collection_key = 'instances';
   protected $internal_gapi_mappings = array(
@@ -823,7 +823,7 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagersAbandonInstances
   }
 }
 
-class Powerform_Google_Service_Replicapool_InstanceGroupManagersDeleteInstancesRequest extends Powerform_Google_Collection
+class Google_Service_Replicapool_InstanceGroupManagersDeleteInstancesRequest extends Google_Collection
 {
   protected $collection_key = 'instances';
   protected $internal_gapi_mappings = array(
@@ -841,7 +841,7 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagersDeleteInstancesR
   }
 }
 
-class Powerform_Google_Service_Replicapool_InstanceGroupManagersRecreateInstancesRequest extends Powerform_Google_Collection
+class Google_Service_Replicapool_InstanceGroupManagersRecreateInstancesRequest extends Google_Collection
 {
   protected $collection_key = 'instances';
   protected $internal_gapi_mappings = array(
@@ -859,7 +859,7 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagersRecreateInstance
   }
 }
 
-class Powerform_Google_Service_Replicapool_InstanceGroupManagersSetInstanceTemplateRequest extends Powerform_Google_Model
+class Google_Service_Replicapool_InstanceGroupManagersSetInstanceTemplateRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -876,7 +876,7 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagersSetInstanceTempl
   }
 }
 
-class Powerform_Google_Service_Replicapool_InstanceGroupManagersSetTargetPoolsRequest extends Powerform_Google_Collection
+class Google_Service_Replicapool_InstanceGroupManagersSetTargetPoolsRequest extends Google_Collection
 {
   protected $collection_key = 'targetPools';
   protected $internal_gapi_mappings = array(
@@ -903,7 +903,7 @@ class Powerform_Google_Service_Replicapool_InstanceGroupManagersSetTargetPoolsRe
   }
 }
 
-class Powerform_Google_Service_Replicapool_Operation extends Powerform_Google_Collection
+class Google_Service_Replicapool_Operation extends Google_Collection
 {
   protected $collection_key = 'warnings';
   protected $internal_gapi_mappings = array(
@@ -911,7 +911,7 @@ class Powerform_Google_Service_Replicapool_Operation extends Powerform_Google_Co
   public $clientOperationId;
   public $creationTimestamp;
   public $endTime;
-  protected $errorType = 'Powerform_Google_Service_Replicapool_OperationError';
+  protected $errorType = 'Google_Service_Replicapool_OperationError';
   protected $errorDataType = '';
   public $httpErrorMessage;
   public $httpErrorStatusCode;
@@ -929,7 +929,7 @@ class Powerform_Google_Service_Replicapool_Operation extends Powerform_Google_Co
   public $targetId;
   public $targetLink;
   public $user;
-  protected $warningsType = 'Powerform_Google_Service_Replicapool_OperationWarnings';
+  protected $warningsType = 'Google_Service_Replicapool_OperationWarnings';
   protected $warningsDataType = 'array';
   public $zone;
 
@@ -958,7 +958,7 @@ class Powerform_Google_Service_Replicapool_Operation extends Powerform_Google_Co
   {
     return $this->endTime;
   }
-  public function setError(Powerform_Google_Service_Replicapool_OperationError $error)
+  public function setError(Google_Service_Replicapool_OperationError $error)
   {
     $this->error = $error;
   }
@@ -1112,12 +1112,12 @@ class Powerform_Google_Service_Replicapool_Operation extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Replicapool_OperationError extends Powerform_Google_Collection
+class Google_Service_Replicapool_OperationError extends Google_Collection
 {
   protected $collection_key = 'errors';
   protected $internal_gapi_mappings = array(
   );
-  protected $errorsType = 'Powerform_Google_Service_Replicapool_OperationErrorErrors';
+  protected $errorsType = 'Google_Service_Replicapool_OperationErrorErrors';
   protected $errorsDataType = 'array';
 
 
@@ -1131,7 +1131,7 @@ class Powerform_Google_Service_Replicapool_OperationError extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Replicapool_OperationErrorErrors extends Powerform_Google_Model
+class Google_Service_Replicapool_OperationErrorErrors extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1166,13 +1166,13 @@ class Powerform_Google_Service_Replicapool_OperationErrorErrors extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Replicapool_OperationList extends Powerform_Google_Collection
+class Google_Service_Replicapool_OperationList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $id;
-  protected $itemsType = 'Powerform_Google_Service_Replicapool_Operation';
+  protected $itemsType = 'Google_Service_Replicapool_Operation';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1221,13 +1221,13 @@ class Powerform_Google_Service_Replicapool_OperationList extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Replicapool_OperationWarnings extends Powerform_Google_Collection
+class Google_Service_Replicapool_OperationWarnings extends Google_Collection
 {
   protected $collection_key = 'data';
   protected $internal_gapi_mappings = array(
   );
   public $code;
-  protected $dataType = 'Powerform_Google_Service_Replicapool_OperationWarningsData';
+  protected $dataType = 'Google_Service_Replicapool_OperationWarningsData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -1258,7 +1258,7 @@ class Powerform_Google_Service_Replicapool_OperationWarnings extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Replicapool_OperationWarningsData extends Powerform_Google_Model
+class Google_Service_Replicapool_OperationWarningsData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1284,7 +1284,7 @@ class Powerform_Google_Service_Replicapool_OperationWarningsData extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Replicapool_ReplicaPoolAutoHealingPolicy extends Powerform_Google_Model
+class Google_Service_Replicapool_ReplicaPoolAutoHealingPolicy extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

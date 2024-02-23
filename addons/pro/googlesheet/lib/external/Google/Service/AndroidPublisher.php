@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
+class Google_Service_AndroidPublisher extends Google_Service
 {
   /** View and manage your Google Play Developer account. */
   const ANDROIDPUBLISHER =
@@ -45,14 +45,14 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
   public $inappproducts;
   public $purchases_products;
   public $purchases_subscriptions;
-  
+
 
   /**
    * Constructs the internal representation of the AndroidPublisher service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -60,7 +60,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
     $this->version = 'v2';
     $this->serviceName = 'androidpublisher';
 
-    $this->edits = new Powerform_Google_Service_AndroidPublisher_Edits_Resource(
+    $this->edits = new Google_Service_AndroidPublisher_Edits_Resource(
         $this,
         $this->serviceName,
         'edits',
@@ -140,7 +140,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->edits_apklistings = new Powerform_Google_Service_AndroidPublisher_EditsApklistings_Resource(
+    $this->edits_apklistings = new Google_Service_AndroidPublisher_EditsApklistings_Resource(
         $this,
         $this->serviceName,
         'apklistings',
@@ -290,7 +290,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->edits_apks = new Powerform_Google_Service_AndroidPublisher_EditsApks_Resource(
+    $this->edits_apks = new Google_Service_AndroidPublisher_EditsApks_Resource(
         $this,
         $this->serviceName,
         'apks',
@@ -345,7 +345,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->edits_details = new Powerform_Google_Service_AndroidPublisher_EditsDetails_Resource(
+    $this->edits_details = new Google_Service_AndroidPublisher_EditsDetails_Resource(
         $this,
         $this->serviceName,
         'details',
@@ -400,7 +400,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->edits_expansionfiles = new Powerform_Google_Service_AndroidPublisher_EditsExpansionfiles_Resource(
+    $this->edits_expansionfiles = new Google_Service_AndroidPublisher_EditsExpansionfiles_Resource(
         $this,
         $this->serviceName,
         'expansionfiles',
@@ -510,7 +510,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->edits_images = new Powerform_Google_Service_AndroidPublisher_EditsImages_Resource(
+    $this->edits_images = new Google_Service_AndroidPublisher_EditsImages_Resource(
         $this,
         $this->serviceName,
         'images',
@@ -625,7 +625,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->edits_listings = new Powerform_Google_Service_AndroidPublisher_EditsListings_Resource(
+    $this->edits_listings = new Google_Service_AndroidPublisher_EditsListings_Resource(
         $this,
         $this->serviceName,
         'listings',
@@ -745,7 +745,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->edits_testers = new Powerform_Google_Service_AndroidPublisher_EditsTesters_Resource(
+    $this->edits_testers = new Google_Service_AndroidPublisher_EditsTesters_Resource(
         $this,
         $this->serviceName,
         'testers',
@@ -815,7 +815,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->edits_tracks = new Powerform_Google_Service_AndroidPublisher_EditsTracks_Resource(
+    $this->edits_tracks = new Google_Service_AndroidPublisher_EditsTracks_Resource(
         $this,
         $this->serviceName,
         'tracks',
@@ -900,7 +900,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->entitlements = new Powerform_Google_Service_AndroidPublisher_Entitlements_Resource(
+    $this->entitlements = new Google_Service_AndroidPublisher_Entitlements_Resource(
         $this,
         $this->serviceName,
         'entitlements',
@@ -936,7 +936,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->inappproducts = new Powerform_Google_Service_AndroidPublisher_Inappproducts_Resource(
+    $this->inappproducts = new Google_Service_AndroidPublisher_Inappproducts_Resource(
         $this,
         $this->serviceName,
         'inappproducts',
@@ -1054,7 +1054,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->purchases_products = new Powerform_Google_Service_AndroidPublisher_PurchasesProducts_Resource(
+    $this->purchases_products = new Google_Service_AndroidPublisher_PurchasesProducts_Resource(
         $this,
         $this->serviceName,
         'products',
@@ -1084,7 +1084,7 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
           )
         )
     );
-    $this->purchases_subscriptions = new Powerform_Google_Service_AndroidPublisher_PurchasesSubscriptions_Resource(
+    $this->purchases_subscriptions = new Google_Service_AndroidPublisher_PurchasesSubscriptions_Resource(
         $this,
         $this->serviceName,
         'subscriptions',
@@ -1202,11 +1202,11 @@ class Powerform_Google_Service_AndroidPublisher extends Powerform_Google_Service
  * The "edits" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $edits = $androidpublisherService->edits;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_Edits_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_Edits_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1216,13 +1216,13 @@ class Powerform_Google_Service_AndroidPublisher_Edits_Resource extends Powerform
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_AppEdit
+   * @return Google_Service_AndroidPublisher_AppEdit
    */
   public function commit($packageName, $editId, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId);
     $params = array_merge($params, $optParams);
-    return $this->call('commit', array($params), "Powerform_Google_Service_AndroidPublisher_AppEdit");
+    return $this->call('commit', array($params), "Google_Service_AndroidPublisher_AppEdit");
   }
 
   /**
@@ -1250,13 +1250,13 @@ class Powerform_Google_Service_AndroidPublisher_Edits_Resource extends Powerform
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_AppEdit
+   * @return Google_Service_AndroidPublisher_AppEdit
    */
   public function get($packageName, $editId, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AndroidPublisher_AppEdit");
+    return $this->call('get', array($params), "Google_Service_AndroidPublisher_AppEdit");
   }
 
   /**
@@ -1265,15 +1265,15 @@ class Powerform_Google_Service_AndroidPublisher_Edits_Resource extends Powerform
    *
    * @param string $packageName Unique identifier for the Android app that is
    * being updated; for example, "com.spiffygame".
-   * @param Powerform_Google_AppEdit $postBody
+   * @param Google_AppEdit $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_AppEdit
+   * @return Google_Service_AndroidPublisher_AppEdit
    */
-  public function insert($packageName, Powerform_Google_Service_AndroidPublisher_AppEdit $postBody, $optParams = array())
+  public function insert($packageName, Google_Service_AndroidPublisher_AppEdit $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_AndroidPublisher_AppEdit");
+    return $this->call('insert', array($params), "Google_Service_AndroidPublisher_AppEdit");
   }
 
   /**
@@ -1284,13 +1284,13 @@ class Powerform_Google_Service_AndroidPublisher_Edits_Resource extends Powerform
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_AppEdit
+   * @return Google_Service_AndroidPublisher_AppEdit
    */
   public function validate($packageName, $editId, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId);
     $params = array_merge($params, $optParams);
-    return $this->call('validate', array($params), "Powerform_Google_Service_AndroidPublisher_AppEdit");
+    return $this->call('validate', array($params), "Google_Service_AndroidPublisher_AppEdit");
   }
 }
 
@@ -1298,11 +1298,11 @@ class Powerform_Google_Service_AndroidPublisher_Edits_Resource extends Powerform
  * The "apklistings" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $apklistings = $androidpublisherService->apklistings;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_EditsApklistings_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_EditsApklistings_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1357,13 +1357,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsApklistings_Resource extend
    * specific localized listing to read or modify. For example, to select Austrian
    * German, pass "de-AT".
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ApkListing
+   * @return Google_Service_AndroidPublisher_ApkListing
    */
   public function get($packageName, $editId, $apkVersionCode, $language, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'apkVersionCode' => $apkVersionCode, 'language' => $language);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AndroidPublisher_ApkListing");
+    return $this->call('get', array($params), "Google_Service_AndroidPublisher_ApkListing");
   }
 
   /**
@@ -1376,13 +1376,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsApklistings_Resource extend
    * @param int $apkVersionCode The APK version code whose APK-specific listings
    * should be read or modified.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ApkListingsListResponse
+   * @return Google_Service_AndroidPublisher_ApkListingsListResponse
    */
   public function listEditsApklistings($packageName, $editId, $apkVersionCode, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'apkVersionCode' => $apkVersionCode);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AndroidPublisher_ApkListingsListResponse");
+    return $this->call('list', array($params), "Google_Service_AndroidPublisher_ApkListingsListResponse");
   }
 
   /**
@@ -1397,15 +1397,15 @@ class Powerform_Google_Service_AndroidPublisher_EditsApklistings_Resource extend
    * @param string $language The language code (a BCP-47 language tag) of the APK-
    * specific localized listing to read or modify. For example, to select Austrian
    * German, pass "de-AT".
-   * @param Powerform_Google_ApkListing $postBody
+   * @param Google_ApkListing $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ApkListing
+   * @return Google_Service_AndroidPublisher_ApkListing
    */
-  public function patch($packageName, $editId, $apkVersionCode, $language, Powerform_Google_Service_AndroidPublisher_ApkListing $postBody, $optParams = array())
+  public function patch($packageName, $editId, $apkVersionCode, $language, Google_Service_AndroidPublisher_ApkListing $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'apkVersionCode' => $apkVersionCode, 'language' => $language, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AndroidPublisher_ApkListing");
+    return $this->call('patch', array($params), "Google_Service_AndroidPublisher_ApkListing");
   }
 
   /**
@@ -1420,26 +1420,26 @@ class Powerform_Google_Service_AndroidPublisher_EditsApklistings_Resource extend
    * @param string $language The language code (a BCP-47 language tag) of the APK-
    * specific localized listing to read or modify. For example, to select Austrian
    * German, pass "de-AT".
-   * @param Powerform_Google_ApkListing $postBody
+   * @param Google_ApkListing $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ApkListing
+   * @return Google_Service_AndroidPublisher_ApkListing
    */
-  public function update($packageName, $editId, $apkVersionCode, $language, Powerform_Google_Service_AndroidPublisher_ApkListing $postBody, $optParams = array())
+  public function update($packageName, $editId, $apkVersionCode, $language, Google_Service_AndroidPublisher_ApkListing $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'apkVersionCode' => $apkVersionCode, 'language' => $language, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AndroidPublisher_ApkListing");
+    return $this->call('update', array($params), "Google_Service_AndroidPublisher_ApkListing");
   }
 }
 /**
  * The "apks" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $apks = $androidpublisherService->apks;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_EditsApks_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_EditsApks_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1451,15 +1451,15 @@ class Powerform_Google_Service_AndroidPublisher_EditsApks_Resource extends Power
    * @param string $packageName Unique identifier for the Android app that is
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
-   * @param Powerform_Google_ApksAddExternallyHostedRequest $postBody
+   * @param Google_ApksAddExternallyHostedRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ApksAddExternallyHostedResponse
+   * @return Google_Service_AndroidPublisher_ApksAddExternallyHostedResponse
    */
-  public function addexternallyhosted($packageName, $editId, Powerform_Google_Service_AndroidPublisher_ApksAddExternallyHostedRequest $postBody, $optParams = array())
+  public function addexternallyhosted($packageName, $editId, Google_Service_AndroidPublisher_ApksAddExternallyHostedRequest $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('addexternallyhosted', array($params), "Powerform_Google_Service_AndroidPublisher_ApksAddExternallyHostedResponse");
+    return $this->call('addexternallyhosted', array($params), "Google_Service_AndroidPublisher_ApksAddExternallyHostedResponse");
   }
 
   /**
@@ -1469,13 +1469,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsApks_Resource extends Power
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ApksListResponse
+   * @return Google_Service_AndroidPublisher_ApksListResponse
    */
   public function listEditsApks($packageName, $editId, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AndroidPublisher_ApksListResponse");
+    return $this->call('list', array($params), "Google_Service_AndroidPublisher_ApksListResponse");
   }
 
   /**
@@ -1485,24 +1485,24 @@ class Powerform_Google_Service_AndroidPublisher_EditsApks_Resource extends Power
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_Apk
+   * @return Google_Service_AndroidPublisher_Apk
    */
   public function upload($packageName, $editId, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId);
     $params = array_merge($params, $optParams);
-    return $this->call('upload', array($params), "Powerform_Google_Service_AndroidPublisher_Apk");
+    return $this->call('upload', array($params), "Google_Service_AndroidPublisher_Apk");
   }
 }
 /**
  * The "details" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $details = $androidpublisherService->details;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_EditsDetails_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_EditsDetails_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1513,13 +1513,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsDetails_Resource extends Po
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_AppDetails
+   * @return Google_Service_AndroidPublisher_AppDetails
    */
   public function get($packageName, $editId, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AndroidPublisher_AppDetails");
+    return $this->call('get', array($params), "Google_Service_AndroidPublisher_AppDetails");
   }
 
   /**
@@ -1529,15 +1529,15 @@ class Powerform_Google_Service_AndroidPublisher_EditsDetails_Resource extends Po
    * @param string $packageName Unique identifier for the Android app that is
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
-   * @param Powerform_Google_AppDetails $postBody
+   * @param Google_AppDetails $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_AppDetails
+   * @return Google_Service_AndroidPublisher_AppDetails
    */
-  public function patch($packageName, $editId, Powerform_Google_Service_AndroidPublisher_AppDetails $postBody, $optParams = array())
+  public function patch($packageName, $editId, Google_Service_AndroidPublisher_AppDetails $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AndroidPublisher_AppDetails");
+    return $this->call('patch', array($params), "Google_Service_AndroidPublisher_AppDetails");
   }
 
   /**
@@ -1546,26 +1546,26 @@ class Powerform_Google_Service_AndroidPublisher_EditsDetails_Resource extends Po
    * @param string $packageName Unique identifier for the Android app that is
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
-   * @param Powerform_Google_AppDetails $postBody
+   * @param Google_AppDetails $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_AppDetails
+   * @return Google_Service_AndroidPublisher_AppDetails
    */
-  public function update($packageName, $editId, Powerform_Google_Service_AndroidPublisher_AppDetails $postBody, $optParams = array())
+  public function update($packageName, $editId, Google_Service_AndroidPublisher_AppDetails $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AndroidPublisher_AppDetails");
+    return $this->call('update', array($params), "Google_Service_AndroidPublisher_AppDetails");
   }
 }
 /**
  * The "expansionfiles" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $expansionfiles = $androidpublisherService->expansionfiles;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_EditsExpansionfiles_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_EditsExpansionfiles_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1579,13 +1579,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsExpansionfiles_Resource ext
    * configuration is being read or modified.
    * @param string $expansionFileType
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ExpansionFile
+   * @return Google_Service_AndroidPublisher_ExpansionFile
    */
   public function get($packageName, $editId, $apkVersionCode, $expansionFileType, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'apkVersionCode' => $apkVersionCode, 'expansionFileType' => $expansionFileType);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AndroidPublisher_ExpansionFile");
+    return $this->call('get', array($params), "Google_Service_AndroidPublisher_ExpansionFile");
   }
 
   /**
@@ -1599,15 +1599,15 @@ class Powerform_Google_Service_AndroidPublisher_EditsExpansionfiles_Resource ext
    * @param int $apkVersionCode The version code of the APK whose Expansion File
    * configuration is being read or modified.
    * @param string $expansionFileType
-   * @param Powerform_Google_ExpansionFile $postBody
+   * @param Google_ExpansionFile $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ExpansionFile
+   * @return Google_Service_AndroidPublisher_ExpansionFile
    */
-  public function patch($packageName, $editId, $apkVersionCode, $expansionFileType, Powerform_Google_Service_AndroidPublisher_ExpansionFile $postBody, $optParams = array())
+  public function patch($packageName, $editId, $apkVersionCode, $expansionFileType, Google_Service_AndroidPublisher_ExpansionFile $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'apkVersionCode' => $apkVersionCode, 'expansionFileType' => $expansionFileType, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AndroidPublisher_ExpansionFile");
+    return $this->call('patch', array($params), "Google_Service_AndroidPublisher_ExpansionFile");
   }
 
   /**
@@ -1621,15 +1621,15 @@ class Powerform_Google_Service_AndroidPublisher_EditsExpansionfiles_Resource ext
    * @param int $apkVersionCode The version code of the APK whose Expansion File
    * configuration is being read or modified.
    * @param string $expansionFileType
-   * @param Powerform_Google_ExpansionFile $postBody
+   * @param Google_ExpansionFile $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ExpansionFile
+   * @return Google_Service_AndroidPublisher_ExpansionFile
    */
-  public function update($packageName, $editId, $apkVersionCode, $expansionFileType, Powerform_Google_Service_AndroidPublisher_ExpansionFile $postBody, $optParams = array())
+  public function update($packageName, $editId, $apkVersionCode, $expansionFileType, Google_Service_AndroidPublisher_ExpansionFile $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'apkVersionCode' => $apkVersionCode, 'expansionFileType' => $expansionFileType, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AndroidPublisher_ExpansionFile");
+    return $this->call('update', array($params), "Google_Service_AndroidPublisher_ExpansionFile");
   }
 
   /**
@@ -1643,24 +1643,24 @@ class Powerform_Google_Service_AndroidPublisher_EditsExpansionfiles_Resource ext
    * configuration is being read or modified.
    * @param string $expansionFileType
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ExpansionFilesUploadResponse
+   * @return Google_Service_AndroidPublisher_ExpansionFilesUploadResponse
    */
   public function upload($packageName, $editId, $apkVersionCode, $expansionFileType, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'apkVersionCode' => $apkVersionCode, 'expansionFileType' => $expansionFileType);
     $params = array_merge($params, $optParams);
-    return $this->call('upload', array($params), "Powerform_Google_Service_AndroidPublisher_ExpansionFilesUploadResponse");
+    return $this->call('upload', array($params), "Google_Service_AndroidPublisher_ExpansionFilesUploadResponse");
   }
 }
 /**
  * The "images" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $images = $androidpublisherService->images;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_EditsImages_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_EditsImages_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1696,13 +1696,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsImages_Resource extends Pow
    * select Austrian German, pass "de-AT".
    * @param string $imageType
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ImagesDeleteAllResponse
+   * @return Google_Service_AndroidPublisher_ImagesDeleteAllResponse
    */
   public function deleteall($packageName, $editId, $language, $imageType, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'language' => $language, 'imageType' => $imageType);
     $params = array_merge($params, $optParams);
-    return $this->call('deleteall', array($params), "Powerform_Google_Service_AndroidPublisher_ImagesDeleteAllResponse");
+    return $this->call('deleteall', array($params), "Google_Service_AndroidPublisher_ImagesDeleteAllResponse");
   }
 
   /**
@@ -1717,13 +1717,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsImages_Resource extends Pow
    * select Austrian German, pass "de-AT".
    * @param string $imageType
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ImagesListResponse
+   * @return Google_Service_AndroidPublisher_ImagesListResponse
    */
   public function listEditsImages($packageName, $editId, $language, $imageType, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'language' => $language, 'imageType' => $imageType);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AndroidPublisher_ImagesListResponse");
+    return $this->call('list', array($params), "Google_Service_AndroidPublisher_ImagesListResponse");
   }
 
   /**
@@ -1738,24 +1738,24 @@ class Powerform_Google_Service_AndroidPublisher_EditsImages_Resource extends Pow
    * select Austrian German, pass "de-AT".
    * @param string $imageType
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ImagesUploadResponse
+   * @return Google_Service_AndroidPublisher_ImagesUploadResponse
    */
   public function upload($packageName, $editId, $language, $imageType, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'language' => $language, 'imageType' => $imageType);
     $params = array_merge($params, $optParams);
-    return $this->call('upload', array($params), "Powerform_Google_Service_AndroidPublisher_ImagesUploadResponse");
+    return $this->call('upload', array($params), "Google_Service_AndroidPublisher_ImagesUploadResponse");
   }
 }
 /**
  * The "listings" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $listings = $androidpublisherService->listings;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_EditsListings_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_EditsListings_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1801,13 +1801,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsListings_Resource extends P
    * localized listing to read or modify. For example, to select Austrian German,
    * pass "de-AT".
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_Listing
+   * @return Google_Service_AndroidPublisher_Listing
    */
   public function get($packageName, $editId, $language, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'language' => $language);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AndroidPublisher_Listing");
+    return $this->call('get', array($params), "Google_Service_AndroidPublisher_Listing");
   }
 
   /**
@@ -1818,13 +1818,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsListings_Resource extends P
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ListingsListResponse
+   * @return Google_Service_AndroidPublisher_ListingsListResponse
    */
   public function listEditsListings($packageName, $editId, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AndroidPublisher_ListingsListResponse");
+    return $this->call('list', array($params), "Google_Service_AndroidPublisher_ListingsListResponse");
   }
 
   /**
@@ -1837,15 +1837,15 @@ class Powerform_Google_Service_AndroidPublisher_EditsListings_Resource extends P
    * @param string $language The language code (a BCP-47 language tag) of the
    * localized listing to read or modify. For example, to select Austrian German,
    * pass "de-AT".
-   * @param Powerform_Google_Listing $postBody
+   * @param Google_Listing $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_Listing
+   * @return Google_Service_AndroidPublisher_Listing
    */
-  public function patch($packageName, $editId, $language, Powerform_Google_Service_AndroidPublisher_Listing $postBody, $optParams = array())
+  public function patch($packageName, $editId, $language, Google_Service_AndroidPublisher_Listing $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'language' => $language, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AndroidPublisher_Listing");
+    return $this->call('patch', array($params), "Google_Service_AndroidPublisher_Listing");
   }
 
   /**
@@ -1857,26 +1857,26 @@ class Powerform_Google_Service_AndroidPublisher_EditsListings_Resource extends P
    * @param string $language The language code (a BCP-47 language tag) of the
    * localized listing to read or modify. For example, to select Austrian German,
    * pass "de-AT".
-   * @param Powerform_Google_Listing $postBody
+   * @param Google_Listing $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_Listing
+   * @return Google_Service_AndroidPublisher_Listing
    */
-  public function update($packageName, $editId, $language, Powerform_Google_Service_AndroidPublisher_Listing $postBody, $optParams = array())
+  public function update($packageName, $editId, $language, Google_Service_AndroidPublisher_Listing $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'language' => $language, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AndroidPublisher_Listing");
+    return $this->call('update', array($params), "Google_Service_AndroidPublisher_Listing");
   }
 }
 /**
  * The "testers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $testers = $androidpublisherService->testers;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_EditsTesters_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_EditsTesters_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1887,13 +1887,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsTesters_Resource extends Po
    * @param string $editId Unique identifier for this edit.
    * @param string $track
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_Testers
+   * @return Google_Service_AndroidPublisher_Testers
    */
   public function get($packageName, $editId, $track, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'track' => $track);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AndroidPublisher_Testers");
+    return $this->call('get', array($params), "Google_Service_AndroidPublisher_Testers");
   }
 
   /**
@@ -1903,15 +1903,15 @@ class Powerform_Google_Service_AndroidPublisher_EditsTesters_Resource extends Po
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param string $track
-   * @param Powerform_Google_Testers $postBody
+   * @param Google_Testers $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_Testers
+   * @return Google_Service_AndroidPublisher_Testers
    */
-  public function patch($packageName, $editId, $track, Powerform_Google_Service_AndroidPublisher_Testers $postBody, $optParams = array())
+  public function patch($packageName, $editId, $track, Google_Service_AndroidPublisher_Testers $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'track' => $track, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AndroidPublisher_Testers");
+    return $this->call('patch', array($params), "Google_Service_AndroidPublisher_Testers");
   }
 
   /**
@@ -1921,26 +1921,26 @@ class Powerform_Google_Service_AndroidPublisher_EditsTesters_Resource extends Po
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param string $track
-   * @param Powerform_Google_Testers $postBody
+   * @param Google_Testers $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_Testers
+   * @return Google_Service_AndroidPublisher_Testers
    */
-  public function update($packageName, $editId, $track, Powerform_Google_Service_AndroidPublisher_Testers $postBody, $optParams = array())
+  public function update($packageName, $editId, $track, Google_Service_AndroidPublisher_Testers $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'track' => $track, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AndroidPublisher_Testers");
+    return $this->call('update', array($params), "Google_Service_AndroidPublisher_Testers");
   }
 }
 /**
  * The "tracks" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $tracks = $androidpublisherService->tracks;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_EditsTracks_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_EditsTracks_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1952,13 +1952,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsTracks_Resource extends Pow
    * @param string $editId Unique identifier for this edit.
    * @param string $track The track type to read or modify.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_Track
+   * @return Google_Service_AndroidPublisher_Track
    */
   public function get($packageName, $editId, $track, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'track' => $track);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AndroidPublisher_Track");
+    return $this->call('get', array($params), "Google_Service_AndroidPublisher_Track");
   }
 
   /**
@@ -1968,13 +1968,13 @@ class Powerform_Google_Service_AndroidPublisher_EditsTracks_Resource extends Pow
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_TracksListResponse
+   * @return Google_Service_AndroidPublisher_TracksListResponse
    */
   public function listEditsTracks($packageName, $editId, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AndroidPublisher_TracksListResponse");
+    return $this->call('list', array($params), "Google_Service_AndroidPublisher_TracksListResponse");
   }
 
   /**
@@ -1987,15 +1987,15 @@ class Powerform_Google_Service_AndroidPublisher_EditsTracks_Resource extends Pow
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param string $track The track type to read or modify.
-   * @param Powerform_Google_Track $postBody
+   * @param Google_Track $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_Track
+   * @return Google_Service_AndroidPublisher_Track
    */
-  public function patch($packageName, $editId, $track, Powerform_Google_Service_AndroidPublisher_Track $postBody, $optParams = array())
+  public function patch($packageName, $editId, $track, Google_Service_AndroidPublisher_Track $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'track' => $track, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AndroidPublisher_Track");
+    return $this->call('patch', array($params), "Google_Service_AndroidPublisher_Track");
   }
 
   /**
@@ -2007,15 +2007,15 @@ class Powerform_Google_Service_AndroidPublisher_EditsTracks_Resource extends Pow
    * being updated; for example, "com.spiffygame".
    * @param string $editId Unique identifier for this edit.
    * @param string $track The track type to read or modify.
-   * @param Powerform_Google_Track $postBody
+   * @param Google_Track $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_Track
+   * @return Google_Service_AndroidPublisher_Track
    */
-  public function update($packageName, $editId, $track, Powerform_Google_Service_AndroidPublisher_Track $postBody, $optParams = array())
+  public function update($packageName, $editId, $track, Google_Service_AndroidPublisher_Track $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'editId' => $editId, 'track' => $track, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AndroidPublisher_Track");
+    return $this->call('update', array($params), "Google_Service_AndroidPublisher_Track");
   }
 }
 
@@ -2023,11 +2023,11 @@ class Powerform_Google_Service_AndroidPublisher_EditsTracks_Resource extends Pow
  * The "entitlements" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $entitlements = $androidpublisherService->entitlements;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_Entitlements_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_Entitlements_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2043,13 +2043,13 @@ class Powerform_Google_Service_AndroidPublisher_Entitlements_Resource extends Po
    * 'sku1'). This can be used to restrict the result set.
    * @opt_param string startIndex
    * @opt_param string token
-   * @return Powerform_Google_Service_AndroidPublisher_EntitlementsListResponse
+   * @return Google_Service_AndroidPublisher_EntitlementsListResponse
    */
   public function listEntitlements($packageName, $optParams = array())
   {
     $params = array('packageName' => $packageName);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AndroidPublisher_EntitlementsListResponse");
+    return $this->call('list', array($params), "Google_Service_AndroidPublisher_EntitlementsListResponse");
   }
 }
 
@@ -2057,25 +2057,25 @@ class Powerform_Google_Service_AndroidPublisher_Entitlements_Resource extends Po
  * The "inappproducts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $inappproducts = $androidpublisherService->inappproducts;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_Inappproducts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_Inappproducts_Resource extends Google_Service_Resource
 {
 
   /**
    * (inappproducts.batch)
    *
-   * @param Powerform_Google_InappproductsBatchRequest $postBody
+   * @param Google_InappproductsBatchRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_InappproductsBatchResponse
+   * @return Google_Service_AndroidPublisher_InappproductsBatchResponse
    */
-  public function batch(Powerform_Google_Service_AndroidPublisher_InappproductsBatchRequest $postBody, $optParams = array())
+  public function batch(Google_Service_AndroidPublisher_InappproductsBatchRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('batch', array($params), "Powerform_Google_Service_AndroidPublisher_InappproductsBatchResponse");
+    return $this->call('batch', array($params), "Google_Service_AndroidPublisher_InappproductsBatchResponse");
   }
 
   /**
@@ -2099,13 +2099,13 @@ class Powerform_Google_Service_AndroidPublisher_Inappproducts_Resource extends P
    * @param string $packageName
    * @param string $sku Unique identifier for the in-app product.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_InAppProduct
+   * @return Google_Service_AndroidPublisher_InAppProduct
    */
   public function get($packageName, $sku, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'sku' => $sku);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AndroidPublisher_InAppProduct");
+    return $this->call('get', array($params), "Google_Service_AndroidPublisher_InAppProduct");
   }
 
   /**
@@ -2113,20 +2113,20 @@ class Powerform_Google_Service_AndroidPublisher_Inappproducts_Resource extends P
    *
    * @param string $packageName Unique identifier for the Android app; for
    * example, "com.spiffygame".
-   * @param Powerform_Google_InAppProduct $postBody
+   * @param Google_InAppProduct $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool autoConvertMissingPrices If true the prices for all regions
    * targeted by the parent app that don't have a price specified for this in-app
    * product will be auto converted to the target currency based on the default
    * price. Defaults to false.
-   * @return Powerform_Google_Service_AndroidPublisher_InAppProduct
+   * @return Google_Service_AndroidPublisher_InAppProduct
    */
-  public function insert($packageName, Powerform_Google_Service_AndroidPublisher_InAppProduct $postBody, $optParams = array())
+  public function insert($packageName, Google_Service_AndroidPublisher_InAppProduct $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_AndroidPublisher_InAppProduct");
+    return $this->call('insert', array($params), "Google_Service_AndroidPublisher_InAppProduct");
   }
 
   /**
@@ -2140,13 +2140,13 @@ class Powerform_Google_Service_AndroidPublisher_Inappproducts_Resource extends P
    * @opt_param string maxResults
    * @opt_param string startIndex
    * @opt_param string token
-   * @return Powerform_Google_Service_AndroidPublisher_InappproductsListResponse
+   * @return Google_Service_AndroidPublisher_InappproductsListResponse
    */
   public function listInappproducts($packageName, $optParams = array())
   {
     $params = array('packageName' => $packageName);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_AndroidPublisher_InappproductsListResponse");
+    return $this->call('list', array($params), "Google_Service_AndroidPublisher_InappproductsListResponse");
   }
 
   /**
@@ -2156,20 +2156,20 @@ class Powerform_Google_Service_AndroidPublisher_Inappproducts_Resource extends P
    * @param string $packageName Unique identifier for the Android app with the in-
    * app product; for example, "com.spiffygame".
    * @param string $sku Unique identifier for the in-app product.
-   * @param Powerform_Google_InAppProduct $postBody
+   * @param Google_InAppProduct $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool autoConvertMissingPrices If true the prices for all regions
    * targeted by the parent app that don't have a price specified for this in-app
    * product will be auto converted to the target currency based on the default
    * price. Defaults to false.
-   * @return Powerform_Google_Service_AndroidPublisher_InAppProduct
+   * @return Google_Service_AndroidPublisher_InAppProduct
    */
-  public function patch($packageName, $sku, Powerform_Google_Service_AndroidPublisher_InAppProduct $postBody, $optParams = array())
+  public function patch($packageName, $sku, Google_Service_AndroidPublisher_InAppProduct $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'sku' => $sku, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_AndroidPublisher_InAppProduct");
+    return $this->call('patch', array($params), "Google_Service_AndroidPublisher_InAppProduct");
   }
 
   /**
@@ -2178,20 +2178,20 @@ class Powerform_Google_Service_AndroidPublisher_Inappproducts_Resource extends P
    * @param string $packageName Unique identifier for the Android app with the in-
    * app product; for example, "com.spiffygame".
    * @param string $sku Unique identifier for the in-app product.
-   * @param Powerform_Google_InAppProduct $postBody
+   * @param Google_InAppProduct $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool autoConvertMissingPrices If true the prices for all regions
    * targeted by the parent app that don't have a price specified for this in-app
    * product will be auto converted to the target currency based on the default
    * price. Defaults to false.
-   * @return Powerform_Google_Service_AndroidPublisher_InAppProduct
+   * @return Google_Service_AndroidPublisher_InAppProduct
    */
-  public function update($packageName, $sku, Powerform_Google_Service_AndroidPublisher_InAppProduct $postBody, $optParams = array())
+  public function update($packageName, $sku, Google_Service_AndroidPublisher_InAppProduct $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'sku' => $sku, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_AndroidPublisher_InAppProduct");
+    return $this->call('update', array($params), "Google_Service_AndroidPublisher_InAppProduct");
   }
 }
 
@@ -2199,11 +2199,11 @@ class Powerform_Google_Service_AndroidPublisher_Inappproducts_Resource extends P
  * The "purchases" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $purchases = $androidpublisherService->purchases;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_Purchases_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_Purchases_Resource extends Google_Service_Resource
 {
 }
 
@@ -2211,11 +2211,11 @@ class Powerform_Google_Service_AndroidPublisher_Purchases_Resource extends Power
  * The "products" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $products = $androidpublisherService->products;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_PurchasesProducts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_PurchasesProducts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2228,24 +2228,24 @@ class Powerform_Google_Service_AndroidPublisher_PurchasesProducts_Resource exten
    * @param string $token The token provided to the user's device when the inapp
    * product was purchased.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_ProductPurchase
+   * @return Google_Service_AndroidPublisher_ProductPurchase
    */
   public function get($packageName, $productId, $token, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'productId' => $productId, 'token' => $token);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AndroidPublisher_ProductPurchase");
+    return $this->call('get', array($params), "Google_Service_AndroidPublisher_ProductPurchase");
   }
 }
 /**
  * The "subscriptions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Powerform_Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
  *   $subscriptions = $androidpublisherService->subscriptions;
  *  </code>
  */
-class Powerform_Google_Service_AndroidPublisher_PurchasesSubscriptions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_AndroidPublisher_PurchasesSubscriptions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2277,15 +2277,15 @@ class Powerform_Google_Service_AndroidPublisher_PurchasesSubscriptions_Resource 
    * 'monthly001').
    * @param string $token The token provided to the user's device when the
    * subscription was purchased.
-   * @param Powerform_Google_SubscriptionPurchasesDeferRequest $postBody
+   * @param Google_SubscriptionPurchasesDeferRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_SubscriptionPurchasesDeferResponse
+   * @return Google_Service_AndroidPublisher_SubscriptionPurchasesDeferResponse
    */
-  public function defer($packageName, $subscriptionId, $token, Powerform_Google_Service_AndroidPublisher_SubscriptionPurchasesDeferRequest $postBody, $optParams = array())
+  public function defer($packageName, $subscriptionId, $token, Google_Service_AndroidPublisher_SubscriptionPurchasesDeferRequest $postBody, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'subscriptionId' => $subscriptionId, 'token' => $token, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('defer', array($params), "Powerform_Google_Service_AndroidPublisher_SubscriptionPurchasesDeferResponse");
+    return $this->call('defer', array($params), "Google_Service_AndroidPublisher_SubscriptionPurchasesDeferResponse");
   }
 
   /**
@@ -2299,13 +2299,13 @@ class Powerform_Google_Service_AndroidPublisher_PurchasesSubscriptions_Resource 
    * @param string $token The token provided to the user's device when the
    * subscription was purchased.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_AndroidPublisher_SubscriptionPurchase
+   * @return Google_Service_AndroidPublisher_SubscriptionPurchase
    */
   public function get($packageName, $subscriptionId, $token, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'subscriptionId' => $subscriptionId, 'token' => $token);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_AndroidPublisher_SubscriptionPurchase");
+    return $this->call('get', array($params), "Google_Service_AndroidPublisher_SubscriptionPurchase");
   }
 
   /**
@@ -2352,16 +2352,16 @@ class Powerform_Google_Service_AndroidPublisher_PurchasesSubscriptions_Resource 
 
 
 
-class Powerform_Google_Service_AndroidPublisher_Apk extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_Apk extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $binaryType = 'Powerform_Google_Service_AndroidPublisher_ApkBinary';
+  protected $binaryType = 'Google_Service_AndroidPublisher_ApkBinary';
   protected $binaryDataType = '';
   public $versionCode;
 
 
-  public function setBinary(Powerform_Google_Service_AndroidPublisher_ApkBinary $binary)
+  public function setBinary(Google_Service_AndroidPublisher_ApkBinary $binary)
   {
     $this->binary = $binary;
   }
@@ -2379,7 +2379,7 @@ class Powerform_Google_Service_AndroidPublisher_Apk extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ApkBinary extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_ApkBinary extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2396,7 +2396,7 @@ class Powerform_Google_Service_AndroidPublisher_ApkBinary extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ApkListing extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_ApkListing extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2422,13 +2422,13 @@ class Powerform_Google_Service_AndroidPublisher_ApkListing extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ApkListingsListResponse extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_ApkListingsListResponse extends Google_Collection
 {
   protected $collection_key = 'listings';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $listingsType = 'Powerform_Google_Service_AndroidPublisher_ApkListing';
+  protected $listingsType = 'Google_Service_AndroidPublisher_ApkListing';
   protected $listingsDataType = 'array';
 
 
@@ -2450,15 +2450,15 @@ class Powerform_Google_Service_AndroidPublisher_ApkListingsListResponse extends 
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ApksAddExternallyHostedRequest extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_ApksAddExternallyHostedRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $externallyHostedApkType = 'Powerform_Google_Service_AndroidPublisher_ExternallyHostedApk';
+  protected $externallyHostedApkType = 'Google_Service_AndroidPublisher_ExternallyHostedApk';
   protected $externallyHostedApkDataType = '';
 
 
-  public function setExternallyHostedApk(Powerform_Google_Service_AndroidPublisher_ExternallyHostedApk $externallyHostedApk)
+  public function setExternallyHostedApk(Google_Service_AndroidPublisher_ExternallyHostedApk $externallyHostedApk)
   {
     $this->externallyHostedApk = $externallyHostedApk;
   }
@@ -2468,15 +2468,15 @@ class Powerform_Google_Service_AndroidPublisher_ApksAddExternallyHostedRequest e
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ApksAddExternallyHostedResponse extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_ApksAddExternallyHostedResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $externallyHostedApkType = 'Powerform_Google_Service_AndroidPublisher_ExternallyHostedApk';
+  protected $externallyHostedApkType = 'Google_Service_AndroidPublisher_ExternallyHostedApk';
   protected $externallyHostedApkDataType = '';
 
 
-  public function setExternallyHostedApk(Powerform_Google_Service_AndroidPublisher_ExternallyHostedApk $externallyHostedApk)
+  public function setExternallyHostedApk(Google_Service_AndroidPublisher_ExternallyHostedApk $externallyHostedApk)
   {
     $this->externallyHostedApk = $externallyHostedApk;
   }
@@ -2486,12 +2486,12 @@ class Powerform_Google_Service_AndroidPublisher_ApksAddExternallyHostedResponse 
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ApksListResponse extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_ApksListResponse extends Google_Collection
 {
   protected $collection_key = 'apks';
   protected $internal_gapi_mappings = array(
   );
-  protected $apksType = 'Powerform_Google_Service_AndroidPublisher_Apk';
+  protected $apksType = 'Google_Service_AndroidPublisher_Apk';
   protected $apksDataType = 'array';
   public $kind;
 
@@ -2514,7 +2514,7 @@ class Powerform_Google_Service_AndroidPublisher_ApksListResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_AppDetails extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_AppDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2558,7 +2558,7 @@ class Powerform_Google_Service_AndroidPublisher_AppDetails extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_AppEdit extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_AppEdit extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2584,7 +2584,7 @@ class Powerform_Google_Service_AndroidPublisher_AppEdit extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_Entitlement extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_Entitlement extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2628,20 +2628,20 @@ class Powerform_Google_Service_AndroidPublisher_Entitlement extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_EntitlementsListResponse extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_EntitlementsListResponse extends Google_Collection
 {
   protected $collection_key = 'resources';
   protected $internal_gapi_mappings = array(
   );
-  protected $pageInfoType = 'Powerform_Google_Service_AndroidPublisher_PageInfo';
+  protected $pageInfoType = 'Google_Service_AndroidPublisher_PageInfo';
   protected $pageInfoDataType = '';
-  protected $resourcesType = 'Powerform_Google_Service_AndroidPublisher_Entitlement';
+  protected $resourcesType = 'Google_Service_AndroidPublisher_Entitlement';
   protected $resourcesDataType = 'array';
-  protected $tokenPaginationType = 'Powerform_Google_Service_AndroidPublisher_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_AndroidPublisher_TokenPagination';
   protected $tokenPaginationDataType = '';
 
 
-  public function setPageInfo(Powerform_Google_Service_AndroidPublisher_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_AndroidPublisher_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -2657,7 +2657,7 @@ class Powerform_Google_Service_AndroidPublisher_EntitlementsListResponse extends
   {
     return $this->resources;
   }
-  public function setTokenPagination(Powerform_Google_Service_AndroidPublisher_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_AndroidPublisher_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -2667,7 +2667,7 @@ class Powerform_Google_Service_AndroidPublisher_EntitlementsListResponse extends
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ExpansionFile extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_ExpansionFile extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2693,15 +2693,15 @@ class Powerform_Google_Service_AndroidPublisher_ExpansionFile extends Powerform_
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ExpansionFilesUploadResponse extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_ExpansionFilesUploadResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $expansionFileType = 'Powerform_Google_Service_AndroidPublisher_ExpansionFile';
+  protected $expansionFileType = 'Google_Service_AndroidPublisher_ExpansionFile';
   protected $expansionFileDataType = '';
 
 
-  public function setExpansionFile(Powerform_Google_Service_AndroidPublisher_ExpansionFile $expansionFile)
+  public function setExpansionFile(Google_Service_AndroidPublisher_ExpansionFile $expansionFile)
   {
     $this->expansionFile = $expansionFile;
   }
@@ -2711,7 +2711,7 @@ class Powerform_Google_Service_AndroidPublisher_ExpansionFilesUploadResponse ext
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ExternallyHostedApk extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_ExternallyHostedApk extends Google_Collection
 {
   protected $collection_key = 'usesPermissions';
   protected $internal_gapi_mappings = array(
@@ -2728,7 +2728,7 @@ class Powerform_Google_Service_AndroidPublisher_ExternallyHostedApk extends Powe
   public $nativeCodes;
   public $packageName;
   public $usesFeatures;
-  protected $usesPermissionsType = 'Powerform_Google_Service_AndroidPublisher_ExternallyHostedApkUsesPermission';
+  protected $usesPermissionsType = 'Google_Service_AndroidPublisher_ExternallyHostedApkUsesPermission';
   protected $usesPermissionsDataType = 'array';
   public $versionCode;
   public $versionName;
@@ -2856,7 +2856,7 @@ class Powerform_Google_Service_AndroidPublisher_ExternallyHostedApk extends Powe
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ExternallyHostedApkUsesPermission extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_ExternallyHostedApkUsesPermission extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2882,7 +2882,7 @@ class Powerform_Google_Service_AndroidPublisher_ExternallyHostedApkUsesPermissio
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_Image extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_Image extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2917,12 +2917,12 @@ class Powerform_Google_Service_AndroidPublisher_Image extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ImagesDeleteAllResponse extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_ImagesDeleteAllResponse extends Google_Collection
 {
   protected $collection_key = 'deleted';
   protected $internal_gapi_mappings = array(
   );
-  protected $deletedType = 'Powerform_Google_Service_AndroidPublisher_Image';
+  protected $deletedType = 'Google_Service_AndroidPublisher_Image';
   protected $deletedDataType = 'array';
 
 
@@ -2936,12 +2936,12 @@ class Powerform_Google_Service_AndroidPublisher_ImagesDeleteAllResponse extends 
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ImagesListResponse extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_ImagesListResponse extends Google_Collection
 {
   protected $collection_key = 'images';
   protected $internal_gapi_mappings = array(
   );
-  protected $imagesType = 'Powerform_Google_Service_AndroidPublisher_Image';
+  protected $imagesType = 'Google_Service_AndroidPublisher_Image';
   protected $imagesDataType = 'array';
 
 
@@ -2955,15 +2955,15 @@ class Powerform_Google_Service_AndroidPublisher_ImagesListResponse extends Power
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ImagesUploadResponse extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_ImagesUploadResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $imageType = 'Powerform_Google_Service_AndroidPublisher_Image';
+  protected $imageType = 'Google_Service_AndroidPublisher_Image';
   protected $imageDataType = '';
 
 
-  public function setImage(Powerform_Google_Service_AndroidPublisher_Image $image)
+  public function setImage(Google_Service_AndroidPublisher_Image $image)
   {
     $this->image = $image;
   }
@@ -2973,20 +2973,20 @@ class Powerform_Google_Service_AndroidPublisher_ImagesUploadResponse extends Pow
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InAppProduct extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_InAppProduct extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $defaultLanguage;
-  protected $defaultPriceType = 'Powerform_Google_Service_AndroidPublisher_Price';
+  protected $defaultPriceType = 'Google_Service_AndroidPublisher_Price';
   protected $defaultPriceDataType = '';
-  protected $listingsType = 'Powerform_Google_Service_AndroidPublisher_InAppProductListing';
+  protected $listingsType = 'Google_Service_AndroidPublisher_InAppProductListing';
   protected $listingsDataType = 'map';
   public $packageName;
-  protected $pricesType = 'Powerform_Google_Service_AndroidPublisher_Price';
+  protected $pricesType = 'Google_Service_AndroidPublisher_Price';
   protected $pricesDataType = 'map';
   public $purchaseType;
-  protected $seasonType = 'Powerform_Google_Service_AndroidPublisher_Season';
+  protected $seasonType = 'Google_Service_AndroidPublisher_Season';
   protected $seasonDataType = '';
   public $sku;
   public $status;
@@ -3002,7 +3002,7 @@ class Powerform_Google_Service_AndroidPublisher_InAppProduct extends Powerform_G
   {
     return $this->defaultLanguage;
   }
-  public function setDefaultPrice(Powerform_Google_Service_AndroidPublisher_Price $defaultPrice)
+  public function setDefaultPrice(Google_Service_AndroidPublisher_Price $defaultPrice)
   {
     $this->defaultPrice = $defaultPrice;
   }
@@ -3042,7 +3042,7 @@ class Powerform_Google_Service_AndroidPublisher_InAppProduct extends Powerform_G
   {
     return $this->purchaseType;
   }
-  public function setSeason(Powerform_Google_Service_AndroidPublisher_Season $season)
+  public function setSeason(Google_Service_AndroidPublisher_Season $season)
   {
     $this->season = $season;
   }
@@ -3084,7 +3084,7 @@ class Powerform_Google_Service_AndroidPublisher_InAppProduct extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InAppProductListing extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_InAppProductListing extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3110,12 +3110,12 @@ class Powerform_Google_Service_AndroidPublisher_InAppProductListing extends Powe
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InappproductsBatchRequest extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_InappproductsBatchRequest extends Google_Collection
 {
   protected $collection_key = 'entrys';
   protected $internal_gapi_mappings = array(
   );
-  protected $entrysType = 'Powerform_Google_Service_AndroidPublisher_InappproductsBatchRequestEntry';
+  protected $entrysType = 'Google_Service_AndroidPublisher_InappproductsBatchRequestEntry';
   protected $entrysDataType = 'array';
 
 
@@ -3129,14 +3129,14 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsBatchRequest extend
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InappproductsBatchRequestEntry extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_InappproductsBatchRequestEntry extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $batchId;
-  protected $inappproductsinsertrequestType = 'Powerform_Google_Service_AndroidPublisher_InappproductsInsertRequest';
+  protected $inappproductsinsertrequestType = 'Google_Service_AndroidPublisher_InappproductsInsertRequest';
   protected $inappproductsinsertrequestDataType = '';
-  protected $inappproductsupdaterequestType = 'Powerform_Google_Service_AndroidPublisher_InappproductsUpdateRequest';
+  protected $inappproductsupdaterequestType = 'Google_Service_AndroidPublisher_InappproductsUpdateRequest';
   protected $inappproductsupdaterequestDataType = '';
   public $methodName;
 
@@ -3149,7 +3149,7 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsBatchRequestEntry e
   {
     return $this->batchId;
   }
-  public function setInappproductsinsertrequest(Powerform_Google_Service_AndroidPublisher_InappproductsInsertRequest $inappproductsinsertrequest)
+  public function setInappproductsinsertrequest(Google_Service_AndroidPublisher_InappproductsInsertRequest $inappproductsinsertrequest)
   {
     $this->inappproductsinsertrequest = $inappproductsinsertrequest;
   }
@@ -3157,7 +3157,7 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsBatchRequestEntry e
   {
     return $this->inappproductsinsertrequest;
   }
-  public function setInappproductsupdaterequest(Powerform_Google_Service_AndroidPublisher_InappproductsUpdateRequest $inappproductsupdaterequest)
+  public function setInappproductsupdaterequest(Google_Service_AndroidPublisher_InappproductsUpdateRequest $inappproductsupdaterequest)
   {
     $this->inappproductsupdaterequest = $inappproductsupdaterequest;
   }
@@ -3175,12 +3175,12 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsBatchRequestEntry e
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InappproductsBatchResponse extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_InappproductsBatchResponse extends Google_Collection
 {
   protected $collection_key = 'entrys';
   protected $internal_gapi_mappings = array(
   );
-  protected $entrysType = 'Powerform_Google_Service_AndroidPublisher_InappproductsBatchResponseEntry';
+  protected $entrysType = 'Google_Service_AndroidPublisher_InappproductsBatchResponseEntry';
   protected $entrysDataType = 'array';
   public $kind;
 
@@ -3203,14 +3203,14 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsBatchResponse exten
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InappproductsBatchResponseEntry extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_InappproductsBatchResponseEntry extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $batchId;
-  protected $inappproductsinsertresponseType = 'Powerform_Google_Service_AndroidPublisher_InappproductsInsertResponse';
+  protected $inappproductsinsertresponseType = 'Google_Service_AndroidPublisher_InappproductsInsertResponse';
   protected $inappproductsinsertresponseDataType = '';
-  protected $inappproductsupdateresponseType = 'Powerform_Google_Service_AndroidPublisher_InappproductsUpdateResponse';
+  protected $inappproductsupdateresponseType = 'Google_Service_AndroidPublisher_InappproductsUpdateResponse';
   protected $inappproductsupdateresponseDataType = '';
 
 
@@ -3222,7 +3222,7 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsBatchResponseEntry 
   {
     return $this->batchId;
   }
-  public function setInappproductsinsertresponse(Powerform_Google_Service_AndroidPublisher_InappproductsInsertResponse $inappproductsinsertresponse)
+  public function setInappproductsinsertresponse(Google_Service_AndroidPublisher_InappproductsInsertResponse $inappproductsinsertresponse)
   {
     $this->inappproductsinsertresponse = $inappproductsinsertresponse;
   }
@@ -3230,7 +3230,7 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsBatchResponseEntry 
   {
     return $this->inappproductsinsertresponse;
   }
-  public function setInappproductsupdateresponse(Powerform_Google_Service_AndroidPublisher_InappproductsUpdateResponse $inappproductsupdateresponse)
+  public function setInappproductsupdateresponse(Google_Service_AndroidPublisher_InappproductsUpdateResponse $inappproductsupdateresponse)
   {
     $this->inappproductsupdateresponse = $inappproductsupdateresponse;
   }
@@ -3240,15 +3240,15 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsBatchResponseEntry 
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InappproductsInsertRequest extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_InappproductsInsertRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $inappproductType = 'Powerform_Google_Service_AndroidPublisher_InAppProduct';
+  protected $inappproductType = 'Google_Service_AndroidPublisher_InAppProduct';
   protected $inappproductDataType = '';
 
 
-  public function setInappproduct(Powerform_Google_Service_AndroidPublisher_InAppProduct $inappproduct)
+  public function setInappproduct(Google_Service_AndroidPublisher_InAppProduct $inappproduct)
   {
     $this->inappproduct = $inappproduct;
   }
@@ -3258,15 +3258,15 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsInsertRequest exten
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InappproductsInsertResponse extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_InappproductsInsertResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $inappproductType = 'Powerform_Google_Service_AndroidPublisher_InAppProduct';
+  protected $inappproductType = 'Google_Service_AndroidPublisher_InAppProduct';
   protected $inappproductDataType = '';
 
 
-  public function setInappproduct(Powerform_Google_Service_AndroidPublisher_InAppProduct $inappproduct)
+  public function setInappproduct(Google_Service_AndroidPublisher_InAppProduct $inappproduct)
   {
     $this->inappproduct = $inappproduct;
   }
@@ -3276,17 +3276,17 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsInsertResponse exte
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InappproductsListResponse extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_InappproductsListResponse extends Google_Collection
 {
   protected $collection_key = 'inappproduct';
   protected $internal_gapi_mappings = array(
   );
-  protected $inappproductType = 'Powerform_Google_Service_AndroidPublisher_InAppProduct';
+  protected $inappproductType = 'Google_Service_AndroidPublisher_InAppProduct';
   protected $inappproductDataType = 'array';
   public $kind;
-  protected $pageInfoType = 'Powerform_Google_Service_AndroidPublisher_PageInfo';
+  protected $pageInfoType = 'Google_Service_AndroidPublisher_PageInfo';
   protected $pageInfoDataType = '';
-  protected $tokenPaginationType = 'Powerform_Google_Service_AndroidPublisher_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_AndroidPublisher_TokenPagination';
   protected $tokenPaginationDataType = '';
 
 
@@ -3306,7 +3306,7 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsListResponse extend
   {
     return $this->kind;
   }
-  public function setPageInfo(Powerform_Google_Service_AndroidPublisher_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_AndroidPublisher_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -3314,7 +3314,7 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsListResponse extend
   {
     return $this->pageInfo;
   }
-  public function setTokenPagination(Powerform_Google_Service_AndroidPublisher_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_AndroidPublisher_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -3324,15 +3324,15 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsListResponse extend
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InappproductsUpdateRequest extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_InappproductsUpdateRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $inappproductType = 'Powerform_Google_Service_AndroidPublisher_InAppProduct';
+  protected $inappproductType = 'Google_Service_AndroidPublisher_InAppProduct';
   protected $inappproductDataType = '';
 
 
-  public function setInappproduct(Powerform_Google_Service_AndroidPublisher_InAppProduct $inappproduct)
+  public function setInappproduct(Google_Service_AndroidPublisher_InAppProduct $inappproduct)
   {
     $this->inappproduct = $inappproduct;
   }
@@ -3342,15 +3342,15 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsUpdateRequest exten
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_InappproductsUpdateResponse extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_InappproductsUpdateResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $inappproductType = 'Powerform_Google_Service_AndroidPublisher_InAppProduct';
+  protected $inappproductType = 'Google_Service_AndroidPublisher_InAppProduct';
   protected $inappproductDataType = '';
 
 
-  public function setInappproduct(Powerform_Google_Service_AndroidPublisher_InAppProduct $inappproduct)
+  public function setInappproduct(Google_Service_AndroidPublisher_InAppProduct $inappproduct)
   {
     $this->inappproduct = $inappproduct;
   }
@@ -3360,7 +3360,7 @@ class Powerform_Google_Service_AndroidPublisher_InappproductsUpdateResponse exte
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_Listing extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_Listing extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3413,13 +3413,13 @@ class Powerform_Google_Service_AndroidPublisher_Listing extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ListingsListResponse extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_ListingsListResponse extends Google_Collection
 {
   protected $collection_key = 'listings';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $listingsType = 'Powerform_Google_Service_AndroidPublisher_Listing';
+  protected $listingsType = 'Google_Service_AndroidPublisher_Listing';
   protected $listingsDataType = 'array';
 
 
@@ -3441,7 +3441,7 @@ class Powerform_Google_Service_AndroidPublisher_ListingsListResponse extends Pow
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_MonthDay extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_MonthDay extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3467,7 +3467,7 @@ class Powerform_Google_Service_AndroidPublisher_MonthDay extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_PageInfo extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_PageInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3502,7 +3502,7 @@ class Powerform_Google_Service_AndroidPublisher_PageInfo extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_Price extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_Price extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3528,7 +3528,7 @@ class Powerform_Google_Service_AndroidPublisher_Price extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_ProductPurchase extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_ProductPurchase extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3581,17 +3581,17 @@ class Powerform_Google_Service_AndroidPublisher_ProductPurchase extends Powerfor
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_Prorate extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_Prorate extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $defaultPriceType = 'Powerform_Google_Service_AndroidPublisher_Price';
+  protected $defaultPriceType = 'Google_Service_AndroidPublisher_Price';
   protected $defaultPriceDataType = '';
-  protected $startType = 'Powerform_Google_Service_AndroidPublisher_MonthDay';
+  protected $startType = 'Google_Service_AndroidPublisher_MonthDay';
   protected $startDataType = '';
 
 
-  public function setDefaultPrice(Powerform_Google_Service_AndroidPublisher_Price $defaultPrice)
+  public function setDefaultPrice(Google_Service_AndroidPublisher_Price $defaultPrice)
   {
     $this->defaultPrice = $defaultPrice;
   }
@@ -3599,7 +3599,7 @@ class Powerform_Google_Service_AndroidPublisher_Prorate extends Powerform_Google
   {
     return $this->defaultPrice;
   }
-  public function setStart(Powerform_Google_Service_AndroidPublisher_MonthDay $start)
+  public function setStart(Google_Service_AndroidPublisher_MonthDay $start)
   {
     $this->start = $start;
   }
@@ -3609,20 +3609,20 @@ class Powerform_Google_Service_AndroidPublisher_Prorate extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_Season extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_Season extends Google_Collection
 {
   protected $collection_key = 'prorations';
   protected $internal_gapi_mappings = array(
   );
-  protected $endType = 'Powerform_Google_Service_AndroidPublisher_MonthDay';
+  protected $endType = 'Google_Service_AndroidPublisher_MonthDay';
   protected $endDataType = '';
-  protected $prorationsType = 'Powerform_Google_Service_AndroidPublisher_Prorate';
+  protected $prorationsType = 'Google_Service_AndroidPublisher_Prorate';
   protected $prorationsDataType = 'array';
-  protected $startType = 'Powerform_Google_Service_AndroidPublisher_MonthDay';
+  protected $startType = 'Google_Service_AndroidPublisher_MonthDay';
   protected $startDataType = '';
 
 
-  public function setEnd(Powerform_Google_Service_AndroidPublisher_MonthDay $end)
+  public function setEnd(Google_Service_AndroidPublisher_MonthDay $end)
   {
     $this->end = $end;
   }
@@ -3638,7 +3638,7 @@ class Powerform_Google_Service_AndroidPublisher_Season extends Powerform_Google_
   {
     return $this->prorations;
   }
-  public function setStart(Powerform_Google_Service_AndroidPublisher_MonthDay $start)
+  public function setStart(Google_Service_AndroidPublisher_MonthDay $start)
   {
     $this->start = $start;
   }
@@ -3648,7 +3648,7 @@ class Powerform_Google_Service_AndroidPublisher_Season extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_SubscriptionDeferralInfo extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_SubscriptionDeferralInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3674,7 +3674,7 @@ class Powerform_Google_Service_AndroidPublisher_SubscriptionDeferralInfo extends
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_SubscriptionPurchase extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_SubscriptionPurchase extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3718,15 +3718,15 @@ class Powerform_Google_Service_AndroidPublisher_SubscriptionPurchase extends Pow
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_SubscriptionPurchasesDeferRequest extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_SubscriptionPurchasesDeferRequest extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $deferralInfoType = 'Powerform_Google_Service_AndroidPublisher_SubscriptionDeferralInfo';
+  protected $deferralInfoType = 'Google_Service_AndroidPublisher_SubscriptionDeferralInfo';
   protected $deferralInfoDataType = '';
 
 
-  public function setDeferralInfo(Powerform_Google_Service_AndroidPublisher_SubscriptionDeferralInfo $deferralInfo)
+  public function setDeferralInfo(Google_Service_AndroidPublisher_SubscriptionDeferralInfo $deferralInfo)
   {
     $this->deferralInfo = $deferralInfo;
   }
@@ -3736,7 +3736,7 @@ class Powerform_Google_Service_AndroidPublisher_SubscriptionPurchasesDeferReques
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_SubscriptionPurchasesDeferResponse extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_SubscriptionPurchasesDeferResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3753,7 +3753,7 @@ class Powerform_Google_Service_AndroidPublisher_SubscriptionPurchasesDeferRespon
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_Testers extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_Testers extends Google_Collection
 {
   protected $collection_key = 'googlePlusCommunities';
   protected $internal_gapi_mappings = array(
@@ -3780,7 +3780,7 @@ class Powerform_Google_Service_AndroidPublisher_Testers extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_TokenPagination extends Powerform_Google_Model
+class Google_Service_AndroidPublisher_TokenPagination extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3806,7 +3806,7 @@ class Powerform_Google_Service_AndroidPublisher_TokenPagination extends Powerfor
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_Track extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_Track extends Google_Collection
 {
   protected $collection_key = 'versionCodes';
   protected $internal_gapi_mappings = array(
@@ -3842,13 +3842,13 @@ class Powerform_Google_Service_AndroidPublisher_Track extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_AndroidPublisher_TracksListResponse extends Powerform_Google_Collection
+class Google_Service_AndroidPublisher_TracksListResponse extends Google_Collection
 {
   protected $collection_key = 'tracks';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $tracksType = 'Powerform_Google_Service_AndroidPublisher_Track';
+  protected $tracksType = 'Google_Service_AndroidPublisher_Track';
   protected $tracksDataType = 'array';
 
 

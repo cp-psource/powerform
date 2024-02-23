@@ -54,6 +54,7 @@ function powerform_delete_custom_posts() {
 	}
 }
 
+
 /**
  * Delete custom options
  *
@@ -65,12 +66,6 @@ function powerform_delete_custom_options() {
 	delete_option( "powerform_pagination_entries" );
 	delete_option( "powerform_captcha_key" );
 	delete_option( "powerform_captcha_secret" );
-	delete_option( "powerform_v2_captcha_key" );
-	delete_option( "powerform_v2_captcha_secret" );
-	delete_option( "powerform_v2_invisible_captcha_key" );
-	delete_option( "powerform_v2_invisible_captcha_secret" );
-	delete_option( "powerform_v3_captcha_key" );
-	delete_option( "powerform_v3_captcha_secret" );
 	delete_option( "powerform_captcha_language" );
 	delete_option( "powerform_captcha_theme" );
 	delete_option( "powerform_welcome_dismissed" );
@@ -101,8 +96,6 @@ function powerform_delete_custom_options() {
 	delete_option( "powerform_currency" );
 	delete_option( "powerform_exporter_log" );
 	delete_option( "powerform_uninstall_clear_data" );
-	delete_option( "powerform_stripe_configuration" );
-	delete_option( "powerform_paypal_configuration" );
 }
 
 /**
@@ -153,10 +146,6 @@ function powerform_clear_module_submissions() {
 	wp_cache_delete( 'custom-forms' . '_form_type', 'powerform_total_entries' );
 	wp_cache_delete( 'poll' . '_form_type', 'powerform_total_entries' );
 	wp_cache_delete( 'quizzes' . '_form_type', 'powerform_total_entries' );
-
-	wp_cache_delete( 'powerform_form_total_entries', 'powerform_form_total_entries' );
-	wp_cache_delete( 'powerform_form_total_entries_publish', 'powerform_form_total_entries_publish' );
-	wp_cache_delete( 'powerform_form_total_entries_draft', 'powerform_form_total_entries_draft' );
 }
 
 $uninstall_settings = array();

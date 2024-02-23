@@ -86,8 +86,8 @@ foreach ( $template_vars as $key => $val ) {
 
 		<select name="consent_to_track" id="consent_to_track" class="sui-select sui-form-control">
 			<option value="Unchanged" <?php selected( 'Unchanged', $vars['consent_to_track'] ); ?>>Unchanged</option>
-			<option value="Yes" <?php selected( 'Yes', $vars['consent_to_track'] ); ?>>Yes</option>
-			<option value="No" <?php selected( 'No', $vars['consent_to_track'] ); ?>>No</option>
+			<option value="Ja" <?php selected( 'Yes', $vars['consent_to_track'] ); ?>>Yes</option>
+			<option value="Nein" <?php selected( 'No', $vars['consent_to_track'] ); ?>>No</option>
 		</select>
 
 		<?php if ( ! empty( $vars['consent_to_track_error'] ) ) : ?>

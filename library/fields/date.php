@@ -53,7 +53,7 @@ class Powerform_Date extends Powerform_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Datepicker', Powerform::DOMAIN );
+		$this->name = __( 'Datumsauswahl', Powerform::DOMAIN );
 	}
 
 	/**
@@ -64,19 +64,11 @@ class Powerform_Date extends Powerform_Field {
 	 */
 	public function defaults() {
 		return array(
-			'field_type'        => 'picker',
-			'date_format'       => 'mm/dd/yy',
-			'default_date'      => 'none',
-			'field_label'       => __( 'Date', Powerform::DOMAIN ),
-			'placeholder'       => __( 'Choose Date', Powerform::DOMAIN ),
-			'icon'              => 'true',
-			'day_label'         => __( 'Day', Powerform::DOMAIN ),
-			'day_placeholder'   => __( 'E.g. 01', Powerform::DOMAIN ),
-			'month_label'       => __( 'Month', Powerform::DOMAIN ),
-			'month_placeholder' => __( 'E.g. 01', Powerform::DOMAIN ),
-			'year_label'        => __( 'Year', Powerform::DOMAIN ),
-			'year_placeholder'  => __( 'E.g. 2000', Powerform::DOMAIN ),
-			'restrict_message'  => __( 'Please select one of the available dates.', Powerform::DOMAIN ),
+			'field_type'  => 'picker',
+			'date_format' => 'mm/dd/yy',
+			'field_label' => __( 'Datum', Powerform::DOMAIN ),
+			'placeholder' => __( 'Wähle Datum', Powerform::DOMAIN ),
+			'icon'        => "true",
 		);
 	}
 
@@ -113,10 +105,9 @@ class Powerform_Date extends Powerform_Field {
 	 * @return mixed
 	 */
 	public function markup( $field, $settings = array() ) {
-
 		$this->field = $field;
-
 		$html        = '';
+		$icon        = '';
 		$design      = $this->get_form_style( $settings );
 		$id          = self::get_property( 'element_id', $field );
 		$name        = $id;
@@ -127,653 +118,233 @@ class Powerform_Date extends Powerform_Field {
 		$type        = trim( self::get_property( 'field_type', $field ) );
 		$has_icon    = self::get_property( 'icon', $field, false, 'bool' );
 		$has_icon    = filter_var( $has_icon, FILTER_VALIDATE_BOOLEAN );
-		$date_format = esc_html( self::get_property( 'date_format', $field, 'm/d/Y' ) );
-		$start_date_type = self::get_property( 'start-date', $field, '' );
-		$end_date_type   = self::get_property( 'end-date', $field, '' );
-		$start_of_week = self::get_property( 'start_of_week', $field, get_option('start_of_week') );
-		$disabled_dates = self::get_property( 'disabled-dates', $field, array() );
-		$disabled_range = self::get_property( 'disable-date-range', $field, array() );
+		$date_format = self::get_property( 'date_format', $field );
 
-		if ( false !== strpos( $date_format, '-' ) ) {
-			$sep = '-';
-		} elseif ( false !== strpos( $date_format, '.' ) ) {
-			$sep = '.';
-		} else {
-			$sep = '/';
-		}
+		$sep     = false !== strpos( $date_format, '/' ) ? '/' : '-';
 		$formats = explode( $sep, $date_format );
 
-		$min_year = esc_html( self::get_property( 'min_year', $field, 1920 ) );
-		$max_year = esc_html( self::get_property( 'max_year', $field, 2120 ) );
+		$min_year = self::get_property( 'min_year', $field, 1920 );
+		$max_year = self::get_property( 'max_year', $field, 2120 );
 
-		$prefill = false;
-		$is_prefil_valid = false;
-
-		// Check if Pre-fill parameter used
-		if ( $this->has_prefill( $field ) ) {
-			// We have pre-fill parameter, use its value or $value
-			$prefill = $this->get_prefill( $field, $prefill );
+		if ( $has_icon ) {
+			$icon = 'powerform-has_icon';
 		}
 
-		$parsed_date = self::parse_date( $prefill, $date_format );
-		if ( $parsed_date && $this->check_date( $parsed_date['month'], $parsed_date['day'], $parsed_date['year'] ) ) {
-			$is_prefil_valid = true;
-		}
-
-		if ( 'picker' === $type ) {
-			$html .= '<div class="powerform-field">';
-		}
-
-		if ( 'picker' === $type ) {
-
+		// If field type == picker
+		if ( "picker" === $type ) {
 			$restrict      = array();
 			$restrict_type = self::get_property( 'howto-restrict', $field );
 
-			if ( 'week' === $restrict_type ) {
-
+			if ( "week" === $restrict_type ) {
 				$days = powerform_week_days();
 				$i    = 0;
-
 				foreach ( $days as $k => $day ) {
-
 					if ( ! self::get_property( $k, $field ) ) {
 						$restrict[] = $i;
 					}
-
 					$i ++;
 				}
-			} elseif ( 'custom' === $restrict_type ) {
+			} elseif ( "custom" === $restrict_type ) {
 				$dates = self::get_property( 'date_multiple', $field );
-				$default_value = '';
-				$default_date  = esc_html( self::get_property( 'default_date', $field, false ) );
 
 				if ( ! empty( $dates ) ) {
 					foreach ( $dates as $k => $date ) {
 						$restrict[] = $date['value'];
 					}
 				}
-
-				if ( 'custom' === $default_date ) {
-					$default_date_value = esc_html( self::get_property( 'date', $field, '' ) );
-					$default_value      = $default_date_value;
-				}
 			}
 
 			$default_value = '';
 			$default_date  = self::get_property( 'default_date', $field, false );
 
-			if ( 'today' === $default_date ) {
-				$datepicker_format = $this->normalize_date_format( $date_format );
-				$default_value     = date( $datepicker_format );
+			if ( "today" === $default_date ) {
+				$default_value = date( "m/d/Y" );
 			}
 
-			if ( 'custom' === $default_date ) {
+			if ( "custom" === $default_date ) {
 				$default_date_value = self::get_property( 'date', $field, '' );
 				$default_value      = $default_date_value;
 			}
 
-			if ( $is_prefil_valid ) {
-				$default_value = $prefill;
-			}
-
-			$past_dates = self::get_property( 'past_dates', $field );
-			$past_dates = '' !== $default_value && 'disable' === $past_dates ? 'disable' : 'enable';
-
-			$start_date       = '';
-			$end_date         = '';
-			$start_date_field = '';
-			$end_date_field   = '';
-			$start_offset     = '';
-			$end_offset       = '';
-			if ( ! empty( $start_date_type ) ) {
-				if ( 'specific' === $start_date_type ) {
-					$start_date = self::get_property( 'start-specific-date', $field, '' );
-				} else {
-					$start_offset_operator = self::get_property( 'start-offset-operator', $field, '+' );
-					$start_offset_value    = self::get_property( 'start-offset-value', $field, '0' );
-					$start_offset_duration = self::get_property( 'start-offset-duration', $field, 'days' );
-					if ( 'today' === $start_date_type ) {
-						$start_date = date_i18n( datepicker_default_format( $date_format ), strtotime( $start_offset_operator . $start_offset_value . ' ' . $start_offset_duration ) );
-					} else {
-						$start_date_field = $start_date_type;
-						$start_offset     = $start_offset_operator . '_' . $start_offset_value . '_' . $start_offset_duration;
-					}
-				}
-			}
-			if ( ! empty( $end_date_type ) ) {
-				if ( 'specific' === $end_date_type ) {
-					$end_date = self::get_property( 'end-specific-date', $field, '' );
-				} else {
-					$end_offset_operator = self::get_property( 'end-offset-operator', $field, '+' );
-					$end_offset_value    = self::get_property( 'end-offset-value', $field, '0' );
-					$end_offset_duration = self::get_property( 'end-offset-duration', $field, 'days' );
-					if ( 'today' === $end_date_type ) {
-						$end_date = date_i18n( datepicker_default_format( $date_format ), strtotime( $end_offset_operator . $end_offset_value . ' ' . $end_offset_duration ) );
-					} else {
-						$end_date_field = $end_date_type;
-						$end_offset     = $end_offset_operator . '_' . $end_offset_value . '_' . $end_offset_duration;
-					}
-				}
-			}
-
-			$icon_markup = array(
-				'<div class="powerform-input-with-icon">',
-				'</div>',
-				'calendar'
-			);
-
-			if ( ! empty( $start_date ) ) {
-				$min_year = date( 'Y', strtotime( $start_date ) );
-			}
-
-			if ( ! empty( $end_date ) ) {
-				$max_year = date( 'Y', strtotime( $end_date ) );
-			}
-
 			$html .= self::create_input(
 				array(
+					'id'                 => $id . '-picker',
 					'type'               => 'text',
-					'size'               => 1,
-					'name'               => $name,
-					'value'              => $default_value,
-					'placeholder'        => $placeholder,
-					'id'                 => 'powerform-field-' . $id . '-picker-' . uniqid(),
 					'class'              => 'powerform-input powerform-datepicker',
 					'data-required'      => $required,
+					'name'               => $name,
+					'size'               => 1,
+					'value'              => $default_value,
+					'placeholder'        => $placeholder,
 					'data-format'        => $date_format,
 					'data-restrict-type' => $restrict_type,
 					'data-restrict'      => implode( ",", $restrict ),
 					'data-start-year'    => $min_year,
 					'data-end-year'      => $max_year,
-					'data-past-dates'    => $past_dates,
-					'data-start-of-week' => $start_of_week,
-					'data-start-date'    => $start_date,
-					'data-end-date'      => $end_date,
-					'data-start-field'   => $start_date_field,
-					'data-end-field'     => $end_date_field,
-					'data-start-offset'  => $start_offset,
-					'data-end-offset'    => $end_offset,
-					'data-disable-date'  => implode( ',', $disabled_dates ),
-					'data-disable-range' => implode( ',', $disabled_range ),
 				),
 				$label,
 				$description,
 				$required,
 				$design,
-				$has_icon ? $icon_markup : ''
-			);
+				array(
+					sprintf( '<div class="powerform-date %s">', $icon ),
+					'</div>',
+				) );
 
-		} elseif ( 'select' === $type ) {
-
-			if ( ! empty( $label ) ) {
-
-				if ( $required ) {
-
-					$html .= sprintf(
-						'<label for="%s" class="powerform-label">%s %s</label>',
-						'powerform-field-' . $id,
-						$label,
-						powerform_get_required_icon()
-					);
-
-				} else {
-
-					$html .= sprintf(
-						'<label for="%s" class="powerform-label">%s</label>',
-						'powerform-field-' . $id,
-						$label
-					);
-
-				}
-
-				// Mark day, month and year required markup as false
-				$required = false;
-
-			}
-
-			$default_date       = esc_html( self::get_property( 'default_date', $field, false ) );
-			$default_date_value = esc_html( self::get_property( 'date', $field, '' ) );
-
-			if ( $is_prefil_valid ) {
-				$default_value = $prefill;
-			}
-
-			if ( $is_prefil_valid ) {
-				$day   = $parsed_date['day'];
-				$month = $parsed_date['month'];
-				$year  = $parsed_date['year'];
-			} else if ( 'today' === $default_date ) {
-				$day   = date( 'j' );
-				$month = date( 'n' );
-				$year  = date( 'Y' );
-			} else if ( 'custom' === $default_date && ! empty( $default_date_value ) ) {
-				$day   = date( "j", strtotime( $default_date_value ) );
-				$month = date( "n", strtotime( $default_date_value ) );
-				$year  = date( "Y", strtotime( $default_date_value ) );
-			} else {
-				$day   = '';
-				$month = '';
-				$year  = '';
-			}
-
-			// START: Row
-			$html .= '<div class="powerform-date-select">';
-
-			$html .= '<div class="powerform-row" data-multiple="true">';
+		} elseif ( "select" === $type ) {
+			// Start row
+			$html .= '<div class="powerform-row powerform-row--inner">';
 
 			foreach ( $formats as $format ) {
-
 				switch ( $format ) {
-
 					case 'dd':
-						$day_id = $id . '-day';
-						$html  .= '<div id="' . $day_id . '" class="powerform-col">';
-
-						$html .= '<div class="powerform-field">';
+						// Start field
+						$html .= '<div class="powerform-col powerform-col-4">';
+						$html .= '<div class="powerform-field powerform-field--inner">';
 
 						$day_data = array(
-							'name'        => $id . '-day',
-							'id'          => 'powerform-field-' . $id . '-day',
-							'class'       => 'powerform-select',
-							'data-format' => $date_format,
-							'data-parent' => $id,
+							'class' => 'powerform-select',
+							'name'  => $id . '-day',
+							'id'    => $id . '-day',
 						);
 
-						if ( $required ) {
+						$html .= self::create_select( $day_data, __( "Tag", Powerform::DOMAIN ), $this->get_day() );
 
-							$label = self::get_property( 'day_label', $field );
-
-							if ( ! empty( $label ) ) {
-								$html .= sprintf(
-									'<label for="%s" class="powerform-label">%s %s</label>',
-									$day_data['id'],
-									$this->sanitize_value( $label ),
-									'<span class="powerform-required">*</span>'
-								);
-							}
-
-							$html .= self::create_select(
-								$day_data,
-								false,
-								$this->get_day(),
-								$day
-							);
-
-						} else {
-
-							$html .= self::create_select(
-								$day_data,
-								$this->sanitize_value( self::get_property( 'day_label', $field ) ),
-								$this->get_day(),
-								$day
-							);
-						}
-
+						// End field
 						$html .= '</div>';
-
 						$html .= '</div>';
-
 						break;
 
 					case 'mm':
-						$month_id = $id . '-month';
-						$html    .= '<div id="' . $month_id . '" class="powerform-col">';
-
-						$html .= '<div class="powerform-field">';
+						// Start field
+						$html .= '<div class="powerform-col powerform-col-4">';
+						$html .= '<div class="powerform-field powerform-field--inner">';
 
 						$month_data = array(
-							'name'        => $id . '-month',
-							'id'          => 'powerform-field-' . $id . '-month',
-							'class'       => 'powerform-select',
-							'data-format' => $date_format,
-							'data-parent' => $id,
+							'class' => 'powerform-select',
+							'name'  => $id . '-month',
+							'id'    => $id . '-month',
 						);
 
-						if ( $required ) {
+						$html .= self::create_select( $month_data, __( "Monat", Powerform::DOMAIN ), $this->get_months() );
 
-							$label = self::get_property( 'month_label', $field );
-
-							if ( ! empty( $label ) ) {
-								$html .= sprintf(
-									'<label for="%s" class="powerform-label">%s %s</label>',
-									$month_data['id'],
-									$this->sanitize_value( $label ),
-									'<span class="powerform-required">*</span>'
-								);
-							}
-
-							$html .= self::create_select(
-								$month_data,
-								false,
-								$this->get_months(),
-								$month
-							);
-
-						} else {
-
-							$html .= self::create_select(
-								$month_data,
-								$this->sanitize_value( self::get_property( 'month_label', $field ) ),
-								$this->get_months(),
-								$month
-							);
-						}
-
+						// End field
 						$html .= '</div>';
-
 						$html .= '</div>';
-
 						break;
 
 					case 'yy':
-						$year_id = $id . '-year';
-						$html   .= '<div id="' . $year_id . '" class="powerform-col">';
-
-						$html .= '<div class="powerform-field">';
+						// Start field
+						$html .= '<div class="powerform-col powerform-col-4">';
+						$html .= '<div class="powerform-field powerform-field--inner">';
 
 						$year_data = array(
-							'name'        => $id . '-year',
-							'id'          => 'powerform-field-' . $id . '-year',
-							'class'       => 'powerform-select',
-							'data-format' => $date_format,
-							'data-parent' => $id,
+							'class' => 'powerform-select',
+							'name'  => $id . '-year',
+							'id'    => $id . '-year',
 						);
 
-						if ( $required ) {
+						$html .= self::create_select( $year_data, __( "Jahr", Powerform::DOMAIN ), $this->get_years( $min_year, $max_year ) );
 
-							$label = self::get_property( 'year_label', $field );
-
-							if ( ! empty( $label ) ) {
-
-								$html .= sprintf(
-									'<label for="%s" class="powerform-label">%s %s</label>',
-									$year_data['id'],
-									$this->sanitize_value( $label ),
-									'<span class="powerform-required">*</span>'
-								);
-							}
-
-							$html .= self::create_select(
-								$year_data,
-								false,
-								$this->get_years( $min_year, $max_year ),
-								$year
-							);
-
-						} else {
-
-							$html .= self::create_select(
-								$year_data,
-								$this->sanitize_value( self::get_property( 'year_label', $field ) ),
-								$this->get_years( $min_year, $max_year ),
-								$year
-							);
-						}
-
+						// End field
 						$html .= '</div>';
-
 						$html .= '</div>';
-
 						break;
 					default:
 						break;
 				}
 			}
 
+			// End row
 			$html .= '</div>';
 
-			// END: Row
-			$html .= '</div>';
-
-			$html .= self::get_description( $description, 'powerform-field-' . $id );
-
-		} elseif ( 'input' === $type ) {
-			$day_value = $month_value = $year_value = '';
-
-			if ( $is_prefil_valid ) {
-				$day_value   = $parsed_date['day'];
-				$month_value = $parsed_date['month'];
-				$year_value  = $parsed_date['year'];
-			}
-			if ( ! empty( $label ) ) {
-
-				if ( $required ) {
-
-					$html .= sprintf(
-						'<label for="%s" class="powerform-label">%s %s</label>',
-						'powerform-field-' . $id,
-						esc_html( $label ),
-						powerform_get_required_icon()
-					);
-
-				} else {
-
-					$html .= sprintf(
-						'<label for="%s" class="powerform-label">%s</label>',
-						'powerform-field-' . $id,
-						esc_html( $label )
-					);
-				}
-			}
-
-			// START: Row
-			$html .= '<div class="powerform-date-input">';
-
-			$html .= '<div class="powerform-row" data-multiple="true">';
+		} elseif ( "input" === $type ) {
+			// Start row
+			$html .= '<div class="powerform-row powerform-row--inner">';
 
 			foreach ( $formats as $format ) {
-
 				switch ( $format ) {
-
 					case 'dd':
-						$day   = $id . '-day';
-						$html .= '<div id="' . $day . '" class="powerform-col">';
-
-						$html .= '<div class="powerform-field">';
+						// Start field
+						$html .= '<div class="powerform-col powerform-col-4">';
+						$html .= '<div class="powerform-field powerform-field--inner">';
 
 						$day_data = array(
-							'type'        => 'number',
-							'min'         => 1,
-							'max'         => 31,
-							'name'        => $id . '-day',
-							'value'       => $day_value,
-							'placeholder' => $this->sanitize_value( self::get_property( 'day_placeholder', $field ) ),
-							'id'          => 'powerform-field-' . $id . '-day',
-							'class'       => 'powerform-input',
-							'data-field'  => 'day',
-							'data-format' => $date_format,
-							'data-parent' => $id,
+							'class'           => 'powerform-input',
+							'name'            => $id . '-day',
+							'id'              => $id . '-day',
+							'aria-labelledby' => 'powerform-label-' . $id . '-day',
+							'type'            => 'number',
+							'min'             => 1,
+							'max'             => 31,
 						);
 
-						if ( $required ) {
+						$description = '';
+						$html        .= self::create_input( $day_data, __( "Tag", Powerform::DOMAIN ), $description, $required, $design );
 
-							$label = self::get_property( 'day_label', $field );
-
-							if ( ! empty( $label ) ) {
-
-								$html .= sprintf(
-									'<label for="%s" class="powerform-label">%s %s</label>',
-									$day_data['id'],
-									$this->sanitize_value( $label ),
-									'<span class="powerform-required">*</span>'
-								);
-							}
-
-							$html .= self::create_input(
-								$day_data,
-								false,
-								'',
-								$required,
-								$design
-							);
-
-						} else {
-
-							$html .= self::create_input(
-								$day_data,
-								$this->sanitize_value( self::get_property( 'day_label', $field ) ),
-								'',
-								$required,
-								$design
-							);
-						}
-
+						// End field
 						$html .= '</div>';
-
 						$html .= '</div>';
-
 						break;
 
 					case 'mm':
-						$month = $id . '-month';
-						$html .= '<div id="' . $month . '" class="powerform-col">';
-
-						$html .= '<div class="powerform-field">';
+						// Start field
+						$html .= '<div class="powerform-col powerform-col-4">';
+						$html .= '<div class="powerform-field powerform-field--inner">';
 
 						$month_data = array(
-							'type'        => 'number',
-							'min'         => 1,
-							'max'         => 12,
-							'name'        => $id . '-month',
-							'value'       => $month_value,
-							'placeholder' => $this->sanitize_value( self::get_property( 'month_placeholder', $field ) ),
-							'id'          => 'powerform-field-' . $id . '-month',
-							'class'       => 'powerform-input',
-							'data-field'  => 'month',
-							'data-format' => $date_format,
-							'data-parent' => $id,
+							'class'           => 'powerform-input',
+							'name'            => $id . '-month',
+							'id'              => $id . '-month',
+							'aria-labelledby' => 'powerform-label-' . $id . '-month',
+							'type'            => 'number',
+							'min'             => 1,
+							'max'             => 12,
 						);
 
-						if ( $required ) {
+						$description = '';
+						$html        .= self::create_input( $month_data, __( "Monat", Powerform::DOMAIN ), $description, $required, $design );
 
-							$label = self::get_property( 'month_label', $field );
-
-							if ( ! empty( $label ) ) {
-
-								$html .= sprintf(
-									'<label for="%s" class="powerform-label">%s %s</label>',
-									$month_data['id'],
-									$this->sanitize_value( $label ),
-									'<span class="powerform-required">*</span>'
-								);
-							}
-
-							$html .= self::create_input(
-								$month_data,
-								false,
-								'',
-								$required,
-								$design
-							);
-
-						} else {
-
-							$html .= self::create_input(
-								$month_data,
-								$this->sanitize_value( self::get_property( 'month_label', $field ) ),
-								'',
-								$required,
-								$design
-							);
-						}
-
+						// End field
 						$html .= '</div>';
-
 						$html .= '</div>';
-
 						break;
 
 					case 'yy':
-						$year  = $id . '-year';
-						$html .= '<div id="' . $year . '" class="powerform-col">';
+						// Start field
+						$html .= '<div class="powerform-col powerform-col-4">';
+						$html .= '<div class="powerform-field powerform-field--inner">';
 
-						$html .= '<div class="powerform-field">';
-
-						$year_data = array(
-							'type'        => 'number',
-							'min'         => 1,
-							'name'        => $id . '-year',
-							'placeholder' => $this->sanitize_value( self::get_property( 'year_placeholder', $field ) ),
-							'id'          => 'powerform-field-' . $id . '-year',
-							'class'       => 'powerform-input',
-							'data-field'  => 'year',
-							'value'       => $year_value,
-							'data-format' => $date_format,
-							'data-parent' => $id,
+						$year_data   = array(
+							'class'           => 'powerform-input',
+							'name'            => $id . '-year',
+							'id'              => $id . '-year',
+							'aria-labelledby' => 'powerform-label-' . $id . '-year',
+							'type'            => 'number',
+							'min'             => 1,
 						);
+						$description = '';
+//						if ( ! empty( $min_year ) && ! empty( $max_year ) ) {
+//							//Not sure if we add this
+//							//$description = sprintf( __( 'Between %s and %s ', Powerform::DOMAIN ), $min_year, $max_year );
+//						}
 
-						if ( $required ) {
+						$html .= self::create_input( $year_data, __( "Jahr", Powerform::DOMAIN ), $description, $required, $design );
 
-							$label = self::get_property( 'year_label', $field );
-
-							if ( ! empty( $label ) ) {
-								$html .= sprintf(
-									'<label for="%s" class="powerform-label">%s %s</label>',
-									$year_data['id'],
-									$this->sanitize_value( $label ),
-									'<span class="powerform-required">*</span>'
-								);
-							}
-
-							$html .= self::create_input(
-								$year_data,
-								false,
-								'',
-								$required,
-								$design
-							);
-
-						} else {
-
-							$html .= self::create_input(
-								$year_data,
-								$this->sanitize_value( self::get_property( 'year_label', $field ) ),
-								'',
-								$required,
-								$design
-							);
-						}
-
+						// End field
 						$html .= '</div>';
-
 						$html .= '</div>';
 						break;
-
 					default:
 						break;
 				}
 			}
 
-			$html .= '</div>';
-
-			// END: Row
-			$html .= '</div>';
-
-			$html .= self::get_description( $description, 'powerform-field-' . $id );
-		}
-
-		if ( 'picker' === $type ) {
+			// End row
 			$html .= '</div>';
 		}
 
 		return apply_filters( 'powerform_field_date_markup', $html, $field, $this );
-	}
-
-	/**
-	 * Return modified date format
-	 *
-	 * @since 1.7.0.1
-	 *
-	 * @param string $date_format
-	 *
-	 * @return string
-	 */
-	public function normalize_date_format( $date_format ) {
-		$date_format = str_replace( 'dd', 'd', $date_format );
-		$date_format = str_replace( 'mm', 'm', $date_format );
-		$date_format = str_replace( 'yy', 'Y', $date_format );
-
-		return $date_format;
 	}
 
 	/**
@@ -788,7 +359,7 @@ class Powerform_Date extends Powerform_Field {
 	 */
 	public function get_years( $min_year = '', $max_year = '' ) {
 		$array = array();
-		$year  = intval( date( 'Y' ) );// phpcs:ignore
+		$year  = intval( date( 'Y' ) );
 		$end   = empty( $min_year ) ? $year - 100 : intval( $min_year ) - 1;
 		$start = empty( $max_year ) ? $year + 1 : intval( $max_year );
 		for ( $i = $start; $i > $end; $i -- ) {
@@ -797,11 +368,6 @@ class Powerform_Date extends Powerform_Field {
 				'value' => $i,
 			);
 		}
-
-		array_unshift( $array, [
-			'label' => esc_html__( 'Select Year', Powerform::DOMAIN ),
-			'value' => '',
-		]);
 
 		return apply_filters( 'powerform_field_date_get_years', $array, $min_year, $max_year, $year, $start, $end, $this );
 	}
@@ -821,11 +387,6 @@ class Powerform_Date extends Powerform_Field {
 			);
 		}
 
-		array_unshift( $array, [
-			'label' => esc_html__( 'Select month', Powerform::DOMAIN ),
-			'value' => '',
-		]);
-
 		return apply_filters( 'powerform_field_date_get_months', $array, $this );
 	}
 
@@ -843,10 +404,6 @@ class Powerform_Date extends Powerform_Field {
 				'value' => $i,
 			);
 		}
-		array_unshift( $array, [
-			'label' => esc_html__( 'Select day', Powerform::DOMAIN ),
-			'value' => '',
-		]);
 
 		return apply_filters( 'powerform_field_date_get_day', $array, $this );
 	}
@@ -856,8 +413,8 @@ class Powerform_Date extends Powerform_Field {
 	 *
 	 * @since 1.0
 	 *
-	 * @param string|array $date - the date to be parsed
-	 * @param string $format - the data format
+	 * @param string|array $date   - the date to be parsed
+	 * @param string       $format - the data format
 	 *
 	 * @return array
 	 */
@@ -873,23 +430,19 @@ class Powerform_Date extends Powerform_Field {
 		if ( is_array( $date ) ) {
 
 			switch ( $position ) {
-				case 'mm/dd/yy':
-				case 'mm-dd-yy':
-				case 'mm.dd.yy':
+				case 'mm/dd/yy' :
 					$date_info['month'] = isset( $date['month'] ) ? $date['month'] : 0;
 					$date_info['day']   = isset( $date['day'] ) ? $date['day'] : 0;
 					$date_info['year']  = isset( $date['year'] ) ? $date['year'] : 0;
 					break;
-				case 'dd/mm/yy':
-				case 'dd-mm-yy':
-				case 'dd.mm.yy':
+
+				case 'dd/mm/yy' :
 					$date_info['day']   = isset( $date['day'] ) ? $date['day'] : 0;
 					$date_info['month'] = isset( $date['month'] ) ? $date['month'] : 0;
 					$date_info['year']  = isset( $date['year'] ) ? $date['year'] : 0;
 					break;
-				case 'yy-mm-dd':
-				case 'yy/mm/dd':
-				case 'yy.mm.dd':
+
+				case 'yy-mm-dd' :
 					$date_info['year']  = isset( $date['year'] ) ? $date['year'] : 0;
 					$date_info['month'] = isset( $date['month'] ) ? $date['month'] : 0;
 					$date_info['day']   = isset( $date['day'] ) ? $date['day'] : 0;
@@ -902,20 +455,20 @@ class Powerform_Date extends Powerform_Field {
 			return apply_filters( 'powerform_field_date_parse_dates', $date_info, $date, $format );
 		}
 
-		$date = preg_replace( '|[/\.]|', '-', $date );
-		if ( 'mm/dd/yy' === $position || 'mm-dd-yy' === $position || 'mm.dd.yy' === $position ) {
+		$date = preg_replace( "|[/\.]|", '-', $date );
+		if ( 'mm/dd/yy' === $position ) {
 			if ( preg_match( '/^(\d{1,2})-(\d{1,2})-(\d{1,4})$/', $date, $matches ) ) {
 				$date_info['month'] = $matches[1];
 				$date_info['day']   = $matches[2];
 				$date_info['year']  = $matches[3];
 			}
-		} elseif ( 'dd/mm/yy' === $position || 'dd-mm-yy' === $position || 'dd.mm.yy' === $position ) {
+		} elseif ( 'dd/mm/yy' === $position ) {
 			if ( preg_match( '/^(\d{1,2})-(\d{1,2})-(\d{1,4})$/', $date, $matches ) ) {
 				$date_info['day']   = $matches[1];
 				$date_info['month'] = $matches[2];
 				$date_info['year']  = $matches[3];
 			}
-		} elseif ( 'yy-mm-dd' === $position || 'yy/mm/dd' === $position || 'yy.mm.dd' === $position ) {
+		} elseif ( 'yy-mm-dd' === $position ) {
 			if ( preg_match( '/^(\d{1,4})-(\d{1,2})-(\d{1,2})$/', $date, $matches ) ) {
 				$date_info['year']  = $matches[1];
 				$date_info['month'] = $matches[2];
@@ -932,8 +485,8 @@ class Powerform_Date extends Powerform_Field {
 	 * @since 1.0
 	 *
 	 * @param int $month - the month
-	 * @param int $day - the day
-	 * @param int $year - the year
+	 * @param int $day   - the day
+	 * @param int $year  - the year
 	 *
 	 * @return bool
 	 */
@@ -956,12 +509,11 @@ class Powerform_Date extends Powerform_Field {
 	 */
 	public function get_validation_rules() {
 		$field       = $this->field;
-		$id          = self::get_property( 'element_id', $field );
 		$type        = trim( self::get_property( 'field_type', $field ) );
 		$date_format = self::get_property( 'date_format', $field );
 		$rules       = '';
 
-		if ( 'picker' === $type ) {
+		if ( "picker" === $type ) {
 			$rules .= '"' . $this->get_id( $field ) . '": {' . "\n";
 			if ( $this->is_required( $field ) ) {
 				$rules .= '"required": true,';
@@ -977,7 +529,7 @@ class Powerform_Date extends Powerform_Field {
 			}
 		}
 
-		return apply_filters( 'powerform_field_date_validation_rules', $rules, $id, $field );
+		return $rules;
 	}
 
 	/**
@@ -990,17 +542,10 @@ class Powerform_Date extends Powerform_Field {
 		$field                       = $this->field;
 		$type                        = trim( self::get_property( 'field_type', $field ) );
 		$date_format                 = self::get_property( 'date_format', $field );
-		$required_validation_message = self::get_property( 'required_message', $field, '' );
-		$month_label                 = self::get_property( 'month_label', $field, '' );
-		$day_label                   = self::get_property( 'day_label', $field, '' );
-		$year_label                  = self::get_property( 'year_label', $field, '' );
-
-		if ( empty( $required_validation_message ) ) {
-			$required_validation_message = __( 'This field is required.', Powerform::DOMAIN );
-		}
+		$required_validation_message = self::get_property( 'required_message', $field, __( 'Dieses Feld wird benötigt. Bitte gib ein korrektes Datum an', Powerform::DOMAIN ) );
 
 		$messages = '';
-		if ( 'picker' === $type ) {
+		if ( "picker" === $type ) {
 			$messages = '"' . $this->get_id( $field ) . '": {' . "\n";
 			if ( $this->is_required( $field ) ) {
 				$required_validation_message = apply_filters(
@@ -1011,19 +556,19 @@ class Powerform_Date extends Powerform_Field {
 					$date_format,
 					$this
 				);
-				$messages                   .= '"required": "' . powerform_addcslashes( $required_validation_message ) . '",' . "\n";
+				$messages                    .= '"required": "' . $required_validation_message . '",' . "\n";
 			}
 
 			$format_validation_message = apply_filters(
 				'powerform_field_date_format_validation_message',
-				__( 'Not valid date', Powerform::DOMAIN ),
+				__( 'Nicht gültiges Datum', Powerform::DOMAIN ),
 				$field,
 				$type,
 				$date_format,
 				$this
 			);
 
-			$messages .= '"dateformat": "' . powerform_addcslashes( $format_validation_message ) . '",' . "\n";
+			$messages .= '"dateformat": "' . $format_validation_message . '",' . "\n";
 			$messages .= '},' . "\n";
 		} else {
 			if ( $this->is_required( $field ) ) {
@@ -1035,7 +580,7 @@ class Powerform_Date extends Powerform_Field {
 					$date_format,
 					$this
 				);
-				$messages               = '"' . $this->get_id( $field ) . '-day": "<strong>' . $day_label . '</strong>: ' . powerform_addcslashes( $day_validation_message ) . '",' . "\n";
+				$messages               = '"' . $this->get_id( $field ) . '-day": "' . $day_validation_message . '",' . "\n";
 
 				$month_validation_message = apply_filters(
 					'powerform_field_date_month_validation_message',
@@ -1045,7 +590,7 @@ class Powerform_Date extends Powerform_Field {
 					$date_format,
 					$this
 				);
-				$messages                .= '"' . $this->get_id( $field ) . '-month": "<strong>' . $month_label . '</strong>: ' . powerform_addcslashes( $month_validation_message ) . '",' . "\n";
+				$messages                 .= '"' . $this->get_id( $field ) . '-month": "' . $month_validation_message . '",' . "\n";
 
 				$year_validation_message = apply_filters(
 					'powerform_field_date_year_validation_message',
@@ -1055,8 +600,9 @@ class Powerform_Date extends Powerform_Field {
 					$date_format,
 					$this
 				);
-				$messages               .= '"' . $this->get_id( $field ) . '-year": "<strong>' . $year_label . '</strong>: ' . powerform_addcslashes( $year_validation_message ) . '",' . "\n";
+				$messages                .= '"' . $this->get_id( $field ) . '-year": "' . $year_validation_message . '",' . "\n";
 			}
+
 		}
 
 		return apply_filters( 'powerform_field_date_validation_message', $messages, $field, $type, $date_format, $this );
@@ -1067,21 +613,14 @@ class Powerform_Date extends Powerform_Field {
 	 *
 	 * @since 1.0
 	 *
-	 * @param array $field
+	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$id = self::get_property( 'element_id', $field );
-		$start_date_type = self::get_property( 'start-date', $field, '' );
-		$end_date_type   = self::get_property( 'end-date', $field, '' );
-		$date_type       = self::get_property( 'field_type', $field, 'picker' );
-		$disabled_dates  = self::get_property( 'disabled-dates', $field, array() );
-		$disabled_range  = self::get_property( 'disable-date-range', $field, array() );
-		$restrict_type = self::get_property( 'howto-restrict', $field );
 
 		if ( $this->is_required( $field ) ) {
-			$required_validation_message = self::get_property( 'required_message', $field, __( 'This field is required. Please enter a valid date.', Powerform::DOMAIN ) );
+			$required_validation_message = self::get_property( 'required_message', $field, __( 'Dieses Feld wird benötigt. Bitte gib ein korrektes Datum an', Powerform::DOMAIN ) );
 			if ( empty( $data ) ) {
 				$this->validation_message[ $id ] = apply_filters(
 					'powerform_field_date_required_field_validation_message',
@@ -1116,17 +655,10 @@ class Powerform_Date extends Powerform_Field {
 		// Always! (we dont have validate flag on builder) validate date_format
 		$date_format = self::get_property( 'date_format', $field );
 		$date        = self::parse_date( $data, $date_format );
-
-		// strtotime does not recognize all of our date formats so we need to convert all dates to 1 accepted format before processing.
-      if ( 'Y-m-d' !== datepicker_default_format( $date_format ) ) {
-         $format_date = date_create_from_format( datepicker_default_format( $date_format ), $data );
-         $data        = date_format( $format_date, 'Y-m-d' );
-      }
-
 		if ( empty( $date ) || ! $this->check_date( $date['month'], $date['day'], $date['year'] ) ) {
 			$this->validation_message[ $id ] = apply_filters(
 				'powerform_field_date_valid_date_validation_message',
-				__( 'Please enter a valid date.', Powerform::DOMAIN ),
+				__( 'Bitte gib ein korrektes Datum an', Powerform::DOMAIN ),
 				$id,
 				$data,
 				$date_format,
@@ -1142,7 +674,7 @@ class Powerform_Date extends Powerform_Field {
 					if ( $year < $min_year || $year > $max_year ) {
 						$this->validation_message[ $id ] = apply_filters(
 							'powerform_field_date_valid_maxmin_year_validation_message',
-							__( 'Please enter a valid year.', Powerform::DOMAIN )
+							__( 'Bitte ein gültiges Jahr eingeben', Powerform::DOMAIN )
 						);
 					}
 				} else {
@@ -1150,7 +682,7 @@ class Powerform_Date extends Powerform_Field {
 						if ( $year < $min_year ) {
 							$this->validation_message[ $id ] = apply_filters(
 								'powerform_field_date_valid_maxmin_year_validation_message',
-								__( 'Please enter a valid year.', Powerform::DOMAIN )
+								__( 'Bitte ein gültiges Jahr eingeben', Powerform::DOMAIN )
 							);
 						}
 					}
@@ -1158,102 +690,9 @@ class Powerform_Date extends Powerform_Field {
 						if ( $year > $max_year ) {
 							$this->validation_message[ $id ] = apply_filters(
 								'powerform_field_date_valid_maxmin_year_validation_message',
-								__( 'Please enter a valid year.', Powerform::DOMAIN )
+								__( 'Bitte ein gültiges Jahr eingeben', Powerform::DOMAIN )
 							);
 						}
-					}
-				}
-			}
-			if ( 'picker' === $date_type ) {
-
-				if ( 'week' === $restrict_type ) {
-					$restrict = array();
-					$days = powerform_week_days();
-
-					foreach ( $days as $k => $day ) {
-
-						if ( ! self::get_property( $k, $field ) ) {
-							$restrict[] = $k;
-						}
-					}
-					if ( ! empty( $restrict ) ) {
-						$current_day = date( 'l', strtotime( $data ) );
-						if ( in_array( strtolower( $current_day ), $restrict, true ) ) {
-							$this->validation_message[ $id ] = apply_filters(
-								'powerform_field_date_valid_between_date_validation_message',
-								self::get_property( 'restrict_message', $field, __( 'Please select one of the available dates.', Powerform::DOMAIN ) )
-							);
-						}
-					}
-				}
-				if ( ! empty( $start_date_type ) ) {
-					if ( 'specific' === $start_date_type ) {
-						$start_date = self::get_property( 'start-specific-date', $field, '' );
-					} else {
-						$start_offset_operator = self::get_property( 'start-offset-operator', $field, '+' );
-						$start_offset_value    = self::get_property( 'start-offset-value', $field, '0' );
-						$start_offset_duration = self::get_property( 'start-offset-duration', $field, 'days' );
-						if ( 'today' === $start_date_type ) {
-							$start_date = date_i18n( datepicker_default_format( $date_format ), strtotime( $start_offset_operator . $start_offset_value . ' ' . $start_offset_duration ) );
-						} else {
-							$start_date_field = isset( $post_data[ $start_date_type ] ) ? $post_data[ $start_date_type ] : '';
-							$start_date       = ! empty( $start_date_field ) ? date_i18n( datepicker_default_format( $date_format ), strtotime( $start_date_field . ' ' . $start_offset_operator . $start_offset_value . ' ' . $start_offset_duration ) ) : '';
-						}
-					}
-					if ( ! empty( $start_date ) && strtotime( $data ) <= strtotime( $start_date ) ) {
-						$this->validation_message[ $id ] = apply_filters(
-							'powerform_field_date_valid_between_date_validation_message',
-							self::get_property( 'restrict_message', $field, __( 'Please select one of the available dates.', Powerform::DOMAIN ) )
-						);
-					}
-				}
-				if ( ! empty( $end_date_type ) ) {
-					if ( 'specific' === $end_date_type ) {
-						$end_date = self::get_property( 'end-specific-date', $field, '' );
-					} else {
-						$end_offset_operator = self::get_property( 'end-offset-operator', $field, '+' );
-						$end_offset_value    = self::get_property( 'end-offset-value', $field, '0' );
-						$end_offset_duration = self::get_property( 'end-offset-duration', $field, 'days' );
-						if ( 'today' === $end_date_type ) {
-							$end_date = date_i18n( datepicker_default_format( $date_format ), strtotime( $end_offset_operator . $end_offset_value . ' ' . $end_offset_duration ) );
-						} else {
-							$end_date_field = isset( $post_data[ $end_date_type ] ) ? $post_data[ $end_date_type ] : '';
-							$end_date       = date_i18n( datepicker_default_format( $date_format ), strtotime( $end_date_field . ' ' . $end_offset_operator . $end_offset_value . ' ' . $end_offset_duration ) );
-						}
-					}
-					if ( ! empty( $end_date ) && strtotime( $data ) >= strtotime( $end_date ) ) {
-						$this->validation_message[ $id ] = apply_filters(
-							'powerform_field_date_valid_between_date_validation_message',
-							self::get_property( 'restrict_message', $field, __( 'Please select one of the available dates.', Powerform::DOMAIN ) )
-						);
-					}
-				}
-
-				if ( ! empty( $disabled_dates ) && in_array( $data, $disabled_dates, true ) ) {
-					$this->validation_message[ $id ] = apply_filters(
-						'powerform_field_date_valid_disabled_validation_message',
-						self::get_property( 'restrict_message', $field, __( 'Please select one of the available dates.', Powerform::DOMAIN ) )
-					);
-				}
-
-				if ( ! empty( $disabled_range ) ) {
-					$has_range = true;
-					foreach ( $disabled_range as $range ) {
-						$range_arr = array_map( 'trim', explode( '-', $range ) );
-						if ( ! empty( $range_arr ) ) {
-							$start_date = isset( $range_arr[0] ) ? $range_arr[0] : '';
-							$end_date   = isset( $range_arr[1] ) ? $range_arr[1] : '';
-							if ( strtotime( $data ) >= strtotime( $start_date ) && strtotime( $data ) <= strtotime( $end_date ) ) {
-								$has_range = false;
-								continue;
-							}
-						}
-					}
-					if ( ! $has_range ) {
-						$this->validation_message[ $id ] = apply_filters(
-							'powerform_field_date_valid_disabled_validation_message',
-							self::get_property( 'restrict_message', $field, __( 'Please select one of the available dates.', Powerform::DOMAIN ) )
-						);
 					}
 				}
 			}
@@ -1266,7 +705,7 @@ class Powerform_Date extends Powerform_Field {
 	 *
 	 * @since 1.0.2
 	 *
-	 * @param array $field
+	 * @param array        $field
 	 * @param array|string $data - the data to be sanitized
 	 *
 	 * @return array|string $data - the data after sanitization

@@ -26,19 +26,19 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Customsearch extends Powerform_Google_Service
+class Google_Service_Customsearch extends Google_Service
 {
 
 
   public $cse;
-  
+
 
   /**
    * Constructs the internal representation of the Customsearch service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -46,7 +46,7 @@ class Powerform_Google_Service_Customsearch extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'customsearch';
 
-    $this->cse = new Powerform_Google_Service_Customsearch_Cse_Resource(
+    $this->cse = new Google_Service_Customsearch_Cse_Resource(
         $this,
         $this->serviceName,
         'cse',
@@ -198,11 +198,11 @@ class Powerform_Google_Service_Customsearch extends Powerform_Google_Service
  * The "cse" collection of methods.
  * Typical usage is:
  *  <code>
- *   $customsearchService = new Powerform_Google_Service_Customsearch(...);
+ *   $customsearchService = new Google_Service_Customsearch(...);
  *   $cse = $customsearchService->cse;
  *  </code>
  */
-class Powerform_Google_Service_Customsearch_Cse_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Customsearch_Cse_Resource extends Google_Service_Resource
 {
 
   /**
@@ -263,25 +263,25 @@ class Powerform_Google_Service_Customsearch_Cse_Resource extends Powerform_Googl
    * results from the site named in the as_sitesearch parameter
    * @opt_param string sort The sort expression to apply to the results
    * @opt_param string start The index of the first result to return
-   * @return Powerform_Google_Service_Customsearch_Search
+   * @return Google_Service_Customsearch_Search
    */
   public function listCse($q, $optParams = array())
   {
     $params = array('q' => $q);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Customsearch_Search");
+    return $this->call('list', array($params), "Google_Service_Customsearch_Search");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Customsearch_Context extends Powerform_Google_Collection
+class Google_Service_Customsearch_Context extends Google_Collection
 {
   protected $collection_key = 'facets';
   protected $internal_gapi_mappings = array(
   );
-  protected $facetsType = 'Powerform_Google_Service_Customsearch_ContextFacets';
+  protected $facetsType = 'Google_Service_Customsearch_ContextFacets';
   protected $facetsDataType = 'array';
   public $title;
 
@@ -304,7 +304,7 @@ class Powerform_Google_Service_Customsearch_Context extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Customsearch_ContextFacets extends Powerform_Google_Model
+class Google_Service_Customsearch_ContextFacets extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "labelWithOp" => "label_with_op",
@@ -340,16 +340,16 @@ class Powerform_Google_Service_Customsearch_ContextFacets extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Customsearch_Promotion extends Powerform_Google_Collection
+class Google_Service_Customsearch_Promotion extends Google_Collection
 {
   protected $collection_key = 'bodyLines';
   protected $internal_gapi_mappings = array(
   );
-  protected $bodyLinesType = 'Powerform_Google_Service_Customsearch_PromotionBodyLines';
+  protected $bodyLinesType = 'Google_Service_Customsearch_PromotionBodyLines';
   protected $bodyLinesDataType = 'array';
   public $displayLink;
   public $htmlTitle;
-  protected $imageType = 'Powerform_Google_Service_Customsearch_PromotionImage';
+  protected $imageType = 'Google_Service_Customsearch_PromotionImage';
   protected $imageDataType = '';
   public $link;
   public $title;
@@ -379,7 +379,7 @@ class Powerform_Google_Service_Customsearch_Promotion extends Powerform_Google_C
   {
     return $this->htmlTitle;
   }
-  public function setImage(Powerform_Google_Service_Customsearch_PromotionImage $image)
+  public function setImage(Google_Service_Customsearch_PromotionImage $image)
   {
     $this->image = $image;
   }
@@ -405,7 +405,7 @@ class Powerform_Google_Service_Customsearch_Promotion extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Customsearch_PromotionBodyLines extends Powerform_Google_Model
+class Google_Service_Customsearch_PromotionBodyLines extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -449,7 +449,7 @@ class Powerform_Google_Service_Customsearch_PromotionBodyLines extends Powerform
   }
 }
 
-class Powerform_Google_Service_Customsearch_PromotionImage extends Powerform_Google_Model
+class Google_Service_Customsearch_PromotionImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -484,7 +484,7 @@ class Powerform_Google_Service_Customsearch_PromotionImage extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Customsearch_Query extends Powerform_Google_Model
+class Google_Service_Customsearch_Query extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -825,7 +825,7 @@ class Powerform_Google_Service_Customsearch_Query extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Customsearch_Result extends Powerform_Google_Collection
+class Google_Service_Customsearch_Result extends Google_Collection
 {
   protected $collection_key = 'labels';
   protected $internal_gapi_mappings = array(
@@ -837,10 +837,10 @@ class Powerform_Google_Service_Customsearch_Result extends Powerform_Google_Coll
   public $htmlFormattedUrl;
   public $htmlSnippet;
   public $htmlTitle;
-  protected $imageType = 'Powerform_Google_Service_Customsearch_ResultImage';
+  protected $imageType = 'Google_Service_Customsearch_ResultImage';
   protected $imageDataType = '';
   public $kind;
-  protected $labelsType = 'Powerform_Google_Service_Customsearch_ResultLabels';
+  protected $labelsType = 'Google_Service_Customsearch_ResultLabels';
   protected $labelsDataType = 'array';
   public $link;
   public $mime;
@@ -905,7 +905,7 @@ class Powerform_Google_Service_Customsearch_Result extends Powerform_Google_Coll
   {
     return $this->htmlTitle;
   }
-  public function setImage(Powerform_Google_Service_Customsearch_ResultImage $image)
+  public function setImage(Google_Service_Customsearch_ResultImage $image)
   {
     $this->image = $image;
   }
@@ -971,7 +971,7 @@ class Powerform_Google_Service_Customsearch_Result extends Powerform_Google_Coll
   }
 }
 
-class Powerform_Google_Service_Customsearch_ResultImage extends Powerform_Google_Model
+class Google_Service_Customsearch_ResultImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1042,7 +1042,7 @@ class Powerform_Google_Service_Customsearch_ResultImage extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Customsearch_ResultLabels extends Powerform_Google_Model
+class Google_Service_Customsearch_ResultLabels extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "labelWithOp" => "label_with_op",
@@ -1078,29 +1078,29 @@ class Powerform_Google_Service_Customsearch_ResultLabels extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Customsearch_Search extends Powerform_Google_Collection
+class Google_Service_Customsearch_Search extends Google_Collection
 {
   protected $collection_key = 'promotions';
   protected $internal_gapi_mappings = array(
   );
-  protected $contextType = 'Powerform_Google_Service_Customsearch_Context';
+  protected $contextType = 'Google_Service_Customsearch_Context';
   protected $contextDataType = '';
-  protected $itemsType = 'Powerform_Google_Service_Customsearch_Result';
+  protected $itemsType = 'Google_Service_Customsearch_Result';
   protected $itemsDataType = 'array';
   public $kind;
-  protected $promotionsType = 'Powerform_Google_Service_Customsearch_Promotion';
+  protected $promotionsType = 'Google_Service_Customsearch_Promotion';
   protected $promotionsDataType = 'array';
-  protected $queriesType = 'Powerform_Google_Service_Customsearch_Query';
+  protected $queriesType = 'Google_Service_Customsearch_Query';
   protected $queriesDataType = 'map';
-  protected $searchInformationType = 'Powerform_Google_Service_Customsearch_SearchSearchInformation';
+  protected $searchInformationType = 'Google_Service_Customsearch_SearchSearchInformation';
   protected $searchInformationDataType = '';
-  protected $spellingType = 'Powerform_Google_Service_Customsearch_SearchSpelling';
+  protected $spellingType = 'Google_Service_Customsearch_SearchSpelling';
   protected $spellingDataType = '';
-  protected $urlType = 'Powerform_Google_Service_Customsearch_SearchUrl';
+  protected $urlType = 'Google_Service_Customsearch_SearchUrl';
   protected $urlDataType = '';
 
 
-  public function setContext(Powerform_Google_Service_Customsearch_Context $context)
+  public function setContext(Google_Service_Customsearch_Context $context)
   {
     $this->context = $context;
   }
@@ -1140,7 +1140,7 @@ class Powerform_Google_Service_Customsearch_Search extends Powerform_Google_Coll
   {
     return $this->queries;
   }
-  public function setSearchInformation(Powerform_Google_Service_Customsearch_SearchSearchInformation $searchInformation)
+  public function setSearchInformation(Google_Service_Customsearch_SearchSearchInformation $searchInformation)
   {
     $this->searchInformation = $searchInformation;
   }
@@ -1148,7 +1148,7 @@ class Powerform_Google_Service_Customsearch_Search extends Powerform_Google_Coll
   {
     return $this->searchInformation;
   }
-  public function setSpelling(Powerform_Google_Service_Customsearch_SearchSpelling $spelling)
+  public function setSpelling(Google_Service_Customsearch_SearchSpelling $spelling)
   {
     $this->spelling = $spelling;
   }
@@ -1156,7 +1156,7 @@ class Powerform_Google_Service_Customsearch_Search extends Powerform_Google_Coll
   {
     return $this->spelling;
   }
-  public function setUrl(Powerform_Google_Service_Customsearch_SearchUrl $url)
+  public function setUrl(Google_Service_Customsearch_SearchUrl $url)
   {
     $this->url = $url;
   }
@@ -1166,7 +1166,7 @@ class Powerform_Google_Service_Customsearch_Search extends Powerform_Google_Coll
   }
 }
 
-class Powerform_Google_Service_Customsearch_SearchSearchInformation extends Powerform_Google_Model
+class Google_Service_Customsearch_SearchSearchInformation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1210,7 +1210,7 @@ class Powerform_Google_Service_Customsearch_SearchSearchInformation extends Powe
   }
 }
 
-class Powerform_Google_Service_Customsearch_SearchSpelling extends Powerform_Google_Model
+class Google_Service_Customsearch_SearchSpelling extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1236,7 +1236,7 @@ class Powerform_Google_Service_Customsearch_SearchSpelling extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Customsearch_SearchUrl extends Powerform_Google_Model
+class Google_Service_Customsearch_SearchUrl extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

@@ -23,15 +23,7 @@
             conditions: {},
             inline_validation: false,
             chart_design: 'bar',
-            chart_options: {},
-            powerform_fields: [],
-            max_nested_formula: 5,
-            general_messages: {
-                calculation_error: 'Failed to calculate field.',
-                payment_require_ssl_error: 'SSL required to submit this form, please check your URL.',
-                payment_require_amount_error: 'PayPal amount must be greater than 0.'
-            },
-            payment_require_ssl: false,
+            chart_options: {}
         };
 
     // The actual plugin constructor
@@ -60,9 +52,6 @@
 
         this._defaults = defaults;
         this._name = pluginName;
-        this.form_id = 0;
-        this.template_type = '';
-
         this.init();
     }
 
@@ -70,13 +59,6 @@
     $.extend(PowerformFront.prototype, {
         init: function() {
             var self = this;
-
-            if (this.$el.find('input[name=form_id]').length > 0) {
-                this.form_id = this.$el.find('input[name=form_id]').val();
-            }
-            if (this.$el.find('input[name=form_type]').length > 0) {
-                this.template_type = this.$el.find('input[name=form_type]').val();
-            }
 
             $(this.powerform_loader_selector).remove();
 
@@ -112,36 +94,21 @@
             }
 
             //init submit
-            var submitOptions = {
+            $(this.element).powerformFrontSubmit({
                 form_type: self.settings.form_type,
                 powerform_selector: self.powerform_selector,
                 chart_design: self.settings.chart_design,
                 chart_options: self.settings.chart_options,
                 fadeout: self.settings.fadeout,
                 fadeout_time: self.settings.fadeout_time,
-                has_quiz_loader: self.settings.has_quiz_loader,
-                has_loader: self.settings.has_loader,
-                loader_label: self.settings.loader_label,
-                resetEnabled: self.settings.is_reset_enabled,
-                inline_validation: self.settings.inline_validation,
-            };
-
-            if ('leads' === this.template_type || 'quiz' === this.settings.form_type) {
-                submitOptions.form_placement = self.settings.form_placement;
-                submitOptions.hasLeads = self.settings.hasLeads;
-                submitOptions.leads_id = self.settings.leads_id;
-                submitOptions.quiz_id = self.settings.quiz_id;
-                submitOptions.skip_form = self.settings.skip_form;
-            }
-
-            $(this.element).powerformFrontSubmit(submitOptions);
+            });
 
 
             // TODO: confirm usage on form type
             // Handle field activation classes
             this.activate_field();
             // Handle special classes for material design
-            // this.material_field();
+            this.material_field();
 
             // Init small form for all type of form
             this.small_form();
@@ -152,10 +119,9 @@
             var self = this;
 
             //initiate validator
-
-            this.init_intlTelInput_validation();
-
             if (this.settings.inline_validation) {
+
+                this.init_intlTelInput_validation();
 
                 $(this.element).powerformFrontValidate({
                     rules: self.settings.rules,
@@ -163,58 +129,17 @@
                 });
             }
 
-            // initiate calculator
-            $(this.element).powerformFrontCalculate({
-                powerformFields: self.settings.powerform_fields,
-                maxExpand: self.settings.max_nested_formula,
-                generalMessages: self.settings.general_messages,
-                memoizeTime: self.settings.calcs_memoize_time || 300,
-            });
-
-            // initiate merge tags
-            $(this.element).powerformFrontMergeTags({
-                powerformFields: self.settings.powerform_fields,
-            });
-
             //initiate pagination
             this.init_pagination();
 
-            // initiate payment if exist
-            var first_payment = $(this.element).find('div[data-is-payment="true"], input[data-is-payment="true"]').first();
-
-            if (first_payment.length) {
-                var payment_type = first_payment.data('paymentType');
-                if (payment_type === 'stripe') {
-                    $(this.element).powerformFrontPayment({
-                        type: payment_type,
-                        paymentEl: first_payment,
-                        paymentRequireSsl: self.settings.payment_require_ssl,
-                        generalMessages: self.settings.general_messages,
-                        fadeout_time: self.settings.fadeout_time,
-                        has_loader: self.settings.has_loader,
-                        loader_label: self.settings.loader_label,
-                    });
-                }
-                if (payment_type === 'paypal') {
-                    $(this.element).powerformFrontPayPal({
-                        type: payment_type,
-                        paymentEl: this.settings.paypal_config,
-                        paymentRequireSsl: self.settings.payment_require_ssl,
-                        generalMessages: self.settings.general_messages,
-                        has_loader: self.settings.has_loader,
-                        loader_label: self.settings.loader_label,
-                    });
-                }
-            }
-
             //initiate condition
-            $(this.element).powerformFrontCondition(this.settings.conditions, this.settings.calendar);
-
-            //initiate powerform ui scripts
-            this.init_fui();
+            $(this.element).powerformFrontCondition(this.settings.conditions);
 
             //initiate datepicker
             $(this.element).find('.powerform-datepicker').powerformFrontDatePicker(this.settings.calendar);
+
+            //initiate select2
+            this.init_select2();
 
             // Handle responsive captcha
             this.responsive_captcha();
@@ -229,115 +154,49 @@
             this.field_time();
 
             // Handle upload field change
-            $(this.element).find('.powerform-multi-upload').powerformFrontMultiFile(this.$el);
-
             this.upload_field();
 
             // Handle function on resize
             $(window).on('resize', function() {
-                self.responsive_captcha();
-            });
 
-            if ('undefined' !== typeof self.settings.hasLeads) {
-                if ('beginning' === self.settings.form_placement) {
-                    $('#powerform-module-' + this.settings.quiz_id).css({
-                        'height': 0,
-                        'opacity': 0,
-                        'overflow': 'hidden',
-                        'visibility': 'hidden',
-                        'pointer-events': 'none',
-                        'margin': 0,
-                        'padding': 0,
-                        'border': 0
-                    });
-                }
-                if ('end' === self.settings.form_placement) {
-                    $(this.element).css({
-                        'height': 0,
-                        'opacity': 0,
-                        'overflow': 'hidden',
-                        'visibility': 'hidden',
-                        'pointer-events': 'none',
-                        'margin': 0,
-                        'padding': 0,
-                        'border': 0
-                    });
-                }
-            }
+                self.responsive_captcha();
+
+            });
 
         },
         init_poll_form: function() {
-
             var self = this,
-                $fieldset = this.$el.find('fieldset'),
-                $selection = this.$el.find('.powerform-radio input'),
-                $input = this.$el.find('.powerform-input'),
-                $field = $input.closest('.powerform-field');
+                $selection = this.$el.find('.powerform-radio--field'),
+                $input = this.$el.find('.powerform-input');
 
-            // Load input states
-            FUI.inputStates($input);
+            if (this.$el.hasClass('powerform-poll-disabled')) {
+                this.$el.find('.powerform-radio--field').each(function() {
+                    $(this).attr('disabled', true);
+                });
+            }
 
-            // Show input when option has been selected
             $selection.on('click', function() {
-
-                // Reset
-                $field.addClass('powerform-hidden');
-                $field.attr('aria-hidden', 'true');
-                $input.removeAttr('tabindex');
+                $input.hide();
                 $input.attr('name', '');
-
                 var checked = this.checked,
                     $id = $(this).attr('id'),
                     $name = $(this).attr('name');
-
-                // Once an option has been chosen, remove error class.
-                $fieldset.removeClass('powerform-has_error');
-
                 if (self.$el.find('.powerform-input#' + $id + '-extra').length) {
-
-                    var $extra = self.$el.find('.powerform-input#' + $id + '-extra'),
-                        $extraField = $extra.closest('.powerform-field');
-
+                    var $extra = self.$el.find('.powerform-input#' + $id + '-extra');
                     if (checked) {
-
                         $extra.attr('name', $name + '-extra');
-
-                        $extraField.removeClass('powerform-hidden');
-                        $extraField.removeAttr('aria-hidden');
-
-                        $extra.attr('tabindex', '-1');
-                        $extra.focus();
-
+                        $extra.show();
                     } else {
-
-                        $extraField.addClass('powerform-hidden');
-                        $extraField.attr('aria-hidden', 'true');
-
-                        $extra.removeAttr('tabindex');
-
+                        $extra.hide();
                     }
                 }
-
                 return true;
-
             });
 
-            // Disable options
-            if (this.$el.hasClass('powerform-poll-disabled')) {
-
-                this.$el.find('.powerform-radio').each(function() {
-
-                    $(this).addClass('powerform-disabled');
-                    $(this).find('input').attr('disabled', true);
-
-                });
-            }
         },
 
         init_quiz_form: function() {
-            var self = this,
-                lead_placement = 'undefined' !== typeof self.settings.form_placement ? self.settings.form_placement : '',
-                quiz_id = 'undefined' !== typeof self.settings.quiz_id ? self.settings.quiz_id : 0;
+            var self = this;
 
             this.$el.find('.powerform-button').each(function() {
                 $(this).prop("disabled", true);
@@ -351,52 +210,21 @@
                 location.reload();
             });
 
-            if ('end' !== lead_placement) {
-                this.$el.find('.powerform-submit-rightaway').click(function() {
-                    self.$el.submit();
-                    $(this).closest('.powerform-question').find('.powerform-submit-rightaway').addClass('powerform-has-been-disabled').attr('disabled', 'disabled');
-                });
-            }
+            this.$el.find('.powerform-submit-rightaway').click(function() {
+                self.$el.submit();
+                $(this).closest('.powerform-question').find('.powerform-submit-rightaway').addClass('powerform-has-been-disabled').attr('disabled', 'disabled');
+            });
 
-            if (self.settings.hasLeads) {
-                if ('beginning' === lead_placement) {
-                    self.$el.css({
-                        'height': 0,
-                        'opacity': 0,
-                        'overflow': 'hidden',
-                        'visibility': 'hidden',
-                        'pointer-events': 'none',
-                        'margin': 0,
-                        'padding': 0,
-                        'border': 0
-                    });
-                }
-                if ('end' === lead_placement) {
-                    self.$el.closest('div').find('#powerform-module-' + self.settings.leads_id).css({
-                        'height': 0,
-                        'opacity': 0,
-                        'overflow': 'hidden',
-                        'visibility': 'hidden',
-                        'pointer-events': 'none',
-                        'margin': 0,
-                        'padding': 0,
-                        'border': 0
-                    });
-                    $('#powerform-quiz-leads-' + quiz_id + ' .powerform-lead-form-skip').hide();
-                }
-            }
 
             this.$el.on('click', '.powerform-social--icon a', function(e) {
                 e.preventDefault();
                 var social = $(this).data('social'),
-                    url = $(this).closest('.powerform-social--icons').data('url'),
                     message = $(this).closest('.powerform-social--icons').data('message'),
-                    message = encodeURIComponent(message),
                     social_shares = {
-                        'facebook': 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&t=' + message,
-                        'twitter': 'https://twitter.com/intent/tweet?&url=' + url + '&text=' + message,
-                        'google': 'https://plus.google.com/share?url=' + url,
-                        'linkedin': 'https://www.linkedin.com/shareArticle?mini=true&url=' + url + '&title=' + message
+                        'facebook': 'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href + '&t=' + message,
+                        'twitter': 'https://twitter.com/intent/tweet?&url=' + window.location.href + '&text=' + message,
+                        'google': 'https://plus.google.com/share?url=' + window.location.href,
+                        'linkedin': 'https://www.linkedin.com/shareArticle?mini=true&url=' + window.location.href + '&title=' + message
                     };
 
                 if (social_shares[social] !== undefined) {
@@ -430,142 +258,137 @@
 
         small_form: function() {
 
-            var form = $(this.element),
-                formWidth = form.width();
+            var form = $(this.element);
 
-            if (783 < Math.max(document.documentElement.clientWidth, window.innerWidth || 0)) {
+            if ($(window).width() > 782) {
 
-                if (form.hasClass('powerform-size--small')) {
-
-                    if (480 < formWidth) {
-                        form.removeClass('powerform-size--small');
-                    }
-                } else {
-                    var hasHustle = form.closest('.hustle-content');
-
-                    if (480 >= formWidth && !hasHustle.length) {
-                        form.addClass('powerform-size--small');
-                    }
+                if (form.parent().width() <= 420 && !form.closest('.form-preview-wrapper').length) {
+                    form.addClass('powerform-size--small');
                 }
+
             }
+
         },
 
         init_intlTelInput_validation: function() {
 
             var form = $(this.element),
                 is_material = form.is('.powerform-design--material'),
-                fields = form.find('.powerform-field--phone');
+                fields = form.find('.powerform-phone--field');
 
             fields.each(function() {
 
                 // Initialize intlTelInput plugin on each field with "format check" enabled and
                 // set to check either "international" or "standard" phones.
                 var is_national_phone = $(this).data('national_mode'),
-                    country = $(this).data('country'),
-                    validation = $(this).data('validation');
+                    country = $(this).data('country');
 
                 if ('undefined' !== typeof(is_national_phone)) {
 
                     if (is_material) {
-                        //$(this).unwrap('.powerform-input--wrap');
+                        $(this).unwrap('.powerform-input--wrap');
                     }
 
                     var args = {
                         nationalMode: ('enabled' === is_national_phone) ? true : false,
-                        initialCountry: 'undefined' !== typeof(country) ? country : 'us',
-                        utilsScript: window.PowerformFront.cform.intlTelInput_utils_script,
+                        initialCountry: 'us',
+                        utilsScript: window.PowerformFront.cform.intlTelInput_utils_script
                     };
 
-                    if ('undefined' !== typeof(validation) && 'standard' === validation) {
+                    if ('undefined' !== typeof(country)) {
+                        args.initialCountry = country;
                         args.allowDropdown = false;
                     }
 
                     $(this).intlTelInput(args);
 
-                    if (!is_material) {
-                        $(this).closest('.powerform-field').find('div.intl-tel-input').addClass('powerform-phone');
-                    } else {
-                        $(this).closest('.powerform-field').find('div.intl-tel-input').addClass('powerform-input-with-phone');
-                    }
-
                     // intlTelInput plugin adds a markup that's not compatible with 'material' theme when 'allowDropdown' is true (default).
                     // If we're going to allow users to disable the dropdown, this should be adjusted accordingly.
                     if (is_material) {
-                        //$(this).closest('.intl-tel-input.allow-dropdown').addClass('powerform-phone-intl').removeClass('intl-tel-input');
-                        //$(this).wrap('<div class="powerform-input--wrap"></div>');
+                        $(this).closest('.intl-tel-input.allow-dropdown').addClass('powerform-phone-intl').removeClass('intl-tel-input');
+                        $(this).closest('.powerform-field').addClass('intl-tel-input');
+                        $(this).wrap('<div class="powerform-input--wrap"></div>');
                     }
                 }
             });
 
         },
 
-        init_fui: function() {
+        init_select2: function() {
 
             var form = $(this.element),
-                input = form.find('.powerform-input'),
-                textarea = form.find('.powerform-textarea'),
-                select = form.find('.powerform-select'),
-                select2 = form.find('.powerform-select2'),
-                multiselect = form.find('.powerform-multiselect'),
-                stripe = form.find('.powerform-stripe-element');
+                form_id = form.attr('id');
 
-            var isDefault = (form.attr('data-design') === 'default'),
-                isBold = (form.attr('data-design') === 'bold'),
-                isFlat = (form.attr('data-design') === 'flat'),
-                isMaterial = (form.attr('data-design') === 'material');
+            if (form.hasClass('powerform-design--default')) {
 
-            if (input.length) {
-                input.each(function() {
-                    FUI.inputStates(this);
+                $(this.element).find(".powerform-select").wpmuiSelect({
+                    allowClear: false,
+                    containerCssClass: "powerform-select2",
+                    dropdownCssClass: "powerform-dropdown powerform-dropdown--default powerform-ddfor--" + form_id
                 });
-            }
 
-            if (textarea.length) {
-                textarea.each(function() {
-                    FUI.textareaStates(this);
+                $(this.element).find(".powerform-time").wpmuiSelect({
+                    allowClear: false,
+                    containerCssClass: "powerform-select2",
+                    dropdownCssClass: "powerform-droptime powerform-droptime--default powerform-ddfor--" + form_id
                 });
-            }
 
-            if (select2.length) {
-                FUI.select2();
-            }
+            } else if (form.hasClass('powerform-design--material')) {
 
-            if ((isDefault || isBold || isFlat || isMaterial) && select.length) {
-
-                select.each(function() {
-                    FUI.select(this);
+                $(this.element).find(".powerform-select").wpmuiSelect({
+                    allowClear: false,
+                    containerCssClass: "powerform-select2",
+                    dropdownCssClass: "powerform-dropdown powerform-dropdown--material powerform-ddfor--" + form_id
                 });
-            }
 
-            if (multiselect.length) {
-                FUI.multiSelectStates(multiselect);
-            }
+                $(this.element).find(".powerform-time").wpmuiSelect({
+                    allowClear: false,
+                    containerCssClass: "powerform-select2",
+                    dropdownCssClass: "powerform-droptime powerform-droptime--material powerform-ddfor--" + form_id
+                });
 
-            if (form.hasClass('powerform-design--material')) {
-                if (input.length) {
-                    input.each(function() {
-                        FUI.inputMaterial(this);
-                    });
-                }
+            } else if (form.hasClass('powerform-design--bold')) {
 
-                if (textarea.length) {
-                    textarea.each(function() {
-                        FUI.textareaMaterial(this);
-                    });
-                }
+                $(this.element).find(".powerform-select").wpmuiSelect({
+                    allowClear: false,
+                    containerCssClass: "powerform-select2",
+                    dropdownCssClass: "powerform-dropdown powerform-dropdown--bold powerform-ddfor--" + form_id
+                });
 
-                if (stripe.length) {
-                    stripe.each(function() {
-                        var field = $(this).closest('.powerform-field');
-                        var label = field.find('.powerform-label');
+                $(this.element).find(".powerform-time").wpmuiSelect({
+                    allowClear: false,
+                    containerCssClass: "powerform-select2",
+                    dropdownCssClass: "powerform-droptime powerform-droptime--bold powerform-ddfor--" + form_id
+                });
 
-                        if (label.length) {
-                            field.addClass('powerform-stripe-floating');
-                            // Add floating class
-                            label.addClass('powerform-floating--input');
-                        }
-                    });
-                }
+            } else if (form.hasClass('powerform-design--flat')) {
+
+                $(this.element).find(".powerform-select").wpmuiSelect({
+                    allowClear: false,
+                    containerCssClass: "powerform-select2",
+                    dropdownCssClass: "powerform-dropdown powerform-dropdown--flat powerform-ddfor--" + form_id
+                });
+
+                $(this.element).find(".powerform-time").wpmuiSelect({
+                    allowClear: false,
+                    containerCssClass: "powerform-select2",
+                    dropdownCssClass: "powerform-droptime powerform-droptime--flat powerform-ddfor--" + form_id
+                });
+
+            } else {
+
+                $(this.element).find(".powerform-select").wpmuiSelect({
+                    allowClear: false,
+                    containerCssClass: "powerform-select2",
+                    dropdownCssClass: "powerform-dropdown powerform-ddfor--" + form_id
+                });
+
+                $(this.element).find(".powerform-time").wpmuiSelect({
+                    allowClear: false,
+                    containerCssClass: "powerform-select2",
+                    dropdownCssClass: "powerform-droptime powerform-droptime--flat powerform-ddfor--" + form_id
+                });
+
             }
         },
 
@@ -609,148 +432,65 @@
         },
 
         activate_field: function() {
-
             var form = $(this.element);
-            var input = form.find('.powerform-input');
-            var textarea = form.find('.powerform-textarea');
 
-            function classFilled(el) {
+            form.find('.powerform-input, .powerform-textarea').each(function() {
 
-                var element = $(el);
-                var elementValue = element.val().trim();
-                var elementField = element.closest('.powerform-field');
-                var elementAnswer = element.closest('.powerform-poll--answer');
+                var $ftype = $(this);
 
-                var filledClass = 'powerform-is_filled';
-
-                if ('' !== elementValue) {
-                    elementField.addClass(filledClass);
-                    elementAnswer.addClass(filledClass);
+                if ($(this).val().trim() !== "") {
+                    $(this).closest('.powerform-field').addClass('powerform-is_filled');
+                    $(this).closest('.powerform-poll--answer').addClass('powerform-is_filled');
                 } else {
-                    elementField.removeClass(filledClass);
-                    elementAnswer.removeClass(filledClass);
+                    $(this).closest('.powerform-field').removeClass('powerform-is_filled');
+                    $(this).closest('.powerform-poll--answer').removeClass('powerform-is_filled');
                 }
 
-                element.change(function(e) {
-
-                    if ('' !== elementValue) {
-                        elementField.addClass(filledClass);
-                        elementAnswer.addClass(filledClass);
-                    } else {
-                        elementField.removeClass(filledClass);
-                        elementAnswer.removeClass(filledClass);
-                    }
-
+                // Set field active class on hover
+                $ftype.mouseover(function(e) {
                     e.stopPropagation();
+                    $(this).closest('.powerform-field').addClass('powerform-is_hover');
+                    $(this).closest('.powerform-poll--answer').addClass('powerform-is_hover');
 
-                });
-            };
-
-            function classHover(el) {
-
-                var element = $(el);
-                var elementField = element.closest('.powerform-field');
-                var elementAnswer = element.closest('.powerform-poll--answer');
-
-                var hoverClass = 'powerform-is_hover';
-
-                element.mouseover(function(e) {
-                    elementField.addClass(hoverClass);
-                    elementAnswer.addClass(hoverClass);
-                    e.stopPropagation();
                 }).mouseout(function(e) {
-                    elementField.removeClass(hoverClass);
-                    elementAnswer.removeClass(hoverClass);
                     e.stopPropagation();
+                    $(this).closest('.powerform-field').removeClass('powerform-is_hover');
+                    $(this).closest('.powerform-poll--answer').removeClass('powerform-is_hover');
+
                 });
-            };
 
-            function classActive(el) {
-
-                var element = $(el);
-                var elementField = element.closest('.powerform-field');
-                var elementAnswer = element.closest('.powerform-poll--answer');
-
-                var activeClass = 'powerform-is_active';
-
-                element.focus(function(e) {
-                    elementField.addClass(activeClass);
-                    elementAnswer.addClass(activeClass);
+                // Set field active class on focus
+                $ftype.focus(function(e) {
                     e.stopPropagation();
+                    $(this).closest('.powerform-field').addClass('powerform-is_active');
+                    $(this).closest('.powerform-poll--answer').addClass('powerform-is_active');
+
                 }).blur(function(e) {
-                    elementField.removeClass(activeClass);
-                    elementAnswer.removeClass(activeClass);
                     e.stopPropagation();
+                    $(this).closest('.powerform-field').removeClass('powerform-is_active');
+                    $(this).closest('.powerform-poll--answer').removeClass('powerform-is_active');
+
                 });
-            };
 
-            function classError(el) {
+                // Set field filled class on change
+                $ftype.change(function(e) {
+                    e.stopPropagation();
 
-                var element = $(el);
-                var elementValue = element.val().trim();
-                var elementField = element.closest('.powerform-field');
-                var elementTime = element.attr('data-field');
-
-                var timePicker = element.closest('.powerform-timepicker');
-                var timeColumn = timePicker.parent();
-
-                var errorField = elementField.find('.powerform-error-message');
-
-                var errorClass = 'powerform-has_error';
-
-                element.on('load change keyup keydown', function(e) {
-
-                    if ('undefined' !== typeof elementTime && false !== elementTime) {
-
-                        if ('hours' === element.data('field')) {
-
-                            var hoursError = timeColumn.find('.powerform-error-message[data-error-field="hours"]');
-
-                            if ('' !== elementValue && 0 !== hoursError.length) {
-                                hoursError.remove();
-                            }
-                        }
-
-                        if ('minutes' === element.data('field')) {
-
-                            var minutesError = timeColumn.find('.powerform-error-message[data-error-field="minutes"]');
-
-                            if ('' !== elementValue && 0 !== minutesError.length) {
-                                minutesError.remove();
-                            }
-                        }
+                    if ($(this).val().trim() !== "") {
+                        $(this).closest('.powerform-field').addClass('powerform-is_filled');
+                        $(this).closest('.powerform-poll--answer').addClass('powerform-is_filled');
                     } else {
-
-                        if ('' !== elementValue && errorField.text()) {
-                            errorField.remove();
-                            elementField.removeClass(errorClass);
-                        }
+                        $(this).closest('.powerform-field').removeClass('powerform-is_filled');
+                        $(this).closest('.powerform-poll--answer').removeClass('powerform-is_filled');
                     }
 
-                    e.stopPropagation();
-
+                    if ($(this).val().trim() !== "" && $(this).find('powerform-label--validation').text() !== "") {
+                        $(this).find('.powerform-label--validation').remove();
+                        $(this).find('.powerform-field').removeClass('powerform-has_error');
+                    }
                 });
-            };
 
-            if (input.length) {
-
-                input.each(function() {
-                    //classFilled( this );
-                    //classHover( this );
-                    //classActive( this );
-                    classError(this);
-                });
-            }
-
-            if (textarea.length) {
-
-                textarea.each(function() {
-                    //classFilled( this );
-                    //classHover( this );
-                    //classActive( this );
-                    classError(this);
-                });
-            }
+            });
 
             form.find('.powerform-select + .select2, .powerform-time + .select2').each(function() {
 
@@ -795,29 +535,19 @@
             var form = $(this.element);
             form.find('.powerform-input, .powerform-textarea').each(function() {
                 var $input = $(this),
-                    numwords = 0,
                     count = 0;
 
-                $input.on('change keyup keydown', function(e) {
+                $input.on('change keyup', function(e) {
                     e.stopPropagation();
-                    var $field = $(this).closest('.powerform-col'),
-                        $limit = $field.find('.powerform-description span');
+                    var $field = $(this).closest('.powerform-field'),
+                        $limit = $field.find('.powerform-field--helper .powerform-label--limit');
 
                     if ($limit.length) {
                         if ($limit.data('limit')) {
                             if ($limit.data('type') !== "words") {
-                                count = $(this).val().length;
+                                count = $(this).val().trim().length;
                             } else {
                                 count = $(this).val().trim().split(/\s+/).length;
-
-                                // Prevent additional words from being added when limit is reached.
-                                numwords = $(this).val().trim().split(/\s+/).length;
-                                if (numwords >= $limit.data('limit')) {
-                                    // Allow delete and backspace when limit is reached.
-                                    if (e.which === 32) {
-                                        e.preventDefault();
-                                    }
-                                }
                             }
                             $limit.html(count + ' / ' + $limit.data('limit'));
                         }
@@ -851,22 +581,6 @@
                     }
                 });
             });
-
-            form.find('.powerform-currency').each(function() {
-                var decimals = $(this).data('decimals');
-                $(this).change(function(e) {
-                    this.value = parseFloat(this.value).toFixed(decimals);
-                });
-            });
-
-            // form.find('.powerform-number--field').each(function () {
-            // 	var separators = $(this).data('separators');
-            // 	$(this).mask( separators, { reverse: false } );
-            // });
-            // form.find('.powerform-currency').each(function () {
-            //     var separators = $(this).data('separators');
-            //     $(this).mask( separators, { reverse: false } );
-            // });
         },
 
         field_time: function() {
@@ -882,47 +596,47 @@
         },
 
         material_field: function() {
-            /*
             var form = $(this.element);
             if (form.is('.powerform-design--material')) {
-            	var $input    = form.find('.powerform-input--wrap'),
-            	    $textarea = form.find('.powerform-textarea--wrap'),
-            	    $date     = form.find('.powerform-date'),
-            	    $product  = form.find('.powerform-product');
+                var $input = form.find('.powerform-input--wrap'),
+                    $textarea = form.find('.powerform-textarea--wrap'),
+                    $date = form.find('.powerform-date'),
+                    $product = form.find('.powerform-product');
 
-            	var $navigation = form.find('.powerform-pagination--nav'),
-            	    $navitem    = $navigation.find('li');
+                var $navigation = form.find('.powerform-pagination--nav'),
+                    $navitem = $navigation.find('li');
 
-            	$('<span class="powerform-nav-border"></span>').insertAfter($navitem);
+                $('<span class="powerform-nav-border"></span>').insertAfter($navitem);
 
-            	$input.prev('.powerform-field--label').addClass('powerform-floating--input');
-            	$input.closest('.powerform-phone-intl').prev('.powerform-field--label').addClass('powerform-floating--input');
-            	$textarea.prev('.powerform-field--label').addClass('powerform-floating--textarea');
+                $input.prev('.powerform-field--label').addClass('powerform-floating--input');
+                $input.closest('.powerform-phone-intl').prev('.powerform-field--label').addClass('powerform-floating--input');
+                $textarea.prev('.powerform-field--label').addClass('powerform-floating--textarea');
 
-            	if ($date.hasClass('powerform-has_icon')) {
-            		$date.prev('.powerform-field--label').addClass('powerform-floating--date');
-            	} else {
-            		$date.prev('.powerform-field--label').addClass('powerform-floating--input');
-            	}
+                if ($date.hasClass('powerform-has_icon')) {
+                    $date.prev('.powerform-field--label').addClass('powerform-floating--date');
+                } else {
+                    $date.prev('.powerform-field--label').addClass('powerform-floating--input');
+                }
             }
-            */
         },
 
         toggle_file_input: function() {
 
-            var $form = $(this.element);
+            var form = $(this.element);
 
-            $form.find('.powerform-file-upload').each(function() {
+            form.find(".powerform-upload").each(function() {
 
-                var $field = $(this);
-                var $input = $field.find('input');
-                var $remove = $field.find('.powerform-button-delete');
+                var $self = $(this),
+                    $input = $self.find(".powerform-input"),
+                    $remove = $self.find(".powerform-upload--remove");
 
                 // Toggle remove button depend on input value
-                if ('' !== $input.val()) {
-                    $remove.show(); // Show remove button
+                if ($input.val() !== "") {
+                    // Show remove button
+                    $remove.show();
                 } else {
-                    $remove.hide(); // Hide remove button
+                    // Hide remove button
+                    $remove.hide();
                 }
             });
         },
@@ -931,50 +645,54 @@
 
             var self = this,
                 form = $(this.element);
+
             // Toggle file remove button
             this.toggle_file_input();
 
             // Handle remove file button click
-            form.find('.powerform-button-delete').on('click', function(e) {
+            form.find(".powerform-upload--remove").on('click', function(e) {
 
                 e.preventDefault();
 
                 var $self = $(this),
-                    $input = $self.siblings('input'),
-                    $label = $self.closest('.powerform-file-upload').find('> span');
+                    $input = $self.siblings('.powerform-input'),
+                    $label = $self.siblings('.powerform-label');
 
                 // Cleanup
                 $input.val('');
-                $label.html($label.data('empty-text'));
+                $label.html('No file chosen');
                 $self.hide();
 
             });
 
-            form.find('.powerform-input-file, .powerform-input-file-required').change(function() {
-                var $nameLabel = $(this).closest('.powerform-file-upload').find('> span'),
-                    vals = $(this).val(),
-                    val = vals.length ? vals.split('\\').pop() : '';
+            form.find(".powerform-upload-button").on('click', function(e) {
 
-                $nameLabel.text(val);
-
-                self.toggle_file_input();
-            });
-
-            form.find('.powerform-button-upload').on('click', function(e) {
-                e.preventDefault();;
+                e.preventDefault();
 
                 var $id = $(this).attr('data-id'),
-                    $target = form.find('input#' + $id);
+                    $target = form.find('input#' + $id),
+                    $nameLabel = form.find('label#' + $id);
 
                 $target.trigger('click');
+
+                $target.change(function() {
+
+                    var vals = $(this).val(),
+                        val = vals.length ? vals.split('\\').pop() : '';
+
+                    $nameLabel.text(val);
+
+                    self.toggle_file_input();
+
+                });
             });
 
-            form.find('.powerform-input-file, .powerform-input-file-required').on('change', function(e) {
+            form.find('.powerform-input-file').on('change', function(e) {
 
                 e.preventDefault();
 
                 var $file = $(this)[0].files.length,
-                    $remove = $(this).find('.powerform-button-delete');
+                    $remove = $(this).find('~ .powerform-upload--remove');
 
                 if ($file === 0) {
                     $remove.hide();
@@ -1012,7 +730,6 @@
                 }
             }
         },
-
         hide: function() {
             this.$el.hide();
         },
@@ -1085,26 +802,11 @@
     $(document).on('tinymce-editor-init', function(event, editor) {
         // trigger editor change to save value to textarea,
         // default wp tinymce textarea update only triggered when submit
-        var count = 0;
         editor.on('change', function() {
             // only powerform
             if (editor.id.indexOf('powerform-wp-editor-') === 0) {
                 editor.save();
             }
-            var editor_id = editor.id,
-                $field = $('#' + editor_id).closest('.powerform-col'),
-                $limit = $field.find('.powerform-description span');
-            if ($limit.length) {
-                if ($limit.data('limit')) {
-                    if ($limit.data('type') !== "words") {
-                        count = editor.getContent({ format: 'text' }).length;
-                    } else {
-                        count = editor.getContent({ format: 'text' }).split(/\s+/).length;
-                    }
-                    $limit.html(count + ' / ' + $limit.data('limit'));
-                }
-            }
-
 
         });
     });
@@ -1125,126 +827,4 @@ var powerform_render_captcha = function() {
             }
         }
     });
-};
-
-// Source: http://stackoverflow.com/questions/497790
-var powerformDateUtil = {
-    month_number: function(v) {
-        var months_short = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
-        var months_full = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        if (v.constructor === Number) {
-            return v;
-        }
-        var n = NaN;
-        if (v.constructor === String) {
-            v = v.toLowerCase();
-            var index = months_short.indexOf(v);
-            if (index === -1) {
-                index = months_full.indexOf(v);
-            }
-            n = (index === -1) ? NaN : index;
-        }
-
-        return n;
-    },
-    convert: function(d) {
-        // Converts the date in d to a date-object. The input can be:
-        //   a date object: returned without modification
-        //  an array      : Interpreted as [year,month,day]. NOTE: month is 0-11.
-        //   a number     : Interpreted as number of milliseconds
-        //                  since 1 Jan 1970 (a timestamp)
-        //   a string     : Any format supported by the javascript engine, like
-        //                  "YYYY/MM/DD", "MM/DD/YYYY", "Jan 31 2009" etc.
-        //  an object     : Interpreted as an object with year, month and date
-        //                  attributes.  **NOTE** month is 0-11.
-        return (
-            d.constructor === Date ? d :
-            d.constructor === Array ? new Date(d[0], this.month_number(d[1]), d[2]) :
-            d.constructor === Number ? new Date(d) :
-            d.constructor === String ? new Date(d) :
-            typeof d === "object" ? new Date(d.year, this.month_number(d.month), d.date) :
-            NaN
-        );
-    },
-    compare: function(a, b) {
-        // Compare two dates (could be of any type supported by the convert
-        // function above) and returns:
-        //  -1 : if a < b
-        //   0 : if a = b
-        //   1 : if a > b
-        // NaN : if a or b is an illegal date
-        // NOTE: The code inside isFinite does an assignment (=).
-        return (
-            isFinite(a = this.convert(a).valueOf()) &&
-            isFinite(b = this.convert(b).valueOf()) ?
-            (a > b) - (a < b) :
-            NaN
-        );
-    },
-    inRange: function(d, start, end) {
-        // Checks if date in d is between dates in start and end.
-        // Returns a boolean or NaN:
-        //    true  : if d is between start and end (inclusive)
-        //    false : if d is before start or after end
-        //    NaN   : if one or more of the dates is illegal.
-        // NOTE: The code inside isFinite does an assignment (=).
-        return (
-            isFinite(d = this.convert(d).valueOf()) &&
-            isFinite(start = this.convert(start).valueOf()) &&
-            isFinite(end = this.convert(end).valueOf()) ?
-            start <= d && d <= end :
-            NaN
-        );
-    },
-
-    diffInDays: function(d1, d2) {
-        d1 = this.convert(d1);
-        d2 = this.convert(d2);
-        if (typeof d1.getMonth !== 'function' || typeof d2.getMonth !== 'function') {
-            return NaN;
-        }
-
-        var t2 = d2.getTime();
-        var t1 = d1.getTime();
-
-        return parseFloat((t2 - t1) / (24 * 3600 * 1000));
-    },
-
-    diffInWeeks: function(d1, d2) {
-        d1 = this.convert(d1);
-        d2 = this.convert(d2);
-        if (typeof d1.getMonth !== 'function' || typeof d2.getMonth !== 'function') {
-            return NaN;
-        }
-
-        var t2 = d2.getTime();
-        var t1 = d1.getTime();
-
-        return parseInt((t2 - t1) / (24 * 3600 * 1000 * 7));
-    },
-
-    diffInMonths: function(d1, d2) {
-        d1 = this.convert(d1);
-        d2 = this.convert(d2);
-        if (typeof d1.getMonth !== 'function' || typeof d2.getMonth !== 'function') {
-            return NaN;
-        }
-
-        var d1Y = d1.getFullYear();
-        var d2Y = d2.getFullYear();
-        var d1M = d1.getMonth();
-        var d2M = d2.getMonth();
-
-        return (d2M + 12 * d2Y) - (d1M + 12 * d1Y);
-    },
-
-    diffInYears: function(d1, d2) {
-        d1 = this.convert(d1);
-        d2 = this.convert(d2);
-        if (typeof d1.getMonth !== 'function' || typeof d2.getMonth !== 'function') {
-            return NaN;
-        }
-
-        return d2.getFullYear() - d1.getFullYear();
-    }
 };

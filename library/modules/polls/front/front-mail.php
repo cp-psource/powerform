@@ -286,11 +286,11 @@ class Powerform_Poll_Front_Mail extends Powerform_Mail {
 
 				// only change From header if these two are valid
 				if ( ! empty( $from_name ) && ! empty( $from_email ) ) {
-					$headers[] = 'From: ' . $from_name . ' <' . $from_email . '>';
+					$headers[] = 'Von: ' . $from_name . ' <' . $from_email . '>';
 				}
 
 				if ( ! empty( $reply_to_address ) ) {
-					$headers[] = 'Reply-To: ' . $reply_to_address;
+					$headers[] = 'Antwort an: ' . $reply_to_address;
 				}
 
 				if ( ! empty( $cc_addresses ) && is_array( $cc_addresses ) ) {
@@ -302,7 +302,7 @@ class Powerform_Poll_Front_Mail extends Powerform_Mail {
 				}
 
 				if ( ! empty( $content_type ) ) {
-					$headers[] = 'Content-Type: ' . $content_type;
+					$headers[] = 'Content-Typ: ' . $content_type;
 				}
 
 				/**

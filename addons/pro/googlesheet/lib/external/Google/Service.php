@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-class Powerform_Google_Service
+class Google_Service
 {
   public $batchPath;
   public $rootUrl;
@@ -25,14 +25,14 @@ class Powerform_Google_Service
   public $resource;
   private $client;
 
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     $this->client = $client;
   }
 
   /**
-   * Return the associated Powerform_Google_Client class.
-   * @return Powerform_Google_Client
+   * Return the associated Google_Client class.
+   * @return Google_Client
    */
   public function getClient()
   {
@@ -42,11 +42,11 @@ class Powerform_Google_Service
   /**
    * Create a new HTTP Batch handler for this service
    *
-   * @return Powerform_Google_Http_Batch
+   * @return Google_Http_Batch
    */
   public function createBatch()
   {
-    return new Powerform_Google_Http_Batch(
+    return new Google_Http_Batch(
         $this->client,
         false,
         $this->rootUrl,

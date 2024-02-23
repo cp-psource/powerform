@@ -29,26 +29,26 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Audit extends Powerform_Google_Service
+class Google_Service_Audit extends Google_Service
 {
 
 
   public $activities;
-  
+
 
   /**
    * Constructs the internal representation of the Audit service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'apps/reporting/audit/v1/';
     $this->version = 'v1';
     $this->serviceName = 'audit';
 
-    $this->activities = new Powerform_Google_Service_Audit_Activities_Resource(
+    $this->activities = new Google_Service_Audit_Activities_Resource(
         $this,
         $this->serviceName,
         'activities',
@@ -117,11 +117,11 @@ class Powerform_Google_Service_Audit extends Powerform_Google_Service
  * The "activities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $auditService = new Powerform_Google_Service_Audit(...);
+ *   $auditService = new Google_Service_Audit(...);
  *   $activities = $auditService->activities;
  *  </code>
  */
-class Powerform_Google_Service_Audit_Activities_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Audit_Activities_Resource extends Google_Service_Resource
 {
 
   /**
@@ -148,25 +148,25 @@ class Powerform_Google_Service_Audit_Activities_Resource extends Powerform_Googl
    * time.
    * @opt_param string endTime Return events which occured at or before this time.
    * @opt_param string continuationToken Next page URL.
-   * @return Powerform_Google_Service_Audit_Activities
+   * @return Google_Service_Audit_Activities
    */
   public function listActivities($customerId, $applicationId, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'applicationId' => $applicationId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Audit_Activities");
+    return $this->call('list', array($params), "Google_Service_Audit_Activities");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Audit_Activities extends Powerform_Google_Collection
+class Google_Service_Audit_Activities extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Audit_Activity';
+  protected $itemsType = 'Google_Service_Audit_Activity';
   protected $itemsDataType = 'array';
   public $kind;
   public $next;
@@ -198,23 +198,23 @@ class Powerform_Google_Service_Audit_Activities extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Audit_Activity extends Powerform_Google_Collection
+class Google_Service_Audit_Activity extends Google_Collection
 {
   protected $collection_key = 'events';
   protected $internal_gapi_mappings = array(
   );
-  protected $actorType = 'Powerform_Google_Service_Audit_ActivityActor';
+  protected $actorType = 'Google_Service_Audit_ActivityActor';
   protected $actorDataType = '';
-  protected $eventsType = 'Powerform_Google_Service_Audit_ActivityEvents';
+  protected $eventsType = 'Google_Service_Audit_ActivityEvents';
   protected $eventsDataType = 'array';
-  protected $idType = 'Powerform_Google_Service_Audit_ActivityId';
+  protected $idType = 'Google_Service_Audit_ActivityId';
   protected $idDataType = '';
   public $ipAddress;
   public $kind;
   public $ownerDomain;
 
 
-  public function setActor(Powerform_Google_Service_Audit_ActivityActor $actor)
+  public function setActor(Google_Service_Audit_ActivityActor $actor)
   {
     $this->actor = $actor;
   }
@@ -230,7 +230,7 @@ class Powerform_Google_Service_Audit_Activity extends Powerform_Google_Collectio
   {
     return $this->events;
   }
-  public function setId(Powerform_Google_Service_Audit_ActivityId $id)
+  public function setId(Google_Service_Audit_ActivityId $id)
   {
     $this->id = $id;
   }
@@ -264,7 +264,7 @@ class Powerform_Google_Service_Audit_Activity extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Audit_ActivityActor extends Powerform_Google_Model
+class Google_Service_Audit_ActivityActor extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -308,14 +308,14 @@ class Powerform_Google_Service_Audit_ActivityActor extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Audit_ActivityEvents extends Powerform_Google_Collection
+class Google_Service_Audit_ActivityEvents extends Google_Collection
 {
   protected $collection_key = 'parameters';
   protected $internal_gapi_mappings = array(
   );
   public $eventType;
   public $name;
-  protected $parametersType = 'Powerform_Google_Service_Audit_ActivityEventsParameters';
+  protected $parametersType = 'Google_Service_Audit_ActivityEventsParameters';
   protected $parametersDataType = 'array';
 
 
@@ -345,7 +345,7 @@ class Powerform_Google_Service_Audit_ActivityEvents extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Audit_ActivityEventsParameters extends Powerform_Google_Model
+class Google_Service_Audit_ActivityEventsParameters extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -371,7 +371,7 @@ class Powerform_Google_Service_Audit_ActivityEventsParameters extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Audit_ActivityId extends Powerform_Google_Model
+class Google_Service_Audit_ActivityId extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

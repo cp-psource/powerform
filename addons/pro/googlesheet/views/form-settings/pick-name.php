@@ -18,7 +18,7 @@ foreach ( $template_vars as $key => $val ) {
 	<p><?php esc_html_e( 'Setup friendly name for this integration, so it will be easily identified by you.', Powerform::DOMAIN ); ?></p>
 	<?php if ( ! empty( $vars['file_id'] ) ) : ?>
 		<span class="sui-notice sui-notice-info"><p>
-		<?php esc_html_e( 'You can open your current spread sheet', Powerform::DOMAIN ); ?>
+	<?php esc_html_e( 'You can open your current spread sheet', Powerform::DOMAIN ); ?>
 				<a target="_blank" href="https://docs.google.com/spreadsheets/d/<?php echo esc_attr( $vars['file_id'] ); ?>"><?php esc_html_e( 'here', Powerform::DOMAIN ); ?></a>.</p></span>
 	<?php endif; ?>
 	<?php if ( ! empty( $vars['error_message'] ) ) : ?>

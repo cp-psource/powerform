@@ -11,10 +11,7 @@ foreach ( $template_vars as $key => $val ) {
 ?>
 <div class="integration-header">
 	<h3 class="sui-box-title" id="dialogTitle2">
-		<?php
-		/* translators: ... */
-		echo esc_html( sprintf( __( 'Failed to add %1$s', Powerform::DOMAIN ), 'Slack' ) );
-		?>
+		<?php echo esc_html( sprintf( __( 'Failed to add %1$s', Powerform::DOMAIN ), 'Slack' ) ); ?>
 	</h3>
 	<p>
 		<?php if ( ! empty( $vars['error_message'] ) ) : ?>

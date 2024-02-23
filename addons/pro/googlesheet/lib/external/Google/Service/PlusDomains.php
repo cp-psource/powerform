@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_PlusDomains extends Powerform_Google_Service
+class Google_Service_PlusDomains extends Google_Service
 {
   /** View your circles and the people and pages in them. */
   const PLUS_CIRCLES_READ =
@@ -65,14 +65,14 @@ class Powerform_Google_Service_PlusDomains extends Powerform_Google_Service
   public $comments;
   public $media;
   public $people;
-  
+
 
   /**
    * Constructs the internal representation of the PlusDomains service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -80,7 +80,7 @@ class Powerform_Google_Service_PlusDomains extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'plusDomains';
 
-    $this->activities = new Powerform_Google_Service_PlusDomains_Activities_Resource(
+    $this->activities = new Google_Service_PlusDomains_Activities_Resource(
         $this,
         $this->serviceName,
         'activities',
@@ -137,7 +137,7 @@ class Powerform_Google_Service_PlusDomains extends Powerform_Google_Service
           )
         )
     );
-    $this->audiences = new Powerform_Google_Service_PlusDomains_Audiences_Resource(
+    $this->audiences = new Google_Service_PlusDomains_Audiences_Resource(
         $this,
         $this->serviceName,
         'audiences',
@@ -165,7 +165,7 @@ class Powerform_Google_Service_PlusDomains extends Powerform_Google_Service
           )
         )
     );
-    $this->circles = new Powerform_Google_Service_PlusDomains_Circles_Resource(
+    $this->circles = new Google_Service_PlusDomains_Circles_Resource(
         $this,
         $this->serviceName,
         'circles',
@@ -283,7 +283,7 @@ class Powerform_Google_Service_PlusDomains extends Powerform_Google_Service
           )
         )
     );
-    $this->comments = new Powerform_Google_Service_PlusDomains_Comments_Resource(
+    $this->comments = new Google_Service_PlusDomains_Comments_Resource(
         $this,
         $this->serviceName,
         'comments',
@@ -335,7 +335,7 @@ class Powerform_Google_Service_PlusDomains extends Powerform_Google_Service
           )
         )
     );
-    $this->media = new Powerform_Google_Service_PlusDomains_Media_Resource(
+    $this->media = new Google_Service_PlusDomains_Media_Resource(
         $this,
         $this->serviceName,
         'media',
@@ -360,7 +360,7 @@ class Powerform_Google_Service_PlusDomains extends Powerform_Google_Service
           )
         )
     );
-    $this->people = new Powerform_Google_Service_PlusDomains_People_Resource(
+    $this->people = new Google_Service_PlusDomains_People_Resource(
         $this,
         $this->serviceName,
         'people',
@@ -456,11 +456,11 @@ class Powerform_Google_Service_PlusDomains extends Powerform_Google_Service
  * The "activities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Powerform_Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new Google_Service_PlusDomains(...);
  *   $activities = $plusDomainsService->activities;
  *  </code>
  */
-class Powerform_Google_Service_PlusDomains_Activities_Resource extends Powerform_Google_Service_Resource
+class Google_Service_PlusDomains_Activities_Resource extends Google_Service_Resource
 {
 
   /**
@@ -468,13 +468,13 @@ class Powerform_Google_Service_PlusDomains_Activities_Resource extends Powerform
    *
    * @param string $activityId The ID of the activity to get.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_PlusDomains_Activity
+   * @return Google_Service_PlusDomains_Activity
    */
   public function get($activityId, $optParams = array())
   {
     $params = array('activityId' => $activityId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_PlusDomains_Activity");
+    return $this->call('get', array($params), "Google_Service_PlusDomains_Activity");
   }
 
   /**
@@ -482,19 +482,19 @@ class Powerform_Google_Service_PlusDomains_Activities_Resource extends Powerform
    *
    * @param string $userId The ID of the user to create the activity on behalf of.
    * Its value should be "me", to indicate the authenticated user.
-   * @param Powerform_Google_Activity $postBody
+   * @param Google_Activity $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool preview If "true", extract the potential media attachments
    * for a URL. The response will include all possible attachments for a URL,
    * including video, photos, and articles based on the content of the page.
-   * @return Powerform_Google_Service_PlusDomains_Activity
+   * @return Google_Service_PlusDomains_Activity
    */
-  public function insert($userId, Powerform_Google_Service_PlusDomains_Activity $postBody, $optParams = array())
+  public function insert($userId, Google_Service_PlusDomains_Activity $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_PlusDomains_Activity");
+    return $this->call('insert', array($params), "Google_Service_PlusDomains_Activity");
   }
 
   /**
@@ -512,13 +512,13 @@ class Powerform_Google_Service_PlusDomains_Activities_Resource extends Powerform
    * @opt_param string pageToken The continuation token, which is used to page
    * through large result sets. To get the next page of results, set this
    * parameter to the value of "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_PlusDomains_ActivityFeed
+   * @return Google_Service_PlusDomains_ActivityFeed
    */
   public function listActivities($userId, $collection, $optParams = array())
   {
     $params = array('userId' => $userId, 'collection' => $collection);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_PlusDomains_ActivityFeed");
+    return $this->call('list', array($params), "Google_Service_PlusDomains_ActivityFeed");
   }
 }
 
@@ -526,11 +526,11 @@ class Powerform_Google_Service_PlusDomains_Activities_Resource extends Powerform
  * The "audiences" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Powerform_Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new Google_Service_PlusDomains(...);
  *   $audiences = $plusDomainsService->audiences;
  *  </code>
  */
-class Powerform_Google_Service_PlusDomains_Audiences_Resource extends Powerform_Google_Service_Resource
+class Google_Service_PlusDomains_Audiences_Resource extends Google_Service_Resource
 {
 
   /**
@@ -547,13 +547,13 @@ class Powerform_Google_Service_PlusDomains_Audiences_Resource extends Powerform_
    * @opt_param string pageToken The continuation token, which is used to page
    * through large result sets. To get the next page of results, set this
    * parameter to the value of "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_PlusDomains_AudiencesFeed
+   * @return Google_Service_PlusDomains_AudiencesFeed
    */
   public function listAudiences($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_PlusDomains_AudiencesFeed");
+    return $this->call('list', array($params), "Google_Service_PlusDomains_AudiencesFeed");
   }
 }
 
@@ -561,11 +561,11 @@ class Powerform_Google_Service_PlusDomains_Audiences_Resource extends Powerform_
  * The "circles" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Powerform_Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new Google_Service_PlusDomains(...);
  *   $circles = $plusDomainsService->circles;
  *  </code>
  */
-class Powerform_Google_Service_PlusDomains_Circles_Resource extends Powerform_Google_Service_Resource
+class Google_Service_PlusDomains_Circles_Resource extends Google_Service_Resource
 {
 
   /**
@@ -579,13 +579,13 @@ class Powerform_Google_Service_PlusDomains_Circles_Resource extends Powerform_Go
    * can be repeated.
    * @opt_param string userId IDs of the people to add to the circle. Optional,
    * can be repeated.
-   * @return Powerform_Google_Service_PlusDomains_Circle
+   * @return Google_Service_PlusDomains_Circle
    */
   public function addPeople($circleId, $optParams = array())
   {
     $params = array('circleId' => $circleId);
     $params = array_merge($params, $optParams);
-    return $this->call('addPeople', array($params), "Powerform_Google_Service_PlusDomains_Circle");
+    return $this->call('addPeople', array($params), "Google_Service_PlusDomains_Circle");
   }
 
   /**
@@ -593,13 +593,13 @@ class Powerform_Google_Service_PlusDomains_Circles_Resource extends Powerform_Go
    *
    * @param string $circleId The ID of the circle to get.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_PlusDomains_Circle
+   * @return Google_Service_PlusDomains_Circle
    */
   public function get($circleId, $optParams = array())
   {
     $params = array('circleId' => $circleId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_PlusDomains_Circle");
+    return $this->call('get', array($params), "Google_Service_PlusDomains_Circle");
   }
 
   /**
@@ -607,15 +607,15 @@ class Powerform_Google_Service_PlusDomains_Circles_Resource extends Powerform_Go
    *
    * @param string $userId The ID of the user to create the circle on behalf of.
    * The value "me" can be used to indicate the authenticated user.
-   * @param Powerform_Google_Circle $postBody
+   * @param Google_Circle $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_PlusDomains_Circle
+   * @return Google_Service_PlusDomains_Circle
    */
-  public function insert($userId, Powerform_Google_Service_PlusDomains_Circle $postBody, $optParams = array())
+  public function insert($userId, Google_Service_PlusDomains_Circle $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_PlusDomains_Circle");
+    return $this->call('insert', array($params), "Google_Service_PlusDomains_Circle");
   }
 
   /**
@@ -631,13 +631,13 @@ class Powerform_Google_Service_PlusDomains_Circles_Resource extends Powerform_Go
    * @opt_param string pageToken The continuation token, which is used to page
    * through large result sets. To get the next page of results, set this
    * parameter to the value of "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_PlusDomains_CircleFeed
+   * @return Google_Service_PlusDomains_CircleFeed
    */
   public function listCircles($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_PlusDomains_CircleFeed");
+    return $this->call('list', array($params), "Google_Service_PlusDomains_CircleFeed");
   }
 
   /**
@@ -645,15 +645,15 @@ class Powerform_Google_Service_PlusDomains_Circles_Resource extends Powerform_Go
    * (circles.patch)
    *
    * @param string $circleId The ID of the circle to update.
-   * @param Powerform_Google_Circle $postBody
+   * @param Google_Circle $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_PlusDomains_Circle
+   * @return Google_Service_PlusDomains_Circle
    */
-  public function patch($circleId, Powerform_Google_Service_PlusDomains_Circle $postBody, $optParams = array())
+  public function patch($circleId, Google_Service_PlusDomains_Circle $postBody, $optParams = array())
   {
     $params = array('circleId' => $circleId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_PlusDomains_Circle");
+    return $this->call('patch', array($params), "Google_Service_PlusDomains_Circle");
   }
 
   /**
@@ -691,15 +691,15 @@ class Powerform_Google_Service_PlusDomains_Circles_Resource extends Powerform_Go
    * Update a circle's description. (circles.update)
    *
    * @param string $circleId The ID of the circle to update.
-   * @param Powerform_Google_Circle $postBody
+   * @param Google_Circle $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_PlusDomains_Circle
+   * @return Google_Service_PlusDomains_Circle
    */
-  public function update($circleId, Powerform_Google_Service_PlusDomains_Circle $postBody, $optParams = array())
+  public function update($circleId, Google_Service_PlusDomains_Circle $postBody, $optParams = array())
   {
     $params = array('circleId' => $circleId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_PlusDomains_Circle");
+    return $this->call('update', array($params), "Google_Service_PlusDomains_Circle");
   }
 }
 
@@ -707,11 +707,11 @@ class Powerform_Google_Service_PlusDomains_Circles_Resource extends Powerform_Go
  * The "comments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Powerform_Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new Google_Service_PlusDomains(...);
  *   $comments = $plusDomainsService->comments;
  *  </code>
  */
-class Powerform_Google_Service_PlusDomains_Comments_Resource extends Powerform_Google_Service_Resource
+class Google_Service_PlusDomains_Comments_Resource extends Google_Service_Resource
 {
 
   /**
@@ -719,28 +719,28 @@ class Powerform_Google_Service_PlusDomains_Comments_Resource extends Powerform_G
    *
    * @param string $commentId The ID of the comment to get.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_PlusDomains_Comment
+   * @return Google_Service_PlusDomains_Comment
    */
   public function get($commentId, $optParams = array())
   {
     $params = array('commentId' => $commentId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_PlusDomains_Comment");
+    return $this->call('get', array($params), "Google_Service_PlusDomains_Comment");
   }
 
   /**
    * Create a new comment in reply to an activity. (comments.insert)
    *
    * @param string $activityId The ID of the activity to reply to.
-   * @param Powerform_Google_Comment $postBody
+   * @param Google_Comment $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_PlusDomains_Comment
+   * @return Google_Service_PlusDomains_Comment
    */
-  public function insert($activityId, Powerform_Google_Service_PlusDomains_Comment $postBody, $optParams = array())
+  public function insert($activityId, Google_Service_PlusDomains_Comment $postBody, $optParams = array())
   {
     $params = array('activityId' => $activityId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_PlusDomains_Comment");
+    return $this->call('insert', array($params), "Google_Service_PlusDomains_Comment");
   }
 
   /**
@@ -756,13 +756,13 @@ class Powerform_Google_Service_PlusDomains_Comments_Resource extends Powerform_G
    * through large result sets. To get the next page of results, set this
    * parameter to the value of "nextPageToken" from the previous response.
    * @opt_param string sortOrder The order in which to sort the list of comments.
-   * @return Powerform_Google_Service_PlusDomains_CommentFeed
+   * @return Google_Service_PlusDomains_CommentFeed
    */
   public function listComments($activityId, $optParams = array())
   {
     $params = array('activityId' => $activityId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_PlusDomains_CommentFeed");
+    return $this->call('list', array($params), "Google_Service_PlusDomains_CommentFeed");
   }
 }
 
@@ -770,11 +770,11 @@ class Powerform_Google_Service_PlusDomains_Comments_Resource extends Powerform_G
  * The "media" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Powerform_Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new Google_Service_PlusDomains(...);
  *   $media = $plusDomainsService->media;
  *  </code>
  */
-class Powerform_Google_Service_PlusDomains_Media_Resource extends Powerform_Google_Service_Resource
+class Google_Service_PlusDomains_Media_Resource extends Google_Service_Resource
 {
 
   /**
@@ -785,15 +785,15 @@ class Powerform_Google_Service_PlusDomains_Media_Resource extends Powerform_Goog
    *
    * @param string $userId The ID of the user to create the activity on behalf of.
    * @param string $collection
-   * @param Powerform_Google_Media $postBody
+   * @param Google_Media $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_PlusDomains_Media
+   * @return Google_Service_PlusDomains_Media
    */
-  public function insert($userId, $collection, Powerform_Google_Service_PlusDomains_Media $postBody, $optParams = array())
+  public function insert($userId, $collection, Google_Service_PlusDomains_Media $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'collection' => $collection, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_PlusDomains_Media");
+    return $this->call('insert', array($params), "Google_Service_PlusDomains_Media");
   }
 }
 
@@ -801,11 +801,11 @@ class Powerform_Google_Service_PlusDomains_Media_Resource extends Powerform_Goog
  * The "people" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Powerform_Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new Google_Service_PlusDomains(...);
  *   $people = $plusDomainsService->people;
  *  </code>
  */
-class Powerform_Google_Service_PlusDomains_People_Resource extends Powerform_Google_Service_Resource
+class Google_Service_PlusDomains_People_Resource extends Google_Service_Resource
 {
 
   /**
@@ -814,13 +814,13 @@ class Powerform_Google_Service_PlusDomains_People_Resource extends Powerform_Goo
    * @param string $userId The ID of the person to get the profile for. The
    * special value "me" can be used to indicate the authenticated user.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_PlusDomains_Person
+   * @return Google_Service_PlusDomains_Person
    */
   public function get($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_PlusDomains_Person");
+    return $this->call('get', array($params), "Google_Service_PlusDomains_Person");
   }
 
   /**
@@ -838,13 +838,13 @@ class Powerform_Google_Service_PlusDomains_People_Resource extends Powerform_Goo
    * @opt_param string pageToken The continuation token, which is used to page
    * through large result sets. To get the next page of results, set this
    * parameter to the value of "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_PlusDomains_PeopleFeed
+   * @return Google_Service_PlusDomains_PeopleFeed
    */
   public function listPeople($userId, $collection, $optParams = array())
   {
     $params = array('userId' => $userId, 'collection' => $collection);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_PlusDomains_PeopleFeed");
+    return $this->call('list', array($params), "Google_Service_PlusDomains_PeopleFeed");
   }
 
   /**
@@ -862,13 +862,13 @@ class Powerform_Google_Service_PlusDomains_People_Resource extends Powerform_Goo
    * @opt_param string pageToken The continuation token, which is used to page
    * through large result sets. To get the next page of results, set this
    * parameter to the value of "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_PlusDomains_PeopleFeed
+   * @return Google_Service_PlusDomains_PeopleFeed
    */
   public function listByActivity($activityId, $collection, $optParams = array())
   {
     $params = array('activityId' => $activityId, 'collection' => $collection);
     $params = array_merge($params, $optParams);
-    return $this->call('listByActivity', array($params), "Powerform_Google_Service_PlusDomains_PeopleFeed");
+    return $this->call('listByActivity', array($params), "Google_Service_PlusDomains_PeopleFeed");
   }
 
   /**
@@ -883,27 +883,27 @@ class Powerform_Google_Service_PlusDomains_People_Resource extends Powerform_Goo
    * @opt_param string pageToken The continuation token, which is used to page
    * through large result sets. To get the next page of results, set this
    * parameter to the value of "nextPageToken" from the previous response.
-   * @return Powerform_Google_Service_PlusDomains_PeopleFeed
+   * @return Google_Service_PlusDomains_PeopleFeed
    */
   public function listByCircle($circleId, $optParams = array())
   {
     $params = array('circleId' => $circleId);
     $params = array_merge($params, $optParams);
-    return $this->call('listByCircle', array($params), "Powerform_Google_Service_PlusDomains_PeopleFeed");
+    return $this->call('listByCircle', array($params), "Google_Service_PlusDomains_PeopleFeed");
   }
 }
 
 
 
 
-class Powerform_Google_Service_PlusDomains_Acl extends Powerform_Google_Collection
+class Google_Service_PlusDomains_Acl extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $description;
   public $domainRestricted;
-  protected $itemsType = 'Powerform_Google_Service_PlusDomains_PlusDomainsAclentryResource';
+  protected $itemsType = 'Google_Service_PlusDomains_PlusDomainsAclentryResource';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -942,13 +942,13 @@ class Powerform_Google_Service_PlusDomains_Acl extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_PlusDomains_Activity extends Powerform_Google_Model
+class Google_Service_PlusDomains_Activity extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $accessType = 'Powerform_Google_Service_PlusDomains_Acl';
+  protected $accessType = 'Google_Service_PlusDomains_Acl';
   protected $accessDataType = '';
-  protected $actorType = 'Powerform_Google_Service_PlusDomains_ActivityActor';
+  protected $actorType = 'Google_Service_PlusDomains_ActivityActor';
   protected $actorDataType = '';
   public $address;
   public $annotation;
@@ -957,13 +957,13 @@ class Powerform_Google_Service_PlusDomains_Activity extends Powerform_Google_Mod
   public $geocode;
   public $id;
   public $kind;
-  protected $locationType = 'Powerform_Google_Service_PlusDomains_Place';
+  protected $locationType = 'Google_Service_PlusDomains_Place';
   protected $locationDataType = '';
-  protected $objectType = 'Powerform_Google_Service_PlusDomains_ActivityObject';
+  protected $objectType = 'Google_Service_PlusDomains_ActivityObject';
   protected $objectDataType = '';
   public $placeId;
   public $placeName;
-  protected $providerType = 'Powerform_Google_Service_PlusDomains_ActivityProvider';
+  protected $providerType = 'Google_Service_PlusDomains_ActivityProvider';
   protected $providerDataType = '';
   public $published;
   public $radius;
@@ -973,7 +973,7 @@ class Powerform_Google_Service_PlusDomains_Activity extends Powerform_Google_Mod
   public $verb;
 
 
-  public function setAccess(Powerform_Google_Service_PlusDomains_Acl $access)
+  public function setAccess(Google_Service_PlusDomains_Acl $access)
   {
     $this->access = $access;
   }
@@ -981,7 +981,7 @@ class Powerform_Google_Service_PlusDomains_Activity extends Powerform_Google_Mod
   {
     return $this->access;
   }
-  public function setActor(Powerform_Google_Service_PlusDomains_ActivityActor $actor)
+  public function setActor(Google_Service_PlusDomains_ActivityActor $actor)
   {
     $this->actor = $actor;
   }
@@ -1045,7 +1045,7 @@ class Powerform_Google_Service_PlusDomains_Activity extends Powerform_Google_Mod
   {
     return $this->kind;
   }
-  public function setLocation(Powerform_Google_Service_PlusDomains_Place $location)
+  public function setLocation(Google_Service_PlusDomains_Place $location)
   {
     $this->location = $location;
   }
@@ -1053,7 +1053,7 @@ class Powerform_Google_Service_PlusDomains_Activity extends Powerform_Google_Mod
   {
     return $this->location;
   }
-  public function setObject(Powerform_Google_Service_PlusDomains_ActivityObject $object)
+  public function setObject(Google_Service_PlusDomains_ActivityObject $object)
   {
     $this->object = $object;
   }
@@ -1077,7 +1077,7 @@ class Powerform_Google_Service_PlusDomains_Activity extends Powerform_Google_Mod
   {
     return $this->placeName;
   }
-  public function setProvider(Powerform_Google_Service_PlusDomains_ActivityProvider $provider)
+  public function setProvider(Google_Service_PlusDomains_ActivityProvider $provider)
   {
     $this->provider = $provider;
   }
@@ -1135,24 +1135,24 @@ class Powerform_Google_Service_PlusDomains_Activity extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityActor extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityActor extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $clientSpecificActorInfoType = 'Powerform_Google_Service_PlusDomains_ActivityActorClientSpecificActorInfo';
+  protected $clientSpecificActorInfoType = 'Google_Service_PlusDomains_ActivityActorClientSpecificActorInfo';
   protected $clientSpecificActorInfoDataType = '';
   public $displayName;
   public $id;
-  protected $imageType = 'Powerform_Google_Service_PlusDomains_ActivityActorImage';
+  protected $imageType = 'Google_Service_PlusDomains_ActivityActorImage';
   protected $imageDataType = '';
-  protected $nameType = 'Powerform_Google_Service_PlusDomains_ActivityActorName';
+  protected $nameType = 'Google_Service_PlusDomains_ActivityActorName';
   protected $nameDataType = '';
   public $url;
-  protected $verificationType = 'Powerform_Google_Service_PlusDomains_ActivityActorVerification';
+  protected $verificationType = 'Google_Service_PlusDomains_ActivityActorVerification';
   protected $verificationDataType = '';
 
 
-  public function setClientSpecificActorInfo(Powerform_Google_Service_PlusDomains_ActivityActorClientSpecificActorInfo $clientSpecificActorInfo)
+  public function setClientSpecificActorInfo(Google_Service_PlusDomains_ActivityActorClientSpecificActorInfo $clientSpecificActorInfo)
   {
     $this->clientSpecificActorInfo = $clientSpecificActorInfo;
   }
@@ -1176,7 +1176,7 @@ class Powerform_Google_Service_PlusDomains_ActivityActor extends Powerform_Googl
   {
     return $this->id;
   }
-  public function setImage(Powerform_Google_Service_PlusDomains_ActivityActorImage $image)
+  public function setImage(Google_Service_PlusDomains_ActivityActorImage $image)
   {
     $this->image = $image;
   }
@@ -1184,7 +1184,7 @@ class Powerform_Google_Service_PlusDomains_ActivityActor extends Powerform_Googl
   {
     return $this->image;
   }
-  public function setName(Powerform_Google_Service_PlusDomains_ActivityActorName $name)
+  public function setName(Google_Service_PlusDomains_ActivityActorName $name)
   {
     $this->name = $name;
   }
@@ -1200,7 +1200,7 @@ class Powerform_Google_Service_PlusDomains_ActivityActor extends Powerform_Googl
   {
     return $this->url;
   }
-  public function setVerification(Powerform_Google_Service_PlusDomains_ActivityActorVerification $verification)
+  public function setVerification(Google_Service_PlusDomains_ActivityActorVerification $verification)
   {
     $this->verification = $verification;
   }
@@ -1210,15 +1210,15 @@ class Powerform_Google_Service_PlusDomains_ActivityActor extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityActorClientSpecificActorInfo extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityActorClientSpecificActorInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $youtubeActorInfoType = 'Powerform_Google_Service_PlusDomains_ActivityActorClientSpecificActorInfoYoutubeActorInfo';
+  protected $youtubeActorInfoType = 'Google_Service_PlusDomains_ActivityActorClientSpecificActorInfoYoutubeActorInfo';
   protected $youtubeActorInfoDataType = '';
 
 
-  public function setYoutubeActorInfo(Powerform_Google_Service_PlusDomains_ActivityActorClientSpecificActorInfoYoutubeActorInfo $youtubeActorInfo)
+  public function setYoutubeActorInfo(Google_Service_PlusDomains_ActivityActorClientSpecificActorInfoYoutubeActorInfo $youtubeActorInfo)
   {
     $this->youtubeActorInfo = $youtubeActorInfo;
   }
@@ -1228,7 +1228,7 @@ class Powerform_Google_Service_PlusDomains_ActivityActorClientSpecificActorInfo 
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityActorClientSpecificActorInfoYoutubeActorInfo extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityActorClientSpecificActorInfoYoutubeActorInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1245,7 +1245,7 @@ class Powerform_Google_Service_PlusDomains_ActivityActorClientSpecificActorInfoY
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityActorImage extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityActorImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1262,7 +1262,7 @@ class Powerform_Google_Service_PlusDomains_ActivityActorImage extends Powerform_
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityActorName extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityActorName extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1288,7 +1288,7 @@ class Powerform_Google_Service_PlusDomains_ActivityActorName extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityActorVerification extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityActorVerification extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1305,14 +1305,14 @@ class Powerform_Google_Service_PlusDomains_ActivityActorVerification extends Pow
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityFeed extends Powerform_Google_Collection
+class Google_Service_PlusDomains_ActivityFeed extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
-  protected $itemsType = 'Powerform_Google_Service_PlusDomains_Activity';
+  protected $itemsType = 'Google_Service_PlusDomains_Activity';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextLink;
@@ -1396,31 +1396,31 @@ class Powerform_Google_Service_PlusDomains_ActivityFeed extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObject extends Powerform_Google_Collection
+class Google_Service_PlusDomains_ActivityObject extends Google_Collection
 {
   protected $collection_key = 'attachments';
   protected $internal_gapi_mappings = array(
   );
-  protected $actorType = 'Powerform_Google_Service_PlusDomains_ActivityObjectActor';
+  protected $actorType = 'Google_Service_PlusDomains_ActivityObjectActor';
   protected $actorDataType = '';
-  protected $attachmentsType = 'Powerform_Google_Service_PlusDomains_ActivityObjectAttachments';
+  protected $attachmentsType = 'Google_Service_PlusDomains_ActivityObjectAttachments';
   protected $attachmentsDataType = 'array';
   public $content;
   public $id;
   public $objectType;
   public $originalContent;
-  protected $plusonersType = 'Powerform_Google_Service_PlusDomains_ActivityObjectPlusoners';
+  protected $plusonersType = 'Google_Service_PlusDomains_ActivityObjectPlusoners';
   protected $plusonersDataType = '';
-  protected $repliesType = 'Powerform_Google_Service_PlusDomains_ActivityObjectReplies';
+  protected $repliesType = 'Google_Service_PlusDomains_ActivityObjectReplies';
   protected $repliesDataType = '';
-  protected $resharersType = 'Powerform_Google_Service_PlusDomains_ActivityObjectResharers';
+  protected $resharersType = 'Google_Service_PlusDomains_ActivityObjectResharers';
   protected $resharersDataType = '';
-  protected $statusForViewerType = 'Powerform_Google_Service_PlusDomains_ActivityObjectStatusForViewer';
+  protected $statusForViewerType = 'Google_Service_PlusDomains_ActivityObjectStatusForViewer';
   protected $statusForViewerDataType = '';
   public $url;
 
 
-  public function setActor(Powerform_Google_Service_PlusDomains_ActivityObjectActor $actor)
+  public function setActor(Google_Service_PlusDomains_ActivityObjectActor $actor)
   {
     $this->actor = $actor;
   }
@@ -1468,7 +1468,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObject extends Powerform_Goog
   {
     return $this->originalContent;
   }
-  public function setPlusoners(Powerform_Google_Service_PlusDomains_ActivityObjectPlusoners $plusoners)
+  public function setPlusoners(Google_Service_PlusDomains_ActivityObjectPlusoners $plusoners)
   {
     $this->plusoners = $plusoners;
   }
@@ -1476,7 +1476,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObject extends Powerform_Goog
   {
     return $this->plusoners;
   }
-  public function setReplies(Powerform_Google_Service_PlusDomains_ActivityObjectReplies $replies)
+  public function setReplies(Google_Service_PlusDomains_ActivityObjectReplies $replies)
   {
     $this->replies = $replies;
   }
@@ -1484,7 +1484,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObject extends Powerform_Goog
   {
     return $this->replies;
   }
-  public function setResharers(Powerform_Google_Service_PlusDomains_ActivityObjectResharers $resharers)
+  public function setResharers(Google_Service_PlusDomains_ActivityObjectResharers $resharers)
   {
     $this->resharers = $resharers;
   }
@@ -1492,7 +1492,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObject extends Powerform_Goog
   {
     return $this->resharers;
   }
-  public function setStatusForViewer(Powerform_Google_Service_PlusDomains_ActivityObjectStatusForViewer $statusForViewer)
+  public function setStatusForViewer(Google_Service_PlusDomains_ActivityObjectStatusForViewer $statusForViewer)
   {
     $this->statusForViewer = $statusForViewer;
   }
@@ -1510,22 +1510,22 @@ class Powerform_Google_Service_PlusDomains_ActivityObject extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectActor extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectActor extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $clientSpecificActorInfoType = 'Powerform_Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfo';
+  protected $clientSpecificActorInfoType = 'Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfo';
   protected $clientSpecificActorInfoDataType = '';
   public $displayName;
   public $id;
-  protected $imageType = 'Powerform_Google_Service_PlusDomains_ActivityObjectActorImage';
+  protected $imageType = 'Google_Service_PlusDomains_ActivityObjectActorImage';
   protected $imageDataType = '';
   public $url;
-  protected $verificationType = 'Powerform_Google_Service_PlusDomains_ActivityObjectActorVerification';
+  protected $verificationType = 'Google_Service_PlusDomains_ActivityObjectActorVerification';
   protected $verificationDataType = '';
 
 
-  public function setClientSpecificActorInfo(Powerform_Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfo $clientSpecificActorInfo)
+  public function setClientSpecificActorInfo(Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfo $clientSpecificActorInfo)
   {
     $this->clientSpecificActorInfo = $clientSpecificActorInfo;
   }
@@ -1549,7 +1549,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectActor extends Powerform
   {
     return $this->id;
   }
-  public function setImage(Powerform_Google_Service_PlusDomains_ActivityObjectActorImage $image)
+  public function setImage(Google_Service_PlusDomains_ActivityObjectActorImage $image)
   {
     $this->image = $image;
   }
@@ -1565,7 +1565,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectActor extends Powerform
   {
     return $this->url;
   }
-  public function setVerification(Powerform_Google_Service_PlusDomains_ActivityObjectActorVerification $verification)
+  public function setVerification(Google_Service_PlusDomains_ActivityObjectActorVerification $verification)
   {
     $this->verification = $verification;
   }
@@ -1575,15 +1575,15 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectActor extends Powerform
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfo extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $youtubeActorInfoType = 'Powerform_Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo';
+  protected $youtubeActorInfoType = 'Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo';
   protected $youtubeActorInfoDataType = '';
 
 
-  public function setYoutubeActorInfo(Powerform_Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo $youtubeActorInfo)
+  public function setYoutubeActorInfo(Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo $youtubeActorInfo)
   {
     $this->youtubeActorInfo = $youtubeActorInfo;
   }
@@ -1593,7 +1593,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectActorClientSpecificActo
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1610,7 +1610,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectActorClientSpecificActo
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectActorImage extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectActorImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1627,7 +1627,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectActorImage extends Powe
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectActorVerification extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectActorVerification extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1644,24 +1644,24 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectActorVerification exten
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectAttachments extends Powerform_Google_Collection
+class Google_Service_PlusDomains_ActivityObjectAttachments extends Google_Collection
 {
   protected $collection_key = 'thumbnails';
   protected $internal_gapi_mappings = array(
   );
   public $content;
   public $displayName;
-  protected $embedType = 'Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed';
+  protected $embedType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed';
   protected $embedDataType = '';
-  protected $fullImageType = 'Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage';
+  protected $fullImageType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage';
   protected $fullImageDataType = '';
   public $id;
-  protected $imageType = 'Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsImage';
+  protected $imageType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsImage';
   protected $imageDataType = '';
   public $objectType;
-  protected $previewThumbnailsType = 'Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsPreviewThumbnails';
+  protected $previewThumbnailsType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsPreviewThumbnails';
   protected $previewThumbnailsDataType = 'array';
-  protected $thumbnailsType = 'Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnails';
+  protected $thumbnailsType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnails';
   protected $thumbnailsDataType = 'array';
   public $url;
 
@@ -1682,7 +1682,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachments extends Pow
   {
     return $this->displayName;
   }
-  public function setEmbed(Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed $embed)
+  public function setEmbed(Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed $embed)
   {
     $this->embed = $embed;
   }
@@ -1690,7 +1690,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachments extends Pow
   {
     return $this->embed;
   }
-  public function setFullImage(Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage $fullImage)
+  public function setFullImage(Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage $fullImage)
   {
     $this->fullImage = $fullImage;
   }
@@ -1706,7 +1706,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachments extends Pow
   {
     return $this->id;
   }
-  public function setImage(Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsImage $image)
+  public function setImage(Google_Service_PlusDomains_ActivityObjectAttachmentsImage $image)
   {
     $this->image = $image;
   }
@@ -1748,7 +1748,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachments extends Pow
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1774,7 +1774,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed extend
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1818,7 +1818,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage ex
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsImage extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectAttachmentsImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1862,7 +1862,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsImage extend
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsPreviewThumbnails extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectAttachmentsPreviewThumbnails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1879,12 +1879,12 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsPreviewThumb
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnails extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $description;
-  protected $imageType = 'Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage';
+  protected $imageType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage';
   protected $imageDataType = '';
   public $url;
 
@@ -1897,7 +1897,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnails e
   {
     return $this->description;
   }
-  public function setImage(Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage $image)
+  public function setImage(Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage $image)
   {
     $this->image = $image;
   }
@@ -1915,7 +1915,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnails e
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1959,7 +1959,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsIm
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectPlusoners extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectPlusoners extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1985,7 +1985,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectPlusoners extends Power
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectReplies extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectReplies extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2011,7 +2011,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectReplies extends Powerfo
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectResharers extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectResharers extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2037,7 +2037,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectResharers extends Power
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityObjectStatusForViewer extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityObjectStatusForViewer extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2090,7 +2090,7 @@ class Powerform_Google_Service_PlusDomains_ActivityObjectStatusForViewer extends
   }
 }
 
-class Powerform_Google_Service_PlusDomains_ActivityProvider extends Powerform_Google_Model
+class Google_Service_PlusDomains_ActivityProvider extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2107,12 +2107,12 @@ class Powerform_Google_Service_PlusDomains_ActivityProvider extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_PlusDomains_Audience extends Powerform_Google_Model
+class Google_Service_PlusDomains_Audience extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemType = 'Powerform_Google_Service_PlusDomains_PlusDomainsAclentryResource';
+  protected $itemType = 'Google_Service_PlusDomains_PlusDomainsAclentryResource';
   protected $itemDataType = '';
   public $kind;
   public $memberCount;
@@ -2127,7 +2127,7 @@ class Powerform_Google_Service_PlusDomains_Audience extends Powerform_Google_Mod
   {
     return $this->etag;
   }
-  public function setItem(Powerform_Google_Service_PlusDomains_PlusDomainsAclentryResource $item)
+  public function setItem(Google_Service_PlusDomains_PlusDomainsAclentryResource $item)
   {
     $this->item = $item;
   }
@@ -2161,13 +2161,13 @@ class Powerform_Google_Service_PlusDomains_Audience extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_PlusDomains_AudiencesFeed extends Powerform_Google_Collection
+class Google_Service_PlusDomains_AudiencesFeed extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_PlusDomains_Audience';
+  protected $itemsType = 'Google_Service_PlusDomains_Audience';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2216,7 +2216,7 @@ class Powerform_Google_Service_PlusDomains_AudiencesFeed extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_PlusDomains_Circle extends Powerform_Google_Model
+class Google_Service_PlusDomains_Circle extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2225,7 +2225,7 @@ class Powerform_Google_Service_PlusDomains_Circle extends Powerform_Google_Model
   public $etag;
   public $id;
   public $kind;
-  protected $peopleType = 'Powerform_Google_Service_PlusDomains_CirclePeople';
+  protected $peopleType = 'Google_Service_PlusDomains_CirclePeople';
   protected $peopleDataType = '';
   public $selfLink;
 
@@ -2270,7 +2270,7 @@ class Powerform_Google_Service_PlusDomains_Circle extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setPeople(Powerform_Google_Service_PlusDomains_CirclePeople $people)
+  public function setPeople(Google_Service_PlusDomains_CirclePeople $people)
   {
     $this->people = $people;
   }
@@ -2288,13 +2288,13 @@ class Powerform_Google_Service_PlusDomains_Circle extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CircleFeed extends Powerform_Google_Collection
+class Google_Service_PlusDomains_CircleFeed extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_PlusDomains_Circle';
+  protected $itemsType = 'Google_Service_PlusDomains_Circle';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextLink;
@@ -2370,7 +2370,7 @@ class Powerform_Google_Service_PlusDomains_CircleFeed extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CirclePeople extends Powerform_Google_Model
+class Google_Service_PlusDomains_CirclePeople extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2387,21 +2387,21 @@ class Powerform_Google_Service_PlusDomains_CirclePeople extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_PlusDomains_Comment extends Powerform_Google_Collection
+class Google_Service_PlusDomains_Comment extends Google_Collection
 {
   protected $collection_key = 'inReplyTo';
   protected $internal_gapi_mappings = array(
   );
-  protected $actorType = 'Powerform_Google_Service_PlusDomains_CommentActor';
+  protected $actorType = 'Google_Service_PlusDomains_CommentActor';
   protected $actorDataType = '';
   public $etag;
   public $id;
-  protected $inReplyToType = 'Powerform_Google_Service_PlusDomains_CommentInReplyTo';
+  protected $inReplyToType = 'Google_Service_PlusDomains_CommentInReplyTo';
   protected $inReplyToDataType = 'array';
   public $kind;
-  protected $objectType = 'Powerform_Google_Service_PlusDomains_CommentObject';
+  protected $objectType = 'Google_Service_PlusDomains_CommentObject';
   protected $objectDataType = '';
-  protected $plusonersType = 'Powerform_Google_Service_PlusDomains_CommentPlusoners';
+  protected $plusonersType = 'Google_Service_PlusDomains_CommentPlusoners';
   protected $plusonersDataType = '';
   public $published;
   public $selfLink;
@@ -2409,7 +2409,7 @@ class Powerform_Google_Service_PlusDomains_Comment extends Powerform_Google_Coll
   public $verb;
 
 
-  public function setActor(Powerform_Google_Service_PlusDomains_CommentActor $actor)
+  public function setActor(Google_Service_PlusDomains_CommentActor $actor)
   {
     $this->actor = $actor;
   }
@@ -2449,7 +2449,7 @@ class Powerform_Google_Service_PlusDomains_Comment extends Powerform_Google_Coll
   {
     return $this->kind;
   }
-  public function setObject(Powerform_Google_Service_PlusDomains_CommentObject $object)
+  public function setObject(Google_Service_PlusDomains_CommentObject $object)
   {
     $this->object = $object;
   }
@@ -2457,7 +2457,7 @@ class Powerform_Google_Service_PlusDomains_Comment extends Powerform_Google_Coll
   {
     return $this->object;
   }
-  public function setPlusoners(Powerform_Google_Service_PlusDomains_CommentPlusoners $plusoners)
+  public function setPlusoners(Google_Service_PlusDomains_CommentPlusoners $plusoners)
   {
     $this->plusoners = $plusoners;
   }
@@ -2499,22 +2499,22 @@ class Powerform_Google_Service_PlusDomains_Comment extends Powerform_Google_Coll
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CommentActor extends Powerform_Google_Model
+class Google_Service_PlusDomains_CommentActor extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $clientSpecificActorInfoType = 'Powerform_Google_Service_PlusDomains_CommentActorClientSpecificActorInfo';
+  protected $clientSpecificActorInfoType = 'Google_Service_PlusDomains_CommentActorClientSpecificActorInfo';
   protected $clientSpecificActorInfoDataType = '';
   public $displayName;
   public $id;
-  protected $imageType = 'Powerform_Google_Service_PlusDomains_CommentActorImage';
+  protected $imageType = 'Google_Service_PlusDomains_CommentActorImage';
   protected $imageDataType = '';
   public $url;
-  protected $verificationType = 'Powerform_Google_Service_PlusDomains_CommentActorVerification';
+  protected $verificationType = 'Google_Service_PlusDomains_CommentActorVerification';
   protected $verificationDataType = '';
 
 
-  public function setClientSpecificActorInfo(Powerform_Google_Service_PlusDomains_CommentActorClientSpecificActorInfo $clientSpecificActorInfo)
+  public function setClientSpecificActorInfo(Google_Service_PlusDomains_CommentActorClientSpecificActorInfo $clientSpecificActorInfo)
   {
     $this->clientSpecificActorInfo = $clientSpecificActorInfo;
   }
@@ -2538,7 +2538,7 @@ class Powerform_Google_Service_PlusDomains_CommentActor extends Powerform_Google
   {
     return $this->id;
   }
-  public function setImage(Powerform_Google_Service_PlusDomains_CommentActorImage $image)
+  public function setImage(Google_Service_PlusDomains_CommentActorImage $image)
   {
     $this->image = $image;
   }
@@ -2554,7 +2554,7 @@ class Powerform_Google_Service_PlusDomains_CommentActor extends Powerform_Google
   {
     return $this->url;
   }
-  public function setVerification(Powerform_Google_Service_PlusDomains_CommentActorVerification $verification)
+  public function setVerification(Google_Service_PlusDomains_CommentActorVerification $verification)
   {
     $this->verification = $verification;
   }
@@ -2564,15 +2564,15 @@ class Powerform_Google_Service_PlusDomains_CommentActor extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CommentActorClientSpecificActorInfo extends Powerform_Google_Model
+class Google_Service_PlusDomains_CommentActorClientSpecificActorInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $youtubeActorInfoType = 'Powerform_Google_Service_PlusDomains_CommentActorClientSpecificActorInfoYoutubeActorInfo';
+  protected $youtubeActorInfoType = 'Google_Service_PlusDomains_CommentActorClientSpecificActorInfoYoutubeActorInfo';
   protected $youtubeActorInfoDataType = '';
 
 
-  public function setYoutubeActorInfo(Powerform_Google_Service_PlusDomains_CommentActorClientSpecificActorInfoYoutubeActorInfo $youtubeActorInfo)
+  public function setYoutubeActorInfo(Google_Service_PlusDomains_CommentActorClientSpecificActorInfoYoutubeActorInfo $youtubeActorInfo)
   {
     $this->youtubeActorInfo = $youtubeActorInfo;
   }
@@ -2582,7 +2582,7 @@ class Powerform_Google_Service_PlusDomains_CommentActorClientSpecificActorInfo e
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CommentActorClientSpecificActorInfoYoutubeActorInfo extends Powerform_Google_Model
+class Google_Service_PlusDomains_CommentActorClientSpecificActorInfoYoutubeActorInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2599,7 +2599,7 @@ class Powerform_Google_Service_PlusDomains_CommentActorClientSpecificActorInfoYo
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CommentActorImage extends Powerform_Google_Model
+class Google_Service_PlusDomains_CommentActorImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2616,7 +2616,7 @@ class Powerform_Google_Service_PlusDomains_CommentActorImage extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CommentActorVerification extends Powerform_Google_Model
+class Google_Service_PlusDomains_CommentActorVerification extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2633,14 +2633,14 @@ class Powerform_Google_Service_PlusDomains_CommentActorVerification extends Powe
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CommentFeed extends Powerform_Google_Collection
+class Google_Service_PlusDomains_CommentFeed extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
-  protected $itemsType = 'Powerform_Google_Service_PlusDomains_Comment';
+  protected $itemsType = 'Google_Service_PlusDomains_Comment';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextLink;
@@ -2715,7 +2715,7 @@ class Powerform_Google_Service_PlusDomains_CommentFeed extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CommentInReplyTo extends Powerform_Google_Model
+class Google_Service_PlusDomains_CommentInReplyTo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2741,7 +2741,7 @@ class Powerform_Google_Service_PlusDomains_CommentInReplyTo extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CommentObject extends Powerform_Google_Model
+class Google_Service_PlusDomains_CommentObject extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2776,7 +2776,7 @@ class Powerform_Google_Service_PlusDomains_CommentObject extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_PlusDomains_CommentPlusoners extends Powerform_Google_Model
+class Google_Service_PlusDomains_CommentPlusoners extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2793,16 +2793,16 @@ class Powerform_Google_Service_PlusDomains_CommentPlusoners extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_PlusDomains_Media extends Powerform_Google_Collection
+class Google_Service_PlusDomains_Media extends Google_Collection
 {
   protected $collection_key = 'streams';
   protected $internal_gapi_mappings = array(
   );
-  protected $authorType = 'Powerform_Google_Service_PlusDomains_MediaAuthor';
+  protected $authorType = 'Google_Service_PlusDomains_MediaAuthor';
   protected $authorDataType = '';
   public $displayName;
   public $etag;
-  protected $exifType = 'Powerform_Google_Service_PlusDomains_MediaExif';
+  protected $exifType = 'Google_Service_PlusDomains_MediaExif';
   protected $exifDataType = '';
   public $height;
   public $id;
@@ -2811,7 +2811,7 @@ class Powerform_Google_Service_PlusDomains_Media extends Powerform_Google_Collec
   public $mediaUrl;
   public $published;
   public $sizeBytes;
-  protected $streamsType = 'Powerform_Google_Service_PlusDomains_Videostream';
+  protected $streamsType = 'Google_Service_PlusDomains_Videostream';
   protected $streamsDataType = 'array';
   public $summary;
   public $updated;
@@ -2821,7 +2821,7 @@ class Powerform_Google_Service_PlusDomains_Media extends Powerform_Google_Collec
   public $width;
 
 
-  public function setAuthor(Powerform_Google_Service_PlusDomains_MediaAuthor $author)
+  public function setAuthor(Google_Service_PlusDomains_MediaAuthor $author)
   {
     $this->author = $author;
   }
@@ -2845,7 +2845,7 @@ class Powerform_Google_Service_PlusDomains_Media extends Powerform_Google_Collec
   {
     return $this->etag;
   }
-  public function setExif(Powerform_Google_Service_PlusDomains_MediaExif $exif)
+  public function setExif(Google_Service_PlusDomains_MediaExif $exif)
   {
     $this->exif = $exif;
   }
@@ -2967,13 +2967,13 @@ class Powerform_Google_Service_PlusDomains_Media extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_PlusDomains_MediaAuthor extends Powerform_Google_Model
+class Google_Service_PlusDomains_MediaAuthor extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $displayName;
   public $id;
-  protected $imageType = 'Powerform_Google_Service_PlusDomains_MediaAuthorImage';
+  protected $imageType = 'Google_Service_PlusDomains_MediaAuthorImage';
   protected $imageDataType = '';
   public $url;
 
@@ -2994,7 +2994,7 @@ class Powerform_Google_Service_PlusDomains_MediaAuthor extends Powerform_Google_
   {
     return $this->id;
   }
-  public function setImage(Powerform_Google_Service_PlusDomains_MediaAuthorImage $image)
+  public function setImage(Google_Service_PlusDomains_MediaAuthorImage $image)
   {
     $this->image = $image;
   }
@@ -3012,7 +3012,7 @@ class Powerform_Google_Service_PlusDomains_MediaAuthor extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_PlusDomains_MediaAuthorImage extends Powerform_Google_Model
+class Google_Service_PlusDomains_MediaAuthorImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3029,7 +3029,7 @@ class Powerform_Google_Service_PlusDomains_MediaAuthorImage extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_PlusDomains_MediaExif extends Powerform_Google_Model
+class Google_Service_PlusDomains_MediaExif extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3046,13 +3046,13 @@ class Powerform_Google_Service_PlusDomains_MediaExif extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PeopleFeed extends Powerform_Google_Collection
+class Google_Service_PlusDomains_PeopleFeed extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_PlusDomains_Person';
+  protected $itemsType = 'Google_Service_PlusDomains_Person';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3119,7 +3119,7 @@ class Powerform_Google_Service_PlusDomains_PeopleFeed extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_PlusDomains_Person extends Powerform_Google_Collection
+class Google_Service_PlusDomains_Person extends Google_Collection
 {
   protected $collection_key = 'urls';
   protected $internal_gapi_mappings = array(
@@ -3128,35 +3128,35 @@ class Powerform_Google_Service_PlusDomains_Person extends Powerform_Google_Colle
   public $birthday;
   public $braggingRights;
   public $circledByCount;
-  protected $coverType = 'Powerform_Google_Service_PlusDomains_PersonCover';
+  protected $coverType = 'Google_Service_PlusDomains_PersonCover';
   protected $coverDataType = '';
   public $currentLocation;
   public $displayName;
   public $domain;
-  protected $emailsType = 'Powerform_Google_Service_PlusDomains_PersonEmails';
+  protected $emailsType = 'Google_Service_PlusDomains_PersonEmails';
   protected $emailsDataType = 'array';
   public $etag;
   public $gender;
   public $id;
-  protected $imageType = 'Powerform_Google_Service_PlusDomains_PersonImage';
+  protected $imageType = 'Google_Service_PlusDomains_PersonImage';
   protected $imageDataType = '';
   public $isPlusUser;
   public $kind;
-  protected $nameType = 'Powerform_Google_Service_PlusDomains_PersonName';
+  protected $nameType = 'Google_Service_PlusDomains_PersonName';
   protected $nameDataType = '';
   public $nickname;
   public $objectType;
   public $occupation;
-  protected $organizationsType = 'Powerform_Google_Service_PlusDomains_PersonOrganizations';
+  protected $organizationsType = 'Google_Service_PlusDomains_PersonOrganizations';
   protected $organizationsDataType = 'array';
-  protected $placesLivedType = 'Powerform_Google_Service_PlusDomains_PersonPlacesLived';
+  protected $placesLivedType = 'Google_Service_PlusDomains_PersonPlacesLived';
   protected $placesLivedDataType = 'array';
   public $plusOneCount;
   public $relationshipStatus;
   public $skills;
   public $tagline;
   public $url;
-  protected $urlsType = 'Powerform_Google_Service_PlusDomains_PersonUrls';
+  protected $urlsType = 'Google_Service_PlusDomains_PersonUrls';
   protected $urlsDataType = 'array';
   public $verified;
 
@@ -3193,7 +3193,7 @@ class Powerform_Google_Service_PlusDomains_Person extends Powerform_Google_Colle
   {
     return $this->circledByCount;
   }
-  public function setCover(Powerform_Google_Service_PlusDomains_PersonCover $cover)
+  public function setCover(Google_Service_PlusDomains_PersonCover $cover)
   {
     $this->cover = $cover;
   }
@@ -3257,7 +3257,7 @@ class Powerform_Google_Service_PlusDomains_Person extends Powerform_Google_Colle
   {
     return $this->id;
   }
-  public function setImage(Powerform_Google_Service_PlusDomains_PersonImage $image)
+  public function setImage(Google_Service_PlusDomains_PersonImage $image)
   {
     $this->image = $image;
   }
@@ -3281,7 +3281,7 @@ class Powerform_Google_Service_PlusDomains_Person extends Powerform_Google_Colle
   {
     return $this->kind;
   }
-  public function setName(Powerform_Google_Service_PlusDomains_PersonName $name)
+  public function setName(Google_Service_PlusDomains_PersonName $name)
   {
     $this->name = $name;
   }
@@ -3387,18 +3387,18 @@ class Powerform_Google_Service_PlusDomains_Person extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PersonCover extends Powerform_Google_Model
+class Google_Service_PlusDomains_PersonCover extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $coverInfoType = 'Powerform_Google_Service_PlusDomains_PersonCoverCoverInfo';
+  protected $coverInfoType = 'Google_Service_PlusDomains_PersonCoverCoverInfo';
   protected $coverInfoDataType = '';
-  protected $coverPhotoType = 'Powerform_Google_Service_PlusDomains_PersonCoverCoverPhoto';
+  protected $coverPhotoType = 'Google_Service_PlusDomains_PersonCoverCoverPhoto';
   protected $coverPhotoDataType = '';
   public $layout;
 
 
-  public function setCoverInfo(Powerform_Google_Service_PlusDomains_PersonCoverCoverInfo $coverInfo)
+  public function setCoverInfo(Google_Service_PlusDomains_PersonCoverCoverInfo $coverInfo)
   {
     $this->coverInfo = $coverInfo;
   }
@@ -3406,7 +3406,7 @@ class Powerform_Google_Service_PlusDomains_PersonCover extends Powerform_Google_
   {
     return $this->coverInfo;
   }
-  public function setCoverPhoto(Powerform_Google_Service_PlusDomains_PersonCoverCoverPhoto $coverPhoto)
+  public function setCoverPhoto(Google_Service_PlusDomains_PersonCoverCoverPhoto $coverPhoto)
   {
     $this->coverPhoto = $coverPhoto;
   }
@@ -3424,7 +3424,7 @@ class Powerform_Google_Service_PlusDomains_PersonCover extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PersonCoverCoverInfo extends Powerform_Google_Model
+class Google_Service_PlusDomains_PersonCoverCoverInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3450,7 +3450,7 @@ class Powerform_Google_Service_PlusDomains_PersonCoverCoverInfo extends Powerfor
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PersonCoverCoverPhoto extends Powerform_Google_Model
+class Google_Service_PlusDomains_PersonCoverCoverPhoto extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3485,7 +3485,7 @@ class Powerform_Google_Service_PlusDomains_PersonCoverCoverPhoto extends Powerfo
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PersonEmails extends Powerform_Google_Model
+class Google_Service_PlusDomains_PersonEmails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3511,7 +3511,7 @@ class Powerform_Google_Service_PlusDomains_PersonEmails extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PersonImage extends Powerform_Google_Model
+class Google_Service_PlusDomains_PersonImage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3537,7 +3537,7 @@ class Powerform_Google_Service_PlusDomains_PersonImage extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PersonName extends Powerform_Google_Model
+class Google_Service_PlusDomains_PersonName extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3599,7 +3599,7 @@ class Powerform_Google_Service_PlusDomains_PersonName extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PersonOrganizations extends Powerform_Google_Model
+class Google_Service_PlusDomains_PersonOrganizations extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3688,7 +3688,7 @@ class Powerform_Google_Service_PlusDomains_PersonOrganizations extends Powerform
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PersonPlacesLived extends Powerform_Google_Model
+class Google_Service_PlusDomains_PersonPlacesLived extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3714,7 +3714,7 @@ class Powerform_Google_Service_PlusDomains_PersonPlacesLived extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PersonUrls extends Powerform_Google_Model
+class Google_Service_PlusDomains_PersonUrls extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3749,20 +3749,20 @@ class Powerform_Google_Service_PlusDomains_PersonUrls extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_PlusDomains_Place extends Powerform_Google_Model
+class Google_Service_PlusDomains_Place extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $addressType = 'Powerform_Google_Service_PlusDomains_PlaceAddress';
+  protected $addressType = 'Google_Service_PlusDomains_PlaceAddress';
   protected $addressDataType = '';
   public $displayName;
   public $id;
   public $kind;
-  protected $positionType = 'Powerform_Google_Service_PlusDomains_PlacePosition';
+  protected $positionType = 'Google_Service_PlusDomains_PlacePosition';
   protected $positionDataType = '';
 
 
-  public function setAddress(Powerform_Google_Service_PlusDomains_PlaceAddress $address)
+  public function setAddress(Google_Service_PlusDomains_PlaceAddress $address)
   {
     $this->address = $address;
   }
@@ -3794,7 +3794,7 @@ class Powerform_Google_Service_PlusDomains_Place extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setPosition(Powerform_Google_Service_PlusDomains_PlacePosition $position)
+  public function setPosition(Google_Service_PlusDomains_PlacePosition $position)
   {
     $this->position = $position;
   }
@@ -3804,7 +3804,7 @@ class Powerform_Google_Service_PlusDomains_Place extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PlaceAddress extends Powerform_Google_Model
+class Google_Service_PlusDomains_PlaceAddress extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3821,7 +3821,7 @@ class Powerform_Google_Service_PlusDomains_PlaceAddress extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PlacePosition extends Powerform_Google_Model
+class Google_Service_PlusDomains_PlacePosition extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3847,7 +3847,7 @@ class Powerform_Google_Service_PlusDomains_PlacePosition extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_PlusDomains_PlusDomainsAclentryResource extends Powerform_Google_Model
+class Google_Service_PlusDomains_PlusDomainsAclentryResource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3882,7 +3882,7 @@ class Powerform_Google_Service_PlusDomains_PlusDomainsAclentryResource extends P
   }
 }
 
-class Powerform_Google_Service_PlusDomains_Videostream extends Powerform_Google_Model
+class Google_Service_PlusDomains_Videostream extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

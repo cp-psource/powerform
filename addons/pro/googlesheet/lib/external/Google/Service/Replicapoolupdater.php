@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Replicapoolupdater extends Powerform_Google_Service
+class Google_Service_Replicapoolupdater extends Google_Service
 {
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
@@ -44,14 +44,14 @@ class Powerform_Google_Service_Replicapoolupdater extends Powerform_Google_Servi
 
   public $rollingUpdates;
   public $zoneOperations;
-  
+
 
   /**
    * Constructs the internal representation of the Replicapoolupdater service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -59,7 +59,7 @@ class Powerform_Google_Service_Replicapoolupdater extends Powerform_Google_Servi
     $this->version = 'v1beta1';
     $this->serviceName = 'replicapoolupdater';
 
-    $this->rollingUpdates = new Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource(
+    $this->rollingUpdates = new Google_Service_Replicapoolupdater_RollingUpdates_Resource(
         $this,
         $this->serviceName,
         'rollingUpdates',
@@ -243,7 +243,7 @@ class Powerform_Google_Service_Replicapoolupdater extends Powerform_Google_Servi
           )
         )
     );
-    $this->zoneOperations = new Powerform_Google_Service_Replicapoolupdater_ZoneOperations_Resource(
+    $this->zoneOperations = new Google_Service_Replicapoolupdater_ZoneOperations_Resource(
         $this,
         $this->serviceName,
         'zoneOperations',
@@ -308,11 +308,11 @@ class Powerform_Google_Service_Replicapoolupdater extends Powerform_Google_Servi
  * The "rollingUpdates" collection of methods.
  * Typical usage is:
  *  <code>
- *   $replicapoolupdaterService = new Powerform_Google_Service_Replicapoolupdater(...);
+ *   $replicapoolupdaterService = new Google_Service_Replicapoolupdater(...);
  *   $rollingUpdates = $replicapoolupdaterService->rollingUpdates;
  *  </code>
  */
-class Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Replicapoolupdater_RollingUpdates_Resource extends Google_Service_Resource
 {
 
   /**
@@ -324,13 +324,13 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource extend
    * resides.
    * @param string $rollingUpdate The name of the update.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapoolupdater_Operation
+   * @return Google_Service_Replicapoolupdater_Operation
    */
   public function cancel($project, $zone, $rollingUpdate, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'rollingUpdate' => $rollingUpdate);
     $params = array_merge($params, $optParams);
-    return $this->call('cancel', array($params), "Powerform_Google_Service_Replicapoolupdater_Operation");
+    return $this->call('cancel', array($params), "Google_Service_Replicapoolupdater_Operation");
   }
 
   /**
@@ -341,13 +341,13 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource extend
    * resides.
    * @param string $rollingUpdate The name of the update.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapoolupdater_RollingUpdate
+   * @return Google_Service_Replicapoolupdater_RollingUpdate
    */
   public function get($project, $zone, $rollingUpdate, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'rollingUpdate' => $rollingUpdate);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Replicapoolupdater_RollingUpdate");
+    return $this->call('get', array($params), "Google_Service_Replicapoolupdater_RollingUpdate");
   }
 
   /**
@@ -356,15 +356,15 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource extend
    * @param string $project The Google Developers Console project name.
    * @param string $zone The name of the zone in which the update's target
    * resides.
-   * @param Powerform_Google_RollingUpdate $postBody
+   * @param Google_RollingUpdate $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapoolupdater_Operation
+   * @return Google_Service_Replicapoolupdater_Operation
    */
-  public function insert($project, $zone, Powerform_Google_Service_Replicapoolupdater_RollingUpdate $postBody, $optParams = array())
+  public function insert($project, $zone, Google_Service_Replicapoolupdater_RollingUpdate $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Replicapoolupdater_Operation");
+    return $this->call('insert', array($params), "Google_Service_Replicapoolupdater_Operation");
   }
 
   /**
@@ -382,13 +382,13 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource extend
    * returned. Maximum value is 500 and default value is 500.
    * @opt_param string pageToken Optional. Tag returned by a previous list request
    * truncated by maxResults. Used to continue a previous list request.
-   * @return Powerform_Google_Service_Replicapoolupdater_RollingUpdateList
+   * @return Google_Service_Replicapoolupdater_RollingUpdateList
    */
   public function listRollingUpdates($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Replicapoolupdater_RollingUpdateList");
+    return $this->call('list', array($params), "Google_Service_Replicapoolupdater_RollingUpdateList");
   }
 
   /**
@@ -407,13 +407,13 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource extend
    * returned. Maximum value is 500 and default value is 500.
    * @opt_param string pageToken Optional. Tag returned by a previous list request
    * truncated by maxResults. Used to continue a previous list request.
-   * @return Powerform_Google_Service_Replicapoolupdater_InstanceUpdateList
+   * @return Google_Service_Replicapoolupdater_InstanceUpdateList
    */
   public function listInstanceUpdates($project, $zone, $rollingUpdate, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'rollingUpdate' => $rollingUpdate);
     $params = array_merge($params, $optParams);
-    return $this->call('listInstanceUpdates', array($params), "Powerform_Google_Service_Replicapoolupdater_InstanceUpdateList");
+    return $this->call('listInstanceUpdates', array($params), "Google_Service_Replicapoolupdater_InstanceUpdateList");
   }
 
   /**
@@ -426,13 +426,13 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource extend
    * resides.
    * @param string $rollingUpdate The name of the update.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapoolupdater_Operation
+   * @return Google_Service_Replicapoolupdater_Operation
    */
   public function pause($project, $zone, $rollingUpdate, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'rollingUpdate' => $rollingUpdate);
     $params = array_merge($params, $optParams);
-    return $this->call('pause', array($params), "Powerform_Google_Service_Replicapoolupdater_Operation");
+    return $this->call('pause', array($params), "Google_Service_Replicapoolupdater_Operation");
   }
 
   /**
@@ -444,13 +444,13 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource extend
    * resides.
    * @param string $rollingUpdate The name of the update.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapoolupdater_Operation
+   * @return Google_Service_Replicapoolupdater_Operation
    */
   public function resume($project, $zone, $rollingUpdate, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'rollingUpdate' => $rollingUpdate);
     $params = array_merge($params, $optParams);
-    return $this->call('resume', array($params), "Powerform_Google_Service_Replicapoolupdater_Operation");
+    return $this->call('resume', array($params), "Google_Service_Replicapoolupdater_Operation");
   }
 
   /**
@@ -463,13 +463,13 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource extend
    * resides.
    * @param string $rollingUpdate The name of the update.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapoolupdater_Operation
+   * @return Google_Service_Replicapoolupdater_Operation
    */
   public function rollback($project, $zone, $rollingUpdate, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'rollingUpdate' => $rollingUpdate);
     $params = array_merge($params, $optParams);
-    return $this->call('rollback', array($params), "Powerform_Google_Service_Replicapoolupdater_Operation");
+    return $this->call('rollback', array($params), "Google_Service_Replicapoolupdater_Operation");
   }
 }
 
@@ -477,11 +477,11 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdates_Resource extend
  * The "zoneOperations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $replicapoolupdaterService = new Powerform_Google_Service_Replicapoolupdater(...);
+ *   $replicapoolupdaterService = new Google_Service_Replicapoolupdater(...);
  *   $zoneOperations = $replicapoolupdaterService->zoneOperations;
  *  </code>
  */
-class Powerform_Google_Service_Replicapoolupdater_ZoneOperations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Replicapoolupdater_ZoneOperations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -492,13 +492,13 @@ class Powerform_Google_Service_Replicapoolupdater_ZoneOperations_Resource extend
    * @param string $zone Name of the zone scoping this request.
    * @param string $operation Name of the operation resource to return.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Replicapoolupdater_Operation
+   * @return Google_Service_Replicapoolupdater_Operation
    */
   public function get($project, $zone, $operation, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'operation' => $operation);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Replicapoolupdater_Operation");
+    return $this->call('get', array($params), "Google_Service_Replicapoolupdater_Operation");
   }
 
   /**
@@ -515,30 +515,30 @@ class Powerform_Google_Service_Replicapoolupdater_ZoneOperations_Resource extend
    * returned. Maximum value is 500 and default value is 500.
    * @opt_param string pageToken Optional. Tag returned by a previous list request
    * truncated by maxResults. Used to continue a previous list request.
-   * @return Powerform_Google_Service_Replicapoolupdater_OperationList
+   * @return Google_Service_Replicapoolupdater_OperationList
    */
   public function listZoneOperations($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Replicapoolupdater_OperationList");
+    return $this->call('list', array($params), "Google_Service_Replicapoolupdater_OperationList");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Replicapoolupdater_InstanceUpdate extends Powerform_Google_Model
+class Google_Service_Replicapoolupdater_InstanceUpdate extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $errorType = 'Powerform_Google_Service_Replicapoolupdater_InstanceUpdateError';
+  protected $errorType = 'Google_Service_Replicapoolupdater_InstanceUpdateError';
   protected $errorDataType = '';
   public $instance;
   public $status;
 
 
-  public function setError(Powerform_Google_Service_Replicapoolupdater_InstanceUpdateError $error)
+  public function setError(Google_Service_Replicapoolupdater_InstanceUpdateError $error)
   {
     $this->error = $error;
   }
@@ -564,12 +564,12 @@ class Powerform_Google_Service_Replicapoolupdater_InstanceUpdate extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_InstanceUpdateError extends Powerform_Google_Collection
+class Google_Service_Replicapoolupdater_InstanceUpdateError extends Google_Collection
 {
   protected $collection_key = 'errors';
   protected $internal_gapi_mappings = array(
   );
-  protected $errorsType = 'Powerform_Google_Service_Replicapoolupdater_InstanceUpdateErrorErrors';
+  protected $errorsType = 'Google_Service_Replicapoolupdater_InstanceUpdateErrorErrors';
   protected $errorsDataType = 'array';
 
 
@@ -583,7 +583,7 @@ class Powerform_Google_Service_Replicapoolupdater_InstanceUpdateError extends Po
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_InstanceUpdateErrorErrors extends Powerform_Google_Model
+class Google_Service_Replicapoolupdater_InstanceUpdateErrorErrors extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -618,12 +618,12 @@ class Powerform_Google_Service_Replicapoolupdater_InstanceUpdateErrorErrors exte
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_InstanceUpdateList extends Powerform_Google_Collection
+class Google_Service_Replicapoolupdater_InstanceUpdateList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Replicapoolupdater_InstanceUpdate';
+  protected $itemsType = 'Google_Service_Replicapoolupdater_InstanceUpdate';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -664,7 +664,7 @@ class Powerform_Google_Service_Replicapoolupdater_InstanceUpdateList extends Pow
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_Operation extends Powerform_Google_Collection
+class Google_Service_Replicapoolupdater_Operation extends Google_Collection
 {
   protected $collection_key = 'warnings';
   protected $internal_gapi_mappings = array(
@@ -672,7 +672,7 @@ class Powerform_Google_Service_Replicapoolupdater_Operation extends Powerform_Go
   public $clientOperationId;
   public $creationTimestamp;
   public $endTime;
-  protected $errorType = 'Powerform_Google_Service_Replicapoolupdater_OperationError';
+  protected $errorType = 'Google_Service_Replicapoolupdater_OperationError';
   protected $errorDataType = '';
   public $httpErrorMessage;
   public $httpErrorStatusCode;
@@ -690,7 +690,7 @@ class Powerform_Google_Service_Replicapoolupdater_Operation extends Powerform_Go
   public $targetId;
   public $targetLink;
   public $user;
-  protected $warningsType = 'Powerform_Google_Service_Replicapoolupdater_OperationWarnings';
+  protected $warningsType = 'Google_Service_Replicapoolupdater_OperationWarnings';
   protected $warningsDataType = 'array';
   public $zone;
 
@@ -719,7 +719,7 @@ class Powerform_Google_Service_Replicapoolupdater_Operation extends Powerform_Go
   {
     return $this->endTime;
   }
-  public function setError(Powerform_Google_Service_Replicapoolupdater_OperationError $error)
+  public function setError(Google_Service_Replicapoolupdater_OperationError $error)
   {
     $this->error = $error;
   }
@@ -873,12 +873,12 @@ class Powerform_Google_Service_Replicapoolupdater_Operation extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_OperationError extends Powerform_Google_Collection
+class Google_Service_Replicapoolupdater_OperationError extends Google_Collection
 {
   protected $collection_key = 'errors';
   protected $internal_gapi_mappings = array(
   );
-  protected $errorsType = 'Powerform_Google_Service_Replicapoolupdater_OperationErrorErrors';
+  protected $errorsType = 'Google_Service_Replicapoolupdater_OperationErrorErrors';
   protected $errorsDataType = 'array';
 
 
@@ -892,7 +892,7 @@ class Powerform_Google_Service_Replicapoolupdater_OperationError extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_OperationErrorErrors extends Powerform_Google_Model
+class Google_Service_Replicapoolupdater_OperationErrorErrors extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -927,13 +927,13 @@ class Powerform_Google_Service_Replicapoolupdater_OperationErrorErrors extends P
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_OperationList extends Powerform_Google_Collection
+class Google_Service_Replicapoolupdater_OperationList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $id;
-  protected $itemsType = 'Powerform_Google_Service_Replicapoolupdater_Operation';
+  protected $itemsType = 'Google_Service_Replicapoolupdater_Operation';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -982,13 +982,13 @@ class Powerform_Google_Service_Replicapoolupdater_OperationList extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_OperationWarnings extends Powerform_Google_Collection
+class Google_Service_Replicapoolupdater_OperationWarnings extends Google_Collection
 {
   protected $collection_key = 'data';
   protected $internal_gapi_mappings = array(
   );
   public $code;
-  protected $dataType = 'Powerform_Google_Service_Replicapoolupdater_OperationWarningsData';
+  protected $dataType = 'Google_Service_Replicapoolupdater_OperationWarningsData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -1019,7 +1019,7 @@ class Powerform_Google_Service_Replicapoolupdater_OperationWarnings extends Powe
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_OperationWarningsData extends Powerform_Google_Model
+class Google_Service_Replicapoolupdater_OperationWarningsData extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1045,14 +1045,14 @@ class Powerform_Google_Service_Replicapoolupdater_OperationWarningsData extends 
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_RollingUpdate extends Powerform_Google_Model
+class Google_Service_Replicapoolupdater_RollingUpdate extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $actionType;
   public $creationTimestamp;
   public $description;
-  protected $errorType = 'Powerform_Google_Service_Replicapoolupdater_RollingUpdateError';
+  protected $errorType = 'Google_Service_Replicapoolupdater_RollingUpdateError';
   protected $errorDataType = '';
   public $id;
   public $instanceGroup;
@@ -1060,7 +1060,7 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdate extends Powerfor
   public $instanceTemplate;
   public $kind;
   public $oldInstanceTemplate;
-  protected $policyType = 'Powerform_Google_Service_Replicapoolupdater_RollingUpdatePolicy';
+  protected $policyType = 'Google_Service_Replicapoolupdater_RollingUpdatePolicy';
   protected $policyDataType = '';
   public $progress;
   public $selfLink;
@@ -1093,7 +1093,7 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdate extends Powerfor
   {
     return $this->description;
   }
-  public function setError(Powerform_Google_Service_Replicapoolupdater_RollingUpdateError $error)
+  public function setError(Google_Service_Replicapoolupdater_RollingUpdateError $error)
   {
     $this->error = $error;
   }
@@ -1149,7 +1149,7 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdate extends Powerfor
   {
     return $this->oldInstanceTemplate;
   }
-  public function setPolicy(Powerform_Google_Service_Replicapoolupdater_RollingUpdatePolicy $policy)
+  public function setPolicy(Google_Service_Replicapoolupdater_RollingUpdatePolicy $policy)
   {
     $this->policy = $policy;
   }
@@ -1199,12 +1199,12 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdate extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_RollingUpdateError extends Powerform_Google_Collection
+class Google_Service_Replicapoolupdater_RollingUpdateError extends Google_Collection
 {
   protected $collection_key = 'errors';
   protected $internal_gapi_mappings = array(
   );
-  protected $errorsType = 'Powerform_Google_Service_Replicapoolupdater_RollingUpdateErrorErrors';
+  protected $errorsType = 'Google_Service_Replicapoolupdater_RollingUpdateErrorErrors';
   protected $errorsDataType = 'array';
 
 
@@ -1218,7 +1218,7 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdateError extends Pow
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_RollingUpdateErrorErrors extends Powerform_Google_Model
+class Google_Service_Replicapoolupdater_RollingUpdateErrorErrors extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1253,12 +1253,12 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdateErrorErrors exten
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_RollingUpdateList extends Powerform_Google_Collection
+class Google_Service_Replicapoolupdater_RollingUpdateList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Replicapoolupdater_RollingUpdate';
+  protected $itemsType = 'Google_Service_Replicapoolupdater_RollingUpdate';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1299,7 +1299,7 @@ class Powerform_Google_Service_Replicapoolupdater_RollingUpdateList extends Powe
   }
 }
 
-class Powerform_Google_Service_Replicapoolupdater_RollingUpdatePolicy extends Powerform_Google_Model
+class Google_Service_Replicapoolupdater_RollingUpdatePolicy extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

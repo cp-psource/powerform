@@ -53,7 +53,7 @@ class Powerform_Postdata extends Powerform_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Post Data', Powerform::DOMAIN );
+		$this->name = __( 'Beitrags-Daten', Powerform::DOMAIN );
 	}
 
 	/**
@@ -63,29 +63,20 @@ class Powerform_Postdata extends Powerform_Field {
 	 * @return array
 	 */
 	public function defaults() {
-
-		return apply_filters(
-			'powerform_post_data_defaults_settings',
-			array(
-				'data_status'        => 'pending',
-				'post_title_label'   => 'Post Title',
-				'post_content_label' => 'Post Content',
-				'post_excerpt_label' => 'Post Excerpt',
-				'post_image_label'   => 'Featured Image',
-				'category_label'     => 'Category',
-				'post_tag_label'     => 'Tags',
-				'select_author'      => 1,
-				'category_multiple'  => '0',
-				'post_tag_multiple'  => '0',
-				'post_type'          => 'post',
-				'options'            => array(
-					array(
-						'label' => '',
-						'value' => '',
-					),
-				),
-			)
-		);
+		return apply_filters( 'powerform_post_data_defaults_settings',
+		                      array(
+			                      'data_status'            => 'pending',
+			                      'post_title_label'       => 'Post Title',
+			                      'post_content_label'     => 'Post Content',
+			                      'post_excerpt_label'     => 'Post Excerpt',
+			                      'post_image_label'       => 'Featured Image',
+			                      'post_category_label'    => 'Category',
+			                      'post_tags_label'        => 'Tags',
+			                      'select_author'          => 1,
+			                      'post_category_multiple' => '0',
+			                      'post_tags_multiple'     => '0',
+			                      'post_type'              => 'post',
+		                      ) );
 	}
 
 	/**
@@ -101,23 +92,31 @@ class Powerform_Postdata extends Powerform_Field {
 		return $settings;
 
 		// TODO: support autofill-for-postdata
-		//      $title_providers    = apply_filters( 'powerform_field_' . $this->slug . '_post_titlle_autofill', array(), $this->slug . '_post_titlle' );
-		//      $content_providers  = apply_filters( 'powerform_field_' . $this->slug . '_post_content_autofill', array(), $this->slug . '_post_content' );
-		//      $excerpt_providers  = apply_filters( 'powerform_field_' . $this->slug . '_post_excerpt_autofill', array(), $this->slug . '_post_excerpt' );
-		//
-		//      $autofill_settings = array(
-		//          'postdata-post-title'    => array(
-		//              'values' => powerform_build_autofill_providers( $title_providers ),
-		//          ),
-		//          'postdata-post-content'  => array(
-		//              'values' => powerform_build_autofill_providers( $content_providers ),
-		//          ),
-		//          'postdata-post-excerpt'  => array(
-		//              'values' => powerform_build_autofill_providers( $excerpt_providers ),
-		//          ),
-		//      );
-		//
-		//      return $autofill_settings;
+//		$title_providers    = apply_filters( 'powerform_field_' . $this->slug . '_post_titlle_autofill', array(), $this->slug . '_post_titlle' );
+//		$content_providers  = apply_filters( 'powerform_field_' . $this->slug . '_post_content_autofill', array(), $this->slug . '_post_content' );
+//		$excerpt_providers  = apply_filters( 'powerform_field_' . $this->slug . '_post_excerpt_autofill', array(), $this->slug . '_post_excerpt' );
+//		$category_providers = apply_filters( 'powerform_field_' . $this->slug . '_post_category_autofill', array(), $this->slug . '_post_category' );
+//		$tags_providers     = apply_filters( 'powerform_field_' . $this->slug . '_post_tags_autofill', array(), $this->slug . '_post_tags' );
+//
+//		$autofill_settings = array(
+//			'postdata-post-title'    => array(
+//				'values' => powerform_build_autofill_providers( $title_providers ),
+//			),
+//			'postdata-post-content'  => array(
+//				'values' => powerform_build_autofill_providers( $content_providers ),
+//			),
+//			'postdata-post-excerpt'  => array(
+//				'values' => powerform_build_autofill_providers( $excerpt_providers ),
+//			),
+//			'postdata-post-category' => array(
+//				'values' => powerform_build_autofill_providers( $category_providers ),
+//			),
+//			'postdata-post-tags'     => array(
+//				'values' => powerform_build_autofill_providers( $tags_providers ),
+//			),
+//		);
+//
+//		return $autofill_settings;
 	}
 
 	/**
@@ -131,20 +130,20 @@ class Powerform_Postdata extends Powerform_Field {
 	 * @return mixed
 	 */
 	public function markup( $field, $settings = array() ) {
+		$this->field       = $field;
+		$required          = self::get_property( 'required', $field, false );
+		$id                = self::get_property( 'element_id', $field );
+		$category_multiple = self::get_property( 'post_category_multiple', $field, false );
+		$tag_multiple      = self::get_property( 'post_tags_multiple', $field, false );
+		$name              = $id;
+		$design            = $this->get_form_style( $settings );
 
-		$this->field = $field;
-
-		$html     = '';
-		$required = self::get_property( 'required', $field, false );
-		$id       = self::get_property( 'element_id', $field );
-		$name     = $id;
-		$design   = $this->get_form_style( $settings );
-
-		$html .= $this->get_post_title( $id, $name, $field, $required, $design );
+		$html = $this->get_post_title( $id, $name, $field, $required, $design );
 		$html .= $this->get_post_content( $id, $name, $field, $required );
 		$html .= $this->get_post_excerpt( $id, $name, $field, $required, $design );
 		$html .= $this->get_post_image( $id, $name, $field, $required, $design );
-		$html .= $this->get_post_categories( $id, $name, $field, $required );
+		$html .= $this->get_post_category( $id, $name, $field, $required, $category_multiple );
+		$html .= $this->get_post_tag( $id, $name, $field, $required, $tag_multiple );
 		$html .= $this->_render_custom_fields( $id, $name, $field, $required );
 
 		return apply_filters( 'powerform_field_postdata_markup', $html, $field, $required, $id, $this );
@@ -164,23 +163,8 @@ class Powerform_Postdata extends Powerform_Field {
 	 * @return string
 	 */
 	public function get_post_title( $id, $name, $field, $required, $design ) {
-
-		return apply_filters(
-			'powerform_field_postdata_post_title',
-			$this->_get_post_field(
-				$id,
-				$name,
-				$field,
-				$required,
-				'post_title',
-				'text',
-				'powerform-input',
-				'post-title',
-				array(),
-				'',
-				$design
-			)
-		);
+		return apply_filters( 'powerform_field_postdata_post_title',
+		                      $this->_get_post_field( $id, $name, $field, $required, 'post_title', 'text', 'powerform-input', 'post-title', array(), '', $design ) );
 	}
 
 	/**
@@ -213,23 +197,8 @@ class Powerform_Postdata extends Powerform_Field {
 	 * @return string
 	 */
 	public function get_post_excerpt( $id, $name, $field, $required, $design ) {
-
-		return apply_filters(
-			'powerform_field_postdata_post_excerpt',
-			$this->_get_post_field(
-				$id,
-				$name,
-				$field,
-				$required,
-				'post_excerpt',
-				'textarea',
-				'powerform-textarea',
-				'post-excerpt',
-				array(),
-				'',
-				$design
-			)
-		);
+		return apply_filters( 'powerform_field_postdata_post_excerpt',
+		                      $this->_get_post_field( $id, $name, $field, $required, 'post_excerpt', 'textarea', 'powerform-textarea', 'post-excerpt', array(), '', $design ) );
 	}
 
 	/**
@@ -246,23 +215,8 @@ class Powerform_Postdata extends Powerform_Field {
 	 * @return string
 	 */
 	public function get_post_image( $id, $name, $field, $required, $design ) {
-
-		return apply_filters(
-			'powerform_field_postdata_post_image',
-			$this->_get_post_field(
-				$id,
-				$name,
-				$field,
-				$required,
-				'post_image',
-				'file',
-				'powerform-upload',
-				'post-image',
-				array(),
-				'',
-				$design
-			)
-		);
+		return apply_filters( 'powerform_field_postdata_post_image',
+		                      $this->_get_post_field( $id, $name, $field, $required, 'post_image', 'file', 'powerform-upload', 'post-image', array(), '', $design ) );
 	}
 
 	/**
@@ -278,46 +232,67 @@ class Powerform_Postdata extends Powerform_Field {
 	 *
 	 * @return string
 	 */
-	public function get_post_categories( $id, $name, $field, $required ) {
-		$html          = '';
-		$post_type     = self::get_property( 'post_type', $field, 'post' );
-		$category_list = powerform_post_categories( $post_type );
+	public function get_post_category( $id, $name, $field, $required, $multiple = false ) {
+		$options    = array();
+		$categories = get_categories(
+			array(
+				'orderby'    => 'name',
+				'order'      => 'ASC',
+				'hide_empty' => false,
+			)
+		);
 
-		if ( ! empty( $category_list ) ) {
-			foreach ( $category_list as $category ) {
-				$options    = array();
-				$categories = get_categories(
-					array(
-						'orderby'    => 'name',
-						'order'      => 'ASC',
-						'hide_empty' => false,
-						'taxonomy'   => $category['value'],
-					)
-				);
+		$categories = apply_filters( 'powerform_field_postdata_post_category_list', $categories );
 
-				$categories = apply_filters( 'powerform_field_postdata_' . $category['value'] . '_list', $categories );
-
-				foreach ( $categories as $cat ) {
-					$options[] = array(
-						'value' => $cat->term_id,
-						'label' => $cat->name,
-					);
-				}
-
-				$value          = '';
-				$design         = '';
-				$multiple       = self::get_property( $category['value'] . '_multiple', $field, false );
-				$allow_multiple = $multiple ? 'multiple' : '';
-				$select_type    = $multiple ? 'multiselect' : 'select';
-
-				$html .= apply_filters(
-					'powerform_field_postdata_' . $category['value'],
-					$this->_get_post_field( $id, $name, $field, $required, $category['value'], $select_type, 'powerform-select', $category['value'], $options, $value, $design, $allow_multiple )
-				);
-			}
+		foreach ( $categories as $category ) {
+			$options[] = array(
+				'value' => $category->term_id,
+				'label' => $category->name,
+			);
 		}
-		return $html;
 
+		$value          = '';
+		$design         = '';
+		$allow_multiple = $multiple ? 'multiple' : '';
+
+		return apply_filters( 'powerform_field_postdata_post_category',
+		                      $this->_get_post_field( $id, $name, $field, $required, 'post_category', 'select', 'powerform-select', 'post-category', $options, $value, $design, $allow_multiple ) );
+	}
+
+	/**
+	 * Return tags
+	 *
+	 * @since 1.0
+	 *
+	 * @param $id
+	 * @param $name
+	 * @param $field
+	 * @param $required
+	 * @param $multiple
+	 *
+	 * @return string
+	 */
+	public function get_post_tag( $id, $name, $field, $required, $multiple = false ) {
+		$options = array();
+		$tags    = get_tags(
+			array(
+				'hide_empty' => false,
+			)
+		);
+
+		foreach ( $tags as $tag ) {
+			$options[] = array(
+				'value' => $tag->term_id,
+				'label' => $tag->name,
+			);
+		}
+
+		$value          = '';
+		$design         = '';
+		$allow_multiple = $multiple ? 'multiple' : '';
+
+		return apply_filters( 'powerform_field_postdata_post_tag',
+		                      $this->_get_post_field( $id, $name, $field, $required, 'post_tags', 'select', 'powerform-select', 'post-tags', $options, $value, $design, $allow_multiple ) );
 	}
 
 	/**
@@ -340,22 +315,21 @@ class Powerform_Postdata extends Powerform_Field {
 	 * @return string
 	 */
 	public function _get_post_field( $id, $name, $field, $required, $field_name, $type, $class, $input_suffix, $options = array(), $value = '', $design = '', $multiple = '' ) {
-
 		$html          = '';
 		$field_enabled = self::get_property( $field_name, $field, '' );
 		$type          = trim( $type );
 
 		if ( ! empty( $field_enabled ) ) {
 			$cols         = 12;
-			$placeholder  = esc_html( self::get_property( $field_name . '_placeholder', $field ) );
-			$label        = esc_html( self::get_property( $field_name . '_label', $field ) );
-			$description  = esc_html( self::get_property( $field_name . '_description', $field ) );
+			$placeholder  = self::get_property( $field_name . '_placeholder', $field );
+			$label        = self::get_property( $field_name . '_label', $field );
+			$description  = self::get_property( $field_name . '_description', $field );
 			$field_markup = array(
 				'type'        => $type,
-				'name'        => $id . '-' . $input_suffix,
-				'placeholder' => $placeholder,
-				'id'          => 'powerform-field-' . $input_suffix . '-' . $id,
 				'class'       => $class,
+				'name'        => $id . '-' . $input_suffix,
+				'id'          => $id . '-' . $input_suffix,
+				'placeholder' => $placeholder,
 			);
 
 			if ( $required ) {
@@ -367,149 +341,35 @@ class Powerform_Postdata extends Powerform_Field {
 				$field_markup['name']     = $field_markup['name'] . '[]';
 			}
 
-			$html .= '<div class="powerform-row">';
-
-				$html .= sprintf( '<div class="powerform-col powerform-col-%s">', $cols );
-
-					$html .= '<div class="powerform-field">';
+			$html .= sprintf( '<div class="powerform-row powerform-row--inner"><div class="powerform-col powerform-col-%s">', $cols );
+			$html .= '<div class="powerform-field powerform-field--inner">';
 
 			if ( 'wp_editor' === $type ) {
-
 				// multiple wp_editor support
 				$field_markup['id'] = $field_markup['id'] . '-' . uniqid();
-
-				$html .= self::create_wp_editor(
-					$field_markup,
-					$label,
-					$description,
-					$required
-				);
+				$html               .= self::create_wp_editor( $field_markup, $label, $description, $required );
 			} elseif ( 'textarea' === $type ) {
-
-				$html .= self::create_textarea(
-					$field_markup,
-					$label,
-					$description,
-					$required,
-					$design
-				);
+				$html .= self::create_textarea( $field_markup, $label, $description, $required, $design );
 			} elseif ( 'select' === $type ) {
-
 				if ( empty( $options ) ) {
 					unset( $field_markup['required'] );
 				}
-
-				$html .= self::create_select(
-					$field_markup,
-					$label,
-					$options,
-					$value,
-					$description,
-					$required
-				);
-			} elseif ( 'multiselect' === $type ) {
-				if ( $label ) {
-					if ( $required ) {
-						$html .= sprintf(
-							'<label for="%s" class="powerform-label">%s %s</label>',
-							$id . '-field',
-							$label,
-							powerform_get_required_icon()
-						);
-					} else {
-						$html .= sprintf(
-							'<label for="%s" class="powerform-label">%s</label>',
-							$id . '-field',
-							$label
-						);
-					}
-				}
-
-				$post_value = self::get_post_data( $name, self::FIELD_PROPERTY_VALUE_NOT_EXIST );
-				$name       = $id . '-' . $field_name . '[]';
-				$get_id     = $id . '-' . $field_name;
-				$html      .= '<div class="powerform-multiselect">';
-				$i          = 1;
-				foreach ( $options as $option ) {
-
-					$value    = $option['value'] ? $option['value'] : $option['label'];
-					$input_id = $id . '-' . $i . '-' . $field_name;
-
-					$selected = false;
-
-					if ( self::FIELD_PROPERTY_VALUE_NOT_EXIST !== $post_value ) {
-
-						if ( is_array( $post_value ) ) {
-							$selected = in_array( $value, $post_value ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-						}
-					}
-
-					$selected = $selected ? 'checked="checked"' : '';
-
-					$html .= sprintf( '<label for="%s" class="powerform-option">', $input_id );
-
-					$html .= sprintf(
-						'<input type="checkbox" name="%s" value="%s" id="%s" %s />',
-						$name,
-						$value,
-						$input_id,
-						$selected
-					);
-
-					$html .= $option['label'];
-
-					$html .= '</label>';
-
-					$i ++;
-				}
-
-				$html .= '</div>';
-
-				if ( ! empty( $description ) ) {
-					$html .= self::get_description( $description, $get_id );
-				}
+				$html .= self::create_select( $field_markup, $label, $options, $value, $description, $required );
 			} elseif ( 'file' === $type ) {
-
 				if ( $required ) {
-					$html .= sprintf(
-						'<label for="%s" class="powerform-label">%s %s</label>',
-						'powerform-field-' . $input_suffix . '-' . $id,
-						$label,
-						powerform_get_required_icon()
-					);
+					$html .= '<div class="powerform-field--label">';
+					$html .= sprintf( '<label class="powerform-label">%s %s</label>', $label, powerform_get_required_icon() );
+					$html .= '</div>';
 				} else {
-
-					$html .= sprintf(
-						'<label for="%s" class="powerform-label">%s</label>',
-						'powerform-field-' . $input_suffix . '-' . $id,
-						$label
-					);
+					$html .= sprintf( '<div class="powerform-field--label"><label class="powerform-label">%s</label></div>', $label );
 				}
-
-				$html .= self::create_file_upload(
-					'powerform-field-' . $input_suffix . '-' . $id,
-					$name . '-' . $input_suffix,
-					$description,
-					$required,
-					$design
-				);
+				$html .= self::create_file_upload( $id . '-' . $input_suffix, $name . '-' . $input_suffix, $description, $required, $design );
 			} else {
-
-				$html .= self::create_input(
-					$field_markup,
-					$label,
-					$description,
-					$required,
-					$design
-				);
+				$html .= self::create_input( $field_markup, $label, $description, $required, $design );
 			}
 
-					$html .= '</div>';
-
-				$html .= '</div>';
-
 			$html .= '</div>';
-
+			$html .= '</div></div>';
 		}
 
 		return $html;
@@ -533,21 +393,15 @@ class Powerform_Postdata extends Powerform_Field {
 		$has_custom_fields = self::get_property( 'post_custom', $field, false );
 
 		if ( $has_custom_fields ) {
-			$custom_vars = self::get_property( 'options', $field );
+			$custom_vars = self::get_property( 'custom_vars', $field );
 
 			if ( ! empty( $custom_vars ) ) {
 				$html .= '<div class="powerform-row powerform-row--inner">';
-				$i = 1;
+
 				foreach ( $custom_vars as $variable ) {
 					$html         .= sprintf( '<div class="powerform-col powerform-col-%s">', $cols );
-					if ( ! empty( $variable['value'] ) ) {
-						$value    = $variable['value'];
-						$input_id = $value;
-					} else {
-						$value    = '';
-						$input_id = sanitize_title( $variable['label'] );
-					}
-					$input_id     = $id . '-post_meta-' . $i;
+					$value        = ! empty( $variable['value'] ) ? $variable['value'] : sanitize_title( $variable['label'] );
+					$input_id     = $id . '-post_meta-' . $value;
 					$label        = $variable['label'];
 					$field_markup = array(
 						'type'        => 'text',
@@ -555,12 +409,9 @@ class Powerform_Postdata extends Powerform_Field {
 						'name'        => $input_id,
 						'id'          => $input_id,
 						'placeholder' => $label,
-						'value'       => $value,
 					);
-
 					$html         .= self::create_input( $field_markup, $label, '' );
 					$html         .= '</div>';
-					$i++;
 				}
 			}
 
@@ -577,40 +428,39 @@ class Powerform_Postdata extends Powerform_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
-
+	public function validate( $field, $data ) {
 		$id = self::get_property( 'element_id', $field );
 
 		$post_title               = self::get_property( 'post_title', $field, '' );
 		$post_content             = self::get_property( 'post_content', $field, '' );
 		$post_excerpt             = self::get_property( 'post_excerpt', $field, '' );
 		$setting_required_message = self::get_property( 'required_message', $field, '' );
-		$post_type                = self::get_property( 'post_type', $field, 'post' );
 
-		$title         = isset( $data['post-title'] ) ? $data['post-title'] : '';
-		$content       = isset( $data['post-content'] ) ? $data['post-content'] : '';
-		$excerpt       = isset( $data['post-excerpt'] ) ? $data['post-excerpt'] : '';
-		$image         = isset( $data['post-image'] ) ? $data['post-image'] : '';
-		$category_list = powerform_post_categories( $post_type );
+		$title    = isset( $data['post-title'] ) ? $data['post-title'] : '';
+		$content  = isset( $data['post-content'] ) ? $data['post-content'] : '';
+		$excerpt  = isset( $data['post-excerpt'] ) ? $data['post-excerpt'] : '';
+		$image    = isset( $data['post-image'] ) ? $data['post-image'] : '';
+		$category = isset( $data['post-category'] ) ? $data['post-category'] : '';
+		$tags     = isset( $data['post-tags'] ) ? $data['post-tags'] : '';
 
 		if ( $this->is_required( $field ) ) {
 			if ( empty( $data ) ) {
 				$postdata_validation_message     = apply_filters(
 					'powerform_postdata_field_validation_message',
-					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'This field is required. Please fill in post data.', Powerform::DOMAIN ) ),
+					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte gib die Beitragsdaten ein', Powerform::DOMAIN ) ),
 					$id
 				);
 				$this->validation_message[ $id ] = $postdata_validation_message;
 			} elseif ( is_array( $data ) ) {
-				$post_image = self::get_property( 'post_image', $field, '' );
+				$post_image    = self::get_property( 'post_image', $field, '' );
+				$post_category = self::get_property( 'post_category', $field, '' );
+				$post_tags     = self::get_property( 'post_tags', $field, '' );
 
 				if ( ! empty( $post_title ) && empty( $title ) ) {
-
 					$postdata_post_title_validation_message          = apply_filters(
 						'powerform_postdata_field_post_title_validation_message',
-						( ! empty( $setting_required_message ) ? $setting_required_message : __( 'This field is required. Please enter the post title.', Powerform::DOMAIN ) ),
+						( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte gib den Beitragstitel ein', Powerform::DOMAIN ) ),
 						$id
 					);
 					$this->validation_message[ $id . '-post-title' ] = $postdata_post_title_validation_message;
@@ -618,7 +468,7 @@ class Powerform_Postdata extends Powerform_Field {
 				if ( ! empty( $post_content ) && empty( $content ) ) {
 					$postdata_post_content_validation_message          = apply_filters(
 						'powerform_postdata_field_post_content_validation_message',
-						( ! empty( $setting_required_message ) ? $setting_required_message : __( 'This field is required. Please enter the post content.', Powerform::DOMAIN ) ),
+						( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte gib den Beitragsinhalt ein', Powerform::DOMAIN ) ),
 						$id
 					);
 					$this->validation_message[ $id . '-post-content' ] = $postdata_post_content_validation_message;
@@ -626,7 +476,7 @@ class Powerform_Postdata extends Powerform_Field {
 				if ( ! empty( $post_excerpt ) && empty( $excerpt ) ) {
 					$postdata_post_excerpt_validation_message          = apply_filters(
 						'powerform_postdata_field_post_excerpt_validation_message',
-						( ! empty( $setting_required_message ) ? $setting_required_message : __( 'This field is required. Please enter the post excerpt.', Powerform::DOMAIN ) ),
+						( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte gib den Beitragsauszug ein', Powerform::DOMAIN ) ),
 						$id
 					);
 					$this->validation_message[ $id . '-post-excerpt' ] = $postdata_post_excerpt_validation_message;
@@ -634,24 +484,26 @@ class Powerform_Postdata extends Powerform_Field {
 				if ( ! empty( $post_image ) && empty( $image ) ) {
 					$postdata_post_image_validation_message          = apply_filters(
 						'powerform_postdata_field_post_image_validation_message',
-						( ! empty( $setting_required_message ) ? $setting_required_message : __( 'This field is required. Please upload a post image.', Powerform::DOMAIN ) ),
+						( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte lade ein Beitragsbild hoch', Powerform::DOMAIN ) ),
 						$id
 					);
 					$this->validation_message[ $id . '-post-image' ] = $postdata_post_image_validation_message;
 				}
-				if ( ! empty( $category_list ) ) {
-					foreach ( $category_list as $cat ) {
-						$post_category = self::get_property( $cat['value'], $field, '' );
-						$category      = isset( $data[ $cat['value'] ] ) ? $data[ $cat['value'] ] : '';
-						if ( ! empty( $post_category ) && empty( $category ) ) {
-							$postdata_post_category_validation_message             = apply_filters(
-								'powerform_postdata_field_' . $cat['value'] . '_validation_message',
-								( ! empty( $setting_required_message ) ? $setting_required_message : sprintf( /* translators: ... */ __( 'This field is required. Please select a %s.', Powerform::DOMAIN ), $cat['label'] ) ),
-								$id
-							);
-							$this->validation_message[ $id . '-' . $cat['value'] ] = $postdata_post_category_validation_message;
-						}
-					}
+				if ( ! empty( $post_category ) && empty( $category ) ) {
+					$postdata_post_category_validation_message          = apply_filters(
+						'powerform_postdata_field_post_category_validation_message',
+						( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte wähle eine Beitragskategorie', Powerform::DOMAIN ) ),
+						$id
+					);
+					$this->validation_message[ $id . '-post-category' ] = $postdata_post_category_validation_message;
+				}
+				if ( ! empty( $post_tags ) && empty( $tags ) ) {
+					$postdata_post_tag_validation_message           = apply_filters(
+						'powerform_postdata_field_post_tag_validation_message',
+						( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte wähle ein Beitrags-Tag', Powerform::DOMAIN ) ),
+						$id
+					);
+					$this->validation_message[ $id . '-post-tags' ] = $postdata_post_tag_validation_message;
 				}
 			}
 		} else {
@@ -674,25 +526,25 @@ class Powerform_Postdata extends Powerform_Field {
 						//check if on postdata these sub field is avail available
 						if ( ! empty( $post_title ) ) {
 							$this->validation_message[ $id . '-post-title' ] = apply_filters(
-								// nr = not required
+							// nr = not required
 								'powerform_postdata_field_post_title_nr_validation_message',
-								__( 'At least one of these fields is required: Post Title, Post Excerpt or Post Content.', Powerform::DOMAIN ),
+								__( 'Mindestens eines dieser Felder ist erforderlich: Beitrags-Titel, Beitrags-Auszug oder Beitrags-Inhalt', Powerform::DOMAIN ),
 								$id
 							);
 						}
 						if ( ! empty( $post_content ) ) {
 							$this->validation_message[ $id . '-post-content' ] = apply_filters(
-								// nr = not required
+							// nr = not required
 								'powerform_postdata_field_post_content_nr_validation_message',
-								__( 'At least one of these fields is required: Post Title, Post Excerpt or Post Content.', Powerform::DOMAIN ),
+								__( 'Mindestens eines dieser Felder ist erforderlich: Beitrags-Titel, Beitrags-Auszug oder Beitrags-Inhalt', Powerform::DOMAIN ),
 								$id
 							);
 						}
 						if ( ! empty( $post_excerpt ) ) {
 							$this->validation_message[ $id . '-post-excerpt' ] = apply_filters(
-								// nr = not required
+							// nr = not required
 								'powerform_postdata_field_post_excerpt_nr_validation_message',
-								__( 'At least one of these fields is required: Post Title, Post Excerpt or Post Content.', Powerform::DOMAIN ),
+								__( 'Mindestens eines dieser Felder ist erforderlich: Beitrags-Titel, Beitrags-Auszug oder Beitrags-Inhalt', Powerform::DOMAIN ),
 								$id
 							);
 						}
@@ -718,7 +570,7 @@ class Powerform_Postdata extends Powerform_Field {
 		if ( ! empty( $post_image ) ) {
 			if ( isset( $_FILES[ $field_name ] ) ) {
 				if ( isset( $_FILES[ $field_name ]['name'] ) && ! empty( $_FILES[ $field_name ]['name'] ) ) {
-					$file_name = sanitize_file_name( $_FILES[ $field_name ]['name'] );
+					$file_name = $_FILES[ $field_name ]['name'];
 					//TODO: refactor upload to use WP filesystem api
 					$file_data        = file_get_contents( $_FILES[ $field_name ]['tmp_name'] ); // phpcs:ignore
 					$upload_dir       = wp_upload_dir(); // Set upload folder
@@ -788,7 +640,7 @@ class Powerform_Postdata extends Powerform_Field {
 	 * @return bool|int - success is post id
 	 */
 	public function save_post( $field, $data ) {
-		$post_type            = self::get_property( 'post_type', $field, 'post' );
+		$post_type      = self::get_property( 'post_type', $field, 'post' );
 		$force_default_author = self::get_property( 'default_author', $field, false );
 		$force_default_author = filter_var( $force_default_author, FILTER_VALIDATE_BOOLEAN );
 
@@ -800,6 +652,7 @@ class Powerform_Postdata extends Powerform_Field {
 			if ( empty( $post_author ) || ! get_user_by( 'ID', $post_author ) ) {
 				$post_author = $this->set_anonymous_author();
 			}
+
 		}
 
 		// force to selected author
@@ -807,14 +660,17 @@ class Powerform_Postdata extends Powerform_Field {
 			$post_author = self::get_property( 'select_author', $field, 1 );
 		}
 
+
 		$post_status = self::get_property( 'data_status', $field, 'draft' );
 		$title       = isset( $data['post-title'] ) ? $data['post-title'] : '';
 		$content     = isset( $data['post-content'] ) ? $data['post-content'] : '';
 		$excerpt     = isset( $data['post-excerpt'] ) ? $data['post-excerpt'] : '';
 		$image       = isset( $data['post-image'] ) ? $data['post-image'] : '';
+		$category    = isset( $data['post-category'] ) ? $data['post-category'] : '';
+		$tags        = isset( $data['post-tags'] ) ? $data['post-tags'] : '';
 		$post_meta   = isset( $data['post-custom'] ) ? $data['post-custom'] : '';
 
-		$post          = array(
+		$post = array(
 			'post_author'  => $post_author,
 			'post_content' => wp_kses_post( $content ),
 			'post_excerpt' => $excerpt,
@@ -824,21 +680,20 @@ class Powerform_Postdata extends Powerform_Field {
 			'post_type'    => $post_type,
 		);
 
-		$category_list = powerform_post_categories( $post_type );
-		if ( ! empty( $category_list ) ) {
-			$taxonomy = array();
-			foreach ( $category_list as $cat ) {
-				$cat_value = $cat['value'];
-				$category  = isset( $data[ $cat_value ] ) ? $data[ $cat_value ] : '';
-				if ( ! empty( $category ) ) {
-					if ( is_array( $category ) ) {
-						$taxonomy[ $cat_value ] = array_map( 'intval', $category );
-					} else {
-						$taxonomy[ $cat_value ] = array( intval( $category ) );
-					}
-				}
+		if ( ! empty( $category ) ) {
+			if ( is_array( $category ) ) {
+				$post['post_category'] = array_map( 'intval', $category );
+			} else {
+				$post['post_category'] = array( intval( $category ) );
 			}
-			$post['tax_input'] = $taxonomy;
+		}
+
+		if ( ! empty( $tags ) ) {
+			if ( is_array( $tags ) ) {
+				$post['tags_input'] = array_map( 'intval', $tags );
+			} else {
+				$post['tags_input'] = array( intval( $tags ) );
+			}
 		}
 
 		$post = apply_filters( 'powerform_post_data_post_info', $post, $field, $data );
@@ -846,21 +701,6 @@ class Powerform_Postdata extends Powerform_Field {
 		//trigger wp_error for is_wp_error to be correctly identified
 		$post_id = wp_insert_post( $post, true );
 		if ( ! is_wp_error( $post_id ) ) {
-			$category_list = powerform_post_categories( $post_type );
-			if ( ! empty( $category_list ) ) {
-				foreach ( $category_list as $cat ) {
-					$cat_value = $cat['value'];
-					$category  = isset( $data[ $cat_value ] ) ? $data[ $cat_value ] : '';
-					if ( ! empty( $category ) ) {
-						if ( is_array( $category ) ) {
-							$taxonomy_tags = array_map( 'intval', $category );
-						} else {
-							$taxonomy_tags = array( intval( $category ) );
-						}
-						wp_set_post_terms( $post_id, $taxonomy_tags, $cat_value );
-					}
-				}
-			}
 			$post_image = self::get_property( 'post_image', $field, '' );
 			if ( ! empty( $post_image ) && ! empty( $image ) && is_array( $image ) ) {
 				set_post_thumbnail( $post_id, $image['attachment_id'] );
@@ -868,7 +708,7 @@ class Powerform_Postdata extends Powerform_Field {
 
 			if ( ! empty( $post_meta ) ) {
 				foreach ( $post_meta as $meta ) {
-					add_post_meta( $post_id, $meta['key'], $meta['value'] );
+					add_post_meta( $post_id, $meta['key'], $meta );
 				}
 				add_post_meta( $post_id, '_has_powerform_meta', true );
 			}
@@ -953,35 +793,20 @@ class Powerform_Postdata extends Powerform_Field {
 	 */
 	public function get_validation_rules() {
 		$field              = $this->field;
-		$id                 = self::get_property( 'element_id', $field );
 		$is_required        = $this->is_required( $field );
 		$post_image         = self::get_property( 'post_image', $field, '' );
-		$post_type          = self::get_property( 'post_type', $field, 'post' );
 		$post_image_enabled = ! empty( $post_image );
 		$rules              = '';
 
 		if ( $is_required && $post_image_enabled ) {
-			$rules .= '"' . $this->get_id( $field ) . '-post-image": {';
+			$rules = '"' . $this->get_id( $field ) . '-post-image": {';
 			if ( $is_required ) {
 				$rules .= '"required": true,';
 			}
 			$rules .= '},';
 		}
-		$category_list = powerform_post_categories( $post_type );
-		if ( ! empty( $category_list ) ) {
-			foreach ( $category_list as $category ) {
-				$post_category_enabled = self::get_property( $category['value'], $field, '' );
-				if ( $is_required && $post_category_enabled ) {
-					$rules .= '"' . $this->get_id( $field ) . '-' . $category['value'] . '[]": {';
-					if ( $is_required ) {
-						$rules .= '"required": true,';
-					}
-					$rules .= '},';
-				}
-			}
-		}
 
-		return apply_filters( 'powerform_field_postdata_validation_rules', $rules, $id, $field );
+		return $rules;
 	}
 
 	/**
@@ -1000,14 +825,16 @@ class Powerform_Postdata extends Powerform_Field {
 		$post_content             = self::get_property( 'post_content', $field, '' );
 		$post_excerpt             = self::get_property( 'post_excerpt', $field, '' );
 		$post_image               = self::get_property( 'post_image', $field, '' );
+		$post_category            = self::get_property( 'post_category', $field, '' );
+		$post_tags                = self::get_property( 'post_tags', $field, '' );
 		$setting_required_message = self::get_property( 'required_message', $field, '' );
-		$post_type                = self::get_property( 'post_type', $field, 'post' );
 
-		$post_title_enabled   = ! empty( $post_title );
-		$post_content_enabled = ! empty( $post_content );
-		$post_excerpt_enabled = ! empty( $post_excerpt );
-		$post_image_enabled   = ! empty( $post_image );
-		$category_list        = powerform_post_categories( $post_type );
+		$post_title_enabled    = ! empty( $post_title );
+		$post_content_enabled  = ! empty( $post_content );
+		$post_excerpt_enabled  = ! empty( $post_excerpt );
+		$post_image_enabled    = ! empty( $post_image );
+		$post_category_enabled = ! empty( $post_category );
+		$post_tags_enabled     = ! empty( $post_tags );
 
 		if ( $is_required ) {
 			if ( $post_title_enabled ) {
@@ -1015,11 +842,11 @@ class Powerform_Postdata extends Powerform_Field {
 
 				$required_message = apply_filters(
 					'powerform_postdata_field_post_title_validation_message',
-					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'This field is required. Please enter the post title.', Powerform::DOMAIN ) ),
+					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte gib den Beitragstitel ein', Powerform::DOMAIN ) ),
 					$id,
 					$field
 				);
-				$messages         = $messages . '"required": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
+				$messages         = $messages . '"required": "' . $required_message . '",' . "\n";
 
 				$messages .= '},' . "\n";
 			}
@@ -1028,11 +855,11 @@ class Powerform_Postdata extends Powerform_Field {
 
 				$required_message = apply_filters(
 					'powerform_postdata_field_post_content_validation_message',
-					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'This field is required. Please enter the post content.', Powerform::DOMAIN ) ),
+					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte gib den Beitragsinhalt ein', Powerform::DOMAIN ) ),
 					$id,
 					$field
 				);
-				$messages         = $messages . '"required": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
+				$messages         = $messages . '"required": "' . $required_message . '",' . "\n";
 
 				$messages .= '},' . "\n";
 			}
@@ -1041,11 +868,11 @@ class Powerform_Postdata extends Powerform_Field {
 
 				$required_message = apply_filters(
 					'powerform_postdata_field_post_excerpt_validation_message',
-					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'This field is required. Please enter the post excerpt.', Powerform::DOMAIN ) ),
+					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte gib den Beitragsauszug ein', Powerform::DOMAIN ) ),
 					$id,
 					$field
 				);
-				$messages         = $messages . '"required": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
+				$messages         = $messages . '"required": "' . $required_message . '",' . "\n";
 
 				$messages .= '},' . "\n";
 			}
@@ -1054,36 +881,39 @@ class Powerform_Postdata extends Powerform_Field {
 
 				$required_message = apply_filters(
 					'powerform_postdata_field_post_image_validation_message',
-					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'This field is required. Please upload a post image.', Powerform::DOMAIN ) ),
+					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte lade ein Beitragsbild hoch', Powerform::DOMAIN ) ),
 					$id,
 					$field
 				);
-				$messages         = $messages . '"required": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
+				$messages         = $messages . '"required": "' . $required_message . '",' . "\n";
 
 				$messages .= '},' . "\n";
 			}
-			if ( ! empty( $category_list ) ) {
-				foreach ( $category_list as $category ) {
-					$post_category_enabled = self::get_property( $category['value'], $field, '' );
-					if ( $post_category_enabled ) {
-						$post_category_multiple = self::get_property( $category['value'] . '_multiple', $field, '' );
-						if ( $post_category_multiple ) {
-							$messages .= '"' . $id . '-' . $category['value'] . '[]": {' . "\n";
-						} else {
-							$messages .= '"' . $id . '-' . $category['value'] . '": {' . "\n";
-						}
+			if ( $post_category_enabled ) {
+				$messages .= '"' . $id . '-post-category": {' . "\n";
 
-						$required_message = apply_filters(
-							'powerform_postdata_field_' . $category['value'] . '_validation_message',
-							( ! empty( $setting_required_message ) ? $setting_required_message : sprintf( /* translators: ... */ __( 'This field is required. Please select a %s.', Powerform::DOMAIN ), $category['singular'] ) ),
-							$id,
-							$field
-						);
-						$messages         = $messages . '"required": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
+				$required_message = apply_filters(
+					'powerform_postdata_field_post_category_validation_message',
+					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte wähle eine Beitragskategorie', Powerform::DOMAIN ) ),
+					$id,
+					$field
+				);
+				$messages         = $messages . '"required": "' . $required_message . '",' . "\n";
 
-						$messages .= '},' . "\n";
-					}
-				}
+				$messages .= '},' . "\n";
+			}
+			if ( $post_tags_enabled ) {
+				$messages .= '"' . $id . '-post-tags": {' . "\n";
+
+				$required_message = apply_filters(
+					'powerform_postdata_field_post_tag_validation_message',
+					( ! empty( $setting_required_message ) ? $setting_required_message : __( 'Dieses Feld wird benötigt. Bitte wähle einen Beitrags-Tag', Powerform::DOMAIN ) ),
+					$id,
+					$field
+				);
+				$messages         = $messages . '"required": "' . $required_message . '",' . "\n";
+
+				$messages .= '},' . "\n";
 			}
 		}
 

@@ -28,23 +28,12 @@ class Powerform_Fields {
 
 		$loader = new Powerform_Loader();
 
-		$fields = $loader->load_files(
-			'library/fields',
-			array(
-				'stripe.php' => array(
-					'php' => '5.6.0',
-				),
-			)
-		);
+		$fields = $loader->load_files( 'library/fields' );
 
 		/**
 		 * Filters the form fields
 		 */
 		$this->fields = apply_filters( 'powerform_fields', $fields );
-
-		add_action( 'wp_footer', array( &$this, 'powerform_schedule_delete_temp_files' ) );
-
-		add_action( 'schedule_delete_temp_files_cron', array( &$this, 'schedule_delete_temp_files' ) );
 	}
 
 	/**
@@ -99,43 +88,5 @@ class Powerform_Fields {
 		 * see samples/powerform-simple-autofill-plugin for example how to use it
 		 */
 		do_action( 'powerform_register_autofill_provider' );
-	}
-
-	/**
-	 * Set up the schedule delete file
-	 *
-	 * @since 1.13
-	 */
-	public function powerform_schedule_delete_temp_files() {
-		if ( ! wp_next_scheduled( 'schedule_delete_temp_files_cron' ) ) {
-			wp_schedule_single_event( time() + 60 * 60 * 24, 'schedule_delete_temp_files_cron' );
-		}
-	}
-
-	/**
-	 * Schedule delete temp file
-	 *
-	 * @since 1.13
-	 */
-	public function schedule_delete_temp_files() {
-		$temp_path = powerform_upload_root() . '/';
-
-		if ( $handle = @opendir( $temp_path ) ) {
-			// Check if the dir exist before opening it
-			if ( is_dir( $temp_path ) ) {
-				if ( $handle = opendir( $temp_path ) ) {
-					while ( false !== ( $file = readdir( $handle ) ) ) {
-						if ( ! empty( $file ) && ! in_array( $file, array( '.', '..' ), true ) ) {
-							$temp_file = $temp_path . $file;
-							$file_time = filemtime( $temp_file );
-							if ( file_exists( $temp_file ) && ( time() - $file_time ) > 60 * 60 * 24 ) {
-								unlink( $temp_file );
-							}
-						}
-					}
-					closedir( $handle );
-				}
-			}
-		}
 	}
 }

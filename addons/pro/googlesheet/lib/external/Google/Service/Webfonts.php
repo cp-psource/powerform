@@ -26,19 +26,19 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Webfonts extends Powerform_Google_Service
+class Google_Service_Webfonts extends Google_Service
 {
 
 
   public $webfonts;
-  
+
 
   /**
    * Constructs the internal representation of the Webfonts service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -46,7 +46,7 @@ class Powerform_Google_Service_Webfonts extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'webfonts';
 
-    $this->webfonts = new Powerform_Google_Service_Webfonts_Webfonts_Resource(
+    $this->webfonts = new Google_Service_Webfonts_Webfonts_Resource(
         $this,
         $this->serviceName,
         'webfonts',
@@ -73,11 +73,11 @@ class Powerform_Google_Service_Webfonts extends Powerform_Google_Service
  * The "webfonts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $webfontsService = new Powerform_Google_Service_Webfonts(...);
+ *   $webfontsService = new Google_Service_Webfonts(...);
  *   $webfonts = $webfontsService->webfonts;
  *  </code>
  */
-class Powerform_Google_Service_Webfonts_Webfonts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Webfonts_Webfonts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -87,20 +87,20 @@ class Powerform_Google_Service_Webfonts_Webfonts_Resource extends Powerform_Goog
    * @param array $optParams Optional parameters.
    *
    * @opt_param string sort Enables sorting of the list
-   * @return Powerform_Google_Service_Webfonts_WebfontList
+   * @return Google_Service_Webfonts_WebfontList
    */
   public function listWebfonts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Webfonts_WebfontList");
+    return $this->call('list', array($params), "Google_Service_Webfonts_WebfontList");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Webfonts_Webfont extends Powerform_Google_Collection
+class Google_Service_Webfonts_Webfont extends Google_Collection
 {
   protected $collection_key = 'variants';
   protected $internal_gapi_mappings = array(
@@ -181,12 +181,12 @@ class Powerform_Google_Service_Webfonts_Webfont extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Webfonts_WebfontList extends Powerform_Google_Collection
+class Google_Service_Webfonts_WebfontList extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Webfonts_Webfont';
+  protected $itemsType = 'Google_Service_Webfonts_Webfont';
   protected $itemsDataType = 'array';
   public $kind;
 

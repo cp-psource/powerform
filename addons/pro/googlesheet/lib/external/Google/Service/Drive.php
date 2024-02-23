@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Drive extends Powerform_Google_Service
+class Google_Service_Drive extends Google_Service
 {
   /** View and manage the files in your Google Drive. */
   const DRIVE =
@@ -61,14 +61,14 @@ class Powerform_Google_Service_Drive extends Powerform_Google_Service
   public $permissions;
   public $replies;
   public $revisions;
-  
+
 
   /**
    * Constructs the internal representation of the Drive service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -76,7 +76,7 @@ class Powerform_Google_Service_Drive extends Powerform_Google_Service
     $this->version = 'v3';
     $this->serviceName = 'drive';
 
-    $this->about = new Powerform_Google_Service_Drive_About_Resource(
+    $this->about = new Google_Service_Drive_About_Resource(
         $this,
         $this->serviceName,
         'about',
@@ -90,7 +90,7 @@ class Powerform_Google_Service_Drive extends Powerform_Google_Service
           )
         )
     );
-    $this->changes = new Powerform_Google_Service_Drive_Changes_Resource(
+    $this->changes = new Google_Service_Drive_Changes_Resource(
         $this,
         $this->serviceName,
         'changes',
@@ -156,7 +156,7 @@ class Powerform_Google_Service_Drive extends Powerform_Google_Service
           )
         )
     );
-    $this->channels = new Powerform_Google_Service_Drive_Channels_Resource(
+    $this->channels = new Google_Service_Drive_Channels_Resource(
         $this,
         $this->serviceName,
         'channels',
@@ -170,7 +170,7 @@ class Powerform_Google_Service_Drive extends Powerform_Google_Service
           )
         )
     );
-    $this->comments = new Powerform_Google_Service_Drive_Comments_Resource(
+    $this->comments = new Google_Service_Drive_Comments_Resource(
         $this,
         $this->serviceName,
         'comments',
@@ -265,7 +265,7 @@ class Powerform_Google_Service_Drive extends Powerform_Google_Service
           )
         )
     );
-    $this->files = new Powerform_Google_Service_Drive_Files_Resource(
+    $this->files = new Google_Service_Drive_Files_Resource(
         $this,
         $this->serviceName,
         'files',
@@ -447,7 +447,7 @@ class Powerform_Google_Service_Drive extends Powerform_Google_Service
           )
         )
     );
-    $this->permissions = new Powerform_Google_Service_Drive_Permissions_Resource(
+    $this->permissions = new Google_Service_Drive_Permissions_Resource(
         $this,
         $this->serviceName,
         'permissions',
@@ -538,7 +538,7 @@ class Powerform_Google_Service_Drive extends Powerform_Google_Service
           )
         )
     );
-    $this->replies = new Powerform_Google_Service_Drive_Replies_Resource(
+    $this->replies = new Google_Service_Drive_Replies_Resource(
         $this,
         $this->serviceName,
         'replies',
@@ -654,7 +654,7 @@ class Powerform_Google_Service_Drive extends Powerform_Google_Service
           )
         )
     );
-    $this->revisions = new Powerform_Google_Service_Drive_Revisions_Resource(
+    $this->revisions = new Google_Service_Drive_Revisions_Resource(
         $this,
         $this->serviceName,
         'revisions',
@@ -731,11 +731,11 @@ class Powerform_Google_Service_Drive extends Powerform_Google_Service
  * The "about" collection of methods.
  * Typical usage is:
  *  <code>
- *   $driveService = new Powerform_Google_Service_Drive(...);
+ *   $driveService = new Google_Service_Drive(...);
  *   $about = $driveService->about;
  *  </code>
  */
-class Powerform_Google_Service_Drive_About_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Drive_About_Resource extends Google_Service_Resource
 {
 
   /**
@@ -743,13 +743,13 @@ class Powerform_Google_Service_Drive_About_Resource extends Powerform_Google_Ser
    * (about.get)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Drive_About
+   * @return Google_Service_Drive_About
    */
   public function get($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Drive_About");
+    return $this->call('get', array($params), "Google_Service_Drive_About");
   }
 }
 
@@ -757,11 +757,11 @@ class Powerform_Google_Service_Drive_About_Resource extends Powerform_Google_Ser
  * The "changes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $driveService = new Powerform_Google_Service_Drive(...);
+ *   $driveService = new Google_Service_Drive(...);
  *   $changes = $driveService->changes;
  *  </code>
  */
-class Powerform_Google_Service_Drive_Changes_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Drive_Changes_Resource extends Google_Service_Resource
 {
 
   /**
@@ -769,13 +769,13 @@ class Powerform_Google_Service_Drive_Changes_Resource extends Powerform_Google_S
    * (changes.getStartPageToken)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Drive_StartPageToken
+   * @return Google_Service_Drive_StartPageToken
    */
   public function getStartPageToken($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('getStartPageToken', array($params), "Powerform_Google_Service_Drive_StartPageToken");
+    return $this->call('getStartPageToken', array($params), "Google_Service_Drive_StartPageToken");
   }
 
   /**
@@ -796,13 +796,13 @@ class Powerform_Google_Service_Drive_Changes_Resource extends Powerform_Google_S
    * Drive.
    * @opt_param string spaces A comma-separated list of spaces to query within the
    * user corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
-   * @return Powerform_Google_Service_Drive_ChangeList
+   * @return Google_Service_Drive_ChangeList
    */
   public function listChanges($pageToken, $optParams = array())
   {
     $params = array('pageToken' => $pageToken);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Drive_ChangeList");
+    return $this->call('list', array($params), "Google_Service_Drive_ChangeList");
   }
 
   /**
@@ -811,7 +811,7 @@ class Powerform_Google_Service_Drive_Changes_Resource extends Powerform_Google_S
    * @param string $pageToken The token for continuing a previous list request on
    * the next page. This should be set to the value of 'nextPageToken' from the
    * previous response or to the response from the getStartPageToken method.
-   * @param Powerform_Google_Channel $postBody
+   * @param Google_Channel $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool includeRemoved Whether to include changes indicating that
@@ -824,13 +824,13 @@ class Powerform_Google_Service_Drive_Changes_Resource extends Powerform_Google_S
    * Drive.
    * @opt_param string spaces A comma-separated list of spaces to query within the
    * user corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
-   * @return Powerform_Google_Service_Drive_Channel
+   * @return Google_Service_Drive_Channel
    */
-  public function watch($pageToken, Powerform_Google_Service_Drive_Channel $postBody, $optParams = array())
+  public function watch($pageToken, Google_Service_Drive_Channel $postBody, $optParams = array())
   {
     $params = array('pageToken' => $pageToken, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('watch', array($params), "Powerform_Google_Service_Drive_Channel");
+    return $this->call('watch', array($params), "Google_Service_Drive_Channel");
   }
 }
 
@@ -838,20 +838,20 @@ class Powerform_Google_Service_Drive_Changes_Resource extends Powerform_Google_S
  * The "channels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $driveService = new Powerform_Google_Service_Drive(...);
+ *   $driveService = new Google_Service_Drive(...);
  *   $channels = $driveService->channels;
  *  </code>
  */
-class Powerform_Google_Service_Drive_Channels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Drive_Channels_Resource extends Google_Service_Resource
 {
 
   /**
    * Stop watching resources through this channel (channels.stop)
    *
-   * @param Powerform_Google_Channel $postBody
+   * @param Google_Channel $postBody
    * @param array $optParams Optional parameters.
    */
-  public function stop(Powerform_Google_Service_Drive_Channel $postBody, $optParams = array())
+  public function stop(Google_Service_Drive_Channel $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -863,26 +863,26 @@ class Powerform_Google_Service_Drive_Channels_Resource extends Powerform_Google_
  * The "comments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $driveService = new Powerform_Google_Service_Drive(...);
+ *   $driveService = new Google_Service_Drive(...);
  *   $comments = $driveService->comments;
  *  </code>
  */
-class Powerform_Google_Service_Drive_Comments_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Drive_Comments_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a new comment on a file. (comments.create)
    *
    * @param string $fileId The ID of the file.
-   * @param Powerform_Google_Comment $postBody
+   * @param Google_Comment $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Drive_Comment
+   * @return Google_Service_Drive_Comment
    */
-  public function create($fileId, Powerform_Google_Service_Drive_Comment $postBody, $optParams = array())
+  public function create($fileId, Google_Service_Drive_Comment $postBody, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Drive_Comment");
+    return $this->call('create', array($params), "Google_Service_Drive_Comment");
   }
 
   /**
@@ -908,13 +908,13 @@ class Powerform_Google_Service_Drive_Comments_Resource extends Powerform_Google_
    *
    * @opt_param bool includeDeleted Whether to return deleted comments. Deleted
    * comments will not include their original content.
-   * @return Powerform_Google_Service_Drive_Comment
+   * @return Google_Service_Drive_Comment
    */
   public function get($fileId, $commentId, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'commentId' => $commentId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Drive_Comment");
+    return $this->call('get', array($params), "Google_Service_Drive_Comment");
   }
 
   /**
@@ -931,13 +931,13 @@ class Powerform_Google_Service_Drive_Comments_Resource extends Powerform_Google_
    * previous response.
    * @opt_param string startModifiedTime The minimum value of 'modifiedTime' for
    * the result comments (RFC 3339 date-time).
-   * @return Powerform_Google_Service_Drive_CommentList
+   * @return Google_Service_Drive_CommentList
    */
   public function listComments($fileId, $optParams = array())
   {
     $params = array('fileId' => $fileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Drive_CommentList");
+    return $this->call('list', array($params), "Google_Service_Drive_CommentList");
   }
 
   /**
@@ -945,15 +945,15 @@ class Powerform_Google_Service_Drive_Comments_Resource extends Powerform_Google_
    *
    * @param string $fileId The ID of the file.
    * @param string $commentId The ID of the comment.
-   * @param Powerform_Google_Comment $postBody
+   * @param Google_Comment $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Drive_Comment
+   * @return Google_Service_Drive_Comment
    */
-  public function update($fileId, $commentId, Powerform_Google_Service_Drive_Comment $postBody, $optParams = array())
+  public function update($fileId, $commentId, Google_Service_Drive_Comment $postBody, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'commentId' => $commentId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Drive_Comment");
+    return $this->call('update', array($params), "Google_Service_Drive_Comment");
   }
 }
 
@@ -961,11 +961,11 @@ class Powerform_Google_Service_Drive_Comments_Resource extends Powerform_Google_
  * The "files" collection of methods.
  * Typical usage is:
  *  <code>
- *   $driveService = new Powerform_Google_Service_Drive(...);
+ *   $driveService = new Google_Service_Drive(...);
  *   $files = $driveService->files;
  *  </code>
  */
-class Powerform_Google_Service_Drive_Files_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Drive_Files_Resource extends Google_Service_Resource
 {
 
   /**
@@ -973,7 +973,7 @@ class Powerform_Google_Service_Drive_Files_Resource extends Powerform_Google_Ser
    * semantics. (files.copy)
    *
    * @param string $fileId The ID of the file.
-   * @param Powerform_Google_DriveFile $postBody
+   * @param Google_DriveFile $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool ignoreDefaultVisibility Whether to ignore the domain's
@@ -986,19 +986,19 @@ class Powerform_Google_Service_Drive_Files_Resource extends Powerform_Google_Ser
    * in Drive.
    * @opt_param string ocrLanguage A language hint for OCR processing during image
    * import (ISO 639-1 code).
-   * @return Powerform_Google_Service_Drive_DriveFile
+   * @return Google_Service_Drive_DriveFile
    */
-  public function copy($fileId, Powerform_Google_Service_Drive_DriveFile $postBody, $optParams = array())
+  public function copy($fileId, Google_Service_Drive_DriveFile $postBody, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('copy', array($params), "Powerform_Google_Service_Drive_DriveFile");
+    return $this->call('copy', array($params), "Google_Service_Drive_DriveFile");
   }
 
   /**
    * Creates a new file. (files.create)
    *
-   * @param Powerform_Google_DriveFile $postBody
+   * @param Google_DriveFile $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool ignoreDefaultVisibility Whether to ignore the domain's
@@ -1013,13 +1013,13 @@ class Powerform_Google_Service_Drive_Files_Resource extends Powerform_Google_Ser
    * import (ISO 639-1 code).
    * @opt_param bool useContentAsIndexableText Whether to use the uploaded content
    * as indexable text.
-   * @return Powerform_Google_Service_Drive_DriveFile
+   * @return Google_Service_Drive_DriveFile
    */
-  public function create(Powerform_Google_Service_Drive_DriveFile $postBody, $optParams = array())
+  public function create(Google_Service_Drive_DriveFile $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Drive_DriveFile");
+    return $this->call('create', array($params), "Google_Service_Drive_DriveFile");
   }
 
   /**
@@ -1074,13 +1074,13 @@ class Powerform_Google_Service_Drive_Files_Resource extends Powerform_Google_Ser
    * @opt_param int count The number of IDs to return.
    * @opt_param string space The space in which the IDs can be used to create new
    * files. Supported values are 'drive' and 'appDataFolder'.
-   * @return Powerform_Google_Service_Drive_GeneratedIds
+   * @return Google_Service_Drive_GeneratedIds
    */
   public function generateIds($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('generateIds', array($params), "Powerform_Google_Service_Drive_GeneratedIds");
+    return $this->call('generateIds', array($params), "Google_Service_Drive_GeneratedIds");
   }
 
   /**
@@ -1092,13 +1092,13 @@ class Powerform_Google_Service_Drive_Files_Resource extends Powerform_Google_Ser
    * @opt_param bool acknowledgeAbuse Whether the user is acknowledging the risk
    * of downloading known malware or other abusive files. This is only applicable
    * when alt=media.
-   * @return Powerform_Google_Service_Drive_DriveFile
+   * @return Google_Service_Drive_DriveFile
    */
   public function get($fileId, $optParams = array())
   {
     $params = array('fileId' => $fileId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Drive_DriveFile");
+    return $this->call('get', array($params), "Google_Service_Drive_DriveFile");
   }
 
   /**
@@ -1122,20 +1122,20 @@ class Powerform_Google_Service_Drive_Files_Resource extends Powerform_Google_Ser
    * for Files" guide for supported syntax.
    * @opt_param string spaces A comma-separated list of spaces to query within the
    * corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
-   * @return Powerform_Google_Service_Drive_FileList
+   * @return Google_Service_Drive_FileList
    */
   public function listFiles($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Drive_FileList");
+    return $this->call('list', array($params), "Google_Service_Drive_FileList");
   }
 
   /**
    * Updates a file's metadata and/or content with patch semantics. (files.update)
    *
    * @param string $fileId The ID of the file.
-   * @param Powerform_Google_DriveFile $postBody
+   * @param Google_DriveFile $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string addParents A comma-separated list of parent IDs to add.
@@ -1148,32 +1148,32 @@ class Powerform_Google_Service_Drive_Files_Resource extends Powerform_Google_Ser
    * remove.
    * @opt_param bool useContentAsIndexableText Whether to use the uploaded content
    * as indexable text.
-   * @return Powerform_Google_Service_Drive_DriveFile
+   * @return Google_Service_Drive_DriveFile
    */
-  public function update($fileId, Powerform_Google_Service_Drive_DriveFile $postBody, $optParams = array())
+  public function update($fileId, Google_Service_Drive_DriveFile $postBody, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Drive_DriveFile");
+    return $this->call('update', array($params), "Google_Service_Drive_DriveFile");
   }
 
   /**
    * Subscribes to changes to a file (files.watch)
    *
    * @param string $fileId The ID of the file.
-   * @param Powerform_Google_Channel $postBody
+   * @param Google_Channel $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool acknowledgeAbuse Whether the user is acknowledging the risk
    * of downloading known malware or other abusive files. This is only applicable
    * when alt=media.
-   * @return Powerform_Google_Service_Drive_Channel
+   * @return Google_Service_Drive_Channel
    */
-  public function watch($fileId, Powerform_Google_Service_Drive_Channel $postBody, $optParams = array())
+  public function watch($fileId, Google_Service_Drive_Channel $postBody, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('watch', array($params), "Powerform_Google_Service_Drive_Channel");
+    return $this->call('watch', array($params), "Google_Service_Drive_Channel");
   }
 }
 
@@ -1181,18 +1181,18 @@ class Powerform_Google_Service_Drive_Files_Resource extends Powerform_Google_Ser
  * The "permissions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $driveService = new Powerform_Google_Service_Drive(...);
+ *   $driveService = new Google_Service_Drive(...);
  *   $permissions = $driveService->permissions;
  *  </code>
  */
-class Powerform_Google_Service_Drive_Permissions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Drive_Permissions_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a permission for a file. (permissions.create)
    *
    * @param string $fileId The ID of the file.
-   * @param Powerform_Google_Permission $postBody
+   * @param Google_Permission $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string emailMessage A custom message to include in the
@@ -1204,13 +1204,13 @@ class Powerform_Google_Service_Drive_Permissions_Resource extends Powerform_Goog
    * @opt_param bool transferOwnership Whether to transfer ownership to the
    * specified user and downgrade the current owner to a writer. This parameter is
    * required as an acknowledgement of the side effect.
-   * @return Powerform_Google_Service_Drive_Permission
+   * @return Google_Service_Drive_Permission
    */
-  public function create($fileId, Powerform_Google_Service_Drive_Permission $postBody, $optParams = array())
+  public function create($fileId, Google_Service_Drive_Permission $postBody, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Drive_Permission");
+    return $this->call('create', array($params), "Google_Service_Drive_Permission");
   }
 
   /**
@@ -1233,13 +1233,13 @@ class Powerform_Google_Service_Drive_Permissions_Resource extends Powerform_Goog
    * @param string $fileId The ID of the file.
    * @param string $permissionId The ID of the permission.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Drive_Permission
+   * @return Google_Service_Drive_Permission
    */
   public function get($fileId, $permissionId, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'permissionId' => $permissionId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Drive_Permission");
+    return $this->call('get', array($params), "Google_Service_Drive_Permission");
   }
 
   /**
@@ -1247,13 +1247,13 @@ class Powerform_Google_Service_Drive_Permissions_Resource extends Powerform_Goog
    *
    * @param string $fileId The ID of the file.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Drive_PermissionList
+   * @return Google_Service_Drive_PermissionList
    */
   public function listPermissions($fileId, $optParams = array())
   {
     $params = array('fileId' => $fileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Drive_PermissionList");
+    return $this->call('list', array($params), "Google_Service_Drive_PermissionList");
   }
 
   /**
@@ -1261,19 +1261,19 @@ class Powerform_Google_Service_Drive_Permissions_Resource extends Powerform_Goog
    *
    * @param string $fileId The ID of the file.
    * @param string $permissionId The ID of the permission.
-   * @param Powerform_Google_Permission $postBody
+   * @param Google_Permission $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool transferOwnership Whether to transfer ownership to the
    * specified user and downgrade the current owner to a writer. This parameter is
    * required as an acknowledgement of the side effect.
-   * @return Powerform_Google_Service_Drive_Permission
+   * @return Google_Service_Drive_Permission
    */
-  public function update($fileId, $permissionId, Powerform_Google_Service_Drive_Permission $postBody, $optParams = array())
+  public function update($fileId, $permissionId, Google_Service_Drive_Permission $postBody, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'permissionId' => $permissionId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Drive_Permission");
+    return $this->call('update', array($params), "Google_Service_Drive_Permission");
   }
 }
 
@@ -1281,11 +1281,11 @@ class Powerform_Google_Service_Drive_Permissions_Resource extends Powerform_Goog
  * The "replies" collection of methods.
  * Typical usage is:
  *  <code>
- *   $driveService = new Powerform_Google_Service_Drive(...);
+ *   $driveService = new Google_Service_Drive(...);
  *   $replies = $driveService->replies;
  *  </code>
  */
-class Powerform_Google_Service_Drive_Replies_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Drive_Replies_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1293,15 +1293,15 @@ class Powerform_Google_Service_Drive_Replies_Resource extends Powerform_Google_S
    *
    * @param string $fileId The ID of the file.
    * @param string $commentId The ID of the comment.
-   * @param Powerform_Google_Reply $postBody
+   * @param Google_Reply $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Drive_Reply
+   * @return Google_Service_Drive_Reply
    */
-  public function create($fileId, $commentId, Powerform_Google_Service_Drive_Reply $postBody, $optParams = array())
+  public function create($fileId, $commentId, Google_Service_Drive_Reply $postBody, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'commentId' => $commentId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Powerform_Google_Service_Drive_Reply");
+    return $this->call('create', array($params), "Google_Service_Drive_Reply");
   }
 
   /**
@@ -1329,13 +1329,13 @@ class Powerform_Google_Service_Drive_Replies_Resource extends Powerform_Google_S
    *
    * @opt_param bool includeDeleted Whether to return deleted replies. Deleted
    * replies will not include their original content.
-   * @return Powerform_Google_Service_Drive_Reply
+   * @return Google_Service_Drive_Reply
    */
   public function get($fileId, $commentId, $replyId, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'commentId' => $commentId, 'replyId' => $replyId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Drive_Reply");
+    return $this->call('get', array($params), "Google_Service_Drive_Reply");
   }
 
   /**
@@ -1351,13 +1351,13 @@ class Powerform_Google_Service_Drive_Replies_Resource extends Powerform_Google_S
    * @opt_param string pageToken The token for continuing a previous list request
    * on the next page. This should be set to the value of 'nextPageToken' from the
    * previous response.
-   * @return Powerform_Google_Service_Drive_ReplyList
+   * @return Google_Service_Drive_ReplyList
    */
   public function listReplies($fileId, $commentId, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'commentId' => $commentId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Drive_ReplyList");
+    return $this->call('list', array($params), "Google_Service_Drive_ReplyList");
   }
 
   /**
@@ -1366,15 +1366,15 @@ class Powerform_Google_Service_Drive_Replies_Resource extends Powerform_Google_S
    * @param string $fileId The ID of the file.
    * @param string $commentId The ID of the comment.
    * @param string $replyId The ID of the reply.
-   * @param Powerform_Google_Reply $postBody
+   * @param Google_Reply $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Drive_Reply
+   * @return Google_Service_Drive_Reply
    */
-  public function update($fileId, $commentId, $replyId, Powerform_Google_Service_Drive_Reply $postBody, $optParams = array())
+  public function update($fileId, $commentId, $replyId, Google_Service_Drive_Reply $postBody, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'commentId' => $commentId, 'replyId' => $replyId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Drive_Reply");
+    return $this->call('update', array($params), "Google_Service_Drive_Reply");
   }
 }
 
@@ -1382,11 +1382,11 @@ class Powerform_Google_Service_Drive_Replies_Resource extends Powerform_Google_S
  * The "revisions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $driveService = new Powerform_Google_Service_Drive(...);
+ *   $driveService = new Google_Service_Drive(...);
  *   $revisions = $driveService->revisions;
  *  </code>
  */
-class Powerform_Google_Service_Drive_Revisions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Drive_Revisions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1414,13 +1414,13 @@ class Powerform_Google_Service_Drive_Revisions_Resource extends Powerform_Google
    * @opt_param bool acknowledgeAbuse Whether the user is acknowledging the risk
    * of downloading known malware or other abusive files. This is only applicable
    * when alt=media.
-   * @return Powerform_Google_Service_Drive_Revision
+   * @return Google_Service_Drive_Revision
    */
   public function get($fileId, $revisionId, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'revisionId' => $revisionId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Drive_Revision");
+    return $this->call('get', array($params), "Google_Service_Drive_Revision");
   }
 
   /**
@@ -1428,13 +1428,13 @@ class Powerform_Google_Service_Drive_Revisions_Resource extends Powerform_Google
    *
    * @param string $fileId The ID of the file.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Drive_RevisionList
+   * @return Google_Service_Drive_RevisionList
    */
   public function listRevisions($fileId, $optParams = array())
   {
     $params = array('fileId' => $fileId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Drive_RevisionList");
+    return $this->call('list', array($params), "Google_Service_Drive_RevisionList");
   }
 
   /**
@@ -1442,22 +1442,22 @@ class Powerform_Google_Service_Drive_Revisions_Resource extends Powerform_Google
    *
    * @param string $fileId The ID of the file.
    * @param string $revisionId The ID of the revision.
-   * @param Powerform_Google_Revision $postBody
+   * @param Google_Revision $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Drive_Revision
+   * @return Google_Service_Drive_Revision
    */
-  public function update($fileId, $revisionId, Powerform_Google_Service_Drive_Revision $postBody, $optParams = array())
+  public function update($fileId, $revisionId, Google_Service_Drive_Revision $postBody, $optParams = array())
   {
     $params = array('fileId' => $fileId, 'revisionId' => $revisionId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Drive_Revision");
+    return $this->call('update', array($params), "Google_Service_Drive_Revision");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Drive_About extends Powerform_Google_Collection
+class Google_Service_Drive_About extends Google_Collection
 {
   protected $collection_key = 'folderColorPalette';
   protected $internal_gapi_mappings = array(
@@ -1469,9 +1469,9 @@ class Powerform_Google_Service_Drive_About extends Powerform_Google_Collection
   public $kind;
   public $maxImportSizes;
   public $maxUploadSize;
-  protected $storageQuotaType = 'Powerform_Google_Service_Drive_AboutStorageQuota';
+  protected $storageQuotaType = 'Google_Service_Drive_AboutStorageQuota';
   protected $storageQuotaDataType = '';
-  protected $userType = 'Powerform_Google_Service_Drive_User';
+  protected $userType = 'Google_Service_Drive_User';
   protected $userDataType = '';
 
 
@@ -1531,7 +1531,7 @@ class Powerform_Google_Service_Drive_About extends Powerform_Google_Collection
   {
     return $this->maxUploadSize;
   }
-  public function setStorageQuota(Powerform_Google_Service_Drive_AboutStorageQuota $storageQuota)
+  public function setStorageQuota(Google_Service_Drive_AboutStorageQuota $storageQuota)
   {
     $this->storageQuota = $storageQuota;
   }
@@ -1539,7 +1539,7 @@ class Powerform_Google_Service_Drive_About extends Powerform_Google_Collection
   {
     return $this->storageQuota;
   }
-  public function setUser(Powerform_Google_Service_Drive_User $user)
+  public function setUser(Google_Service_Drive_User $user)
   {
     $this->user = $user;
   }
@@ -1549,7 +1549,7 @@ class Powerform_Google_Service_Drive_About extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Drive_AboutStorageQuota extends Powerform_Google_Model
+class Google_Service_Drive_AboutStorageQuota extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1593,11 +1593,11 @@ class Powerform_Google_Service_Drive_AboutStorageQuota extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Drive_Change extends Powerform_Google_Model
+class Google_Service_Drive_Change extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $fileType = 'Powerform_Google_Service_Drive_DriveFile';
+  protected $fileType = 'Google_Service_Drive_DriveFile';
   protected $fileDataType = '';
   public $fileId;
   public $kind;
@@ -1605,7 +1605,7 @@ class Powerform_Google_Service_Drive_Change extends Powerform_Google_Model
   public $time;
 
 
-  public function setFile(Powerform_Google_Service_Drive_DriveFile $file)
+  public function setFile(Google_Service_Drive_DriveFile $file)
   {
     $this->file = $file;
   }
@@ -1647,12 +1647,12 @@ class Powerform_Google_Service_Drive_Change extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Drive_ChangeList extends Powerform_Google_Collection
+class Google_Service_Drive_ChangeList extends Google_Collection
 {
   protected $collection_key = 'changes';
   protected $internal_gapi_mappings = array(
   );
-  protected $changesType = 'Powerform_Google_Service_Drive_Change';
+  protected $changesType = 'Google_Service_Drive_Change';
   protected $changesDataType = 'array';
   public $kind;
   public $newStartPageToken;
@@ -1693,7 +1693,7 @@ class Powerform_Google_Service_Drive_ChangeList extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Drive_Channel extends Powerform_Google_Model
+class Google_Service_Drive_Channel extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1791,13 +1791,13 @@ class Powerform_Google_Service_Drive_Channel extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Drive_Comment extends Powerform_Google_Collection
+class Google_Service_Drive_Comment extends Google_Collection
 {
   protected $collection_key = 'replies';
   protected $internal_gapi_mappings = array(
   );
   public $anchor;
-  protected $authorType = 'Powerform_Google_Service_Drive_User';
+  protected $authorType = 'Google_Service_Drive_User';
   protected $authorDataType = '';
   public $content;
   public $createdTime;
@@ -1806,9 +1806,9 @@ class Powerform_Google_Service_Drive_Comment extends Powerform_Google_Collection
   public $id;
   public $kind;
   public $modifiedTime;
-  protected $quotedFileContentType = 'Powerform_Google_Service_Drive_CommentQuotedFileContent';
+  protected $quotedFileContentType = 'Google_Service_Drive_CommentQuotedFileContent';
   protected $quotedFileContentDataType = '';
-  protected $repliesType = 'Powerform_Google_Service_Drive_Reply';
+  protected $repliesType = 'Google_Service_Drive_Reply';
   protected $repliesDataType = 'array';
   public $resolved;
 
@@ -1821,7 +1821,7 @@ class Powerform_Google_Service_Drive_Comment extends Powerform_Google_Collection
   {
     return $this->anchor;
   }
-  public function setAuthor(Powerform_Google_Service_Drive_User $author)
+  public function setAuthor(Google_Service_Drive_User $author)
   {
     $this->author = $author;
   }
@@ -1885,7 +1885,7 @@ class Powerform_Google_Service_Drive_Comment extends Powerform_Google_Collection
   {
     return $this->modifiedTime;
   }
-  public function setQuotedFileContent(Powerform_Google_Service_Drive_CommentQuotedFileContent $quotedFileContent)
+  public function setQuotedFileContent(Google_Service_Drive_CommentQuotedFileContent $quotedFileContent)
   {
     $this->quotedFileContent = $quotedFileContent;
   }
@@ -1911,12 +1911,12 @@ class Powerform_Google_Service_Drive_Comment extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Drive_CommentList extends Powerform_Google_Collection
+class Google_Service_Drive_CommentList extends Google_Collection
 {
   protected $collection_key = 'comments';
   protected $internal_gapi_mappings = array(
   );
-  protected $commentsType = 'Powerform_Google_Service_Drive_Comment';
+  protected $commentsType = 'Google_Service_Drive_Comment';
   protected $commentsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1948,7 +1948,7 @@ class Powerform_Google_Service_Drive_CommentList extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Drive_CommentQuotedFileContent extends Powerform_Google_Model
+class Google_Service_Drive_CommentQuotedFileContent extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1974,15 +1974,15 @@ class Powerform_Google_Service_Drive_CommentQuotedFileContent extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collection
+class Google_Service_Drive_DriveFile extends Google_Collection
 {
   protected $collection_key = 'spaces';
   protected $internal_gapi_mappings = array(
   );
   public $appProperties;
-  protected $capabilitiesType = 'Powerform_Google_Service_Drive_DriveFileCapabilities';
+  protected $capabilitiesType = 'Google_Service_Drive_DriveFileCapabilities';
   protected $capabilitiesDataType = '';
-  protected $contentHintsType = 'Powerform_Google_Service_Drive_DriveFileContentHints';
+  protected $contentHintsType = 'Google_Service_Drive_DriveFileContentHints';
   protected $contentHintsDataType = '';
   public $createdTime;
   public $description;
@@ -1993,10 +1993,10 @@ class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collecti
   public $headRevisionId;
   public $iconLink;
   public $id;
-  protected $imageMediaMetadataType = 'Powerform_Google_Service_Drive_DriveFileImageMediaMetadata';
+  protected $imageMediaMetadataType = 'Google_Service_Drive_DriveFileImageMediaMetadata';
   protected $imageMediaMetadataDataType = '';
   public $kind;
-  protected $lastModifyingUserType = 'Powerform_Google_Service_Drive_User';
+  protected $lastModifyingUserType = 'Google_Service_Drive_User';
   protected $lastModifyingUserDataType = '';
   public $md5Checksum;
   public $mimeType;
@@ -2005,16 +2005,16 @@ class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collecti
   public $name;
   public $originalFilename;
   public $ownedByMe;
-  protected $ownersType = 'Powerform_Google_Service_Drive_User';
+  protected $ownersType = 'Google_Service_Drive_User';
   protected $ownersDataType = 'array';
   public $parents;
-  protected $permissionsType = 'Powerform_Google_Service_Drive_Permission';
+  protected $permissionsType = 'Google_Service_Drive_Permission';
   protected $permissionsDataType = 'array';
   public $properties;
   public $quotaBytesUsed;
   public $shared;
   public $sharedWithMeTime;
-  protected $sharingUserType = 'Powerform_Google_Service_Drive_User';
+  protected $sharingUserType = 'Google_Service_Drive_User';
   protected $sharingUserDataType = '';
   public $size;
   public $spaces;
@@ -2022,7 +2022,7 @@ class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collecti
   public $thumbnailLink;
   public $trashed;
   public $version;
-  protected $videoMediaMetadataType = 'Powerform_Google_Service_Drive_DriveFileVideoMediaMetadata';
+  protected $videoMediaMetadataType = 'Google_Service_Drive_DriveFileVideoMediaMetadata';
   protected $videoMediaMetadataDataType = '';
   public $viewedByMe;
   public $viewedByMeTime;
@@ -2040,7 +2040,7 @@ class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collecti
   {
     return $this->appProperties;
   }
-  public function setCapabilities(Powerform_Google_Service_Drive_DriveFileCapabilities $capabilities)
+  public function setCapabilities(Google_Service_Drive_DriveFileCapabilities $capabilities)
   {
     $this->capabilities = $capabilities;
   }
@@ -2048,7 +2048,7 @@ class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collecti
   {
     return $this->capabilities;
   }
-  public function setContentHints(Powerform_Google_Service_Drive_DriveFileContentHints $contentHints)
+  public function setContentHints(Google_Service_Drive_DriveFileContentHints $contentHints)
   {
     $this->contentHints = $contentHints;
   }
@@ -2128,7 +2128,7 @@ class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collecti
   {
     return $this->id;
   }
-  public function setImageMediaMetadata(Powerform_Google_Service_Drive_DriveFileImageMediaMetadata $imageMediaMetadata)
+  public function setImageMediaMetadata(Google_Service_Drive_DriveFileImageMediaMetadata $imageMediaMetadata)
   {
     $this->imageMediaMetadata = $imageMediaMetadata;
   }
@@ -2144,7 +2144,7 @@ class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collecti
   {
     return $this->kind;
   }
-  public function setLastModifyingUser(Powerform_Google_Service_Drive_User $lastModifyingUser)
+  public function setLastModifyingUser(Google_Service_Drive_User $lastModifyingUser)
   {
     $this->lastModifyingUser = $lastModifyingUser;
   }
@@ -2264,7 +2264,7 @@ class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collecti
   {
     return $this->sharedWithMeTime;
   }
-  public function setSharingUser(Powerform_Google_Service_Drive_User $sharingUser)
+  public function setSharingUser(Google_Service_Drive_User $sharingUser)
   {
     $this->sharingUser = $sharingUser;
   }
@@ -2320,7 +2320,7 @@ class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collecti
   {
     return $this->version;
   }
-  public function setVideoMediaMetadata(Powerform_Google_Service_Drive_DriveFileVideoMediaMetadata $videoMediaMetadata)
+  public function setVideoMediaMetadata(Google_Service_Drive_DriveFileVideoMediaMetadata $videoMediaMetadata)
   {
     $this->videoMediaMetadata = $videoMediaMetadata;
   }
@@ -2378,7 +2378,7 @@ class Powerform_Google_Service_Drive_DriveFile extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Drive_DriveFileCapabilities extends Powerform_Google_Model
+class Google_Service_Drive_DriveFileCapabilities extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2422,12 +2422,12 @@ class Powerform_Google_Service_Drive_DriveFileCapabilities extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Drive_DriveFileContentHints extends Powerform_Google_Model
+class Google_Service_Drive_DriveFileContentHints extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $indexableText;
-  protected $thumbnailType = 'Powerform_Google_Service_Drive_DriveFileContentHintsThumbnail';
+  protected $thumbnailType = 'Google_Service_Drive_DriveFileContentHintsThumbnail';
   protected $thumbnailDataType = '';
 
 
@@ -2439,7 +2439,7 @@ class Powerform_Google_Service_Drive_DriveFileContentHints extends Powerform_Goo
   {
     return $this->indexableText;
   }
-  public function setThumbnail(Powerform_Google_Service_Drive_DriveFileContentHintsThumbnail $thumbnail)
+  public function setThumbnail(Google_Service_Drive_DriveFileContentHintsThumbnail $thumbnail)
   {
     $this->thumbnail = $thumbnail;
   }
@@ -2449,7 +2449,7 @@ class Powerform_Google_Service_Drive_DriveFileContentHints extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Drive_DriveFileContentHintsThumbnail extends Powerform_Google_Model
+class Google_Service_Drive_DriveFileContentHintsThumbnail extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2475,7 +2475,7 @@ class Powerform_Google_Service_Drive_DriveFileContentHintsThumbnail extends Powe
   }
 }
 
-class Powerform_Google_Service_Drive_DriveFileImageMediaMetadata extends Powerform_Google_Model
+class Google_Service_Drive_DriveFileImageMediaMetadata extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2491,7 +2491,7 @@ class Powerform_Google_Service_Drive_DriveFileImageMediaMetadata extends Powerfo
   public $height;
   public $isoSpeed;
   public $lens;
-  protected $locationType = 'Powerform_Google_Service_Drive_DriveFileImageMediaMetadataLocation';
+  protected $locationType = 'Google_Service_Drive_DriveFileImageMediaMetadataLocation';
   protected $locationDataType = '';
   public $maxApertureValue;
   public $meteringMode;
@@ -2599,7 +2599,7 @@ class Powerform_Google_Service_Drive_DriveFileImageMediaMetadata extends Powerfo
   {
     return $this->lens;
   }
-  public function setLocation(Powerform_Google_Service_Drive_DriveFileImageMediaMetadataLocation $location)
+  public function setLocation(Google_Service_Drive_DriveFileImageMediaMetadataLocation $location)
   {
     $this->location = $location;
   }
@@ -2673,7 +2673,7 @@ class Powerform_Google_Service_Drive_DriveFileImageMediaMetadata extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Drive_DriveFileImageMediaMetadataLocation extends Powerform_Google_Model
+class Google_Service_Drive_DriveFileImageMediaMetadataLocation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2708,7 +2708,7 @@ class Powerform_Google_Service_Drive_DriveFileImageMediaMetadataLocation extends
   }
 }
 
-class Powerform_Google_Service_Drive_DriveFileVideoMediaMetadata extends Powerform_Google_Model
+class Google_Service_Drive_DriveFileVideoMediaMetadata extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2743,12 +2743,12 @@ class Powerform_Google_Service_Drive_DriveFileVideoMediaMetadata extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Drive_FileList extends Powerform_Google_Collection
+class Google_Service_Drive_FileList extends Google_Collection
 {
   protected $collection_key = 'files';
   protected $internal_gapi_mappings = array(
   );
-  protected $filesType = 'Powerform_Google_Service_Drive_DriveFile';
+  protected $filesType = 'Google_Service_Drive_DriveFile';
   protected $filesDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2780,7 +2780,7 @@ class Powerform_Google_Service_Drive_FileList extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Drive_GeneratedIds extends Powerform_Google_Collection
+class Google_Service_Drive_GeneratedIds extends Google_Collection
 {
   protected $collection_key = 'ids';
   protected $internal_gapi_mappings = array(
@@ -2816,7 +2816,7 @@ class Powerform_Google_Service_Drive_GeneratedIds extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Drive_Permission extends Powerform_Google_Model
+class Google_Service_Drive_Permission extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2905,13 +2905,13 @@ class Powerform_Google_Service_Drive_Permission extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Drive_PermissionList extends Powerform_Google_Collection
+class Google_Service_Drive_PermissionList extends Google_Collection
 {
   protected $collection_key = 'permissions';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $permissionsType = 'Powerform_Google_Service_Drive_Permission';
+  protected $permissionsType = 'Google_Service_Drive_Permission';
   protected $permissionsDataType = 'array';
 
 
@@ -2933,12 +2933,12 @@ class Powerform_Google_Service_Drive_PermissionList extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Drive_Reply extends Powerform_Google_Model
+class Google_Service_Drive_Reply extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $action;
-  protected $authorType = 'Powerform_Google_Service_Drive_User';
+  protected $authorType = 'Google_Service_Drive_User';
   protected $authorDataType = '';
   public $content;
   public $createdTime;
@@ -2957,7 +2957,7 @@ class Powerform_Google_Service_Drive_Reply extends Powerform_Google_Model
   {
     return $this->action;
   }
-  public function setAuthor(Powerform_Google_Service_Drive_User $author)
+  public function setAuthor(Google_Service_Drive_User $author)
   {
     $this->author = $author;
   }
@@ -3023,14 +3023,14 @@ class Powerform_Google_Service_Drive_Reply extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Drive_ReplyList extends Powerform_Google_Collection
+class Google_Service_Drive_ReplyList extends Google_Collection
 {
   protected $collection_key = 'replies';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
   public $nextPageToken;
-  protected $repliesType = 'Powerform_Google_Service_Drive_Reply';
+  protected $repliesType = 'Google_Service_Drive_Reply';
   protected $repliesDataType = 'array';
 
 
@@ -3060,14 +3060,14 @@ class Powerform_Google_Service_Drive_ReplyList extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Drive_Revision extends Powerform_Google_Model
+class Google_Service_Drive_Revision extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $id;
   public $keepForever;
   public $kind;
-  protected $lastModifyingUserType = 'Powerform_Google_Service_Drive_User';
+  protected $lastModifyingUserType = 'Google_Service_Drive_User';
   protected $lastModifyingUserDataType = '';
   public $md5Checksum;
   public $mimeType;
@@ -3103,7 +3103,7 @@ class Powerform_Google_Service_Drive_Revision extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setLastModifyingUser(Powerform_Google_Service_Drive_User $lastModifyingUser)
+  public function setLastModifyingUser(Google_Service_Drive_User $lastModifyingUser)
   {
     $this->lastModifyingUser = $lastModifyingUser;
   }
@@ -3177,13 +3177,13 @@ class Powerform_Google_Service_Drive_Revision extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Drive_RevisionList extends Powerform_Google_Collection
+class Google_Service_Drive_RevisionList extends Google_Collection
 {
   protected $collection_key = 'revisions';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $revisionsType = 'Powerform_Google_Service_Drive_Revision';
+  protected $revisionsType = 'Google_Service_Drive_Revision';
   protected $revisionsDataType = 'array';
 
 
@@ -3205,7 +3205,7 @@ class Powerform_Google_Service_Drive_RevisionList extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Drive_StartPageToken extends Powerform_Google_Model
+class Google_Service_Drive_StartPageToken extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3231,7 +3231,7 @@ class Powerform_Google_Service_Drive_StartPageToken extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Drive_User extends Powerform_Google_Model
+class Google_Service_Drive_User extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

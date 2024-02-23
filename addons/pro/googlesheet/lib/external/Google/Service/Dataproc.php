@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Dataproc extends Powerform_Google_Service
+class Google_Service_Dataproc extends Google_Service
 {
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
@@ -42,14 +42,14 @@ class Powerform_Google_Service_Dataproc extends Powerform_Google_Service
       "https://www.googleapis.com/auth/logging.write";
 
   public $media;
-  
+
 
   /**
    * Constructs the internal representation of the Dataproc service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://dataproc.googleapis.com/';
@@ -57,7 +57,7 @@ class Powerform_Google_Service_Dataproc extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'dataproc';
 
-    $this->media = new Powerform_Google_Service_Dataproc_Media_Resource(
+    $this->media = new Google_Service_Dataproc_Media_Resource(
         $this,
         $this->serviceName,
         'media',
@@ -95,11 +95,11 @@ class Powerform_Google_Service_Dataproc extends Powerform_Google_Service
  * The "media" collection of methods.
  * Typical usage is:
  *  <code>
- *   $dataprocService = new Powerform_Google_Service_Dataproc(...);
+ *   $dataprocService = new Google_Service_Dataproc(...);
  *   $media = $dataprocService->media;
  *  </code>
  */
-class Powerform_Google_Service_Dataproc_Media_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Dataproc_Media_Resource extends Google_Service_Resource
 {
 
   /**
@@ -109,13 +109,13 @@ class Powerform_Google_Service_Dataproc_Media_Resource extends Powerform_Google_
    * @param string $resourceName Name of the media that is being downloaded. See
    * [][ByteStream.ReadRequest.resource_name].
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dataproc_Media
+   * @return Google_Service_Dataproc_Media
    */
   public function download($resourceName, $optParams = array())
   {
     $params = array('resourceName' => $resourceName);
     $params = array_merge($params, $optParams);
-    return $this->call('download', array($params), "Powerform_Google_Service_Dataproc_Media");
+    return $this->call('download', array($params), "Google_Service_Dataproc_Media");
   }
 
   /**
@@ -124,22 +124,22 @@ class Powerform_Google_Service_Dataproc_Media_Resource extends Powerform_Google_
    *
    * @param string $resourceName Name of the media that is being downloaded. See
    * [][ByteStream.ReadRequest.resource_name].
-   * @param Powerform_Google_Media $postBody
+   * @param Google_Media $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Dataproc_Media
+   * @return Google_Service_Dataproc_Media
    */
-  public function upload($resourceName, Powerform_Google_Service_Dataproc_Media $postBody, $optParams = array())
+  public function upload($resourceName, Google_Service_Dataproc_Media $postBody, $optParams = array())
   {
     $params = array('resourceName' => $resourceName, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('upload', array($params), "Powerform_Google_Service_Dataproc_Media");
+    return $this->call('upload', array($params), "Google_Service_Dataproc_Media");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Dataproc_DiagnoseClusterOutputLocation extends Powerform_Google_Model
+class Google_Service_Dataproc_DiagnoseClusterOutputLocation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -156,7 +156,7 @@ class Powerform_Google_Service_Dataproc_DiagnoseClusterOutputLocation extends Po
   }
 }
 
-class Powerform_Google_Service_Dataproc_Media extends Powerform_Google_Model
+class Google_Service_Dataproc_Media extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -173,7 +173,7 @@ class Powerform_Google_Service_Dataproc_Media extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Dataproc_OperationMetadata extends Powerform_Google_Collection
+class Google_Service_Dataproc_OperationMetadata extends Google_Collection
 {
   protected $collection_key = 'statusHistory';
   protected $internal_gapi_mappings = array(
@@ -186,9 +186,9 @@ class Powerform_Google_Service_Dataproc_OperationMetadata extends Powerform_Goog
   public $insertTime;
   public $startTime;
   public $state;
-  protected $statusType = 'Powerform_Google_Service_Dataproc_OperationStatus';
+  protected $statusType = 'Google_Service_Dataproc_OperationStatus';
   protected $statusDataType = '';
-  protected $statusHistoryType = 'Powerform_Google_Service_Dataproc_OperationStatus';
+  protected $statusHistoryType = 'Google_Service_Dataproc_OperationStatus';
   protected $statusHistoryDataType = 'array';
 
 
@@ -256,7 +256,7 @@ class Powerform_Google_Service_Dataproc_OperationMetadata extends Powerform_Goog
   {
     return $this->state;
   }
-  public function setStatus(Powerform_Google_Service_Dataproc_OperationStatus $status)
+  public function setStatus(Google_Service_Dataproc_OperationStatus $status)
   {
     $this->status = $status;
   }
@@ -274,7 +274,7 @@ class Powerform_Google_Service_Dataproc_OperationMetadata extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Dataproc_OperationStatus extends Powerform_Google_Model
+class Google_Service_Dataproc_OperationStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

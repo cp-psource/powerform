@@ -63,15 +63,15 @@ class Powerform_Form_Views_Model {
 			$ip_query = ' AND `ip` IS NULL';
 		}
 
-		$sql = "SELECT `view_id` FROM {$this->get_table_name()} WHERE `form_id` = %d AND `page_id` = %d {$ip_query} AND `date_created` BETWEEN DATE_SUB(utc_timestamp(), INTERVAL 1 DAY) AND utc_timestamp()";
+		$sql 		= "SELECT `view_id` FROM {$this->get_table_name()} WHERE `form_id` = %d AND `page_id` = %d {$ip_query} AND `date_created` BETWEEN DATE_SUB(utc_timestamp(), INTERVAL 1 DAY) AND utc_timestamp()";
 
 		if ( ! is_null( $ip ) ) {
-			$prepared_sql = $wpdb->prepare( $sql, $form_id, $page_id, $ip ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$prepared_sql = $wpdb->prepare( $sql, $form_id, $page_id, $ip ); // WPCS: unprepared SQL ok. false positive
 		} else {
-			$prepared_sql = $wpdb->prepare( $sql, $form_id, $page_id ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$prepared_sql = $wpdb->prepare( $sql, $form_id, $page_id ); // WPCS: unprepared SQL ok. false positive
 		}
 
-		$view_id = $wpdb->get_var( $prepared_sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$view_id 	= $wpdb->get_var( $prepared_sql ); // WPCS: unprepared SQL ok. false positive
 		if ( $view_id ) {
 			$this->_update( $view_id, $wpdb );
 		} else {
@@ -88,20 +88,17 @@ class Powerform_Form_Views_Model {
 	 * @param bool|object $db - the wp db object
 	 */
 	private function _save( $form_id, $page_id, $ip, $db = false ) {
-		if ( ! $db ) {
+		if ( !$db ) {
 			global $wpdb;
 			$db = $wpdb;
 		}
 
-		$db->insert(
-			$this->table_name,
-			array(
-				'form_id'      => $form_id,
-				'page_id'      => $page_id,
-				'ip'           => $ip,
-				'date_created' => date_i18n( 'Y-m-d H:i:s' ),
-			)
-		);
+		$db->insert( $this->table_name, array(
+			'form_id'     	=> $form_id,
+			'page_id'    	=> $page_id,
+			'ip'    		=> $ip,
+			'date_created'  => date_i18n( 'Y-m-d H:i:s' )
+		) );
 	}
 
 	/**
@@ -113,7 +110,7 @@ class Powerform_Form_Views_Model {
 	 *
 	 */
 	private function _update( $id, $db = false ) {
-		if ( ! $db ) {
+		if ( !$db ) {
 			global $wpdb;
 			$db = $wpdb;
 		}
@@ -143,7 +140,7 @@ class Powerform_Form_Views_Model {
 	public function delete_by_form( $form_id ) {
 		global $wpdb;
 		$sql = "DELETE FROM {$this->get_table_name()} WHERE `form_id` = %d";
-		$wpdb->query( $wpdb->prepare( $sql, $form_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$wpdb->query( $wpdb->prepare( $sql, $form_id ) ); // WPCS: unprepared SQL ok. false positive
 	}
 
 	/**
@@ -191,8 +188,8 @@ class Powerform_Form_Views_Model {
 	private function _count( $form_id, $starting_date = null, $ending_date = null ) {
 		global $wpdb;
 		$date_query = $this->_generate_date_query( $wpdb, $starting_date, $ending_date );
-		$sql        = "SELECT SUM(`count`) FROM {$this->get_table_name()} WHERE `form_id` = %d $date_query";
-		$counts     = $wpdb->get_var( $wpdb->prepare( $sql, $form_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$sql 		= "SELECT SUM(`count`) FROM {$this->get_table_name()} WHERE `form_id` = %d $date_query";
+		$counts 	= $wpdb->get_var( $wpdb->prepare( $sql, $form_id ) ); // WPCS: unprepared SQL ok. false positive
 
 		if ( $counts ) {
 			return $counts;
@@ -212,15 +209,15 @@ class Powerform_Form_Views_Model {
 	 * @return string $date_query
 	 */
 	private function _generate_date_query( $wpdb, $starting_date = null, $ending_date = null, $prefix = '', $clause = 'AND' ) {
-		$date_query  = '';
-		$date_format = '%d-%m-%Y';
-		if ( ! is_null( $starting_date ) && ! is_null( $ending_date ) && ! empty( $starting_date ) && ! empty( $ending_date ) ) {
-			$date_query = $wpdb->prepare( "$clause DATE_FORMAT($prefix`date_created`, '$date_format') >= %s AND DATE_FORMAT($prefix`date_created`, '$date_format') <= %s", $starting_date, $ending_date ); // phpcs:ignore
+		$date_query = "";
+		$date_format = "%d-%m-%Y";
+		if ( !is_null( $starting_date ) && !is_null( $ending_date ) && !empty( $starting_date ) && !empty( $ending_date ) ) {
+			$date_query = $wpdb->prepare( "$clause DATE_FORMAT($prefix`date_created`, '$date_format') >= %s AND DATE_FORMAT($prefix`date_created`, '$date_format') <= %s", $starting_date, $ending_date ); // WPCS: unprepared SQL OK.
 		} else {
-			if ( ! is_null( $starting_date ) && ! empty( $starting_date ) ) {
-				$date_query = $wpdb->prepare( "$clause DATE_FORMAT($prefix`date_created`, '$date_format') >= %s", $starting_date ); // phpcs:ignore
-			} elseif ( ! is_null( $ending_date ) && ! empty( $ending_date ) ) {
-				$date_query = $wpdb->prepare( "$clause DATE_FORMAT($prefix`date_created`, '$date_format') <= %s", $starting_date ); // phpcs:ignore
+			if ( !is_null( $starting_date ) && !empty( $starting_date ) ) {
+				$date_query = $wpdb->prepare( "$clause DATE_FORMAT($prefix`date_created`, '$date_format') >= %s", $starting_date ); // WPCS: unprepared SQL OK.
+			} elseif ( !is_null( $ending_date ) && !empty( $ending_date ) ) {
+				$date_query = $wpdb->prepare( "$clause DATE_FORMAT($prefix`date_created`, '$date_format') <= %s", $starting_date ); // WPCS: unprepared SQL OK.
 			}
 		}
 
@@ -247,7 +244,7 @@ class Powerform_Form_Views_Model {
 			$sql_entries = "SELECT e.form_id, COUNT(1) AS entries FROM $entry_table_name e LEFT JOIN  {$wpdb->posts} p ON (p.`ID` = e.`form_id`) WHERE p.post_type = %s GROUP BY e.`form_id`";
 			$sql         = "SELECT v.form_id, ROUND( (( s.entries *100 )/ v.views), 1 ) AS conversion FROM ($sql_views) v LEFT JOIN ($sql_entries) s ON (s.form_id = v.form_id) WHERE v.views > 0 ORDER BY conversion DESC LIMIT 0, 1";
 
-			$sql = $wpdb->prepare( $sql, $form_type, $form_type ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$sql = $wpdb->prepare( $sql, $form_type, $form_type ); // WPCS: unprepared SQL ok. false positive
 		} else {
 			$date_query  = $this->_generate_date_query( $wpdb, $starting_date, $ending_date, 'd.', 'WHERE' );
 			$sql_views   = "SELECT d.form_id, SUM(d.`count`) AS views FROM {$this->get_table_name()} d $date_query GROUP BY d.`form_id`";
@@ -255,7 +252,7 @@ class Powerform_Form_Views_Model {
 			$sql         = "SELECT v.form_id, ROUND( (( s.entries *100 )/ v.views), 1 ) AS conversion FROM ($sql_views) v LEFT JOIN ($sql_entries) s ON (s.form_id = v.form_id) WHERE v.views > 0 ORDER BY conversion DESC LIMIT 0, 1";
 		}
 
-		$results = $wpdb->get_results( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$results = $wpdb->get_results( $sql ); // WPCS: unprepared SQL OK.
 
 		if ( $results && is_array( $results ) && count( $results ) > 0 ) {
 			return $results[0];
@@ -278,16 +275,16 @@ class Powerform_Form_Views_Model {
 	private function _get_most_popular( $form_type = null, $starting_date = null, $ending_date = null ) {
 		global $wpdb;
 
-		if ( ! is_null( $form_type ) && ! empty( $form_type ) ) {
+		if ( !is_null( $form_type ) && !empty( $form_type ) ) {
 			$date_query = $this->_generate_date_query( $wpdb, $starting_date, $ending_date, 'd.' );
-			$sql        = "SELECT d.`form_id`, SUM(d.`count`) as views FROM  {$this->get_table_name()} d LEFT JOIN {$wpdb->posts} p ON (p.`ID` = d.`form_id`) WHERE p.post_type = %s $date_query GROUP BY d.`form_id` ORDER BY views DESC LIMIT 0,1";
-			$sql        = $wpdb->prepare( $sql, $form_type ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$sql 		= "SELECT d.`form_id`, SUM(d.`count`) as views FROM  {$this->get_table_name()} d LEFT JOIN {$wpdb->posts} p ON (p.`ID` = d.`form_id`) WHERE p.post_type = %s $date_query GROUP BY d.`form_id` ORDER BY views DESC LIMIT 0,1";
+			$sql 		= $wpdb->prepare( $sql, $form_type ); // WPCS: unprepared SQL ok. false positive
 		} else {
 			$date_query = $this->_generate_date_query( $wpdb, $starting_date, $ending_date, 'd.', 'WHERE' );
-			$sql        = "SELECT d.`form_id`, SUM(d.`count`) as views FROM  {$this->get_table_name()} d $date_query GROUP BY d.`form_id` ORDER BY views DESC LIMIT 0,1";
+			$sql 		= "SELECT d.`form_id`, SUM(d.`count`) as views FROM  {$this->get_table_name()} d $date_query GROUP BY d.`form_id` ORDER BY views DESC LIMIT 0,1";
 		}
 
-		$results = $wpdb->get_results( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$results = $wpdb->get_results( $sql ); // WPCS: unprepared SQL OK.
 
 		if ( $results && is_array( $results ) && count( $results ) > 0 ) {
 			return $results[0];
@@ -304,8 +301,8 @@ class Powerform_Form_Views_Model {
 	 */
 	public function count_non_empty_ip_address() {
 		global $wpdb;
-		$sql   = $wpdb->prepare( "SELECT COUNT(1) FROM {$this->get_table_name()} WHERE NULLIF(ip, %s) IS NOT NULL", '' );// phpcs:ignore
-		$total = $wpdb->get_var( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$sql   = $wpdb->prepare( "SELECT COUNT(1) FROM {$this->get_table_name()} WHERE NULLIF(ip, %s) IS NOT NULL", '' );
+		$total = $wpdb->get_var( $sql ); // WPCS: unprepared SQL ok. false positive
 
 		return intval( $total );
 	}
@@ -318,8 +315,8 @@ class Powerform_Form_Views_Model {
 	public function maybe_cleanup_ip_address() {
 		global $wpdb;
 		if ( $this->count_non_empty_ip_address() ) {
-			$wpdb->query( "UPDATE {$this->get_table_name()} SET `ip` = NULL" );// phpcs:ignore
-			powerform_maybe_log( __METHOD__ );
+			$wpdb->query( "UPDATE {$this->get_table_name()} SET `ip` = NULL" );// WPCS: unprepared SQL ok. false positive
+			powerform_maybe_log(__METHOD__);
 			return true;
 		}
 
@@ -333,7 +330,7 @@ class Powerform_Form_Views_Model {
 	 *
 	 * @return string
 	 */
-	public function get_table_name() {
-		return Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_VIEWS );
-	}
+	 public function get_table_name() {
+		 return Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_VIEWS );
+	 }
 }

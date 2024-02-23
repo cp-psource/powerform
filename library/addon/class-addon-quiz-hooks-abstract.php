@@ -57,37 +57,6 @@ abstract class Powerform_Addon_Quiz_Hooks_Abstract {
 	protected $quiz;
 
 	/**
-	 * Lead settings instance
-	 *
-	 * @since 1.6.2
-	 * @var Powerform_Addon_Quiz_Settings_Abstract|null
-	 *
-	 */
-	protected $lead_settings_instance;
-
-	/**
-	 * Lead Model
-	 *
-	 * @since 1.6.2
-	 * @var Powerform_Custom_Form_Model
-	 */
-	protected $lead_model;
-
-	/**
-	 * Prefix for calculation element
-	 *
-	 * @since 1.7
-	 */
-	const CALCULATION_ELEMENT_PREFIX = 'calculation-';
-
-	/**
-	 * Prefix for stripe element
-	 *
-	 * @since 1.7
-	 */
-	const STRIPE_ELEMENT_PREFIX = 'stripe-';
-
-	/**
 	 * Powerform_Addon_Quiz_Hooks_Abstract constructor.
 	 *
 	 * @param Powerform_Addon_Abstract $addon
@@ -101,19 +70,13 @@ abstract class Powerform_Addon_Quiz_Hooks_Abstract {
 		$this->quiz_id = $quiz_id;
 		$this->quiz    = Powerform_Quiz_Form_Model::model()->load( $this->quiz_id );
 		if ( ! $this->quiz ) {
-			/* translators: ... */
-			throw new Powerform_Addon_Exception( sprintf( __( 'Quiz with id %d could not be found', Powerform::DOMAIN ), $this->quiz_id ) );
+			throw new Powerform_Addon_Exception( sprintf( __( 'Test mit der ID %d konnte nicht gefunden werden', Powerform::DOMAIN ), $this->quiz_id ) );
 		}
 
-		$this->_submit_quiz_error_message = __( 'Failed to submit quiz because of an addon, please check your quiz and try again' );
+		$this->_submit_quiz_error_message = __( 'Der Test konnte aufgrund eines Addons nicht eingereicht werden. Überprüfe Deinen Test und versuche es erneut' );
 
 		// get quiz settings instance to be available throughout cycle
 		$this->quiz_settings_instance = $this->addon->get_addon_quiz_settings( $this->quiz_id );
-
-		if ( isset( $this->quiz->settings['hasLeads'] ) && $this->quiz->settings['hasLeads'] ) {
-			$this->lead_model             = Powerform_Custom_Form_Model::model()->load( $this->quiz->settings['leadsId'] );
-			$this->lead_settings_instance = $this->addon->get_addon_form_settings( $this->quiz->settings['leadsId'] );
-		}
 	}
 
 	/**
@@ -261,6 +224,7 @@ abstract class Powerform_Addon_Quiz_Hooks_Abstract {
 			$quiz_settings_instance
 		);
 
+
 		$is_success = true;
 		/**
 		 * Filter result of quiz submit
@@ -370,6 +334,7 @@ abstract class Powerform_Addon_Quiz_Hooks_Abstract {
 			$quiz_id,
 			$quiz_settings_instance
 		);
+
 
 		$entry_fields = array();
 		/**
@@ -481,6 +446,7 @@ abstract class Powerform_Addon_Quiz_Hooks_Abstract {
 			$quiz_settings_instance
 		);
 
+
 		$entry_items = array();
 		/**
 		 * Filter addon row(s) to be displayed on entries page
@@ -506,6 +472,7 @@ abstract class Powerform_Addon_Quiz_Hooks_Abstract {
 			$addon_meta_data,
 			$quiz_settings_instance
 		);
+
 
 		return $entry_items;
 	}
@@ -789,95 +756,6 @@ abstract class Powerform_Addon_Quiz_Hooks_Abstract {
 		}
 
 		return $default;
-	}
-
-	/**
-	 * Check if element_id is stripe type
-	 *
-	 * @since 1.7
-	 *
-	 * @param $element_id
-	 *
-	 * @return bool
-	 */
-	public static function element_is_stripe( $element_id ) {
-		$is_stripe = stripos( $element_id, self::STRIPE_ELEMENT_PREFIX ) !== false;
-
-		/**
-		 * Filter stripe flag of element
-		 *
-		 * @since 1.7
-		 *
-		 * @param bool   $is_stripe
-		 * @param string $element_id
-		 *
-		 * @return bool
-		 */
-		$is_stripe = apply_filters( 'powerform_addon_element_is_stripe', $is_stripe, $element_id );
-
-		return $is_stripe;
-	}
-
-	/**
-	 * Check if element_id is calculation type
-	 *
-	 * @since 1.7
-	 *
-	 * @param $element_id
-	 *
-	 * @return bool
-	 */
-	public static function element_is_calculation( $element_id ) {
-		$is_calculation = stripos( $element_id, self::CALCULATION_ELEMENT_PREFIX ) !== false;
-
-		/**
-		 * Filter calculation flag of element
-		 *
-		 * @since 1.7
-		 *
-		 * @param bool   $is_calculation
-		 * @param string $element_id
-		 *
-		 * @return bool
-		 */
-		$is_calculation = apply_filters( 'powerform_addon_element_is_calculation', $is_calculation, $element_id );
-
-		return $is_calculation;
-	}
-
-	/**
-	 * Find Meta value from entry fields
-	 *
-	 * @since 1.7
-	 *
-	 * @param $element_id
-	 * @param $form_entry_fields
-	 *
-	 * @return array
-	 */
-	public static function find_meta_value_from_entry_fields( $element_id, $form_entry_fields ) {
-		$meta_value = array();
-
-		foreach ( $form_entry_fields as $form_entry_field ) {
-			if ( isset( $form_entry_field['name'] ) && $form_entry_field['name'] === $element_id ) {
-				$meta_value = isset( $form_entry_field['value'] ) ? $form_entry_field['value'] : array();
-			}
-		}
-
-		/**
-		 * Filter meta value of element_id from form entry fields
-		 *
-		 * @since 1.7
-		 *
-		 * @param array  $meta_value
-		 * @param string $element_id
-		 * @param array  $form_entry_fields
-		 *
-		 * @return array
-		 */
-		$meta_value = apply_filters( 'powerform_addon_meta_value_entry_fields', $meta_value, $element_id, $form_entry_fields );
-
-		return $meta_value;
 	}
 
 }

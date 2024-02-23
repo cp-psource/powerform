@@ -12,12 +12,7 @@ foreach ( $template_vars as $key => $val ) {
 
 <div class="integration-header">
 
-	<h3 class="sui-box-title" id="dialogTitle2">
-		<?php
-			/* translators: ... */
-			echo esc_html( sprintf( __( 'Connect %1$s', Powerform::DOMAIN ), 'AWeber' ) );
-		?>
-	</h3>
+	<h3 class="sui-box-title" id="dialogTitle2"><?php echo esc_html( sprintf( __( 'Connect %1$s', Powerform::DOMAIN ), 'AWeber' ) ); ?></h3>
 
 </div>
 
@@ -25,12 +20,7 @@ foreach ( $template_vars as $key => $val ) {
 
 	<div class="sui-notice sui-notice-loading">
 
-		<p>
-			<?php
-				/* translators: ... */
-				echo esc_html( sprintf( __( 'We are waiting %1$s authorization...', Powerform::DOMAIN ), 'AWeber' ) );
-			?>
-		</p>
+		<p><?php echo esc_html( sprintf( __( 'We are waiting %1$s authorization...', Powerform::DOMAIN ), 'AWeber' ) ); ?></p>
 
 	</div>
 
@@ -45,4 +35,3 @@ foreach ( $template_vars as $key => $val ) {
 	<?php endif; ?>
 
 </form>
-

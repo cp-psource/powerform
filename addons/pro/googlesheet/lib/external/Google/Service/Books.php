@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Books extends Powerform_Google_Service
+class Google_Service_Books extends Google_Service
 {
   /** Manage your books. */
   const BOOKS =
@@ -55,14 +55,14 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
   public $volumes_mybooks;
   public $volumes_recommended;
   public $volumes_useruploaded;
-  
+
 
   /**
    * Constructs the internal representation of the Books service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -70,7 +70,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'books';
 
-    $this->bookshelves = new Powerform_Google_Service_Books_Bookshelves_Resource(
+    $this->bookshelves = new Google_Service_Books_Bookshelves_Resource(
         $this,
         $this->serviceName,
         'bookshelves',
@@ -113,7 +113,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->bookshelves_volumes = new Powerform_Google_Service_Books_BookshelvesVolumes_Resource(
+    $this->bookshelves_volumes = new Google_Service_Books_BookshelvesVolumes_Resource(
         $this,
         $this->serviceName,
         'volumes',
@@ -154,7 +154,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->cloudloading = new Powerform_Google_Service_Books_Cloudloading_Resource(
+    $this->cloudloading = new Google_Service_Books_Cloudloading_Resource(
         $this,
         $this->serviceName,
         'cloudloading',
@@ -199,7 +199,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->dictionary = new Powerform_Google_Service_Books_Dictionary_Resource(
+    $this->dictionary = new Google_Service_Books_Dictionary_Resource(
         $this,
         $this->serviceName,
         'dictionary',
@@ -219,7 +219,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->layers = new Powerform_Google_Service_Books_Layers_Resource(
+    $this->layers = new Google_Service_Books_Layers_Resource(
         $this,
         $this->serviceName,
         'layers',
@@ -278,7 +278,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->layers_annotationData = new Powerform_Google_Service_Books_LayersAnnotationData_Resource(
+    $this->layers_annotationData = new Google_Service_Books_LayersAnnotationData_Resource(
         $this,
         $this->serviceName,
         'annotationData',
@@ -398,7 +398,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->layers_volumeAnnotations = new Powerform_Google_Service_Books_LayersVolumeAnnotations_Resource(
+    $this->layers_volumeAnnotations = new Google_Service_Books_LayersVolumeAnnotations_Resource(
         $this,
         $this->serviceName,
         'volumeAnnotations',
@@ -504,7 +504,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->myconfig = new Powerform_Google_Service_Books_Myconfig_Resource(
+    $this->myconfig = new Google_Service_Books_Myconfig_Resource(
         $this,
         $this->serviceName,
         'myconfig',
@@ -621,7 +621,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->mylibrary_annotations = new Powerform_Google_Service_Books_MylibraryAnnotations_Resource(
+    $this->mylibrary_annotations = new Google_Service_Books_MylibraryAnnotations_Resource(
         $this,
         $this->serviceName,
         'annotations',
@@ -738,7 +738,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->mylibrary_bookshelves = new Powerform_Google_Service_Books_MylibraryBookshelves_Resource(
+    $this->mylibrary_bookshelves = new Google_Service_Books_MylibraryBookshelves_Resource(
         $this,
         $this->serviceName,
         'bookshelves',
@@ -855,7 +855,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->mylibrary_bookshelves_volumes = new Powerform_Google_Service_Books_MylibraryBookshelvesVolumes_Resource(
+    $this->mylibrary_bookshelves_volumes = new Google_Service_Books_MylibraryBookshelvesVolumes_Resource(
         $this,
         $this->serviceName,
         'volumes',
@@ -903,7 +903,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->mylibrary_readingpositions = new Powerform_Google_Service_Books_MylibraryReadingpositions_Resource(
+    $this->mylibrary_readingpositions = new Google_Service_Books_MylibraryReadingpositions_Resource(
         $this,
         $this->serviceName,
         'readingpositions',
@@ -967,7 +967,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->notification = new Powerform_Google_Service_Books_Notification_Resource(
+    $this->notification = new Google_Service_Books_Notification_Resource(
         $this,
         $this->serviceName,
         'notification',
@@ -995,7 +995,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->onboarding = new Powerform_Google_Service_Books_Onboarding_Resource(
+    $this->onboarding = new Google_Service_Books_Onboarding_Resource(
         $this,
         $this->serviceName,
         'onboarding',
@@ -1040,7 +1040,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->personalizedstream = new Powerform_Google_Service_Books_Personalizedstream_Resource(
+    $this->personalizedstream = new Google_Service_Books_Personalizedstream_Resource(
         $this,
         $this->serviceName,
         'personalizedstream',
@@ -1067,7 +1067,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->promooffer = new Powerform_Google_Service_Books_Promooffer_Resource(
+    $this->promooffer = new Google_Service_Books_Promooffer_Resource(
         $this,
         $this->serviceName,
         'promooffer',
@@ -1176,7 +1176,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->series = new Powerform_Google_Service_Books_Series_Resource(
+    $this->series = new Google_Service_Books_Series_Resource(
         $this,
         $this->serviceName,
         'series',
@@ -1197,7 +1197,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->series_membership = new Powerform_Google_Service_Books_SeriesMembership_Resource(
+    $this->series_membership = new Google_Service_Books_SeriesMembership_Resource(
         $this,
         $this->serviceName,
         'membership',
@@ -1225,7 +1225,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->volumes = new Powerform_Google_Service_Books_Volumes_Resource(
+    $this->volumes = new Google_Service_Books_Volumes_Resource(
         $this,
         $this->serviceName,
         'volumes',
@@ -1327,7 +1327,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->volumes_associated = new Powerform_Google_Service_Books_VolumesAssociated_Resource(
+    $this->volumes_associated = new Google_Service_Books_VolumesAssociated_Resource(
         $this,
         $this->serviceName,
         'associated',
@@ -1363,7 +1363,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->volumes_mybooks = new Powerform_Google_Service_Books_VolumesMybooks_Resource(
+    $this->volumes_mybooks = new Google_Service_Books_VolumesMybooks_Resource(
         $this,
         $this->serviceName,
         'mybooks',
@@ -1404,7 +1404,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->volumes_recommended = new Powerform_Google_Service_Books_VolumesRecommended_Resource(
+    $this->volumes_recommended = new Google_Service_Books_VolumesRecommended_Resource(
         $this,
         $this->serviceName,
         'recommended',
@@ -1454,7 +1454,7 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
           )
         )
     );
-    $this->volumes_useruploaded = new Powerform_Google_Service_Books_VolumesUseruploaded_Resource(
+    $this->volumes_useruploaded = new Google_Service_Books_VolumesUseruploaded_Resource(
         $this,
         $this->serviceName,
         'useruploaded',
@@ -1503,11 +1503,11 @@ class Powerform_Google_Service_Books extends Powerform_Google_Service
  * The "bookshelves" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $bookshelves = $booksService->bookshelves;
  *  </code>
  */
-class Powerform_Google_Service_Books_Bookshelves_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Bookshelves_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1519,13 +1519,13 @@ class Powerform_Google_Service_Books_Bookshelves_Resource extends Powerform_Goog
    * @param array $optParams Optional parameters.
    *
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Bookshelf
+   * @return Google_Service_Books_Bookshelf
    */
   public function get($userId, $shelf, $optParams = array())
   {
     $params = array('userId' => $userId, 'shelf' => $shelf);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Bookshelf");
+    return $this->call('get', array($params), "Google_Service_Books_Bookshelf");
   }
 
   /**
@@ -1536,13 +1536,13 @@ class Powerform_Google_Service_Books_Bookshelves_Resource extends Powerform_Goog
    * @param array $optParams Optional parameters.
    *
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Bookshelves
+   * @return Google_Service_Books_Bookshelves
    */
   public function listBookshelves($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Bookshelves");
+    return $this->call('list', array($params), "Google_Service_Books_Bookshelves");
   }
 }
 
@@ -1550,11 +1550,11 @@ class Powerform_Google_Service_Books_Bookshelves_Resource extends Powerform_Goog
  * The "volumes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $volumes = $booksService->volumes;
  *  </code>
  */
-class Powerform_Google_Service_Books_BookshelvesVolumes_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_BookshelvesVolumes_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1571,13 +1571,13 @@ class Powerform_Google_Service_Books_BookshelvesVolumes_Resource extends Powerfo
    * @opt_param string source String to identify the originator of this request.
    * @opt_param string startIndex Index of the first element to return (starts at
    * 0)
-   * @return Powerform_Google_Service_Books_Volumes
+   * @return Google_Service_Books_Volumes
    */
   public function listBookshelvesVolumes($userId, $shelf, $optParams = array())
   {
     $params = array('userId' => $userId, 'shelf' => $shelf);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Volumes");
+    return $this->call('list', array($params), "Google_Service_Books_Volumes");
   }
 }
 
@@ -1585,11 +1585,11 @@ class Powerform_Google_Service_Books_BookshelvesVolumes_Resource extends Powerfo
  * The "cloudloading" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $cloudloading = $booksService->cloudloading;
  *  </code>
  */
-class Powerform_Google_Service_Books_Cloudloading_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Cloudloading_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1604,13 +1604,13 @@ class Powerform_Google_Service_Books_Cloudloading_Resource extends Powerform_Goo
    * @opt_param string name The document name. It can be set only if the
    * drive_document_id is set.
    * @opt_param string upload_client_token
-   * @return Powerform_Google_Service_Books_BooksCloudloadingResource
+   * @return Google_Service_Books_BooksCloudloadingResource
    */
   public function addBook($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('addBook', array($params), "Powerform_Google_Service_Books_BooksCloudloadingResource");
+    return $this->call('addBook', array($params), "Google_Service_Books_BooksCloudloadingResource");
   }
 
   /**
@@ -1629,15 +1629,15 @@ class Powerform_Google_Service_Books_Cloudloading_Resource extends Powerform_Goo
   /**
    * (cloudloading.updateBook)
    *
-   * @param Powerform_Google_BooksCloudloadingResource $postBody
+   * @param Google_BooksCloudloadingResource $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Books_BooksCloudloadingResource
+   * @return Google_Service_Books_BooksCloudloadingResource
    */
-  public function updateBook(Powerform_Google_Service_Books_BooksCloudloadingResource $postBody, $optParams = array())
+  public function updateBook(Google_Service_Books_BooksCloudloadingResource $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('updateBook', array($params), "Powerform_Google_Service_Books_BooksCloudloadingResource");
+    return $this->call('updateBook', array($params), "Google_Service_Books_BooksCloudloadingResource");
   }
 }
 
@@ -1645,11 +1645,11 @@ class Powerform_Google_Service_Books_Cloudloading_Resource extends Powerform_Goo
  * The "dictionary" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $dictionary = $booksService->dictionary;
  *  </code>
  */
-class Powerform_Google_Service_Books_Dictionary_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Dictionary_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1658,13 +1658,13 @@ class Powerform_Google_Service_Books_Dictionary_Resource extends Powerform_Googl
    *
    * @param string $cpksver The device/version ID from which to request the data.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Books_Metadata
+   * @return Google_Service_Books_Metadata
    */
   public function listOfflineMetadata($cpksver, $optParams = array())
   {
     $params = array('cpksver' => $cpksver);
     $params = array_merge($params, $optParams);
-    return $this->call('listOfflineMetadata', array($params), "Powerform_Google_Service_Books_Metadata");
+    return $this->call('listOfflineMetadata', array($params), "Google_Service_Books_Metadata");
   }
 }
 
@@ -1672,11 +1672,11 @@ class Powerform_Google_Service_Books_Dictionary_Resource extends Powerform_Googl
  * The "layers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $layers = $booksService->layers;
  *  </code>
  */
-class Powerform_Google_Service_Books_Layers_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Layers_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1689,13 +1689,13 @@ class Powerform_Google_Service_Books_Layers_Resource extends Powerform_Google_Se
    * @opt_param string contentVersion The content version for the requested
    * volume.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Layersummary
+   * @return Google_Service_Books_Layersummary
    */
   public function get($volumeId, $summaryId, $optParams = array())
   {
     $params = array('volumeId' => $volumeId, 'summaryId' => $summaryId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Layersummary");
+    return $this->call('get', array($params), "Google_Service_Books_Layersummary");
   }
 
   /**
@@ -1710,13 +1710,13 @@ class Powerform_Google_Service_Books_Layers_Resource extends Powerform_Google_Se
    * @opt_param string pageToken The value of the nextToken from the previous
    * page.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Layersummaries
+   * @return Google_Service_Books_Layersummaries
    */
   public function listLayers($volumeId, $optParams = array())
   {
     $params = array('volumeId' => $volumeId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Layersummaries");
+    return $this->call('list', array($params), "Google_Service_Books_Layersummaries");
   }
 }
 
@@ -1724,11 +1724,11 @@ class Powerform_Google_Service_Books_Layers_Resource extends Powerform_Google_Se
  * The "annotationData" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $annotationData = $booksService->annotationData;
  *  </code>
  */
-class Powerform_Google_Service_Books_LayersAnnotationData_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_LayersAnnotationData_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1751,13 +1751,13 @@ class Powerform_Google_Service_Books_LayersAnnotationData_Resource extends Power
    * @opt_param string source String to identify the originator of this request.
    * @opt_param int w The requested pixel width for any images. If width is
    * provided height must also be provided.
-   * @return Powerform_Google_Service_Books_Annotationdata
+   * @return Google_Service_Books_Annotationdata
    */
   public function get($volumeId, $layerId, $annotationDataId, $contentVersion, $optParams = array())
   {
     $params = array('volumeId' => $volumeId, 'layerId' => $layerId, 'annotationDataId' => $annotationDataId, 'contentVersion' => $contentVersion);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Annotationdata");
+    return $this->call('get', array($params), "Google_Service_Books_Annotationdata");
   }
 
   /**
@@ -1786,24 +1786,24 @@ class Powerform_Google_Service_Books_LayersAnnotationData_Resource extends Power
    * since this timestamp (inclusive).
    * @opt_param int w The requested pixel width for any images. If width is
    * provided height must also be provided.
-   * @return Powerform_Google_Service_Books_Annotationsdata
+   * @return Google_Service_Books_Annotationsdata
    */
   public function listLayersAnnotationData($volumeId, $layerId, $contentVersion, $optParams = array())
   {
     $params = array('volumeId' => $volumeId, 'layerId' => $layerId, 'contentVersion' => $contentVersion);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Annotationsdata");
+    return $this->call('list', array($params), "Google_Service_Books_Annotationsdata");
   }
 }
 /**
  * The "volumeAnnotations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $volumeAnnotations = $booksService->volumeAnnotations;
  *  </code>
  */
-class Powerform_Google_Service_Books_LayersVolumeAnnotations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_LayersVolumeAnnotations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1817,13 +1817,13 @@ class Powerform_Google_Service_Books_LayersVolumeAnnotations_Resource extends Po
    * @opt_param string locale The locale information for the data. ISO-639-1
    * language and ISO-3166-1 country code. Ex: 'en_US'.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Volumeannotation
+   * @return Google_Service_Books_Volumeannotation
    */
   public function get($volumeId, $layerId, $annotationId, $optParams = array())
   {
     $params = array('volumeId' => $volumeId, 'layerId' => $layerId, 'annotationId' => $annotationId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Volumeannotation");
+    return $this->call('get', array($params), "Google_Service_Books_Volumeannotation");
   }
 
   /**
@@ -1854,13 +1854,13 @@ class Powerform_Google_Service_Books_LayersVolumeAnnotations_Resource extends Po
    * since this timestamp (inclusive).
    * @opt_param string volumeAnnotationsVersion The version of the volume
    * annotations that you are requesting.
-   * @return Powerform_Google_Service_Books_Volumeannotations
+   * @return Google_Service_Books_Volumeannotations
    */
   public function listLayersVolumeAnnotations($volumeId, $layerId, $contentVersion, $optParams = array())
   {
     $params = array('volumeId' => $volumeId, 'layerId' => $layerId, 'contentVersion' => $contentVersion);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Volumeannotations");
+    return $this->call('list', array($params), "Google_Service_Books_Volumeannotations");
   }
 }
 
@@ -1868,24 +1868,24 @@ class Powerform_Google_Service_Books_LayersVolumeAnnotations_Resource extends Po
  * The "myconfig" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $myconfig = $booksService->myconfig;
  *  </code>
  */
-class Powerform_Google_Service_Books_Myconfig_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Myconfig_Resource extends Google_Service_Resource
 {
 
   /**
    * Gets the current settings for the user. (myconfig.getUserSettings)
    *
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Books_Usersettings
+   * @return Google_Service_Books_Usersettings
    */
   public function getUserSettings($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('getUserSettings', array($params), "Powerform_Google_Service_Books_Usersettings");
+    return $this->call('getUserSettings', array($params), "Google_Service_Books_Usersettings");
   }
 
   /**
@@ -1900,13 +1900,13 @@ class Powerform_Google_Service_Books_Myconfig_Resource extends Powerform_Google_
    * @opt_param string locale ISO-639-1, ISO-3166-1 codes for message
    * localization, i.e. en_US.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_DownloadAccesses
+   * @return Google_Service_Books_DownloadAccesses
    */
   public function releaseDownloadAccess($volumeIds, $cpksver, $optParams = array())
   {
     $params = array('volumeIds' => $volumeIds, 'cpksver' => $cpksver);
     $params = array_merge($params, $optParams);
-    return $this->call('releaseDownloadAccess', array($params), "Powerform_Google_Service_Books_DownloadAccesses");
+    return $this->call('releaseDownloadAccess', array($params), "Google_Service_Books_DownloadAccesses");
   }
 
   /**
@@ -1924,13 +1924,13 @@ class Powerform_Google_Service_Books_Myconfig_Resource extends Powerform_Google_
    * specified, the default is BOTH.
    * @opt_param string locale ISO-639-1, ISO-3166-1 codes for message
    * localization, i.e. en_US.
-   * @return Powerform_Google_Service_Books_RequestAccess
+   * @return Google_Service_Books_RequestAccess
    */
   public function requestAccess($source, $volumeId, $nonce, $cpksver, $optParams = array())
   {
     $params = array('source' => $source, 'volumeId' => $volumeId, 'nonce' => $nonce, 'cpksver' => $cpksver);
     $params = array_merge($params, $optParams);
-    return $this->call('requestAccess', array($params), "Powerform_Google_Service_Books_RequestAccess");
+    return $this->call('requestAccess', array($params), "Google_Service_Books_RequestAccess");
   }
 
   /**
@@ -1953,13 +1953,13 @@ class Powerform_Google_Service_Books_Myconfig_Resource extends Powerform_Google_
    * to false.
    * @opt_param string volumeIds The volume(s) to request download restrictions
    * for.
-   * @return Powerform_Google_Service_Books_Volumes
+   * @return Google_Service_Books_Volumes
    */
   public function syncVolumeLicenses($source, $nonce, $cpksver, $optParams = array())
   {
     $params = array('source' => $source, 'nonce' => $nonce, 'cpksver' => $cpksver);
     $params = array_merge($params, $optParams);
-    return $this->call('syncVolumeLicenses', array($params), "Powerform_Google_Service_Books_Volumes");
+    return $this->call('syncVolumeLicenses', array($params), "Google_Service_Books_Volumes");
   }
 
   /**
@@ -1967,15 +1967,15 @@ class Powerform_Google_Service_Books_Myconfig_Resource extends Powerform_Google_
    * overwrite the existing sub-object stored in the server. Unspecified sub-
    * objects will retain the existing value. (myconfig.updateUserSettings)
    *
-   * @param Powerform_Google_Usersettings $postBody
+   * @param Google_Usersettings $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Books_Usersettings
+   * @return Google_Service_Books_Usersettings
    */
-  public function updateUserSettings(Powerform_Google_Service_Books_Usersettings $postBody, $optParams = array())
+  public function updateUserSettings(Google_Service_Books_Usersettings $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('updateUserSettings', array($params), "Powerform_Google_Service_Books_Usersettings");
+    return $this->call('updateUserSettings', array($params), "Google_Service_Books_Usersettings");
   }
 }
 
@@ -1983,11 +1983,11 @@ class Powerform_Google_Service_Books_Myconfig_Resource extends Powerform_Google_
  * The "mylibrary" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $mylibrary = $booksService->mylibrary;
  *  </code>
  */
-class Powerform_Google_Service_Books_Mylibrary_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Mylibrary_Resource extends Google_Service_Resource
 {
 }
 
@@ -1995,11 +1995,11 @@ class Powerform_Google_Service_Books_Mylibrary_Resource extends Powerform_Google
  * The "annotations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $annotations = $booksService->annotations;
  *  </code>
  */
-class Powerform_Google_Service_Books_MylibraryAnnotations_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_MylibraryAnnotations_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2020,20 +2020,20 @@ class Powerform_Google_Service_Books_MylibraryAnnotations_Resource extends Power
   /**
    * Inserts a new annotation. (annotations.insert)
    *
-   * @param Powerform_Google_Annotation $postBody
+   * @param Google_Annotation $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string country ISO-3166-1 code to override the IP-based location.
    * @opt_param bool showOnlySummaryInResponse Requests that only the summary of
    * the specified layer be provided in the response.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Annotation
+   * @return Google_Service_Books_Annotation
    */
-  public function insert(Powerform_Google_Service_Books_Annotation $postBody, $optParams = array())
+  public function insert(Google_Service_Books_Annotation $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Books_Annotation");
+    return $this->call('insert', array($params), "Google_Service_Books_Annotation");
   }
 
   /**
@@ -2057,13 +2057,13 @@ class Powerform_Google_Service_Books_MylibraryAnnotations_Resource extends Power
    * @opt_param string updatedMin RFC 3339 timestamp to restrict to items updated
    * since this timestamp (inclusive).
    * @opt_param string volumeId The volume to restrict annotations to.
-   * @return Powerform_Google_Service_Books_Annotations
+   * @return Google_Service_Books_Annotations
    */
   public function listMylibraryAnnotations($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Annotations");
+    return $this->call('list', array($params), "Google_Service_Books_Annotations");
   }
 
   /**
@@ -2072,41 +2072,41 @@ class Powerform_Google_Service_Books_MylibraryAnnotations_Resource extends Power
    * @param string $layerIds Array of layer IDs to get the summary for.
    * @param string $volumeId Volume id to get the summary for.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Books_AnnotationsSummary
+   * @return Google_Service_Books_AnnotationsSummary
    */
   public function summary($layerIds, $volumeId, $optParams = array())
   {
     $params = array('layerIds' => $layerIds, 'volumeId' => $volumeId);
     $params = array_merge($params, $optParams);
-    return $this->call('summary', array($params), "Powerform_Google_Service_Books_AnnotationsSummary");
+    return $this->call('summary', array($params), "Google_Service_Books_AnnotationsSummary");
   }
 
   /**
    * Updates an existing annotation. (annotations.update)
    *
    * @param string $annotationId The ID for the annotation to update.
-   * @param Powerform_Google_Annotation $postBody
+   * @param Google_Annotation $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Annotation
+   * @return Google_Service_Books_Annotation
    */
-  public function update($annotationId, Powerform_Google_Service_Books_Annotation $postBody, $optParams = array())
+  public function update($annotationId, Google_Service_Books_Annotation $postBody, $optParams = array())
   {
     $params = array('annotationId' => $annotationId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Books_Annotation");
+    return $this->call('update', array($params), "Google_Service_Books_Annotation");
   }
 }
 /**
  * The "bookshelves" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $bookshelves = $booksService->bookshelves;
  *  </code>
  */
-class Powerform_Google_Service_Books_MylibraryBookshelves_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_MylibraryBookshelves_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2150,13 +2150,13 @@ class Powerform_Google_Service_Books_MylibraryBookshelves_Resource extends Power
    * @param array $optParams Optional parameters.
    *
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Bookshelf
+   * @return Google_Service_Books_Bookshelf
    */
   public function get($shelf, $optParams = array())
   {
     $params = array('shelf' => $shelf);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Bookshelf");
+    return $this->call('get', array($params), "Google_Service_Books_Bookshelf");
   }
 
   /**
@@ -2166,13 +2166,13 @@ class Powerform_Google_Service_Books_MylibraryBookshelves_Resource extends Power
    * @param array $optParams Optional parameters.
    *
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Bookshelves
+   * @return Google_Service_Books_Bookshelves
    */
   public function listMylibraryBookshelves($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Bookshelves");
+    return $this->call('list', array($params), "Google_Service_Books_Bookshelves");
   }
 
   /**
@@ -2217,11 +2217,11 @@ class Powerform_Google_Service_Books_MylibraryBookshelves_Resource extends Power
  * The "volumes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $volumes = $booksService->volumes;
  *  </code>
  */
-class Powerform_Google_Service_Books_MylibraryBookshelvesVolumes_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_MylibraryBookshelvesVolumes_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2241,24 +2241,24 @@ class Powerform_Google_Service_Books_MylibraryBookshelvesVolumes_Resource extend
    * @opt_param string source String to identify the originator of this request.
    * @opt_param string startIndex Index of the first element to return (starts at
    * 0)
-   * @return Powerform_Google_Service_Books_Volumes
+   * @return Google_Service_Books_Volumes
    */
   public function listMylibraryBookshelvesVolumes($shelf, $optParams = array())
   {
     $params = array('shelf' => $shelf);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Volumes");
+    return $this->call('list', array($params), "Google_Service_Books_Volumes");
   }
 }
 /**
  * The "readingpositions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $readingpositions = $booksService->readingpositions;
  *  </code>
  */
-class Powerform_Google_Service_Books_MylibraryReadingpositions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_MylibraryReadingpositions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2272,13 +2272,13 @@ class Powerform_Google_Service_Books_MylibraryReadingpositions_Resource extends 
    * @opt_param string contentVersion Volume content version for which this
    * reading position is requested.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_ReadingPosition
+   * @return Google_Service_Books_ReadingPosition
    */
   public function get($volumeId, $optParams = array())
   {
     $params = array('volumeId' => $volumeId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_ReadingPosition");
+    return $this->call('get', array($params), "Google_Service_Books_ReadingPosition");
   }
 
   /**
@@ -2311,11 +2311,11 @@ class Powerform_Google_Service_Books_MylibraryReadingpositions_Resource extends 
  * The "notification" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $notification = $booksService->notification;
  *  </code>
  */
-class Powerform_Google_Service_Books_Notification_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Notification_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2327,13 +2327,13 @@ class Powerform_Google_Service_Books_Notification_Resource extends Powerform_Goo
    * @opt_param string locale ISO-639-1 language and ISO-3166-1 country code. Ex:
    * 'en_US'. Used for generating notification title and body.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Notification
+   * @return Google_Service_Books_Notification
    */
   public function get($notificationId, $optParams = array())
   {
     $params = array('notification_id' => $notificationId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Notification");
+    return $this->call('get', array($params), "Google_Service_Books_Notification");
   }
 }
 
@@ -2341,11 +2341,11 @@ class Powerform_Google_Service_Books_Notification_Resource extends Powerform_Goo
  * The "onboarding" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $onboarding = $booksService->onboarding;
  *  </code>
  */
-class Powerform_Google_Service_Books_Onboarding_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Onboarding_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2355,13 +2355,13 @@ class Powerform_Google_Service_Books_Onboarding_Resource extends Powerform_Googl
    *
    * @opt_param string locale ISO-639-1 language and ISO-3166-1 country code.
    * Default is en-US if unset.
-   * @return Powerform_Google_Service_Books_Category
+   * @return Google_Service_Books_Category
    */
   public function listCategories($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('listCategories', array($params), "Powerform_Google_Service_Books_Category");
+    return $this->call('listCategories', array($params), "Google_Service_Books_Category");
   }
 
   /**
@@ -2380,13 +2380,13 @@ class Powerform_Google_Service_Books_Onboarding_Resource extends Powerform_Googl
    * in the response.
    * @opt_param string pageToken The value of the nextToken from the previous
    * page.
-   * @return Powerform_Google_Service_Books_Volume2
+   * @return Google_Service_Books_Volume2
    */
   public function listCategoryVolumes($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('listCategoryVolumes', array($params), "Powerform_Google_Service_Books_Volume2");
+    return $this->call('listCategoryVolumes', array($params), "Google_Service_Books_Volume2");
   }
 }
 
@@ -2394,11 +2394,11 @@ class Powerform_Google_Service_Books_Onboarding_Resource extends Powerform_Googl
  * The "personalizedstream" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $personalizedstream = $booksService->personalizedstream;
  *  </code>
  */
-class Powerform_Google_Service_Books_Personalizedstream_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Personalizedstream_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2412,13 +2412,13 @@ class Powerform_Google_Service_Books_Personalizedstream_Resource extends Powerfo
    * rating of returned recommendations. Books with a higher maturity rating are
    * filtered out.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Discoveryclusters
+   * @return Google_Service_Books_Discoveryclusters
    */
   public function get($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Discoveryclusters");
+    return $this->call('get', array($params), "Google_Service_Books_Discoveryclusters");
   }
 }
 
@@ -2426,11 +2426,11 @@ class Powerform_Google_Service_Books_Personalizedstream_Resource extends Powerfo
  * The "promooffer" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $promooffer = $booksService->promooffer;
  *  </code>
  */
-class Powerform_Google_Service_Books_Promooffer_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Promooffer_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2485,13 +2485,13 @@ class Powerform_Google_Service_Books_Promooffer_Resource extends Powerform_Googl
    * @opt_param string model device model
    * @opt_param string product device product
    * @opt_param string serial device serial
-   * @return Powerform_Google_Service_Books_Offers
+   * @return Google_Service_Books_Offers
    */
   public function get($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Offers");
+    return $this->call('get', array($params), "Google_Service_Books_Offers");
   }
 }
 
@@ -2499,11 +2499,11 @@ class Powerform_Google_Service_Books_Promooffer_Resource extends Powerform_Googl
  * The "series" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $series = $booksService->series;
  *  </code>
  */
-class Powerform_Google_Service_Books_Series_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Series_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2511,13 +2511,13 @@ class Powerform_Google_Service_Books_Series_Resource extends Powerform_Google_Se
    *
    * @param string $seriesId String that identifies the series
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Books_Series
+   * @return Google_Service_Books_Series
    */
   public function get($seriesId, $optParams = array())
   {
     $params = array('series_id' => $seriesId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Series");
+    return $this->call('get', array($params), "Google_Service_Books_Series");
   }
 }
 
@@ -2525,11 +2525,11 @@ class Powerform_Google_Service_Books_Series_Resource extends Powerform_Google_Se
  * The "membership" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $membership = $booksService->membership;
  *  </code>
  */
-class Powerform_Google_Service_Books_SeriesMembership_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_SeriesMembership_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2542,13 +2542,13 @@ class Powerform_Google_Service_Books_SeriesMembership_Resource extends Powerform
    * in the response.
    * @opt_param string page_token The value of the nextToken from the previous
    * page.
-   * @return Powerform_Google_Service_Books_Seriesmembership
+   * @return Google_Service_Books_Seriesmembership
    */
   public function get($seriesId, $optParams = array())
   {
     $params = array('series_id' => $seriesId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Seriesmembership");
+    return $this->call('get', array($params), "Google_Service_Books_Seriesmembership");
   }
 }
 
@@ -2556,11 +2556,11 @@ class Powerform_Google_Service_Books_SeriesMembership_Resource extends Powerform
  * The "volumes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $volumes = $booksService->volumes;
  *  </code>
  */
-class Powerform_Google_Service_Books_Volumes_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_Volumes_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2577,13 +2577,13 @@ class Powerform_Google_Service_Books_Volumes_Resource extends Powerform_Google_S
    * selected fields.
    * @opt_param string source String to identify the originator of this request.
    * @opt_param bool user_library_consistent_read
-   * @return Powerform_Google_Service_Books_Volume
+   * @return Google_Service_Books_Volume
    */
   public function get($volumeId, $optParams = array())
   {
     $params = array('volumeId' => $volumeId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Books_Volume");
+    return $this->call('get', array($params), "Google_Service_Books_Volume");
   }
 
   /**
@@ -2608,13 +2608,13 @@ class Powerform_Google_Service_Books_Volumes_Resource extends Powerform_Google_S
    * @opt_param string source String to identify the originator of this request.
    * @opt_param string startIndex Index of the first result to return (starts at
    * 0)
-   * @return Powerform_Google_Service_Books_Volumes
+   * @return Google_Service_Books_Volumes
    */
   public function listVolumes($q, $optParams = array())
   {
     $params = array('q' => $q);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Volumes");
+    return $this->call('list', array($params), "Google_Service_Books_Volumes");
   }
 }
 
@@ -2622,11 +2622,11 @@ class Powerform_Google_Service_Books_Volumes_Resource extends Powerform_Google_S
  * The "associated" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $associated = $booksService->associated;
  *  </code>
  */
-class Powerform_Google_Service_Books_VolumesAssociated_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_VolumesAssociated_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2642,24 +2642,24 @@ class Powerform_Google_Service_Books_VolumesAssociated_Resource extends Powerfor
    * rating of returned recommendations. Books with a higher maturity rating are
    * filtered out.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Volumes
+   * @return Google_Service_Books_Volumes
    */
   public function listVolumesAssociated($volumeId, $optParams = array())
   {
     $params = array('volumeId' => $volumeId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Volumes");
+    return $this->call('list', array($params), "Google_Service_Books_Volumes");
   }
 }
 /**
  * The "mybooks" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $mybooks = $booksService->mybooks;
  *  </code>
  */
-class Powerform_Google_Service_Books_VolumesMybooks_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_VolumesMybooks_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2677,24 +2677,24 @@ class Powerform_Google_Service_Books_VolumesMybooks_Resource extends Powerform_G
    * @opt_param string source String to identify the originator of this request.
    * @opt_param string startIndex Index of the first result to return (starts at
    * 0)
-   * @return Powerform_Google_Service_Books_Volumes
+   * @return Google_Service_Books_Volumes
    */
   public function listVolumesMybooks($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Volumes");
+    return $this->call('list', array($params), "Google_Service_Books_Volumes");
   }
 }
 /**
  * The "recommended" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $recommended = $booksService->recommended;
  *  </code>
  */
-class Powerform_Google_Service_Books_VolumesRecommended_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_VolumesRecommended_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2709,13 +2709,13 @@ class Powerform_Google_Service_Books_VolumesRecommended_Resource extends Powerfo
    * rating of returned recommendations. Books with a higher maturity rating are
    * filtered out.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_Volumes
+   * @return Google_Service_Books_Volumes
    */
   public function listVolumesRecommended($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Volumes");
+    return $this->call('list', array($params), "Google_Service_Books_Volumes");
   }
 
   /**
@@ -2728,24 +2728,24 @@ class Powerform_Google_Service_Books_VolumesRecommended_Resource extends Powerfo
    * @opt_param string locale ISO-639-1 language and ISO-3166-1 country code. Ex:
    * 'en_US'. Used for generating recommendations.
    * @opt_param string source String to identify the originator of this request.
-   * @return Powerform_Google_Service_Books_BooksVolumesRecommendedRateResponse
+   * @return Google_Service_Books_BooksVolumesRecommendedRateResponse
    */
   public function rate($rating, $volumeId, $optParams = array())
   {
     $params = array('rating' => $rating, 'volumeId' => $volumeId);
     $params = array_merge($params, $optParams);
-    return $this->call('rate', array($params), "Powerform_Google_Service_Books_BooksVolumesRecommendedRateResponse");
+    return $this->call('rate', array($params), "Google_Service_Books_BooksVolumesRecommendedRateResponse");
   }
 }
 /**
  * The "useruploaded" collection of methods.
  * Typical usage is:
  *  <code>
- *   $booksService = new Powerform_Google_Service_Books(...);
+ *   $booksService = new Google_Service_Books(...);
  *   $useruploaded = $booksService->useruploaded;
  *  </code>
  */
-class Powerform_Google_Service_Books_VolumesUseruploaded_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Books_VolumesUseruploaded_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2764,30 +2764,30 @@ class Powerform_Google_Service_Books_VolumesUseruploaded_Resource extends Powerf
    * 0)
    * @opt_param string volumeId The ids of the volumes to be returned. If not
    * specified all that match the processingState are returned.
-   * @return Powerform_Google_Service_Books_Volumes
+   * @return Google_Service_Books_Volumes
    */
   public function listVolumesUseruploaded($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Books_Volumes");
+    return $this->call('list', array($params), "Google_Service_Books_Volumes");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Books_Annotation extends Powerform_Google_Collection
+class Google_Service_Books_Annotation extends Google_Collection
 {
   protected $collection_key = 'pageIds';
   protected $internal_gapi_mappings = array(
   );
   public $afterSelectedText;
   public $beforeSelectedText;
-  protected $clientVersionRangesType = 'Powerform_Google_Service_Books_AnnotationClientVersionRanges';
+  protected $clientVersionRangesType = 'Google_Service_Books_AnnotationClientVersionRanges';
   protected $clientVersionRangesDataType = '';
   public $created;
-  protected $currentVersionRangesType = 'Powerform_Google_Service_Books_AnnotationCurrentVersionRanges';
+  protected $currentVersionRangesType = 'Google_Service_Books_AnnotationCurrentVersionRanges';
   protected $currentVersionRangesDataType = '';
   public $data;
   public $deleted;
@@ -2795,7 +2795,7 @@ class Powerform_Google_Service_Books_Annotation extends Powerform_Google_Collect
   public $id;
   public $kind;
   public $layerId;
-  protected $layerSummaryType = 'Powerform_Google_Service_Books_AnnotationLayerSummary';
+  protected $layerSummaryType = 'Google_Service_Books_AnnotationLayerSummary';
   protected $layerSummaryDataType = '';
   public $pageIds;
   public $selectedText;
@@ -2820,7 +2820,7 @@ class Powerform_Google_Service_Books_Annotation extends Powerform_Google_Collect
   {
     return $this->beforeSelectedText;
   }
-  public function setClientVersionRanges(Powerform_Google_Service_Books_AnnotationClientVersionRanges $clientVersionRanges)
+  public function setClientVersionRanges(Google_Service_Books_AnnotationClientVersionRanges $clientVersionRanges)
   {
     $this->clientVersionRanges = $clientVersionRanges;
   }
@@ -2836,7 +2836,7 @@ class Powerform_Google_Service_Books_Annotation extends Powerform_Google_Collect
   {
     return $this->created;
   }
-  public function setCurrentVersionRanges(Powerform_Google_Service_Books_AnnotationCurrentVersionRanges $currentVersionRanges)
+  public function setCurrentVersionRanges(Google_Service_Books_AnnotationCurrentVersionRanges $currentVersionRanges)
   {
     $this->currentVersionRanges = $currentVersionRanges;
   }
@@ -2892,7 +2892,7 @@ class Powerform_Google_Service_Books_Annotation extends Powerform_Google_Collect
   {
     return $this->layerId;
   }
-  public function setLayerSummary(Powerform_Google_Service_Books_AnnotationLayerSummary $layerSummary)
+  public function setLayerSummary(Google_Service_Books_AnnotationLayerSummary $layerSummary)
   {
     $this->layerSummary = $layerSummary;
   }
@@ -2942,22 +2942,22 @@ class Powerform_Google_Service_Books_Annotation extends Powerform_Google_Collect
   }
 }
 
-class Powerform_Google_Service_Books_AnnotationClientVersionRanges extends Powerform_Google_Model
+class Google_Service_Books_AnnotationClientVersionRanges extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $cfiRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $cfiRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $cfiRangeDataType = '';
   public $contentVersion;
-  protected $gbImageRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $gbImageRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $gbImageRangeDataType = '';
-  protected $gbTextRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $gbTextRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $gbTextRangeDataType = '';
-  protected $imageCfiRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $imageCfiRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $imageCfiRangeDataType = '';
 
 
-  public function setCfiRange(Powerform_Google_Service_Books_BooksAnnotationsRange $cfiRange)
+  public function setCfiRange(Google_Service_Books_BooksAnnotationsRange $cfiRange)
   {
     $this->cfiRange = $cfiRange;
   }
@@ -2973,7 +2973,7 @@ class Powerform_Google_Service_Books_AnnotationClientVersionRanges extends Power
   {
     return $this->contentVersion;
   }
-  public function setGbImageRange(Powerform_Google_Service_Books_BooksAnnotationsRange $gbImageRange)
+  public function setGbImageRange(Google_Service_Books_BooksAnnotationsRange $gbImageRange)
   {
     $this->gbImageRange = $gbImageRange;
   }
@@ -2981,7 +2981,7 @@ class Powerform_Google_Service_Books_AnnotationClientVersionRanges extends Power
   {
     return $this->gbImageRange;
   }
-  public function setGbTextRange(Powerform_Google_Service_Books_BooksAnnotationsRange $gbTextRange)
+  public function setGbTextRange(Google_Service_Books_BooksAnnotationsRange $gbTextRange)
   {
     $this->gbTextRange = $gbTextRange;
   }
@@ -2989,7 +2989,7 @@ class Powerform_Google_Service_Books_AnnotationClientVersionRanges extends Power
   {
     return $this->gbTextRange;
   }
-  public function setImageCfiRange(Powerform_Google_Service_Books_BooksAnnotationsRange $imageCfiRange)
+  public function setImageCfiRange(Google_Service_Books_BooksAnnotationsRange $imageCfiRange)
   {
     $this->imageCfiRange = $imageCfiRange;
   }
@@ -2999,22 +2999,22 @@ class Powerform_Google_Service_Books_AnnotationClientVersionRanges extends Power
   }
 }
 
-class Powerform_Google_Service_Books_AnnotationCurrentVersionRanges extends Powerform_Google_Model
+class Google_Service_Books_AnnotationCurrentVersionRanges extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $cfiRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $cfiRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $cfiRangeDataType = '';
   public $contentVersion;
-  protected $gbImageRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $gbImageRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $gbImageRangeDataType = '';
-  protected $gbTextRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $gbTextRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $gbTextRangeDataType = '';
-  protected $imageCfiRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $imageCfiRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $imageCfiRangeDataType = '';
 
 
-  public function setCfiRange(Powerform_Google_Service_Books_BooksAnnotationsRange $cfiRange)
+  public function setCfiRange(Google_Service_Books_BooksAnnotationsRange $cfiRange)
   {
     $this->cfiRange = $cfiRange;
   }
@@ -3030,7 +3030,7 @@ class Powerform_Google_Service_Books_AnnotationCurrentVersionRanges extends Powe
   {
     return $this->contentVersion;
   }
-  public function setGbImageRange(Powerform_Google_Service_Books_BooksAnnotationsRange $gbImageRange)
+  public function setGbImageRange(Google_Service_Books_BooksAnnotationsRange $gbImageRange)
   {
     $this->gbImageRange = $gbImageRange;
   }
@@ -3038,7 +3038,7 @@ class Powerform_Google_Service_Books_AnnotationCurrentVersionRanges extends Powe
   {
     return $this->gbImageRange;
   }
-  public function setGbTextRange(Powerform_Google_Service_Books_BooksAnnotationsRange $gbTextRange)
+  public function setGbTextRange(Google_Service_Books_BooksAnnotationsRange $gbTextRange)
   {
     $this->gbTextRange = $gbTextRange;
   }
@@ -3046,7 +3046,7 @@ class Powerform_Google_Service_Books_AnnotationCurrentVersionRanges extends Powe
   {
     return $this->gbTextRange;
   }
-  public function setImageCfiRange(Powerform_Google_Service_Books_BooksAnnotationsRange $imageCfiRange)
+  public function setImageCfiRange(Google_Service_Books_BooksAnnotationsRange $imageCfiRange)
   {
     $this->imageCfiRange = $imageCfiRange;
   }
@@ -3056,7 +3056,7 @@ class Powerform_Google_Service_Books_AnnotationCurrentVersionRanges extends Powe
   }
 }
 
-class Powerform_Google_Service_Books_AnnotationLayerSummary extends Powerform_Google_Model
+class Google_Service_Books_AnnotationLayerSummary extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3091,7 +3091,7 @@ class Powerform_Google_Service_Books_AnnotationLayerSummary extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Books_Annotationdata extends Powerform_Google_Model
+class Google_Service_Books_Annotationdata extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "encodedData" => "encoded_data",
@@ -3181,12 +3181,12 @@ class Powerform_Google_Service_Books_Annotationdata extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Books_Annotations extends Powerform_Google_Collection
+class Google_Service_Books_Annotations extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Books_Annotation';
+  protected $itemsType = 'Google_Service_Books_Annotation';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3227,13 +3227,13 @@ class Powerform_Google_Service_Books_Annotations extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Books_AnnotationsSummary extends Powerform_Google_Collection
+class Google_Service_Books_AnnotationsSummary extends Google_Collection
 {
   protected $collection_key = 'layers';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $layersType = 'Powerform_Google_Service_Books_AnnotationsSummaryLayers';
+  protected $layersType = 'Google_Service_Books_AnnotationsSummaryLayers';
   protected $layersDataType = 'array';
 
 
@@ -3255,7 +3255,7 @@ class Powerform_Google_Service_Books_AnnotationsSummary extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Books_AnnotationsSummaryLayers extends Powerform_Google_Model
+class Google_Service_Books_AnnotationsSummaryLayers extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3308,12 +3308,12 @@ class Powerform_Google_Service_Books_AnnotationsSummaryLayers extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Books_Annotationsdata extends Powerform_Google_Collection
+class Google_Service_Books_Annotationsdata extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Books_Annotationdata';
+  protected $itemsType = 'Google_Service_Books_Annotationdata';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3354,7 +3354,7 @@ class Powerform_Google_Service_Books_Annotationsdata extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Books_BooksAnnotationsRange extends Powerform_Google_Model
+class Google_Service_Books_BooksAnnotationsRange extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3398,7 +3398,7 @@ class Powerform_Google_Service_Books_BooksAnnotationsRange extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Books_BooksCloudloadingResource extends Powerform_Google_Model
+class Google_Service_Books_BooksCloudloadingResource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3442,7 +3442,7 @@ class Powerform_Google_Service_Books_BooksCloudloadingResource extends Powerform
   }
 }
 
-class Powerform_Google_Service_Books_BooksVolumesRecommendedRateResponse extends Powerform_Google_Model
+class Google_Service_Books_BooksVolumesRecommendedRateResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "consistencyToken" => "consistency_token",
@@ -3460,7 +3460,7 @@ class Powerform_Google_Service_Books_BooksVolumesRecommendedRateResponse extends
   }
 }
 
-class Powerform_Google_Service_Books_Bookshelf extends Powerform_Google_Model
+class Google_Service_Books_Bookshelf extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3558,12 +3558,12 @@ class Powerform_Google_Service_Books_Bookshelf extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Books_Bookshelves extends Powerform_Google_Collection
+class Google_Service_Books_Bookshelves extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Books_Bookshelf';
+  protected $itemsType = 'Google_Service_Books_Bookshelf';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -3586,12 +3586,12 @@ class Powerform_Google_Service_Books_Bookshelves extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Books_Category extends Powerform_Google_Collection
+class Google_Service_Books_Category extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Books_CategoryItems';
+  protected $itemsType = 'Google_Service_Books_CategoryItems';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -3614,7 +3614,7 @@ class Powerform_Google_Service_Books_Category extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Books_CategoryItems extends Powerform_Google_Model
+class Google_Service_Books_CategoryItems extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3649,7 +3649,7 @@ class Powerform_Google_Service_Books_CategoryItems extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Books_ConcurrentAccessRestriction extends Powerform_Google_Model
+class Google_Service_Books_ConcurrentAccessRestriction extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3756,18 +3756,18 @@ class Powerform_Google_Service_Books_ConcurrentAccessRestriction extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Books_Dictlayerdata extends Powerform_Google_Model
+class Google_Service_Books_Dictlayerdata extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $commonType = 'Powerform_Google_Service_Books_DictlayerdataCommon';
+  protected $commonType = 'Google_Service_Books_DictlayerdataCommon';
   protected $commonDataType = '';
-  protected $dictType = 'Powerform_Google_Service_Books_DictlayerdataDict';
+  protected $dictType = 'Google_Service_Books_DictlayerdataDict';
   protected $dictDataType = '';
   public $kind;
 
 
-  public function setCommon(Powerform_Google_Service_Books_DictlayerdataCommon $common)
+  public function setCommon(Google_Service_Books_DictlayerdataCommon $common)
   {
     $this->common = $common;
   }
@@ -3775,7 +3775,7 @@ class Powerform_Google_Service_Books_Dictlayerdata extends Powerform_Google_Mode
   {
     return $this->common;
   }
-  public function setDict(Powerform_Google_Service_Books_DictlayerdataDict $dict)
+  public function setDict(Google_Service_Books_DictlayerdataDict $dict)
   {
     $this->dict = $dict;
   }
@@ -3793,7 +3793,7 @@ class Powerform_Google_Service_Books_Dictlayerdata extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataCommon extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataCommon extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3810,18 +3810,18 @@ class Powerform_Google_Service_Books_DictlayerdataCommon extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDict extends Powerform_Google_Collection
+class Google_Service_Books_DictlayerdataDict extends Google_Collection
 {
   protected $collection_key = 'words';
   protected $internal_gapi_mappings = array(
   );
-  protected $sourceType = 'Powerform_Google_Service_Books_DictlayerdataDictSource';
+  protected $sourceType = 'Google_Service_Books_DictlayerdataDictSource';
   protected $sourceDataType = '';
-  protected $wordsType = 'Powerform_Google_Service_Books_DictlayerdataDictWords';
+  protected $wordsType = 'Google_Service_Books_DictlayerdataDictWords';
   protected $wordsDataType = 'array';
 
 
-  public function setSource(Powerform_Google_Service_Books_DictlayerdataDictSource $source)
+  public function setSource(Google_Service_Books_DictlayerdataDictSource $source)
   {
     $this->source = $source;
   }
@@ -3839,7 +3839,7 @@ class Powerform_Google_Service_Books_DictlayerdataDict extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictSource extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictSource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3865,18 +3865,18 @@ class Powerform_Google_Service_Books_DictlayerdataDictSource extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWords extends Powerform_Google_Collection
+class Google_Service_Books_DictlayerdataDictWords extends Google_Collection
 {
   protected $collection_key = 'senses';
   protected $internal_gapi_mappings = array(
   );
-  protected $derivativesType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsDerivatives';
+  protected $derivativesType = 'Google_Service_Books_DictlayerdataDictWordsDerivatives';
   protected $derivativesDataType = 'array';
-  protected $examplesType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsExamples';
+  protected $examplesType = 'Google_Service_Books_DictlayerdataDictWordsExamples';
   protected $examplesDataType = 'array';
-  protected $sensesType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsSenses';
+  protected $sensesType = 'Google_Service_Books_DictlayerdataDictWordsSenses';
   protected $sensesDataType = 'array';
-  protected $sourceType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsSource';
+  protected $sourceType = 'Google_Service_Books_DictlayerdataDictWordsSource';
   protected $sourceDataType = '';
 
 
@@ -3904,7 +3904,7 @@ class Powerform_Google_Service_Books_DictlayerdataDictWords extends Powerform_Go
   {
     return $this->senses;
   }
-  public function setSource(Powerform_Google_Service_Books_DictlayerdataDictWordsSource $source)
+  public function setSource(Google_Service_Books_DictlayerdataDictWordsSource $source)
   {
     $this->source = $source;
   }
@@ -3914,16 +3914,16 @@ class Powerform_Google_Service_Books_DictlayerdataDictWords extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsDerivatives extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsDerivatives extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $sourceType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsDerivativesSource';
+  protected $sourceType = 'Google_Service_Books_DictlayerdataDictWordsDerivativesSource';
   protected $sourceDataType = '';
   public $text;
 
 
-  public function setSource(Powerform_Google_Service_Books_DictlayerdataDictWordsDerivativesSource $source)
+  public function setSource(Google_Service_Books_DictlayerdataDictWordsDerivativesSource $source)
   {
     $this->source = $source;
   }
@@ -3941,7 +3941,7 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsDerivatives extends P
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsDerivativesSource extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsDerivativesSource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3967,16 +3967,16 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsDerivativesSource ext
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsExamples extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsExamples extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $sourceType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsExamplesSource';
+  protected $sourceType = 'Google_Service_Books_DictlayerdataDictWordsExamplesSource';
   protected $sourceDataType = '';
   public $text;
 
 
-  public function setSource(Powerform_Google_Service_Books_DictlayerdataDictWordsExamplesSource $source)
+  public function setSource(Google_Service_Books_DictlayerdataDictWordsExamplesSource $source)
   {
     $this->source = $source;
   }
@@ -3994,7 +3994,7 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsExamples extends Powe
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsExamplesSource extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsExamplesSource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4020,22 +4020,22 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsExamplesSource extend
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsSenses extends Powerform_Google_Collection
+class Google_Service_Books_DictlayerdataDictWordsSenses extends Google_Collection
 {
   protected $collection_key = 'synonyms';
   protected $internal_gapi_mappings = array(
   );
-  protected $conjugationsType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsSensesConjugations';
+  protected $conjugationsType = 'Google_Service_Books_DictlayerdataDictWordsSensesConjugations';
   protected $conjugationsDataType = 'array';
-  protected $definitionsType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsSensesDefinitions';
+  protected $definitionsType = 'Google_Service_Books_DictlayerdataDictWordsSensesDefinitions';
   protected $definitionsDataType = 'array';
   public $partOfSpeech;
   public $pronunciation;
   public $pronunciationUrl;
-  protected $sourceType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSource';
+  protected $sourceType = 'Google_Service_Books_DictlayerdataDictWordsSensesSource';
   protected $sourceDataType = '';
   public $syllabification;
-  protected $synonymsType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSynonyms';
+  protected $synonymsType = 'Google_Service_Books_DictlayerdataDictWordsSensesSynonyms';
   protected $synonymsDataType = 'array';
 
 
@@ -4079,7 +4079,7 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsSenses extends Powerf
   {
     return $this->pronunciationUrl;
   }
-  public function setSource(Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSource $source)
+  public function setSource(Google_Service_Books_DictlayerdataDictWordsSensesSource $source)
   {
     $this->source = $source;
   }
@@ -4105,7 +4105,7 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsSenses extends Powerf
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesConjugations extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsSensesConjugations extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4131,13 +4131,13 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesConjugations ex
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesDefinitions extends Powerform_Google_Collection
+class Google_Service_Books_DictlayerdataDictWordsSensesDefinitions extends Google_Collection
 {
   protected $collection_key = 'examples';
   protected $internal_gapi_mappings = array(
   );
   public $definition;
-  protected $examplesType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExamples';
+  protected $examplesType = 'Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExamples';
   protected $examplesDataType = 'array';
 
 
@@ -4159,16 +4159,16 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesDefinitions ext
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExamples extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExamples extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $sourceType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExamplesSource';
+  protected $sourceType = 'Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExamplesSource';
   protected $sourceDataType = '';
   public $text;
 
 
-  public function setSource(Powerform_Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExamplesSource $source)
+  public function setSource(Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExamplesSource $source)
   {
     $this->source = $source;
   }
@@ -4186,7 +4186,7 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExam
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExamplesSource extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExamplesSource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4212,7 +4212,7 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesDefinitionsExam
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSource extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsSensesSource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4238,16 +4238,16 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSource extends 
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSynonyms extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsSensesSynonyms extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $sourceType = 'Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSynonymsSource';
+  protected $sourceType = 'Google_Service_Books_DictlayerdataDictWordsSensesSynonymsSource';
   protected $sourceDataType = '';
   public $text;
 
 
-  public function setSource(Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSynonymsSource $source)
+  public function setSource(Google_Service_Books_DictlayerdataDictWordsSensesSynonymsSource $source)
   {
     $this->source = $source;
   }
@@ -4265,7 +4265,7 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSynonyms extend
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSynonymsSource extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsSensesSynonymsSource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4291,7 +4291,7 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsSensesSynonymsSource 
   }
 }
 
-class Powerform_Google_Service_Books_DictlayerdataDictWordsSource extends Powerform_Google_Model
+class Google_Service_Books_DictlayerdataDictWordsSource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4317,12 +4317,12 @@ class Powerform_Google_Service_Books_DictlayerdataDictWordsSource extends Powerf
   }
 }
 
-class Powerform_Google_Service_Books_Discoveryclusters extends Powerform_Google_Collection
+class Google_Service_Books_Discoveryclusters extends Google_Collection
 {
   protected $collection_key = 'clusters';
   protected $internal_gapi_mappings = array(
   );
-  protected $clustersType = 'Powerform_Google_Service_Books_DiscoveryclustersClusters';
+  protected $clustersType = 'Google_Service_Books_DiscoveryclustersClusters';
   protected $clustersDataType = 'array';
   public $kind;
   public $totalClusters;
@@ -4354,23 +4354,23 @@ class Powerform_Google_Service_Books_Discoveryclusters extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Books_DiscoveryclustersClusters extends Powerform_Google_Collection
+class Google_Service_Books_DiscoveryclustersClusters extends Google_Collection
 {
   protected $collection_key = 'volumes';
   protected $internal_gapi_mappings = array(
         "bannerWithContentContainer" => "banner_with_content_container",
   );
-  protected $bannerWithContentContainerType = 'Powerform_Google_Service_Books_DiscoveryclustersClustersBannerWithContentContainer';
+  protected $bannerWithContentContainerType = 'Google_Service_Books_DiscoveryclustersClustersBannerWithContentContainer';
   protected $bannerWithContentContainerDataType = '';
   public $subTitle;
   public $title;
   public $totalVolumes;
   public $uid;
-  protected $volumesType = 'Powerform_Google_Service_Books_Volume';
+  protected $volumesType = 'Google_Service_Books_Volume';
   protected $volumesDataType = 'array';
 
 
-  public function setBannerWithContentContainer(Powerform_Google_Service_Books_DiscoveryclustersClustersBannerWithContentContainer $bannerWithContentContainer)
+  public function setBannerWithContentContainer(Google_Service_Books_DiscoveryclustersClustersBannerWithContentContainer $bannerWithContentContainer)
   {
     $this->bannerWithContentContainer = $bannerWithContentContainer;
   }
@@ -4420,7 +4420,7 @@ class Powerform_Google_Service_Books_DiscoveryclustersClusters extends Powerform
   }
 }
 
-class Powerform_Google_Service_Books_DiscoveryclustersClustersBannerWithContentContainer extends Powerform_Google_Model
+class Google_Service_Books_DiscoveryclustersClustersBannerWithContentContainer extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4482,7 +4482,7 @@ class Powerform_Google_Service_Books_DiscoveryclustersClustersBannerWithContentC
   }
 }
 
-class Powerform_Google_Service_Books_DownloadAccessRestriction extends Powerform_Google_Model
+class Google_Service_Books_DownloadAccessRestriction extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4598,12 +4598,12 @@ class Powerform_Google_Service_Books_DownloadAccessRestriction extends Powerform
   }
 }
 
-class Powerform_Google_Service_Books_DownloadAccesses extends Powerform_Google_Collection
+class Google_Service_Books_DownloadAccesses extends Google_Collection
 {
   protected $collection_key = 'downloadAccessList';
   protected $internal_gapi_mappings = array(
   );
-  protected $downloadAccessListType = 'Powerform_Google_Service_Books_DownloadAccessRestriction';
+  protected $downloadAccessListType = 'Google_Service_Books_DownloadAccessRestriction';
   protected $downloadAccessListDataType = 'array';
   public $kind;
 
@@ -4626,18 +4626,18 @@ class Powerform_Google_Service_Books_DownloadAccesses extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Books_Geolayerdata extends Powerform_Google_Model
+class Google_Service_Books_Geolayerdata extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $commonType = 'Powerform_Google_Service_Books_GeolayerdataCommon';
+  protected $commonType = 'Google_Service_Books_GeolayerdataCommon';
   protected $commonDataType = '';
-  protected $geoType = 'Powerform_Google_Service_Books_GeolayerdataGeo';
+  protected $geoType = 'Google_Service_Books_GeolayerdataGeo';
   protected $geoDataType = '';
   public $kind;
 
 
-  public function setCommon(Powerform_Google_Service_Books_GeolayerdataCommon $common)
+  public function setCommon(Google_Service_Books_GeolayerdataCommon $common)
   {
     $this->common = $common;
   }
@@ -4645,7 +4645,7 @@ class Powerform_Google_Service_Books_Geolayerdata extends Powerform_Google_Model
   {
     return $this->common;
   }
-  public function setGeo(Powerform_Google_Service_Books_GeolayerdataGeo $geo)
+  public function setGeo(Google_Service_Books_GeolayerdataGeo $geo)
   {
     $this->geo = $geo;
   }
@@ -4663,7 +4663,7 @@ class Powerform_Google_Service_Books_Geolayerdata extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Books_GeolayerdataCommon extends Powerform_Google_Model
+class Google_Service_Books_GeolayerdataCommon extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4716,19 +4716,19 @@ class Powerform_Google_Service_Books_GeolayerdataCommon extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Books_GeolayerdataGeo extends Powerform_Google_Collection
+class Google_Service_Books_GeolayerdataGeo extends Google_Collection
 {
   protected $collection_key = 'boundary';
   protected $internal_gapi_mappings = array(
   );
-  protected $boundaryType = 'Powerform_Google_Service_Books_GeolayerdataGeoBoundary';
+  protected $boundaryType = 'Google_Service_Books_GeolayerdataGeoBoundary';
   protected $boundaryDataType = 'array';
   public $cachePolicy;
   public $countryCode;
   public $latitude;
   public $longitude;
   public $mapType;
-  protected $viewportType = 'Powerform_Google_Service_Books_GeolayerdataGeoViewport';
+  protected $viewportType = 'Google_Service_Books_GeolayerdataGeoViewport';
   protected $viewportDataType = '';
   public $zoom;
 
@@ -4781,7 +4781,7 @@ class Powerform_Google_Service_Books_GeolayerdataGeo extends Powerform_Google_Co
   {
     return $this->mapType;
   }
-  public function setViewport(Powerform_Google_Service_Books_GeolayerdataGeoViewport $viewport)
+  public function setViewport(Google_Service_Books_GeolayerdataGeoViewport $viewport)
   {
     $this->viewport = $viewport;
   }
@@ -4799,7 +4799,7 @@ class Powerform_Google_Service_Books_GeolayerdataGeo extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Books_GeolayerdataGeoBoundary extends Powerform_Google_Model
+class Google_Service_Books_GeolayerdataGeoBoundary extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4825,17 +4825,17 @@ class Powerform_Google_Service_Books_GeolayerdataGeoBoundary extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Books_GeolayerdataGeoViewport extends Powerform_Google_Model
+class Google_Service_Books_GeolayerdataGeoViewport extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $hiType = 'Powerform_Google_Service_Books_GeolayerdataGeoViewportHi';
+  protected $hiType = 'Google_Service_Books_GeolayerdataGeoViewportHi';
   protected $hiDataType = '';
-  protected $loType = 'Powerform_Google_Service_Books_GeolayerdataGeoViewportLo';
+  protected $loType = 'Google_Service_Books_GeolayerdataGeoViewportLo';
   protected $loDataType = '';
 
 
-  public function setHi(Powerform_Google_Service_Books_GeolayerdataGeoViewportHi $hi)
+  public function setHi(Google_Service_Books_GeolayerdataGeoViewportHi $hi)
   {
     $this->hi = $hi;
   }
@@ -4843,7 +4843,7 @@ class Powerform_Google_Service_Books_GeolayerdataGeoViewport extends Powerform_G
   {
     return $this->hi;
   }
-  public function setLo(Powerform_Google_Service_Books_GeolayerdataGeoViewportLo $lo)
+  public function setLo(Google_Service_Books_GeolayerdataGeoViewportLo $lo)
   {
     $this->lo = $lo;
   }
@@ -4853,7 +4853,7 @@ class Powerform_Google_Service_Books_GeolayerdataGeoViewport extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Books_GeolayerdataGeoViewportHi extends Powerform_Google_Model
+class Google_Service_Books_GeolayerdataGeoViewportHi extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4879,7 +4879,7 @@ class Powerform_Google_Service_Books_GeolayerdataGeoViewportHi extends Powerform
   }
 }
 
-class Powerform_Google_Service_Books_GeolayerdataGeoViewportLo extends Powerform_Google_Model
+class Google_Service_Books_GeolayerdataGeoViewportLo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -4905,12 +4905,12 @@ class Powerform_Google_Service_Books_GeolayerdataGeoViewportLo extends Powerform
   }
 }
 
-class Powerform_Google_Service_Books_Layersummaries extends Powerform_Google_Collection
+class Google_Service_Books_Layersummaries extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Books_Layersummary';
+  protected $itemsType = 'Google_Service_Books_Layersummary';
   protected $itemsDataType = 'array';
   public $kind;
   public $totalItems;
@@ -4942,7 +4942,7 @@ class Powerform_Google_Service_Books_Layersummaries extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Books_Layersummary extends Powerform_Google_Collection
+class Google_Service_Books_Layersummary extends Google_Collection
 {
   protected $collection_key = 'annotationTypes';
   protected $internal_gapi_mappings = array(
@@ -5068,12 +5068,12 @@ class Powerform_Google_Service_Books_Layersummary extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Books_Metadata extends Powerform_Google_Collection
+class Google_Service_Books_Metadata extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Books_MetadataItems';
+  protected $itemsType = 'Google_Service_Books_MetadataItems';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -5096,7 +5096,7 @@ class Powerform_Google_Service_Books_Metadata extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Books_MetadataItems extends Powerform_Google_Model
+class Google_Service_Books_MetadataItems extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "downloadUrl" => "download_url",
@@ -5151,7 +5151,7 @@ class Powerform_Google_Service_Books_MetadataItems extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Books_Notification extends Powerform_Google_Model
+class Google_Service_Books_Notification extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "dontShowNotification" => "dont_show_notification",
@@ -5244,12 +5244,12 @@ class Powerform_Google_Service_Books_Notification extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Books_Offers extends Powerform_Google_Collection
+class Google_Service_Books_Offers extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Books_OffersItems';
+  protected $itemsType = 'Google_Service_Books_OffersItems';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -5272,7 +5272,7 @@ class Powerform_Google_Service_Books_Offers extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Books_OffersItems extends Powerform_Google_Collection
+class Google_Service_Books_OffersItems extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
@@ -5280,7 +5280,7 @@ class Powerform_Google_Service_Books_OffersItems extends Powerform_Google_Collec
   public $artUrl;
   public $gservicesKey;
   public $id;
-  protected $itemsType = 'Powerform_Google_Service_Books_OffersItemsItems';
+  protected $itemsType = 'Google_Service_Books_OffersItemsItems';
   protected $itemsDataType = 'array';
 
 
@@ -5318,7 +5318,7 @@ class Powerform_Google_Service_Books_OffersItems extends Powerform_Google_Collec
   }
 }
 
-class Powerform_Google_Service_Books_OffersItemsItems extends Powerform_Google_Model
+class Google_Service_Books_OffersItemsItems extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5380,7 +5380,7 @@ class Powerform_Google_Service_Books_OffersItemsItems extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Books_ReadingPosition extends Powerform_Google_Model
+class Google_Service_Books_ReadingPosition extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5451,18 +5451,18 @@ class Powerform_Google_Service_Books_ReadingPosition extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Books_RequestAccess extends Powerform_Google_Model
+class Google_Service_Books_RequestAccess extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $concurrentAccessType = 'Powerform_Google_Service_Books_ConcurrentAccessRestriction';
+  protected $concurrentAccessType = 'Google_Service_Books_ConcurrentAccessRestriction';
   protected $concurrentAccessDataType = '';
-  protected $downloadAccessType = 'Powerform_Google_Service_Books_DownloadAccessRestriction';
+  protected $downloadAccessType = 'Google_Service_Books_DownloadAccessRestriction';
   protected $downloadAccessDataType = '';
   public $kind;
 
 
-  public function setConcurrentAccess(Powerform_Google_Service_Books_ConcurrentAccessRestriction $concurrentAccess)
+  public function setConcurrentAccess(Google_Service_Books_ConcurrentAccessRestriction $concurrentAccess)
   {
     $this->concurrentAccess = $concurrentAccess;
   }
@@ -5470,7 +5470,7 @@ class Powerform_Google_Service_Books_RequestAccess extends Powerform_Google_Mode
   {
     return $this->concurrentAccess;
   }
-  public function setDownloadAccess(Powerform_Google_Service_Books_DownloadAccessRestriction $downloadAccess)
+  public function setDownloadAccess(Google_Service_Books_DownloadAccessRestriction $downloadAccess)
   {
     $this->downloadAccess = $downloadAccess;
   }
@@ -5488,25 +5488,25 @@ class Powerform_Google_Service_Books_RequestAccess extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Books_Review extends Powerform_Google_Model
+class Google_Service_Books_Review extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $authorType = 'Powerform_Google_Service_Books_ReviewAuthor';
+  protected $authorType = 'Google_Service_Books_ReviewAuthor';
   protected $authorDataType = '';
   public $content;
   public $date;
   public $fullTextUrl;
   public $kind;
   public $rating;
-  protected $sourceType = 'Powerform_Google_Service_Books_ReviewSource';
+  protected $sourceType = 'Google_Service_Books_ReviewSource';
   protected $sourceDataType = '';
   public $title;
   public $type;
   public $volumeId;
 
 
-  public function setAuthor(Powerform_Google_Service_Books_ReviewAuthor $author)
+  public function setAuthor(Google_Service_Books_ReviewAuthor $author)
   {
     $this->author = $author;
   }
@@ -5554,7 +5554,7 @@ class Powerform_Google_Service_Books_Review extends Powerform_Google_Model
   {
     return $this->rating;
   }
-  public function setSource(Powerform_Google_Service_Books_ReviewSource $source)
+  public function setSource(Google_Service_Books_ReviewSource $source)
   {
     $this->source = $source;
   }
@@ -5588,7 +5588,7 @@ class Powerform_Google_Service_Books_Review extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Books_ReviewAuthor extends Powerform_Google_Model
+class Google_Service_Books_ReviewAuthor extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5605,7 +5605,7 @@ class Powerform_Google_Service_Books_ReviewAuthor extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Books_ReviewSource extends Powerform_Google_Model
+class Google_Service_Books_ReviewSource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5640,13 +5640,13 @@ class Powerform_Google_Service_Books_ReviewSource extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Books_Series extends Powerform_Google_Collection
+class Google_Service_Books_Series extends Google_Collection
 {
   protected $collection_key = 'series';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $seriesType = 'Powerform_Google_Service_Books_SeriesSeries';
+  protected $seriesType = 'Google_Service_Books_SeriesSeries';
   protected $seriesDataType = 'array';
 
 
@@ -5668,7 +5668,7 @@ class Powerform_Google_Service_Books_Series extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Books_SeriesSeries extends Powerform_Google_Model
+class Google_Service_Books_SeriesSeries extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5721,13 +5721,13 @@ class Powerform_Google_Service_Books_SeriesSeries extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Books_Seriesmembership extends Powerform_Google_Collection
+class Google_Service_Books_Seriesmembership extends Google_Collection
 {
   protected $collection_key = 'member';
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $memberType = 'Powerform_Google_Service_Books_Volume';
+  protected $memberType = 'Google_Service_Books_Volume';
   protected $memberDataType = 'array';
   public $nextPageToken;
 
@@ -5758,14 +5758,14 @@ class Powerform_Google_Service_Books_Seriesmembership extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Books_Usersettings extends Powerform_Google_Model
+class Google_Service_Books_Usersettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $kind;
-  protected $notesExportType = 'Powerform_Google_Service_Books_UsersettingsNotesExport';
+  protected $notesExportType = 'Google_Service_Books_UsersettingsNotesExport';
   protected $notesExportDataType = '';
-  protected $notificationType = 'Powerform_Google_Service_Books_UsersettingsNotification';
+  protected $notificationType = 'Google_Service_Books_UsersettingsNotification';
   protected $notificationDataType = '';
 
 
@@ -5777,7 +5777,7 @@ class Powerform_Google_Service_Books_Usersettings extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setNotesExport(Powerform_Google_Service_Books_UsersettingsNotesExport $notesExport)
+  public function setNotesExport(Google_Service_Books_UsersettingsNotesExport $notesExport)
   {
     $this->notesExport = $notesExport;
   }
@@ -5785,7 +5785,7 @@ class Powerform_Google_Service_Books_Usersettings extends Powerform_Google_Model
   {
     return $this->notesExport;
   }
-  public function setNotification(Powerform_Google_Service_Books_UsersettingsNotification $notification)
+  public function setNotification(Google_Service_Books_UsersettingsNotification $notification)
   {
     $this->notification = $notification;
   }
@@ -5795,7 +5795,7 @@ class Powerform_Google_Service_Books_Usersettings extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Books_UsersettingsNotesExport extends Powerform_Google_Model
+class Google_Service_Books_UsersettingsNotesExport extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5821,15 +5821,15 @@ class Powerform_Google_Service_Books_UsersettingsNotesExport extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Books_UsersettingsNotification extends Powerform_Google_Model
+class Google_Service_Books_UsersettingsNotification extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $moreFromAuthorsType = 'Powerform_Google_Service_Books_UsersettingsNotificationMoreFromAuthors';
+  protected $moreFromAuthorsType = 'Google_Service_Books_UsersettingsNotificationMoreFromAuthors';
   protected $moreFromAuthorsDataType = '';
 
 
-  public function setMoreFromAuthors(Powerform_Google_Service_Books_UsersettingsNotificationMoreFromAuthors $moreFromAuthors)
+  public function setMoreFromAuthors(Google_Service_Books_UsersettingsNotificationMoreFromAuthors $moreFromAuthors)
   {
     $this->moreFromAuthors = $moreFromAuthors;
   }
@@ -5839,7 +5839,7 @@ class Powerform_Google_Service_Books_UsersettingsNotification extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Books_UsersettingsNotificationMoreFromAuthors extends Powerform_Google_Model
+class Google_Service_Books_UsersettingsNotificationMoreFromAuthors extends Google_Model
 {
   protected $internal_gapi_mappings = array(
         "optedState" => "opted_state",
@@ -5857,31 +5857,31 @@ class Powerform_Google_Service_Books_UsersettingsNotificationMoreFromAuthors ext
   }
 }
 
-class Powerform_Google_Service_Books_Volume extends Powerform_Google_Model
+class Google_Service_Books_Volume extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $accessInfoType = 'Powerform_Google_Service_Books_VolumeAccessInfo';
+  protected $accessInfoType = 'Google_Service_Books_VolumeAccessInfo';
   protected $accessInfoDataType = '';
   public $etag;
   public $id;
   public $kind;
-  protected $layerInfoType = 'Powerform_Google_Service_Books_VolumeLayerInfo';
+  protected $layerInfoType = 'Google_Service_Books_VolumeLayerInfo';
   protected $layerInfoDataType = '';
-  protected $recommendedInfoType = 'Powerform_Google_Service_Books_VolumeRecommendedInfo';
+  protected $recommendedInfoType = 'Google_Service_Books_VolumeRecommendedInfo';
   protected $recommendedInfoDataType = '';
-  protected $saleInfoType = 'Powerform_Google_Service_Books_VolumeSaleInfo';
+  protected $saleInfoType = 'Google_Service_Books_VolumeSaleInfo';
   protected $saleInfoDataType = '';
-  protected $searchInfoType = 'Powerform_Google_Service_Books_VolumeSearchInfo';
+  protected $searchInfoType = 'Google_Service_Books_VolumeSearchInfo';
   protected $searchInfoDataType = '';
   public $selfLink;
-  protected $userInfoType = 'Powerform_Google_Service_Books_VolumeUserInfo';
+  protected $userInfoType = 'Google_Service_Books_VolumeUserInfo';
   protected $userInfoDataType = '';
-  protected $volumeInfoType = 'Powerform_Google_Service_Books_VolumeVolumeInfo';
+  protected $volumeInfoType = 'Google_Service_Books_VolumeVolumeInfo';
   protected $volumeInfoDataType = '';
 
 
-  public function setAccessInfo(Powerform_Google_Service_Books_VolumeAccessInfo $accessInfo)
+  public function setAccessInfo(Google_Service_Books_VolumeAccessInfo $accessInfo)
   {
     $this->accessInfo = $accessInfo;
   }
@@ -5913,7 +5913,7 @@ class Powerform_Google_Service_Books_Volume extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setLayerInfo(Powerform_Google_Service_Books_VolumeLayerInfo $layerInfo)
+  public function setLayerInfo(Google_Service_Books_VolumeLayerInfo $layerInfo)
   {
     $this->layerInfo = $layerInfo;
   }
@@ -5921,7 +5921,7 @@ class Powerform_Google_Service_Books_Volume extends Powerform_Google_Model
   {
     return $this->layerInfo;
   }
-  public function setRecommendedInfo(Powerform_Google_Service_Books_VolumeRecommendedInfo $recommendedInfo)
+  public function setRecommendedInfo(Google_Service_Books_VolumeRecommendedInfo $recommendedInfo)
   {
     $this->recommendedInfo = $recommendedInfo;
   }
@@ -5929,7 +5929,7 @@ class Powerform_Google_Service_Books_Volume extends Powerform_Google_Model
   {
     return $this->recommendedInfo;
   }
-  public function setSaleInfo(Powerform_Google_Service_Books_VolumeSaleInfo $saleInfo)
+  public function setSaleInfo(Google_Service_Books_VolumeSaleInfo $saleInfo)
   {
     $this->saleInfo = $saleInfo;
   }
@@ -5937,7 +5937,7 @@ class Powerform_Google_Service_Books_Volume extends Powerform_Google_Model
   {
     return $this->saleInfo;
   }
-  public function setSearchInfo(Powerform_Google_Service_Books_VolumeSearchInfo $searchInfo)
+  public function setSearchInfo(Google_Service_Books_VolumeSearchInfo $searchInfo)
   {
     $this->searchInfo = $searchInfo;
   }
@@ -5953,7 +5953,7 @@ class Powerform_Google_Service_Books_Volume extends Powerform_Google_Model
   {
     return $this->selfLink;
   }
-  public function setUserInfo(Powerform_Google_Service_Books_VolumeUserInfo $userInfo)
+  public function setUserInfo(Google_Service_Books_VolumeUserInfo $userInfo)
   {
     $this->userInfo = $userInfo;
   }
@@ -5961,7 +5961,7 @@ class Powerform_Google_Service_Books_Volume extends Powerform_Google_Model
   {
     return $this->userInfo;
   }
-  public function setVolumeInfo(Powerform_Google_Service_Books_VolumeVolumeInfo $volumeInfo)
+  public function setVolumeInfo(Google_Service_Books_VolumeVolumeInfo $volumeInfo)
   {
     $this->volumeInfo = $volumeInfo;
   }
@@ -5971,12 +5971,12 @@ class Powerform_Google_Service_Books_Volume extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Books_Volume2 extends Powerform_Google_Collection
+class Google_Service_Books_Volume2 extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Books_Volume';
+  protected $itemsType = 'Google_Service_Books_Volume';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -6008,20 +6008,20 @@ class Powerform_Google_Service_Books_Volume2 extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Books_VolumeAccessInfo extends Powerform_Google_Model
+class Google_Service_Books_VolumeAccessInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $accessViewStatus;
   public $country;
-  protected $downloadAccessType = 'Powerform_Google_Service_Books_DownloadAccessRestriction';
+  protected $downloadAccessType = 'Google_Service_Books_DownloadAccessRestriction';
   protected $downloadAccessDataType = '';
   public $driveImportedContentLink;
   public $embeddable;
-  protected $epubType = 'Powerform_Google_Service_Books_VolumeAccessInfoEpub';
+  protected $epubType = 'Google_Service_Books_VolumeAccessInfoEpub';
   protected $epubDataType = '';
   public $explicitOfflineLicenseManagement;
-  protected $pdfType = 'Powerform_Google_Service_Books_VolumeAccessInfoPdf';
+  protected $pdfType = 'Google_Service_Books_VolumeAccessInfoPdf';
   protected $pdfDataType = '';
   public $publicDomain;
   public $quoteSharingAllowed;
@@ -6047,7 +6047,7 @@ class Powerform_Google_Service_Books_VolumeAccessInfo extends Powerform_Google_M
   {
     return $this->country;
   }
-  public function setDownloadAccess(Powerform_Google_Service_Books_DownloadAccessRestriction $downloadAccess)
+  public function setDownloadAccess(Google_Service_Books_DownloadAccessRestriction $downloadAccess)
   {
     $this->downloadAccess = $downloadAccess;
   }
@@ -6071,7 +6071,7 @@ class Powerform_Google_Service_Books_VolumeAccessInfo extends Powerform_Google_M
   {
     return $this->embeddable;
   }
-  public function setEpub(Powerform_Google_Service_Books_VolumeAccessInfoEpub $epub)
+  public function setEpub(Google_Service_Books_VolumeAccessInfoEpub $epub)
   {
     $this->epub = $epub;
   }
@@ -6087,7 +6087,7 @@ class Powerform_Google_Service_Books_VolumeAccessInfo extends Powerform_Google_M
   {
     return $this->explicitOfflineLicenseManagement;
   }
-  public function setPdf(Powerform_Google_Service_Books_VolumeAccessInfoPdf $pdf)
+  public function setPdf(Google_Service_Books_VolumeAccessInfoPdf $pdf)
   {
     $this->pdf = $pdf;
   }
@@ -6145,7 +6145,7 @@ class Powerform_Google_Service_Books_VolumeAccessInfo extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Books_VolumeAccessInfoEpub extends Powerform_Google_Model
+class Google_Service_Books_VolumeAccessInfoEpub extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6180,7 +6180,7 @@ class Powerform_Google_Service_Books_VolumeAccessInfoEpub extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Books_VolumeAccessInfoPdf extends Powerform_Google_Model
+class Google_Service_Books_VolumeAccessInfoPdf extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6215,12 +6215,12 @@ class Powerform_Google_Service_Books_VolumeAccessInfoPdf extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_Books_VolumeLayerInfo extends Powerform_Google_Collection
+class Google_Service_Books_VolumeLayerInfo extends Google_Collection
 {
   protected $collection_key = 'layers';
   protected $internal_gapi_mappings = array(
   );
-  protected $layersType = 'Powerform_Google_Service_Books_VolumeLayerInfoLayers';
+  protected $layersType = 'Google_Service_Books_VolumeLayerInfoLayers';
   protected $layersDataType = 'array';
 
 
@@ -6234,7 +6234,7 @@ class Powerform_Google_Service_Books_VolumeLayerInfo extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Books_VolumeLayerInfoLayers extends Powerform_Google_Model
+class Google_Service_Books_VolumeLayerInfoLayers extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6260,7 +6260,7 @@ class Powerform_Google_Service_Books_VolumeLayerInfoLayers extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Books_VolumeRecommendedInfo extends Powerform_Google_Model
+class Google_Service_Books_VolumeRecommendedInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6277,7 +6277,7 @@ class Powerform_Google_Service_Books_VolumeRecommendedInfo extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Books_VolumeSaleInfo extends Powerform_Google_Collection
+class Google_Service_Books_VolumeSaleInfo extends Google_Collection
 {
   protected $collection_key = 'offers';
   protected $internal_gapi_mappings = array(
@@ -6285,12 +6285,12 @@ class Powerform_Google_Service_Books_VolumeSaleInfo extends Powerform_Google_Col
   public $buyLink;
   public $country;
   public $isEbook;
-  protected $listPriceType = 'Powerform_Google_Service_Books_VolumeSaleInfoListPrice';
+  protected $listPriceType = 'Google_Service_Books_VolumeSaleInfoListPrice';
   protected $listPriceDataType = '';
-  protected $offersType = 'Powerform_Google_Service_Books_VolumeSaleInfoOffers';
+  protected $offersType = 'Google_Service_Books_VolumeSaleInfoOffers';
   protected $offersDataType = 'array';
   public $onSaleDate;
-  protected $retailPriceType = 'Powerform_Google_Service_Books_VolumeSaleInfoRetailPrice';
+  protected $retailPriceType = 'Google_Service_Books_VolumeSaleInfoRetailPrice';
   protected $retailPriceDataType = '';
   public $saleability;
 
@@ -6319,7 +6319,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfo extends Powerform_Google_Col
   {
     return $this->isEbook;
   }
-  public function setListPrice(Powerform_Google_Service_Books_VolumeSaleInfoListPrice $listPrice)
+  public function setListPrice(Google_Service_Books_VolumeSaleInfoListPrice $listPrice)
   {
     $this->listPrice = $listPrice;
   }
@@ -6343,7 +6343,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfo extends Powerform_Google_Col
   {
     return $this->onSaleDate;
   }
-  public function setRetailPrice(Powerform_Google_Service_Books_VolumeSaleInfoRetailPrice $retailPrice)
+  public function setRetailPrice(Google_Service_Books_VolumeSaleInfoRetailPrice $retailPrice)
   {
     $this->retailPrice = $retailPrice;
   }
@@ -6361,7 +6361,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfo extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_Books_VolumeSaleInfoListPrice extends Powerform_Google_Model
+class Google_Service_Books_VolumeSaleInfoListPrice extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6387,16 +6387,16 @@ class Powerform_Google_Service_Books_VolumeSaleInfoListPrice extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Books_VolumeSaleInfoOffers extends Powerform_Google_Model
+class Google_Service_Books_VolumeSaleInfoOffers extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $finskyOfferType;
-  protected $listPriceType = 'Powerform_Google_Service_Books_VolumeSaleInfoOffersListPrice';
+  protected $listPriceType = 'Google_Service_Books_VolumeSaleInfoOffersListPrice';
   protected $listPriceDataType = '';
-  protected $rentalDurationType = 'Powerform_Google_Service_Books_VolumeSaleInfoOffersRentalDuration';
+  protected $rentalDurationType = 'Google_Service_Books_VolumeSaleInfoOffersRentalDuration';
   protected $rentalDurationDataType = '';
-  protected $retailPriceType = 'Powerform_Google_Service_Books_VolumeSaleInfoOffersRetailPrice';
+  protected $retailPriceType = 'Google_Service_Books_VolumeSaleInfoOffersRetailPrice';
   protected $retailPriceDataType = '';
 
 
@@ -6408,7 +6408,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfoOffers extends Powerform_Goog
   {
     return $this->finskyOfferType;
   }
-  public function setListPrice(Powerform_Google_Service_Books_VolumeSaleInfoOffersListPrice $listPrice)
+  public function setListPrice(Google_Service_Books_VolumeSaleInfoOffersListPrice $listPrice)
   {
     $this->listPrice = $listPrice;
   }
@@ -6416,7 +6416,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfoOffers extends Powerform_Goog
   {
     return $this->listPrice;
   }
-  public function setRentalDuration(Powerform_Google_Service_Books_VolumeSaleInfoOffersRentalDuration $rentalDuration)
+  public function setRentalDuration(Google_Service_Books_VolumeSaleInfoOffersRentalDuration $rentalDuration)
   {
     $this->rentalDuration = $rentalDuration;
   }
@@ -6424,7 +6424,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfoOffers extends Powerform_Goog
   {
     return $this->rentalDuration;
   }
-  public function setRetailPrice(Powerform_Google_Service_Books_VolumeSaleInfoOffersRetailPrice $retailPrice)
+  public function setRetailPrice(Google_Service_Books_VolumeSaleInfoOffersRetailPrice $retailPrice)
   {
     $this->retailPrice = $retailPrice;
   }
@@ -6434,7 +6434,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfoOffers extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_Books_VolumeSaleInfoOffersListPrice extends Powerform_Google_Model
+class Google_Service_Books_VolumeSaleInfoOffersListPrice extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6460,7 +6460,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfoOffersListPrice extends Power
   }
 }
 
-class Powerform_Google_Service_Books_VolumeSaleInfoOffersRentalDuration extends Powerform_Google_Model
+class Google_Service_Books_VolumeSaleInfoOffersRentalDuration extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6486,7 +6486,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfoOffersRentalDuration extends 
   }
 }
 
-class Powerform_Google_Service_Books_VolumeSaleInfoOffersRetailPrice extends Powerform_Google_Model
+class Google_Service_Books_VolumeSaleInfoOffersRetailPrice extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6512,7 +6512,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfoOffersRetailPrice extends Pow
   }
 }
 
-class Powerform_Google_Service_Books_VolumeSaleInfoRetailPrice extends Powerform_Google_Model
+class Google_Service_Books_VolumeSaleInfoRetailPrice extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6538,7 +6538,7 @@ class Powerform_Google_Service_Books_VolumeSaleInfoRetailPrice extends Powerform
   }
 }
 
-class Powerform_Google_Service_Books_VolumeSearchInfo extends Powerform_Google_Model
+class Google_Service_Books_VolumeSearchInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6555,13 +6555,13 @@ class Powerform_Google_Service_Books_VolumeSearchInfo extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_Books_VolumeUserInfo extends Powerform_Google_Model
+class Google_Service_Books_VolumeUserInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $acquiredTime;
   public $acquisitionType;
-  protected $copyType = 'Powerform_Google_Service_Books_VolumeUserInfoCopy';
+  protected $copyType = 'Google_Service_Books_VolumeUserInfoCopy';
   protected $copyDataType = '';
   public $entitlementType;
   public $isFamilySharedFromUser;
@@ -6571,15 +6571,15 @@ class Powerform_Google_Service_Books_VolumeUserInfo extends Powerform_Google_Mod
   public $isPreordered;
   public $isPurchased;
   public $isUploaded;
-  protected $readingPositionType = 'Powerform_Google_Service_Books_ReadingPosition';
+  protected $readingPositionType = 'Google_Service_Books_ReadingPosition';
   protected $readingPositionDataType = '';
-  protected $rentalPeriodType = 'Powerform_Google_Service_Books_VolumeUserInfoRentalPeriod';
+  protected $rentalPeriodType = 'Google_Service_Books_VolumeUserInfoRentalPeriod';
   protected $rentalPeriodDataType = '';
   public $rentalState;
-  protected $reviewType = 'Powerform_Google_Service_Books_Review';
+  protected $reviewType = 'Google_Service_Books_Review';
   protected $reviewDataType = '';
   public $updated;
-  protected $userUploadedVolumeInfoType = 'Powerform_Google_Service_Books_VolumeUserInfoUserUploadedVolumeInfo';
+  protected $userUploadedVolumeInfoType = 'Google_Service_Books_VolumeUserInfoUserUploadedVolumeInfo';
   protected $userUploadedVolumeInfoDataType = '';
 
 
@@ -6599,7 +6599,7 @@ class Powerform_Google_Service_Books_VolumeUserInfo extends Powerform_Google_Mod
   {
     return $this->acquisitionType;
   }
-  public function setCopy(Powerform_Google_Service_Books_VolumeUserInfoCopy $copy)
+  public function setCopy(Google_Service_Books_VolumeUserInfoCopy $copy)
   {
     $this->copy = $copy;
   }
@@ -6671,7 +6671,7 @@ class Powerform_Google_Service_Books_VolumeUserInfo extends Powerform_Google_Mod
   {
     return $this->isUploaded;
   }
-  public function setReadingPosition(Powerform_Google_Service_Books_ReadingPosition $readingPosition)
+  public function setReadingPosition(Google_Service_Books_ReadingPosition $readingPosition)
   {
     $this->readingPosition = $readingPosition;
   }
@@ -6679,7 +6679,7 @@ class Powerform_Google_Service_Books_VolumeUserInfo extends Powerform_Google_Mod
   {
     return $this->readingPosition;
   }
-  public function setRentalPeriod(Powerform_Google_Service_Books_VolumeUserInfoRentalPeriod $rentalPeriod)
+  public function setRentalPeriod(Google_Service_Books_VolumeUserInfoRentalPeriod $rentalPeriod)
   {
     $this->rentalPeriod = $rentalPeriod;
   }
@@ -6695,7 +6695,7 @@ class Powerform_Google_Service_Books_VolumeUserInfo extends Powerform_Google_Mod
   {
     return $this->rentalState;
   }
-  public function setReview(Powerform_Google_Service_Books_Review $review)
+  public function setReview(Google_Service_Books_Review $review)
   {
     $this->review = $review;
   }
@@ -6711,7 +6711,7 @@ class Powerform_Google_Service_Books_VolumeUserInfo extends Powerform_Google_Mod
   {
     return $this->updated;
   }
-  public function setUserUploadedVolumeInfo(Powerform_Google_Service_Books_VolumeUserInfoUserUploadedVolumeInfo $userUploadedVolumeInfo)
+  public function setUserUploadedVolumeInfo(Google_Service_Books_VolumeUserInfoUserUploadedVolumeInfo $userUploadedVolumeInfo)
   {
     $this->userUploadedVolumeInfo = $userUploadedVolumeInfo;
   }
@@ -6721,7 +6721,7 @@ class Powerform_Google_Service_Books_VolumeUserInfo extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_Books_VolumeUserInfoCopy extends Powerform_Google_Model
+class Google_Service_Books_VolumeUserInfoCopy extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6765,7 +6765,7 @@ class Powerform_Google_Service_Books_VolumeUserInfoCopy extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Books_VolumeUserInfoRentalPeriod extends Powerform_Google_Model
+class Google_Service_Books_VolumeUserInfoRentalPeriod extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6791,7 +6791,7 @@ class Powerform_Google_Service_Books_VolumeUserInfoRentalPeriod extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Books_VolumeUserInfoUserUploadedVolumeInfo extends Powerform_Google_Model
+class Google_Service_Books_VolumeUserInfoUserUploadedVolumeInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6808,7 +6808,7 @@ class Powerform_Google_Service_Books_VolumeUserInfoUserUploadedVolumeInfo extend
   }
 }
 
-class Powerform_Google_Service_Books_VolumeVolumeInfo extends Powerform_Google_Collection
+class Google_Service_Books_VolumeVolumeInfo extends Google_Collection
 {
   protected $collection_key = 'industryIdentifiers';
   protected $internal_gapi_mappings = array(
@@ -6820,11 +6820,11 @@ class Powerform_Google_Service_Books_VolumeVolumeInfo extends Powerform_Google_C
   public $categories;
   public $contentVersion;
   public $description;
-  protected $dimensionsType = 'Powerform_Google_Service_Books_VolumeVolumeInfoDimensions';
+  protected $dimensionsType = 'Google_Service_Books_VolumeVolumeInfoDimensions';
   protected $dimensionsDataType = '';
-  protected $imageLinksType = 'Powerform_Google_Service_Books_VolumeVolumeInfoImageLinks';
+  protected $imageLinksType = 'Google_Service_Books_VolumeVolumeInfoImageLinks';
   protected $imageLinksDataType = '';
-  protected $industryIdentifiersType = 'Powerform_Google_Service_Books_VolumeVolumeInfoIndustryIdentifiers';
+  protected $industryIdentifiersType = 'Google_Service_Books_VolumeVolumeInfoIndustryIdentifiers';
   protected $industryIdentifiersDataType = 'array';
   public $infoLink;
   public $language;
@@ -6839,7 +6839,7 @@ class Powerform_Google_Service_Books_VolumeVolumeInfo extends Powerform_Google_C
   public $ratingsCount;
   public $readingModes;
   public $samplePageCount;
-  protected $seriesInfoType = 'Powerform_Google_Service_Books_Volumeseriesinfo';
+  protected $seriesInfoType = 'Google_Service_Books_Volumeseriesinfo';
   protected $seriesInfoDataType = '';
   public $subtitle;
   public $title;
@@ -6901,7 +6901,7 @@ class Powerform_Google_Service_Books_VolumeVolumeInfo extends Powerform_Google_C
   {
     return $this->description;
   }
-  public function setDimensions(Powerform_Google_Service_Books_VolumeVolumeInfoDimensions $dimensions)
+  public function setDimensions(Google_Service_Books_VolumeVolumeInfoDimensions $dimensions)
   {
     $this->dimensions = $dimensions;
   }
@@ -6909,7 +6909,7 @@ class Powerform_Google_Service_Books_VolumeVolumeInfo extends Powerform_Google_C
   {
     return $this->dimensions;
   }
-  public function setImageLinks(Powerform_Google_Service_Books_VolumeVolumeInfoImageLinks $imageLinks)
+  public function setImageLinks(Google_Service_Books_VolumeVolumeInfoImageLinks $imageLinks)
   {
     $this->imageLinks = $imageLinks;
   }
@@ -7029,7 +7029,7 @@ class Powerform_Google_Service_Books_VolumeVolumeInfo extends Powerform_Google_C
   {
     return $this->samplePageCount;
   }
-  public function setSeriesInfo(Powerform_Google_Service_Books_Volumeseriesinfo $seriesInfo)
+  public function setSeriesInfo(Google_Service_Books_Volumeseriesinfo $seriesInfo)
   {
     $this->seriesInfo = $seriesInfo;
   }
@@ -7055,7 +7055,7 @@ class Powerform_Google_Service_Books_VolumeVolumeInfo extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Books_VolumeVolumeInfoDimensions extends Powerform_Google_Model
+class Google_Service_Books_VolumeVolumeInfoDimensions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7090,7 +7090,7 @@ class Powerform_Google_Service_Books_VolumeVolumeInfoDimensions extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Books_VolumeVolumeInfoImageLinks extends Powerform_Google_Model
+class Google_Service_Books_VolumeVolumeInfoImageLinks extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7152,7 +7152,7 @@ class Powerform_Google_Service_Books_VolumeVolumeInfoImageLinks extends Powerfor
   }
 }
 
-class Powerform_Google_Service_Books_VolumeVolumeInfoIndustryIdentifiers extends Powerform_Google_Model
+class Google_Service_Books_VolumeVolumeInfoIndustryIdentifiers extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7178,7 +7178,7 @@ class Powerform_Google_Service_Books_VolumeVolumeInfoIndustryIdentifiers extends
   }
 }
 
-class Powerform_Google_Service_Books_Volumeannotation extends Powerform_Google_Collection
+class Google_Service_Books_Volumeannotation extends Google_Collection
 {
   protected $collection_key = 'pageIds';
   protected $internal_gapi_mappings = array(
@@ -7186,7 +7186,7 @@ class Powerform_Google_Service_Books_Volumeannotation extends Powerform_Google_C
   public $annotationDataId;
   public $annotationDataLink;
   public $annotationType;
-  protected $contentRangesType = 'Powerform_Google_Service_Books_VolumeannotationContentRanges';
+  protected $contentRangesType = 'Google_Service_Books_VolumeannotationContentRanges';
   protected $contentRangesDataType = '';
   public $data;
   public $deleted;
@@ -7224,7 +7224,7 @@ class Powerform_Google_Service_Books_Volumeannotation extends Powerform_Google_C
   {
     return $this->annotationType;
   }
-  public function setContentRanges(Powerform_Google_Service_Books_VolumeannotationContentRanges $contentRanges)
+  public function setContentRanges(Google_Service_Books_VolumeannotationContentRanges $contentRanges)
   {
     $this->contentRanges = $contentRanges;
   }
@@ -7314,20 +7314,20 @@ class Powerform_Google_Service_Books_Volumeannotation extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Books_VolumeannotationContentRanges extends Powerform_Google_Model
+class Google_Service_Books_VolumeannotationContentRanges extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $cfiRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $cfiRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $cfiRangeDataType = '';
   public $contentVersion;
-  protected $gbImageRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $gbImageRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $gbImageRangeDataType = '';
-  protected $gbTextRangeType = 'Powerform_Google_Service_Books_BooksAnnotationsRange';
+  protected $gbTextRangeType = 'Google_Service_Books_BooksAnnotationsRange';
   protected $gbTextRangeDataType = '';
 
 
-  public function setCfiRange(Powerform_Google_Service_Books_BooksAnnotationsRange $cfiRange)
+  public function setCfiRange(Google_Service_Books_BooksAnnotationsRange $cfiRange)
   {
     $this->cfiRange = $cfiRange;
   }
@@ -7343,7 +7343,7 @@ class Powerform_Google_Service_Books_VolumeannotationContentRanges extends Power
   {
     return $this->contentVersion;
   }
-  public function setGbImageRange(Powerform_Google_Service_Books_BooksAnnotationsRange $gbImageRange)
+  public function setGbImageRange(Google_Service_Books_BooksAnnotationsRange $gbImageRange)
   {
     $this->gbImageRange = $gbImageRange;
   }
@@ -7351,7 +7351,7 @@ class Powerform_Google_Service_Books_VolumeannotationContentRanges extends Power
   {
     return $this->gbImageRange;
   }
-  public function setGbTextRange(Powerform_Google_Service_Books_BooksAnnotationsRange $gbTextRange)
+  public function setGbTextRange(Google_Service_Books_BooksAnnotationsRange $gbTextRange)
   {
     $this->gbTextRange = $gbTextRange;
   }
@@ -7361,12 +7361,12 @@ class Powerform_Google_Service_Books_VolumeannotationContentRanges extends Power
   }
 }
 
-class Powerform_Google_Service_Books_Volumeannotations extends Powerform_Google_Collection
+class Google_Service_Books_Volumeannotations extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Books_Volumeannotation';
+  protected $itemsType = 'Google_Service_Books_Volumeannotation';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -7416,12 +7416,12 @@ class Powerform_Google_Service_Books_Volumeannotations extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Books_Volumes extends Powerform_Google_Collection
+class Google_Service_Books_Volumes extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Books_Volume';
+  protected $itemsType = 'Google_Service_Books_Volume';
   protected $itemsDataType = 'array';
   public $kind;
   public $totalItems;
@@ -7453,7 +7453,7 @@ class Powerform_Google_Service_Books_Volumes extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Books_Volumeseriesinfo extends Powerform_Google_Collection
+class Google_Service_Books_Volumeseriesinfo extends Google_Collection
 {
   protected $collection_key = 'volumeSeries';
   protected $internal_gapi_mappings = array(
@@ -7461,7 +7461,7 @@ class Powerform_Google_Service_Books_Volumeseriesinfo extends Powerform_Google_C
   public $bookDisplayNumber;
   public $kind;
   public $shortSeriesBookTitle;
-  protected $volumeSeriesType = 'Powerform_Google_Service_Books_VolumeseriesinfoVolumeSeries';
+  protected $volumeSeriesType = 'Google_Service_Books_VolumeseriesinfoVolumeSeries';
   protected $volumeSeriesDataType = 'array';
 
 
@@ -7499,12 +7499,12 @@ class Powerform_Google_Service_Books_Volumeseriesinfo extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Books_VolumeseriesinfoVolumeSeries extends Powerform_Google_Collection
+class Google_Service_Books_VolumeseriesinfoVolumeSeries extends Google_Collection
 {
   protected $collection_key = 'issue';
   protected $internal_gapi_mappings = array(
   );
-  protected $issueType = 'Powerform_Google_Service_Books_VolumeseriesinfoVolumeSeriesIssue';
+  protected $issueType = 'Google_Service_Books_VolumeseriesinfoVolumeSeriesIssue';
   protected $issueDataType = 'array';
   public $orderNumber;
   public $seriesBookType;
@@ -7545,7 +7545,7 @@ class Powerform_Google_Service_Books_VolumeseriesinfoVolumeSeries extends Powerf
   }
 }
 
-class Powerform_Google_Service_Books_VolumeseriesinfoVolumeSeriesIssue extends Powerform_Google_Model
+class Google_Service_Books_VolumeseriesinfoVolumeSeriesIssue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

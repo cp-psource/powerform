@@ -16,15 +16,14 @@ foreach ( $template_vars as $key => $val ) {
 }
 
 $vars['step_description'] = sprintf(
-	/* translators: ... */
-	esc_html__( 'Which list from %1$s do you want auto-generated cards to be added to?', Powerform::DOMAIN ),
+	__( 'Which list from %1$s do you want auto-generated cards to be added to?', Powerform::DOMAIN ),
 	'<b>' . $vars['board_name'] . '</b>'
 );
 
 ?>
 <div class="integration-header">
 	<h3 class="sui-box-title" id="dialogTitle2"><?php echo esc_html( __( 'Assign List', Powerform::DOMAIN ) ); ?></h3>
-	<p><?php echo $vars['step_description']; // phpcs:ignore ?></p>
+	<p><?php echo $vars['step_description']; // wpcs: xss ok ?></p>
 	<?php if ( ! empty( $vars['error_message'] ) ) : ?>
 		<span class="sui-notice sui-notice-error"><p><?php echo esc_html( $vars['error_message'] ); ?></p></span>
 	<?php endif; ?>

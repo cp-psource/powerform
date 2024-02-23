@@ -383,6 +383,7 @@ class Powerform_Quiz_Form_Model extends Powerform_Base_Form_Model {
 			return array();
 		}
 
+
 		// default top_result is first on the pool
 		$top_result_id = $top_results[0];
 		$top_result    = $this->getResult( $top_result_id );
@@ -417,10 +418,12 @@ class Powerform_Quiz_Form_Model extends Powerform_Base_Form_Model {
 					$top_result   = $top_result_to_compare;
 					$top_priority = $top_priority_to_compare;
 				}
+
 			}
 		}
 
 		return $top_result;
+
 
 	}
 
@@ -509,38 +512,5 @@ class Powerform_Quiz_Form_Model extends Powerform_Base_Form_Model {
 		}
 
 		return $correct_answers;
-	}
-
-	/**
-	 * Check whether entry share-able
-	 *
-	 * @since 1.7
-	 * @return bool
-	 */
-	public function is_entry_share_enabled() {
-		$quiz_id        = (int) $this->id;
-		$quiz_settings  = $this->settings;
-		$global_enabled = parent::is_entry_share_enabled();
-
-		$enabled = isset( $quiz_settings['enable-share'] ) ? $quiz_settings['enable-share'] : false;
-		$enabled = filter_var( $enabled, FILTER_VALIDATE_BOOLEAN );
-
-		$enabled = $global_enabled || $enabled;
-
-		/**
-		 * Filter is entry share enabled for Quiz
-		 *
-		 * @since 1.7
-		 *
-		 * @param bool  $enabled
-		 * @param bool  $global_enabled
-		 * @param int   $quiz_id
-		 * @param array $form_settings
-		 *
-		 * @return bool
-		 */
-		$enabled = apply_filters( 'powerform_quiz_is_result_share_enabled', $enabled, $global_enabled, $quiz_id, $quiz_settings );
-
-		return $enabled;
 	}
 }

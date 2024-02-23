@@ -1,0 +1,6 @@
+<?php include('default/fonts.html') ?>
+<?php include('default/colors.html') ?>
+
+<?php if ( powerform_array_value_exists( $properties, 'use-custom-css' ) && powerform_array_value_exists( $properties, 'custom_css' ) ) { ?>
+	<?php echo $properties['custom_css'] ?>
+<?php } ?>

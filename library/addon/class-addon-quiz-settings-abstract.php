@@ -91,22 +91,6 @@ abstract class Powerform_Addon_Quiz_Settings_Abstract {
 	protected $quiz = null;
 
 	/**
-	 * Current lead fields
-	 *
-	 * @since 1.14
-	 * @var Powerform_Custom_Form_Model|null
-	 */
-	protected $form_fields;
-
-	/**
-	 * Current lead settings
-	 *
-	 * @since 1.14
-	 * @var Powerform_Custom_Form_Model|null
-	 */
-	protected $form_settings;
-
-	/**
 	 * Powerform_Addon_Quiz_Settings_Abstract constructor.
 	 *
 	 * @since 1.6.2
@@ -121,15 +105,9 @@ abstract class Powerform_Addon_Quiz_Settings_Abstract {
 		$this->quiz_id = $quiz_id;
 		$this->quiz    = Powerform_Quiz_Form_Model::model()->load( $this->quiz_id );
 		if ( ! $this->quiz ) {
-			/* translators: ... */
-			throw new Powerform_Addon_Exception( sprintf( __( 'Quiz with id %d could not be found', Powerform::DOMAIN ), $this->quiz_id ) );
+			throw new Powerform_Addon_Exception( sprintf( __( 'Test mit der ID %d konnte nicht gefunden werden', Powerform::DOMAIN ), $this->quiz_id ) );
 		}
 		$this->quiz_settings = powerform_addon_format_quiz_settings( $this->quiz );
-		if ( isset( $this->quiz_settings['hasLeads'] ) && $this->quiz_settings['hasLeads'] ) {
-			$lead_model = Powerform_Custom_Form_Model::model()->load( $this->quiz_settings['leadsId'] );
-			$this->form_fields   = powerform_addon_format_form_fields( $lead_model );
-			$this->form_settings = powerform_addon_format_form_settings( $lead_model );
-		}
 	}
 
 
@@ -252,6 +230,7 @@ abstract class Powerform_Addon_Quiz_Settings_Abstract {
 	final public function is_force_quiz_disconnected() {
 		$disconnected = get_post_meta( $this->quiz_id, 'powerform_addon_' . $this->addon->get_slug() . '_quiz_disconnect', true );
 
+
 		if ( ! empty( $disconnected ) && isset( $disconnected['disconnect'] ) && $disconnected['disconnect'] ) {
 			$this->is_force_quiz_disconnected     = true;
 			$this->force_quiz_disconnected_reason = $disconnected['disconnect_reason'];
@@ -322,36 +301,6 @@ abstract class Powerform_Addon_Quiz_Settings_Abstract {
 	 */
 	final public function get_quiz_settings() {
 		return $this->quiz_settings;
-	}
-
-	/**
-	 * Get current form settings
-	 *
-	 * @since 1.1
-	 * @return array
-	 */
-	final public function get_form_settings() {
-		return $this->form_settings;
-	}
-
-	/**
-	 * Get current lead form fields
-	 *
-	 * @since 1.1
-	 * @return array
-	 */
-	final public function get_form_fields() {
-		return $this->form_fields;
-	}
-
-	/**
-	 * Get current lead form fields
-	 *
-	 * @since 1.1
-	 * @return array
-	 */
-	final public function get_quiz_fields() {
-		return $this->quiz->questions;
 	}
 
 	/**
@@ -642,25 +591,5 @@ abstract class Powerform_Addon_Quiz_Settings_Abstract {
 			//do nothing
 		}
 
-	}
-
-	/**
-	 * Mailchimp Address type fields array
-	 *
-	 * @since 1.0 Mailchimp Addon
-	 * @return array
-	 */
-	public function mail_address_fields() {
-
-		$address = array(
-			'addr1'   => 'Address 1',
-			'addr2'   => 'Address 2',
-			'city'    => 'City',
-			'state'   => 'State',
-			'zip'     => 'Zip',
-			'country' => 'Country',
-		);
-
-		return $address;
 	}
 }

@@ -57,20 +57,6 @@ abstract class Powerform_Addon_Form_Hooks_Abstract {
 	protected $custom_form;
 
 	/**
-	 * Prefix for calculation element
-	 *
-	 * @since 1.7
-	 */
-	const CALCULATION_ELEMENT_PREFIX = 'calculation-';
-
-	/**
-	 * Prefix for stripe element
-	 *
-	 * @since 1.7
-	 */
-	const STRIPE_ELEMENT_PREFIX = 'stripe-';
-
-	/**
 	 * Powerform_Addon_Form_Hooks_Abstract constructor.
 	 *
 	 * @param Powerform_Addon_Abstract $addon
@@ -85,11 +71,10 @@ abstract class Powerform_Addon_Form_Hooks_Abstract {
 		$this->form_id     = $form_id;
 		$this->custom_form = Powerform_Custom_Form_Model::model()->load( $this->form_id );
 		if ( ! $this->custom_form ) {
-			/* translators: ... */
-			throw new Powerform_Addon_Exception( sprintf( __( 'Form with id %d could not be found', Powerform::DOMAIN ), $this->form_id ) );
+			throw new Powerform_Addon_Exception( sprintf( __( 'Formular mit der ID %d konnte nicht gefunden werden', Powerform::DOMAIN ), $this->form_id ) );
 		}
 
-		$this->_submit_form_error_message = __( 'Failed to submit form because of an addon, please check your form and try again' );
+		$this->_submit_form_error_message = __( 'Das Formular konnte aufgrund eines Addons nicht gesendet werden. Überprüfe Dein Formular und versuche es erneut' );
 
 		// get form settings instance to be available throughout cycle
 		$this->form_settings_instance = $this->addon->get_addon_form_settings( $this->form_id );
@@ -240,6 +225,7 @@ abstract class Powerform_Addon_Form_Hooks_Abstract {
 			$form_settings_instance
 		);
 
+
 		$is_success = true;
 		/**
 		 * Filter result of form submit
@@ -358,6 +344,7 @@ abstract class Powerform_Addon_Form_Hooks_Abstract {
 			$form_settings_instance
 		);
 
+
 		$entry_fields = array();
 		/**
 		 * Filter addon entry fields to be saved to entry model
@@ -469,6 +456,7 @@ abstract class Powerform_Addon_Form_Hooks_Abstract {
 			$form_settings_instance
 		);
 
+
 		$entry_items = array();
 		/**
 		 * Filter mailchimp row(s) to be displayed on entries page
@@ -494,6 +482,7 @@ abstract class Powerform_Addon_Form_Hooks_Abstract {
 			$addon_meta_data,
 			$form_settings_instance
 		);
+
 
 		return $entry_items;
 	}
@@ -720,167 +709,6 @@ abstract class Powerform_Addon_Form_Hooks_Abstract {
 			$addon_meta_data,
 			$form_settings_instance
 		);
-	}
-
-	/**
-	 * Find Meta value from entry fields
-	 *
-	 * @since 1.7
-	 *
-	 * @param $element_id
-	 * @param $form_entry_fields
-	 *
-	 * @return array
-	 */
-	public static function find_meta_value_from_entry_fields( $element_id, $form_entry_fields ) {
-		$meta_value = array();
-
-		foreach ( $form_entry_fields as $form_entry_field ) {
-			if ( isset( $form_entry_field['name'] ) && $form_entry_field['name'] === $element_id ) {
-				$meta_value = isset( $form_entry_field['value'] ) ? $form_entry_field['value'] : array();
-			}
-		}
-
-		/**
-		 * Filter meta value of element_id from form entry fields
-		 *
-		 * @since 1.7
-		 *
-		 * @param array  $meta_value
-		 * @param string $element_id
-		 * @param array  $form_entry_fields
-		 *
-		 * @return array
-		 */
-		$meta_value = apply_filters( 'powerform_addon_meta_value_entry_fields', $meta_value, $element_id, $form_entry_fields );
-
-		return $meta_value;
-	}
-
-	/**
-	 * Check if element_id is calculation type
-	 *
-	 * @since 1.7
-	 *
-	 * @param $element_id
-	 *
-	 * @return bool
-	 */
-	public static function element_is_calculation( $element_id ) {
-		$is_calculation = stripos( $element_id, self::CALCULATION_ELEMENT_PREFIX ) !== false;
-
-		/**
-		 * Filter calculation flag of element
-		 *
-		 * @since 1.7
-		 *
-		 * @param bool   $is_calculation
-		 * @param string $element_id
-		 *
-		 * @return bool
-		 */
-		$is_calculation = apply_filters( 'powerform_addon_element_is_calculation', $is_calculation, $element_id );
-
-		return $is_calculation;
-	}
-
-	/**
-	 * Find calculations fields from entry fields
-	 *
-	 * @since 1.7
-	 *
-	 * @param $form_entry_fields
-	 *
-	 * @return array
-	 */
-	public static function find_calculation_fields_meta_from_entry_fields( $form_entry_fields ) {
-		$meta_value = array();
-
-		foreach ( $form_entry_fields as $form_entry_field ) {
-			if ( isset( $form_entry_field['name'] ) ) {
-				$element_id = $form_entry_field['name'];
-				if ( self::element_is_calculation( $form_entry_field['name'] ) ) {
-					$meta_value[ $element_id ] = isset( $form_entry_field['value'] ) ? $form_entry_field['value'] : array();
-				}
-			}
-		}
-
-		/**
-		 * Filter calculations fields meta value form form entry fields
-		 *
-		 * @since 1.7
-		 *
-		 * @param array $meta_value
-		 * @param array $form_entry_fields
-		 *
-		 * @return array
-		 */
-		$meta_value = apply_filters( 'powerform_addon_calculation_fields_entry_fields', $meta_value, $form_entry_fields );
-
-		return $meta_value;
-	}
-
-	/**
-	 * Check if element_id is stripe type
-	 *
-	 * @since 1.7
-	 *
-	 * @param $element_id
-	 *
-	 * @return bool
-	 */
-	public static function element_is_stripe( $element_id ) {
-		$is_stripe = stripos( $element_id, self::STRIPE_ELEMENT_PREFIX ) !== false;
-
-		/**
-		 * Filter stripe flag of element
-		 *
-		 * @since 1.7
-		 *
-		 * @param bool   $is_stripe
-		 * @param string $element_id
-		 *
-		 * @return bool
-		 */
-		$is_stripe = apply_filters( 'powerform_addon_element_is_stripe', $is_stripe, $element_id );
-
-		return $is_stripe;
-	}
-
-	/**
-	 * Find stripe fields from entry fields
-	 *
-	 * @since 1.7
-	 *
-	 * @param $form_entry_fields
-	 *
-	 * @return array
-	 */
-	public static function find_stripe_fields_meta_from_entry_fields( $form_entry_fields ) {
-		$meta_value = array();
-
-		foreach ( $form_entry_fields as $form_entry_field ) {
-			if ( isset( $form_entry_field['name'] ) ) {
-				$element_id = $form_entry_field['name'];
-				if ( self::element_is_stripe( $form_entry_field['name'] ) ) {
-					$meta_value[ $element_id ] = isset( $form_entry_field['value'] ) ? $form_entry_field['value'] : array();
-				}
-			}
-		}
-
-		/**
-		 * Filter stripe fields meta value form form entry fields
-		 *
-		 * @since 1.7
-		 *
-		 * @param array $meta_value
-		 * @param array $form_entry_fields
-		 *
-		 * @return array
-		 */
-		$meta_value = apply_filters( 'powerform_addon_stripe_fields_entry_fields', $meta_value, $form_entry_fields );
-
-		return $meta_value;
 	}
 
 }

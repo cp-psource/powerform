@@ -1,7 +1,7 @@
 ! function(t) {
     formintorjs.define(["text!tpl/popups.html"], function(i) {
         return Backbone.View.extend({
-            className: "psource-section--integrations",
+            className: "wpmudev-section--integrations",
             loaderTpl: Powerform.Utils.template(t(i).find("#popup-loader-tpl").html()),
             model: {},
             events: { "click .powerform-addon-connect": "connect_addon", "click .powerform-addon-disconnect": "disconnect_addon", "click .powerform-addon-form-disconnect": "form_disconnect_addon", "click .powerform-addon-next": "submit_next_step", "click .powerform-addon-back": "go_prev_step", "click .powerform-addon-finish": "finish_steps" },
@@ -26,7 +26,7 @@
             render_body: function(t) {
                 this.$el.find(".sui-box-body").html(t.data.data.html);
                 var i = this.$el.find(".sui-box-body .integration-header").remove();
-                i.length > 0 && this.$el.find(".integration-header").html(i.html()), t.data.data.nopadding && this.$el.find(".sui-box-body").css({ padding: "10px" })
+                i.length > 0 && this.$el.find(".integration-header").html(i.html())
             },
             render_footer: function(t) {
                 var i = this,
@@ -73,7 +73,7 @@
             close: function(t) { t.ajax.abort(), t.remove(), Powerform.Integrations_Popup.close(), Powerform.Events.trigger("powerform:addons:reload") },
             get_scrollbar_width: function() {
                 var i = 0;
-                if (navigator.userAgent.match("MSIE")) {
+                if (t.browser.msie) {
                     var e = t('<textarea cols="10" rows="2"></textarea>').css({ position: "absolute", top: -1e3, left: -1e3 }).appendTo("body"),
                         o = t('<textarea cols="10" rows="2" style="overflow: hidden;"></textarea>').css({ position: "absolute", top: -1e3, left: -1e3 }).appendTo("body");
                     i = e.width() - o.width(), e.add(o).remove()

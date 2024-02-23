@@ -15,28 +15,28 @@
  * limitations under the License.
  */
 
-if (!class_exists('Powerform_Google_Client')) {
+if (!class_exists('Google_Client')) {
   require_once dirname(__FILE__) . '/../autoload.php';
 }
 
 /**
  * This class implements the RESTful transport of apiServiceRequest()'s
  */
-class Powerform_Google_Http_REST
+class Google_Http_REST
 {
   /**
-   * Executes a Powerform_Google_Http_Request and (if applicable) automatically retries
+   * Executes a Google_Http_Request and (if applicable) automatically retries
    * when errors occur.
    *
-   * @param Powerform_Google_Client $client
-   * @param Powerform_Google_Http_Request $req
+   * @param Google_Client $client
+   * @param Google_Http_Request $req
    * @return array decoded result
-   * @throws Powerform_Google_Service_Exception on server side error (ie: not authenticated,
+   * @throws Google_Service_Exception on server side error (ie: not authenticated,
    *  invalid or malformed post body, invalid url)
    */
-  public static function execute(Powerform_Google_Client $client, Powerform_Google_Http_Request $req)
+  public static function execute(Google_Client $client, Google_Http_Request $req)
   {
-    $runner = new Powerform_Google_Task_Runner(
+    $runner = new Google_Task_Runner(
         $client,
         sprintf('%s %s', $req->getRequestMethod(), $req->getUrl()),
         array(get_class(), 'doExecute'),
@@ -47,15 +47,15 @@ class Powerform_Google_Http_REST
   }
 
   /**
-   * Executes a Powerform_Google_Http_Request
+   * Executes a Google_Http_Request
    *
-   * @param Powerform_Google_Client $client
-   * @param Powerform_Google_Http_Request $req
+   * @param Google_Client $client
+   * @param Google_Http_Request $req
    * @return array decoded result
-   * @throws Powerform_Google_Service_Exception on server side error (ie: not authenticated,
+   * @throws Google_Service_Exception on server side error (ie: not authenticated,
    *  invalid or malformed post body, invalid url)
    */
-  public static function doExecute(Powerform_Google_Client $client, Powerform_Google_Http_Request $req)
+  public static function doExecute(Google_Client $client, Google_Http_Request $req)
   {
     $httpRequest = $client->getIo()->makeRequest($req);
     $httpRequest->setExpectedClass($req->getExpectedClass());
@@ -65,12 +65,12 @@ class Powerform_Google_Http_REST
   /**
    * Decode an HTTP Response.
    * @static
-   * @throws Powerform_Google_Service_Exception
-   * @param Powerform_Google_Http_Request $response The http response to be decoded.
-   * @param Powerform_Google_Client $client
+   * @throws Google_Service_Exception
+   * @param Google_Http_Request $response The http response to be decoded.
+   * @param Google_Client $client
    * @return mixed|null
    */
-  public static function decodeHttpResponse($response, Powerform_Google_Client $client = null)
+  public static function decodeHttpResponse($response, Google_Client $client = null)
   {
     $code = $response->getResponseHttpCode();
     $body = $response->getResponseBody();
@@ -103,11 +103,11 @@ class Powerform_Google_Http_REST
         );
 
         $map = $client->getClassConfig(
-            'Powerform_Google_Service_Exception',
+            'Google_Service_Exception',
             'retry_map'
         );
       }
-      throw new Powerform_Google_Service_Exception($err, $code, null, $errors, $map);
+      throw new Google_Service_Exception($err, $code, null, $errors, $map);
     }
 
     // Only attempt to decode the response, if the response code wasn't (204) 'no content'
@@ -115,14 +115,14 @@ class Powerform_Google_Http_REST
       if ($response->getExpectedRaw()) {
         return $body;
       }
-      
+
       $decoded = json_decode($body, true);
       if ($decoded === null || $decoded === "") {
         $error = "Invalid json in service response: $body";
         if ($client) {
           $client->getLogger()->error($error);
         }
-        throw new Powerform_Google_Service_Exception($error);
+        throw new Google_Service_Exception($error);
       }
 
       if ($response->getExpectedClass()) {
@@ -165,7 +165,7 @@ class Powerform_Google_Http_REST
     }
 
     if (count($uriTemplateVars)) {
-      $uriTemplateParser = new Powerform_Google_Utils_URITemplate();
+      $uriTemplateParser = new Google_Utils_URITemplate();
       $requestUrl = $uriTemplateParser->parse($requestUrl, $uriTemplateVars);
     }
 

@@ -15,7 +15,8 @@ const config = {
 
 // Full path of main files that need to be ran through the bundler
 config.source.scss = './assets/scss/shared-ui.scss';
-config.source.scgen = './assets/scss/powerform-scgen.scss';
+config.source.editor = './assets/scss/sui-editor.scss';
+config.source.front = './assets/sass/front.scss';
 config.source.js   = './assets/js/shared-ui.js';
 
 // Path where the scss & js should be compiled to
@@ -33,7 +34,8 @@ config.output.fontsDirectory  = '../fonts/';
 var scssConfig = Object.assign( {}, {
 	entry: {
 		'shared-ui': config.source.scss,
-		'powerform-scgen': config.source.scgen
+		'sui-editor': config.source.editor,
+		'front': config.source.front
 	},
 	output: {
 		filename: '[name].min.css',
@@ -109,7 +111,7 @@ var jsConfig = Object.assign( {}, {
 			use: {
 				loader: 'babel-loader',
 				options: {
-					presets: ['@babel/env']
+					presets: ['env']
 				}
 			}
 		}]
@@ -119,9 +121,9 @@ var jsConfig = Object.assign( {}, {
 		new SystemBellPlugin(),
 		// Automatically load modules instead of having to import or require them everywhere.
 		new webpack.ProvidePlugin({
-			ClipboardJS: '@psource/shared-ui/js/clipboard.js',  // Vendor script in Shared UI.
-			A11yDialog:  '@psource/shared-ui/js/a11y-dialog.js', // Vendor script in Shared UI.
-			Select2: '@psource/shared-ui/js/select2.full.js'
+			ClipboardJS: '@wpmudev/shared-ui/js/clipboard.js',  // Vendor script in Shared UI.
+			A11yDialog:  '@wpmudev/shared-ui/js/a11y-dialog.js', // Vendor script in Shared UI.
+			Select2: '@wpmudev/shared-ui/js/select2.full.js'
 		})
 	]
 } );

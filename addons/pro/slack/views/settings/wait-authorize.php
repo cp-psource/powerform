@@ -1,8 +1,8 @@
 <?php
 // defaults
 $vars = array(
-	'auth_url' => '',
-	'token'    => '',
+	'auth_url'          => '',
+	'token'             => '',
 );
 /** @var array $template_vars */
 foreach ( $template_vars as $key => $val ) {
@@ -17,4 +17,3 @@ foreach ( $template_vars as $key => $val ) {
 	<p><?php esc_html_e( 'We are waiting for authorization from Slack...', Powerform::DOMAIN ); ?></p>
 </div>
 <a href="<?php echo esc_attr( $vars['auth_url'] ); ?>" target="_blank" class="sui-button"><?php esc_html_e( 'RETRY', Powerform::DOMAIN ); ?></a>
-

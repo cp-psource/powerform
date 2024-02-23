@@ -26,21 +26,21 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Urlshortener extends Powerform_Google_Service
+class Google_Service_Urlshortener extends Google_Service
 {
   /** Manage your goo.gl short URLs. */
   const URLSHORTENER =
       "https://www.googleapis.com/auth/urlshortener";
 
   public $url;
-  
+
 
   /**
    * Constructs the internal representation of the Urlshortener service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -48,7 +48,7 @@ class Powerform_Google_Service_Urlshortener extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'urlshortener';
 
-    $this->url = new Powerform_Google_Service_Urlshortener_Url_Resource(
+    $this->url = new Google_Service_Urlshortener_Url_Resource(
         $this,
         $this->serviceName,
         'url',
@@ -97,11 +97,11 @@ class Powerform_Google_Service_Urlshortener extends Powerform_Google_Service
  * The "url" collection of methods.
  * Typical usage is:
  *  <code>
- *   $urlshortenerService = new Powerform_Google_Service_Urlshortener(...);
+ *   $urlshortenerService = new Google_Service_Urlshortener(...);
  *   $url = $urlshortenerService->url;
  *  </code>
  */
-class Powerform_Google_Service_Urlshortener_Url_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Urlshortener_Url_Resource extends Google_Service_Resource
 {
 
   /**
@@ -111,27 +111,27 @@ class Powerform_Google_Service_Urlshortener_Url_Resource extends Powerform_Googl
    * @param array $optParams Optional parameters.
    *
    * @opt_param string projection Additional information to return.
-   * @return Powerform_Google_Service_Urlshortener_Url
+   * @return Google_Service_Urlshortener_Url
    */
   public function get($shortUrl, $optParams = array())
   {
     $params = array('shortUrl' => $shortUrl);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Urlshortener_Url");
+    return $this->call('get', array($params), "Google_Service_Urlshortener_Url");
   }
 
   /**
    * Creates a new short URL. (url.insert)
    *
-   * @param Powerform_Google_Url $postBody
+   * @param Google_Url $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Urlshortener_Url
+   * @return Google_Service_Urlshortener_Url
    */
-  public function insert(Powerform_Google_Service_Urlshortener_Url $postBody, $optParams = array())
+  public function insert(Google_Service_Urlshortener_Url $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Urlshortener_Url");
+    return $this->call('insert', array($params), "Google_Service_Urlshortener_Url");
   }
 
   /**
@@ -142,32 +142,32 @@ class Powerform_Google_Service_Urlshortener_Url_Resource extends Powerform_Googl
    * @opt_param string projection Additional information to return.
    * @opt_param string start-token Token for requesting successive pages of
    * results.
-   * @return Powerform_Google_Service_Urlshortener_UrlHistory
+   * @return Google_Service_Urlshortener_UrlHistory
    */
   public function listUrl($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Urlshortener_UrlHistory");
+    return $this->call('list', array($params), "Google_Service_Urlshortener_UrlHistory");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Urlshortener_AnalyticsSnapshot extends Powerform_Google_Collection
+class Google_Service_Urlshortener_AnalyticsSnapshot extends Google_Collection
 {
   protected $collection_key = 'referrers';
   protected $internal_gapi_mappings = array(
   );
-  protected $browsersType = 'Powerform_Google_Service_Urlshortener_StringCount';
+  protected $browsersType = 'Google_Service_Urlshortener_StringCount';
   protected $browsersDataType = 'array';
-  protected $countriesType = 'Powerform_Google_Service_Urlshortener_StringCount';
+  protected $countriesType = 'Google_Service_Urlshortener_StringCount';
   protected $countriesDataType = 'array';
   public $longUrlClicks;
-  protected $platformsType = 'Powerform_Google_Service_Urlshortener_StringCount';
+  protected $platformsType = 'Google_Service_Urlshortener_StringCount';
   protected $platformsDataType = 'array';
-  protected $referrersType = 'Powerform_Google_Service_Urlshortener_StringCount';
+  protected $referrersType = 'Google_Service_Urlshortener_StringCount';
   protected $referrersDataType = 'array';
   public $shortUrlClicks;
 
@@ -222,23 +222,23 @@ class Powerform_Google_Service_Urlshortener_AnalyticsSnapshot extends Powerform_
   }
 }
 
-class Powerform_Google_Service_Urlshortener_AnalyticsSummary extends Powerform_Google_Model
+class Google_Service_Urlshortener_AnalyticsSummary extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $allTimeType = 'Powerform_Google_Service_Urlshortener_AnalyticsSnapshot';
+  protected $allTimeType = 'Google_Service_Urlshortener_AnalyticsSnapshot';
   protected $allTimeDataType = '';
-  protected $dayType = 'Powerform_Google_Service_Urlshortener_AnalyticsSnapshot';
+  protected $dayType = 'Google_Service_Urlshortener_AnalyticsSnapshot';
   protected $dayDataType = '';
-  protected $monthType = 'Powerform_Google_Service_Urlshortener_AnalyticsSnapshot';
+  protected $monthType = 'Google_Service_Urlshortener_AnalyticsSnapshot';
   protected $monthDataType = '';
-  protected $twoHoursType = 'Powerform_Google_Service_Urlshortener_AnalyticsSnapshot';
+  protected $twoHoursType = 'Google_Service_Urlshortener_AnalyticsSnapshot';
   protected $twoHoursDataType = '';
-  protected $weekType = 'Powerform_Google_Service_Urlshortener_AnalyticsSnapshot';
+  protected $weekType = 'Google_Service_Urlshortener_AnalyticsSnapshot';
   protected $weekDataType = '';
 
 
-  public function setAllTime(Powerform_Google_Service_Urlshortener_AnalyticsSnapshot $allTime)
+  public function setAllTime(Google_Service_Urlshortener_AnalyticsSnapshot $allTime)
   {
     $this->allTime = $allTime;
   }
@@ -246,7 +246,7 @@ class Powerform_Google_Service_Urlshortener_AnalyticsSummary extends Powerform_G
   {
     return $this->allTime;
   }
-  public function setDay(Powerform_Google_Service_Urlshortener_AnalyticsSnapshot $day)
+  public function setDay(Google_Service_Urlshortener_AnalyticsSnapshot $day)
   {
     $this->day = $day;
   }
@@ -254,7 +254,7 @@ class Powerform_Google_Service_Urlshortener_AnalyticsSummary extends Powerform_G
   {
     return $this->day;
   }
-  public function setMonth(Powerform_Google_Service_Urlshortener_AnalyticsSnapshot $month)
+  public function setMonth(Google_Service_Urlshortener_AnalyticsSnapshot $month)
   {
     $this->month = $month;
   }
@@ -262,7 +262,7 @@ class Powerform_Google_Service_Urlshortener_AnalyticsSummary extends Powerform_G
   {
     return $this->month;
   }
-  public function setTwoHours(Powerform_Google_Service_Urlshortener_AnalyticsSnapshot $twoHours)
+  public function setTwoHours(Google_Service_Urlshortener_AnalyticsSnapshot $twoHours)
   {
     $this->twoHours = $twoHours;
   }
@@ -270,7 +270,7 @@ class Powerform_Google_Service_Urlshortener_AnalyticsSummary extends Powerform_G
   {
     return $this->twoHours;
   }
-  public function setWeek(Powerform_Google_Service_Urlshortener_AnalyticsSnapshot $week)
+  public function setWeek(Google_Service_Urlshortener_AnalyticsSnapshot $week)
   {
     $this->week = $week;
   }
@@ -280,7 +280,7 @@ class Powerform_Google_Service_Urlshortener_AnalyticsSummary extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_Urlshortener_StringCount extends Powerform_Google_Model
+class Google_Service_Urlshortener_StringCount extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -306,11 +306,11 @@ class Powerform_Google_Service_Urlshortener_StringCount extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Urlshortener_Url extends Powerform_Google_Model
+class Google_Service_Urlshortener_Url extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $analyticsType = 'Powerform_Google_Service_Urlshortener_AnalyticsSummary';
+  protected $analyticsType = 'Google_Service_Urlshortener_AnalyticsSummary';
   protected $analyticsDataType = '';
   public $created;
   public $id;
@@ -319,7 +319,7 @@ class Powerform_Google_Service_Urlshortener_Url extends Powerform_Google_Model
   public $status;
 
 
-  public function setAnalytics(Powerform_Google_Service_Urlshortener_AnalyticsSummary $analytics)
+  public function setAnalytics(Google_Service_Urlshortener_AnalyticsSummary $analytics)
   {
     $this->analytics = $analytics;
   }
@@ -369,12 +369,12 @@ class Powerform_Google_Service_Urlshortener_Url extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Urlshortener_UrlHistory extends Powerform_Google_Collection
+class Google_Service_Urlshortener_UrlHistory extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Urlshortener_Url';
+  protected $itemsType = 'Google_Service_Urlshortener_Url';
   protected $itemsDataType = 'array';
   public $itemsPerPage;
   public $kind;

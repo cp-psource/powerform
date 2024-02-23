@@ -23,7 +23,6 @@
             render_id: '',
             is_preview: '',
             preview_data: [],
-            nonce: false,
             last_submit_data: {},
             extra: {},
         };
@@ -44,7 +43,6 @@
         this.frontInitCalled = false;
         this.scriptsQue = [];
         this.frontOptions = null;
-        this.leadFrontOptions = null;
 
         this.init();
     }
@@ -64,12 +62,6 @@
             param.preview_data = JSON.stringify(this.settings.preview_data);
             param.last_submit_data = this.settings.last_submit_data;
             param.extra = this.settings.extra;
-            param.nonce = this.settings.nonce;
-
-            if ('undefined' !== typeof this.settings.has_lead) {
-                param.has_lead = this.settings.has_lead;
-                param.leads_id = this.settings.leads_id;
-            }
 
             this.load_ajax(param);
 
@@ -95,36 +87,13 @@
                             return false;
                         }
 
-                        var pagination_config = [];
-
-                        if (typeof response.pagination_config === "undefined" && typeof response.options.pagination_config !== "undefined") {
-                            pagination_config = response.options.pagination_config;
-                        }
-
                         // response.pagination_config
-                        if (pagination_config) {
+                        if (response.pagination_config) {
                             window.Powerform_Cform_Paginations = window.Powerform_Cform_Paginations || [];
-                            window.Powerform_Cform_Paginations[param.id] = pagination_config;
+                            window.Powerform_Cform_Paginations[param.id] = response.pagination_config;
                         }
 
                         self.frontOptions = response.options || null;
-
-                        // Solution for form Preview
-                        if (typeof window.Powerform_Cform_Paginations === "undefined" && self.frontOptions.pagination_config) {
-                            window.Powerform_Cform_Paginations = window.Powerform_Cform_Paginations || [];
-                            window.Powerform_Cform_Paginations[param.id] = self.frontOptions.pagination_config;
-                        }
-
-                        if ('undefined' !== typeof response.lead_options) {
-
-                            self.leadFrontOptions = response.lead_options || null;
-
-                            if (typeof window.Powerform_Cform_Paginations === "undefined" && self.leadFrontOptions.pagination_config) {
-                                window.Powerform_Cform_Paginations = window.Powerform_Cform_Paginations || [];
-                                window.Powerform_Cform_Paginations[param.leads_id] = self.leadFrontOptions.pagination_config;
-                            }
-
-                        }
 
                         //response.html
                         if (response.html) {
@@ -168,7 +137,7 @@
                 message = '',
                 wrapper_message = null;
 
-            wrapper_message = this.$el.find('.powerform-response-message');
+            wrapper_message = this.$el.find('.powerform-cform-response-message');
             if (wrapper_message.length) {
                 message = wrapper_message.get(0).outerHTML;
             }
@@ -177,16 +146,11 @@
                 message = wrapper_message.get(0).outerHTML;
             }
 
-            if (this.$el.parent().hasClass('powerform-guttenberg')) {
-                this.$el.parent()
-                    .html(html);
-            } else {
-                this.$el
-                    .replaceWith(html);
-            }
+            this.$el
+                .replaceWith(html);
 
             if (message) {
-                $('#powerform-module-' + id + '[data-powerform-render=' + render_id + '] .powerform-response-message')
+                $('#powerform-module-' + id + '[data-powerform-render=' + render_id + '] .powerform-cform-response-message')
                     .replaceWith(message);
                 $('#powerform-module-' + id + '[data-powerform-render=' + render_id + '] .powerform-poll-response-message')
                     .replaceWith(message);
@@ -297,16 +261,10 @@
             var id = this.settings.id;
             var render_id = this.settings.render_id;
             var options = this.frontOptions || null;
-            var lead_options = this.leadFrontOptions || null;
 
             if (options) {
                 $('#powerform-module-' + id + '[data-powerform-render=' + render_id + ']')
                     .powerformFront(options);
-            }
-            if ('undefined' !== typeof this.settings.has_lead && lead_options) {
-                var leads_id = this.settings.leads_id;
-                $('#powerform-module-' + leads_id + '[data-powerform-render=' + render_id + ']')
-                    .powerformFront(lead_options);
             }
 
             this.init_window_vars();

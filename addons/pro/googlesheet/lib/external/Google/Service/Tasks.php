@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Tasks extends Powerform_Google_Service
+class Google_Service_Tasks extends Google_Service
 {
   /** Manage your tasks. */
   const TASKS =
@@ -37,14 +37,14 @@ class Powerform_Google_Service_Tasks extends Powerform_Google_Service
 
   public $tasklists;
   public $tasks;
-  
+
 
   /**
    * Constructs the internal representation of the Tasks service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -52,7 +52,7 @@ class Powerform_Google_Service_Tasks extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'tasks';
 
-    $this->tasklists = new Powerform_Google_Service_Tasks_Tasklists_Resource(
+    $this->tasklists = new Google_Service_Tasks_Tasklists_Resource(
         $this,
         $this->serviceName,
         'tasklists',
@@ -119,7 +119,7 @@ class Powerform_Google_Service_Tasks extends Powerform_Google_Service
           )
         )
     );
-    $this->tasks = new Powerform_Google_Service_Tasks_Tasks_Resource(
+    $this->tasks = new Google_Service_Tasks_Tasks_Resource(
         $this,
         $this->serviceName,
         'tasks',
@@ -298,11 +298,11 @@ class Powerform_Google_Service_Tasks extends Powerform_Google_Service
  * The "tasklists" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tasksService = new Powerform_Google_Service_Tasks(...);
+ *   $tasksService = new Google_Service_Tasks(...);
  *   $tasklists = $tasksService->tasklists;
  *  </code>
  */
-class Powerform_Google_Service_Tasks_Tasklists_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Tasks_Tasklists_Resource extends Google_Service_Resource
 {
 
   /**
@@ -323,28 +323,28 @@ class Powerform_Google_Service_Tasks_Tasklists_Resource extends Powerform_Google
    *
    * @param string $tasklist Task list identifier.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Tasks_TaskList
+   * @return Google_Service_Tasks_TaskList
    */
   public function get($tasklist, $optParams = array())
   {
     $params = array('tasklist' => $tasklist);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Tasks_TaskList");
+    return $this->call('get', array($params), "Google_Service_Tasks_TaskList");
   }
 
   /**
    * Creates a new task list and adds it to the authenticated user's task lists.
    * (tasklists.insert)
    *
-   * @param Powerform_Google_TaskList $postBody
+   * @param Google_TaskList $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Tasks_TaskList
+   * @return Google_Service_Tasks_TaskList
    */
-  public function insert(Powerform_Google_Service_Tasks_TaskList $postBody, $optParams = array())
+  public function insert(Google_Service_Tasks_TaskList $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Tasks_TaskList");
+    return $this->call('insert', array($params), "Google_Service_Tasks_TaskList");
   }
 
   /**
@@ -356,13 +356,13 @@ class Powerform_Google_Service_Tasks_Tasklists_Resource extends Powerform_Google
    * page. Optional. The default is 100.
    * @opt_param string pageToken Token specifying the result page to return.
    * Optional.
-   * @return Powerform_Google_Service_Tasks_TaskLists
+   * @return Google_Service_Tasks_TaskLists
    */
   public function listTasklists($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Tasks_TaskLists");
+    return $this->call('list', array($params), "Google_Service_Tasks_TaskLists");
   }
 
   /**
@@ -370,30 +370,30 @@ class Powerform_Google_Service_Tasks_Tasklists_Resource extends Powerform_Google
    * patch semantics. (tasklists.patch)
    *
    * @param string $tasklist Task list identifier.
-   * @param Powerform_Google_TaskList $postBody
+   * @param Google_TaskList $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Tasks_TaskList
+   * @return Google_Service_Tasks_TaskList
    */
-  public function patch($tasklist, Powerform_Google_Service_Tasks_TaskList $postBody, $optParams = array())
+  public function patch($tasklist, Google_Service_Tasks_TaskList $postBody, $optParams = array())
   {
     $params = array('tasklist' => $tasklist, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Tasks_TaskList");
+    return $this->call('patch', array($params), "Google_Service_Tasks_TaskList");
   }
 
   /**
    * Updates the authenticated user's specified task list. (tasklists.update)
    *
    * @param string $tasklist Task list identifier.
-   * @param Powerform_Google_TaskList $postBody
+   * @param Google_TaskList $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Tasks_TaskList
+   * @return Google_Service_Tasks_TaskList
    */
-  public function update($tasklist, Powerform_Google_Service_Tasks_TaskList $postBody, $optParams = array())
+  public function update($tasklist, Google_Service_Tasks_TaskList $postBody, $optParams = array())
   {
     $params = array('tasklist' => $tasklist, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Tasks_TaskList");
+    return $this->call('update', array($params), "Google_Service_Tasks_TaskList");
   }
 }
 
@@ -401,11 +401,11 @@ class Powerform_Google_Service_Tasks_Tasklists_Resource extends Powerform_Google
  * The "tasks" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tasksService = new Powerform_Google_Service_Tasks(...);
+ *   $tasksService = new Google_Service_Tasks(...);
  *   $tasks = $tasksService->tasks;
  *  </code>
  */
-class Powerform_Google_Service_Tasks_Tasks_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Tasks_Tasks_Resource extends Google_Service_Resource
 {
 
   /**
@@ -443,20 +443,20 @@ class Powerform_Google_Service_Tasks_Tasks_Resource extends Powerform_Google_Ser
    * @param string $tasklist Task list identifier.
    * @param string $task Task identifier.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Tasks_Task
+   * @return Google_Service_Tasks_Task
    */
   public function get($tasklist, $task, $optParams = array())
   {
     $params = array('tasklist' => $tasklist, 'task' => $task);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Tasks_Task");
+    return $this->call('get', array($params), "Google_Service_Tasks_Task");
   }
 
   /**
    * Creates a new task on the specified task list. (tasks.insert)
    *
    * @param string $tasklist Task list identifier.
-   * @param Powerform_Google_Task $postBody
+   * @param Google_Task $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string parent Parent task identifier. If the task is created at
@@ -464,13 +464,13 @@ class Powerform_Google_Service_Tasks_Tasks_Resource extends Powerform_Google_Ser
    * @opt_param string previous Previous sibling task identifier. If the task is
    * created at the first position among its siblings, this parameter is omitted.
    * Optional.
-   * @return Powerform_Google_Service_Tasks_Task
+   * @return Google_Service_Tasks_Task
    */
-  public function insert($tasklist, Powerform_Google_Service_Tasks_Task $postBody, $optParams = array())
+  public function insert($tasklist, Google_Service_Tasks_Task $postBody, $optParams = array())
   {
     $params = array('tasklist' => $tasklist, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Tasks_Task");
+    return $this->call('insert', array($params), "Google_Service_Tasks_Task");
   }
 
   /**
@@ -502,13 +502,13 @@ class Powerform_Google_Service_Tasks_Tasks_Resource extends Powerform_Google_Ser
    * @opt_param string updatedMin Lower bound for a task's last modification time
    * (as a RFC 3339 timestamp) to filter by. Optional. The default is not to
    * filter by last modification time.
-   * @return Powerform_Google_Service_Tasks_Tasks
+   * @return Google_Service_Tasks_Tasks
    */
   public function listTasks($tasklist, $optParams = array())
   {
     $params = array('tasklist' => $tasklist);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Tasks_Tasks");
+    return $this->call('list', array($params), "Google_Service_Tasks_Tasks");
   }
 
   /**
@@ -525,13 +525,13 @@ class Powerform_Google_Service_Tasks_Tasks_Resource extends Powerform_Google_Ser
    * @opt_param string previous New previous sibling task identifier. If the task
    * is moved to the first position among its siblings, this parameter is omitted.
    * Optional.
-   * @return Powerform_Google_Service_Tasks_Task
+   * @return Google_Service_Tasks_Task
    */
   public function move($tasklist, $task, $optParams = array())
   {
     $params = array('tasklist' => $tasklist, 'task' => $task);
     $params = array_merge($params, $optParams);
-    return $this->call('move', array($params), "Powerform_Google_Service_Tasks_Task");
+    return $this->call('move', array($params), "Google_Service_Tasks_Task");
   }
 
   /**
@@ -540,15 +540,15 @@ class Powerform_Google_Service_Tasks_Tasks_Resource extends Powerform_Google_Ser
    *
    * @param string $tasklist Task list identifier.
    * @param string $task Task identifier.
-   * @param Powerform_Google_Task $postBody
+   * @param Google_Task $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Tasks_Task
+   * @return Google_Service_Tasks_Task
    */
-  public function patch($tasklist, $task, Powerform_Google_Service_Tasks_Task $postBody, $optParams = array())
+  public function patch($tasklist, $task, Google_Service_Tasks_Task $postBody, $optParams = array())
   {
     $params = array('tasklist' => $tasklist, 'task' => $task, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Tasks_Task");
+    return $this->call('patch', array($params), "Google_Service_Tasks_Task");
   }
 
   /**
@@ -556,22 +556,22 @@ class Powerform_Google_Service_Tasks_Tasks_Resource extends Powerform_Google_Ser
    *
    * @param string $tasklist Task list identifier.
    * @param string $task Task identifier.
-   * @param Powerform_Google_Task $postBody
+   * @param Google_Task $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Tasks_Task
+   * @return Google_Service_Tasks_Task
    */
-  public function update($tasklist, $task, Powerform_Google_Service_Tasks_Task $postBody, $optParams = array())
+  public function update($tasklist, $task, Google_Service_Tasks_Task $postBody, $optParams = array())
   {
     $params = array('tasklist' => $tasklist, 'task' => $task, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Tasks_Task");
+    return $this->call('update', array($params), "Google_Service_Tasks_Task");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Tasks_Task extends Powerform_Google_Collection
+class Google_Service_Tasks_Task extends Google_Collection
 {
   protected $collection_key = 'links';
   protected $internal_gapi_mappings = array(
@@ -583,7 +583,7 @@ class Powerform_Google_Service_Tasks_Task extends Powerform_Google_Collection
   public $hidden;
   public $id;
   public $kind;
-  protected $linksType = 'Powerform_Google_Service_Tasks_TaskLinks';
+  protected $linksType = 'Google_Service_Tasks_TaskLinks';
   protected $linksDataType = 'array';
   public $notes;
   public $parent;
@@ -716,7 +716,7 @@ class Powerform_Google_Service_Tasks_Task extends Powerform_Google_Collection
   }
 }
 
-class Powerform_Google_Service_Tasks_TaskLinks extends Powerform_Google_Model
+class Google_Service_Tasks_TaskLinks extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -751,7 +751,7 @@ class Powerform_Google_Service_Tasks_TaskLinks extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Tasks_TaskList extends Powerform_Google_Model
+class Google_Service_Tasks_TaskList extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -813,13 +813,13 @@ class Powerform_Google_Service_Tasks_TaskList extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Tasks_TaskLists extends Powerform_Google_Collection
+class Google_Service_Tasks_TaskLists extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Tasks_TaskList';
+  protected $itemsType = 'Google_Service_Tasks_TaskList';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -859,13 +859,13 @@ class Powerform_Google_Service_Tasks_TaskLists extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Tasks_Tasks extends Powerform_Google_Collection
+class Google_Service_Tasks_Tasks extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $itemsType = 'Powerform_Google_Service_Tasks_Task';
+  protected $itemsType = 'Google_Service_Tasks_Task';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;

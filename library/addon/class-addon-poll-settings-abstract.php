@@ -113,8 +113,7 @@ abstract class Powerform_Addon_Poll_Settings_Abstract {
 		$this->poll_id = $poll_id;
 		$this->poll    = Powerform_Poll_Form_Model::model()->load( $this->poll_id );
 		if ( ! $this->poll ) {
-			/* translators: ... */
-			throw new Powerform_Addon_Exception( sprintf( __( 'Poll with id %d could not be found', Powerform::DOMAIN ), $this->poll_id ) );
+			throw new Powerform_Addon_Exception( sprintf( __( 'Umfrage mit ID %d konnte nicht gefunden werden', Powerform::DOMAIN ), $this->poll_id ) );
 		}
 		$this->poll_fields   = powerform_addon_format_poll_fields( $this->poll );
 		$this->poll_settings = powerform_addon_format_poll_settings( $this->poll );
@@ -239,6 +238,7 @@ abstract class Powerform_Addon_Poll_Settings_Abstract {
 	 */
 	final public function is_force_poll_disconnected() {
 		$disconnected = get_post_meta( $this->poll_id, 'powerform_addon_' . $this->addon->get_slug() . '_poll_disconnect', true );
+
 
 		if ( ! empty( $disconnected ) && isset( $disconnected['disconnect'] ) && $disconnected['disconnect'] ) {
 			$this->is_force_poll_disconnected     = true;

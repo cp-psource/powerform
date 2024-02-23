@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_Storage extends Powerform_Google_Service
+class Google_Service_Storage extends Google_Service
 {
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
@@ -50,14 +50,14 @@ class Powerform_Google_Service_Storage extends Powerform_Google_Service
   public $defaultObjectAccessControls;
   public $objectAccessControls;
   public $objects;
-  
+
 
   /**
    * Constructs the internal representation of the Storage service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -65,7 +65,7 @@ class Powerform_Google_Service_Storage extends Powerform_Google_Service
     $this->version = 'v1';
     $this->serviceName = 'storage';
 
-    $this->bucketAccessControls = new Powerform_Google_Service_Storage_BucketAccessControls_Resource(
+    $this->bucketAccessControls = new Google_Service_Storage_BucketAccessControls_Resource(
         $this,
         $this->serviceName,
         'bucketAccessControls',
@@ -155,7 +155,7 @@ class Powerform_Google_Service_Storage extends Powerform_Google_Service
           )
         )
     );
-    $this->buckets = new Powerform_Google_Service_Storage_Buckets_Resource(
+    $this->buckets = new Google_Service_Storage_Buckets_Resource(
         $this,
         $this->serviceName,
         'buckets',
@@ -313,7 +313,7 @@ class Powerform_Google_Service_Storage extends Powerform_Google_Service
           )
         )
     );
-    $this->channels = new Powerform_Google_Service_Storage_Channels_Resource(
+    $this->channels = new Google_Service_Storage_Channels_Resource(
         $this,
         $this->serviceName,
         'channels',
@@ -327,7 +327,7 @@ class Powerform_Google_Service_Storage extends Powerform_Google_Service
           )
         )
     );
-    $this->defaultObjectAccessControls = new Powerform_Google_Service_Storage_DefaultObjectAccessControls_Resource(
+    $this->defaultObjectAccessControls = new Google_Service_Storage_DefaultObjectAccessControls_Resource(
         $this,
         $this->serviceName,
         'defaultObjectAccessControls',
@@ -425,7 +425,7 @@ class Powerform_Google_Service_Storage extends Powerform_Google_Service
           )
         )
     );
-    $this->objectAccessControls = new Powerform_Google_Service_Storage_ObjectAccessControls_Resource(
+    $this->objectAccessControls = new Google_Service_Storage_ObjectAccessControls_Resource(
         $this,
         $this->serviceName,
         'objectAccessControls',
@@ -569,7 +569,7 @@ class Powerform_Google_Service_Storage extends Powerform_Google_Service
           )
         )
     );
-    $this->objects = new Powerform_Google_Service_Storage_Objects_Resource(
+    $this->objects = new Google_Service_Storage_Objects_Resource(
         $this,
         $this->serviceName,
         'objects',
@@ -1030,11 +1030,11 @@ class Powerform_Google_Service_Storage extends Powerform_Google_Service
  * The "bucketAccessControls" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Powerform_Google_Service_Storage(...);
+ *   $storageService = new Google_Service_Storage(...);
  *   $bucketAccessControls = $storageService->bucketAccessControls;
  *  </code>
  */
-class Powerform_Google_Service_Storage_BucketAccessControls_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Storage_BucketAccessControls_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1063,13 +1063,13 @@ class Powerform_Google_Service_Storage_BucketAccessControls_Resource extends Pow
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storage_BucketAccessControl
+   * @return Google_Service_Storage_BucketAccessControl
    */
   public function get($bucket, $entity, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Storage_BucketAccessControl");
+    return $this->call('get', array($params), "Google_Service_Storage_BucketAccessControl");
   }
 
   /**
@@ -1077,15 +1077,15 @@ class Powerform_Google_Service_Storage_BucketAccessControls_Resource extends Pow
    * (bucketAccessControls.insert)
    *
    * @param string $bucket Name of a bucket.
-   * @param Powerform_Google_BucketAccessControl $postBody
+   * @param Google_BucketAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storage_BucketAccessControl
+   * @return Google_Service_Storage_BucketAccessControl
    */
-  public function insert($bucket, Powerform_Google_Service_Storage_BucketAccessControl $postBody, $optParams = array())
+  public function insert($bucket, Google_Service_Storage_BucketAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Storage_BucketAccessControl");
+    return $this->call('insert', array($params), "Google_Service_Storage_BucketAccessControl");
   }
 
   /**
@@ -1094,13 +1094,13 @@ class Powerform_Google_Service_Storage_BucketAccessControls_Resource extends Pow
    *
    * @param string $bucket Name of a bucket.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storage_BucketAccessControls
+   * @return Google_Service_Storage_BucketAccessControls
    */
   public function listBucketAccessControls($bucket, $optParams = array())
   {
     $params = array('bucket' => $bucket);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Storage_BucketAccessControls");
+    return $this->call('list', array($params), "Google_Service_Storage_BucketAccessControls");
   }
 
   /**
@@ -1111,15 +1111,15 @@ class Powerform_Google_Service_Storage_BucketAccessControls_Resource extends Pow
    * @param string $entity The entity holding the permission. Can be user-userId,
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
-   * @param Powerform_Google_BucketAccessControl $postBody
+   * @param Google_BucketAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storage_BucketAccessControl
+   * @return Google_Service_Storage_BucketAccessControl
    */
-  public function patch($bucket, $entity, Powerform_Google_Service_Storage_BucketAccessControl $postBody, $optParams = array())
+  public function patch($bucket, $entity, Google_Service_Storage_BucketAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Storage_BucketAccessControl");
+    return $this->call('patch', array($params), "Google_Service_Storage_BucketAccessControl");
   }
 
   /**
@@ -1129,15 +1129,15 @@ class Powerform_Google_Service_Storage_BucketAccessControls_Resource extends Pow
    * @param string $entity The entity holding the permission. Can be user-userId,
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
-   * @param Powerform_Google_BucketAccessControl $postBody
+   * @param Google_BucketAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storage_BucketAccessControl
+   * @return Google_Service_Storage_BucketAccessControl
    */
-  public function update($bucket, $entity, Powerform_Google_Service_Storage_BucketAccessControl $postBody, $optParams = array())
+  public function update($bucket, $entity, Google_Service_Storage_BucketAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Storage_BucketAccessControl");
+    return $this->call('update', array($params), "Google_Service_Storage_BucketAccessControl");
   }
 }
 
@@ -1145,11 +1145,11 @@ class Powerform_Google_Service_Storage_BucketAccessControls_Resource extends Pow
  * The "buckets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Powerform_Google_Service_Storage(...);
+ *   $storageService = new Google_Service_Storage(...);
  *   $buckets = $storageService->buckets;
  *  </code>
  */
-class Powerform_Google_Service_Storage_Buckets_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Storage_Buckets_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1183,20 +1183,20 @@ class Powerform_Google_Service_Storage_Buckets_Resource extends Powerform_Google
    * metadata conditional on whether the bucket's current metageneration does not
    * match the given value.
    * @opt_param string projection Set of properties to return. Defaults to noAcl.
-   * @return Powerform_Google_Service_Storage_Bucket
+   * @return Google_Service_Storage_Bucket
    */
   public function get($bucket, $optParams = array())
   {
     $params = array('bucket' => $bucket);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Storage_Bucket");
+    return $this->call('get', array($params), "Google_Service_Storage_Bucket");
   }
 
   /**
    * Creates a new bucket. (buckets.insert)
    *
    * @param string $project A valid API project identifier.
-   * @param Powerform_Google_Bucket $postBody
+   * @param Google_Bucket $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string predefinedAcl Apply a predefined set of access controls to
@@ -1206,13 +1206,13 @@ class Powerform_Google_Service_Storage_Buckets_Resource extends Powerform_Google
    * @opt_param string projection Set of properties to return. Defaults to noAcl,
    * unless the bucket resource specifies acl or defaultObjectAcl properties, when
    * it defaults to full.
-   * @return Powerform_Google_Service_Storage_Bucket
+   * @return Google_Service_Storage_Bucket
    */
-  public function insert($project, Powerform_Google_Service_Storage_Bucket $postBody, $optParams = array())
+  public function insert($project, Google_Service_Storage_Bucket $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Storage_Bucket");
+    return $this->call('insert', array($params), "Google_Service_Storage_Bucket");
   }
 
   /**
@@ -1227,20 +1227,20 @@ class Powerform_Google_Service_Storage_Buckets_Resource extends Powerform_Google
    * @opt_param string prefix Filter results to buckets whose names begin with
    * this prefix.
    * @opt_param string projection Set of properties to return. Defaults to noAcl.
-   * @return Powerform_Google_Service_Storage_Buckets
+   * @return Google_Service_Storage_Buckets
    */
   public function listBuckets($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Storage_Buckets");
+    return $this->call('list', array($params), "Google_Service_Storage_Buckets");
   }
 
   /**
    * Updates a bucket. This method supports patch semantics. (buckets.patch)
    *
    * @param string $bucket Name of a bucket.
-   * @param Powerform_Google_Bucket $postBody
+   * @param Google_Bucket $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string ifMetagenerationMatch Makes the return of the bucket
@@ -1254,20 +1254,20 @@ class Powerform_Google_Service_Storage_Buckets_Resource extends Powerform_Google
    * @opt_param string predefinedDefaultObjectAcl Apply a predefined set of
    * default object access controls to this bucket.
    * @opt_param string projection Set of properties to return. Defaults to full.
-   * @return Powerform_Google_Service_Storage_Bucket
+   * @return Google_Service_Storage_Bucket
    */
-  public function patch($bucket, Powerform_Google_Service_Storage_Bucket $postBody, $optParams = array())
+  public function patch($bucket, Google_Service_Storage_Bucket $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Storage_Bucket");
+    return $this->call('patch', array($params), "Google_Service_Storage_Bucket");
   }
 
   /**
    * Updates a bucket. (buckets.update)
    *
    * @param string $bucket Name of a bucket.
-   * @param Powerform_Google_Bucket $postBody
+   * @param Google_Bucket $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string ifMetagenerationMatch Makes the return of the bucket
@@ -1281,13 +1281,13 @@ class Powerform_Google_Service_Storage_Buckets_Resource extends Powerform_Google
    * @opt_param string predefinedDefaultObjectAcl Apply a predefined set of
    * default object access controls to this bucket.
    * @opt_param string projection Set of properties to return. Defaults to full.
-   * @return Powerform_Google_Service_Storage_Bucket
+   * @return Google_Service_Storage_Bucket
    */
-  public function update($bucket, Powerform_Google_Service_Storage_Bucket $postBody, $optParams = array())
+  public function update($bucket, Google_Service_Storage_Bucket $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Storage_Bucket");
+    return $this->call('update', array($params), "Google_Service_Storage_Bucket");
   }
 }
 
@@ -1295,20 +1295,20 @@ class Powerform_Google_Service_Storage_Buckets_Resource extends Powerform_Google
  * The "channels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Powerform_Google_Service_Storage(...);
+ *   $storageService = new Google_Service_Storage(...);
  *   $channels = $storageService->channels;
  *  </code>
  */
-class Powerform_Google_Service_Storage_Channels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Storage_Channels_Resource extends Google_Service_Resource
 {
 
   /**
    * Stop watching resources through this channel (channels.stop)
    *
-   * @param Powerform_Google_Channel $postBody
+   * @param Google_Channel $postBody
    * @param array $optParams Optional parameters.
    */
-  public function stop(Powerform_Google_Service_Storage_Channel $postBody, $optParams = array())
+  public function stop(Google_Service_Storage_Channel $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -1320,11 +1320,11 @@ class Powerform_Google_Service_Storage_Channels_Resource extends Powerform_Googl
  * The "defaultObjectAccessControls" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Powerform_Google_Service_Storage(...);
+ *   $storageService = new Google_Service_Storage(...);
  *   $defaultObjectAccessControls = $storageService->defaultObjectAccessControls;
  *  </code>
  */
-class Powerform_Google_Service_Storage_DefaultObjectAccessControls_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Storage_DefaultObjectAccessControls_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1353,13 +1353,13 @@ class Powerform_Google_Service_Storage_DefaultObjectAccessControls_Resource exte
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storage_ObjectAccessControl
+   * @return Google_Service_Storage_ObjectAccessControl
    */
   public function get($bucket, $entity, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Storage_ObjectAccessControl");
+    return $this->call('get', array($params), "Google_Service_Storage_ObjectAccessControl");
   }
 
   /**
@@ -1367,15 +1367,15 @@ class Powerform_Google_Service_Storage_DefaultObjectAccessControls_Resource exte
    * (defaultObjectAccessControls.insert)
    *
    * @param string $bucket Name of a bucket.
-   * @param Powerform_Google_ObjectAccessControl $postBody
+   * @param Google_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storage_ObjectAccessControl
+   * @return Google_Service_Storage_ObjectAccessControl
    */
-  public function insert($bucket, Powerform_Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function insert($bucket, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Storage_ObjectAccessControl");
+    return $this->call('insert', array($params), "Google_Service_Storage_ObjectAccessControl");
   }
 
   /**
@@ -1390,13 +1390,13 @@ class Powerform_Google_Service_Storage_DefaultObjectAccessControls_Resource exte
    * @opt_param string ifMetagenerationNotMatch If present, only return default
    * ACL listing if the bucket's current metageneration does not match the given
    * value.
-   * @return Powerform_Google_Service_Storage_ObjectAccessControls
+   * @return Google_Service_Storage_ObjectAccessControls
    */
   public function listDefaultObjectAccessControls($bucket, $optParams = array())
   {
     $params = array('bucket' => $bucket);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Storage_ObjectAccessControls");
+    return $this->call('list', array($params), "Google_Service_Storage_ObjectAccessControls");
   }
 
   /**
@@ -1407,15 +1407,15 @@ class Powerform_Google_Service_Storage_DefaultObjectAccessControls_Resource exte
    * @param string $entity The entity holding the permission. Can be user-userId,
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
-   * @param Powerform_Google_ObjectAccessControl $postBody
+   * @param Google_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storage_ObjectAccessControl
+   * @return Google_Service_Storage_ObjectAccessControl
    */
-  public function patch($bucket, $entity, Powerform_Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function patch($bucket, $entity, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Storage_ObjectAccessControl");
+    return $this->call('patch', array($params), "Google_Service_Storage_ObjectAccessControl");
   }
 
   /**
@@ -1426,15 +1426,15 @@ class Powerform_Google_Service_Storage_DefaultObjectAccessControls_Resource exte
    * @param string $entity The entity holding the permission. Can be user-userId,
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
-   * @param Powerform_Google_ObjectAccessControl $postBody
+   * @param Google_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_Storage_ObjectAccessControl
+   * @return Google_Service_Storage_ObjectAccessControl
    */
-  public function update($bucket, $entity, Powerform_Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function update($bucket, $entity, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Storage_ObjectAccessControl");
+    return $this->call('update', array($params), "Google_Service_Storage_ObjectAccessControl");
   }
 }
 
@@ -1442,11 +1442,11 @@ class Powerform_Google_Service_Storage_DefaultObjectAccessControls_Resource exte
  * The "objectAccessControls" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Powerform_Google_Service_Storage(...);
+ *   $storageService = new Google_Service_Storage(...);
  *   $objectAccessControls = $storageService->objectAccessControls;
  *  </code>
  */
-class Powerform_Google_Service_Storage_ObjectAccessControls_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Storage_ObjectAccessControls_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1485,13 +1485,13 @@ class Powerform_Google_Service_Storage_ObjectAccessControls_Resource extends Pow
    *
    * @opt_param string generation If present, selects a specific revision of this
    * object (as opposed to the latest version, the default).
-   * @return Powerform_Google_Service_Storage_ObjectAccessControl
+   * @return Google_Service_Storage_ObjectAccessControl
    */
   public function get($bucket, $object, $entity, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'entity' => $entity);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Storage_ObjectAccessControl");
+    return $this->call('get', array($params), "Google_Service_Storage_ObjectAccessControl");
   }
 
   /**
@@ -1501,18 +1501,18 @@ class Powerform_Google_Service_Storage_ObjectAccessControls_Resource extends Pow
    * @param string $bucket Name of a bucket.
    * @param string $object Name of the object. For information about how to URL
    * encode object names to be path safe, see Encoding URI Path Parts.
-   * @param Powerform_Google_ObjectAccessControl $postBody
+   * @param Google_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string generation If present, selects a specific revision of this
    * object (as opposed to the latest version, the default).
-   * @return Powerform_Google_Service_Storage_ObjectAccessControl
+   * @return Google_Service_Storage_ObjectAccessControl
    */
-  public function insert($bucket, $object, Powerform_Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function insert($bucket, $object, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Storage_ObjectAccessControl");
+    return $this->call('insert', array($params), "Google_Service_Storage_ObjectAccessControl");
   }
 
   /**
@@ -1526,13 +1526,13 @@ class Powerform_Google_Service_Storage_ObjectAccessControls_Resource extends Pow
    *
    * @opt_param string generation If present, selects a specific revision of this
    * object (as opposed to the latest version, the default).
-   * @return Powerform_Google_Service_Storage_ObjectAccessControls
+   * @return Google_Service_Storage_ObjectAccessControls
    */
   public function listObjectAccessControls($bucket, $object, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Storage_ObjectAccessControls");
+    return $this->call('list', array($params), "Google_Service_Storage_ObjectAccessControls");
   }
 
   /**
@@ -1545,18 +1545,18 @@ class Powerform_Google_Service_Storage_ObjectAccessControls_Resource extends Pow
    * @param string $entity The entity holding the permission. Can be user-userId,
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
-   * @param Powerform_Google_ObjectAccessControl $postBody
+   * @param Google_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string generation If present, selects a specific revision of this
    * object (as opposed to the latest version, the default).
-   * @return Powerform_Google_Service_Storage_ObjectAccessControl
+   * @return Google_Service_Storage_ObjectAccessControl
    */
-  public function patch($bucket, $object, $entity, Powerform_Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function patch($bucket, $object, $entity, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Storage_ObjectAccessControl");
+    return $this->call('patch', array($params), "Google_Service_Storage_ObjectAccessControl");
   }
 
   /**
@@ -1568,18 +1568,18 @@ class Powerform_Google_Service_Storage_ObjectAccessControls_Resource extends Pow
    * @param string $entity The entity holding the permission. Can be user-userId,
    * user-emailAddress, group-groupId, group-emailAddress, allUsers, or
    * allAuthenticatedUsers.
-   * @param Powerform_Google_ObjectAccessControl $postBody
+   * @param Google_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string generation If present, selects a specific revision of this
    * object (as opposed to the latest version, the default).
-   * @return Powerform_Google_Service_Storage_ObjectAccessControl
+   * @return Google_Service_Storage_ObjectAccessControl
    */
-  public function update($bucket, $object, $entity, Powerform_Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function update($bucket, $object, $entity, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Storage_ObjectAccessControl");
+    return $this->call('update', array($params), "Google_Service_Storage_ObjectAccessControl");
   }
 }
 
@@ -1587,11 +1587,11 @@ class Powerform_Google_Service_Storage_ObjectAccessControls_Resource extends Pow
  * The "objects" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Powerform_Google_Service_Storage(...);
+ *   $storageService = new Google_Service_Storage(...);
  *   $objects = $storageService->objects;
  *  </code>
  */
-class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google_Service_Resource
+class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1603,7 +1603,7 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * @param string $destinationObject Name of the new object. For information
    * about how to URL encode object names to be path safe, see Encoding URI Path
    * Parts.
-   * @param Powerform_Google_ComposeRequest $postBody
+   * @param Google_ComposeRequest $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string destinationPredefinedAcl Apply a predefined set of access
@@ -1612,13 +1612,13 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * whether the object's current generation matches the given value.
    * @opt_param string ifMetagenerationMatch Makes the operation conditional on
    * whether the object's current metageneration matches the given value.
-   * @return Powerform_Google_Service_Storage_StorageObject
+   * @return Google_Service_Storage_StorageObject
    */
-  public function compose($destinationBucket, $destinationObject, Powerform_Google_Service_Storage_ComposeRequest $postBody, $optParams = array())
+  public function compose($destinationBucket, $destinationObject, Google_Service_Storage_ComposeRequest $postBody, $optParams = array())
   {
     $params = array('destinationBucket' => $destinationBucket, 'destinationObject' => $destinationObject, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('compose', array($params), "Powerform_Google_Service_Storage_StorageObject");
+    return $this->call('compose', array($params), "Google_Service_Storage_StorageObject");
   }
 
   /**
@@ -1636,7 +1636,7 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * @param string $destinationObject Name of the new object. Required when the
    * object metadata is not otherwise provided. Overrides the object metadata's
    * name value, if any.
-   * @param Powerform_Google_StorageObject $postBody
+   * @param Google_StorageObject $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string destinationPredefinedAcl Apply a predefined set of access
@@ -1667,13 +1667,13 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * full.
    * @opt_param string sourceGeneration If present, selects a specific revision of
    * the source object (as opposed to the latest version, the default).
-   * @return Powerform_Google_Service_Storage_StorageObject
+   * @return Google_Service_Storage_StorageObject
    */
-  public function copy($sourceBucket, $sourceObject, $destinationBucket, $destinationObject, Powerform_Google_Service_Storage_StorageObject $postBody, $optParams = array())
+  public function copy($sourceBucket, $sourceObject, $destinationBucket, $destinationObject, Google_Service_Storage_StorageObject $postBody, $optParams = array())
   {
     $params = array('sourceBucket' => $sourceBucket, 'sourceObject' => $sourceObject, 'destinationBucket' => $destinationBucket, 'destinationObject' => $destinationObject, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('copy', array($params), "Powerform_Google_Service_Storage_StorageObject");
+    return $this->call('copy', array($params), "Google_Service_Storage_StorageObject");
   }
 
   /**
@@ -1723,13 +1723,13 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * @opt_param string ifMetagenerationNotMatch Makes the operation conditional on
    * whether the object's current metageneration does not match the given value.
    * @opt_param string projection Set of properties to return. Defaults to noAcl.
-   * @return Powerform_Google_Service_Storage_StorageObject
+   * @return Google_Service_Storage_StorageObject
    */
   public function get($bucket, $object, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Powerform_Google_Service_Storage_StorageObject");
+    return $this->call('get', array($params), "Google_Service_Storage_StorageObject");
   }
 
   /**
@@ -1737,7 +1737,7 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    *
    * @param string $bucket Name of the bucket in which to store the new object.
    * Overrides the provided object metadata's bucket value, if any.
-   * @param Powerform_Google_StorageObject $postBody
+   * @param Google_StorageObject $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string contentEncoding If set, sets the contentEncoding property
@@ -1762,13 +1762,13 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * @opt_param string projection Set of properties to return. Defaults to noAcl,
    * unless the object resource specifies the acl property, when it defaults to
    * full.
-   * @return Powerform_Google_Service_Storage_StorageObject
+   * @return Google_Service_Storage_StorageObject
    */
-  public function insert($bucket, Powerform_Google_Service_Storage_StorageObject $postBody, $optParams = array())
+  public function insert($bucket, Google_Service_Storage_StorageObject $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_Storage_StorageObject");
+    return $this->call('insert', array($params), "Google_Service_Storage_StorageObject");
   }
 
   /**
@@ -1792,13 +1792,13 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * @opt_param string projection Set of properties to return. Defaults to noAcl.
    * @opt_param bool versions If true, lists all versions of an object as distinct
    * results. The default is false. For more information, see Object Versioning.
-   * @return Powerform_Google_Service_Storage_Objects
+   * @return Google_Service_Storage_Objects
    */
   public function listObjects($bucket, $optParams = array())
   {
     $params = array('bucket' => $bucket);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_Storage_Objects");
+    return $this->call('list', array($params), "Google_Service_Storage_Objects");
   }
 
   /**
@@ -1808,7 +1808,7 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * @param string $bucket Name of the bucket in which the object resides.
    * @param string $object Name of the object. For information about how to URL
    * encode object names to be path safe, see Encoding URI Path Parts.
-   * @param Powerform_Google_StorageObject $postBody
+   * @param Google_StorageObject $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string generation If present, selects a specific revision of this
@@ -1824,13 +1824,13 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * @opt_param string predefinedAcl Apply a predefined set of access controls to
    * this object.
    * @opt_param string projection Set of properties to return. Defaults to full.
-   * @return Powerform_Google_Service_Storage_StorageObject
+   * @return Google_Service_Storage_StorageObject
    */
-  public function patch($bucket, $object, Powerform_Google_Service_Storage_StorageObject $postBody, $optParams = array())
+  public function patch($bucket, $object, Google_Service_Storage_StorageObject $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Powerform_Google_Service_Storage_StorageObject");
+    return $this->call('patch', array($params), "Google_Service_Storage_StorageObject");
   }
 
   /**
@@ -1847,7 +1847,7 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * object metadata is not otherwise provided. Overrides the object metadata's
    * name value, if any. For information about how to URL encode object names to
    * be path safe, see Encoding URI Path Parts.
-   * @param Powerform_Google_StorageObject $postBody
+   * @param Google_StorageObject $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string destinationPredefinedAcl Apply a predefined set of access
@@ -1890,13 +1890,13 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * provided in the first rewrite request.
    * @opt_param string sourceGeneration If present, selects a specific revision of
    * the source object (as opposed to the latest version, the default).
-   * @return Powerform_Google_Service_Storage_RewriteResponse
+   * @return Google_Service_Storage_RewriteResponse
    */
-  public function rewrite($sourceBucket, $sourceObject, $destinationBucket, $destinationObject, Powerform_Google_Service_Storage_StorageObject $postBody, $optParams = array())
+  public function rewrite($sourceBucket, $sourceObject, $destinationBucket, $destinationObject, Google_Service_Storage_StorageObject $postBody, $optParams = array())
   {
     $params = array('sourceBucket' => $sourceBucket, 'sourceObject' => $sourceObject, 'destinationBucket' => $destinationBucket, 'destinationObject' => $destinationObject, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('rewrite', array($params), "Powerform_Google_Service_Storage_RewriteResponse");
+    return $this->call('rewrite', array($params), "Google_Service_Storage_RewriteResponse");
   }
 
   /**
@@ -1905,7 +1905,7 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * @param string $bucket Name of the bucket in which the object resides.
    * @param string $object Name of the object. For information about how to URL
    * encode object names to be path safe, see Encoding URI Path Parts.
-   * @param Powerform_Google_StorageObject $postBody
+   * @param Google_StorageObject $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string generation If present, selects a specific revision of this
@@ -1921,20 +1921,20 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * @opt_param string predefinedAcl Apply a predefined set of access controls to
    * this object.
    * @opt_param string projection Set of properties to return. Defaults to full.
-   * @return Powerform_Google_Service_Storage_StorageObject
+   * @return Google_Service_Storage_StorageObject
    */
-  public function update($bucket, $object, Powerform_Google_Service_Storage_StorageObject $postBody, $optParams = array())
+  public function update($bucket, $object, Google_Service_Storage_StorageObject $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_Storage_StorageObject");
+    return $this->call('update', array($params), "Google_Service_Storage_StorageObject");
   }
 
   /**
    * Watch for changes on all objects in a bucket. (objects.watchAll)
    *
    * @param string $bucket Name of the bucket in which to look for objects.
-   * @param Powerform_Google_Channel $postBody
+   * @param Google_Channel $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string delimiter Returns results in a directory-like mode. items
@@ -1952,50 +1952,50 @@ class Powerform_Google_Service_Storage_Objects_Resource extends Powerform_Google
    * @opt_param string projection Set of properties to return. Defaults to noAcl.
    * @opt_param bool versions If true, lists all versions of an object as distinct
    * results. The default is false. For more information, see Object Versioning.
-   * @return Powerform_Google_Service_Storage_Channel
+   * @return Google_Service_Storage_Channel
    */
-  public function watchAll($bucket, Powerform_Google_Service_Storage_Channel $postBody, $optParams = array())
+  public function watchAll($bucket, Google_Service_Storage_Channel $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('watchAll', array($params), "Powerform_Google_Service_Storage_Channel");
+    return $this->call('watchAll', array($params), "Google_Service_Storage_Channel");
   }
 }
 
 
 
 
-class Powerform_Google_Service_Storage_Bucket extends Powerform_Google_Collection
+class Google_Service_Storage_Bucket extends Google_Collection
 {
   protected $collection_key = 'defaultObjectAcl';
   protected $internal_gapi_mappings = array(
   );
-  protected $aclType = 'Powerform_Google_Service_Storage_BucketAccessControl';
+  protected $aclType = 'Google_Service_Storage_BucketAccessControl';
   protected $aclDataType = 'array';
-  protected $corsType = 'Powerform_Google_Service_Storage_BucketCors';
+  protected $corsType = 'Google_Service_Storage_BucketCors';
   protected $corsDataType = 'array';
-  protected $defaultObjectAclType = 'Powerform_Google_Service_Storage_ObjectAccessControl';
+  protected $defaultObjectAclType = 'Google_Service_Storage_ObjectAccessControl';
   protected $defaultObjectAclDataType = 'array';
   public $etag;
   public $id;
   public $kind;
-  protected $lifecycleType = 'Powerform_Google_Service_Storage_BucketLifecycle';
+  protected $lifecycleType = 'Google_Service_Storage_BucketLifecycle';
   protected $lifecycleDataType = '';
   public $location;
-  protected $loggingType = 'Powerform_Google_Service_Storage_BucketLogging';
+  protected $loggingType = 'Google_Service_Storage_BucketLogging';
   protected $loggingDataType = '';
   public $metageneration;
   public $name;
-  protected $ownerType = 'Powerform_Google_Service_Storage_BucketOwner';
+  protected $ownerType = 'Google_Service_Storage_BucketOwner';
   protected $ownerDataType = '';
   public $projectNumber;
   public $selfLink;
   public $storageClass;
   public $timeCreated;
   public $updated;
-  protected $versioningType = 'Powerform_Google_Service_Storage_BucketVersioning';
+  protected $versioningType = 'Google_Service_Storage_BucketVersioning';
   protected $versioningDataType = '';
-  protected $websiteType = 'Powerform_Google_Service_Storage_BucketWebsite';
+  protected $websiteType = 'Google_Service_Storage_BucketWebsite';
   protected $websiteDataType = '';
 
 
@@ -2047,7 +2047,7 @@ class Powerform_Google_Service_Storage_Bucket extends Powerform_Google_Collectio
   {
     return $this->kind;
   }
-  public function setLifecycle(Powerform_Google_Service_Storage_BucketLifecycle $lifecycle)
+  public function setLifecycle(Google_Service_Storage_BucketLifecycle $lifecycle)
   {
     $this->lifecycle = $lifecycle;
   }
@@ -2063,7 +2063,7 @@ class Powerform_Google_Service_Storage_Bucket extends Powerform_Google_Collectio
   {
     return $this->location;
   }
-  public function setLogging(Powerform_Google_Service_Storage_BucketLogging $logging)
+  public function setLogging(Google_Service_Storage_BucketLogging $logging)
   {
     $this->logging = $logging;
   }
@@ -2087,7 +2087,7 @@ class Powerform_Google_Service_Storage_Bucket extends Powerform_Google_Collectio
   {
     return $this->name;
   }
-  public function setOwner(Powerform_Google_Service_Storage_BucketOwner $owner)
+  public function setOwner(Google_Service_Storage_BucketOwner $owner)
   {
     $this->owner = $owner;
   }
@@ -2135,7 +2135,7 @@ class Powerform_Google_Service_Storage_Bucket extends Powerform_Google_Collectio
   {
     return $this->updated;
   }
-  public function setVersioning(Powerform_Google_Service_Storage_BucketVersioning $versioning)
+  public function setVersioning(Google_Service_Storage_BucketVersioning $versioning)
   {
     $this->versioning = $versioning;
   }
@@ -2143,7 +2143,7 @@ class Powerform_Google_Service_Storage_Bucket extends Powerform_Google_Collectio
   {
     return $this->versioning;
   }
-  public function setWebsite(Powerform_Google_Service_Storage_BucketWebsite $website)
+  public function setWebsite(Google_Service_Storage_BucketWebsite $website)
   {
     $this->website = $website;
   }
@@ -2153,7 +2153,7 @@ class Powerform_Google_Service_Storage_Bucket extends Powerform_Google_Collectio
   }
 }
 
-class Powerform_Google_Service_Storage_BucketAccessControl extends Powerform_Google_Model
+class Google_Service_Storage_BucketAccessControl extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2165,7 +2165,7 @@ class Powerform_Google_Service_Storage_BucketAccessControl extends Powerform_Goo
   public $etag;
   public $id;
   public $kind;
-  protected $projectTeamType = 'Powerform_Google_Service_Storage_BucketAccessControlProjectTeam';
+  protected $projectTeamType = 'Google_Service_Storage_BucketAccessControlProjectTeam';
   protected $projectTeamDataType = '';
   public $role;
   public $selfLink;
@@ -2235,7 +2235,7 @@ class Powerform_Google_Service_Storage_BucketAccessControl extends Powerform_Goo
   {
     return $this->kind;
   }
-  public function setProjectTeam(Powerform_Google_Service_Storage_BucketAccessControlProjectTeam $projectTeam)
+  public function setProjectTeam(Google_Service_Storage_BucketAccessControlProjectTeam $projectTeam)
   {
     $this->projectTeam = $projectTeam;
   }
@@ -2261,7 +2261,7 @@ class Powerform_Google_Service_Storage_BucketAccessControl extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Storage_BucketAccessControlProjectTeam extends Powerform_Google_Model
+class Google_Service_Storage_BucketAccessControlProjectTeam extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2287,12 +2287,12 @@ class Powerform_Google_Service_Storage_BucketAccessControlProjectTeam extends Po
   }
 }
 
-class Powerform_Google_Service_Storage_BucketAccessControls extends Powerform_Google_Collection
+class Google_Service_Storage_BucketAccessControls extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Storage_BucketAccessControl';
+  protected $itemsType = 'Google_Service_Storage_BucketAccessControl';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -2315,7 +2315,7 @@ class Powerform_Google_Service_Storage_BucketAccessControls extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Storage_BucketCors extends Powerform_Google_Collection
+class Google_Service_Storage_BucketCors extends Google_Collection
 {
   protected $collection_key = 'responseHeader';
   protected $internal_gapi_mappings = array(
@@ -2360,12 +2360,12 @@ class Powerform_Google_Service_Storage_BucketCors extends Powerform_Google_Colle
   }
 }
 
-class Powerform_Google_Service_Storage_BucketLifecycle extends Powerform_Google_Collection
+class Google_Service_Storage_BucketLifecycle extends Google_Collection
 {
   protected $collection_key = 'rule';
   protected $internal_gapi_mappings = array(
   );
-  protected $ruleType = 'Powerform_Google_Service_Storage_BucketLifecycleRule';
+  protected $ruleType = 'Google_Service_Storage_BucketLifecycleRule';
   protected $ruleDataType = 'array';
 
 
@@ -2379,17 +2379,17 @@ class Powerform_Google_Service_Storage_BucketLifecycle extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Storage_BucketLifecycleRule extends Powerform_Google_Model
+class Google_Service_Storage_BucketLifecycleRule extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $actionType = 'Powerform_Google_Service_Storage_BucketLifecycleRuleAction';
+  protected $actionType = 'Google_Service_Storage_BucketLifecycleRuleAction';
   protected $actionDataType = '';
-  protected $conditionType = 'Powerform_Google_Service_Storage_BucketLifecycleRuleCondition';
+  protected $conditionType = 'Google_Service_Storage_BucketLifecycleRuleCondition';
   protected $conditionDataType = '';
 
 
-  public function setAction(Powerform_Google_Service_Storage_BucketLifecycleRuleAction $action)
+  public function setAction(Google_Service_Storage_BucketLifecycleRuleAction $action)
   {
     $this->action = $action;
   }
@@ -2397,7 +2397,7 @@ class Powerform_Google_Service_Storage_BucketLifecycleRule extends Powerform_Goo
   {
     return $this->action;
   }
-  public function setCondition(Powerform_Google_Service_Storage_BucketLifecycleRuleCondition $condition)
+  public function setCondition(Google_Service_Storage_BucketLifecycleRuleCondition $condition)
   {
     $this->condition = $condition;
   }
@@ -2407,7 +2407,7 @@ class Powerform_Google_Service_Storage_BucketLifecycleRule extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Storage_BucketLifecycleRuleAction extends Powerform_Google_Model
+class Google_Service_Storage_BucketLifecycleRuleAction extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2424,7 +2424,7 @@ class Powerform_Google_Service_Storage_BucketLifecycleRuleAction extends Powerfo
   }
 }
 
-class Powerform_Google_Service_Storage_BucketLifecycleRuleCondition extends Powerform_Google_Model
+class Google_Service_Storage_BucketLifecycleRuleCondition extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2468,7 +2468,7 @@ class Powerform_Google_Service_Storage_BucketLifecycleRuleCondition extends Powe
   }
 }
 
-class Powerform_Google_Service_Storage_BucketLogging extends Powerform_Google_Model
+class Google_Service_Storage_BucketLogging extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2494,7 +2494,7 @@ class Powerform_Google_Service_Storage_BucketLogging extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Storage_BucketOwner extends Powerform_Google_Model
+class Google_Service_Storage_BucketOwner extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2520,7 +2520,7 @@ class Powerform_Google_Service_Storage_BucketOwner extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_Storage_BucketVersioning extends Powerform_Google_Model
+class Google_Service_Storage_BucketVersioning extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2537,7 +2537,7 @@ class Powerform_Google_Service_Storage_BucketVersioning extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_Storage_BucketWebsite extends Powerform_Google_Model
+class Google_Service_Storage_BucketWebsite extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2563,12 +2563,12 @@ class Powerform_Google_Service_Storage_BucketWebsite extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_Storage_Buckets extends Powerform_Google_Collection
+class Google_Service_Storage_Buckets extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Storage_Bucket';
+  protected $itemsType = 'Google_Service_Storage_Bucket';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2600,7 +2600,7 @@ class Powerform_Google_Service_Storage_Buckets extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Storage_Channel extends Powerform_Google_Model
+class Google_Service_Storage_Channel extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2698,19 +2698,19 @@ class Powerform_Google_Service_Storage_Channel extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_Storage_ComposeRequest extends Powerform_Google_Collection
+class Google_Service_Storage_ComposeRequest extends Google_Collection
 {
   protected $collection_key = 'sourceObjects';
   protected $internal_gapi_mappings = array(
   );
-  protected $destinationType = 'Powerform_Google_Service_Storage_StorageObject';
+  protected $destinationType = 'Google_Service_Storage_StorageObject';
   protected $destinationDataType = '';
   public $kind;
-  protected $sourceObjectsType = 'Powerform_Google_Service_Storage_ComposeRequestSourceObjects';
+  protected $sourceObjectsType = 'Google_Service_Storage_ComposeRequestSourceObjects';
   protected $sourceObjectsDataType = 'array';
 
 
-  public function setDestination(Powerform_Google_Service_Storage_StorageObject $destination)
+  public function setDestination(Google_Service_Storage_StorageObject $destination)
   {
     $this->destination = $destination;
   }
@@ -2736,13 +2736,13 @@ class Powerform_Google_Service_Storage_ComposeRequest extends Powerform_Google_C
   }
 }
 
-class Powerform_Google_Service_Storage_ComposeRequestSourceObjects extends Powerform_Google_Model
+class Google_Service_Storage_ComposeRequestSourceObjects extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $generation;
   public $name;
-  protected $objectPreconditionsType = 'Powerform_Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions';
+  protected $objectPreconditionsType = 'Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions';
   protected $objectPreconditionsDataType = '';
 
 
@@ -2762,7 +2762,7 @@ class Powerform_Google_Service_Storage_ComposeRequestSourceObjects extends Power
   {
     return $this->name;
   }
-  public function setObjectPreconditions(Powerform_Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions $objectPreconditions)
+  public function setObjectPreconditions(Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions $objectPreconditions)
   {
     $this->objectPreconditions = $objectPreconditions;
   }
@@ -2772,7 +2772,7 @@ class Powerform_Google_Service_Storage_ComposeRequestSourceObjects extends Power
   }
 }
 
-class Powerform_Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions extends Powerform_Google_Model
+class Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2789,7 +2789,7 @@ class Powerform_Google_Service_Storage_ComposeRequestSourceObjectsObjectPrecondi
   }
 }
 
-class Powerform_Google_Service_Storage_ObjectAccessControl extends Powerform_Google_Model
+class Google_Service_Storage_ObjectAccessControl extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2803,7 +2803,7 @@ class Powerform_Google_Service_Storage_ObjectAccessControl extends Powerform_Goo
   public $id;
   public $kind;
   public $object;
-  protected $projectTeamType = 'Powerform_Google_Service_Storage_ObjectAccessControlProjectTeam';
+  protected $projectTeamType = 'Google_Service_Storage_ObjectAccessControlProjectTeam';
   protected $projectTeamDataType = '';
   public $role;
   public $selfLink;
@@ -2889,7 +2889,7 @@ class Powerform_Google_Service_Storage_ObjectAccessControl extends Powerform_Goo
   {
     return $this->object;
   }
-  public function setProjectTeam(Powerform_Google_Service_Storage_ObjectAccessControlProjectTeam $projectTeam)
+  public function setProjectTeam(Google_Service_Storage_ObjectAccessControlProjectTeam $projectTeam)
   {
     $this->projectTeam = $projectTeam;
   }
@@ -2915,7 +2915,7 @@ class Powerform_Google_Service_Storage_ObjectAccessControl extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_Storage_ObjectAccessControlProjectTeam extends Powerform_Google_Model
+class Google_Service_Storage_ObjectAccessControlProjectTeam extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2941,7 +2941,7 @@ class Powerform_Google_Service_Storage_ObjectAccessControlProjectTeam extends Po
   }
 }
 
-class Powerform_Google_Service_Storage_ObjectAccessControls extends Powerform_Google_Collection
+class Google_Service_Storage_ObjectAccessControls extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
@@ -2968,12 +2968,12 @@ class Powerform_Google_Service_Storage_ObjectAccessControls extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_Storage_Objects extends Powerform_Google_Collection
+class Google_Service_Storage_Objects extends Google_Collection
 {
   protected $collection_key = 'prefixes';
   protected $internal_gapi_mappings = array(
   );
-  protected $itemsType = 'Powerform_Google_Service_Storage_StorageObject';
+  protected $itemsType = 'Google_Service_Storage_StorageObject';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3014,14 +3014,14 @@ class Powerform_Google_Service_Storage_Objects extends Powerform_Google_Collecti
   }
 }
 
-class Powerform_Google_Service_Storage_RewriteResponse extends Powerform_Google_Model
+class Google_Service_Storage_RewriteResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $done;
   public $kind;
   public $objectSize;
-  protected $resourceType = 'Powerform_Google_Service_Storage_StorageObject';
+  protected $resourceType = 'Google_Service_Storage_StorageObject';
   protected $resourceDataType = '';
   public $rewriteToken;
   public $totalBytesRewritten;
@@ -3051,7 +3051,7 @@ class Powerform_Google_Service_Storage_RewriteResponse extends Powerform_Google_
   {
     return $this->objectSize;
   }
-  public function setResource(Powerform_Google_Service_Storage_StorageObject $resource)
+  public function setResource(Google_Service_Storage_StorageObject $resource)
   {
     $this->resource = $resource;
   }
@@ -3077,12 +3077,12 @@ class Powerform_Google_Service_Storage_RewriteResponse extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_Storage_StorageObject extends Powerform_Google_Collection
+class Google_Service_Storage_StorageObject extends Google_Collection
 {
   protected $collection_key = 'acl';
   protected $internal_gapi_mappings = array(
   );
-  protected $aclType = 'Powerform_Google_Service_Storage_ObjectAccessControl';
+  protected $aclType = 'Google_Service_Storage_ObjectAccessControl';
   protected $aclDataType = 'array';
   public $bucket;
   public $cacheControl;
@@ -3092,7 +3092,7 @@ class Powerform_Google_Service_Storage_StorageObject extends Powerform_Google_Co
   public $contentLanguage;
   public $contentType;
   public $crc32c;
-  protected $customerEncryptionType = 'Powerform_Google_Service_Storage_StorageObjectCustomerEncryption';
+  protected $customerEncryptionType = 'Google_Service_Storage_StorageObjectCustomerEncryption';
   protected $customerEncryptionDataType = '';
   public $etag;
   public $generation;
@@ -3103,7 +3103,7 @@ class Powerform_Google_Service_Storage_StorageObject extends Powerform_Google_Co
   public $metadata;
   public $metageneration;
   public $name;
-  protected $ownerType = 'Powerform_Google_Service_Storage_StorageObjectOwner';
+  protected $ownerType = 'Google_Service_Storage_StorageObjectOwner';
   protected $ownerDataType = '';
   public $selfLink;
   public $size;
@@ -3185,7 +3185,7 @@ class Powerform_Google_Service_Storage_StorageObject extends Powerform_Google_Co
   {
     return $this->crc32c;
   }
-  public function setCustomerEncryption(Powerform_Google_Service_Storage_StorageObjectCustomerEncryption $customerEncryption)
+  public function setCustomerEncryption(Google_Service_Storage_StorageObjectCustomerEncryption $customerEncryption)
   {
     $this->customerEncryption = $customerEncryption;
   }
@@ -3265,7 +3265,7 @@ class Powerform_Google_Service_Storage_StorageObject extends Powerform_Google_Co
   {
     return $this->name;
   }
-  public function setOwner(Powerform_Google_Service_Storage_StorageObjectOwner $owner)
+  public function setOwner(Google_Service_Storage_StorageObjectOwner $owner)
   {
     $this->owner = $owner;
   }
@@ -3323,7 +3323,7 @@ class Powerform_Google_Service_Storage_StorageObject extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_Storage_StorageObjectCustomerEncryption extends Powerform_Google_Model
+class Google_Service_Storage_StorageObjectCustomerEncryption extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -3349,7 +3349,7 @@ class Powerform_Google_Service_Storage_StorageObjectCustomerEncryption extends P
   }
 }
 
-class Powerform_Google_Service_Storage_StorageObjectOwner extends Powerform_Google_Model
+class Google_Service_Storage_StorageObjectOwner extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

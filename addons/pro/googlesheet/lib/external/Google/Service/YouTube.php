@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Powerform_Google_Service_YouTube extends Powerform_Google_Service
+class Google_Service_YouTube extends Google_Service
 {
   /** Manage your YouTube account. */
   const YOUTUBE =
@@ -73,14 +73,14 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
   public $videoCategories;
   public $videos;
   public $watermarks;
-  
+
 
   /**
    * Constructs the internal representation of the YouTube service.
    *
-   * @param Powerform_Google_Client $client
+   * @param Google_Client $client
    */
-  public function __construct(Powerform_Google_Client $client)
+  public function __construct(Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://www.googleapis.com/';
@@ -88,7 +88,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
     $this->version = 'v3';
     $this->serviceName = 'youtube';
 
-    $this->activities = new Powerform_Google_Service_YouTube_Activities_Resource(
+    $this->activities = new Google_Service_YouTube_Activities_Resource(
         $this,
         $this->serviceName,
         'activities',
@@ -150,7 +150,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->captions = new Powerform_Google_Service_YouTube_Captions_Resource(
+    $this->captions = new Google_Service_YouTube_Captions_Resource(
         $this,
         $this->serviceName,
         'captions',
@@ -275,7 +275,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->channelBanners = new Powerform_Google_Service_YouTube_ChannelBanners_Resource(
+    $this->channelBanners = new Google_Service_YouTube_ChannelBanners_Resource(
         $this,
         $this->serviceName,
         'channelBanners',
@@ -294,7 +294,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->channelSections = new Powerform_Google_Service_YouTube_ChannelSections_Resource(
+    $this->channelSections = new Google_Service_YouTube_ChannelSections_Resource(
         $this,
         $this->serviceName,
         'channelSections',
@@ -380,7 +380,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->channels = new Powerform_Google_Service_YouTube_Channels_Resource(
+    $this->channels = new Google_Service_YouTube_Channels_Resource(
         $this,
         $this->serviceName,
         'channels',
@@ -454,7 +454,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->commentThreads = new Powerform_Google_Service_YouTube_CommentThreads_Resource(
+    $this->commentThreads = new Google_Service_YouTube_CommentThreads_Resource(
         $this,
         $this->serviceName,
         'commentThreads',
@@ -534,7 +534,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->comments = new Powerform_Google_Service_YouTube_Comments_Resource(
+    $this->comments = new Google_Service_YouTube_Comments_Resource(
         $this,
         $this->serviceName,
         'comments',
@@ -633,7 +633,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->fanFundingEvents = new Powerform_Google_Service_YouTube_FanFundingEvents_Resource(
+    $this->fanFundingEvents = new Google_Service_YouTube_FanFundingEvents_Resource(
         $this,
         $this->serviceName,
         'fanFundingEvents',
@@ -665,7 +665,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->guideCategories = new Powerform_Google_Service_YouTube_GuideCategories_Resource(
+    $this->guideCategories = new Google_Service_YouTube_GuideCategories_Resource(
         $this,
         $this->serviceName,
         'guideCategories',
@@ -697,7 +697,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->i18nLanguages = new Powerform_Google_Service_YouTube_I18nLanguages_Resource(
+    $this->i18nLanguages = new Google_Service_YouTube_I18nLanguages_Resource(
         $this,
         $this->serviceName,
         'i18nLanguages',
@@ -721,7 +721,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->i18nRegions = new Powerform_Google_Service_YouTube_I18nRegions_Resource(
+    $this->i18nRegions = new Google_Service_YouTube_I18nRegions_Resource(
         $this,
         $this->serviceName,
         'i18nRegions',
@@ -745,7 +745,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->liveBroadcasts = new Powerform_Google_Service_YouTube_LiveBroadcasts_Resource(
+    $this->liveBroadcasts = new Google_Service_YouTube_LiveBroadcasts_Resource(
         $this,
         $this->serviceName,
         'liveBroadcasts',
@@ -941,7 +941,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->liveChatBans = new Powerform_Google_Service_YouTube_LiveChatBans_Resource(
+    $this->liveChatBans = new Google_Service_YouTube_LiveChatBans_Resource(
         $this,
         $this->serviceName,
         'liveChatBans',
@@ -971,7 +971,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->liveChatMessages = new Powerform_Google_Service_YouTube_LiveChatMessages_Resource(
+    $this->liveChatMessages = new Google_Service_YouTube_LiveChatMessages_Resource(
         $this,
         $this->serviceName,
         'liveChatMessages',
@@ -1032,7 +1032,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->liveChatModerators = new Powerform_Google_Service_YouTube_LiveChatModerators_Resource(
+    $this->liveChatModerators = new Google_Service_YouTube_LiveChatModerators_Resource(
         $this,
         $this->serviceName,
         'liveChatModerators',
@@ -1085,7 +1085,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->liveStreams = new Powerform_Google_Service_YouTube_LiveStreams_Resource(
+    $this->liveStreams = new Google_Service_YouTube_LiveStreams_Resource(
         $this,
         $this->serviceName,
         'liveStreams',
@@ -1183,7 +1183,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->playlistItems = new Powerform_Google_Service_YouTube_PlaylistItems_Resource(
+    $this->playlistItems = new Google_Service_YouTube_PlaylistItems_Resource(
         $this,
         $this->serviceName,
         'playlistItems',
@@ -1261,7 +1261,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->playlists = new Powerform_Google_Service_YouTube_Playlists_Resource(
+    $this->playlists = new Google_Service_YouTube_Playlists_Resource(
         $this,
         $this->serviceName,
         'playlists',
@@ -1359,7 +1359,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->search = new Powerform_Google_Service_YouTube_Search_Resource(
+    $this->search = new Google_Service_YouTube_Search_Resource(
         $this,
         $this->serviceName,
         'search',
@@ -1499,7 +1499,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->sponsors = new Powerform_Google_Service_YouTube_Sponsors_Resource(
+    $this->sponsors = new Google_Service_YouTube_Sponsors_Resource(
         $this,
         $this->serviceName,
         'sponsors',
@@ -1531,7 +1531,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->subscriptions = new Powerform_Google_Service_YouTube_Subscriptions_Resource(
+    $this->subscriptions = new Google_Service_YouTube_Subscriptions_Resource(
         $this,
         $this->serviceName,
         'subscriptions',
@@ -1611,7 +1611,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->thumbnails = new Powerform_Google_Service_YouTube_Thumbnails_Resource(
+    $this->thumbnails = new Google_Service_YouTube_Thumbnails_Resource(
         $this,
         $this->serviceName,
         'thumbnails',
@@ -1635,7 +1635,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->videoAbuseReportReasons = new Powerform_Google_Service_YouTube_VideoAbuseReportReasons_Resource(
+    $this->videoAbuseReportReasons = new Google_Service_YouTube_VideoAbuseReportReasons_Resource(
         $this,
         $this->serviceName,
         'videoAbuseReportReasons',
@@ -1659,7 +1659,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->videoCategories = new Powerform_Google_Service_YouTube_VideoCategories_Resource(
+    $this->videoCategories = new Google_Service_YouTube_VideoCategories_Resource(
         $this,
         $this->serviceName,
         'videoCategories',
@@ -1691,7 +1691,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->videos = new Powerform_Google_Service_YouTube_Videos_Resource(
+    $this->videos = new Google_Service_YouTube_Videos_Resource(
         $this,
         $this->serviceName,
         'videos',
@@ -1847,7 +1847,7 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
           )
         )
     );
-    $this->watermarks = new Powerform_Google_Service_YouTube_Watermarks_Resource(
+    $this->watermarks = new Google_Service_YouTube_Watermarks_Resource(
         $this,
         $this->serviceName,
         'watermarks',
@@ -1893,11 +1893,11 @@ class Powerform_Google_Service_YouTube extends Powerform_Google_Service
  * The "activities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $activities = $youtubeService->activities;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Activities_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Activities_Resource extends Google_Service_Resource
 {
 
   /**
@@ -1914,15 +1914,15 @@ class Powerform_Google_Service_YouTube_Activities_Resource extends Powerform_Goo
    * @param string $part The part parameter serves two purposes in this operation.
    * It identifies the properties that the write operation will set as well as the
    * properties that the API response will include.
-   * @param Powerform_Google_Activity $postBody
+   * @param Google_Activity $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTube_Activity
+   * @return Google_Service_YouTube_Activity
    */
-  public function insert($part, Powerform_Google_Service_YouTube_Activity $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_Activity $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_Activity");
+    return $this->call('insert', array($params), "Google_Service_YouTube_Activity");
   }
 
   /**
@@ -1974,13 +1974,13 @@ class Powerform_Google_Service_YouTube_Activities_Resource extends Powerform_Goo
    * 3166-1 alpha-2 country code. YouTube uses this value when the authorized
    * user's previous activity on YouTube does not provide enough information to
    * generate the activity feed.
-   * @return Powerform_Google_Service_YouTube_ActivityListResponse
+   * @return Google_Service_YouTube_ActivityListResponse
    */
   public function listActivities($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_ActivityListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_ActivityListResponse");
   }
 }
 
@@ -1988,11 +1988,11 @@ class Powerform_Google_Service_YouTube_Activities_Resource extends Powerform_Goo
  * The "captions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $captions = $youtubeService->captions;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Captions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Captions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2071,7 +2071,7 @@ class Powerform_Google_Service_YouTube_Captions_Resource extends Powerform_Googl
    *
    * @param string $part The part parameter specifies the caption resource parts
    * that the API response will include. Set the parameter value to snippet.
-   * @param Powerform_Google_Caption $postBody
+   * @param Google_Caption $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOf ID of the Google+ Page for the channel that the
@@ -2096,13 +2096,13 @@ class Powerform_Google_Service_YouTube_Captions_Resource extends Powerform_Googl
    * You should set the sync parameter to true if you are uploading a transcript,
    * which has no time codes, or if you suspect the time codes in your file are
    * incorrect and want YouTube to try to fix them.
-   * @return Powerform_Google_Service_YouTube_Caption
+   * @return Google_Service_YouTube_Caption
    */
-  public function insert($part, Powerform_Google_Service_YouTube_Caption $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_Caption $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_Caption");
+    return $this->call('insert', array($params), "Google_Service_YouTube_Caption");
   }
 
   /**
@@ -2135,13 +2135,13 @@ class Powerform_Google_Service_YouTube_Captions_Resource extends Powerform_Googl
    * authentication credentials for each individual channel. The actual CMS
    * account that the user authenticates with must be linked to the specified
    * YouTube content owner.
-   * @return Powerform_Google_Service_YouTube_CaptionListResponse
+   * @return Google_Service_YouTube_CaptionListResponse
    */
   public function listCaptions($part, $videoId, $optParams = array())
   {
     $params = array('part' => $part, 'videoId' => $videoId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_CaptionListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_CaptionListResponse");
   }
 
   /**
@@ -2154,7 +2154,7 @@ class Powerform_Google_Service_YouTube_Captions_Resource extends Powerform_Googl
    * properties that the API response will include. Set the property value to
    * snippet if you are updating the track's draft status. Otherwise, set the
    * property value to id.
-   * @param Powerform_Google_Caption $postBody
+   * @param Google_Caption $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOf ID of the Google+ Page for the channel that the
@@ -2178,13 +2178,13 @@ class Powerform_Google_Service_YouTube_Captions_Resource extends Powerform_Googl
    * the caption file with the audio track of the video. If you set the value to
    * true, YouTube will automatically synchronize the caption track with the audio
    * track.
-   * @return Powerform_Google_Service_YouTube_Caption
+   * @return Google_Service_YouTube_Caption
    */
-  public function update($part, Powerform_Google_Service_YouTube_Caption $postBody, $optParams = array())
+  public function update($part, Google_Service_YouTube_Caption $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTube_Caption");
+    return $this->call('update', array($params), "Google_Service_YouTube_Caption");
   }
 }
 
@@ -2192,11 +2192,11 @@ class Powerform_Google_Service_YouTube_Captions_Resource extends Powerform_Googl
  * The "channelBanners" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $channelBanners = $youtubeService->channelBanners;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_ChannelBanners_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_ChannelBanners_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2210,7 +2210,7 @@ class Powerform_Google_Service_YouTube_ChannelBanners_Resource extends Powerform
    * branding settings. Set the brandingSettings.image.bannerExternalUrl
    * property's value to the URL obtained in step 2. (channelBanners.insert)
    *
-   * @param Powerform_Google_ChannelBannerResource $postBody
+   * @param Google_ChannelBannerResource $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -2225,13 +2225,13 @@ class Powerform_Google_Service_YouTube_ChannelBanners_Resource extends Powerform
    * authentication credentials for each individual channel. The CMS account that
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
-   * @return Powerform_Google_Service_YouTube_ChannelBannerResource
+   * @return Google_Service_YouTube_ChannelBannerResource
    */
-  public function insert(Powerform_Google_Service_YouTube_ChannelBannerResource $postBody, $optParams = array())
+  public function insert(Google_Service_YouTube_ChannelBannerResource $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_ChannelBannerResource");
+    return $this->call('insert', array($params), "Google_Service_YouTube_ChannelBannerResource");
   }
 }
 
@@ -2239,11 +2239,11 @@ class Powerform_Google_Service_YouTube_ChannelBanners_Resource extends Powerform
  * The "channelSections" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $channelSections = $youtubeService->channelSections;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_ChannelSections_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_ChannelSections_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2284,7 +2284,7 @@ class Powerform_Google_Service_YouTube_ChannelSections_Resource extends Powerfor
    *
    * The part names that you can include in the parameter value are snippet and
    * contentDetails.
-   * @param Powerform_Google_ChannelSection $postBody
+   * @param Google_ChannelSection $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -2318,13 +2318,13 @@ class Powerform_Google_Service_YouTube_ChannelSections_Resource extends Powerfor
    * once and perform actions on behalf of the channel specified in the parameter
    * value, without having to provide authentication credentials for each separate
    * channel.
-   * @return Powerform_Google_Service_YouTube_ChannelSection
+   * @return Google_Service_YouTube_ChannelSection
    */
-  public function insert($part, Powerform_Google_Service_YouTube_ChannelSection $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_ChannelSection $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_ChannelSection");
+    return $this->call('insert', array($params), "Google_Service_YouTube_ChannelSection");
   }
 
   /**
@@ -2370,13 +2370,13 @@ class Powerform_Google_Service_YouTube_ChannelSections_Resource extends Powerfor
    * authentication credentials for each individual channel. The CMS account that
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
-   * @return Powerform_Google_Service_YouTube_ChannelSectionListResponse
+   * @return Google_Service_YouTube_ChannelSectionListResponse
    */
   public function listChannelSections($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_ChannelSectionListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_ChannelSectionListResponse");
   }
 
   /**
@@ -2388,7 +2388,7 @@ class Powerform_Google_Service_YouTube_ChannelSections_Resource extends Powerfor
    *
    * The part names that you can include in the parameter value are snippet and
    * contentDetails.
-   * @param Powerform_Google_ChannelSection $postBody
+   * @param Google_ChannelSection $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -2403,13 +2403,13 @@ class Powerform_Google_Service_YouTube_ChannelSections_Resource extends Powerfor
    * authentication credentials for each individual channel. The CMS account that
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
-   * @return Powerform_Google_Service_YouTube_ChannelSection
+   * @return Google_Service_YouTube_ChannelSection
    */
-  public function update($part, Powerform_Google_Service_YouTube_ChannelSection $postBody, $optParams = array())
+  public function update($part, Google_Service_YouTube_ChannelSection $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTube_ChannelSection");
+    return $this->call('update', array($params), "Google_Service_YouTube_ChannelSection");
   }
 }
 
@@ -2417,11 +2417,11 @@ class Powerform_Google_Service_YouTube_ChannelSections_Resource extends Powerfor
  * The "channels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $channels = $youtubeService->channels;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Channels_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Channels_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2479,13 +2479,13 @@ class Powerform_Google_Service_YouTube_Channels_Resource extends Powerform_Googl
    * page in the result set that should be returned. In an API response, the
    * nextPageToken and prevPageToken properties identify other pages that could be
    * retrieved.
-   * @return Powerform_Google_Service_YouTube_ChannelListResponse
+   * @return Google_Service_YouTube_ChannelListResponse
    */
   public function listChannels($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_ChannelListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_ChannelListResponse");
   }
 
   /**
@@ -2504,7 +2504,7 @@ class Powerform_Google_Service_YouTube_Channels_Resource extends Powerform_Googl
    * Note that this method overrides the existing values for all of the mutable
    * properties that are contained in any parts that the parameter value
    * specifies.
-   * @param Powerform_Google_Channel $postBody
+   * @param Google_Channel $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner The onBehalfOfContentOwner parameter
@@ -2515,13 +2515,13 @@ class Powerform_Google_Service_YouTube_Channels_Resource extends Powerform_Googl
    * video and channel data, without having to provide authentication credentials
    * for each individual channel. The actual CMS account that the user
    * authenticates with needs to be linked to the specified YouTube content owner.
-   * @return Powerform_Google_Service_YouTube_Channel
+   * @return Google_Service_YouTube_Channel
    */
-  public function update($part, Powerform_Google_Service_YouTube_Channel $postBody, $optParams = array())
+  public function update($part, Google_Service_YouTube_Channel $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTube_Channel");
+    return $this->call('update', array($params), "Google_Service_YouTube_Channel");
   }
 }
 
@@ -2529,11 +2529,11 @@ class Powerform_Google_Service_YouTube_Channels_Resource extends Powerform_Googl
  * The "commentThreads" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $commentThreads = $youtubeService->commentThreads;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_CommentThreads_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_CommentThreads_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2543,15 +2543,15 @@ class Powerform_Google_Service_YouTube_CommentThreads_Resource extends Powerform
    * @param string $part The part parameter identifies the properties that the API
    * response will include. Set the parameter value to snippet. The snippet part
    * has a quota cost of 2 units.
-   * @param Powerform_Google_CommentThread $postBody
+   * @param Google_CommentThread $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTube_CommentThread
+   * @return Google_Service_YouTube_CommentThread
    */
-  public function insert($part, Powerform_Google_Service_YouTube_CommentThread $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_CommentThread $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_CommentThread");
+    return $this->call('insert', array($params), "Google_Service_YouTube_CommentThread");
   }
 
   /**
@@ -2605,13 +2605,13 @@ class Powerform_Google_Service_YouTube_CommentThreads_Resource extends Powerform
    * in plain text.
    * @opt_param string videoId The videoId parameter instructs the API to return
    * comment threads associated with the specified video ID.
-   * @return Powerform_Google_Service_YouTube_CommentThreadListResponse
+   * @return Google_Service_YouTube_CommentThreadListResponse
    */
   public function listCommentThreads($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_CommentThreadListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_CommentThreadListResponse");
   }
 
   /**
@@ -2621,15 +2621,15 @@ class Powerform_Google_Service_YouTube_CommentThreads_Resource extends Powerform
    * commentThread resource properties that the API response will include. You
    * must at least include the snippet part in the parameter value since that part
    * contains all of the properties that the API request can update.
-   * @param Powerform_Google_CommentThread $postBody
+   * @param Google_CommentThread $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTube_CommentThread
+   * @return Google_Service_YouTube_CommentThread
    */
-  public function update($part, Powerform_Google_Service_YouTube_CommentThread $postBody, $optParams = array())
+  public function update($part, Google_Service_YouTube_CommentThread $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTube_CommentThread");
+    return $this->call('update', array($params), "Google_Service_YouTube_CommentThread");
   }
 }
 
@@ -2637,11 +2637,11 @@ class Powerform_Google_Service_YouTube_CommentThreads_Resource extends Powerform
  * The "comments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $comments = $youtubeService->comments;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Comments_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Comments_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2665,15 +2665,15 @@ class Powerform_Google_Service_YouTube_Comments_Resource extends Powerform_Googl
    * @param string $part The part parameter identifies the properties that the API
    * response will include. Set the parameter value to snippet. The snippet part
    * has a quota cost of 2 units.
-   * @param Powerform_Google_Comment $postBody
+   * @param Google_Comment $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTube_Comment
+   * @return Google_Service_YouTube_Comment
    */
-  public function insert($part, Powerform_Google_Service_YouTube_Comment $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_Comment $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_Comment");
+    return $this->call('insert', array($params), "Google_Service_YouTube_Comment");
   }
 
   /**
@@ -2706,13 +2706,13 @@ class Powerform_Google_Service_YouTube_Comments_Resource extends Powerform_Googl
    * However, replies to replies may be supported in the future.
    * @opt_param string textFormat This parameter indicates whether the API should
    * return comments formatted as HTML or as plain text.
-   * @return Powerform_Google_Service_YouTube_CommentListResponse
+   * @return Google_Service_YouTube_CommentListResponse
    */
   public function listComments($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_CommentListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_CommentListResponse");
   }
 
   /**
@@ -2762,15 +2762,15 @@ class Powerform_Google_Service_YouTube_Comments_Resource extends Powerform_Googl
    * response will include. You must at least include the snippet part in the
    * parameter value since that part contains all of the properties that the API
    * request can update.
-   * @param Powerform_Google_Comment $postBody
+   * @param Google_Comment $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTube_Comment
+   * @return Google_Service_YouTube_Comment
    */
-  public function update($part, Powerform_Google_Service_YouTube_Comment $postBody, $optParams = array())
+  public function update($part, Google_Service_YouTube_Comment $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTube_Comment");
+    return $this->call('update', array($params), "Google_Service_YouTube_Comment");
   }
 }
 
@@ -2778,11 +2778,11 @@ class Powerform_Google_Service_YouTube_Comments_Resource extends Powerform_Googl
  * The "fanFundingEvents" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $fanFundingEvents = $youtubeService->fanFundingEvents;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_FanFundingEvents_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_FanFundingEvents_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2809,13 +2809,13 @@ class Powerform_Google_Service_YouTube_FanFundingEvents_Resource extends Powerfo
    * page in the result set that should be returned. In an API response, the
    * nextPageToken and prevPageToken properties identify other pages that could be
    * retrieved.
-   * @return Powerform_Google_Service_YouTube_FanFundingEventListResponse
+   * @return Google_Service_YouTube_FanFundingEventListResponse
    */
   public function listFanFundingEvents($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_FanFundingEventListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_FanFundingEventListResponse");
   }
 }
 
@@ -2823,11 +2823,11 @@ class Powerform_Google_Service_YouTube_FanFundingEvents_Resource extends Powerfo
  * The "guideCategories" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $guideCategories = $youtubeService->guideCategories;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_GuideCategories_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_GuideCategories_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2848,13 +2848,13 @@ class Powerform_Google_Service_YouTube_GuideCategories_Resource extends Powerfor
    * @opt_param string regionCode The regionCode parameter instructs the API to
    * return the list of guide categories available in the specified country. The
    * parameter value is an ISO 3166-1 alpha-2 country code.
-   * @return Powerform_Google_Service_YouTube_GuideCategoryListResponse
+   * @return Google_Service_YouTube_GuideCategoryListResponse
    */
   public function listGuideCategories($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_GuideCategoryListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_GuideCategoryListResponse");
   }
 }
 
@@ -2862,11 +2862,11 @@ class Powerform_Google_Service_YouTube_GuideCategories_Resource extends Powerfor
  * The "i18nLanguages" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $i18nLanguages = $youtubeService->i18nLanguages;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_I18nLanguages_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_I18nLanguages_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2880,13 +2880,13 @@ class Powerform_Google_Service_YouTube_I18nLanguages_Resource extends Powerform_
    *
    * @opt_param string hl The hl parameter specifies the language that should be
    * used for text values in the API response.
-   * @return Powerform_Google_Service_YouTube_I18nLanguageListResponse
+   * @return Google_Service_YouTube_I18nLanguageListResponse
    */
   public function listI18nLanguages($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_I18nLanguageListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_I18nLanguageListResponse");
   }
 }
 
@@ -2894,11 +2894,11 @@ class Powerform_Google_Service_YouTube_I18nLanguages_Resource extends Powerform_
  * The "i18nRegions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $i18nRegions = $youtubeService->i18nRegions;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_I18nRegions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_I18nRegions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2912,13 +2912,13 @@ class Powerform_Google_Service_YouTube_I18nRegions_Resource extends Powerform_Go
    *
    * @opt_param string hl The hl parameter specifies the language that should be
    * used for text values in the API response.
-   * @return Powerform_Google_Service_YouTube_I18nRegionListResponse
+   * @return Google_Service_YouTube_I18nRegionListResponse
    */
   public function listI18nRegions($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_I18nRegionListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_I18nRegionListResponse");
   }
 }
 
@@ -2926,11 +2926,11 @@ class Powerform_Google_Service_YouTube_I18nRegions_Resource extends Powerform_Go
  * The "liveBroadcasts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $liveBroadcasts = $youtubeService->liveBroadcasts;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_LiveBroadcasts_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_LiveBroadcasts_Resource extends Google_Service_Resource
 {
 
   /**
@@ -2982,13 +2982,13 @@ class Powerform_Google_Service_YouTube_LiveBroadcasts_Resource extends Powerform
    * the video stream that is being bound to a broadcast. If this parameter is
    * omitted, the API will remove any existing binding between the broadcast and a
    * video stream.
-   * @return Powerform_Google_Service_YouTube_LiveBroadcast
+   * @return Google_Service_YouTube_LiveBroadcast
    */
   public function bind($id, $part, $optParams = array())
   {
     $params = array('id' => $id, 'part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('bind', array($params), "Powerform_Google_Service_YouTube_LiveBroadcast");
+    return $this->call('bind', array($params), "Google_Service_YouTube_LiveBroadcast");
   }
 
   /**
@@ -3052,13 +3052,13 @@ class Powerform_Google_Service_YouTube_LiveBroadcasts_Resource extends Powerform
    * @opt_param string walltime The walltime parameter specifies the wall clock
    * time at which the specified slate change will occur. The value is specified
    * in ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
-   * @return Powerform_Google_Service_YouTube_LiveBroadcast
+   * @return Google_Service_YouTube_LiveBroadcast
    */
   public function control($id, $part, $optParams = array())
   {
     $params = array('id' => $id, 'part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('control', array($params), "Powerform_Google_Service_YouTube_LiveBroadcast");
+    return $this->call('control', array($params), "Google_Service_YouTube_LiveBroadcast");
   }
 
   /**
@@ -3116,7 +3116,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcasts_Resource extends Powerform
    *
    * The part properties that you can include in the parameter value are id,
    * snippet, contentDetails, and status.
-   * @param Powerform_Google_LiveBroadcast $postBody
+   * @param Google_LiveBroadcast $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -3150,13 +3150,13 @@ class Powerform_Google_Service_YouTube_LiveBroadcasts_Resource extends Powerform
    * once and perform actions on behalf of the channel specified in the parameter
    * value, without having to provide authentication credentials for each separate
    * channel.
-   * @return Powerform_Google_Service_YouTube_LiveBroadcast
+   * @return Google_Service_YouTube_LiveBroadcast
    */
-  public function insert($part, Powerform_Google_Service_YouTube_LiveBroadcast $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_LiveBroadcast $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_LiveBroadcast");
+    return $this->call('insert', array($params), "Google_Service_YouTube_LiveBroadcast");
   }
 
   /**
@@ -3217,13 +3217,13 @@ class Powerform_Google_Service_YouTube_LiveBroadcasts_Resource extends Powerform
    * page in the result set that should be returned. In an API response, the
    * nextPageToken and prevPageToken properties identify other pages that could be
    * retrieved.
-   * @return Powerform_Google_Service_YouTube_LiveBroadcastListResponse
+   * @return Google_Service_YouTube_LiveBroadcastListResponse
    */
   public function listLiveBroadcasts($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_LiveBroadcastListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_LiveBroadcastListResponse");
   }
 
   /**
@@ -3277,13 +3277,13 @@ class Powerform_Google_Service_YouTube_LiveBroadcasts_Resource extends Powerform
    * once and perform actions on behalf of the channel specified in the parameter
    * value, without having to provide authentication credentials for each separate
    * channel.
-   * @return Powerform_Google_Service_YouTube_LiveBroadcast
+   * @return Google_Service_YouTube_LiveBroadcast
    */
   public function transition($broadcastStatus, $id, $part, $optParams = array())
   {
     $params = array('broadcastStatus' => $broadcastStatus, 'id' => $id, 'part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('transition', array($params), "Powerform_Google_Service_YouTube_LiveBroadcast");
+    return $this->call('transition', array($params), "Google_Service_YouTube_LiveBroadcast");
   }
 
   /**
@@ -3307,7 +3307,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcasts_Resource extends Powerform
    * body specifies. If the request body does not specify a value, the existing
    * privacy setting will be removed and the broadcast will revert to the default
    * privacy setting.
-   * @param Powerform_Google_LiveBroadcast $postBody
+   * @param Google_LiveBroadcast $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -3341,13 +3341,13 @@ class Powerform_Google_Service_YouTube_LiveBroadcasts_Resource extends Powerform
    * once and perform actions on behalf of the channel specified in the parameter
    * value, without having to provide authentication credentials for each separate
    * channel.
-   * @return Powerform_Google_Service_YouTube_LiveBroadcast
+   * @return Google_Service_YouTube_LiveBroadcast
    */
-  public function update($part, Powerform_Google_Service_YouTube_LiveBroadcast $postBody, $optParams = array())
+  public function update($part, Google_Service_YouTube_LiveBroadcast $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTube_LiveBroadcast");
+    return $this->call('update', array($params), "Google_Service_YouTube_LiveBroadcast");
   }
 }
 
@@ -3355,11 +3355,11 @@ class Powerform_Google_Service_YouTube_LiveBroadcasts_Resource extends Powerform
  * The "liveChatBans" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $liveChatBans = $youtubeService->liveChatBans;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_LiveChatBans_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_LiveChatBans_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3382,15 +3382,15 @@ class Powerform_Google_Service_YouTube_LiveChatBans_Resource extends Powerform_G
    * @param string $part The part parameter serves two purposes in this operation.
    * It identifies the properties that the write operation will set as well as the
    * properties that the API response returns. Set the parameter value to snippet.
-   * @param Powerform_Google_LiveChatBan $postBody
+   * @param Google_LiveChatBan $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTube_LiveChatBan
+   * @return Google_Service_YouTube_LiveChatBan
    */
-  public function insert($part, Powerform_Google_Service_YouTube_LiveChatBan $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_LiveChatBan $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_LiveChatBan");
+    return $this->call('insert', array($params), "Google_Service_YouTube_LiveChatBan");
   }
 }
 
@@ -3398,11 +3398,11 @@ class Powerform_Google_Service_YouTube_LiveChatBans_Resource extends Powerform_G
  * The "liveChatMessages" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $liveChatMessages = $youtubeService->liveChatMessages;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_LiveChatMessages_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_LiveChatMessages_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3425,15 +3425,15 @@ class Powerform_Google_Service_YouTube_LiveChatMessages_Resource extends Powerfo
    * @param string $part The part parameter serves two purposes. It identifies the
    * properties that the write operation will set as well as the properties that
    * the API response will include. Set the parameter value to snippet.
-   * @param Powerform_Google_LiveChatMessage $postBody
+   * @param Google_LiveChatMessage $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTube_LiveChatMessage
+   * @return Google_Service_YouTube_LiveChatMessage
    */
-  public function insert($part, Powerform_Google_Service_YouTube_LiveChatMessage $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_LiveChatMessage $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_LiveChatMessage");
+    return $this->call('insert', array($params), "Google_Service_YouTube_LiveChatMessage");
   }
 
   /**
@@ -3464,13 +3464,13 @@ class Powerform_Google_Service_YouTube_LiveChatMessages_Resource extends Powerfo
    * @opt_param string profileImageSize The profileImageSize parameter specifies
    * the size of the user profile pictures that should be returned in the result
    * set. Default: 88.
-   * @return Powerform_Google_Service_YouTube_LiveChatMessageListResponse
+   * @return Google_Service_YouTube_LiveChatMessageListResponse
    */
   public function listLiveChatMessages($liveChatId, $part, $optParams = array())
   {
     $params = array('liveChatId' => $liveChatId, 'part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_LiveChatMessageListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_LiveChatMessageListResponse");
   }
 }
 
@@ -3478,11 +3478,11 @@ class Powerform_Google_Service_YouTube_LiveChatMessages_Resource extends Powerfo
  * The "liveChatModerators" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $liveChatModerators = $youtubeService->liveChatModerators;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_LiveChatModerators_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_LiveChatModerators_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3505,15 +3505,15 @@ class Powerform_Google_Service_YouTube_LiveChatModerators_Resource extends Power
    * @param string $part The part parameter serves two purposes in this operation.
    * It identifies the properties that the write operation will set as well as the
    * properties that the API response returns. Set the parameter value to snippet.
-   * @param Powerform_Google_LiveChatModerator $postBody
+   * @param Google_LiveChatModerator $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTube_LiveChatModerator
+   * @return Google_Service_YouTube_LiveChatModerator
    */
-  public function insert($part, Powerform_Google_Service_YouTube_LiveChatModerator $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_LiveChatModerator $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_LiveChatModerator");
+    return $this->call('insert', array($params), "Google_Service_YouTube_LiveChatModerator");
   }
 
   /**
@@ -3532,13 +3532,13 @@ class Powerform_Google_Service_YouTube_LiveChatModerators_Resource extends Power
    * page in the result set that should be returned. In an API response, the
    * nextPageToken and prevPageToken properties identify other pages that could be
    * retrieved.
-   * @return Powerform_Google_Service_YouTube_LiveChatModeratorListResponse
+   * @return Google_Service_YouTube_LiveChatModeratorListResponse
    */
   public function listLiveChatModerators($liveChatId, $part, $optParams = array())
   {
     $params = array('liveChatId' => $liveChatId, 'part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_LiveChatModeratorListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_LiveChatModeratorListResponse");
   }
 }
 
@@ -3546,11 +3546,11 @@ class Powerform_Google_Service_YouTube_LiveChatModerators_Resource extends Power
  * The "liveStreams" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $liveStreams = $youtubeService->liveStreams;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_LiveStreams_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_LiveStreams_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3609,7 +3609,7 @@ class Powerform_Google_Service_YouTube_LiveStreams_Resource extends Powerform_Go
    *
    * The part properties that you can include in the parameter value are id,
    * snippet, cdn, and status.
-   * @param Powerform_Google_LiveStream $postBody
+   * @param Google_LiveStream $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -3643,13 +3643,13 @@ class Powerform_Google_Service_YouTube_LiveStreams_Resource extends Powerform_Go
    * once and perform actions on behalf of the channel specified in the parameter
    * value, without having to provide authentication credentials for each separate
    * channel.
-   * @return Powerform_Google_Service_YouTube_LiveStream
+   * @return Google_Service_YouTube_LiveStream
    */
-  public function insert($part, Powerform_Google_Service_YouTube_LiveStream $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_LiveStream $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_LiveStream");
+    return $this->call('insert', array($params), "Google_Service_YouTube_LiveStream");
   }
 
   /**
@@ -3705,13 +3705,13 @@ class Powerform_Google_Service_YouTube_LiveStreams_Resource extends Powerform_Go
    * page in the result set that should be returned. In an API response, the
    * nextPageToken and prevPageToken properties identify other pages that could be
    * retrieved.
-   * @return Powerform_Google_Service_YouTube_LiveStreamListResponse
+   * @return Google_Service_YouTube_LiveStreamListResponse
    */
   public function listLiveStreams($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_LiveStreamListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_LiveStreamListResponse");
   }
 
   /**
@@ -3730,7 +3730,7 @@ class Powerform_Google_Service_YouTube_LiveStreams_Resource extends Powerform_Go
    * mutable properties that are contained in any parts that the parameter value
    * specifies. If the request body does not specify a value for a mutable
    * property, the existing value for that property will be removed.
-   * @param Powerform_Google_LiveStream $postBody
+   * @param Google_LiveStream $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -3764,13 +3764,13 @@ class Powerform_Google_Service_YouTube_LiveStreams_Resource extends Powerform_Go
    * once and perform actions on behalf of the channel specified in the parameter
    * value, without having to provide authentication credentials for each separate
    * channel.
-   * @return Powerform_Google_Service_YouTube_LiveStream
+   * @return Google_Service_YouTube_LiveStream
    */
-  public function update($part, Powerform_Google_Service_YouTube_LiveStream $postBody, $optParams = array())
+  public function update($part, Google_Service_YouTube_LiveStream $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTube_LiveStream");
+    return $this->call('update', array($params), "Google_Service_YouTube_LiveStream");
   }
 }
 
@@ -3778,11 +3778,11 @@ class Powerform_Google_Service_YouTube_LiveStreams_Resource extends Powerform_Go
  * The "playlistItems" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $playlistItems = $youtubeService->playlistItems;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_PlaylistItems_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_PlaylistItems_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3806,7 +3806,7 @@ class Powerform_Google_Service_YouTube_PlaylistItems_Resource extends Powerform_
    * @param string $part The part parameter serves two purposes in this operation.
    * It identifies the properties that the write operation will set as well as the
    * properties that the API response will include.
-   * @param Powerform_Google_PlaylistItem $postBody
+   * @param Google_PlaylistItem $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -3821,13 +3821,13 @@ class Powerform_Google_Service_YouTube_PlaylistItems_Resource extends Powerform_
    * authentication credentials for each individual channel. The CMS account that
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
-   * @return Powerform_Google_Service_YouTube_PlaylistItem
+   * @return Google_Service_YouTube_PlaylistItem
    */
-  public function insert($part, Powerform_Google_Service_YouTube_PlaylistItem $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_PlaylistItem $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_PlaylistItem");
+    return $this->call('insert', array($params), "Google_Service_YouTube_PlaylistItem");
   }
 
   /**
@@ -3875,13 +3875,13 @@ class Powerform_Google_Service_YouTube_PlaylistItems_Resource extends Powerform_
    * parameter.
    * @opt_param string videoId The videoId parameter specifies that the request
    * should return only the playlist items that contain the specified video.
-   * @return Powerform_Google_Service_YouTube_PlaylistItemListResponse
+   * @return Google_Service_YouTube_PlaylistItemListResponse
    */
   public function listPlaylistItems($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_PlaylistItemListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_PlaylistItemListResponse");
   }
 
   /**
@@ -3902,15 +3902,15 @@ class Powerform_Google_Service_YouTube_PlaylistItems_Resource extends Powerform_
    * updated to whatever value the request body specifies. If the request body
    * does not specify values, the existing start and end times will be removed and
    * replaced with the default settings.
-   * @param Powerform_Google_PlaylistItem $postBody
+   * @param Google_PlaylistItem $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTube_PlaylistItem
+   * @return Google_Service_YouTube_PlaylistItem
    */
-  public function update($part, Powerform_Google_Service_YouTube_PlaylistItem $postBody, $optParams = array())
+  public function update($part, Google_Service_YouTube_PlaylistItem $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTube_PlaylistItem");
+    return $this->call('update', array($params), "Google_Service_YouTube_PlaylistItem");
   }
 }
 
@@ -3918,11 +3918,11 @@ class Powerform_Google_Service_YouTube_PlaylistItems_Resource extends Powerform_
  * The "playlists" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $playlists = $youtubeService->playlists;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Playlists_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Playlists_Resource extends Google_Service_Resource
 {
 
   /**
@@ -3959,7 +3959,7 @@ class Powerform_Google_Service_YouTube_Playlists_Resource extends Powerform_Goog
    * @param string $part The part parameter serves two purposes in this operation.
    * It identifies the properties that the write operation will set as well as the
    * properties that the API response will include.
-   * @param Powerform_Google_Playlist $postBody
+   * @param Google_Playlist $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -3993,13 +3993,13 @@ class Powerform_Google_Service_YouTube_Playlists_Resource extends Powerform_Goog
    * once and perform actions on behalf of the channel specified in the parameter
    * value, without having to provide authentication credentials for each separate
    * channel.
-   * @return Powerform_Google_Service_YouTube_Playlist
+   * @return Google_Service_YouTube_Playlist
    */
-  public function insert($part, Powerform_Google_Service_YouTube_Playlist $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_Playlist $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_Playlist");
+    return $this->call('insert', array($params), "Google_Service_YouTube_Playlist");
   }
 
   /**
@@ -4065,13 +4065,13 @@ class Powerform_Google_Service_YouTube_Playlists_Resource extends Powerform_Goog
    * page in the result set that should be returned. In an API response, the
    * nextPageToken and prevPageToken properties identify other pages that could be
    * retrieved.
-   * @return Powerform_Google_Service_YouTube_PlaylistListResponse
+   * @return Google_Service_YouTube_PlaylistListResponse
    */
   public function listPlaylists($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_PlaylistListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_PlaylistListResponse");
   }
 
   /**
@@ -4088,7 +4088,7 @@ class Powerform_Google_Service_YouTube_Playlists_Resource extends Powerform_Goog
    * must be included in the request body. If the request does not specify a value
    * for the snippet.description property, the playlist's existing description
    * will be deleted.
-   * @param Powerform_Google_Playlist $postBody
+   * @param Google_Playlist $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -4103,13 +4103,13 @@ class Powerform_Google_Service_YouTube_Playlists_Resource extends Powerform_Goog
    * authentication credentials for each individual channel. The CMS account that
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
-   * @return Powerform_Google_Service_YouTube_Playlist
+   * @return Google_Service_YouTube_Playlist
    */
-  public function update($part, Powerform_Google_Service_YouTube_Playlist $postBody, $optParams = array())
+  public function update($part, Google_Service_YouTube_Playlist $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTube_Playlist");
+    return $this->call('update', array($params), "Google_Service_YouTube_Playlist");
   }
 }
 
@@ -4117,11 +4117,11 @@ class Powerform_Google_Service_YouTube_Playlists_Resource extends Powerform_Goog
  * The "search" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $search = $youtubeService->search;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Search_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Search_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4273,13 +4273,13 @@ class Powerform_Google_Service_YouTube_Search_Resource extends Powerform_Google_
    * @opt_param string videoType The videoType parameter lets you restrict a
    * search to a particular type of videos. If you specify a value for this
    * parameter, you must also set the type parameter's value to video.
-   * @return Powerform_Google_Service_YouTube_SearchListResponse
+   * @return Google_Service_YouTube_SearchListResponse
    */
   public function listSearch($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_SearchListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_SearchListResponse");
   }
 }
 
@@ -4287,11 +4287,11 @@ class Powerform_Google_Service_YouTube_Search_Resource extends Powerform_Google_
  * The "sponsors" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $sponsors = $youtubeService->sponsors;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Sponsors_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Sponsors_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4309,13 +4309,13 @@ class Powerform_Google_Service_YouTube_Sponsors_Resource extends Powerform_Googl
    * page in the result set that should be returned. In an API response, the
    * nextPageToken and prevPageToken properties identify other pages that could be
    * retrieved.
-   * @return Powerform_Google_Service_YouTube_SponsorListResponse
+   * @return Google_Service_YouTube_SponsorListResponse
    */
   public function listSponsors($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_SponsorListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_SponsorListResponse");
   }
 }
 
@@ -4323,11 +4323,11 @@ class Powerform_Google_Service_YouTube_Sponsors_Resource extends Powerform_Googl
  * The "subscriptions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $subscriptions = $youtubeService->subscriptions;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Subscriptions_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Subscriptions_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4352,15 +4352,15 @@ class Powerform_Google_Service_YouTube_Subscriptions_Resource extends Powerform_
    * @param string $part The part parameter serves two purposes in this operation.
    * It identifies the properties that the write operation will set as well as the
    * properties that the API response will include.
-   * @param Powerform_Google_Subscription $postBody
+   * @param Google_Subscription $postBody
    * @param array $optParams Optional parameters.
-   * @return Powerform_Google_Service_YouTube_Subscription
+   * @return Google_Service_YouTube_Subscription
    */
-  public function insert($part, Powerform_Google_Service_YouTube_Subscription $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_Subscription $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_Subscription");
+    return $this->call('insert', array($params), "Google_Service_YouTube_Subscription");
   }
 
   /**
@@ -4429,13 +4429,13 @@ class Powerform_Google_Service_YouTube_Subscriptions_Resource extends Powerform_
    * page in the result set that should be returned. In an API response, the
    * nextPageToken and prevPageToken properties identify other pages that could be
    * retrieved.
-   * @return Powerform_Google_Service_YouTube_SubscriptionListResponse
+   * @return Google_Service_YouTube_SubscriptionListResponse
    */
   public function listSubscriptions($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_SubscriptionListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_SubscriptionListResponse");
   }
 }
 
@@ -4443,11 +4443,11 @@ class Powerform_Google_Service_YouTube_Subscriptions_Resource extends Powerform_
  * The "thumbnails" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $thumbnails = $youtubeService->thumbnails;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Thumbnails_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Thumbnails_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4470,13 +4470,13 @@ class Powerform_Google_Service_YouTube_Thumbnails_Resource extends Powerform_Goo
    * authentication credentials for each individual channel. The actual CMS
    * account that the user authenticates with must be linked to the specified
    * YouTube content owner.
-   * @return Powerform_Google_Service_YouTube_ThumbnailSetResponse
+   * @return Google_Service_YouTube_ThumbnailSetResponse
    */
   public function set($videoId, $optParams = array())
   {
     $params = array('videoId' => $videoId);
     $params = array_merge($params, $optParams);
-    return $this->call('set', array($params), "Powerform_Google_Service_YouTube_ThumbnailSetResponse");
+    return $this->call('set', array($params), "Google_Service_YouTube_ThumbnailSetResponse");
   }
 }
 
@@ -4484,11 +4484,11 @@ class Powerform_Google_Service_YouTube_Thumbnails_Resource extends Powerform_Goo
  * The "videoAbuseReportReasons" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $videoAbuseReportReasons = $youtubeService->videoAbuseReportReasons;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_VideoAbuseReportReasons_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_VideoAbuseReportReasons_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4502,13 +4502,13 @@ class Powerform_Google_Service_YouTube_VideoAbuseReportReasons_Resource extends 
    *
    * @opt_param string hl The hl parameter specifies the language that should be
    * used for text values in the API response.
-   * @return Powerform_Google_Service_YouTube_VideoAbuseReportReasonListResponse
+   * @return Google_Service_YouTube_VideoAbuseReportReasonListResponse
    */
   public function listVideoAbuseReportReasons($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_VideoAbuseReportReasonListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_VideoAbuseReportReasonListResponse");
   }
 }
 
@@ -4516,11 +4516,11 @@ class Powerform_Google_Service_YouTube_VideoAbuseReportReasons_Resource extends 
  * The "videoCategories" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $videoCategories = $youtubeService->videoCategories;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_VideoCategories_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_VideoCategories_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4539,13 +4539,13 @@ class Powerform_Google_Service_YouTube_VideoCategories_Resource extends Powerfor
    * @opt_param string regionCode The regionCode parameter instructs the API to
    * return the list of video categories available in the specified country. The
    * parameter value is an ISO 3166-1 alpha-2 country code.
-   * @return Powerform_Google_Service_YouTube_VideoCategoryListResponse
+   * @return Google_Service_YouTube_VideoCategoryListResponse
    */
   public function listVideoCategories($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_VideoCategoryListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_VideoCategoryListResponse");
   }
 }
 
@@ -4553,11 +4553,11 @@ class Powerform_Google_Service_YouTube_VideoCategories_Resource extends Powerfor
  * The "videos" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $videos = $youtubeService->videos;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Videos_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Videos_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4609,13 +4609,13 @@ class Powerform_Google_Service_YouTube_Videos_Resource extends Powerform_Google_
    * authentication credentials for each individual channel. The CMS account that
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
-   * @return Powerform_Google_Service_YouTube_VideoGetRatingResponse
+   * @return Google_Service_YouTube_VideoGetRatingResponse
    */
   public function getRating($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('getRating', array($params), "Powerform_Google_Service_YouTube_VideoGetRatingResponse");
+    return $this->call('getRating', array($params), "Google_Service_YouTube_VideoGetRatingResponse");
   }
 
   /**
@@ -4631,7 +4631,7 @@ class Powerform_Google_Service_YouTube_Videos_Resource extends Powerform_Google_
    * that YouTube calculates for a video and does not contain values that you can
    * set or modify. If the parameter value specifies a part that does not contain
    * mutable values, that part will still be included in the API response.
-   * @param Powerform_Google_Video $postBody
+   * @param Google_Video $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool autoLevels The autoLevels parameter indicates whether YouTube
@@ -4676,13 +4676,13 @@ class Powerform_Google_Service_YouTube_Videos_Resource extends Powerform_Google_
    * channel.
    * @opt_param bool stabilize The stabilize parameter indicates whether YouTube
    * should adjust the video to remove shaky camera motions.
-   * @return Powerform_Google_Service_YouTube_Video
+   * @return Google_Service_YouTube_Video
    */
-  public function insert($part, Powerform_Google_Service_YouTube_Video $postBody, $optParams = array())
+  public function insert($part, Google_Service_YouTube_Video $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Powerform_Google_Service_YouTube_Video");
+    return $this->call('insert', array($params), "Google_Service_YouTube_Video");
   }
 
   /**
@@ -4751,13 +4751,13 @@ class Powerform_Google_Service_YouTube_Videos_Resource extends Powerform_Google_
    * the video category for which the chart should be retrieved. This parameter
    * can only be used in conjunction with the chart parameter. By default, charts
    * are not restricted to a particular category.
-   * @return Powerform_Google_Service_YouTube_VideoListResponse
+   * @return Google_Service_YouTube_VideoListResponse
    */
   public function listVideos($part, $optParams = array())
   {
     $params = array('part' => $part);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Powerform_Google_Service_YouTube_VideoListResponse");
+    return $this->call('list', array($params), "Google_Service_YouTube_VideoListResponse");
   }
 
   /**
@@ -4779,7 +4779,7 @@ class Powerform_Google_Service_YouTube_Videos_Resource extends Powerform_Google_
   /**
    * Report abuse for a video. (videos.reportAbuse)
    *
-   * @param Powerform_Google_VideoAbuseReport $postBody
+   * @param Google_VideoAbuseReport $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -4795,7 +4795,7 @@ class Powerform_Google_Service_YouTube_Videos_Resource extends Powerform_Google_
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
    */
-  public function reportAbuse(Powerform_Google_Service_YouTube_VideoAbuseReport $postBody, $optParams = array())
+  public function reportAbuse(Google_Service_YouTube_VideoAbuseReport $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -4824,7 +4824,7 @@ class Powerform_Google_Service_YouTube_Videos_Resource extends Powerform_Google_
    * that you can set or modify. If the parameter value specifies a part that does
    * not contain mutable values, that part will still be included in the API
    * response.
-   * @param Powerform_Google_Video $postBody
+   * @param Google_Video $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -4839,13 +4839,13 @@ class Powerform_Google_Service_YouTube_Videos_Resource extends Powerform_Google_
    * authentication credentials for each individual channel. The actual CMS
    * account that the user authenticates with must be linked to the specified
    * YouTube content owner.
-   * @return Powerform_Google_Service_YouTube_Video
+   * @return Google_Service_YouTube_Video
    */
-  public function update($part, Powerform_Google_Service_YouTube_Video $postBody, $optParams = array())
+  public function update($part, Google_Service_YouTube_Video $postBody, $optParams = array())
   {
     $params = array('part' => $part, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Powerform_Google_Service_YouTube_Video");
+    return $this->call('update', array($params), "Google_Service_YouTube_Video");
   }
 }
 
@@ -4853,11 +4853,11 @@ class Powerform_Google_Service_YouTube_Videos_Resource extends Powerform_Google_
  * The "watermarks" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeService = new Powerform_Google_Service_YouTube(...);
+ *   $youtubeService = new Google_Service_YouTube(...);
  *   $watermarks = $youtubeService->watermarks;
  *  </code>
  */
-class Powerform_Google_Service_YouTube_Watermarks_Resource extends Powerform_Google_Service_Resource
+class Google_Service_YouTube_Watermarks_Resource extends Google_Service_Resource
 {
 
   /**
@@ -4866,7 +4866,7 @@ class Powerform_Google_Service_YouTube_Watermarks_Resource extends Powerform_Goo
    *
    * @param string $channelId The channelId parameter specifies the YouTube
    * channel ID for which the watermark is being provided.
-   * @param Powerform_Google_InvideoBranding $postBody
+   * @param Google_InvideoBranding $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner Note: This parameter is intended
@@ -4882,7 +4882,7 @@ class Powerform_Google_Service_YouTube_Watermarks_Resource extends Powerform_Goo
    * the user authenticates with must be linked to the specified YouTube content
    * owner.
    */
-  public function set($channelId, Powerform_Google_Service_YouTube_InvideoBranding $postBody, $optParams = array())
+  public function set($channelId, Google_Service_YouTube_InvideoBranding $postBody, $optParams = array())
   {
     $params = array('channelId' => $channelId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -4920,7 +4920,7 @@ class Powerform_Google_Service_YouTube_Watermarks_Resource extends Powerform_Goo
 
 
 
-class Powerform_Google_Service_YouTube_AccessPolicy extends Powerform_Google_Collection
+class Google_Service_YouTube_AccessPolicy extends Google_Collection
 {
   protected $collection_key = 'exception';
   protected $internal_gapi_mappings = array(
@@ -4947,20 +4947,20 @@ class Powerform_Google_Service_YouTube_AccessPolicy extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_YouTube_Activity extends Powerform_Google_Model
+class Google_Service_YouTube_Activity extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $contentDetailsType = 'Powerform_Google_Service_YouTube_ActivityContentDetails';
+  protected $contentDetailsType = 'Google_Service_YouTube_ActivityContentDetails';
   protected $contentDetailsDataType = '';
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_ActivitySnippet';
+  protected $snippetType = 'Google_Service_YouTube_ActivitySnippet';
   protected $snippetDataType = '';
 
 
-  public function setContentDetails(Powerform_Google_Service_YouTube_ActivityContentDetails $contentDetails)
+  public function setContentDetails(Google_Service_YouTube_ActivityContentDetails $contentDetails)
   {
     $this->contentDetails = $contentDetails;
   }
@@ -4992,7 +4992,7 @@ class Powerform_Google_Service_YouTube_Activity extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_ActivitySnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_ActivitySnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -5002,35 +5002,35 @@ class Powerform_Google_Service_YouTube_Activity extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $bulletinType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsBulletin';
+  protected $bulletinType = 'Google_Service_YouTube_ActivityContentDetailsBulletin';
   protected $bulletinDataType = '';
-  protected $channelItemType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsChannelItem';
+  protected $channelItemType = 'Google_Service_YouTube_ActivityContentDetailsChannelItem';
   protected $channelItemDataType = '';
-  protected $commentType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsComment';
+  protected $commentType = 'Google_Service_YouTube_ActivityContentDetailsComment';
   protected $commentDataType = '';
-  protected $favoriteType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsFavorite';
+  protected $favoriteType = 'Google_Service_YouTube_ActivityContentDetailsFavorite';
   protected $favoriteDataType = '';
-  protected $likeType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsLike';
+  protected $likeType = 'Google_Service_YouTube_ActivityContentDetailsLike';
   protected $likeDataType = '';
-  protected $playlistItemType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsPlaylistItem';
+  protected $playlistItemType = 'Google_Service_YouTube_ActivityContentDetailsPlaylistItem';
   protected $playlistItemDataType = '';
-  protected $promotedItemType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsPromotedItem';
+  protected $promotedItemType = 'Google_Service_YouTube_ActivityContentDetailsPromotedItem';
   protected $promotedItemDataType = '';
-  protected $recommendationType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsRecommendation';
+  protected $recommendationType = 'Google_Service_YouTube_ActivityContentDetailsRecommendation';
   protected $recommendationDataType = '';
-  protected $socialType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsSocial';
+  protected $socialType = 'Google_Service_YouTube_ActivityContentDetailsSocial';
   protected $socialDataType = '';
-  protected $subscriptionType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsSubscription';
+  protected $subscriptionType = 'Google_Service_YouTube_ActivityContentDetailsSubscription';
   protected $subscriptionDataType = '';
-  protected $uploadType = 'Powerform_Google_Service_YouTube_ActivityContentDetailsUpload';
+  protected $uploadType = 'Google_Service_YouTube_ActivityContentDetailsUpload';
   protected $uploadDataType = '';
 
 
-  public function setBulletin(Powerform_Google_Service_YouTube_ActivityContentDetailsBulletin $bulletin)
+  public function setBulletin(Google_Service_YouTube_ActivityContentDetailsBulletin $bulletin)
   {
     $this->bulletin = $bulletin;
   }
@@ -5038,7 +5038,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   {
     return $this->bulletin;
   }
-  public function setChannelItem(Powerform_Google_Service_YouTube_ActivityContentDetailsChannelItem $channelItem)
+  public function setChannelItem(Google_Service_YouTube_ActivityContentDetailsChannelItem $channelItem)
   {
     $this->channelItem = $channelItem;
   }
@@ -5046,7 +5046,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   {
     return $this->channelItem;
   }
-  public function setComment(Powerform_Google_Service_YouTube_ActivityContentDetailsComment $comment)
+  public function setComment(Google_Service_YouTube_ActivityContentDetailsComment $comment)
   {
     $this->comment = $comment;
   }
@@ -5054,7 +5054,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   {
     return $this->comment;
   }
-  public function setFavorite(Powerform_Google_Service_YouTube_ActivityContentDetailsFavorite $favorite)
+  public function setFavorite(Google_Service_YouTube_ActivityContentDetailsFavorite $favorite)
   {
     $this->favorite = $favorite;
   }
@@ -5062,7 +5062,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   {
     return $this->favorite;
   }
-  public function setLike(Powerform_Google_Service_YouTube_ActivityContentDetailsLike $like)
+  public function setLike(Google_Service_YouTube_ActivityContentDetailsLike $like)
   {
     $this->like = $like;
   }
@@ -5070,7 +5070,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   {
     return $this->like;
   }
-  public function setPlaylistItem(Powerform_Google_Service_YouTube_ActivityContentDetailsPlaylistItem $playlistItem)
+  public function setPlaylistItem(Google_Service_YouTube_ActivityContentDetailsPlaylistItem $playlistItem)
   {
     $this->playlistItem = $playlistItem;
   }
@@ -5078,7 +5078,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   {
     return $this->playlistItem;
   }
-  public function setPromotedItem(Powerform_Google_Service_YouTube_ActivityContentDetailsPromotedItem $promotedItem)
+  public function setPromotedItem(Google_Service_YouTube_ActivityContentDetailsPromotedItem $promotedItem)
   {
     $this->promotedItem = $promotedItem;
   }
@@ -5086,7 +5086,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   {
     return $this->promotedItem;
   }
-  public function setRecommendation(Powerform_Google_Service_YouTube_ActivityContentDetailsRecommendation $recommendation)
+  public function setRecommendation(Google_Service_YouTube_ActivityContentDetailsRecommendation $recommendation)
   {
     $this->recommendation = $recommendation;
   }
@@ -5094,7 +5094,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   {
     return $this->recommendation;
   }
-  public function setSocial(Powerform_Google_Service_YouTube_ActivityContentDetailsSocial $social)
+  public function setSocial(Google_Service_YouTube_ActivityContentDetailsSocial $social)
   {
     $this->social = $social;
   }
@@ -5102,7 +5102,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   {
     return $this->social;
   }
-  public function setSubscription(Powerform_Google_Service_YouTube_ActivityContentDetailsSubscription $subscription)
+  public function setSubscription(Google_Service_YouTube_ActivityContentDetailsSubscription $subscription)
   {
     $this->subscription = $subscription;
   }
@@ -5110,7 +5110,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   {
     return $this->subscription;
   }
-  public function setUpload(Powerform_Google_Service_YouTube_ActivityContentDetailsUpload $upload)
+  public function setUpload(Google_Service_YouTube_ActivityContentDetailsUpload $upload)
   {
     $this->upload = $upload;
   }
@@ -5120,15 +5120,15 @@ class Powerform_Google_Service_YouTube_ActivityContentDetails extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsBulletin extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetailsBulletin extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
 
 
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -5138,15 +5138,15 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsBulletin extends Po
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsChannelItem extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetailsChannelItem extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
 
 
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -5156,15 +5156,15 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsChannelItem extends
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsComment extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetailsComment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
 
 
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -5174,15 +5174,15 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsComment extends Pow
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsFavorite extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetailsFavorite extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
 
 
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -5192,15 +5192,15 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsFavorite extends Po
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsLike extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetailsLike extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
 
 
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -5210,13 +5210,13 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsLike extends Powerf
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsPlaylistItem extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetailsPlaylistItem extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $playlistId;
   public $playlistItemId;
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
 
 
@@ -5236,7 +5236,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsPlaylistItem extend
   {
     return $this->playlistItemId;
   }
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -5246,7 +5246,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsPlaylistItem extend
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsPromotedItem extends Powerform_Google_Collection
+class Google_Service_YouTube_ActivityContentDetailsPromotedItem extends Google_Collection
 {
   protected $collection_key = 'impressionUrl';
   protected $internal_gapi_mappings = array(
@@ -5345,14 +5345,14 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsPromotedItem extend
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsRecommendation extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetailsRecommendation extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $reason;
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
-  protected $seedResourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $seedResourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $seedResourceIdDataType = '';
 
 
@@ -5364,7 +5364,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsRecommendation exte
   {
     return $this->reason;
   }
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -5372,7 +5372,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsRecommendation exte
   {
     return $this->resourceId;
   }
-  public function setSeedResourceId(Powerform_Google_Service_YouTube_ResourceId $seedResourceId)
+  public function setSeedResourceId(Google_Service_YouTube_ResourceId $seedResourceId)
   {
     $this->seedResourceId = $seedResourceId;
   }
@@ -5382,14 +5382,14 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsRecommendation exte
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsSocial extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetailsSocial extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $author;
   public $imageUrl;
   public $referenceUrl;
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
   public $type;
 
@@ -5418,7 +5418,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsSocial extends Powe
   {
     return $this->referenceUrl;
   }
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -5436,15 +5436,15 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsSocial extends Powe
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsSubscription extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetailsSubscription extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
 
 
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -5454,7 +5454,7 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsSubscription extend
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityContentDetailsUpload extends Powerform_Google_Model
+class Google_Service_YouTube_ActivityContentDetailsUpload extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5471,21 +5471,21 @@ class Powerform_Google_Service_YouTube_ActivityContentDetailsUpload extends Powe
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivityListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_ActivityListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_Activity';
+  protected $itemsType = 'Google_Service_YouTube_Activity';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -5530,7 +5530,7 @@ class Powerform_Google_Service_YouTube_ActivityListResponse extends Powerform_Go
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -5546,7 +5546,7 @@ class Powerform_Google_Service_YouTube_ActivityListResponse extends Powerform_Go
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -5564,7 +5564,7 @@ class Powerform_Google_Service_YouTube_ActivityListResponse extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTube_ActivitySnippet extends Powerform_Google_Model
+class Google_Service_YouTube_ActivitySnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5573,7 +5573,7 @@ class Powerform_Google_Service_YouTube_ActivitySnippet extends Powerform_Google_
   public $description;
   public $groupId;
   public $publishedAt;
-  protected $thumbnailsType = 'Powerform_Google_Service_YouTube_ThumbnailDetails';
+  protected $thumbnailsType = 'Google_Service_YouTube_ThumbnailDetails';
   protected $thumbnailsDataType = '';
   public $title;
   public $type;
@@ -5619,7 +5619,7 @@ class Powerform_Google_Service_YouTube_ActivitySnippet extends Powerform_Google_
   {
     return $this->publishedAt;
   }
-  public function setThumbnails(Powerform_Google_Service_YouTube_ThumbnailDetails $thumbnails)
+  public function setThumbnails(Google_Service_YouTube_ThumbnailDetails $thumbnails)
   {
     $this->thumbnails = $thumbnails;
   }
@@ -5645,14 +5645,14 @@ class Powerform_Google_Service_YouTube_ActivitySnippet extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_YouTube_Caption extends Powerform_Google_Model
+class Google_Service_YouTube_Caption extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_CaptionSnippet';
+  protected $snippetType = 'Google_Service_YouTube_CaptionSnippet';
   protected $snippetDataType = '';
 
 
@@ -5680,7 +5680,7 @@ class Powerform_Google_Service_YouTube_Caption extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_CaptionSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_CaptionSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -5690,14 +5690,14 @@ class Powerform_Google_Service_YouTube_Caption extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_CaptionListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_CaptionListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_Caption';
+  protected $itemsType = 'Google_Service_YouTube_Caption';
   protected $itemsDataType = 'array';
   public $kind;
   public $visitorId;
@@ -5745,7 +5745,7 @@ class Powerform_Google_Service_YouTube_CaptionListResponse extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_CaptionSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_CaptionSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -5870,12 +5870,12 @@ class Powerform_Google_Service_YouTube_CaptionSnippet extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_YouTube_CdnSettings extends Powerform_Google_Model
+class Google_Service_YouTube_CdnSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $format;
-  protected $ingestionInfoType = 'Powerform_Google_Service_YouTube_IngestionInfo';
+  protected $ingestionInfoType = 'Google_Service_YouTube_IngestionInfo';
   protected $ingestionInfoDataType = '';
   public $ingestionType;
 
@@ -5888,7 +5888,7 @@ class Powerform_Google_Service_YouTube_CdnSettings extends Powerform_Google_Mode
   {
     return $this->format;
   }
-  public function setIngestionInfo(Powerform_Google_Service_YouTube_IngestionInfo $ingestionInfo)
+  public function setIngestionInfo(Google_Service_YouTube_IngestionInfo $ingestionInfo)
   {
     $this->ingestionInfo = $ingestionInfo;
   }
@@ -5906,38 +5906,38 @@ class Powerform_Google_Service_YouTube_CdnSettings extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
+class Google_Service_YouTube_Channel extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $auditDetailsType = 'Powerform_Google_Service_YouTube_ChannelAuditDetails';
+  protected $auditDetailsType = 'Google_Service_YouTube_ChannelAuditDetails';
   protected $auditDetailsDataType = '';
-  protected $brandingSettingsType = 'Powerform_Google_Service_YouTube_ChannelBrandingSettings';
+  protected $brandingSettingsType = 'Google_Service_YouTube_ChannelBrandingSettings';
   protected $brandingSettingsDataType = '';
-  protected $contentDetailsType = 'Powerform_Google_Service_YouTube_ChannelContentDetails';
+  protected $contentDetailsType = 'Google_Service_YouTube_ChannelContentDetails';
   protected $contentDetailsDataType = '';
-  protected $contentOwnerDetailsType = 'Powerform_Google_Service_YouTube_ChannelContentOwnerDetails';
+  protected $contentOwnerDetailsType = 'Google_Service_YouTube_ChannelContentOwnerDetails';
   protected $contentOwnerDetailsDataType = '';
-  protected $conversionPingsType = 'Powerform_Google_Service_YouTube_ChannelConversionPings';
+  protected $conversionPingsType = 'Google_Service_YouTube_ChannelConversionPings';
   protected $conversionPingsDataType = '';
   public $etag;
   public $id;
-  protected $invideoPromotionType = 'Powerform_Google_Service_YouTube_InvideoPromotion';
+  protected $invideoPromotionType = 'Google_Service_YouTube_InvideoPromotion';
   protected $invideoPromotionDataType = '';
   public $kind;
-  protected $localizationsType = 'Powerform_Google_Service_YouTube_ChannelLocalization';
+  protected $localizationsType = 'Google_Service_YouTube_ChannelLocalization';
   protected $localizationsDataType = 'map';
-  protected $snippetType = 'Powerform_Google_Service_YouTube_ChannelSnippet';
+  protected $snippetType = 'Google_Service_YouTube_ChannelSnippet';
   protected $snippetDataType = '';
-  protected $statisticsType = 'Powerform_Google_Service_YouTube_ChannelStatistics';
+  protected $statisticsType = 'Google_Service_YouTube_ChannelStatistics';
   protected $statisticsDataType = '';
-  protected $statusType = 'Powerform_Google_Service_YouTube_ChannelStatus';
+  protected $statusType = 'Google_Service_YouTube_ChannelStatus';
   protected $statusDataType = '';
-  protected $topicDetailsType = 'Powerform_Google_Service_YouTube_ChannelTopicDetails';
+  protected $topicDetailsType = 'Google_Service_YouTube_ChannelTopicDetails';
   protected $topicDetailsDataType = '';
 
 
-  public function setAuditDetails(Powerform_Google_Service_YouTube_ChannelAuditDetails $auditDetails)
+  public function setAuditDetails(Google_Service_YouTube_ChannelAuditDetails $auditDetails)
   {
     $this->auditDetails = $auditDetails;
   }
@@ -5945,7 +5945,7 @@ class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
   {
     return $this->auditDetails;
   }
-  public function setBrandingSettings(Powerform_Google_Service_YouTube_ChannelBrandingSettings $brandingSettings)
+  public function setBrandingSettings(Google_Service_YouTube_ChannelBrandingSettings $brandingSettings)
   {
     $this->brandingSettings = $brandingSettings;
   }
@@ -5953,7 +5953,7 @@ class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
   {
     return $this->brandingSettings;
   }
-  public function setContentDetails(Powerform_Google_Service_YouTube_ChannelContentDetails $contentDetails)
+  public function setContentDetails(Google_Service_YouTube_ChannelContentDetails $contentDetails)
   {
     $this->contentDetails = $contentDetails;
   }
@@ -5961,7 +5961,7 @@ class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
   {
     return $this->contentDetails;
   }
-  public function setContentOwnerDetails(Powerform_Google_Service_YouTube_ChannelContentOwnerDetails $contentOwnerDetails)
+  public function setContentOwnerDetails(Google_Service_YouTube_ChannelContentOwnerDetails $contentOwnerDetails)
   {
     $this->contentOwnerDetails = $contentOwnerDetails;
   }
@@ -5969,7 +5969,7 @@ class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
   {
     return $this->contentOwnerDetails;
   }
-  public function setConversionPings(Powerform_Google_Service_YouTube_ChannelConversionPings $conversionPings)
+  public function setConversionPings(Google_Service_YouTube_ChannelConversionPings $conversionPings)
   {
     $this->conversionPings = $conversionPings;
   }
@@ -5993,7 +5993,7 @@ class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
   {
     return $this->id;
   }
-  public function setInvideoPromotion(Powerform_Google_Service_YouTube_InvideoPromotion $invideoPromotion)
+  public function setInvideoPromotion(Google_Service_YouTube_InvideoPromotion $invideoPromotion)
   {
     $this->invideoPromotion = $invideoPromotion;
   }
@@ -6017,7 +6017,7 @@ class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
   {
     return $this->localizations;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_ChannelSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_ChannelSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -6025,7 +6025,7 @@ class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
   {
     return $this->snippet;
   }
-  public function setStatistics(Powerform_Google_Service_YouTube_ChannelStatistics $statistics)
+  public function setStatistics(Google_Service_YouTube_ChannelStatistics $statistics)
   {
     $this->statistics = $statistics;
   }
@@ -6033,7 +6033,7 @@ class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
   {
     return $this->statistics;
   }
-  public function setStatus(Powerform_Google_Service_YouTube_ChannelStatus $status)
+  public function setStatus(Google_Service_YouTube_ChannelStatus $status)
   {
     $this->status = $status;
   }
@@ -6041,7 +6041,7 @@ class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
   {
     return $this->status;
   }
-  public function setTopicDetails(Powerform_Google_Service_YouTube_ChannelTopicDetails $topicDetails)
+  public function setTopicDetails(Google_Service_YouTube_ChannelTopicDetails $topicDetails)
   {
     $this->topicDetails = $topicDetails;
   }
@@ -6051,7 +6051,7 @@ class Powerform_Google_Service_YouTube_Channel extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelAuditDetails extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelAuditDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6095,7 +6095,7 @@ class Powerform_Google_Service_YouTube_ChannelAuditDetails extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelBannerResource extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelBannerResource extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6130,22 +6130,22 @@ class Powerform_Google_Service_YouTube_ChannelBannerResource extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelBrandingSettings extends Powerform_Google_Collection
+class Google_Service_YouTube_ChannelBrandingSettings extends Google_Collection
 {
   protected $collection_key = 'hints';
   protected $internal_gapi_mappings = array(
   );
-  protected $channelType = 'Powerform_Google_Service_YouTube_ChannelSettings';
+  protected $channelType = 'Google_Service_YouTube_ChannelSettings';
   protected $channelDataType = '';
-  protected $hintsType = 'Powerform_Google_Service_YouTube_PropertyValue';
+  protected $hintsType = 'Google_Service_YouTube_PropertyValue';
   protected $hintsDataType = 'array';
-  protected $imageType = 'Powerform_Google_Service_YouTube_ImageSettings';
+  protected $imageType = 'Google_Service_YouTube_ImageSettings';
   protected $imageDataType = '';
-  protected $watchType = 'Powerform_Google_Service_YouTube_WatchSettings';
+  protected $watchType = 'Google_Service_YouTube_WatchSettings';
   protected $watchDataType = '';
 
 
-  public function setChannel(Powerform_Google_Service_YouTube_ChannelSettings $channel)
+  public function setChannel(Google_Service_YouTube_ChannelSettings $channel)
   {
     $this->channel = $channel;
   }
@@ -6161,7 +6161,7 @@ class Powerform_Google_Service_YouTube_ChannelBrandingSettings extends Powerform
   {
     return $this->hints;
   }
-  public function setImage(Powerform_Google_Service_YouTube_ImageSettings $image)
+  public function setImage(Google_Service_YouTube_ImageSettings $image)
   {
     $this->image = $image;
   }
@@ -6169,7 +6169,7 @@ class Powerform_Google_Service_YouTube_ChannelBrandingSettings extends Powerform
   {
     return $this->image;
   }
-  public function setWatch(Powerform_Google_Service_YouTube_WatchSettings $watch)
+  public function setWatch(Google_Service_YouTube_WatchSettings $watch)
   {
     $this->watch = $watch;
   }
@@ -6179,12 +6179,12 @@ class Powerform_Google_Service_YouTube_ChannelBrandingSettings extends Powerform
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelContentDetails extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelContentDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $googlePlusUserId;
-  protected $relatedPlaylistsType = 'Powerform_Google_Service_YouTube_ChannelContentDetailsRelatedPlaylists';
+  protected $relatedPlaylistsType = 'Google_Service_YouTube_ChannelContentDetailsRelatedPlaylists';
   protected $relatedPlaylistsDataType = '';
 
 
@@ -6196,7 +6196,7 @@ class Powerform_Google_Service_YouTube_ChannelContentDetails extends Powerform_G
   {
     return $this->googlePlusUserId;
   }
-  public function setRelatedPlaylists(Powerform_Google_Service_YouTube_ChannelContentDetailsRelatedPlaylists $relatedPlaylists)
+  public function setRelatedPlaylists(Google_Service_YouTube_ChannelContentDetailsRelatedPlaylists $relatedPlaylists)
   {
     $this->relatedPlaylists = $relatedPlaylists;
   }
@@ -6206,7 +6206,7 @@ class Powerform_Google_Service_YouTube_ChannelContentDetails extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelContentDetailsRelatedPlaylists extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelContentDetailsRelatedPlaylists extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6259,7 +6259,7 @@ class Powerform_Google_Service_YouTube_ChannelContentDetailsRelatedPlaylists ext
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelContentOwnerDetails extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelContentOwnerDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6285,7 +6285,7 @@ class Powerform_Google_Service_YouTube_ChannelContentOwnerDetails extends Powerf
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelConversionPing extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelConversionPing extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6311,12 +6311,12 @@ class Powerform_Google_Service_YouTube_ChannelConversionPing extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelConversionPings extends Powerform_Google_Collection
+class Google_Service_YouTube_ChannelConversionPings extends Google_Collection
 {
   protected $collection_key = 'pings';
   protected $internal_gapi_mappings = array(
   );
-  protected $pingsType = 'Powerform_Google_Service_YouTube_ChannelConversionPing';
+  protected $pingsType = 'Google_Service_YouTube_ChannelConversionPing';
   protected $pingsDataType = 'array';
 
 
@@ -6330,21 +6330,21 @@ class Powerform_Google_Service_YouTube_ChannelConversionPings extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_ChannelListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_Channel';
+  protected $itemsType = 'Google_Service_YouTube_Channel';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -6389,7 +6389,7 @@ class Powerform_Google_Service_YouTube_ChannelListResponse extends Powerform_Goo
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -6405,7 +6405,7 @@ class Powerform_Google_Service_YouTube_ChannelListResponse extends Powerform_Goo
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -6423,7 +6423,7 @@ class Powerform_Google_Service_YouTube_ChannelListResponse extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelLocalization extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelLocalization extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6449,7 +6449,7 @@ class Powerform_Google_Service_YouTube_ChannelLocalization extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelProfileDetails extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelProfileDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6493,24 +6493,24 @@ class Powerform_Google_Service_YouTube_ChannelProfileDetails extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelSection extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelSection extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $contentDetailsType = 'Powerform_Google_Service_YouTube_ChannelSectionContentDetails';
+  protected $contentDetailsType = 'Google_Service_YouTube_ChannelSectionContentDetails';
   protected $contentDetailsDataType = '';
   public $etag;
   public $id;
   public $kind;
-  protected $localizationsType = 'Powerform_Google_Service_YouTube_ChannelSectionLocalization';
+  protected $localizationsType = 'Google_Service_YouTube_ChannelSectionLocalization';
   protected $localizationsDataType = 'map';
-  protected $snippetType = 'Powerform_Google_Service_YouTube_ChannelSectionSnippet';
+  protected $snippetType = 'Google_Service_YouTube_ChannelSectionSnippet';
   protected $snippetDataType = '';
-  protected $targetingType = 'Powerform_Google_Service_YouTube_ChannelSectionTargeting';
+  protected $targetingType = 'Google_Service_YouTube_ChannelSectionTargeting';
   protected $targetingDataType = '';
 
 
-  public function setContentDetails(Powerform_Google_Service_YouTube_ChannelSectionContentDetails $contentDetails)
+  public function setContentDetails(Google_Service_YouTube_ChannelSectionContentDetails $contentDetails)
   {
     $this->contentDetails = $contentDetails;
   }
@@ -6550,7 +6550,7 @@ class Powerform_Google_Service_YouTube_ChannelSection extends Powerform_Google_M
   {
     return $this->localizations;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_ChannelSectionSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_ChannelSectionSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -6558,7 +6558,7 @@ class Powerform_Google_Service_YouTube_ChannelSection extends Powerform_Google_M
   {
     return $this->snippet;
   }
-  public function setTargeting(Powerform_Google_Service_YouTube_ChannelSectionTargeting $targeting)
+  public function setTargeting(Google_Service_YouTube_ChannelSectionTargeting $targeting)
   {
     $this->targeting = $targeting;
   }
@@ -6568,7 +6568,7 @@ class Powerform_Google_Service_YouTube_ChannelSection extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelSectionContentDetails extends Powerform_Google_Collection
+class Google_Service_YouTube_ChannelSectionContentDetails extends Google_Collection
 {
   protected $collection_key = 'playlists';
   protected $internal_gapi_mappings = array(
@@ -6595,14 +6595,14 @@ class Powerform_Google_Service_YouTube_ChannelSectionContentDetails extends Powe
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelSectionListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_ChannelSectionListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_ChannelSection';
+  protected $itemsType = 'Google_Service_YouTube_ChannelSection';
   protected $itemsDataType = 'array';
   public $kind;
   public $visitorId;
@@ -6650,7 +6650,7 @@ class Powerform_Google_Service_YouTube_ChannelSectionListResponse extends Powerf
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelSectionLocalization extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelSectionLocalization extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -6667,13 +6667,13 @@ class Powerform_Google_Service_YouTube_ChannelSectionLocalization extends Powerf
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelSectionSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelSectionSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $channelId;
   public $defaultLanguage;
-  protected $localizedType = 'Powerform_Google_Service_YouTube_ChannelSectionLocalization';
+  protected $localizedType = 'Google_Service_YouTube_ChannelSectionLocalization';
   protected $localizedDataType = '';
   public $position;
   public $style;
@@ -6697,7 +6697,7 @@ class Powerform_Google_Service_YouTube_ChannelSectionSnippet extends Powerform_G
   {
     return $this->defaultLanguage;
   }
-  public function setLocalized(Powerform_Google_Service_YouTube_ChannelSectionLocalization $localized)
+  public function setLocalized(Google_Service_YouTube_ChannelSectionLocalization $localized)
   {
     $this->localized = $localized;
   }
@@ -6739,7 +6739,7 @@ class Powerform_Google_Service_YouTube_ChannelSectionSnippet extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelSectionTargeting extends Powerform_Google_Collection
+class Google_Service_YouTube_ChannelSectionTargeting extends Google_Collection
 {
   protected $collection_key = 'regions';
   protected $internal_gapi_mappings = array(
@@ -6775,7 +6775,7 @@ class Powerform_Google_Service_YouTube_ChannelSectionTargeting extends Powerform
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelSettings extends Powerform_Google_Collection
+class Google_Service_YouTube_ChannelSettings extends Google_Collection
 {
   protected $collection_key = 'featuredChannelsUrls';
   protected $internal_gapi_mappings = array(
@@ -6910,17 +6910,17 @@ class Powerform_Google_Service_YouTube_ChannelSettings extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $country;
   public $defaultLanguage;
   public $description;
-  protected $localizedType = 'Powerform_Google_Service_YouTube_ChannelLocalization';
+  protected $localizedType = 'Google_Service_YouTube_ChannelLocalization';
   protected $localizedDataType = '';
   public $publishedAt;
-  protected $thumbnailsType = 'Powerform_Google_Service_YouTube_ThumbnailDetails';
+  protected $thumbnailsType = 'Google_Service_YouTube_ThumbnailDetails';
   protected $thumbnailsDataType = '';
   public $title;
 
@@ -6949,7 +6949,7 @@ class Powerform_Google_Service_YouTube_ChannelSnippet extends Powerform_Google_M
   {
     return $this->description;
   }
-  public function setLocalized(Powerform_Google_Service_YouTube_ChannelLocalization $localized)
+  public function setLocalized(Google_Service_YouTube_ChannelLocalization $localized)
   {
     $this->localized = $localized;
   }
@@ -6965,7 +6965,7 @@ class Powerform_Google_Service_YouTube_ChannelSnippet extends Powerform_Google_M
   {
     return $this->publishedAt;
   }
-  public function setThumbnails(Powerform_Google_Service_YouTube_ThumbnailDetails $thumbnails)
+  public function setThumbnails(Google_Service_YouTube_ThumbnailDetails $thumbnails)
   {
     $this->thumbnails = $thumbnails;
   }
@@ -6983,7 +6983,7 @@ class Powerform_Google_Service_YouTube_ChannelSnippet extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelStatistics extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelStatistics extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7036,7 +7036,7 @@ class Powerform_Google_Service_YouTube_ChannelStatistics extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelStatus extends Powerform_Google_Model
+class Google_Service_YouTube_ChannelStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7071,7 +7071,7 @@ class Powerform_Google_Service_YouTube_ChannelStatus extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_YouTube_ChannelTopicDetails extends Powerform_Google_Collection
+class Google_Service_YouTube_ChannelTopicDetails extends Google_Collection
 {
   protected $collection_key = 'topicIds';
   protected $internal_gapi_mappings = array(
@@ -7089,14 +7089,14 @@ class Powerform_Google_Service_YouTube_ChannelTopicDetails extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_Comment extends Powerform_Google_Model
+class Google_Service_YouTube_Comment extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_CommentSnippet';
+  protected $snippetType = 'Google_Service_YouTube_CommentSnippet';
   protected $snippetDataType = '';
 
 
@@ -7124,7 +7124,7 @@ class Powerform_Google_Service_YouTube_Comment extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_CommentSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_CommentSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -7134,20 +7134,20 @@ class Powerform_Google_Service_YouTube_Comment extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_CommentListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_CommentListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_Comment';
+  protected $itemsType = 'Google_Service_YouTube_Comment';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -7192,7 +7192,7 @@ class Powerform_Google_Service_YouTube_CommentListResponse extends Powerform_Goo
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -7200,7 +7200,7 @@ class Powerform_Google_Service_YouTube_CommentListResponse extends Powerform_Goo
   {
     return $this->pageInfo;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -7218,7 +7218,7 @@ class Powerform_Google_Service_YouTube_CommentListResponse extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_CommentSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_CommentSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -7370,16 +7370,16 @@ class Powerform_Google_Service_YouTube_CommentSnippet extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_YouTube_CommentThread extends Powerform_Google_Model
+class Google_Service_YouTube_CommentThread extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $repliesType = 'Powerform_Google_Service_YouTube_CommentThreadReplies';
+  protected $repliesType = 'Google_Service_YouTube_CommentThreadReplies';
   protected $repliesDataType = '';
-  protected $snippetType = 'Powerform_Google_Service_YouTube_CommentThreadSnippet';
+  protected $snippetType = 'Google_Service_YouTube_CommentThreadSnippet';
   protected $snippetDataType = '';
 
 
@@ -7407,7 +7407,7 @@ class Powerform_Google_Service_YouTube_CommentThread extends Powerform_Google_Mo
   {
     return $this->kind;
   }
-  public function setReplies(Powerform_Google_Service_YouTube_CommentThreadReplies $replies)
+  public function setReplies(Google_Service_YouTube_CommentThreadReplies $replies)
   {
     $this->replies = $replies;
   }
@@ -7415,7 +7415,7 @@ class Powerform_Google_Service_YouTube_CommentThread extends Powerform_Google_Mo
   {
     return $this->replies;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_CommentThreadSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_CommentThreadSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -7425,20 +7425,20 @@ class Powerform_Google_Service_YouTube_CommentThread extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_YouTube_CommentThreadListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_CommentThreadListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_CommentThread';
+  protected $itemsType = 'Google_Service_YouTube_CommentThread';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -7483,7 +7483,7 @@ class Powerform_Google_Service_YouTube_CommentThreadListResponse extends Powerfo
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -7491,7 +7491,7 @@ class Powerform_Google_Service_YouTube_CommentThreadListResponse extends Powerfo
   {
     return $this->pageInfo;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -7509,12 +7509,12 @@ class Powerform_Google_Service_YouTube_CommentThreadListResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_YouTube_CommentThreadReplies extends Powerform_Google_Collection
+class Google_Service_YouTube_CommentThreadReplies extends Google_Collection
 {
   protected $collection_key = 'comments';
   protected $internal_gapi_mappings = array(
   );
-  protected $commentsType = 'Powerform_Google_Service_YouTube_Comment';
+  protected $commentsType = 'Google_Service_YouTube_Comment';
   protected $commentsDataType = 'array';
 
 
@@ -7528,14 +7528,14 @@ class Powerform_Google_Service_YouTube_CommentThreadReplies extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTube_CommentThreadSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_CommentThreadSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $canReply;
   public $channelId;
   public $isPublic;
-  protected $topLevelCommentType = 'Powerform_Google_Service_YouTube_Comment';
+  protected $topLevelCommentType = 'Google_Service_YouTube_Comment';
   protected $topLevelCommentDataType = '';
   public $totalReplyCount;
   public $videoId;
@@ -7565,7 +7565,7 @@ class Powerform_Google_Service_YouTube_CommentThreadSnippet extends Powerform_Go
   {
     return $this->isPublic;
   }
-  public function setTopLevelComment(Powerform_Google_Service_YouTube_Comment $topLevelComment)
+  public function setTopLevelComment(Google_Service_YouTube_Comment $topLevelComment)
   {
     $this->topLevelComment = $topLevelComment;
   }
@@ -7591,7 +7591,7 @@ class Powerform_Google_Service_YouTube_CommentThreadSnippet extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTube_ContentRating extends Powerform_Google_Collection
+class Google_Service_YouTube_ContentRating extends Google_Collection
 {
   protected $collection_key = 'djctqRatingReasons';
   protected $internal_gapi_mappings = array(
@@ -8194,14 +8194,14 @@ class Powerform_Google_Service_YouTube_ContentRating extends Powerform_Google_Co
   }
 }
 
-class Powerform_Google_Service_YouTube_FanFundingEvent extends Powerform_Google_Model
+class Google_Service_YouTube_FanFundingEvent extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_FanFundingEventSnippet';
+  protected $snippetType = 'Google_Service_YouTube_FanFundingEventSnippet';
   protected $snippetDataType = '';
 
 
@@ -8229,7 +8229,7 @@ class Powerform_Google_Service_YouTube_FanFundingEvent extends Powerform_Google_
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_FanFundingEventSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_FanFundingEventSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -8239,20 +8239,20 @@ class Powerform_Google_Service_YouTube_FanFundingEvent extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_YouTube_FanFundingEventListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_FanFundingEventListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_FanFundingEvent';
+  protected $itemsType = 'Google_Service_YouTube_FanFundingEvent';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -8297,7 +8297,7 @@ class Powerform_Google_Service_YouTube_FanFundingEventListResponse extends Power
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -8305,7 +8305,7 @@ class Powerform_Google_Service_YouTube_FanFundingEventListResponse extends Power
   {
     return $this->pageInfo;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -8323,7 +8323,7 @@ class Powerform_Google_Service_YouTube_FanFundingEventListResponse extends Power
   }
 }
 
-class Powerform_Google_Service_YouTube_FanFundingEventSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_FanFundingEventSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -8333,7 +8333,7 @@ class Powerform_Google_Service_YouTube_FanFundingEventSnippet extends Powerform_
   public $createdAt;
   public $currency;
   public $displayString;
-  protected $supporterDetailsType = 'Powerform_Google_Service_YouTube_ChannelProfileDetails';
+  protected $supporterDetailsType = 'Google_Service_YouTube_ChannelProfileDetails';
   protected $supporterDetailsDataType = '';
 
 
@@ -8385,7 +8385,7 @@ class Powerform_Google_Service_YouTube_FanFundingEventSnippet extends Powerform_
   {
     return $this->displayString;
   }
-  public function setSupporterDetails(Powerform_Google_Service_YouTube_ChannelProfileDetails $supporterDetails)
+  public function setSupporterDetails(Google_Service_YouTube_ChannelProfileDetails $supporterDetails)
   {
     $this->supporterDetails = $supporterDetails;
   }
@@ -8395,7 +8395,7 @@ class Powerform_Google_Service_YouTube_FanFundingEventSnippet extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_GeoPoint extends Powerform_Google_Model
+class Google_Service_YouTube_GeoPoint extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -8430,14 +8430,14 @@ class Powerform_Google_Service_YouTube_GeoPoint extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_GuideCategory extends Powerform_Google_Model
+class Google_Service_YouTube_GuideCategory extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_GuideCategorySnippet';
+  protected $snippetType = 'Google_Service_YouTube_GuideCategorySnippet';
   protected $snippetDataType = '';
 
 
@@ -8465,7 +8465,7 @@ class Powerform_Google_Service_YouTube_GuideCategory extends Powerform_Google_Mo
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_GuideCategorySnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_GuideCategorySnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -8475,21 +8475,21 @@ class Powerform_Google_Service_YouTube_GuideCategory extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_YouTube_GuideCategoryListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_GuideCategoryListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_GuideCategory';
+  protected $itemsType = 'Google_Service_YouTube_GuideCategory';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -8534,7 +8534,7 @@ class Powerform_Google_Service_YouTube_GuideCategoryListResponse extends Powerfo
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -8550,7 +8550,7 @@ class Powerform_Google_Service_YouTube_GuideCategoryListResponse extends Powerfo
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -8568,7 +8568,7 @@ class Powerform_Google_Service_YouTube_GuideCategoryListResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_YouTube_GuideCategorySnippet extends Powerform_Google_Model
+class Google_Service_YouTube_GuideCategorySnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -8594,14 +8594,14 @@ class Powerform_Google_Service_YouTube_GuideCategorySnippet extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTube_I18nLanguage extends Powerform_Google_Model
+class Google_Service_YouTube_I18nLanguage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_I18nLanguageSnippet';
+  protected $snippetType = 'Google_Service_YouTube_I18nLanguageSnippet';
   protected $snippetDataType = '';
 
 
@@ -8629,7 +8629,7 @@ class Powerform_Google_Service_YouTube_I18nLanguage extends Powerform_Google_Mod
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_I18nLanguageSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_I18nLanguageSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -8639,14 +8639,14 @@ class Powerform_Google_Service_YouTube_I18nLanguage extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_YouTube_I18nLanguageListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_I18nLanguageListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_I18nLanguage';
+  protected $itemsType = 'Google_Service_YouTube_I18nLanguage';
   protected $itemsDataType = 'array';
   public $kind;
   public $visitorId;
@@ -8694,7 +8694,7 @@ class Powerform_Google_Service_YouTube_I18nLanguageListResponse extends Powerfor
   }
 }
 
-class Powerform_Google_Service_YouTube_I18nLanguageSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_I18nLanguageSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -8720,14 +8720,14 @@ class Powerform_Google_Service_YouTube_I18nLanguageSnippet extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_I18nRegion extends Powerform_Google_Model
+class Google_Service_YouTube_I18nRegion extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_I18nRegionSnippet';
+  protected $snippetType = 'Google_Service_YouTube_I18nRegionSnippet';
   protected $snippetDataType = '';
 
 
@@ -8755,7 +8755,7 @@ class Powerform_Google_Service_YouTube_I18nRegion extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_I18nRegionSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_I18nRegionSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -8765,14 +8765,14 @@ class Powerform_Google_Service_YouTube_I18nRegion extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_I18nRegionListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_I18nRegionListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_I18nRegion';
+  protected $itemsType = 'Google_Service_YouTube_I18nRegion';
   protected $itemsDataType = 'array';
   public $kind;
   public $visitorId;
@@ -8820,7 +8820,7 @@ class Powerform_Google_Service_YouTube_I18nRegionListResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_I18nRegionSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_I18nRegionSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -8846,11 +8846,11 @@ class Powerform_Google_Service_YouTube_I18nRegionSnippet extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_YouTube_ImageSettings extends Powerform_Google_Model
+class Google_Service_YouTube_ImageSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $backgroundImageUrlType = 'Powerform_Google_Service_YouTube_LocalizedProperty';
+  protected $backgroundImageUrlType = 'Google_Service_YouTube_LocalizedProperty';
   protected $backgroundImageUrlDataType = '';
   public $bannerExternalUrl;
   public $bannerImageUrl;
@@ -8867,19 +8867,19 @@ class Powerform_Google_Service_YouTube_ImageSettings extends Powerform_Google_Mo
   public $bannerTvImageUrl;
   public $bannerTvLowImageUrl;
   public $bannerTvMediumImageUrl;
-  protected $largeBrandedBannerImageImapScriptType = 'Powerform_Google_Service_YouTube_LocalizedProperty';
+  protected $largeBrandedBannerImageImapScriptType = 'Google_Service_YouTube_LocalizedProperty';
   protected $largeBrandedBannerImageImapScriptDataType = '';
-  protected $largeBrandedBannerImageUrlType = 'Powerform_Google_Service_YouTube_LocalizedProperty';
+  protected $largeBrandedBannerImageUrlType = 'Google_Service_YouTube_LocalizedProperty';
   protected $largeBrandedBannerImageUrlDataType = '';
-  protected $smallBrandedBannerImageImapScriptType = 'Powerform_Google_Service_YouTube_LocalizedProperty';
+  protected $smallBrandedBannerImageImapScriptType = 'Google_Service_YouTube_LocalizedProperty';
   protected $smallBrandedBannerImageImapScriptDataType = '';
-  protected $smallBrandedBannerImageUrlType = 'Powerform_Google_Service_YouTube_LocalizedProperty';
+  protected $smallBrandedBannerImageUrlType = 'Google_Service_YouTube_LocalizedProperty';
   protected $smallBrandedBannerImageUrlDataType = '';
   public $trackingImageUrl;
   public $watchIconImageUrl;
 
 
-  public function setBackgroundImageUrl(Powerform_Google_Service_YouTube_LocalizedProperty $backgroundImageUrl)
+  public function setBackgroundImageUrl(Google_Service_YouTube_LocalizedProperty $backgroundImageUrl)
   {
     $this->backgroundImageUrl = $backgroundImageUrl;
   }
@@ -9007,7 +9007,7 @@ class Powerform_Google_Service_YouTube_ImageSettings extends Powerform_Google_Mo
   {
     return $this->bannerTvMediumImageUrl;
   }
-  public function setLargeBrandedBannerImageImapScript(Powerform_Google_Service_YouTube_LocalizedProperty $largeBrandedBannerImageImapScript)
+  public function setLargeBrandedBannerImageImapScript(Google_Service_YouTube_LocalizedProperty $largeBrandedBannerImageImapScript)
   {
     $this->largeBrandedBannerImageImapScript = $largeBrandedBannerImageImapScript;
   }
@@ -9015,7 +9015,7 @@ class Powerform_Google_Service_YouTube_ImageSettings extends Powerform_Google_Mo
   {
     return $this->largeBrandedBannerImageImapScript;
   }
-  public function setLargeBrandedBannerImageUrl(Powerform_Google_Service_YouTube_LocalizedProperty $largeBrandedBannerImageUrl)
+  public function setLargeBrandedBannerImageUrl(Google_Service_YouTube_LocalizedProperty $largeBrandedBannerImageUrl)
   {
     $this->largeBrandedBannerImageUrl = $largeBrandedBannerImageUrl;
   }
@@ -9023,7 +9023,7 @@ class Powerform_Google_Service_YouTube_ImageSettings extends Powerform_Google_Mo
   {
     return $this->largeBrandedBannerImageUrl;
   }
-  public function setSmallBrandedBannerImageImapScript(Powerform_Google_Service_YouTube_LocalizedProperty $smallBrandedBannerImageImapScript)
+  public function setSmallBrandedBannerImageImapScript(Google_Service_YouTube_LocalizedProperty $smallBrandedBannerImageImapScript)
   {
     $this->smallBrandedBannerImageImapScript = $smallBrandedBannerImageImapScript;
   }
@@ -9031,7 +9031,7 @@ class Powerform_Google_Service_YouTube_ImageSettings extends Powerform_Google_Mo
   {
     return $this->smallBrandedBannerImageImapScript;
   }
-  public function setSmallBrandedBannerImageUrl(Powerform_Google_Service_YouTube_LocalizedProperty $smallBrandedBannerImageUrl)
+  public function setSmallBrandedBannerImageUrl(Google_Service_YouTube_LocalizedProperty $smallBrandedBannerImageUrl)
   {
     $this->smallBrandedBannerImageUrl = $smallBrandedBannerImageUrl;
   }
@@ -9057,7 +9057,7 @@ class Powerform_Google_Service_YouTube_ImageSettings extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_YouTube_IngestionInfo extends Powerform_Google_Model
+class Google_Service_YouTube_IngestionInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9092,16 +9092,16 @@ class Powerform_Google_Service_YouTube_IngestionInfo extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_YouTube_InvideoBranding extends Powerform_Google_Model
+class Google_Service_YouTube_InvideoBranding extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $imageBytes;
   public $imageUrl;
-  protected $positionType = 'Powerform_Google_Service_YouTube_InvideoPosition';
+  protected $positionType = 'Google_Service_YouTube_InvideoPosition';
   protected $positionDataType = '';
   public $targetChannelId;
-  protected $timingType = 'Powerform_Google_Service_YouTube_InvideoTiming';
+  protected $timingType = 'Google_Service_YouTube_InvideoTiming';
   protected $timingDataType = '';
 
 
@@ -9121,7 +9121,7 @@ class Powerform_Google_Service_YouTube_InvideoBranding extends Powerform_Google_
   {
     return $this->imageUrl;
   }
-  public function setPosition(Powerform_Google_Service_YouTube_InvideoPosition $position)
+  public function setPosition(Google_Service_YouTube_InvideoPosition $position)
   {
     $this->position = $position;
   }
@@ -9137,7 +9137,7 @@ class Powerform_Google_Service_YouTube_InvideoBranding extends Powerform_Google_
   {
     return $this->targetChannelId;
   }
-  public function setTiming(Powerform_Google_Service_YouTube_InvideoTiming $timing)
+  public function setTiming(Google_Service_YouTube_InvideoTiming $timing)
   {
     $this->timing = $timing;
   }
@@ -9147,7 +9147,7 @@ class Powerform_Google_Service_YouTube_InvideoBranding extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_YouTube_InvideoPosition extends Powerform_Google_Model
+class Google_Service_YouTube_InvideoPosition extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9173,21 +9173,21 @@ class Powerform_Google_Service_YouTube_InvideoPosition extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_YouTube_InvideoPromotion extends Powerform_Google_Collection
+class Google_Service_YouTube_InvideoPromotion extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
-  protected $defaultTimingType = 'Powerform_Google_Service_YouTube_InvideoTiming';
+  protected $defaultTimingType = 'Google_Service_YouTube_InvideoTiming';
   protected $defaultTimingDataType = '';
-  protected $itemsType = 'Powerform_Google_Service_YouTube_PromotedItem';
+  protected $itemsType = 'Google_Service_YouTube_PromotedItem';
   protected $itemsDataType = 'array';
-  protected $positionType = 'Powerform_Google_Service_YouTube_InvideoPosition';
+  protected $positionType = 'Google_Service_YouTube_InvideoPosition';
   protected $positionDataType = '';
   public $useSmartTiming;
 
 
-  public function setDefaultTiming(Powerform_Google_Service_YouTube_InvideoTiming $defaultTiming)
+  public function setDefaultTiming(Google_Service_YouTube_InvideoTiming $defaultTiming)
   {
     $this->defaultTiming = $defaultTiming;
   }
@@ -9203,7 +9203,7 @@ class Powerform_Google_Service_YouTube_InvideoPromotion extends Powerform_Google
   {
     return $this->items;
   }
-  public function setPosition(Powerform_Google_Service_YouTube_InvideoPosition $position)
+  public function setPosition(Google_Service_YouTube_InvideoPosition $position)
   {
     $this->position = $position;
   }
@@ -9221,7 +9221,7 @@ class Powerform_Google_Service_YouTube_InvideoPromotion extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_YouTube_InvideoTiming extends Powerform_Google_Model
+class Google_Service_YouTube_InvideoTiming extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9256,7 +9256,7 @@ class Powerform_Google_Service_YouTube_InvideoTiming extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_YouTube_LanguageTag extends Powerform_Google_Model
+class Google_Service_YouTube_LanguageTag extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9273,26 +9273,26 @@ class Powerform_Google_Service_YouTube_LanguageTag extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveBroadcast extends Powerform_Google_Model
+class Google_Service_YouTube_LiveBroadcast extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $contentDetailsType = 'Powerform_Google_Service_YouTube_LiveBroadcastContentDetails';
+  protected $contentDetailsType = 'Google_Service_YouTube_LiveBroadcastContentDetails';
   protected $contentDetailsDataType = '';
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_LiveBroadcastSnippet';
+  protected $snippetType = 'Google_Service_YouTube_LiveBroadcastSnippet';
   protected $snippetDataType = '';
-  protected $statisticsType = 'Powerform_Google_Service_YouTube_LiveBroadcastStatistics';
+  protected $statisticsType = 'Google_Service_YouTube_LiveBroadcastStatistics';
   protected $statisticsDataType = '';
-  protected $statusType = 'Powerform_Google_Service_YouTube_LiveBroadcastStatus';
+  protected $statusType = 'Google_Service_YouTube_LiveBroadcastStatus';
   protected $statusDataType = '';
-  protected $topicDetailsType = 'Powerform_Google_Service_YouTube_LiveBroadcastTopicDetails';
+  protected $topicDetailsType = 'Google_Service_YouTube_LiveBroadcastTopicDetails';
   protected $topicDetailsDataType = '';
 
 
-  public function setContentDetails(Powerform_Google_Service_YouTube_LiveBroadcastContentDetails $contentDetails)
+  public function setContentDetails(Google_Service_YouTube_LiveBroadcastContentDetails $contentDetails)
   {
     $this->contentDetails = $contentDetails;
   }
@@ -9324,7 +9324,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcast extends Powerform_Google_Mo
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_LiveBroadcastSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_LiveBroadcastSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -9332,7 +9332,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcast extends Powerform_Google_Mo
   {
     return $this->snippet;
   }
-  public function setStatistics(Powerform_Google_Service_YouTube_LiveBroadcastStatistics $statistics)
+  public function setStatistics(Google_Service_YouTube_LiveBroadcastStatistics $statistics)
   {
     $this->statistics = $statistics;
   }
@@ -9340,7 +9340,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcast extends Powerform_Google_Mo
   {
     return $this->statistics;
   }
-  public function setStatus(Powerform_Google_Service_YouTube_LiveBroadcastStatus $status)
+  public function setStatus(Google_Service_YouTube_LiveBroadcastStatus $status)
   {
     $this->status = $status;
   }
@@ -9348,7 +9348,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcast extends Powerform_Google_Mo
   {
     return $this->status;
   }
-  public function setTopicDetails(Powerform_Google_Service_YouTube_LiveBroadcastTopicDetails $topicDetails)
+  public function setTopicDetails(Google_Service_YouTube_LiveBroadcastTopicDetails $topicDetails)
   {
     $this->topicDetails = $topicDetails;
   }
@@ -9358,7 +9358,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcast extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveBroadcastContentDetails extends Powerform_Google_Model
+class Google_Service_YouTube_LiveBroadcastContentDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9369,7 +9369,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcastContentDetails extends Power
   public $enableDvr;
   public $enableEmbed;
   public $enableLowLatency;
-  protected $monitorStreamType = 'Powerform_Google_Service_YouTube_MonitorStreamInfo';
+  protected $monitorStreamType = 'Google_Service_YouTube_MonitorStreamInfo';
   protected $monitorStreamDataType = '';
   public $recordFromStart;
   public $startWithSlate;
@@ -9431,7 +9431,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcastContentDetails extends Power
   {
     return $this->enableLowLatency;
   }
-  public function setMonitorStream(Powerform_Google_Service_YouTube_MonitorStreamInfo $monitorStream)
+  public function setMonitorStream(Google_Service_YouTube_MonitorStreamInfo $monitorStream)
   {
     $this->monitorStream = $monitorStream;
   }
@@ -9457,21 +9457,21 @@ class Powerform_Google_Service_YouTube_LiveBroadcastContentDetails extends Power
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveBroadcastListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_LiveBroadcastListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_LiveBroadcast';
+  protected $itemsType = 'Google_Service_YouTube_LiveBroadcast';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -9516,7 +9516,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcastListResponse extends Powerfo
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -9532,7 +9532,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcastListResponse extends Powerfo
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -9550,7 +9550,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcastListResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveBroadcastSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_LiveBroadcastSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9563,7 +9563,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcastSnippet extends Powerform_Go
   public $publishedAt;
   public $scheduledEndTime;
   public $scheduledStartTime;
-  protected $thumbnailsType = 'Powerform_Google_Service_YouTube_ThumbnailDetails';
+  protected $thumbnailsType = 'Google_Service_YouTube_ThumbnailDetails';
   protected $thumbnailsDataType = '';
   public $title;
 
@@ -9640,7 +9640,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcastSnippet extends Powerform_Go
   {
     return $this->scheduledStartTime;
   }
-  public function setThumbnails(Powerform_Google_Service_YouTube_ThumbnailDetails $thumbnails)
+  public function setThumbnails(Google_Service_YouTube_ThumbnailDetails $thumbnails)
   {
     $this->thumbnails = $thumbnails;
   }
@@ -9658,7 +9658,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcastSnippet extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveBroadcastStatistics extends Powerform_Google_Model
+class Google_Service_YouTube_LiveBroadcastStatistics extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9684,7 +9684,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcastStatistics extends Powerform
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveBroadcastStatus extends Powerform_Google_Model
+class Google_Service_YouTube_LiveBroadcastStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9728,17 +9728,17 @@ class Powerform_Google_Service_YouTube_LiveBroadcastStatus extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveBroadcastTopic extends Powerform_Google_Model
+class Google_Service_YouTube_LiveBroadcastTopic extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $snippetType = 'Powerform_Google_Service_YouTube_LiveBroadcastTopicSnippet';
+  protected $snippetType = 'Google_Service_YouTube_LiveBroadcastTopicSnippet';
   protected $snippetDataType = '';
   public $type;
   public $unmatched;
 
 
-  public function setSnippet(Powerform_Google_Service_YouTube_LiveBroadcastTopicSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_LiveBroadcastTopicSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -9764,12 +9764,12 @@ class Powerform_Google_Service_YouTube_LiveBroadcastTopic extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveBroadcastTopicDetails extends Powerform_Google_Collection
+class Google_Service_YouTube_LiveBroadcastTopicDetails extends Google_Collection
 {
   protected $collection_key = 'topics';
   protected $internal_gapi_mappings = array(
   );
-  protected $topicsType = 'Powerform_Google_Service_YouTube_LiveBroadcastTopic';
+  protected $topicsType = 'Google_Service_YouTube_LiveBroadcastTopic';
   protected $topicsDataType = 'array';
 
 
@@ -9783,7 +9783,7 @@ class Powerform_Google_Service_YouTube_LiveBroadcastTopicDetails extends Powerfo
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveBroadcastTopicSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_LiveBroadcastTopicSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9809,14 +9809,14 @@ class Powerform_Google_Service_YouTube_LiveBroadcastTopicSnippet extends Powerfo
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatBan extends Powerform_Google_Model
+class Google_Service_YouTube_LiveChatBan extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_LiveChatBanSnippet';
+  protected $snippetType = 'Google_Service_YouTube_LiveChatBanSnippet';
   protected $snippetDataType = '';
 
 
@@ -9844,7 +9844,7 @@ class Powerform_Google_Service_YouTube_LiveChatBan extends Powerform_Google_Mode
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_LiveChatBanSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_LiveChatBanSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -9854,12 +9854,12 @@ class Powerform_Google_Service_YouTube_LiveChatBan extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatBanSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_LiveChatBanSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $banDurationSeconds;
-  protected $bannedUserDetailsType = 'Powerform_Google_Service_YouTube_ChannelProfileDetails';
+  protected $bannedUserDetailsType = 'Google_Service_YouTube_ChannelProfileDetails';
   protected $bannedUserDetailsDataType = '';
   public $liveChatId;
   public $type;
@@ -9873,7 +9873,7 @@ class Powerform_Google_Service_YouTube_LiveChatBanSnippet extends Powerform_Goog
   {
     return $this->banDurationSeconds;
   }
-  public function setBannedUserDetails(Powerform_Google_Service_YouTube_ChannelProfileDetails $bannedUserDetails)
+  public function setBannedUserDetails(Google_Service_YouTube_ChannelProfileDetails $bannedUserDetails)
   {
     $this->bannedUserDetails = $bannedUserDetails;
   }
@@ -9899,7 +9899,7 @@ class Powerform_Google_Service_YouTube_LiveChatBanSnippet extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatFanFundingEventDetails extends Powerform_Google_Model
+class Google_Service_YouTube_LiveChatFanFundingEventDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -9943,20 +9943,20 @@ class Powerform_Google_Service_YouTube_LiveChatFanFundingEventDetails extends Po
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatMessage extends Powerform_Google_Model
+class Google_Service_YouTube_LiveChatMessage extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $authorDetailsType = 'Powerform_Google_Service_YouTube_LiveChatMessageAuthorDetails';
+  protected $authorDetailsType = 'Google_Service_YouTube_LiveChatMessageAuthorDetails';
   protected $authorDetailsDataType = '';
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_LiveChatMessageSnippet';
+  protected $snippetType = 'Google_Service_YouTube_LiveChatMessageSnippet';
   protected $snippetDataType = '';
 
 
-  public function setAuthorDetails(Powerform_Google_Service_YouTube_LiveChatMessageAuthorDetails $authorDetails)
+  public function setAuthorDetails(Google_Service_YouTube_LiveChatMessageAuthorDetails $authorDetails)
   {
     $this->authorDetails = $authorDetails;
   }
@@ -9988,7 +9988,7 @@ class Powerform_Google_Service_YouTube_LiveChatMessage extends Powerform_Google_
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_LiveChatMessageSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_LiveChatMessageSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -9998,7 +9998,7 @@ class Powerform_Google_Service_YouTube_LiveChatMessage extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatMessageAuthorDetails extends Powerform_Google_Model
+class Google_Service_YouTube_LiveChatMessageAuthorDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10078,22 +10078,22 @@ class Powerform_Google_Service_YouTube_LiveChatMessageAuthorDetails extends Powe
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatMessageListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_LiveChatMessageListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_LiveChatMessage';
+  protected $itemsType = 'Google_Service_YouTube_LiveChatMessage';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
   public $offlineAt;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $pollingIntervalMillis;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -10146,7 +10146,7 @@ class Powerform_Google_Service_YouTube_LiveChatMessageListResponse extends Power
   {
     return $this->offlineAt;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -10162,7 +10162,7 @@ class Powerform_Google_Service_YouTube_LiveChatMessageListResponse extends Power
   {
     return $this->pollingIntervalMillis;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -10180,18 +10180,18 @@ class Powerform_Google_Service_YouTube_LiveChatMessageListResponse extends Power
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatMessageSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_LiveChatMessageSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $authorChannelId;
   public $displayMessage;
-  protected $fanFundingEventDetailsType = 'Powerform_Google_Service_YouTube_LiveChatFanFundingEventDetails';
+  protected $fanFundingEventDetailsType = 'Google_Service_YouTube_LiveChatFanFundingEventDetails';
   protected $fanFundingEventDetailsDataType = '';
   public $hasDisplayContent;
   public $liveChatId;
   public $publishedAt;
-  protected $textMessageDetailsType = 'Powerform_Google_Service_YouTube_LiveChatTextMessageDetails';
+  protected $textMessageDetailsType = 'Google_Service_YouTube_LiveChatTextMessageDetails';
   protected $textMessageDetailsDataType = '';
   public $type;
 
@@ -10212,7 +10212,7 @@ class Powerform_Google_Service_YouTube_LiveChatMessageSnippet extends Powerform_
   {
     return $this->displayMessage;
   }
-  public function setFanFundingEventDetails(Powerform_Google_Service_YouTube_LiveChatFanFundingEventDetails $fanFundingEventDetails)
+  public function setFanFundingEventDetails(Google_Service_YouTube_LiveChatFanFundingEventDetails $fanFundingEventDetails)
   {
     $this->fanFundingEventDetails = $fanFundingEventDetails;
   }
@@ -10244,7 +10244,7 @@ class Powerform_Google_Service_YouTube_LiveChatMessageSnippet extends Powerform_
   {
     return $this->publishedAt;
   }
-  public function setTextMessageDetails(Powerform_Google_Service_YouTube_LiveChatTextMessageDetails $textMessageDetails)
+  public function setTextMessageDetails(Google_Service_YouTube_LiveChatTextMessageDetails $textMessageDetails)
   {
     $this->textMessageDetails = $textMessageDetails;
   }
@@ -10262,14 +10262,14 @@ class Powerform_Google_Service_YouTube_LiveChatMessageSnippet extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatModerator extends Powerform_Google_Model
+class Google_Service_YouTube_LiveChatModerator extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_LiveChatModeratorSnippet';
+  protected $snippetType = 'Google_Service_YouTube_LiveChatModeratorSnippet';
   protected $snippetDataType = '';
 
 
@@ -10297,7 +10297,7 @@ class Powerform_Google_Service_YouTube_LiveChatModerator extends Powerform_Googl
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_LiveChatModeratorSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_LiveChatModeratorSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -10307,21 +10307,21 @@ class Powerform_Google_Service_YouTube_LiveChatModerator extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatModeratorListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_LiveChatModeratorListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_LiveChatModerator';
+  protected $itemsType = 'Google_Service_YouTube_LiveChatModerator';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -10366,7 +10366,7 @@ class Powerform_Google_Service_YouTube_LiveChatModeratorListResponse extends Pow
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -10382,7 +10382,7 @@ class Powerform_Google_Service_YouTube_LiveChatModeratorListResponse extends Pow
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -10400,12 +10400,12 @@ class Powerform_Google_Service_YouTube_LiveChatModeratorListResponse extends Pow
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatModeratorSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_LiveChatModeratorSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $liveChatId;
-  protected $moderatorDetailsType = 'Powerform_Google_Service_YouTube_ChannelProfileDetails';
+  protected $moderatorDetailsType = 'Google_Service_YouTube_ChannelProfileDetails';
   protected $moderatorDetailsDataType = '';
 
 
@@ -10417,7 +10417,7 @@ class Powerform_Google_Service_YouTube_LiveChatModeratorSnippet extends Powerfor
   {
     return $this->liveChatId;
   }
-  public function setModeratorDetails(Powerform_Google_Service_YouTube_ChannelProfileDetails $moderatorDetails)
+  public function setModeratorDetails(Google_Service_YouTube_ChannelProfileDetails $moderatorDetails)
   {
     $this->moderatorDetails = $moderatorDetails;
   }
@@ -10427,7 +10427,7 @@ class Powerform_Google_Service_YouTube_LiveChatModeratorSnippet extends Powerfor
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveChatTextMessageDetails extends Powerform_Google_Model
+class Google_Service_YouTube_LiveChatTextMessageDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10444,24 +10444,24 @@ class Powerform_Google_Service_YouTube_LiveChatTextMessageDetails extends Powerf
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveStream extends Powerform_Google_Model
+class Google_Service_YouTube_LiveStream extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $cdnType = 'Powerform_Google_Service_YouTube_CdnSettings';
+  protected $cdnType = 'Google_Service_YouTube_CdnSettings';
   protected $cdnDataType = '';
-  protected $contentDetailsType = 'Powerform_Google_Service_YouTube_LiveStreamContentDetails';
+  protected $contentDetailsType = 'Google_Service_YouTube_LiveStreamContentDetails';
   protected $contentDetailsDataType = '';
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_LiveStreamSnippet';
+  protected $snippetType = 'Google_Service_YouTube_LiveStreamSnippet';
   protected $snippetDataType = '';
-  protected $statusType = 'Powerform_Google_Service_YouTube_LiveStreamStatus';
+  protected $statusType = 'Google_Service_YouTube_LiveStreamStatus';
   protected $statusDataType = '';
 
 
-  public function setCdn(Powerform_Google_Service_YouTube_CdnSettings $cdn)
+  public function setCdn(Google_Service_YouTube_CdnSettings $cdn)
   {
     $this->cdn = $cdn;
   }
@@ -10469,7 +10469,7 @@ class Powerform_Google_Service_YouTube_LiveStream extends Powerform_Google_Model
   {
     return $this->cdn;
   }
-  public function setContentDetails(Powerform_Google_Service_YouTube_LiveStreamContentDetails $contentDetails)
+  public function setContentDetails(Google_Service_YouTube_LiveStreamContentDetails $contentDetails)
   {
     $this->contentDetails = $contentDetails;
   }
@@ -10501,7 +10501,7 @@ class Powerform_Google_Service_YouTube_LiveStream extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_LiveStreamSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_LiveStreamSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -10509,7 +10509,7 @@ class Powerform_Google_Service_YouTube_LiveStream extends Powerform_Google_Model
   {
     return $this->snippet;
   }
-  public function setStatus(Powerform_Google_Service_YouTube_LiveStreamStatus $status)
+  public function setStatus(Google_Service_YouTube_LiveStreamStatus $status)
   {
     $this->status = $status;
   }
@@ -10519,7 +10519,7 @@ class Powerform_Google_Service_YouTube_LiveStream extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveStreamConfigurationIssue extends Powerform_Google_Model
+class Google_Service_YouTube_LiveStreamConfigurationIssue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10563,7 +10563,7 @@ class Powerform_Google_Service_YouTube_LiveStreamConfigurationIssue extends Powe
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveStreamContentDetails extends Powerform_Google_Model
+class Google_Service_YouTube_LiveStreamContentDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10589,12 +10589,12 @@ class Powerform_Google_Service_YouTube_LiveStreamContentDetails extends Powerfor
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveStreamHealthStatus extends Powerform_Google_Collection
+class Google_Service_YouTube_LiveStreamHealthStatus extends Google_Collection
 {
   protected $collection_key = 'configurationIssues';
   protected $internal_gapi_mappings = array(
   );
-  protected $configurationIssuesType = 'Powerform_Google_Service_YouTube_LiveStreamConfigurationIssue';
+  protected $configurationIssuesType = 'Google_Service_YouTube_LiveStreamConfigurationIssue';
   protected $configurationIssuesDataType = 'array';
   public $lastUpdateTimeSeconds;
   public $status;
@@ -10626,21 +10626,21 @@ class Powerform_Google_Service_YouTube_LiveStreamHealthStatus extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveStreamListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_LiveStreamListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_LiveStream';
+  protected $itemsType = 'Google_Service_YouTube_LiveStream';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -10685,7 +10685,7 @@ class Powerform_Google_Service_YouTube_LiveStreamListResponse extends Powerform_
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -10701,7 +10701,7 @@ class Powerform_Google_Service_YouTube_LiveStreamListResponse extends Powerform_
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -10719,7 +10719,7 @@ class Powerform_Google_Service_YouTube_LiveStreamListResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveStreamSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_LiveStreamSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10772,16 +10772,16 @@ class Powerform_Google_Service_YouTube_LiveStreamSnippet extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_YouTube_LiveStreamStatus extends Powerform_Google_Model
+class Google_Service_YouTube_LiveStreamStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $healthStatusType = 'Powerform_Google_Service_YouTube_LiveStreamHealthStatus';
+  protected $healthStatusType = 'Google_Service_YouTube_LiveStreamHealthStatus';
   protected $healthStatusDataType = '';
   public $streamStatus;
 
 
-  public function setHealthStatus(Powerform_Google_Service_YouTube_LiveStreamHealthStatus $healthStatus)
+  public function setHealthStatus(Google_Service_YouTube_LiveStreamHealthStatus $healthStatus)
   {
     $this->healthStatus = $healthStatus;
   }
@@ -10799,15 +10799,15 @@ class Powerform_Google_Service_YouTube_LiveStreamStatus extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_YouTube_LocalizedProperty extends Powerform_Google_Collection
+class Google_Service_YouTube_LocalizedProperty extends Google_Collection
 {
   protected $collection_key = 'localized';
   protected $internal_gapi_mappings = array(
   );
   public $default;
-  protected $defaultLanguageType = 'Powerform_Google_Service_YouTube_LanguageTag';
+  protected $defaultLanguageType = 'Google_Service_YouTube_LanguageTag';
   protected $defaultLanguageDataType = '';
-  protected $localizedType = 'Powerform_Google_Service_YouTube_LocalizedString';
+  protected $localizedType = 'Google_Service_YouTube_LocalizedString';
   protected $localizedDataType = 'array';
 
 
@@ -10819,7 +10819,7 @@ class Powerform_Google_Service_YouTube_LocalizedProperty extends Powerform_Googl
   {
     return $this->default;
   }
-  public function setDefaultLanguage(Powerform_Google_Service_YouTube_LanguageTag $defaultLanguage)
+  public function setDefaultLanguage(Google_Service_YouTube_LanguageTag $defaultLanguage)
   {
     $this->defaultLanguage = $defaultLanguage;
   }
@@ -10837,7 +10837,7 @@ class Powerform_Google_Service_YouTube_LocalizedProperty extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_YouTube_LocalizedString extends Powerform_Google_Model
+class Google_Service_YouTube_LocalizedString extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10863,7 +10863,7 @@ class Powerform_Google_Service_YouTube_LocalizedString extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_YouTube_MonitorStreamInfo extends Powerform_Google_Model
+class Google_Service_YouTube_MonitorStreamInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10898,7 +10898,7 @@ class Powerform_Google_Service_YouTube_MonitorStreamInfo extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_YouTube_PageInfo extends Powerform_Google_Model
+class Google_Service_YouTube_PageInfo extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -10924,26 +10924,26 @@ class Powerform_Google_Service_YouTube_PageInfo extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_Playlist extends Powerform_Google_Model
+class Google_Service_YouTube_Playlist extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $contentDetailsType = 'Powerform_Google_Service_YouTube_PlaylistContentDetails';
+  protected $contentDetailsType = 'Google_Service_YouTube_PlaylistContentDetails';
   protected $contentDetailsDataType = '';
   public $etag;
   public $id;
   public $kind;
-  protected $localizationsType = 'Powerform_Google_Service_YouTube_PlaylistLocalization';
+  protected $localizationsType = 'Google_Service_YouTube_PlaylistLocalization';
   protected $localizationsDataType = 'map';
-  protected $playerType = 'Powerform_Google_Service_YouTube_PlaylistPlayer';
+  protected $playerType = 'Google_Service_YouTube_PlaylistPlayer';
   protected $playerDataType = '';
-  protected $snippetType = 'Powerform_Google_Service_YouTube_PlaylistSnippet';
+  protected $snippetType = 'Google_Service_YouTube_PlaylistSnippet';
   protected $snippetDataType = '';
-  protected $statusType = 'Powerform_Google_Service_YouTube_PlaylistStatus';
+  protected $statusType = 'Google_Service_YouTube_PlaylistStatus';
   protected $statusDataType = '';
 
 
-  public function setContentDetails(Powerform_Google_Service_YouTube_PlaylistContentDetails $contentDetails)
+  public function setContentDetails(Google_Service_YouTube_PlaylistContentDetails $contentDetails)
   {
     $this->contentDetails = $contentDetails;
   }
@@ -10983,7 +10983,7 @@ class Powerform_Google_Service_YouTube_Playlist extends Powerform_Google_Model
   {
     return $this->localizations;
   }
-  public function setPlayer(Powerform_Google_Service_YouTube_PlaylistPlayer $player)
+  public function setPlayer(Google_Service_YouTube_PlaylistPlayer $player)
   {
     $this->player = $player;
   }
@@ -10991,7 +10991,7 @@ class Powerform_Google_Service_YouTube_Playlist extends Powerform_Google_Model
   {
     return $this->player;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_PlaylistSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_PlaylistSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -10999,7 +10999,7 @@ class Powerform_Google_Service_YouTube_Playlist extends Powerform_Google_Model
   {
     return $this->snippet;
   }
-  public function setStatus(Powerform_Google_Service_YouTube_PlaylistStatus $status)
+  public function setStatus(Google_Service_YouTube_PlaylistStatus $status)
   {
     $this->status = $status;
   }
@@ -11009,7 +11009,7 @@ class Powerform_Google_Service_YouTube_Playlist extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistContentDetails extends Powerform_Google_Model
+class Google_Service_YouTube_PlaylistContentDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11026,22 +11026,22 @@ class Powerform_Google_Service_YouTube_PlaylistContentDetails extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistItem extends Powerform_Google_Model
+class Google_Service_YouTube_PlaylistItem extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $contentDetailsType = 'Powerform_Google_Service_YouTube_PlaylistItemContentDetails';
+  protected $contentDetailsType = 'Google_Service_YouTube_PlaylistItemContentDetails';
   protected $contentDetailsDataType = '';
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_PlaylistItemSnippet';
+  protected $snippetType = 'Google_Service_YouTube_PlaylistItemSnippet';
   protected $snippetDataType = '';
-  protected $statusType = 'Powerform_Google_Service_YouTube_PlaylistItemStatus';
+  protected $statusType = 'Google_Service_YouTube_PlaylistItemStatus';
   protected $statusDataType = '';
 
 
-  public function setContentDetails(Powerform_Google_Service_YouTube_PlaylistItemContentDetails $contentDetails)
+  public function setContentDetails(Google_Service_YouTube_PlaylistItemContentDetails $contentDetails)
   {
     $this->contentDetails = $contentDetails;
   }
@@ -11073,7 +11073,7 @@ class Powerform_Google_Service_YouTube_PlaylistItem extends Powerform_Google_Mod
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_PlaylistItemSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_PlaylistItemSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -11081,7 +11081,7 @@ class Powerform_Google_Service_YouTube_PlaylistItem extends Powerform_Google_Mod
   {
     return $this->snippet;
   }
-  public function setStatus(Powerform_Google_Service_YouTube_PlaylistItemStatus $status)
+  public function setStatus(Google_Service_YouTube_PlaylistItemStatus $status)
   {
     $this->status = $status;
   }
@@ -11091,7 +11091,7 @@ class Powerform_Google_Service_YouTube_PlaylistItem extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistItemContentDetails extends Powerform_Google_Model
+class Google_Service_YouTube_PlaylistItemContentDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11135,21 +11135,21 @@ class Powerform_Google_Service_YouTube_PlaylistItemContentDetails extends Powerf
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistItemListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_PlaylistItemListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_PlaylistItem';
+  protected $itemsType = 'Google_Service_YouTube_PlaylistItem';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -11194,7 +11194,7 @@ class Powerform_Google_Service_YouTube_PlaylistItemListResponse extends Powerfor
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -11210,7 +11210,7 @@ class Powerform_Google_Service_YouTube_PlaylistItemListResponse extends Powerfor
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -11228,7 +11228,7 @@ class Powerform_Google_Service_YouTube_PlaylistItemListResponse extends Powerfor
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistItemSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_PlaylistItemSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11238,9 +11238,9 @@ class Powerform_Google_Service_YouTube_PlaylistItemSnippet extends Powerform_Goo
   public $playlistId;
   public $position;
   public $publishedAt;
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
-  protected $thumbnailsType = 'Powerform_Google_Service_YouTube_ThumbnailDetails';
+  protected $thumbnailsType = 'Google_Service_YouTube_ThumbnailDetails';
   protected $thumbnailsDataType = '';
   public $title;
 
@@ -11293,7 +11293,7 @@ class Powerform_Google_Service_YouTube_PlaylistItemSnippet extends Powerform_Goo
   {
     return $this->publishedAt;
   }
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -11301,7 +11301,7 @@ class Powerform_Google_Service_YouTube_PlaylistItemSnippet extends Powerform_Goo
   {
     return $this->resourceId;
   }
-  public function setThumbnails(Powerform_Google_Service_YouTube_ThumbnailDetails $thumbnails)
+  public function setThumbnails(Google_Service_YouTube_ThumbnailDetails $thumbnails)
   {
     $this->thumbnails = $thumbnails;
   }
@@ -11319,7 +11319,7 @@ class Powerform_Google_Service_YouTube_PlaylistItemSnippet extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistItemStatus extends Powerform_Google_Model
+class Google_Service_YouTube_PlaylistItemStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11336,21 +11336,21 @@ class Powerform_Google_Service_YouTube_PlaylistItemStatus extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_PlaylistListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_Playlist';
+  protected $itemsType = 'Google_Service_YouTube_Playlist';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -11395,7 +11395,7 @@ class Powerform_Google_Service_YouTube_PlaylistListResponse extends Powerform_Go
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -11411,7 +11411,7 @@ class Powerform_Google_Service_YouTube_PlaylistListResponse extends Powerform_Go
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -11429,7 +11429,7 @@ class Powerform_Google_Service_YouTube_PlaylistListResponse extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistLocalization extends Powerform_Google_Model
+class Google_Service_YouTube_PlaylistLocalization extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11455,7 +11455,7 @@ class Powerform_Google_Service_YouTube_PlaylistLocalization extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistPlayer extends Powerform_Google_Model
+class Google_Service_YouTube_PlaylistPlayer extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11472,7 +11472,7 @@ class Powerform_Google_Service_YouTube_PlaylistPlayer extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistSnippet extends Powerform_Google_Collection
+class Google_Service_YouTube_PlaylistSnippet extends Google_Collection
 {
   protected $collection_key = 'tags';
   protected $internal_gapi_mappings = array(
@@ -11481,11 +11481,11 @@ class Powerform_Google_Service_YouTube_PlaylistSnippet extends Powerform_Google_
   public $channelTitle;
   public $defaultLanguage;
   public $description;
-  protected $localizedType = 'Powerform_Google_Service_YouTube_PlaylistLocalization';
+  protected $localizedType = 'Google_Service_YouTube_PlaylistLocalization';
   protected $localizedDataType = '';
   public $publishedAt;
   public $tags;
-  protected $thumbnailsType = 'Powerform_Google_Service_YouTube_ThumbnailDetails';
+  protected $thumbnailsType = 'Google_Service_YouTube_ThumbnailDetails';
   protected $thumbnailsDataType = '';
   public $title;
 
@@ -11522,7 +11522,7 @@ class Powerform_Google_Service_YouTube_PlaylistSnippet extends Powerform_Google_
   {
     return $this->description;
   }
-  public function setLocalized(Powerform_Google_Service_YouTube_PlaylistLocalization $localized)
+  public function setLocalized(Google_Service_YouTube_PlaylistLocalization $localized)
   {
     $this->localized = $localized;
   }
@@ -11546,7 +11546,7 @@ class Powerform_Google_Service_YouTube_PlaylistSnippet extends Powerform_Google_
   {
     return $this->tags;
   }
-  public function setThumbnails(Powerform_Google_Service_YouTube_ThumbnailDetails $thumbnails)
+  public function setThumbnails(Google_Service_YouTube_ThumbnailDetails $thumbnails)
   {
     $this->thumbnails = $thumbnails;
   }
@@ -11564,7 +11564,7 @@ class Powerform_Google_Service_YouTube_PlaylistSnippet extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_YouTube_PlaylistStatus extends Powerform_Google_Model
+class Google_Service_YouTube_PlaylistStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11581,15 +11581,15 @@ class Powerform_Google_Service_YouTube_PlaylistStatus extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_YouTube_PromotedItem extends Powerform_Google_Model
+class Google_Service_YouTube_PromotedItem extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $customMessage;
-  protected $idType = 'Powerform_Google_Service_YouTube_PromotedItemId';
+  protected $idType = 'Google_Service_YouTube_PromotedItemId';
   protected $idDataType = '';
   public $promotedByContentOwner;
-  protected $timingType = 'Powerform_Google_Service_YouTube_InvideoTiming';
+  protected $timingType = 'Google_Service_YouTube_InvideoTiming';
   protected $timingDataType = '';
 
 
@@ -11601,7 +11601,7 @@ class Powerform_Google_Service_YouTube_PromotedItem extends Powerform_Google_Mod
   {
     return $this->customMessage;
   }
-  public function setId(Powerform_Google_Service_YouTube_PromotedItemId $id)
+  public function setId(Google_Service_YouTube_PromotedItemId $id)
   {
     $this->id = $id;
   }
@@ -11617,7 +11617,7 @@ class Powerform_Google_Service_YouTube_PromotedItem extends Powerform_Google_Mod
   {
     return $this->promotedByContentOwner;
   }
-  public function setTiming(Powerform_Google_Service_YouTube_InvideoTiming $timing)
+  public function setTiming(Google_Service_YouTube_InvideoTiming $timing)
   {
     $this->timing = $timing;
   }
@@ -11627,7 +11627,7 @@ class Powerform_Google_Service_YouTube_PromotedItem extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_YouTube_PromotedItemId extends Powerform_Google_Model
+class Google_Service_YouTube_PromotedItemId extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11671,7 +11671,7 @@ class Powerform_Google_Service_YouTube_PromotedItemId extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_YouTube_PropertyValue extends Powerform_Google_Model
+class Google_Service_YouTube_PropertyValue extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11697,7 +11697,7 @@ class Powerform_Google_Service_YouTube_PropertyValue extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_YouTube_ResourceId extends Powerform_Google_Model
+class Google_Service_YouTube_ResourceId extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11741,22 +11741,22 @@ class Powerform_Google_Service_YouTube_ResourceId extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_SearchListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_SearchListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_SearchResult';
+  protected $itemsType = 'Google_Service_YouTube_SearchResult';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
   public $regionCode;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -11801,7 +11801,7 @@ class Powerform_Google_Service_YouTube_SearchListResponse extends Powerform_Goog
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -11825,7 +11825,7 @@ class Powerform_Google_Service_YouTube_SearchListResponse extends Powerform_Goog
   {
     return $this->regionCode;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -11843,15 +11843,15 @@ class Powerform_Google_Service_YouTube_SearchListResponse extends Powerform_Goog
   }
 }
 
-class Powerform_Google_Service_YouTube_SearchResult extends Powerform_Google_Model
+class Google_Service_YouTube_SearchResult extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
-  protected $idType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $idType = 'Google_Service_YouTube_ResourceId';
   protected $idDataType = '';
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_SearchResultSnippet';
+  protected $snippetType = 'Google_Service_YouTube_SearchResultSnippet';
   protected $snippetDataType = '';
 
 
@@ -11863,7 +11863,7 @@ class Powerform_Google_Service_YouTube_SearchResult extends Powerform_Google_Mod
   {
     return $this->etag;
   }
-  public function setId(Powerform_Google_Service_YouTube_ResourceId $id)
+  public function setId(Google_Service_YouTube_ResourceId $id)
   {
     $this->id = $id;
   }
@@ -11879,7 +11879,7 @@ class Powerform_Google_Service_YouTube_SearchResult extends Powerform_Google_Mod
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_SearchResultSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_SearchResultSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -11889,7 +11889,7 @@ class Powerform_Google_Service_YouTube_SearchResult extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_YouTube_SearchResultSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_SearchResultSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -11898,7 +11898,7 @@ class Powerform_Google_Service_YouTube_SearchResultSnippet extends Powerform_Goo
   public $description;
   public $liveBroadcastContent;
   public $publishedAt;
-  protected $thumbnailsType = 'Powerform_Google_Service_YouTube_ThumbnailDetails';
+  protected $thumbnailsType = 'Google_Service_YouTube_ThumbnailDetails';
   protected $thumbnailsDataType = '';
   public $title;
 
@@ -11943,7 +11943,7 @@ class Powerform_Google_Service_YouTube_SearchResultSnippet extends Powerform_Goo
   {
     return $this->publishedAt;
   }
-  public function setThumbnails(Powerform_Google_Service_YouTube_ThumbnailDetails $thumbnails)
+  public function setThumbnails(Google_Service_YouTube_ThumbnailDetails $thumbnails)
   {
     $this->thumbnails = $thumbnails;
   }
@@ -11961,14 +11961,14 @@ class Powerform_Google_Service_YouTube_SearchResultSnippet extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_Sponsor extends Powerform_Google_Model
+class Google_Service_YouTube_Sponsor extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_SponsorSnippet';
+  protected $snippetType = 'Google_Service_YouTube_SponsorSnippet';
   protected $snippetDataType = '';
 
 
@@ -11996,7 +11996,7 @@ class Powerform_Google_Service_YouTube_Sponsor extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_SponsorSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_SponsorSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -12006,20 +12006,20 @@ class Powerform_Google_Service_YouTube_Sponsor extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_SponsorListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_SponsorListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_Sponsor';
+  protected $itemsType = 'Google_Service_YouTube_Sponsor';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -12064,7 +12064,7 @@ class Powerform_Google_Service_YouTube_SponsorListResponse extends Powerform_Goo
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -12072,7 +12072,7 @@ class Powerform_Google_Service_YouTube_SponsorListResponse extends Powerform_Goo
   {
     return $this->pageInfo;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -12090,12 +12090,12 @@ class Powerform_Google_Service_YouTube_SponsorListResponse extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_SponsorSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_SponsorSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $channelId;
-  protected $sponsorDetailsType = 'Powerform_Google_Service_YouTube_ChannelProfileDetails';
+  protected $sponsorDetailsType = 'Google_Service_YouTube_ChannelProfileDetails';
   protected $sponsorDetailsDataType = '';
   public $sponsorSince;
 
@@ -12108,7 +12108,7 @@ class Powerform_Google_Service_YouTube_SponsorSnippet extends Powerform_Google_M
   {
     return $this->channelId;
   }
-  public function setSponsorDetails(Powerform_Google_Service_YouTube_ChannelProfileDetails $sponsorDetails)
+  public function setSponsorDetails(Google_Service_YouTube_ChannelProfileDetails $sponsorDetails)
   {
     $this->sponsorDetails = $sponsorDetails;
   }
@@ -12126,22 +12126,22 @@ class Powerform_Google_Service_YouTube_SponsorSnippet extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_YouTube_Subscription extends Powerform_Google_Model
+class Google_Service_YouTube_Subscription extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $contentDetailsType = 'Powerform_Google_Service_YouTube_SubscriptionContentDetails';
+  protected $contentDetailsType = 'Google_Service_YouTube_SubscriptionContentDetails';
   protected $contentDetailsDataType = '';
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_SubscriptionSnippet';
+  protected $snippetType = 'Google_Service_YouTube_SubscriptionSnippet';
   protected $snippetDataType = '';
-  protected $subscriberSnippetType = 'Powerform_Google_Service_YouTube_SubscriptionSubscriberSnippet';
+  protected $subscriberSnippetType = 'Google_Service_YouTube_SubscriptionSubscriberSnippet';
   protected $subscriberSnippetDataType = '';
 
 
-  public function setContentDetails(Powerform_Google_Service_YouTube_SubscriptionContentDetails $contentDetails)
+  public function setContentDetails(Google_Service_YouTube_SubscriptionContentDetails $contentDetails)
   {
     $this->contentDetails = $contentDetails;
   }
@@ -12173,7 +12173,7 @@ class Powerform_Google_Service_YouTube_Subscription extends Powerform_Google_Mod
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_SubscriptionSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_SubscriptionSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -12181,7 +12181,7 @@ class Powerform_Google_Service_YouTube_Subscription extends Powerform_Google_Mod
   {
     return $this->snippet;
   }
-  public function setSubscriberSnippet(Powerform_Google_Service_YouTube_SubscriptionSubscriberSnippet $subscriberSnippet)
+  public function setSubscriberSnippet(Google_Service_YouTube_SubscriptionSubscriberSnippet $subscriberSnippet)
   {
     $this->subscriberSnippet = $subscriberSnippet;
   }
@@ -12191,7 +12191,7 @@ class Powerform_Google_Service_YouTube_Subscription extends Powerform_Google_Mod
   }
 }
 
-class Powerform_Google_Service_YouTube_SubscriptionContentDetails extends Powerform_Google_Model
+class Google_Service_YouTube_SubscriptionContentDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -12226,21 +12226,21 @@ class Powerform_Google_Service_YouTube_SubscriptionContentDetails extends Powerf
   }
 }
 
-class Powerform_Google_Service_YouTube_SubscriptionListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_SubscriptionListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_Subscription';
+  protected $itemsType = 'Google_Service_YouTube_Subscription';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -12285,7 +12285,7 @@ class Powerform_Google_Service_YouTube_SubscriptionListResponse extends Powerfor
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -12301,7 +12301,7 @@ class Powerform_Google_Service_YouTube_SubscriptionListResponse extends Powerfor
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -12319,7 +12319,7 @@ class Powerform_Google_Service_YouTube_SubscriptionListResponse extends Powerfor
   }
 }
 
-class Powerform_Google_Service_YouTube_SubscriptionSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_SubscriptionSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -12327,9 +12327,9 @@ class Powerform_Google_Service_YouTube_SubscriptionSnippet extends Powerform_Goo
   public $channelTitle;
   public $description;
   public $publishedAt;
-  protected $resourceIdType = 'Powerform_Google_Service_YouTube_ResourceId';
+  protected $resourceIdType = 'Google_Service_YouTube_ResourceId';
   protected $resourceIdDataType = '';
-  protected $thumbnailsType = 'Powerform_Google_Service_YouTube_ThumbnailDetails';
+  protected $thumbnailsType = 'Google_Service_YouTube_ThumbnailDetails';
   protected $thumbnailsDataType = '';
   public $title;
 
@@ -12366,7 +12366,7 @@ class Powerform_Google_Service_YouTube_SubscriptionSnippet extends Powerform_Goo
   {
     return $this->publishedAt;
   }
-  public function setResourceId(Powerform_Google_Service_YouTube_ResourceId $resourceId)
+  public function setResourceId(Google_Service_YouTube_ResourceId $resourceId)
   {
     $this->resourceId = $resourceId;
   }
@@ -12374,7 +12374,7 @@ class Powerform_Google_Service_YouTube_SubscriptionSnippet extends Powerform_Goo
   {
     return $this->resourceId;
   }
-  public function setThumbnails(Powerform_Google_Service_YouTube_ThumbnailDetails $thumbnails)
+  public function setThumbnails(Google_Service_YouTube_ThumbnailDetails $thumbnails)
   {
     $this->thumbnails = $thumbnails;
   }
@@ -12392,13 +12392,13 @@ class Powerform_Google_Service_YouTube_SubscriptionSnippet extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_SubscriptionSubscriberSnippet extends Powerform_Google_Model
+class Google_Service_YouTube_SubscriptionSubscriberSnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $channelId;
   public $description;
-  protected $thumbnailsType = 'Powerform_Google_Service_YouTube_ThumbnailDetails';
+  protected $thumbnailsType = 'Google_Service_YouTube_ThumbnailDetails';
   protected $thumbnailsDataType = '';
   public $title;
 
@@ -12419,7 +12419,7 @@ class Powerform_Google_Service_YouTube_SubscriptionSubscriberSnippet extends Pow
   {
     return $this->description;
   }
-  public function setThumbnails(Powerform_Google_Service_YouTube_ThumbnailDetails $thumbnails)
+  public function setThumbnails(Google_Service_YouTube_ThumbnailDetails $thumbnails)
   {
     $this->thumbnails = $thumbnails;
   }
@@ -12437,7 +12437,7 @@ class Powerform_Google_Service_YouTube_SubscriptionSubscriberSnippet extends Pow
   }
 }
 
-class Powerform_Google_Service_YouTube_Thumbnail extends Powerform_Google_Model
+class Google_Service_YouTube_Thumbnail extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -12472,23 +12472,23 @@ class Powerform_Google_Service_YouTube_Thumbnail extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_ThumbnailDetails extends Powerform_Google_Model
+class Google_Service_YouTube_ThumbnailDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $defaultType = 'Powerform_Google_Service_YouTube_Thumbnail';
+  protected $defaultType = 'Google_Service_YouTube_Thumbnail';
   protected $defaultDataType = '';
-  protected $highType = 'Powerform_Google_Service_YouTube_Thumbnail';
+  protected $highType = 'Google_Service_YouTube_Thumbnail';
   protected $highDataType = '';
-  protected $maxresType = 'Powerform_Google_Service_YouTube_Thumbnail';
+  protected $maxresType = 'Google_Service_YouTube_Thumbnail';
   protected $maxresDataType = '';
-  protected $mediumType = 'Powerform_Google_Service_YouTube_Thumbnail';
+  protected $mediumType = 'Google_Service_YouTube_Thumbnail';
   protected $mediumDataType = '';
-  protected $standardType = 'Powerform_Google_Service_YouTube_Thumbnail';
+  protected $standardType = 'Google_Service_YouTube_Thumbnail';
   protected $standardDataType = '';
 
 
-  public function setDefault(Powerform_Google_Service_YouTube_Thumbnail $default)
+  public function setDefault(Google_Service_YouTube_Thumbnail $default)
   {
     $this->default = $default;
   }
@@ -12496,7 +12496,7 @@ class Powerform_Google_Service_YouTube_ThumbnailDetails extends Powerform_Google
   {
     return $this->default;
   }
-  public function setHigh(Powerform_Google_Service_YouTube_Thumbnail $high)
+  public function setHigh(Google_Service_YouTube_Thumbnail $high)
   {
     $this->high = $high;
   }
@@ -12504,7 +12504,7 @@ class Powerform_Google_Service_YouTube_ThumbnailDetails extends Powerform_Google
   {
     return $this->high;
   }
-  public function setMaxres(Powerform_Google_Service_YouTube_Thumbnail $maxres)
+  public function setMaxres(Google_Service_YouTube_Thumbnail $maxres)
   {
     $this->maxres = $maxres;
   }
@@ -12512,7 +12512,7 @@ class Powerform_Google_Service_YouTube_ThumbnailDetails extends Powerform_Google
   {
     return $this->maxres;
   }
-  public function setMedium(Powerform_Google_Service_YouTube_Thumbnail $medium)
+  public function setMedium(Google_Service_YouTube_Thumbnail $medium)
   {
     $this->medium = $medium;
   }
@@ -12520,7 +12520,7 @@ class Powerform_Google_Service_YouTube_ThumbnailDetails extends Powerform_Google
   {
     return $this->medium;
   }
-  public function setStandard(Powerform_Google_Service_YouTube_Thumbnail $standard)
+  public function setStandard(Google_Service_YouTube_Thumbnail $standard)
   {
     $this->standard = $standard;
   }
@@ -12530,14 +12530,14 @@ class Powerform_Google_Service_YouTube_ThumbnailDetails extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_YouTube_ThumbnailSetResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_ThumbnailSetResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_ThumbnailDetails';
+  protected $itemsType = 'Google_Service_YouTube_ThumbnailDetails';
   protected $itemsDataType = 'array';
   public $kind;
   public $visitorId;
@@ -12585,50 +12585,50 @@ class Powerform_Google_Service_YouTube_ThumbnailSetResponse extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTube_TokenPagination extends Powerform_Google_Model
+class Google_Service_YouTube_TokenPagination extends Google_Model
 {
 }
 
-class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
+class Google_Service_YouTube_Video extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $ageGatingType = 'Powerform_Google_Service_YouTube_VideoAgeGating';
+  protected $ageGatingType = 'Google_Service_YouTube_VideoAgeGating';
   protected $ageGatingDataType = '';
-  protected $contentDetailsType = 'Powerform_Google_Service_YouTube_VideoContentDetails';
+  protected $contentDetailsType = 'Google_Service_YouTube_VideoContentDetails';
   protected $contentDetailsDataType = '';
   public $etag;
-  protected $fileDetailsType = 'Powerform_Google_Service_YouTube_VideoFileDetails';
+  protected $fileDetailsType = 'Google_Service_YouTube_VideoFileDetails';
   protected $fileDetailsDataType = '';
   public $id;
   public $kind;
-  protected $liveStreamingDetailsType = 'Powerform_Google_Service_YouTube_VideoLiveStreamingDetails';
+  protected $liveStreamingDetailsType = 'Google_Service_YouTube_VideoLiveStreamingDetails';
   protected $liveStreamingDetailsDataType = '';
-  protected $localizationsType = 'Powerform_Google_Service_YouTube_VideoLocalization';
+  protected $localizationsType = 'Google_Service_YouTube_VideoLocalization';
   protected $localizationsDataType = 'map';
-  protected $monetizationDetailsType = 'Powerform_Google_Service_YouTube_VideoMonetizationDetails';
+  protected $monetizationDetailsType = 'Google_Service_YouTube_VideoMonetizationDetails';
   protected $monetizationDetailsDataType = '';
-  protected $playerType = 'Powerform_Google_Service_YouTube_VideoPlayer';
+  protected $playerType = 'Google_Service_YouTube_VideoPlayer';
   protected $playerDataType = '';
-  protected $processingDetailsType = 'Powerform_Google_Service_YouTube_VideoProcessingDetails';
+  protected $processingDetailsType = 'Google_Service_YouTube_VideoProcessingDetails';
   protected $processingDetailsDataType = '';
-  protected $projectDetailsType = 'Powerform_Google_Service_YouTube_VideoProjectDetails';
+  protected $projectDetailsType = 'Google_Service_YouTube_VideoProjectDetails';
   protected $projectDetailsDataType = '';
-  protected $recordingDetailsType = 'Powerform_Google_Service_YouTube_VideoRecordingDetails';
+  protected $recordingDetailsType = 'Google_Service_YouTube_VideoRecordingDetails';
   protected $recordingDetailsDataType = '';
-  protected $snippetType = 'Powerform_Google_Service_YouTube_VideoSnippet';
+  protected $snippetType = 'Google_Service_YouTube_VideoSnippet';
   protected $snippetDataType = '';
-  protected $statisticsType = 'Powerform_Google_Service_YouTube_VideoStatistics';
+  protected $statisticsType = 'Google_Service_YouTube_VideoStatistics';
   protected $statisticsDataType = '';
-  protected $statusType = 'Powerform_Google_Service_YouTube_VideoStatus';
+  protected $statusType = 'Google_Service_YouTube_VideoStatus';
   protected $statusDataType = '';
-  protected $suggestionsType = 'Powerform_Google_Service_YouTube_VideoSuggestions';
+  protected $suggestionsType = 'Google_Service_YouTube_VideoSuggestions';
   protected $suggestionsDataType = '';
-  protected $topicDetailsType = 'Powerform_Google_Service_YouTube_VideoTopicDetails';
+  protected $topicDetailsType = 'Google_Service_YouTube_VideoTopicDetails';
   protected $topicDetailsDataType = '';
 
 
-  public function setAgeGating(Powerform_Google_Service_YouTube_VideoAgeGating $ageGating)
+  public function setAgeGating(Google_Service_YouTube_VideoAgeGating $ageGating)
   {
     $this->ageGating = $ageGating;
   }
@@ -12636,7 +12636,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->ageGating;
   }
-  public function setContentDetails(Powerform_Google_Service_YouTube_VideoContentDetails $contentDetails)
+  public function setContentDetails(Google_Service_YouTube_VideoContentDetails $contentDetails)
   {
     $this->contentDetails = $contentDetails;
   }
@@ -12652,7 +12652,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->etag;
   }
-  public function setFileDetails(Powerform_Google_Service_YouTube_VideoFileDetails $fileDetails)
+  public function setFileDetails(Google_Service_YouTube_VideoFileDetails $fileDetails)
   {
     $this->fileDetails = $fileDetails;
   }
@@ -12676,7 +12676,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->kind;
   }
-  public function setLiveStreamingDetails(Powerform_Google_Service_YouTube_VideoLiveStreamingDetails $liveStreamingDetails)
+  public function setLiveStreamingDetails(Google_Service_YouTube_VideoLiveStreamingDetails $liveStreamingDetails)
   {
     $this->liveStreamingDetails = $liveStreamingDetails;
   }
@@ -12692,7 +12692,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->localizations;
   }
-  public function setMonetizationDetails(Powerform_Google_Service_YouTube_VideoMonetizationDetails $monetizationDetails)
+  public function setMonetizationDetails(Google_Service_YouTube_VideoMonetizationDetails $monetizationDetails)
   {
     $this->monetizationDetails = $monetizationDetails;
   }
@@ -12700,7 +12700,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->monetizationDetails;
   }
-  public function setPlayer(Powerform_Google_Service_YouTube_VideoPlayer $player)
+  public function setPlayer(Google_Service_YouTube_VideoPlayer $player)
   {
     $this->player = $player;
   }
@@ -12708,7 +12708,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->player;
   }
-  public function setProcessingDetails(Powerform_Google_Service_YouTube_VideoProcessingDetails $processingDetails)
+  public function setProcessingDetails(Google_Service_YouTube_VideoProcessingDetails $processingDetails)
   {
     $this->processingDetails = $processingDetails;
   }
@@ -12716,7 +12716,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->processingDetails;
   }
-  public function setProjectDetails(Powerform_Google_Service_YouTube_VideoProjectDetails $projectDetails)
+  public function setProjectDetails(Google_Service_YouTube_VideoProjectDetails $projectDetails)
   {
     $this->projectDetails = $projectDetails;
   }
@@ -12724,7 +12724,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->projectDetails;
   }
-  public function setRecordingDetails(Powerform_Google_Service_YouTube_VideoRecordingDetails $recordingDetails)
+  public function setRecordingDetails(Google_Service_YouTube_VideoRecordingDetails $recordingDetails)
   {
     $this->recordingDetails = $recordingDetails;
   }
@@ -12732,7 +12732,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->recordingDetails;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_VideoSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_VideoSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -12740,7 +12740,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->snippet;
   }
-  public function setStatistics(Powerform_Google_Service_YouTube_VideoStatistics $statistics)
+  public function setStatistics(Google_Service_YouTube_VideoStatistics $statistics)
   {
     $this->statistics = $statistics;
   }
@@ -12748,7 +12748,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->statistics;
   }
-  public function setStatus(Powerform_Google_Service_YouTube_VideoStatus $status)
+  public function setStatus(Google_Service_YouTube_VideoStatus $status)
   {
     $this->status = $status;
   }
@@ -12756,7 +12756,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->status;
   }
-  public function setSuggestions(Powerform_Google_Service_YouTube_VideoSuggestions $suggestions)
+  public function setSuggestions(Google_Service_YouTube_VideoSuggestions $suggestions)
   {
     $this->suggestions = $suggestions;
   }
@@ -12764,7 +12764,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   {
     return $this->suggestions;
   }
-  public function setTopicDetails(Powerform_Google_Service_YouTube_VideoTopicDetails $topicDetails)
+  public function setTopicDetails(Google_Service_YouTube_VideoTopicDetails $topicDetails)
   {
     $this->topicDetails = $topicDetails;
   }
@@ -12774,7 +12774,7 @@ class Powerform_Google_Service_YouTube_Video extends Powerform_Google_Model
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoAbuseReport extends Powerform_Google_Model
+class Google_Service_YouTube_VideoAbuseReport extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -12827,14 +12827,14 @@ class Powerform_Google_Service_YouTube_VideoAbuseReport extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoAbuseReportReason extends Powerform_Google_Model
+class Google_Service_YouTube_VideoAbuseReportReason extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_VideoAbuseReportReasonSnippet';
+  protected $snippetType = 'Google_Service_YouTube_VideoAbuseReportReasonSnippet';
   protected $snippetDataType = '';
 
 
@@ -12862,7 +12862,7 @@ class Powerform_Google_Service_YouTube_VideoAbuseReportReason extends Powerform_
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_VideoAbuseReportReasonSnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_VideoAbuseReportReasonSnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -12872,14 +12872,14 @@ class Powerform_Google_Service_YouTube_VideoAbuseReportReason extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoAbuseReportReasonListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoAbuseReportReasonListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_VideoAbuseReportReason';
+  protected $itemsType = 'Google_Service_YouTube_VideoAbuseReportReason';
   protected $itemsDataType = 'array';
   public $kind;
   public $visitorId;
@@ -12927,13 +12927,13 @@ class Powerform_Google_Service_YouTube_VideoAbuseReportReasonListResponse extend
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoAbuseReportReasonSnippet extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoAbuseReportReasonSnippet extends Google_Collection
 {
   protected $collection_key = 'secondaryReasons';
   protected $internal_gapi_mappings = array(
   );
   public $label;
-  protected $secondaryReasonsType = 'Powerform_Google_Service_YouTube_VideoAbuseReportSecondaryReason';
+  protected $secondaryReasonsType = 'Google_Service_YouTube_VideoAbuseReportSecondaryReason';
   protected $secondaryReasonsDataType = 'array';
 
 
@@ -12955,7 +12955,7 @@ class Powerform_Google_Service_YouTube_VideoAbuseReportReasonSnippet extends Pow
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoAbuseReportSecondaryReason extends Powerform_Google_Model
+class Google_Service_YouTube_VideoAbuseReportSecondaryReason extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -12981,7 +12981,7 @@ class Powerform_Google_Service_YouTube_VideoAbuseReportSecondaryReason extends P
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoAgeGating extends Powerform_Google_Model
+class Google_Service_YouTube_VideoAgeGating extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13016,14 +13016,14 @@ class Powerform_Google_Service_YouTube_VideoAgeGating extends Powerform_Google_M
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoCategory extends Powerform_Google_Model
+class Google_Service_YouTube_VideoCategory extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $id;
   public $kind;
-  protected $snippetType = 'Powerform_Google_Service_YouTube_VideoCategorySnippet';
+  protected $snippetType = 'Google_Service_YouTube_VideoCategorySnippet';
   protected $snippetDataType = '';
 
 
@@ -13051,7 +13051,7 @@ class Powerform_Google_Service_YouTube_VideoCategory extends Powerform_Google_Mo
   {
     return $this->kind;
   }
-  public function setSnippet(Powerform_Google_Service_YouTube_VideoCategorySnippet $snippet)
+  public function setSnippet(Google_Service_YouTube_VideoCategorySnippet $snippet)
   {
     $this->snippet = $snippet;
   }
@@ -13061,21 +13061,21 @@ class Powerform_Google_Service_YouTube_VideoCategory extends Powerform_Google_Mo
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoCategoryListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoCategoryListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_VideoCategory';
+  protected $itemsType = 'Google_Service_YouTube_VideoCategory';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -13120,7 +13120,7 @@ class Powerform_Google_Service_YouTube_VideoCategoryListResponse extends Powerfo
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -13136,7 +13136,7 @@ class Powerform_Google_Service_YouTube_VideoCategoryListResponse extends Powerfo
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -13154,7 +13154,7 @@ class Powerform_Google_Service_YouTube_VideoCategoryListResponse extends Powerfo
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoCategorySnippet extends Powerform_Google_Model
+class Google_Service_YouTube_VideoCategorySnippet extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13189,20 +13189,20 @@ class Powerform_Google_Service_YouTube_VideoCategorySnippet extends Powerform_Go
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoContentDetails extends Powerform_Google_Model
+class Google_Service_YouTube_VideoContentDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $caption;
-  protected $contentRatingType = 'Powerform_Google_Service_YouTube_ContentRating';
+  protected $contentRatingType = 'Google_Service_YouTube_ContentRating';
   protected $contentRatingDataType = '';
-  protected $countryRestrictionType = 'Powerform_Google_Service_YouTube_AccessPolicy';
+  protected $countryRestrictionType = 'Google_Service_YouTube_AccessPolicy';
   protected $countryRestrictionDataType = '';
   public $definition;
   public $dimension;
   public $duration;
   public $licensedContent;
-  protected $regionRestrictionType = 'Powerform_Google_Service_YouTube_VideoContentDetailsRegionRestriction';
+  protected $regionRestrictionType = 'Google_Service_YouTube_VideoContentDetailsRegionRestriction';
   protected $regionRestrictionDataType = '';
 
 
@@ -13214,7 +13214,7 @@ class Powerform_Google_Service_YouTube_VideoContentDetails extends Powerform_Goo
   {
     return $this->caption;
   }
-  public function setContentRating(Powerform_Google_Service_YouTube_ContentRating $contentRating)
+  public function setContentRating(Google_Service_YouTube_ContentRating $contentRating)
   {
     $this->contentRating = $contentRating;
   }
@@ -13222,7 +13222,7 @@ class Powerform_Google_Service_YouTube_VideoContentDetails extends Powerform_Goo
   {
     return $this->contentRating;
   }
-  public function setCountryRestriction(Powerform_Google_Service_YouTube_AccessPolicy $countryRestriction)
+  public function setCountryRestriction(Google_Service_YouTube_AccessPolicy $countryRestriction)
   {
     $this->countryRestriction = $countryRestriction;
   }
@@ -13262,7 +13262,7 @@ class Powerform_Google_Service_YouTube_VideoContentDetails extends Powerform_Goo
   {
     return $this->licensedContent;
   }
-  public function setRegionRestriction(Powerform_Google_Service_YouTube_VideoContentDetailsRegionRestriction $regionRestriction)
+  public function setRegionRestriction(Google_Service_YouTube_VideoContentDetailsRegionRestriction $regionRestriction)
   {
     $this->regionRestriction = $regionRestriction;
   }
@@ -13272,7 +13272,7 @@ class Powerform_Google_Service_YouTube_VideoContentDetails extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoContentDetailsRegionRestriction extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoContentDetailsRegionRestriction extends Google_Collection
 {
   protected $collection_key = 'blocked';
   protected $internal_gapi_mappings = array(
@@ -13299,12 +13299,12 @@ class Powerform_Google_Service_YouTube_VideoContentDetailsRegionRestriction exte
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoFileDetails extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoFileDetails extends Google_Collection
 {
   protected $collection_key = 'videoStreams';
   protected $internal_gapi_mappings = array(
   );
-  protected $audioStreamsType = 'Powerform_Google_Service_YouTube_VideoFileDetailsAudioStream';
+  protected $audioStreamsType = 'Google_Service_YouTube_VideoFileDetailsAudioStream';
   protected $audioStreamsDataType = 'array';
   public $bitrateBps;
   public $container;
@@ -13313,9 +13313,9 @@ class Powerform_Google_Service_YouTube_VideoFileDetails extends Powerform_Google
   public $fileName;
   public $fileSize;
   public $fileType;
-  protected $recordingLocationType = 'Powerform_Google_Service_YouTube_GeoPoint';
+  protected $recordingLocationType = 'Google_Service_YouTube_GeoPoint';
   protected $recordingLocationDataType = '';
-  protected $videoStreamsType = 'Powerform_Google_Service_YouTube_VideoFileDetailsVideoStream';
+  protected $videoStreamsType = 'Google_Service_YouTube_VideoFileDetailsVideoStream';
   protected $videoStreamsDataType = 'array';
 
 
@@ -13383,7 +13383,7 @@ class Powerform_Google_Service_YouTube_VideoFileDetails extends Powerform_Google
   {
     return $this->fileType;
   }
-  public function setRecordingLocation(Powerform_Google_Service_YouTube_GeoPoint $recordingLocation)
+  public function setRecordingLocation(Google_Service_YouTube_GeoPoint $recordingLocation)
   {
     $this->recordingLocation = $recordingLocation;
   }
@@ -13401,7 +13401,7 @@ class Powerform_Google_Service_YouTube_VideoFileDetails extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoFileDetailsAudioStream extends Powerform_Google_Model
+class Google_Service_YouTube_VideoFileDetailsAudioStream extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13445,7 +13445,7 @@ class Powerform_Google_Service_YouTube_VideoFileDetailsAudioStream extends Power
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoFileDetailsVideoStream extends Powerform_Google_Model
+class Google_Service_YouTube_VideoFileDetailsVideoStream extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13525,14 +13525,14 @@ class Powerform_Google_Service_YouTube_VideoFileDetailsVideoStream extends Power
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoGetRatingResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoGetRatingResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_VideoRating';
+  protected $itemsType = 'Google_Service_YouTube_VideoRating';
   protected $itemsDataType = 'array';
   public $kind;
   public $visitorId;
@@ -13580,21 +13580,21 @@ class Powerform_Google_Service_YouTube_VideoGetRatingResponse extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoListResponse extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoListResponse extends Google_Collection
 {
   protected $collection_key = 'items';
   protected $internal_gapi_mappings = array(
   );
   public $etag;
   public $eventId;
-  protected $itemsType = 'Powerform_Google_Service_YouTube_Video';
+  protected $itemsType = 'Google_Service_YouTube_Video';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
-  protected $pageInfoType = 'Powerform_Google_Service_YouTube_PageInfo';
+  protected $pageInfoType = 'Google_Service_YouTube_PageInfo';
   protected $pageInfoDataType = '';
   public $prevPageToken;
-  protected $tokenPaginationType = 'Powerform_Google_Service_YouTube_TokenPagination';
+  protected $tokenPaginationType = 'Google_Service_YouTube_TokenPagination';
   protected $tokenPaginationDataType = '';
   public $visitorId;
 
@@ -13639,7 +13639,7 @@ class Powerform_Google_Service_YouTube_VideoListResponse extends Powerform_Googl
   {
     return $this->nextPageToken;
   }
-  public function setPageInfo(Powerform_Google_Service_YouTube_PageInfo $pageInfo)
+  public function setPageInfo(Google_Service_YouTube_PageInfo $pageInfo)
   {
     $this->pageInfo = $pageInfo;
   }
@@ -13655,7 +13655,7 @@ class Powerform_Google_Service_YouTube_VideoListResponse extends Powerform_Googl
   {
     return $this->prevPageToken;
   }
-  public function setTokenPagination(Powerform_Google_Service_YouTube_TokenPagination $tokenPagination)
+  public function setTokenPagination(Google_Service_YouTube_TokenPagination $tokenPagination)
   {
     $this->tokenPagination = $tokenPagination;
   }
@@ -13673,7 +13673,7 @@ class Powerform_Google_Service_YouTube_VideoListResponse extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoLiveStreamingDetails extends Powerform_Google_Model
+class Google_Service_YouTube_VideoLiveStreamingDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13735,7 +13735,7 @@ class Powerform_Google_Service_YouTube_VideoLiveStreamingDetails extends Powerfo
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoLocalization extends Powerform_Google_Model
+class Google_Service_YouTube_VideoLocalization extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13761,15 +13761,15 @@ class Powerform_Google_Service_YouTube_VideoLocalization extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoMonetizationDetails extends Powerform_Google_Model
+class Google_Service_YouTube_VideoMonetizationDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $accessType = 'Powerform_Google_Service_YouTube_AccessPolicy';
+  protected $accessType = 'Google_Service_YouTube_AccessPolicy';
   protected $accessDataType = '';
 
 
-  public function setAccess(Powerform_Google_Service_YouTube_AccessPolicy $access)
+  public function setAccess(Google_Service_YouTube_AccessPolicy $access)
   {
     $this->access = $access;
   }
@@ -13779,7 +13779,7 @@ class Powerform_Google_Service_YouTube_VideoMonetizationDetails extends Powerfor
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoPlayer extends Powerform_Google_Model
+class Google_Service_YouTube_VideoPlayer extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13796,7 +13796,7 @@ class Powerform_Google_Service_YouTube_VideoPlayer extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoProcessingDetails extends Powerform_Google_Model
+class Google_Service_YouTube_VideoProcessingDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13804,7 +13804,7 @@ class Powerform_Google_Service_YouTube_VideoProcessingDetails extends Powerform_
   public $fileDetailsAvailability;
   public $processingFailureReason;
   public $processingIssuesAvailability;
-  protected $processingProgressType = 'Powerform_Google_Service_YouTube_VideoProcessingDetailsProcessingProgress';
+  protected $processingProgressType = 'Google_Service_YouTube_VideoProcessingDetailsProcessingProgress';
   protected $processingProgressDataType = '';
   public $processingStatus;
   public $tagSuggestionsAvailability;
@@ -13843,7 +13843,7 @@ class Powerform_Google_Service_YouTube_VideoProcessingDetails extends Powerform_
   {
     return $this->processingIssuesAvailability;
   }
-  public function setProcessingProgress(Powerform_Google_Service_YouTube_VideoProcessingDetailsProcessingProgress $processingProgress)
+  public function setProcessingProgress(Google_Service_YouTube_VideoProcessingDetailsProcessingProgress $processingProgress)
   {
     $this->processingProgress = $processingProgress;
   }
@@ -13877,7 +13877,7 @@ class Powerform_Google_Service_YouTube_VideoProcessingDetails extends Powerform_
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoProcessingDetailsProcessingProgress extends Powerform_Google_Model
+class Google_Service_YouTube_VideoProcessingDetailsProcessingProgress extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13912,7 +13912,7 @@ class Powerform_Google_Service_YouTube_VideoProcessingDetailsProcessingProgress 
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoProjectDetails extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoProjectDetails extends Google_Collection
 {
   protected $collection_key = 'tags';
   protected $internal_gapi_mappings = array(
@@ -13930,7 +13930,7 @@ class Powerform_Google_Service_YouTube_VideoProjectDetails extends Powerform_Goo
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoRating extends Powerform_Google_Model
+class Google_Service_YouTube_VideoRating extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -13956,17 +13956,17 @@ class Powerform_Google_Service_YouTube_VideoRating extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoRecordingDetails extends Powerform_Google_Model
+class Google_Service_YouTube_VideoRecordingDetails extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $locationType = 'Powerform_Google_Service_YouTube_GeoPoint';
+  protected $locationType = 'Google_Service_YouTube_GeoPoint';
   protected $locationDataType = '';
   public $locationDescription;
   public $recordingDate;
 
 
-  public function setLocation(Powerform_Google_Service_YouTube_GeoPoint $location)
+  public function setLocation(Google_Service_YouTube_GeoPoint $location)
   {
     $this->location = $location;
   }
@@ -13992,7 +13992,7 @@ class Powerform_Google_Service_YouTube_VideoRecordingDetails extends Powerform_G
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoSnippet extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoSnippet extends Google_Collection
 {
   protected $collection_key = 'tags';
   protected $internal_gapi_mappings = array(
@@ -14004,11 +14004,11 @@ class Powerform_Google_Service_YouTube_VideoSnippet extends Powerform_Google_Col
   public $defaultLanguage;
   public $description;
   public $liveBroadcastContent;
-  protected $localizedType = 'Powerform_Google_Service_YouTube_VideoLocalization';
+  protected $localizedType = 'Google_Service_YouTube_VideoLocalization';
   protected $localizedDataType = '';
   public $publishedAt;
   public $tags;
-  protected $thumbnailsType = 'Powerform_Google_Service_YouTube_ThumbnailDetails';
+  protected $thumbnailsType = 'Google_Service_YouTube_ThumbnailDetails';
   protected $thumbnailsDataType = '';
   public $title;
 
@@ -14069,7 +14069,7 @@ class Powerform_Google_Service_YouTube_VideoSnippet extends Powerform_Google_Col
   {
     return $this->liveBroadcastContent;
   }
-  public function setLocalized(Powerform_Google_Service_YouTube_VideoLocalization $localized)
+  public function setLocalized(Google_Service_YouTube_VideoLocalization $localized)
   {
     $this->localized = $localized;
   }
@@ -14093,7 +14093,7 @@ class Powerform_Google_Service_YouTube_VideoSnippet extends Powerform_Google_Col
   {
     return $this->tags;
   }
-  public function setThumbnails(Powerform_Google_Service_YouTube_ThumbnailDetails $thumbnails)
+  public function setThumbnails(Google_Service_YouTube_ThumbnailDetails $thumbnails)
   {
     $this->thumbnails = $thumbnails;
   }
@@ -14111,7 +14111,7 @@ class Powerform_Google_Service_YouTube_VideoSnippet extends Powerform_Google_Col
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoStatistics extends Powerform_Google_Model
+class Google_Service_YouTube_VideoStatistics extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -14164,7 +14164,7 @@ class Powerform_Google_Service_YouTube_VideoStatistics extends Powerform_Google_
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoStatus extends Powerform_Google_Model
+class Google_Service_YouTube_VideoStatus extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -14244,7 +14244,7 @@ class Powerform_Google_Service_YouTube_VideoStatus extends Powerform_Google_Mode
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoSuggestions extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoSuggestions extends Google_Collection
 {
   protected $collection_key = 'tagSuggestions';
   protected $internal_gapi_mappings = array(
@@ -14253,7 +14253,7 @@ class Powerform_Google_Service_YouTube_VideoSuggestions extends Powerform_Google
   public $processingErrors;
   public $processingHints;
   public $processingWarnings;
-  protected $tagSuggestionsType = 'Powerform_Google_Service_YouTube_VideoSuggestionsTagSuggestion';
+  protected $tagSuggestionsType = 'Google_Service_YouTube_VideoSuggestionsTagSuggestion';
   protected $tagSuggestionsDataType = 'array';
 
 
@@ -14299,7 +14299,7 @@ class Powerform_Google_Service_YouTube_VideoSuggestions extends Powerform_Google
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoSuggestionsTagSuggestion extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoSuggestionsTagSuggestion extends Google_Collection
 {
   protected $collection_key = 'categoryRestricts';
   protected $internal_gapi_mappings = array(
@@ -14326,7 +14326,7 @@ class Powerform_Google_Service_YouTube_VideoSuggestionsTagSuggestion extends Pow
   }
 }
 
-class Powerform_Google_Service_YouTube_VideoTopicDetails extends Powerform_Google_Collection
+class Google_Service_YouTube_VideoTopicDetails extends Google_Collection
 {
   protected $collection_key = 'topicIds';
   protected $internal_gapi_mappings = array(
@@ -14353,7 +14353,7 @@ class Powerform_Google_Service_YouTube_VideoTopicDetails extends Powerform_Googl
   }
 }
 
-class Powerform_Google_Service_YouTube_WatchSettings extends Powerform_Google_Model
+class Google_Service_YouTube_WatchSettings extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
