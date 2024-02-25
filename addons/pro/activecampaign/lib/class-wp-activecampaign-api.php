@@ -108,7 +108,7 @@ class Powerform_Addon_Activecampaign_Wp_Api {
 	 * @throws Powerform_Addon_Activecampaign_Wp_Api_Exception
 	 * @throws Powerform_Addon_Activecampaign_Wp_Api_Not_Found_Exception
 	 */
-	private function _request( $verb = 'GET', $path, $args = array() ) {
+	private function _request( $path, $verb = 'GET', $args = array() ) {
 		// Adding extra user agent for wp remote request
 		add_filter( 'http_headers_useragent', array( $this, 'filter_user_agent' ) );
 

@@ -1,5 +1,5 @@
 /**
- * JS used for UI of WPMUDEV plugins.
+ * JS used for UI of PSOURCE plugins.
  */
 
 /*
@@ -204,7 +204,7 @@ jQuery(function() {
 
 /*
  * Define Dashboard namespace with all the functions.
- * WDP = WPMUDEV Dashboard Plugin
+ * WDP = PSOURCE Dashboard Plugin
  */
 window.WDP = window.WDP || {};
 
@@ -622,7 +622,7 @@ WDP.wpmuVerticalTabs = function(el) {
 };
 
 /**
- * Update a normal select list to a fancy WPMU DEV select list!
+ * Update a normal select list to a fancy WMS N@W select list!
  *
  * @since  4.0.0
  * @param  object el The select element.

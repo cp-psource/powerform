@@ -5,7 +5,7 @@
  * Version: 1.0
  * Plugin URI:  https://premium.wpmudev.org/
  * Description: Integrate Powerform Custom Forms with Zapier to execute various action you like
- * Author: WPMU DEV
+ * Author: WMS N@W
  * Author URI: http://premium.wpmudev.org
  */
 

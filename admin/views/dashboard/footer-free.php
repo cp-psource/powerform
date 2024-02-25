@@ -54,7 +54,7 @@
 
 <div class="sui-cross-sell-bottom">
 
-	<h3><?php esc_html_e( 'WPMU DEV - Your WordPress Toolkit', Powerform::DOMAIN ); ?></h3>
+	<h3><?php esc_html_e( 'WMS N@W - Your WordPress Toolkit', Powerform::DOMAIN ); ?></h3>
 
 	<p><?php esc_html_e( 'Pretty much everything you need for developing and managing WordPress based websites, and then some.', Powerform::DOMAIN ); ?></p>
 

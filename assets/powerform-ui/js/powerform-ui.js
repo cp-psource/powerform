@@ -1,6 +1,6 @@
 /*!
- * WPMU DEV Powerform UI
- * Copyright 2019 Incsub (https://incsub.com)
+ * WMS N@W Powerform UI
+ * Copyright 2019 WMS N@W (https://n3rds.work)
  * Licensed under GPL v3 (http://www.gnu.org/licenses/gpl-3.0.html)
  */
 (function($) {
@@ -4376,7 +4376,7 @@
 
                         if (self.options.get('debug') && window.console && console.error) {
                             // Check to make sure that the response included a `results` key.
-                            if (!results || !results.results || !Array.isArray(results.results)) {
+                            if (!results || !results.results || !$.isArray(results.results)) {
                                 console.error(
                                     'Select2: The AJAX results did not return an array in the ' +
                                     '`results` key of the response.'
@@ -4434,7 +4434,7 @@
 
                 decorated.call(this, $element, options);
 
-                if (Array.isArray(tags)) {
+                if ($.isArray(tags)) {
                     for (var t = 0; t < tags.length; t++) {
                         var tag = tags[t];
                         var item = this._normalizeItem(tag);
@@ -5720,7 +5720,7 @@
                     }
                 }
 
-                if (Array.isArray(options.language)) {
+                if ($.isArray(options.language)) {
                     var languages = new Translation();
                     options.language.push('en');
 
@@ -6534,7 +6534,7 @@
 
                 var newVal = args[0];
 
-                if (Array.isArray(newVal)) {
+                if ($.isArray(newVal)) {
                     newVal = $.map(newVal, function(obj) {
                         return obj.toString();
                     });
@@ -6796,7 +6796,7 @@
                 this.initSelection.call(null, this.$element, function(data) {
                     self._isInitialized = true;
 
-                    if (!Array.isArray(data)) {
+                    if (!$.isArray(data)) {
                         data = [data];
                     }
 

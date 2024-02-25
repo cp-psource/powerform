@@ -139,7 +139,7 @@ class Powerform_Addon_Aweber_Wp_Api {
 	 * @throws Powerform_Addon_Aweber_Wp_Api_Exception
 	 * @throws Powerform_Addon_Aweber_Wp_Api_Not_Found_Exception
 	 */
-	private function _request( $verb = 'GET', $url, $args = array(), $headers = array() ) {
+	private function _request( $url, $verb = 'GET', $args = array(), $headers = array() ) {
 		// Adding extra user agent for wp remote request
 		add_filter( 'http_headers_useragent', array( $this, 'filter_user_agent' ) );
 

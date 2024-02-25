@@ -12,6 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Powerform_Custom_Form_Admin extends Powerform_Admin_Module {
 
 	/**
+     * @var Powerform_Custom_Form
+     */
+    public $module;
+
+	/**
 	 * Init module admin
 	 *
 	 * @since 1.0

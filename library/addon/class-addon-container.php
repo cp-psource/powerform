@@ -21,7 +21,7 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	 *
 	 * @return bool
 	 */
-	public function offsetExists( $offset ) {
+	public function offsetExists( $offset ): bool {
 		return isset( $this->addons[ $offset ] );
 	}
 
@@ -30,9 +30,9 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	 *
 	 * @param mixed $offset
 	 *
-	 * @return Powerform_Addon_Abstract|mixed|null
+	 * @return mixed
 	 */
-	public function offsetGet( $offset ) {
+	public function offsetGet( $offset ): mixed {
 		if ( isset( $this->addons[ $offset ] ) ) {
 			return $this->addons[ $offset ];
 		}
@@ -46,15 +46,21 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	 *
 	 * @param mixed $offset
 	 * @param mixed $value
+	 *
+	 * @return void
 	 */
-	public function offsetSet( $offset, $value ) {
+	public function offsetSet( $offset, $value ): void {
 		$this->addons[ $offset ] = $value;
 	}
 
 	/**
+	 * @since 1.1
+	 *
 	 * @param mixed $offset
+	 *
+	 * @return void
 	 */
-	public function offsetUnset( $offset ) {
+	public function offsetUnset( $offset ): void {
 		unset( $this->addons[ $offset ] );
 	}
 
@@ -68,7 +74,7 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	 * The return value is cast to an integer.
 	 * @since 1.1
 	 */
-	public function count() {
+	public function count(): int {
 		return count( $this->addons );
 	}
 
@@ -130,7 +136,7 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	 * @return mixed Can return any type.
 	 * @since 1.1
 	 */
-	public function current() {
+	public function current(): mixed {
 		return current( $this->addons );
 	}
 
@@ -141,7 +147,7 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	 * @return void Any returned value is ignored.
 	 * @since 1.1
 	 */
-	public function next() {
+	public function next(): void {
 		next( $this->addons );
 	}
 
@@ -152,19 +158,18 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	 * @return mixed scalar on success, or null on failure.
 	 * @since 1.1
 	 */
-	public function key() {
+	public function key(): mixed {
 		return key( $this->addons );
 	}
 
 	/**
-	 * Checks if current position is valid
+	 * Checks if the current position is valid
 	 *
 	 * @link  http://php.net/manual/en/iterator.valid.php
-	 * @return boolean The return value will be casted to boolean and then evaluated.
-	 * Returns true on success or false on failure.
+	 * @return bool Returns true if the current position is valid, false otherwise.
 	 * @since 1.1
 	 */
-	public function valid() {
+	public function valid(): bool {
 		return key( $this->addons ) !== null;
 	}
 
@@ -175,7 +180,7 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	 * @return void Any returned value is ignored.
 	 * @since 1.1
 	 */
-	public function rewind() {
+	public function rewind(): void {
 		reset( $this->addons );
 	}
 }

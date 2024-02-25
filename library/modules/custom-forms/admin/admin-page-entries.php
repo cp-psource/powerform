@@ -575,8 +575,8 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 		<select name="<?php echo ( 'top' === $position ) ? 'entries-action' : 'entries-action-bottom'; ?>"
 		        class="sui-select-sm sui-select-inline"
 		        style="min-width: 200px;">
-			<option value=""><?php esc_html_e( "Bulk Actions", Powerform::DOMAIN ); ?></option>
-			<option value="delete-all"><?php esc_html_e( "Delete Entries", Powerform::DOMAIN ); ?></option>
+			<option value=""><?php esc_html_e( "Massenaktionen", Powerform::DOMAIN ); ?></option>
+			<option value="delete-all"><?php esc_html_e( "Einträge löschen", Powerform::DOMAIN ); ?></option>
 		</select>
 
 		<button class="sui-button powerform-entries-apply-bulk-actions"><?php esc_html_e( "Anwenden", Powerform::DOMAIN ); ?></button>
@@ -620,7 +620,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 			array(
 				// read form model's property
 				'property' => 'time_created', // must be on entries
-				'label'    => __( 'Date Submitted', Powerform::DOMAIN ),
+				'label'    => __( 'Übermittelt', Powerform::DOMAIN ),
 				'type'     => 'entry_time_created',
 			),
 		);
@@ -840,12 +840,12 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 				<label class="sui-checkbox">
 					<input type="checkbox" id="wpf-cform-check_all">
 					<span></span>
-					<span class="sui-screen-reader-text"><?php esc_html_e( 'Select all entries', Powerform::DOMAIN ); ?></span>
+					<span class="sui-screen-reader-text"><?php esc_html_e( 'Wähle alle Einträge aus', Powerform::DOMAIN ); ?></span>
 				</label>
 				<?php esc_html_e( 'ID', Powerform::DOMAIN ); ?>
 			</th>
 
-			<th><?php esc_html_e( 'Date Submitted', Powerform::DOMAIN ); ?></th>
+			<th><?php esc_html_e( 'Übermittelt', Powerform::DOMAIN ); ?></th>
 
 			<?php
 			foreach ( $fields_headers as $header ) { ?>

@@ -3,7 +3,7 @@
 
 ## Modification
 
-Files `wdev-ui.css` and `wdev-ui.js` contain the new WPMUDEV-style UI definitions and can be updated if needed.
+Files `wdev-ui.css` and `wdev-ui.js` contain the new PSOURCE-style UI definitions and can be updated if needed.
 
 **Tip:** Those files are loaded after the notice-files below to ensure that notice definitions can be overwritten by wdev-ui files.
 

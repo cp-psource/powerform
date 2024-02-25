@@ -101,6 +101,16 @@ abstract class Powerform_Field {
 	 */
 	public $icon = 'sui-icon-element-radio';
 
+    /**
+     * @var mixed
+     */
+    protected $autofill_settings;
+
+    /**
+     * @var mixed
+     */
+    protected $markup;
+
 	public function __construct() {
 		if ( is_admin() ) {
 			$this->settings          = apply_filters( "powerform_field_{$this->slug}_general_settings", array() );

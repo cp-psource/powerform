@@ -38,24 +38,24 @@ abstract class Powerform_Admin_Page {
 	 */
 	protected $content_boxes = array();
 
-	/**
-	 * @since 1.0
-	 *
-	 * @param string $page_slug  Page slug.
-	 * @param string $folder
-	 * @param string $page_title Page title.
-	 * @param string $menu_title Menu title.
-	 * @param bool   $parent     Parent or not.
-	 * @param bool   $render     Render the page.
-	 */
-	public function __construct(
-		$page_slug,
-		$folder = '',
-		$page_title,
-		$menu_title,
-		$parent = false,
-		$render = true
-	) {
+/**
+ * @since 1.0
+ *
+ * @param string $page_slug  Page slug.    
+ * @param string $page_title Page title.
+ * @param string $menu_title Menu title.
+ * @param string $folder 
+ * @param bool   $parent     Parent or not.
+ * @param bool   $render     Render the page.
+ */
+public function __construct(
+    $page_slug,
+	$folder = '',
+    $page_title = null,
+    $menu_title = null,
+    $parent = false,
+    $render = true,
+) {
 		$this->page_slug = $page_slug;
 		$this->folder    = $folder;
 
@@ -452,7 +452,7 @@ abstract class Powerform_Admin_Page {
 	}
 
 	/**
-	 * Generates the admin body class required for WPMU DEV Shared UI
+	 * Generates the admin body class required for WMS N@W Shared UI
 	 *
 	 * @since 1.0.2
 	 * @return string $sui_body_class

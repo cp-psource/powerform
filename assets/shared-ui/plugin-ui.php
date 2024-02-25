@@ -1,8 +1,8 @@
 <?php
 /**
- * Provides PHP support for simple use of the WPMUDEV plugin UI.
+ * Provides PHP support for simple use of the PSOURCE plugin UI.
  *
- * @package WPMUDEV_UI
+ * @package PSOURCE_UI
  */
 
 if ( ! class_exists( 'WDEV_Plugin_Ui' ) ) {
@@ -95,7 +95,7 @@ if ( ! class_exists( 'WDEV_Plugin_Ui' ) ) {
 			 * Beta-testers will not have cached scripts!
 			 * Just in case we have to update the plugin prior to launch.
 			 */
-			if ( defined( 'WPMUDEV_BETATEST' ) && WPMUDEV_BETATEST ) {
+			if ( defined( 'PSOURCE_BETATEST' ) && PSOURCE_BETATEST ) {
 				$script_version = time();
 			} else {
 				$script_version = self::VERSION;
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WDEV_Plugin_Ui' ) ) {
 			 * Beta-testers will not have cached scripts!
 			 * Just in case we have to update the plugin prior to launch.
 			 */
-			if ( defined( 'WPMUDEV_BETATEST' ) && WPMUDEV_BETATEST ) {
+			if ( defined( 'PSOURCE_BETATEST' ) && PSOURCE_BETATEST ) {
 				$script_version = time();
 			} else {
 				$script_version = self::VERSION;

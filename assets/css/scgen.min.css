@@ -1611,7 +1611,7 @@
     max-height: 100%;
     display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 90;
     top: 0;
     right: 0;
     bottom: 0;
@@ -1695,7 +1695,7 @@
         max-height: calc(100vh - 132px)
     }
     .wpmudev-scgen-ui .wpmudev-modal {
-        z-index: 9999;
+        z-index: 90;
         left: 36px
     }
 }

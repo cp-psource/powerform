@@ -5,7 +5,7 @@
  * Version: 1.0
  * Plugin URI:  https://premium.wpmudev.org/
  * Description: Integrate Powerform Custom Forms with Slack to get notified in real time.
- * Author: WPMU DEV
+ * Author: WMS N@W
  * Author URI: http://premium.wpmudev.org
  */
 

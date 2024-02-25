@@ -14,7 +14,7 @@ class Powerform_Shortcode_Generator {
 	 * @since 1.0
 	 */
 	public function __construct() {
-		add_filter( 'media_buttons_context', array( $this, 'attach_button' ) );
+		add_filter( 'media_buttons', array( $this, 'attach_button' ) );
 		add_action( 'admin_footer', array( $this, 'enqueue_js_scripts' ) );
 		if ( function_exists( 'hustle_activated' ) ) {
 			add_action( 'admin_footer', array( $this, 'enqueue_preview_scripts_for_hustle' ) );
