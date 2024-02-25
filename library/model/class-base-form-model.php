@@ -52,6 +52,13 @@ abstract class Powerform_Base_Form_Model {
 	 */
 	protected $post_type;
 
+	/**
+     * Status of the form
+     *
+     * @string
+     */
+    public $status;
+
 	const STATUS_PUBLISH = 'publish';
 	const STATUS_DRAFT   = 'draft';
 

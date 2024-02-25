@@ -76,6 +76,10 @@ Perfekt für Termin- und Hotelbuchungen – mit der Funktion „Datumsauswahllim
 
 == Changelog ==
 
+= 1.2.3 =
+
+Fix: Creation of dynamic property
+
 = 1.2.2 =
 
 CP Release
