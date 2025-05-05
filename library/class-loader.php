@@ -83,7 +83,7 @@ class Powerform_Loader {
 	 *
 	 * @return mixed
 	 */
-	private function init( $name ) {
+	public function init( $name ) {
 		$class = 'Powerform_' . $this->normalize( $name );
 
 		if ( class_exists( $class ) ) {

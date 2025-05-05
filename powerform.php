@@ -108,17 +108,21 @@ if ( ! class_exists( 'Powerform' ) ) {
 		 * @since 1.0
 		 */
 		public function __construct() {
-			add_action( 'admin_init', array( $this, 'initialize_admin' ) );
-
+			add_action( 'admin_init', [ $this, 'initialize_admin' ] );
+		
+			// WICHTIG: Klassen direkt laden, aber NUR wenn powerform_plugin_dir() funktioniert
 			$this->includes();
-			//$this->include_vendors();
-			$this->init();
-			$this->load_textdomain();
-
+		
+			// Diese beiden laufen sauber erst beim 'init'-Hook (wie WordPress es erwartet)
+			add_action( 'init', [ $this, 'init' ] );
+			add_action( 'init', [ $this, 'load_textdomain' ] );
+		
+			// Optional: Addons erst initialisieren, wenn alles andere safe ist
 			if ( self::is_addons_feature_enabled() ) {
-				$this->init_addons();
+				add_action( 'init', [ $this, 'init_addons' ] );
 			}
 		}
+		
 
 		/**
 		 * Called on plugin activation
@@ -339,7 +343,7 @@ if ( ! class_exists( 'Powerform' ) ) {
 		 *
 		 * @since 1.0
 		 */
-		private function init() {
+		public function init() {
 			// Initialize plugin core
 			$this->powerform = Powerform_Core::get_instance();
 
@@ -355,8 +359,8 @@ if ( ! class_exists( 'Powerform' ) ) {
 		 *
 		 * @since 1.0
 		 */
-		private function load_textdomain() {
-			load_plugin_textdomain( 'powerform', false, 'powerform/languages' );
+		public function load_textdomain() {
+			load_plugin_textdomain( 'powerform', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 		}
 
 		/**
