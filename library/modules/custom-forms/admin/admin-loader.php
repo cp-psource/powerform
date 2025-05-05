@@ -493,10 +493,22 @@ class Powerform_Custom_Form_Admin extends Powerform_Admin_Module {
 
 				// If template, load from file
 				if ( $template ) {
-					$settings = $this->get_default_settings( $name, $template->settings );
-
+					// settings holen
+					$reflection = new ReflectionClass( $template );
+				
+					$settings_prop = $reflection->getProperty( 'settings' );
+					$settings_prop->setAccessible( true );
+					$template_settings = $settings_prop->getValue( $template );
+				
+					$settings = $this->get_default_settings( $name, $template_settings );
+				
+					// fields holen
+					$fields_prop = $reflection->getProperty( 'fields' );
+					$fields_prop->setAccessible( true );
+					$template_fields = $fields_prop->getValue( $template );
+				
 					// Setup template fields
-					foreach ( $template->fields as $row ) {
+					foreach ( $template_fields as $row ) {
 						foreach ( $row['fields'] as $f ) {
 							$field          = new Powerform_Form_Field_Model();
 							$field->form_id = $row['wrapper_id'];
@@ -508,7 +520,7 @@ class Powerform_Custom_Form_Admin extends Powerform_Admin_Module {
 					}
 				} else {
 					$settings = $this->get_default_settings( $name, array() );
-				}
+				}								
 
 				$model->name          = $name;
 				$model->notifications = $notifications;
