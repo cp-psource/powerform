@@ -2,15 +2,15 @@
 /**
  * Plugin Name: Powerform
  * Version: 1.2.2
- * Plugin URI:  https://n3rds.work/piestingtal_source/powerform-plugin/
+ * Plugin URI:  https://cp-psource.github.io/powerform/
  * Description: Erfasse Benutzerinformationen (so detailliert wie Sie möchten), beteilige Benutzer an interaktiven Umfragen, die Echtzeitergebnisse und Grafiken, Quizfragen im Facebook-Stil und Wissenstests ohne falsche Antwort anzeigen.
- * Author: WMS N@W
- * Author URI: https://n3rds.work
+ * Author: PSOURCE
+ * Author URI: https://github.com/cp-psource
  * Text Domain: powerform
  * Domain Path: /languages/
  */
 /*
-Copyright 2009-2021 WMS N@W (https://n3rds.work)
+Copyright 2009-2025 PSOURCE (https://github.com/cp-psource)
 Author – DerN3rd 
 
 This program is free software; you can redistribute it and/or modify

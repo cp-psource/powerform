@@ -2,7 +2,7 @@
 Plugin Name: Powerform - Contact Form, Payment Form & Custom Form Builder
 Version: 1.2.1
 Author: WMS N@W
-Author URI: https://n3rds.work/
+Author URI: https://github.com/cp-psource
 Contributors: PSOURCE, WebFactory
 Tags: forms, contact form, wordpress form plugin, payment form, custom form, form builder, paypal form wordpress, form maker, quiz, quiz builder, order form, stripe payments, paypal payments, stripe form, paypal form
 Requires at least: 4.6
