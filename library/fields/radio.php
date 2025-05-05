@@ -46,6 +46,8 @@ class Powerform_Radio extends Powerform_Field {
 	 */
 	public $icon = 'sui-icon-element-radio';
 
+	public $is_calculable = true;
+
 	/**
 	 * Powerform_SingleValue constructor.
 	 *
@@ -67,14 +69,17 @@ class Powerform_Radio extends Powerform_Field {
 		return array(
 			'value_type'  => 'radio',
 			'field_label' => __( 'Radio', Powerform::DOMAIN ),
+			'layout'      => 'vertical',
 			'options'     => array(
 				array(
 					'label' => __( 'Option 1', Powerform::DOMAIN ),
-					'value' => '',
+					'value' => 'one',
+					'key'   => powerform_unique_key(),
 				),
 				array(
 					'label' => __( 'Option 2', Powerform::DOMAIN ),
-					'value' => '',
+					'value' => 'two',
+					'key'   => powerform_unique_key(),
 				),
 			),
 		);
@@ -112,66 +117,87 @@ class Powerform_Radio extends Powerform_Field {
 	 * @return mixed
 	 */
 	public function markup( $field, $settings = array() ) {
+
 		$this->field = $field;
+
 		$i           = 1;
 		$html        = '';
 		$id          = self::get_property( 'element_id', $field );
 		$name        = $id;
-		$id          = $id . '-field';
+		$id          = 'powerform-field-' . $id;
 		$required    = self::get_property( 'required', $field, false );
+		$ariareq     = 'false';
 		$options     = self::get_property( 'options', $field, array() );
-		$value_type  = trim( $field['value_type'] ? $field['value_type'] : "multiselect" );
+		$value_type  = isset( $field['value_type'] ) ? trim( $field['value_type'] ) : 'multiselect';
 		$post_value  = self::get_post_data( $name, false );
-		$description = self::get_property( 'description', $field, '' );
-		$label       = self::get_property( 'field_label', $field, '' );
+		$description = esc_html( self::get_property( 'description', $field, '' ) );
+		$label       = esc_html( self::get_property( 'field_label', $field, '' ) );
+		$class      = ( 'horizontal' === self::get_property( 'layout', $field, '' ) ) ? 'powerform-radio powerform-radio-inline' : 'powerform-radio';
 		$design      = $this->get_form_style( $settings );
+		$calc_enabled = self::get_property( 'calculations', $field, false, 'bool' );
 
 		$uniq_id = uniqid();
 
+		if ( (bool) $required ) {
+			$ariareq = 'true';
+		}
+
+		$html .= '<fieldset class="powerform-field" role="radiogroup">';
+
 		if ( $label ) {
-
 			if ( $required ) {
-
-				$html .= '<div class="powerform-field--label">';
-				$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s %s</label>', $id, $label, powerform_get_required_icon() );
-				$html .= '</div>';
-
+				$html .= sprintf( '<label class="powerform-label">%s %s</label>', $label, powerform_get_required_icon() );
 			} else {
-
-				$html .= '<div class="powerform-field--label">';
-				$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s</label>', $id, $label );
-				$html .= '</div>';
-
+				$html .= sprintf( '<label class="powerform-label">%s</label>', $label );
 			}
-
 		}
 
 		foreach ( $options as $option ) {
+			$input_id          = $id . '-' . $i . '-' . $uniq_id;
+			$value             = ( $option['value'] || is_numeric( $option['value'] ) ? esc_html( $option['value'] ) : esc_html( $option['label'] ) );
+			$option_default    = isset( $option['default'] ) ? filter_var( $option['default'], FILTER_VALIDATE_BOOLEAN ) : false;
+			$selected          = ( $value === $post_value || $option_default ) ? 'checked="checked"' : '';
+			$calculation_value = $calc_enabled && isset( $option['calculation'] ) ? $option['calculation'] : 0.0;
 
-			$input_id       = $id . '-' . $i . '-' . $uniq_id;
-			$value          = $option['value'] ? $option['value'] : $option['label'];
-			$option_default = isset( $option['default'] ) ? filter_var( $option['default'], FILTER_VALIDATE_BOOLEAN ) : false;
-			$selected       = ( $value === $post_value || $option_default ) ? 'checked="checked"' : '';
+			// Check if Pre-fill parameter used
+			if ( $this->has_prefill( $field ) ) {
+				// We have pre-fill parameter, use its value or $value
+				$prefill = $this->get_prefill( $field, false );
 
-			if ( trim( $this->get_form_style( $settings ) ) === 'clean' ) {
-
-				$html .= sprintf( '<label class="powerform-radio"><input id="%s" name="%s" type="radio" value="%s" %s> %s</label>', $input_id, $name, $value, $selected, $option['label'] );
-
-			} else {
-
-				$html .= '<div class="powerform-radio">';
-				$html .= sprintf( '<input id="%s" name="%s" type="radio" value="%s" class="powerform-radio--input" %s>', $input_id, $name, $value, $selected );
-				$html .= sprintf( '<label for="%s" class="powerform-radio--design" aria-hidden="true"></label>', $input_id );
-				$html .= sprintf( '<label for="%s" class="powerform-radio--label">%s</label>', $input_id, $option['label'] );
-				$html .= '</div>';
-
+				if ( $prefill === $value ) {
+					$option_default = true;
+				}
 			}
+
+			$selected = $option_default ? 'checked="checked"' : '';
+
+			$html .= '<label for="' . $input_id . '" class="' . $class . '">';
+
+				$html .= sprintf(
+					'<input type="radio" name="%s" value="%s" id="%s" data-calculation="%s" %s />',
+					$name,
+					$value,
+					$input_id,
+					$calculation_value,
+					$selected
+				);
+
+				$html .= '<span aria-hidden="true"></span>';
+
+				$html .= sprintf(
+					'<span>%s</span>',
+					esc_html( $option['label'] )
+				);
+
+			$html .= '</label>';
 
 			$i ++;
 
 		}
 
-		$html .= self::get_description( $description );
+			$html .= self::get_description( $description );
+
+		$html .= '</fieldset>';
 
 		return apply_filters( 'powerform_field_single_markup', $html, $id, $required, $options, $value_type );
 	}
@@ -185,13 +211,14 @@ class Powerform_Radio extends Powerform_Field {
 	public function get_validation_rules() {
 		$rules       = '';
 		$field       = $this->field;
+		$id          = self::get_property( 'element_id', $field );
 		$is_required = $this->is_required( $field );
 
 		if ( $is_required ) {
 			$rules .= '"' . $this->get_id( $field ) . '": "required",';
 		}
 
-		return $rules;
+		return apply_filters( 'powerform_field_single_validation_rules', $rules, $id, $field );
 	}
 
 	/**
@@ -206,16 +233,15 @@ class Powerform_Radio extends Powerform_Field {
 		$id          = self::get_property( 'element_id', $field );
 		$is_required = $this->is_required( $field );
 
-
 		if ( $is_required ) {
 			$required_message = self::get_property( 'required_message', $field, '' );
 			$required_message = apply_filters(
 				'powerform_single_field_required_validation_message',
-				( ! empty( $required_message ) ? $required_message : __( 'Dieses Feld wird benötigt. Bitte wähle einen Wert', Powerform::DOMAIN ) ),
+				( ! empty( $required_message ) ? $required_message : __( 'This field is required. Please select a value.', Powerform::DOMAIN ) ),
 				$id,
 				$field
 			);
-			$messages         .= '"' . $this->get_id( $field ) . '": "' . $required_message . '",' . "\n";
+			$messages        .= '"' . $this->get_id( $field ) . '": "' . powerform_addcslashes( $required_message ) . '",' . "\n";
 		}
 
 		return $messages;
@@ -228,15 +254,16 @@ class Powerform_Radio extends Powerform_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
+	 * @param array        $post_data
 	 */
-	public function validate( $field, $data ) {
+	public function validate( $field, $data, $post_data = array() ) {
 		if ( $this->is_required( $field ) ) {
 			$id               = self::get_property( 'element_id', $field );
 			$required_message = self::get_property( 'required_message', $field, '' );
-			if ( empty( $data ) ) {
+			if ( empty( $data ) && '0' !== $data ) {
 				$this->validation_message[ $id ] = apply_filters(
 					'powerform_single_field_required_validation_message',
-					( ! empty( $required_message ) ? $required_message : __( 'Dieses Feld wird benötigt. Bitte wähle einen Wert', Powerform::DOMAIN ) ),
+					( ! empty( $required_message ) ? $required_message : __( 'This field is required. Please select a value.', Powerform::DOMAIN ) ),
 					$id,
 					$field
 				);
@@ -260,5 +287,69 @@ class Powerform_Radio extends Powerform_Field {
 		$data = powerform_sanitize_field( $data );
 
 		return apply_filters( 'powerform_field_single_sanitize', $data, $field, $original_data );
+	}
+
+	/**
+	 * Internal Calculable value
+	 *
+	 * @since 1.7
+	 *
+	 *
+	 * @param $submitted_data
+	 * @param $field_settings
+	 *
+	 * @return float|string
+	 */
+	private function calculable_value( $submitted_data, $field_settings ) {
+		$enabled = self::get_property( 'calculations', $field_settings, false, 'bool' );
+		if ( ! $enabled ) {
+			return self::FIELD_NOT_CALCULABLE;
+		}
+
+		$sums = 0.0;
+
+		$options = self::get_property( 'options', $field_settings, array() );
+
+		// process as array
+		$submitted_data = array( $submitted_data );
+
+		if ( ! is_array( $submitted_data ) ) {
+			return $sums;
+		}
+
+		foreach ( $options as $option ) {
+			$option_value      = isset( $option['value'] ) ? $option['value'] : ( isset( $option['label'] ) ? $option['label'] : '' );
+			$calculation_value = isset( $option['calculation'] ) ? $option['calculation'] : 0.0;
+
+			// strict array compare disabled to allow non-coercion type compare
+			if ( in_array( $option_value, $submitted_data ) ) {// phpcs:ignore
+				// this one is selected
+				$sums += floatval( $calculation_value );
+			}
+		}
+
+		return floatval( $sums );
+	}
+
+	/**
+	 * @since 1.7
+	 * @inheritdoc
+	 */
+	public function get_calculable_value( $submitted_data, $field_settings ) {
+		$calculable_value = $this->calculable_value( $submitted_data, $field_settings );
+		/**
+		 * Filter formula being used on calculable value on radio field
+		 *
+		 * @since 1.7
+		 *
+		 * @param float $calculable_value
+		 * @param array $submitted_data
+		 * @param array $field_settings
+		 *
+		 * @return string|int|float
+		 */
+		$calculable_value = apply_filters( 'powerform_field_radio_calculable_value', $calculable_value, $submitted_data, $field_settings );
+
+		return $calculable_value;
 	}
 }

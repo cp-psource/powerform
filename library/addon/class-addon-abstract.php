@@ -93,6 +93,22 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 	protected $_image_x2;
 
 	/**
+	 * Banner image url that will be displayed on integration list
+	 *
+	 * @since  1.7.1
+	 * @var string
+	 */
+	protected $_banner;
+
+	/**
+	 * Retina banner image url that will be displayed on integration list
+	 *
+	 * @since  1.7.1
+	 * @var string
+	 */
+	protected $_banner_x2;
+
+	/**
 	 * icon url that will be displayed on addon list
 	 *
 	 * @since  1.1
@@ -115,6 +131,22 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 	 * @var string
 	 */
 	protected $_description = '';
+
+	/**
+	 * Addon promotion description
+	 *
+	 * @since  1.7.1
+	 * @var string
+	 */
+	protected $_promotion = '';
+
+	/**
+	 * Addon documentation link
+	 *
+	 * @since  1.7.1
+	 * @var string
+	 */
+	protected $_documentation = '';
 
 	/**
 	 * Classname of form settings in string
@@ -198,6 +230,14 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 	 * @var bool
 	 */
 	private $_is_global_hooked = false;
+
+	/**
+	 * Add-on order position
+	 *
+	 * @since 1.7.1
+	 * @var int
+	 */
+	protected $_position = 1;
 
 
 	/*********************************** Errors Messages ********************************/
@@ -388,6 +428,26 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 	}
 
 	/**
+	 * Get banner image
+	 *
+	 * @since  1.7.1
+	 * @return string
+	 */
+	public function get_banner() {
+		return $this->_banner;
+	}
+
+	/**
+	 * Get retina banner image
+	 *
+	 * @since  1.7.1
+	 * @return string
+	 */
+	public function get_banner_x2() {
+		return $this->_banner_x2;
+	}
+
+	/**
 	 * Get icon
 	 *
 	 * @since  1.1
@@ -415,6 +475,36 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 	 */
 	public function get_description() {
 		return $this->_description;
+	}
+
+	/**
+	 * Get promotion
+	 *
+	 * @since  1.7.1
+	 * @return string
+	 */
+	public function get_promotion() {
+		return __( $this->_promotion, Powerform::DOMAIN );
+	}
+
+	/**
+	 * Get documentation link
+	 *
+	 * @since  1.7.1
+	 * @return string
+	 */
+	public function get_documentation() {
+		return $this->_documentation;
+	}
+
+	/**
+	 * Get add-on position
+	 *
+	 * @since 1.7.1
+	 * @return int
+	 */
+	public function get_position() {
+		return $this->_position;
 	}
 
 	/**
@@ -479,10 +569,14 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 			'icon_x2'                => $this->get_icon_x2(),
 			'image'                  => $this->get_image(),
 			'image_x2'               => $this->get_image_x2(),
+			'banner'                 => $this->get_banner(),
+			'banner_x2'              => $this->get_banner_x2(),
 			'short_title'            => $this->get_short_title(),
 			'title'                  => $this->get_title(),
 			'url'                    => $this->get_url(),
 			'description'            => $this->get_description(),
+			'promotion'              => $this->get_promotion(),
+			'documentation'          => $this->get_documentation(),
 			'version'                => $this->get_version(),
 			'min_powerform_version' => $this->get_min_powerform_version(),
 			'setting_options_name'   => $this->get_settings_options_name(),
@@ -490,6 +584,7 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 			'is_activable'           => $this->is_activable(),
 			'is_settings_available'  => $this->is_settings_available(),
 			'is_connected'           => $this->is_connected(),
+			'position'               => $this->get_position(),
 		);
 
 		$addon_slug = $this->get_slug();
@@ -606,7 +701,7 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 
 		$is_powerform_version_supported = version_compare( POWERFORM_VERSION, $this->_min_powerform_version, '>=' );
 		if ( ! $is_powerform_version_supported ) {
-			powerform_addon_maybe_log( __METHOD__, $this->get_slug(), $this->_min_powerform_version, POWERFORM_VERSION, 'Powerform-Version wird nicht unterstützt' );
+			powerform_addon_maybe_log( __METHOD__, $this->get_slug(), $this->_min_powerform_version, POWERFORM_VERSION, 'Powerform Version not supported' );
 
 			// un-strict version compare of powerform, override if needed
 			return true;
@@ -791,11 +886,13 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 
 		$steps = $this->settings_wizards();
 		if ( ! is_array( $steps ) ) {
-			return $this->get_empty_wizard( sprintf( __( 'Keine Einstellungen für %1$s verfügbar', Powerform::DOMAIN ), $this->get_title() ) );
+			/* translators: ... */
+			return $this->get_empty_wizard( sprintf( __( 'No Settings available for %1$s', Powerform::DOMAIN ), $this->get_title() ) );
 		}
 		$total_steps = count( $steps );
 		if ( $total_steps < 1 ) {
-			return $this->get_empty_wizard( sprintf( __( 'Keine Einstellungen für %1$s verfügbar', Powerform::DOMAIN ), $this->get_title() ) );
+			/* translators: ... */
+			return $this->get_empty_wizard( sprintf( __( 'No Settings available for %1$s', Powerform::DOMAIN ), $this->get_title() ) );
 		}
 
 		if ( ! isset( $steps[ $step ] ) ) {
@@ -863,11 +960,13 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 		$steps = array_merge( $settings_steps, $form_settings_steps );
 
 		if ( ! is_array( $steps ) ) {
-			return $this->get_empty_wizard( sprintf( __( 'Für %1$s sind keine Formulareinstellungen verfügbar', Powerform::DOMAIN ), $this->get_title() ) );
+			/* translators: ... */
+			return $this->get_empty_wizard( sprintf( __( 'No Form Settings available for %1$s', Powerform::DOMAIN ), $this->get_title() ) );
 		}
 		$total_steps = count( $steps );
 		if ( $total_steps < 1 ) {
-			return $this->get_empty_wizard( sprintf( __( 'Für %1$s sind keine Formulareinstellungen verfügbar', Powerform::DOMAIN ), $this->get_title() ) );
+			/* translators: ... */
+			return $this->get_empty_wizard( sprintf( __( 'No Form Settings available for %1$s', Powerform::DOMAIN ), $this->get_title() ) );
 		}
 
 		if ( ! isset( $steps[ $step ] ) ) {
@@ -1030,13 +1129,15 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 
 		// validate callback, when its empty or not callable, mark as no wizard
 		if ( ! isset( $steps[ $step ]['callback'] ) || ! is_callable( $steps[ $step ]['callback'] ) ) {
-			return $this->get_empty_wizard( sprintf( __( 'Keine Einstellungen für %1$s verfügbar', Powerform::DOMAIN ), $this->get_title() ) );
+			/* translators: ... */
+			return $this->get_empty_wizard( sprintf( __( 'No Settings available for %1$s', Powerform::DOMAIN ), $this->get_title() ) );
 		}
 
 		$wizard = call_user_func( $steps[ $step ]['callback'], $submitted_data, $module_id );
 		// a wizard to be able to processed by our application need to has at least `html` which will be rendered or `redirect` which will be the url for redirect user to go to
 		if ( ! isset( $wizard['html'] ) && ! isset( $wizard['redirect'] ) ) {
-			return $this->get_empty_wizard( sprintf( __( 'Keine Einstellungen für %1$s verfügbar', Powerform::DOMAIN ), $this->get_title() ) );
+			/* translators: ... */
+			return $this->get_empty_wizard( sprintf( __( 'No Settings available for %1$s', Powerform::DOMAIN ), $this->get_title() ) );
 		}
 		$wizard['powerform_addon_current_step']  = $step;
 		$wizard['powerform_addon_count_step']    = $total_steps;
@@ -1107,7 +1208,7 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 				'close' => array(
 					'action' => 'close',
 					'data'   => array(),
-					'markup' => self::get_button_markup( esc_html__( 'Schließen', Powerform::DOMAIN ), 'sui-button-ghost powerform-addon-close' ),
+					'markup' => self::get_button_markup( esc_html__( 'Close', Powerform::DOMAIN ), 'sui-button-ghost powerform-addon-close' ),
 				),
 			),
 		);
@@ -1143,7 +1244,6 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 		$values = get_option( $this->get_settings_options_name(), array() );
 
 		$addon_slug = $this->get_slug();
-
 
 		/**
 		 * Filter retrieved saved addon's settings values from db
@@ -1521,7 +1621,7 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 	private function sample_setting_first_step( $submitted_data, $form_id ) {
 		//TODO: break `html` into `parts` to make easier for addon to extend
 		return array(
-			'html'       => '<p>Hallo, ich bin von den Einstellungen des ersten Schritts</p>',
+			'html'       => '<p>Hello im from first step settings</p>',
 			'has_errors' => false,
 		);
 
@@ -1587,6 +1687,52 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 		 * @param string $tooltip
 		 */
 		$markup = apply_filters( 'powerform_addon_setting_button_markup', $markup, $label, $classes, $tooltip );
+
+		return $markup;
+	}
+
+	/**
+	 * Return link markup
+	 *
+	 * @since 1.13
+	 *
+	 * @param        $url
+	 * @param        $label
+	 * @param string $classes
+	 * @param string $tooltip
+	 *
+	 * @return string
+	 */
+	public static function get_link_markup( $url, $label, $target = '_blank', $classes = '', $tooltip = '' ) {
+		$markup = '<a href="' . $url . '" target="' . $target . '" class="sui-button ';
+		if ( ! empty( $classes ) ) {
+			$markup .= $classes;
+		}
+		$markup .= '"';
+		if ( ! empty( $tooltip ) ) {
+			$markup .= 'data-tooltip="' . $tooltip . '"';
+		}
+		$markup .= '>';
+		$markup .= '<span class="sui-loading-text">' . $label . '</span>';
+		$markup .= '<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>';
+		$markup .= '</a>';
+
+		/**
+		 * Filter Addon link markup for setting
+		 *
+		 * Its possible @see Powerform_Addon_Abstract::get_link_markup() overridden.
+		 * Thus this filter wont be called
+		 *
+		 * @since 1.1
+		 *
+		 * @param string $markup  Current markup
+		 * @param string $url     Link URL
+		 * @param string $label   Button label
+		 * @param string $target  Link target
+		 * @param string $classes Additional classes for `<button>`
+		 * @param string $tooltip
+		 */
+		$markup = apply_filters( 'powerform_addon_setting_link_markup', $markup, $url, $label, $target, $classes, $tooltip );
 
 		return $markup;
 	}
@@ -1747,7 +1893,7 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 	final public function get_addon_poll_settings( $poll_id ) {
 		$class_name = $this->get_poll_settings_class_name();
 		if ( ! isset( $this->_addon_poll_settings_instances[ $poll_id ] )
-		     || ! $this->_addon_poll_settings_instances[ $poll_id ] instanceof Powerform_Addon_Poll_Settings_Abstract ) {
+			|| ! $this->_addon_poll_settings_instances[ $poll_id ] instanceof Powerform_Addon_Poll_Settings_Abstract ) {
 			if ( empty( $class_name ) ) {
 				return null;
 			}
@@ -1842,10 +1988,12 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 		$steps = array_merge( $settings_steps, $poll_settings_steps );
 
 		if ( ! is_array( $steps ) ) {
+			/* translators: ... */
 			return $this->get_empty_wizard( sprintf( __( 'No Poll Settings available for %1$s', Powerform::DOMAIN ), $this->get_title() ) );
 		}
 		$total_steps = count( $steps );
 		if ( $total_steps < 1 ) {
+			/* translators: ... */
 			return $this->get_empty_wizard( sprintf( __( 'No Poll Settings available for %1$s', Powerform::DOMAIN ), $this->get_title() ) );
 		}
 
@@ -2196,7 +2344,7 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 	final public function get_addon_quiz_settings( $quiz_id ) {
 		$class_name = $this->get_quiz_settings_class_name();
 		if ( ! isset( $this->_addon_quiz_settings_instances[ $quiz_id ] )
-		     || ! $this->_addon_quiz_settings_instances[ $quiz_id ] instanceof Powerform_Addon_Quiz_Settings_Abstract ) {
+			|| ! $this->_addon_quiz_settings_instances[ $quiz_id ] instanceof Powerform_Addon_Quiz_Settings_Abstract ) {
 			if ( empty( $class_name ) ) {
 				return null;
 			}
@@ -2291,11 +2439,13 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 		$steps = array_merge( $settings_steps, $quiz_settings_steps );
 
 		if ( ! is_array( $steps ) ) {
-			return $this->get_empty_wizard( sprintf( __( 'Für %1$s sind keine Testeinstellungen verfügbar', Powerform::DOMAIN ), $this->get_title() ) );
+			/* translators: ... */
+			return $this->get_empty_wizard( sprintf( __( 'No Quiz Settings available for %1$s', Powerform::DOMAIN ), $this->get_title() ) );
 		}
 		$total_steps = count( $steps );
 		if ( $total_steps < 1 ) {
-			return $this->get_empty_wizard( sprintf( __( 'Für %1$s sind keine Testeinstellungen verfügbar', Powerform::DOMAIN ), $this->get_title() ) );
+			/* translators: ... */
+			return $this->get_empty_wizard( sprintf( __( 'No Quiz Settings available for %1$s', Powerform::DOMAIN ), $this->get_title() ) );
 		}
 
 		if ( ! isset( $steps[ $step ] ) ) {
@@ -2508,6 +2658,21 @@ abstract class Powerform_Addon_Abstract implements Powerform_Addon_Interface {
 	 */
 	public function is_quiz_connected( $quiz_id ) {
 		return false;
+	}
+
+	/**
+	 * Flag for check has lead form connected
+	 *
+	 * Please apply necessary WordPress hook on the inheritance class
+	 *
+	 * @since   1.1
+	 *
+	 * @param $quiz_id
+	 *
+	 * @return boolean
+	 */
+	public function is_quiz_lead_connected( $quiz_id ){
+		return true;
 	}
 
 	/**

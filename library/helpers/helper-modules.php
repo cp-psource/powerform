@@ -27,5 +27,5 @@ function powerform_get_modules() {
 function powerform_get_module( $id ) {
 	$modules = powerform_get_modules();
 
-	return isset( $modules[ $id ] ) && ! empty( $modules[ $id] ) ? $modules[ $id] : false;
+	return isset( $modules[ $id ] ) && ! empty( $modules[ $id ] ) ? $modules[ $id ] : false;
 }

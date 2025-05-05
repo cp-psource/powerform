@@ -95,16 +95,33 @@ class Powerform_Html extends Powerform_Field {
 	 * @return mixed
 	 */
 	public function markup( $field, $settings = array() ) {
-		$html  = '';
-		$label = self::get_property( 'field_label', $field );
-		$id    = self::get_property( 'element_id', $field );
+
+		$html    = '';
+		$label   = esc_html( self::get_property( 'field_label', $field ) );
+		$id      = self::get_property( 'element_id', $field );
+		$form_id = false;
+
+		$html .= '<div class="powerform-field powerform-merge-tags">';
+
 		if ( $label ) {
-			$html .= '<div class="powerform-field--label">';
-			$html .= sprintf( '<label id="powerform-label-%s" class="powerform-label">%s</label>', $id, $label );
-			$html .= '</div>';
+
+			$html .= sprintf(
+				'<label class="powerform-label">%s</label>',
+				$label
+			);
 		}
 
-		$html .= powerform_replace_variables( self::get_property( 'variations', $field ) );
+			// Check if form_id exist
+		if ( isset( $settings['form_id'] ) ) {
+			$form_id = $settings['form_id'];
+		}
+
+			$html .= powerform_replace_variables(
+				self::get_property( 'variations', $field ),
+				$form_id
+			);
+
+		$html .= '</div>';
 
 		return $html;
 	}

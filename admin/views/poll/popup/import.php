@@ -2,9 +2,9 @@
 $nonce = wp_create_nonce( 'powerform_save_import_poll' );
 ?>
 
-<div class="sui-box-body wpmudev-popup-form">
+<div class="sui-box-body psource-popup-form">
 
-	<div class="sui-notice sui-notice-error wpmudev-ajax-error-placeholder sui-hidden"><p></p></div>
+	<div class="sui-notice sui-notice-error psource-ajax-error-placeholder sui-hidden"><p></p></div>
 
 	<div class="sui-form-field">
 
@@ -25,7 +25,7 @@ $nonce = wp_create_nonce( 'powerform_save_import_poll' );
 
 	<div class="sui-actions-right">
 
-		<button class="sui-button sui-button-primary wpmudev-action-ajax-done" data-nonce="<?php echo esc_attr( $nonce ); ?>">
+		<button class="sui-button sui-button-primary psource-action-ajax-done" data-nonce="<?php echo esc_attr( $nonce ); ?>">
 			<span class="sui-loading-text"><?php esc_html_e( 'Importieren', Powerform::DOMAIN ); ?></span>
 			<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>
 		</button>

@@ -54,18 +54,18 @@
 
 <div class="sui-cross-sell-bottom">
 
-	<h3><?php esc_html_e( 'WMS N@W - Your WordPress Toolkit', Powerform::DOMAIN ); ?></h3>
+	<h3><?php esc_html_e( 'Your All-in-One WordPress Platform', Powerform::DOMAIN ); ?></h3>
 
 	<p><?php esc_html_e( 'Pretty much everything you need for developing and managing WordPress based websites, and then some.', Powerform::DOMAIN ); ?></p>
 
-	<a href="https://premium.wpmudev.org/"
+	<a href="https://n3rds.work/?utm_source=powerform&utm_medium=plugin&utm_campaign=powerform_footer_upsell_notice"
 		target="_blank"
 		class="sui-button sui-button-green">
 		<?php esc_html_e( 'Learn more', Powerform::DOMAIN ); ?>
 	</a>
 
 	<img class="sui-image"
-		src="<?php echo powerform_plugin_url(); // WPCS: XSS ok. ?>assets/images/dev-team.png"
-		srcset="<?php echo powerform_plugin_url(); // WPCS: XSS ok. ?>assets/images/dev-team@2x.png 2x"
+		src="<?php echo powerform_plugin_url(); // phpcs:ignore ?>assets/images/dev-team.png"
+		srcset="<?php echo powerform_plugin_url(); // phpcs:ignore ?>assets/images/dev-team@2x.png 2x"
 		alt="<?php esc_html_e( 'Try pro features for free!', Powerform::DOMAIN ); ?>">
 </div>

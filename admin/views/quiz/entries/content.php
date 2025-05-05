@@ -1,11 +1,10 @@
 <?php
 /** @var Powerform_Quizz_Renderer_Entries $this */
-$plugin_path      = powerform_plugin_url();
-$entries          = $this->get_table();
-$form_type        = $this->get_form_type();
-$count            = $this->get_total_entries();
-$entries_per_page = $this->get_per_page();
-$total_page       = ceil( $count / $entries_per_page );
+$plugin_path       = powerform_plugin_url();
+$count             = $this->filtered_total_entries();
+$entries_per_page  = $this->get_per_page();
+$is_filter_enabled = $this->is_filter_box_enabled();
+$total_page        = ceil( $count / $entries_per_page );
 ?>
 <?php if ( $this->error_message() ) : ?>
 	<span class="sui-notice sui-notice-error"><p><?php echo esc_html( $this->error_message() ); ?></p></span>
@@ -13,317 +12,204 @@ $total_page       = ceil( $count / $entries_per_page );
 
 <?php if ( $count > 0 ) : ?>
 
-	<form method="post" class="sui-box">
+	<form method="get" class="sui-box fui-box-entries powerform-entries-actions">
 
-		<?php wp_nonce_field( 'powerform_quiz_bulk_action', 'powerformEntryNonce' ); ?>
+        <div class="fui-pagination-entries sui-pagination-wrap">
 
-		<div class="sui-box-body">
+            <span class="sui-pagination-results"><?php if ( 1 === $count ) { printf( esc_html__( '%s result', Powerform::DOMAIN ), $count ); } else { printf( esc_html__( '%s Ergebnisse', Powerform::DOMAIN ), $count ); } // phpcs:ignore ?></span>
 
-			<input type="hidden" name="form_id" value="<?php echo esc_attr( $this->form_id ); ?>"/>
+			<?php $this->paginate(); ?>
 
-			<div class="sui-box-search">
+        </div>
 
-				<div class="sui-search-left">
+        <div class="sui-box fui-box-entries">
 
-					<?php $this->bulk_actions(); ?>
+            <fieldset class="powerform-entries-nonce">
+	            <?php wp_nonce_field( 'powerformQuizEntries', 'powerformEntryNonce' ); ?>
+            </fieldset>
 
-				</div>
+            <div class="sui-box-body fui-box-actions">
 
-				<div class="sui-search-right">
+                <?php $this->template( 'quiz/entries/prompt' ); ?>
 
-					<div class="sui-pagination-wrap">
+                <input type="hidden" name="page" value="<?php echo esc_attr( $this->get_admin_page() ); ?>">
+                <input type="hidden" name="form_type" value="<?php echo esc_attr( $this->powerform_get_form_type() ); ?>">
+                <input type="hidden" name="form_id" value="<?php echo esc_attr( $this->form_id ); ?>"/>
 
-						<span class="sui-pagination-results">
-							<?php if ( 1 === $count ) {
-								printf( esc_html__( '%s result', Powerform::DOMAIN ), esc_html( $count ) );
-							} else {
-								printf( esc_html__( '%s results', Powerform::DOMAIN ), esc_html( $count ) );
-							} // phpcs:ignore ?>
-						</span>
+                <div class="sui-box-search">
+
+                    <div class="sui-search-left">
+
+                        <?php $this->bulk_actions(); ?>
+
+                    </div>
+
+                    <div class="sui-search-right">
+
+                        <div class="sui-pagination-wrap">
+
+                            <span class="sui-pagination-results">
+                                <?php
+                                if ( 1 === $count ) {
+                                    /* translators: ... */
+                                    printf( esc_html__( '%s Ergebnis', Powerform::DOMAIN ), esc_html( $count ) );
+                                } else {
+                                    /* translators: ... */
+                                    printf( esc_html__( '%s Ergebnisse', Powerform::DOMAIN ), esc_html( $count ) );
+                                }
+                                ?>
+                            </span>
+
+                            <?php $this->paginate(); ?>
+
+                            <button class="sui-button-icon sui-button-outlined powerform-toggle-entries-filter <?php echo( $is_filter_enabled ? 'sui-active' : '' ); ?>">
+                                <i class="sui-icon-filter" aria-hidden="true"></i>
+                            </button>
 
-						<?php $this->paginate(); ?>
+                        </div>
 
-					</div>
+                    </div>
+
+                </div>
+
+                <?php $this->template( 'quiz/entries/filter' ); ?>
+
+            </div>
 
-				</div>
+            <?php if ( isset( $is_filter_enabled ) &&  true === $is_filter_enabled ) : ?>
 
-			</div>
+                <div class="sui-box-body fui-box-actions-filters">
 
-		</div>
+                    <label class="sui-label"><?php esc_html_e( 'Aktive Filter', Powerform::DOMAIN ); ?></label>
 
-		<table class="sui-table sui-table-flushed sui-accordion">
+                    <div class="sui-pagination-active-filters powerform-entries-fields-filters">
 
-			<thead>
-			<tr>
-				<th>
-					<label class="sui-checkbox">
-						<input id="wpf-cform-check_all" type="checkbox">
-						<span></span>
-						<div class="sui-description"><?php esc_html_e( "ID", Powerform::DOMAIN ); ?></div>
-					</label>
-				</th>
-				<th colspan="5"><?php esc_html_e( "Date Submitted", Powerform::DOMAIN ); ?></th>
-			</tr>
+                        <?php if ( isset( $this->filters['search'] ) ) : ?>
+                            <div class="sui-active-filter">
+                                <?php
+                                printf(/* translators: ... */
+                                    esc_html__( 'Schlagwort: %s', Powerform::DOMAIN ),
+                                    esc_html( $this->filters['search'] )
+                                );
+                                ?>
+                                <button class="sui-active-filter-remove" type="submit" name="search" value="">
+                                    <span class="sui-screen-reader-text"><?php esc_html_e( 'Entferne dieses Schlagwort', Powerform::DOMAIN ); ?></span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
 
-			</thead>
+                        <?php if ( isset( $this->filters['min_id'] ) ) : ?>
+                            <div class="sui-active-filter">
+                                <?php
+                                printf(/* translators: ... */
+                                    esc_html__( 'Von ID: %s', Powerform::DOMAIN ),
+                                    esc_html( $this->filters['min_id'] )
+                                );
+                                ?>
+                                <button class="sui-active-filter-remove" type="submit" name="min_id" value="">
+                                    <span class="sui-screen-reader-text"><?php esc_html_e( 'Entferne dieses Schlagwort', Powerform::DOMAIN ); ?></span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
 
-			<tbody>
-
-			<?php
-			$first_item  = $count;
-			$page_number = $this->get_paged();
-
-			if ( $page_number > 1 ) {
-				$first_item = $count - ( ( $page_number - 1 ) * $entries_per_page );
-			}
-			?>
-
-			<?php foreach ( $entries as $entry ) : ?>
-				<tr class="sui-accordion-item">
-
-					<td>
-						<label class="sui-checkbox">
-							<input name="ids[]" value="<?php echo esc_attr( $entry->entry_id ); ?>" type="checkbox" id="quiz-answer-<?php echo esc_attr( $entry->entry_id ); ?>">
-							<span></span>
-							<div class="sui-description"><?php echo esc_attr( $first_item ); ?></div>
-						</label>
-					</td>
-
-					<td colspan="5">
-						<?php echo date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $entry->date_created_sql ) ); // WPCS: XSS ok. ?>
-						<span class="sui-accordion-open-indicator">
-							<i class="sui-icon-chevron-down"></i>
-						</span>
-					</td>
-
-				</tr>
-
-				<tr class="sui-accordion-item-content">
-
-					<td colspan="6">
-
-						<div class="sui-box" style="margin-bottom: 30px;">
-
-							<div class="sui-box-body">
-
-								<h2>
-									<?php echo powerform_get_form_name( $this->form_id, 'quiz' ); // WPCS: XSS ok. ?>
-								</h2>
-
-								<?php if ( 'knowledge' === $form_type ) { ?>
-
-									<?php
-									$meta  = $entry->meta_data['entry']['value'];
-									$total = 0;
-									$right = 0;
-									?>
-
-									<table class="sui-table">
-
-										<thead>
-
-										<tr>
-
-											<th><?php esc_html_e( "Frage", Powerform::DOMAIN ); ?></th>
-
-											<th><?php esc_html_e( "Antwort", Powerform::DOMAIN ); ?></th>
-
-										</tr>
-
-										</thead>
-
-										<tbody>
-
-										<?php foreach ( $meta as $answer ) : ?>
-											<?php
-											$total ++;
-
-											if ( $answer['isCorrect'] ) {
-												$right ++;
-											}
-
-											$user_answer = $answer['answer'];
-											?>
-
-											<tr>
-
-												<td><?php echo esc_html( $answer['question'] ); ?></td>
-
-												<td>
-													<?php
-													if ( $answer['isCorrect'] ) {
-
-														echo '<span class="sui-tag sui-tag-success">' . $user_answer . '</span>'; // WPCS: XSS ok.
-
-													} else {
-
-														echo '<span class="sui-tag sui-tag-error">' . $user_answer . '</span>'; // WPCS: XSS ok.
-
-													}
-													?>
-												</td>
-
-											</tr>
-
-										<?php endforeach; ?>
-
-										<?php $integrations_data = $this->get_integrations_data_from_entry( $entry ); ?>
-										<?php if ( ! empty( $integrations_data ) ) : ?>
-											<?php foreach ( $integrations_data as $integrations_datum ) : ?>
-												<tr>
-													<td><?php echo $integrations_datum['label']; // wpcs xss ok. html output intended ?></td>
-													<td>
-														<?php
-														$sub_entries = isset( $integrations_datum['sub_entries'] ) ? $integrations_datum['sub_entries'] : array();
-														?>
-														<?php if ( ! empty( $sub_entries ) && is_array( $sub_entries ) ) : ?>
-															<?php foreach ( $sub_entries as $sub_entry ) : ?>
-																<div class="">
-																	<span class="sui-settings-label"><?php echo esc_html( $sub_entry['label'] ); ?></span>
-																	<span class="sui-description"><?php echo( $sub_entry['value'] ); // wpcs xss ok. html output intended ?></span>
-																</div>
-															<?php endforeach; ?>
-														<?php else: ?>
-															<?php echo( $integrations_datum['value'] ); // wpcs xss ok. html output intended ?>
-														<?php endif; ?>
-													</td>
-												</tr>
-											<?php endforeach; ?>
-										<?php endif; ?>
-
-										</tbody>
-
-									</table>
-
-									<div class="sui-box-footer">
-
-										<p><?php echo sprintf( __( "You got <strong>%s / %s</strong> correct answers.", Powerform::DOMAIN ), $right, $total ); // phpcs:ignore ?></p>
-									</div>
-
-									<?php
-								} else {
-
-									$meta = $entry->meta_data['entry']['value'][0]['value'];
-									?>
-
-									<?php if ( isset( $meta['answers'] ) && is_array( $meta['answers'] ) ) : ?>
-
-										<table class="sui-table">
-
-											<thead>
-
-											<tr>
-
-												<th><?php esc_html_e( "Frage", Powerform::DOMAIN ); ?></th>
-
-												<th><?php esc_html_e( "Antwort", Powerform::DOMAIN ); ?></th>
-
-											</tr>
-
-											</thead>
-
-											<tbody>
-
-											<?php foreach ( $meta['answers'] as $answer ) : ?>
-
-												<tr>
-
-													<td><?php echo $answer['question']; // WPCS: XSS ok. ?></td>
-
-													<td><?php echo $answer['answer']; // WPCS: XSS ok. ?></td>
-
-												</tr>
-
-											<?php endforeach; ?>
-
-											<?php $integrations_data = $this->get_integrations_data_from_entry( $entry ); ?>
-											<?php if ( ! empty( $integrations_data ) ) : ?>
-												<?php foreach ( $integrations_data as $integrations_datum ) : ?>
-													<tr>
-														<td><?php echo $integrations_datum['label']; // wpcs xss ok. html output intended ?></td>
-														<td>
-															<?php
-															$sub_entries = isset( $integrations_datum['sub_entries'] ) ? $integrations_datum['sub_entries'] : array();
-															?>
-															<?php if ( ! empty( $sub_entries ) && is_array( $sub_entries ) ) : ?>
-																<?php foreach ( $sub_entries as $sub_entry ) : ?>
-																	<div class="">
-																		<span class="sui-settings-label"><?php echo esc_html( $sub_entry['label'] ); ?></span>
-																		<span class="sui-description"><?php echo( $sub_entry['value'] ); // wpcs xss ok. html output intended ?></span>
-																	</div>
-																<?php endforeach; ?>
-															<?php else: ?>
-																<?php echo( $integrations_datum['value'] ); // wpcs xss ok. html output intended ?>
-															<?php endif; ?>
-														</td>
-													</tr>
-												<?php endforeach; ?>
-											<?php endif; ?>
-
-
-											</tbody>
-
-										</table>
-
-									<?php endif; ?>
-
-									<div class="sui-box-footer">
-
-										<p><?php printf( __( "<strong>Quiz Result:</strong> %s", Powerform::DOMAIN ), $meta['result']['title'] ); // WPCS: XSS ok. ?></p>
-
-									</div>
-
-								<?php } ?>
-
-							</div>
-
-						</div>
-
-					</td>
-
-				</tr>
-
-				<?php
-				$first_item --;
-
-			endforeach;
-			?>
-
-			</tbody>
-
-		</table>
-
-		<div class="sui-box-body">
-
-			<div class="sui-box-search">
-
-				<div class="sui-search-left">
-
-					<?php $this->bulk_actions( 'bottom' ); ?>
-
-				</div>
-
-				<div class="sui-search-right">
-
-					<div class="sui-pagination-wrap">
-
-						<span class="sui-pagination-results">
-							<?php if ( 1 === $count ) {
-								printf( esc_html__( '%s result', Powerform::DOMAIN ), esc_html( $count ) );
-							} else {
-								printf( esc_html__( '%s results', Powerform::DOMAIN ), esc_html( $count ) );
-							} // phpcs:ignore ?>
-						</span>
-
-						<?php $this->paginate(); ?>
-
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
+                        <?php if ( isset( $this->filters['max_id'] ) ) : ?>
+                            <div class="sui-active-filter">
+                                <?php
+                                printf(/* translators: ... */
+                                    esc_html__( 'An ID: %s', Powerform::DOMAIN ),
+                                    esc_html( $this->filters['max_id'] )
+                                );
+                                ?>
+                                <button class="sui-active-filter-remove" type="submit" name="max_id" value="">
+                                    <span class="sui-screen-reader-text"><?php esc_html_e( 'Entferne dieses Schlagwort', Powerform::DOMAIN ); ?></span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ( isset( $this->filters['date_created'][0] ) || isset( $this->filters['date_created'][1] ) ) : ?>
+                            <div class="sui-active-filter">
+                                <?php
+                                printf(/* translators: ... */
+                                    esc_html__( 'Einsendungsdatum Bereich: %1$s bis %2$s', Powerform::DOMAIN ),
+                                    esc_html( $this->filters['date_created'][0] ),
+                                    esc_html( $this->filters['date_created'][1] )
+                                );
+                                ?>
+                                <button class="sui-active-filter-remove" type="submit" name="date_range" value="">
+                                    <span class="sui-screen-reader-text"><?php esc_html_e( 'Entferne dieses Schlagwort', Powerform::DOMAIN ); ?></span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="sui-active-filter">
+                            <?php
+                            esc_html_e( 'Sortierreihenfolge', Powerform::DOMAIN );
+                            echo ': ';
+                            if ( 'DESC' === $this->order['order'] ) {
+                                esc_html_e( 'Absteigend', Powerform::DOMAIN );
+                            } else {
+                                esc_html_e( 'Aufsteigend', Powerform::DOMAIN );
+                            }
+                            ?>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            <?php endif; ?>
+
+            <table class="sui-table sui-table-flushed sui-accordion fui-table-entries">
+
+                <?php $this->entries_header(); ?>
+
+                <tbody>
+
+                    <?php if ( $this->has_leads() ) {
+                        $this->template( 'quiz/entries/content-leads' );
+                    } else {
+                        $this->template( 'quiz/entries/content-leads-none' );
+                    } ?>
+                </tbody>
+
+            </table>
+
+            <div class="sui-box-body">
+
+                <div class="sui-box-search">
+
+                    <div class="sui-search-left">
+
+                        <?php $this->bulk_actions( 'bottom' ); ?>
+
+                    </div>
+
+                    <div class="sui-search-right">
+
+                        <div class="sui-pagination-wrap">
+
+                            <span class="sui-pagination-results">
+                                <?php
+                                if ( 1 === $count ) {
+                                    /* translators: ... */
+                                    printf( esc_html__( '%s Ergebnis', Powerform::DOMAIN ), esc_html( $count ) );
+                                } else {
+                                    /* translators: ... */
+                                    printf( esc_html__( '%s Ergebnisse', Powerform::DOMAIN ), esc_html( $count ) );
+                                }
+                                ?>
+                            </span>
+
+                            <?php $this->paginate(); ?>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
 
 	</form>
 
@@ -331,20 +217,20 @@ $total_page       = ceil( $count / $entries_per_page );
 
 	<div class="sui-box sui-message">
 
-		<?php if ( powerform_is_show_branding() ): ?>
-			<img src="<?php echo $plugin_path . 'assets/img/powerform-submissions.png'; // WPCS: XSS ok. ?>"
-			     srcset="<?php echo $plugin_path . 'assets/img/powerform-submissions.png'; // WPCS: XSS ok. ?> 1x,
-			     <?php echo $plugin_path . 'assets/img/powerform-submissions@2x.png'; // WPCS: XSS ok. ?> 2x"
-			     alt="<?php esc_html_e( 'Powerform', Powerform::DOMAIN ); ?>"
-			     class="sui-image"
-			     aria-hidden="true"/>
+		<?php if ( powerform_is_show_branding() ) : ?>
+			<img src="<?php echo esc_url( $plugin_path . 'assets/img/powerform-submissions.png' ); ?>"
+				srcset="<?php echo esc_url( $plugin_path . 'assets/img/powerform-submissions.png' ); ?> 1x,
+				<?php echo esc_url( $plugin_path . 'assets/img/powerform-submissions@2x.png' ); ?> 2x"
+				alt="<?php esc_html_e( 'Powerform', Powerform::DOMAIN ); ?>"
+				class="sui-image"
+				aria-hidden="true"/>
 		<?php endif; ?>
 
 		<div class="sui-message-content">
 
-			<h2><?php echo powerform_get_form_name( $this->form_id, 'quiz' ); // WPCS: XSS ok. ?></h2>
+			<h2><?php echo powerform_get_form_name( $this->form_id, 'quiz' ); // phpcs:ignore ?></h2>
 
-			<p><?php esc_html_e( "You haven’t received any submissions for this quiz yet. When you do, you’ll be able to view all the data here.", Powerform::DOMAIN ); ?></p>
+			<p><?php esc_html_e( 'Du hast noch keine Beiträge für diesen Test erhalten. Wenn welche reinkommen, kannst Du hier alle Daten anzeigen.', Powerform::DOMAIN ); ?></p>
 
 		</div>
 

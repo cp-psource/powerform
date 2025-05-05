@@ -65,12 +65,11 @@ class Powerform_Poll_View_Page extends Powerform_Admin_Page {
 	 * @since 1.0
 	 */
 	public function before_render() {
-
 		// This view is unused from 1.5.4 on, using "powerform-entries" instead.
 		if ( 'powerform-poll-view' === $this->page_slug ) {
 			$url = '?page=powerform-entries&form_type=powerform_polls';
 			if ( isset( $_REQUEST['form_id'] ) ) { // WPCS: CSRF OK
-				$url .= '&form_id=' .  $_REQUEST['form_id']; // WPCS: CSRF OK
+				$url .= '&form_id=' .  intval( $_REQUEST['form_id'] ); // WPCS: CSRF OK
 			}
 			if ( wp_safe_redirect( $url ) ) {
 				exit;
@@ -78,7 +77,7 @@ class Powerform_Poll_View_Page extends Powerform_Admin_Page {
 		}
 
 		if ( isset( $_REQUEST['form_id'] ) ) { // WPCS: CSRF OK
-			$this->form_id = sanitize_text_field( $_REQUEST['form_id'] );
+			$this->form_id = intval( $_REQUEST['form_id'] );
 			$this->model   = Powerform_Poll_Form_Model::model()->load( $this->form_id );
 			if ( is_object( $this->model ) ) {
 				$this->fields = $this->model->get_fields();
@@ -108,7 +107,7 @@ class Powerform_Poll_View_Page extends Powerform_Admin_Page {
 	public function process_request() {
 
 		if ( isset( $_GET['err_msg'] ) ) {
-			$this->error_message = $_GET['err_msg']; // WPCS: CSRF OK
+			$this->error_message = wp_kses_post( $_GET['err_msg'] );
 		}
 
 		if ( ! isset( $_POST['powerformEntryNonce'] ) ) {
@@ -123,6 +122,22 @@ class Powerform_Poll_View_Page extends Powerform_Admin_Page {
 		if ( isset( $_POST['field'] ) ) {
 			$this->visible_fields = $_POST['field'];
 			$this->checked_fields = count( $this->visible_fields );
+		}
+
+		if ( isset( $_POST['powerform_action'] ) ) {
+			switch ( $_POST['powerform_action'] ) {
+				case 'delete':
+					if ( isset( $_POST['id'] ) ) {
+						$id = $_POST['id'];
+
+						Powerform_Form_Entry_Model::delete_by_form( $id );
+						$this->maybe_redirect_to_referer();
+						exit;
+					}
+					break;
+				default:
+					break;
+			}
 		}
 	}
 
@@ -255,7 +270,7 @@ class Powerform_Poll_View_Page extends Powerform_Admin_Page {
 	 * @return string
 	 */
 	public function fields_header() {
-		echo esc_html( sprintf( __( 'Zeige %$1s von %$2s Feldern', Powerform::DOMAIN ), $this->checked_fields, $this->total_fields ) );
+		echo esc_html( sprintf( __( '%$1s von %$2s Feldern anzeigen', Powerform::DOMAIN ), $this->checked_fields, $this->total_fields ) );
 	}
 
 	/**
@@ -355,58 +370,66 @@ class Powerform_Poll_View_Page extends Powerform_Admin_Page {
 	 * @since 1.0
 	 */
 	public function render_pie_chart() {
+
 		$chart_colors         = powerform_get_poll_chart_colors( $this->model->id );
 		$default_chart_colors = $chart_colors;
 		$chart_design         = $this->get_chart_design();
+		$chart_data           = powerform_get_chart_data( $this->model );
 		?>
+
 		<script type="text/javascript">
-			(function ($, doc) {
-				"use strict";
-				jQuery('document').ready(function () {
-					google.charts.load('current', {packages: ['corechart', 'bar']});
-					google.charts.setOnLoadCallback(drawPollResults_<?php echo esc_attr( $this->model->id ); ?>);
 
-					function drawPollResults_<?php echo esc_attr( $this->model->id ); ?>() {
-						var data = google.visualization.arrayToDataTable([
-							['<?php esc_html_e( 'Frage', Powerform::DOMAIN ); ?>', '<?php esc_html_e( 'Ergebnisse', Powerform::DOMAIN ); ?>', {role: 'style'}, {role: 'annotation'}],
-							<?php
-							$fields_array = $this->model->get_fields_as_array();
-							$map_entries = Powerform_Form_Entry_Model::map_polls_entries( $this->model->id, $fields_array );
-							$fields = $this->model->get_fields();
-							if ( ! is_null( $fields ) ) {
-								foreach ( $fields as $field ) {
-									$label = addslashes( $field->title );
+			( function ( $, doc ) {
 
-									if ( empty( $chart_colors ) ) {
-										$chart_colors = $default_chart_colors;
-									}
+				'use strict';
 
-									$color   = array_shift( $chart_colors );
-									$slug    = isset( $field->slug ) ? $field->slug : sanitize_title( $label );
-									$entries = 0;
-									if ( in_array( $slug, array_keys( $map_entries ), true ) ) {
-										$entries = $map_entries[ $slug ];
-									}
-									$style      = 'color: ' . $color;
-									$annotation = $entries . ' vote(s)';
+				$( 'document' ).ready( function() {
 
-									echo "['$label', $entries, '$style', '$annotation'],"; // WPCS: XSS ok.
-								}
-							}
-							?>
-						]);
+					var randomScalingFactor = function() {
+						return Math.round( Math.random() * 100 );
+					};
 
-						var options = <?php echo wp_json_encode( Powerform_Poll_Front::get_default_chart_options( $this->model ) ); ?>;
-						<?php if ( 'pie' === $chart_design ) { ?>
-						var chart = new google.visualization.PieChart(document.getElementById('powerform-chart-poll'));
-						<?php } else { ?>
-						var chart = new google.visualization.BarChart(document.getElementById('powerform-chart-poll'));
-						<?php } ?>
+					var chartId   = '#powerform-chart-poll';
+					var chartData = <?php echo wp_json_encode( $chart_data ); ?>;
+					var chartDesign = '<?php echo esc_html( $chart_design ); ?>';
 
-						chart.draw(data, options);
+					var chartExtras = [
+						'<?php echo esc_html__( 'vote(s)' ); ?>',
+						true, // Always show votes
+						[
+							'#E5E5E5', // [0] Grid lines color
+							'#777771', // [1] Axis labels color
+							'#333333'  // [2] On-chart label (bars)
+						],
+						[
+							'#333333', // [0] Background color
+							'#FFFFFF' // [1] Text color
+						]
+					];
+
+					FUI.pollChart( chartId, chartData, chartDesign, chartExtras );
+
+					var chartCanvas  = $( '#powerform-chart-poll' ),
+						chartBody    = chartCanvas.closest( '.powerform-poll-body' ),
+						chartWrapper = chartBody.find( '.powerform-chart-wrapper' )
+						;
+
+					if ( chartWrapper.length ) {
+
+						chartCanvas.addClass( 'powerform-show' );
+
+						chartWrapper.addClass( 'powerform-show' );
+						chartWrapper.removeAttr( 'aria-hidden' );
+						chartWrapper.attr( 'tabindex', '-1' );
+
+						chartWrapper.focus();
+
 					}
+
 				});
-			}(jQuery, document));
+
+			}( jQuery, document ) );
+
 		</script>
 		<?php
 	}

@@ -37,14 +37,16 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 	/**
 	 * Count modules
 	 *
+	 * @param $status
+	 *
 	 * @since 1.0
 	 * @return int
 	 */
-	public function countModules() {
+	public function countModules( $status = '' ) {
 		$pagenum           = isset( $_REQUEST['paged'] ) ? absint( $_REQUEST['paged'] ) : 0; // WPCS: CSRF OK
 		$this->page_number = max( 1, $pagenum );
 
-		return Powerform_Quiz_Form_Model::model()->count_all();
+		return Powerform_Quiz_Form_Model::model()->count_all( $status );
 	}
 
 	/**
@@ -94,7 +96,7 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 		}
 
 		$is_redirect = true;
-		$action      = $_POST['powerform_action'];
+		$action      = sanitize_text_field( $_POST['powerform_action'] );
 		switch ( $action ) {
 			case 'delete':
 				$id = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : 0;
@@ -118,7 +120,7 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 				break;
 
 			case 'export':
-				$id = $_POST['id'];
+				$id = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : 0;
 				$this->export_module( $id );
 				$is_redirect = false;
 				break;
@@ -131,7 +133,7 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 				break;
 
 			case 'clone-quizzes' :
-				$ids = isset( $_POST['ids'] ) ? $_POST['ids'] : '';
+				$ids = isset( $_POST['ids'] ) ? powerform_sanitize_field( $_POST['ids'] ) : '';
 				if ( ! empty( $ids ) ) {
 					$form_ids = explode( ',', $ids );
 					if ( is_array( $form_ids ) && count( $form_ids ) > 0 ) {
@@ -143,7 +145,7 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 				break;
 
 			case 'delete-quizzes' :
-				$ids = isset( $_POST['ids'] ) ? $_POST['ids'] : '';
+				$ids = isset( $_POST['ids'] ) ? powerform_sanitize_field( $_POST['ids'] ) : '';
 				if ( ! empty( $ids ) ) {
 					$form_ids = explode( ',', $ids );
 					if ( is_array( $form_ids ) && count( $form_ids ) > 0 ) {
@@ -155,7 +157,7 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 				break;
 
 			case 'delete-entries-quizzes' :
-				$ids = isset( $_POST['ids'] ) ? $_POST['ids'] : '';
+				$ids = isset( $_POST['ids'] ) ? powerform_sanitize_field( $_POST['ids'] ) : '';
 				if ( ! empty( $ids ) ) {
 					$form_ids = explode( ',', $ids );
 					if ( is_array( $form_ids ) && count( $form_ids ) > 0 ) {
@@ -167,7 +169,7 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 				break;
 
 			case 'reset-views-quizzes' :
-				$ids = isset( $_POST['ids'] ) ? $_POST['ids'] : '';
+				$ids = isset( $_POST['ids'] ) ? powerform_sanitize_field( $_POST['ids'] ) : '';
 				if ( ! empty( $ids ) ) {
 					$form_ids = explode( ',', $ids );
 					if ( is_array( $form_ids ) && count( $form_ids ) > 0 ) {
@@ -194,7 +196,7 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 				}
 				break;
 			case 'update-statuses' :
-				$ids    = isset( $_POST['ids'] ) ? $_POST['ids'] : '';
+				$ids    = isset( $_POST['ids'] ) ? powerform_sanitize_field( $_POST['ids'] ) : '';
 				$status = isset( $_POST['status'] ) ? sanitize_text_field( $_POST['status'] ) : '';
 
 				if ( ! empty( $ids ) && ! empty( $status ) ) {
@@ -252,6 +254,9 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 				"id"              => $model->id,
 				"title"           => $model->name,
 				"entries"         => Powerform_Form_Entry_Model::count_entries( $model->id ),
+				"has_leads"       => $this->has_leads( $model ),
+				"leads_id"        => $this->get_leads_id( $model ),
+				"leads"           => Powerform_Form_Entry_Model::count_leads( $model->id ),
 				"last_entry_time" => powerform_get_latest_entry_time_by_form_id( $model->id ),
 				"views"           => $form_view->count_views( $model->id ),
 				'type'            => $model->quiz_type,
@@ -262,6 +267,37 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 		}
 
 		return $modules;
+	}
+
+	/**
+	 * Check if quiz has leads
+	 *
+	 * @param $model
+	 *
+	 * @return bool
+	 */
+	public function has_leads( $model ) {
+		if ( isset( $model->settings['hasLeads'] ) && "true" === $model->settings['hasLeads'] ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check has lead
+	 *
+	 * @param $model
+	 *
+	 * @return int
+	 */
+	public function get_leads_id( $model ) {
+		$leadsId = 0;
+		if ( $this->has_leads( $model ) && isset( $model->settings['leadsId'] ) ) {
+			$leadsId = $model->settings['leadsId'];
+		}
+
+		return $leadsId;
 	}
 
 	/**
@@ -284,6 +320,25 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 	}
 
 	/**
+	 * Return leads rate
+	 *
+	 * @since 1.14
+	 *
+	 * @param $module
+	 *
+	 * @return float|int
+	 */
+	public function getLeadsRate( $module ) {
+		if ( $module['views'] > 0 ) {
+			$rate = round( ( $module["leads"] * 100 ) / $module["views"], 1 );
+		} else {
+			$rate = 0;
+		}
+
+		return $rate;
+	}
+
+	/**
 	 * Bulk actions
 	 *
 	 * @since 1.0
@@ -293,8 +348,8 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 		return apply_filters(
 			'powerform_quizzes_bulk_actions',
 			array(
-				'clone-quizzes'          => __( "Duplizieren", Powerform::DOMAIN ),
-				'reset-views-quizzes'    => __( "Tracking-Daten zurücksetzen", Powerform::DOMAIN ),
+				//'clone-quizzes'          => __( "Duplicate", Powerform::DOMAIN ),
+				'reset-views-quizzes'    => __( "Tracking-Reset", Powerform::DOMAIN ),
 				'delete-entries-quizzes' => __( "Einsendungen löschen", Powerform::DOMAIN ),
 				'delete-quizzes'         => __( "Löschen", Powerform::DOMAIN ),
 			) );
@@ -332,7 +387,18 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 			}
 
 			//save it to create new record
-			$model->save( true );
+			$new_id = $model->save( true );
+
+			/**
+			 * Action called after quiz cloned
+			 *
+			 * @since 1.11
+			 *
+			 * @param int    $id - quiz id
+			 * @param object $model - quiz model
+			 *
+			 */
+			do_action( 'powerform_quiz_action_clone', $new_id, $model );
 		}
 	}
 
@@ -363,10 +429,30 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 		//check if this id is valid and the record is exists
 		$model = Powerform_Quiz_Form_Model::model()->load( $id );
 		if ( is_object( $model ) ) {
+			// Delete leads form on quiz delete
+			if ( isset( $model->settings['hasLeads'] ) && isset( $model->settings['leadsId'] ) && $model->settings['hasLeads'] ) {
+				$leads_id = $model->settings['leadsId'];
+				$leads_model = Powerform_Custom_Form_Model::model()->load( $leads_id );
+
+				if ( is_object( $leads_model ) ) {
+					wp_delete_post( $leads_id );
+				}
+			}
+
 			Powerform_Form_Entry_Model::delete_by_form( $id );
 			$form_view = Powerform_Form_Views_Model::get_instance();
 			$form_view->delete_by_form( $id );
 			wp_delete_post( $id );
+
+			/**
+			 * Action called after quiz deleted
+			 *
+			 * @since 1.11
+			 *
+			 * @param int    $id - quiz id
+			 *
+			 */
+			do_action( 'powerform_quiz_action_delete', $id );
 		}
 	}
 
@@ -406,7 +492,7 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 		fwrite( $fp, $encoded ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fwrite
 		fseek( $fp, 0 );
 
-		$filename = 'powerform-' . sanitize_title( $model_name ) . '-quiz-export' . '.txt';
+		$filename = sanitize_title( __( 'powerform', POWERFORM::DOMAIN ) ) . '-' . sanitize_title( $model_name ) . '-quiz-export' . '.txt';
 
 		header( 'Content-Description: File Transfer' );
 		header( 'Content-Type: text/plain' );
@@ -416,5 +502,19 @@ class Powerform_Quizz_Page extends Powerform_Admin_Page {
 
 		// make php send the generated csv lines to the browser
 		fpassthru( $fp );
+	}
+
+	/**
+	 * Override scripts to be loaded
+	 *
+	 * @since 1.11
+	 *
+	 * @param $hook
+	 */
+	public function enqueue_scripts( $hook ) {
+		parent::enqueue_scripts( $hook );
+
+		powerform_print_front_styles( POWERFORM_VERSION );
+		powerform_print_front_scripts( POWERFORM_VERSION );
 	}
 }

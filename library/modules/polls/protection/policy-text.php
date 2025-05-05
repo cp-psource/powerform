@@ -1,62 +1,63 @@
 <div class="wp-suggested-text">
-	<h2><?php esc_html_e( 'Welche Umfragen sammeln personenbezogene Daten?', Powerform::DOMAIN ); ?></h2>
+	<h2><?php esc_html_e( 'Which polls are collecting personal data?', Powerform::DOMAIN ); ?></h2>
 	<p class="privacy-policy-tutorial">
-		<?php esc_html_e( 'Wenn Du Powerformulare verwendest, um Umfragen auf Deiner Webseite zu erstellen und einzubetten, musst Du dies möglicherweise hier erwähnen, um sie von anderen Umfragen zu unterscheiden.',
+		<?php esc_html_e( 'If you use Powerform to create and embed any polls on your website, you may need to mention it here to properly distinguish it from other polls.',
 		                  Powerform::DOMAIN ); ?>
 	</p>
 
-	<h2><?php esc_html_e( 'Welche personenbezogenen Daten erheben wir und warum?', Powerform::DOMAIN ); ?></h2>
+	<h2><?php esc_html_e( 'What personal data do we collect and why?', Powerform::DOMAIN ); ?></h2>
 	<p class="privacy-policy-tutorial">
-		<?php _e( 'Standardmäßig erfasst Powerform die <strong>IP-Adresse</strong> für jede Umfrageeinsendung.', Powerform::DOMAIN );// wpcs: xss ok. ?>
+		<?php _e( 'By default Powerform captures the <strong>IP Address</strong> for each Poll submission.', Powerform::DOMAIN );// wpcs: xss ok. ?>
 	</p>
 	<p class="privacy-policy-tutorial">
-		<?php esc_html_e( 'In diesem Abschnitt solltest Du vermerken, welche personenbezogenen Daten Du gesammelt hast, einschließlich der verfügbaren Umfragen. Du solltest auch erklären, warum diese Daten benötigt werden. Gib die Rechtsgrundlage für Deine Datenerhebung an und beachte die aktive Einwilligung des Nutzers.',
+		<?php esc_html_e( 'In this section you should note what personal data you collected including which polls are available. You should also explan why this data is needed. Include the legal basis for your data collection and note the active consent the user has given.',
 		                  Powerform::DOMAIN ); ?>
 	</p>
 	<p>
-		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Vorgeschlagener Text: ', Powerform::DOMAIN ); ?></strong>
-		<?php _e( 'Wenn Besucher oder Nutzer eine Umfrage einreichen, erfassen wir die <strong>IP-Adresse</strong> zum Schutz vor Spam und um Wählerbeschränkungen festzulegen.', Powerform::DOMAIN );// wpcs: xss ok. ?>
+		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Suggested text: ', Powerform::DOMAIN ); ?></strong>
+		<?php _e( 'When visitors or users submit a poll, we capture the <strong>IP Address</strong> for spam protection and to set voter limitations.', Powerform::DOMAIN );// wpcs: xss ok. ?>
 	</p>
 
-	<h2><?php esc_html_e( 'Wie lange wir Deine Daten aufbewahren', Powerform::DOMAIN ); ?></h2>
+	<h2><?php esc_html_e( 'How long we retain your data', Powerform::DOMAIN ); ?></h2>
 	<p class="privacy-policy-tutorial">
-		<?php _e( 'Standardmäßig behält Powerform alle Stimmen und seine <strong>IP-Adresse</strong> <strong>für immer</strong>. Sie können diese Einstellung in <strong>Powerform</strong> &raquo; <strong>Einstellungen</strong> &raquo; <strong>Datenschutzeinstellungen</strong> anpassen.',
+		<?php _e( 'By default Powerform retains all votes and its <strong>IP Address</strong> <strong>forever</strong>. You can change this setting in <strong>Powerform</strong> &raquo; <strong>Settings</strong> &raquo;
+		<strong>Privacy Settings</strong>',
 		          Powerform::DOMAIN );// wpcs: xss ok. ?>
 	</p>
 	<p>
-		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Vorgeschlagener Text: ', Powerform::DOMAIN ); ?></strong>
-		<?php _e( 'Wenn Besucher oder Benutzer bei einer Umfrage abstimmen, speichern wir die Daten der <strong>IP-Adresse</strong> 30 Tage lang und anonymisieren sie.', Powerform::DOMAIN ); // wpcs: xss ok. ?>
+		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Suggested text: ', Powerform::DOMAIN ); ?></strong>
+		<?php _e( 'When visitors or users votes on a poll we retain the <strong>IP Address</strong> data for 30 days and anonymize it.', Powerform::DOMAIN ); // wpcs: xss ok. ?>
 	</p>
-	<h2><?php esc_html_e( 'Wohin wir Deine Daten senden', Powerform::DOMAIN ); ?></h2>
+	<h2><?php esc_html_e( 'Where we send your data', Powerform::DOMAIN ); ?></h2>
 	<p>
-		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Vorgeschlagener Text: ', Powerform::DOMAIN ); ?></strong>
-		<?php esc_html_e( 'Alle gesammelten Daten können öffentlich angezeigt werden und wir senden sie an unsere Mitarbeiter oder Auftragnehmer, um die erforderlichen Maßnahmen basierend auf Abstimmungen durchzuführen.', Powerform::DOMAIN ); ?>
+		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Suggested text: ', Powerform::DOMAIN ); ?></strong>
+		<?php esc_html_e( 'All collected data might be shown publicly and we send it to our workers or contractors to perform necessary actions based on votes.', Powerform::DOMAIN ); ?>
 	</p>
-	<h2><?php esc_html_e( 'Dritte', Powerform::DOMAIN ); ?></h2>
+	<h2><?php esc_html_e( 'Third Parties', Powerform::DOMAIN ); ?></h2>
 	<p class="privacy-policy-tutorial">
-		<?php esc_html_e( 'Wenn Deine Umfragen entweder integrierte oder externe Dienste von Drittanbietern verwenden, solltest Du in diesem Abschnitt alle Drittanbieter und deren Datenschutzrichtlinien erwähnen.',
+		<?php esc_html_e( 'If your polls utilize either built-in or external third party services, in this section you should mention any third parties and its privacy policy.',
 		                  Powerform::DOMAIN ); ?>
 	</p>
 	<p class="privacy-policy-tutorial">
-		<?php esc_html_e( 'Standardmäßig können Powerform-Umfragen so konfiguriert werden, dass sie sich mit diesen Drittanbietern verbinden:' ); ?>
+		<?php esc_html_e( 'By default Powerform Polls can be configured to connect with these third parties:' ); ?>
 	</p>
 	<ul class="privacy-policy-tutorial">
-		<li><?php esc_html_e( 'Akismet. Aktiviert, wenn Du Akismet auf Deiner Webseite installiert und konfiguriert hast.' ); ?></li>
-		<li><?php esc_html_e( 'Zapier. Aktiviert, wenn du Zapier in den Integrationseinstellungen aktiviert und eingerichtet hast.' ); ?></li>
-		<li><?php esc_html_e( 'Google Drive. Aktiviert, wenn du Google Drive in den Integrationseinstellungen aktiviert und eingerichtet hast.' ); ?></li>
-		<li><?php esc_html_e( 'Trello. Aktiviert, wenn du Trello in den Integrationseinstellungen aktiviert und eingerichtet hast.' ); ?></li>
-		<li><?php esc_html_e( 'Slack. Aktiviert, wenn du Slack in den Integrationseinstellungen aktiviert und eingerichtet hast.' ); ?></li>
+		<li><?php esc_html_e( 'Akismet. Enabled when you installed and configured Akismet on your site.' ); ?></li>
+		<li><?php esc_html_e( 'Zapier. Enabled when you activated and setup Zapier on Integrations settings.' ); ?></li>
+		<li><?php esc_html_e( 'Google Drive. Enabled when you activated and setup Google Drive on Integrations settings.' ); ?></li>
+		<li><?php esc_html_e( 'Trello. Enabled when you activated and setup Trello on Integrations settings.' ); ?></li>
+		<li><?php esc_html_e( 'Slack. Enabled when you activated and setup Slack on Integrations settings.' ); ?></li>
 	</ul>
 	<p>
-		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Vorgeschlagener Text: ', Powerform::DOMAIN ); ?></strong>
-	<p><?php esc_html_e( 'Wir verwenden Akismet Spam zum Spamschutz. Ihre Datenschutzerklärung findest Du hier: https://automattic.com/privacy/.', Powerform::DOMAIN ); ?></p>
-	<p><?php esc_html_e( 'Wir verwenden Zapier, um unsere Integrationsdaten zu verwalten. Ihre Datenschutzerklärung findest Du hier: https://zapier.com/privacy/.', Powerform::DOMAIN ); ?></p>
+		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Suggested text: ', Powerform::DOMAIN ); ?></strong>
+	<p><?php esc_html_e( 'We use Akismet Spam for spam protection. Their privacy policy can be found here : https://automattic.com/privacy/.', Powerform::DOMAIN ); ?></p>
+	<p><?php esc_html_e( 'We use Zapier to manage our integration data. Their privacy policy can be found here : https://zapier.com/privacy/.', Powerform::DOMAIN ); ?></p>
 
 	<p>
-		<?php esc_html_e( 'Wir verwenden Google Drive und Google Sheet, um unsere Integrationsdaten zu verwalten. Ihre Datenschutzerklärung findest Du hier: https://policies.google.com/privacy?hl=en.',
+		<?php esc_html_e( 'We use Google Drive and Google Sheets to manage our integration data. Their privacy policy can be found here : https://policies.google.com/privacy?hl=en.',
 		                  Powerform::DOMAIN ); ?>
 	</p>
-	<p><?php esc_html_e( 'Wir verwenden Trello, um unsere Integrationsdaten zu verwalten. Ihre Datenschutzerklärung findest Du hier: https://trello.com/privacy.', Powerform::DOMAIN ); ?></p>
-	<p><?php esc_html_e( 'Wir verwenden Slack, um unsere Integrationsdaten zu verwalten. Ihre Datenschutzerklärung findest Du hier: https://slack.com/privacy-policy.', Powerform::DOMAIN ); ?></p>
+	<p><?php esc_html_e( 'We use Trello to manage our integration data. Their privacy policy can be found here : https://trello.com/privacy.', Powerform::DOMAIN ); ?></p>
+	<p><?php esc_html_e( 'We use Slack to manage our integration data. Their privacy policy can be found here : https://slack.com/privacy-policy.', Powerform::DOMAIN ); ?></p>
 	</p>
 </div>

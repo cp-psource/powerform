@@ -53,7 +53,7 @@ class Powerform_Section extends Powerform_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->name = __( 'Abschnitt', Powerform::DOMAIN );
+		$this->name = __( 'Section', Powerform::DOMAIN );
 	}
 
 	/**
@@ -64,8 +64,8 @@ class Powerform_Section extends Powerform_Field {
 	 */
 	public function defaults() {
 		return array(
-			'section_title'  => __( 'Formularabschnitt', Powerform::DOMAIN ),
-			'cform-section-border-style' => "none",
+			'section_title'              => __( 'Form Section', Powerform::DOMAIN ),
+			'cform-section-border-style' => 'none',
 		);
 	}
 
@@ -96,32 +96,31 @@ class Powerform_Section extends Powerform_Field {
 	 * @return mixed
 	 */
 	public function markup( $field, $settings = array() ) {
-		$this->field  = $field;
+
+		$this->field = $field;
+
+		$html         = '';
 		$id           = self::get_property( 'element_id', $field );
 		$name         = $id;
 		$id           = $id . '-field';
 		$required     = self::get_property( 'required', $field, false );
-		$title        = self::get_property( 'section_title', $field );
-		$subtitle     = self::get_property( 'section_subtitle', $field );
+		$title        = esc_html( self::get_property( 'section_title', $field ) );
+		$subtitle     = esc_html( self::get_property( 'section_subtitle', $field ) );
 		$type         = self::get_property( 'section_type', $field );
 		$border       = self::get_property( 'section_border', $field, 'none' );
 		$border_width = self::get_property( 'cform-section-border-width', $field, 1 );
 		$border_color = self::get_property( 'cform-section-border-color', $field, 1 );
 
-		$html = '<div class="powerform-break">';
+		$html .= '<div class="powerform-field">';
 
 		if ( ! empty( $title ) ) {
 			$title = $this->sanitize_output( $title );
-			$html  .= sprintf( '<h2 class="powerform-title">%s</h2>', $title );
-		} else {
-			$html .= '';
+			$html .= sprintf( '<h2 class="powerform-title">%s</h2>', wp_specialchars_decode( $title ) );
 		}
 
 		if ( ! empty( $subtitle ) ) {
 			$subtitle = $this->sanitize_output( $subtitle );
-			$html     .= sprintf( '<h3 class="powerform-subtitle">%s</h3>', $subtitle );
-		} else {
-			$html .= '';
+			$html    .= sprintf( '<h3 class="powerform-subtitle">%s</h3>', wp_specialchars_decode( $subtitle ) );
 		}
 
 		if ( 'none' !== $border ) {
@@ -129,7 +128,12 @@ class Powerform_Section extends Powerform_Field {
 			$border_width = self::get_property( 'cform-section-border-width', $field, 1 );
 			$border_color = self::get_property( 'cform-section-border-color', $field, 1 );
 
-			$html .= '<hr class="powerform-border" style="border: ' . $border_width . 'px ' . $border . ' ' . $border_color . ';" />';
+			$html .= sprintf(
+				'<hr class="powerform-border" style="border: %s %s %s;" />',
+				$border_width . 'px',
+				$border,
+				$border_color
+			);
 		}
 
 		$html .= '</div>';

@@ -38,107 +38,280 @@
 
     // Avoid Plugin.prototype conflicts
     $.extend(PowerformFrontValidate.prototype, {
+
         init: function() {
+
             var self = this;
+            var submitted = false;
+            var $form = this.$el;
 
             $(this.element).validate({
+
                 // add support for hidden required fields (uploads, wp_editor) when required
                 ignore: ":hidden:not(.do-validate)",
-                errorPlacement: function(error, element) {},
+
+                errorPlacement: function(error, element) {
+                    $form.trigger('validation:error');
+                },
+
+                showErrors: function(errorMap, errorList) {
+
+                    if (submitted && errorList.length > 0) {
+
+                        $form.find('.powerform-response-message').html('<ul></ul>');
+
+                        jQuery.each(errorList, function(key, error) {
+                            $form.find('.powerform-response-message ul').append('<li>' + error.message + '</li>');
+                        });
+
+                        $form.find('.powerform-response-message')
+                            .removeAttr('aria-hidden')
+                            .prop('tabindex', '-1')
+                            .addClass('powerform-accessible');
+                    }
+
+                    submitted = false;
+
+                    this.defaultShowErrors();
+
+                    $form.trigger('validation:showError', errorList);
+                },
+
+                invalidHandler: function(form, validator) {
+                    submitted = true;
+                    $form.trigger('validation:invalid');
+                },
+
                 onfocusout: function(element) {
+
                     //datepicker will be validated when its closed
                     if ($(element).hasClass('hasDatepicker') === false) {
                         $(element).valid();
                     }
+                    $(element).trigger('validation:focusout');
                 },
+
                 highlight: function(element, errorClass, message) {
-                    var errorMessage = this.errorMap[element.name],
-                        $field_holder = $(element).closest('.powerform-field--inner');
 
+                    var holder = $(element);
+                    var holderField = holder.closest('.powerform-field');
+                    var holderDate = holder.closest('.powerform-date-input');
+                    var holderTime = holder.closest('.powerform-timepicker');
+                    var holderError = '';
+                    var getColumn = false;
+                    var getError = false;
+                    var getDesc = false;
 
-                    if ($field_holder.length === 0) {
-                        $field_holder = $(element).closest('.powerform-field');
-                    }
+                    var errorMessage = this.errorMap[element.name];
+                    var errorMarkup = '<span class="powerform-error-message" aria-hidden="true"></span>';
 
-                    var $error_holder = $field_holder.find('.powerform-label--validation');
+                    if (holderDate.length > 0) {
 
-                    if ($error_holder.length === 0) {
-                        $field_holder.append('<label class="powerform-label--validation"></label>');
-                        $error_holder = $field_holder.find('.powerform-label--validation');
-                    }
+                        getColumn = holderDate.parent();
+                        getError = getColumn.find('.powerform-error-message[data-error-field="' + holder.data('field') + '"]');
+                        getDesc = getColumn.find('.powerform-description');
 
-                    $(element).attr('aria-invalid', 'true');
-                    $error_holder.html(errorMessage);
-                    $field_holder.addClass('powerform-has_error');
+                        errorMarkup = '<span class="powerform-error-message" data-error-field="' + holder.data('field') + '" aria-hidden="true"></span>';
 
-                    // For time field error message showing up on larger screens
-                    if ($(element).hasClass('powerform-input-time')) {
-                        var $time_field_holder = $(element).closest('.powerform-field:not(.powerform-field--inner)'),
-                            $time_error_holder = $time_field_holder.children('.powerform-label--validation'),
-                            $time_normal_error_holder = '',
-                            time_error_messages = [];
+                        if (0 === getError.length) {
 
-                        if ($time_error_holder.length === 0) {
-                            $time_field_holder.append('<label class="powerform-label--validation"></label>');
-                            $time_error_holder = $time_field_holder.children('.powerform-label--validation');
+                            if ('day' === holder.data('field')) {
+
+                                if (getColumn.find('.powerform-error-message[data-error-field="year"]').length) {
+
+                                    $(errorMarkup).insertBefore(getColumn.find('.powerform-error-message[data-error-field="year"]'));
+
+                                } else {
+
+                                    if (0 === getDesc.length) {
+                                        getColumn.append(errorMarkup);
+                                    } else {
+                                        $(errorMarkup).insertBefore(getDesc);
+                                    }
+                                }
+
+                                if (0 === holderField.find('.powerform-error-message').length) {
+
+                                    holderField.append(
+                                        '<span class="powerform-error-message" aria-hidden="true"></span>'
+                                    );
+                                }
+                            }
+
+                            if ('month' === holder.data('field')) {
+
+                                if (getColumn.find('.powerform-error-message[data-error-field="day"]').length) {
+
+                                    $(errorMarkup).insertBefore(
+                                        getColumn.find('.powerform-error-message[data-error-field="day"]')
+                                    );
+
+                                } else {
+
+                                    if (0 === getDesc.length) {
+                                        getColumn.append(errorMarkup);
+                                    } else {
+                                        $(errorMarkup).insertBefore(getDesc);
+                                    }
+                                }
+
+                                if (0 === holderField.find('.powerform-error-message').length) {
+
+                                    holderField.append(
+                                        '<span class="powerform-error-message" aria-hidden="true"></span>'
+                                    );
+                                }
+                            }
+
+                            if ('year' === holder.data('field')) {
+
+                                if (0 === getDesc.length) {
+                                    getColumn.append(errorMarkup);
+                                } else {
+                                    $(errorMarkup).insertBefore(getDesc);
+                                }
+
+                                if (0 === holderField.find('.powerform-error-message').length) {
+
+                                    holderField.append(
+                                        '<span class="powerform-error-message" aria-hidden="true"></span>'
+                                    );
+                                }
+                            }
                         }
 
-                        $time_error_holder.html('');
-                        $time_field_holder.find('.powerform-input-time').each(function() {
-                            $time_normal_error_holder = $(this).siblings('.powerform-label--validation');
-                            // So it works for material design markup
-                            if ($time_normal_error_holder.length === 0) {
-                                $time_normal_error_holder = $(this).closest('.powerform-field').find('.powerform-label--validation');
+                        holderError = getColumn.find('.powerform-error-message[data-error-field="' + holder.data('field') + '"]');
+
+                        // Insert error message
+                        holderError.html(errorMessage);
+                        holderField.find('.powerform-error-message').html(errorMessage);
+
+                    } else if (holderTime.length > 0) {
+
+                        getColumn = holderTime.parent();
+                        getError = getColumn.find('.powerform-error-message[data-error-field="' + holder.data('field') + '"]');
+                        getDesc = getColumn.find('.powerform-description');
+
+                        errorMarkup = '<span class="powerform-error-message" data-error-field="' + holder.data('field') + '" aria-hidden="true"></span>';
+
+                        if (0 === getError.length) {
+
+                            if ('hours' === holder.data('field')) {
+
+                                if (getColumn.find('.powerform-error-message[data-error-field="minutes"]').length) {
+
+                                    $(errorMarkup).insertBefore(
+                                        getColumn.find('.powerform-error-message[data-error-field="minutes"]')
+                                    );
+                                } else {
+
+                                    if (0 === getDesc.length) {
+                                        getColumn.append(errorMarkup);
+                                    } else {
+                                        $(errorMarkup).insertBefore(getDesc);
+                                    }
+                                }
+
+                                if (0 === holderField.find('.powerform-error-message').length) {
+
+                                    holderField.append(
+                                        '<span class="powerform-error-message" aria-hidden="true"></span>'
+                                    );
+                                }
                             }
-                            time_error_messages.push($time_normal_error_holder.html());
-                        });
-                        $time_error_holder.html(time_error_messages[0] + (time_error_messages[0].length > 0 ? ' <br/> ' : '') + time_error_messages[1]);
+
+                            if ('minutes' === holder.data('field')) {
+
+                                if (0 === getDesc.length) {
+                                    getColumn.append(errorMarkup);
+                                } else {
+                                    $(errorMarkup).insertBefore(getDesc);
+                                }
+
+                                if (0 === holderField.find('.powerform-error-message').length) {
+
+                                    holderField.append(
+                                        '<span class="powerform-error-message" aria-hidden="true"></span>'
+                                    );
+                                }
+                            }
+                        }
+
+                        holderError = getColumn.find('.powerform-error-message[data-error-field="' + holder.data('field') + '"]');
+
+                        // Insert error message
+                        holderError.html(errorMessage);
+                        holderField.find('.powerform-error-message').html(errorMessage);
+
+                    } else {
+
+                        var getError = holderField.find('.powerform-error-message');
+                        var getDesc = holderField.find('.powerform-description');
+
+                        if (0 === getError.length) {
+
+                            if (0 === getDesc.length) {
+                                holderField.append(errorMarkup);
+                            } else {
+                                $(errorMarkup).insertBefore(getDesc);
+                            }
+                        }
+
+                        holderError = holderField.find('.powerform-error-message');
+
+                        // Insert error message
+                        holderError.html(errorMessage);
+
                     }
+
+                    // Field invalid status for screen readers
+                    holder.attr('aria-invalid', 'true');
+
+                    // Field error status
+                    holderField.addClass('powerform-has_error');
+                    holder.trigger('validation:highlight');
+
                 },
 
                 unhighlight: function(element, errorClass, validClass) {
-                    var $field_holder = $(element).closest('.powerform-field--inner');
 
-                    if ($field_holder.length === 0) {
-                        $field_holder = $(element).closest('.powerform-field');
+                    var holder = $(element);
+                    var holderField = holder.closest('.powerform-field');
+                    var holderTime = holder.closest('.powerform-timepicker');
+                    var holderDate = holder.closest('.powerform-date-input');
+                    var holderError = '';
+
+                    if (holderDate.length > 0) {
+                        holderError = holderDate.parent().find('.powerform-error-message[data-error-field="' + holder.data('field') + '"]');
+                    } else if (holderTime.length > 0) {
+                        holderError = holderTime.parent().find('.powerform-error-message[data-error-field="' + holder.data('field') + '"]');
+                    } else {
+                        holderError = holderField.find('.powerform-error-message');
                     }
 
-                    var $error_holder = $field_holder.find('.powerform-label--validation');
+                    // Remove invalid attribute for screen readers
+                    holder.removeAttr('aria-invalid');
 
-                    $(element).removeAttr('aria-invalid');
-                    $error_holder.remove();
-                    $field_holder.removeClass('powerform-has_error');
+                    // Remove error message
+                    holderError.remove();
 
-                    // For time field error message showing up on larger screens
-                    if ($(element).hasClass('powerform-input-time')) {
-                        var $time_field_holder = $(element).closest('.powerform-field:not(.powerform-field--inner)'),
-                            $time_error_holder = $time_field_holder.children('.powerform-label--validation'),
-                            invalids = 0,
-                            time_error_message = '',
-                            $time_normal_error_holder = '';
+                    // Remove error class
+                    holderField.removeClass('powerform-has_error');
+                    holder.trigger('validation:unhighlight');
 
-                        $time_field_holder.find('.powerform-input-time').each(function() {
-                            if ($(this).attr('aria-invalid') === 'true') {
-                                $time_normal_error_holder = $(this).siblings('.powerform-label--validation');
-                                // So it works for material design markup
-                                if ($time_normal_error_holder.length === 0) {
-                                    $time_normal_error_holder = $(this).closest('.powerform-field').find('.powerform-label--validation');
-                                }
-                                time_error_message = $time_normal_error_holder.html();
-                                invalids++;
-                            }
-                        });
-                        if (invalids === 0) {
-                            $time_error_holder.remove();
-                        } else {
-                            $time_error_holder.html(time_error_message);
-                        }
-                    }
                 },
+
                 rules: self.settings.rules,
+
                 messages: self.settings.messages
+
             });
 
+            $(this.element).on('powerform.validate.signature', function() {
+                //validator.element( $( this ).find( "input[id$='_data']" ) );
+                var validator = $(this).validate();
+                validator.form();
+            });
         }
     });
 
@@ -166,17 +339,20 @@
     $.validator.addMethod("dateformat", function(value, element, param) {
         // dateITA method from jQuery Validator additional. Date method is deprecated and doesn't work for all formats
         var check = false,
-            re = 'yy-mm-dd' !== param ? /^\d{1,2}\/\d{1,2}\/\d{4}$/ : /^\d{4}-\d{1,2}-\d{1,2}$/,
+            re = 'yy-mm-dd' === param ||
+            'yy/mm/dd' === param ||
+            'yy.mm.dd' === param ?
+            /^\d{4}-\d{1,2}-\d{1,2}$/ : /^\d{1,2}-\d{1,2}-\d{4}$/,
             adata, gg, mm, aaaa, xdata;
-
+        value = value.replace(/[ /.]/g, '-');
         if (re.test(value)) {
-            if ('dd/mm/yy' === param) {
-                adata = value.split("/");
+            if ('dd/mm/yy' === param || 'dd-mm-yy' === param || 'dd.mm.yy' === param) {
+                adata = value.split("-");
                 gg = parseInt(adata[0], 10);
                 mm = parseInt(adata[1], 10);
                 aaaa = parseInt(adata[2], 10);
-            } else if ('mm/dd/yy' === param) {
-                adata = value.split("/");
+            } else if ('mm/dd/yy' === param || 'mm.dd.yy' === param || 'mm-dd-yy' === param) {
+                adata = value.split("-");
                 mm = parseInt(adata[0], 10);
                 gg = parseInt(adata[1], 10);
                 aaaa = parseInt(adata[2], 10);
@@ -249,6 +425,59 @@
         }
 
         return true;
+    });
+    $.validator.addMethod("powerformPasswordStrength", function(value, element, param) {
+        var passwordStrength = value.trim();
+
+        //at least 8 characters
+        if (!passwordStrength || passwordStrength.length < 8) {
+            return false;
+        }
+
+        var symbolSize = 0,
+            natLog, score;
+        //at least one number
+        if (passwordStrength.match(/[0-9]/)) {
+            symbolSize += 10;
+        }
+        //at least one lowercase letter
+        if (passwordStrength.match(/[a-z]/)) {
+            symbolSize += 20;
+        }
+        //at least one uppercase letter
+        if (passwordStrength.match(/[A-Z]/)) {
+            symbolSize += 20;
+        }
+        if (passwordStrength.match(/[^a-zA-Z0-9]/)) {
+            symbolSize += 30;
+        }
+        //at least one special character
+        if (passwordStrength.match(/[=!\-@.,_*#&?^`%$+\/{\[\]|}^?~]/)) {
+            symbolSize += 30;
+        }
+
+        natLog = Math.log(Math.pow(symbolSize, passwordStrength.length));
+        score = natLog / Math.LN2;
+
+        return score >= 54;
+    });
+
+    $.validator.addMethod("extension", function(value, element, param) {
+        var check = false;
+        if ($.trim(value) !== '') {
+            var extension = value.replace(/^.*\./, '');
+            if (extension == value) {
+                extension = 'notExt';
+            } else {
+                extension = extension.toLowerCase();
+            }
+
+            if (param.indexOf(extension) != -1) {
+                check = true;
+            }
+        }
+
+        return this.optional(element) || check;
     });
 
     // $.validator.methods.required = function(value, element, param) {

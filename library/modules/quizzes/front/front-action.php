@@ -19,6 +19,14 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 	public $entry_type = 'quizzes';
 
 	/**
+	 * Entry type
+	 *
+	 * @since 1.0
+	 * @var string
+	 */
+	public $model = null;
+
+	/**
 	 * Handle quiz submit
 	 *
 	 * @since 1.0
@@ -38,9 +46,9 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 		$id = isset( $post_data['form_id'] ) ? $post_data['form_id'] : null;
 
 		/** @var  Powerform_Quiz_Form_Model $model */
-		$model = Powerform_Quiz_Form_Model::model()->load( $id );
+		$this->model = Powerform_Quiz_Form_Model::model()->load( $id );
 
-		if ( ! is_object( $model ) ) {
+		if ( ! is_object( $this->model ) ) {
 			wp_send_json_error(
 				array(
 					'error' => apply_filters( 'powerform_submit_quiz_error_not_found', __( "Formular nicht gefunden", Powerform::DOMAIN ) ),
@@ -54,12 +62,12 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 		 * @param Powerform_Quiz_Form_Model $model - the quiz model
 		 * @param bool                       $is_preview
 		 */
-		do_action( 'powerform_before_submit_quizzes', $model, $is_preview );
+		do_action( 'powerform_before_submit_quizzes', $this->model, $is_preview );
 
-		if ( 'nowrong' === $model->quiz_type ) {
-			$this->_process_nowrong_submit( $model, $is_preview );
+		if ( 'nowrong' === $this->model->quiz_type ) {
+			$this->_process_nowrong_submit( $this->model, $is_preview );
 		} else {
-			$this->_process_knowledge_submit( $model, $is_preview );
+			$this->_process_knowledge_submit( $this->model, $is_preview );
 		}
 	}
 
@@ -77,7 +85,7 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 		if ( Powerform_Quiz_Form_Model::STATUS_PUBLISH !== $model->status ) {
 			wp_send_json_error(
 				array(
-					'error' => __( "Test-Einreichungen deaktiviert.", Powerform::DOMAIN ),
+					'error' => __( "Quizübermittlungen deaktiviert.", Powerform::DOMAIN ),
 				)
 			);
 		}
@@ -131,9 +139,10 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 					'value' => $result_data,
 				),
 			),
-			$is_preview
+			$is_preview,
+            $post_data
 		);
-
+		$entries  = new Powerform_Form_Entry_Model( $entry->entry_id );
 		$entry_id = $entry->entry_id;
 
 		$result = new Powerform_QForm_Result();
@@ -142,14 +151,24 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 
 		// Email
 		$powerform_mail_sender = new Powerform_Quiz_Front_Mail();
-		$powerform_mail_sender->process_mail( $model, $post_data, $entry );
+		$powerform_mail_sender->process_mail( $model, $post_data, $entries );
 
 		// dont push history on preview
 		$result_url = ! $is_preview ? $result->build_permalink() : '';
 
+		//replace tags if any
+		foreach ( array( 'title', 'description' ) as $key ) {
+			if ( isset( $final_res[ $key ] ) ) {
+				if ( 'description' === $key ) {
+					$final_res[ $key ] = do_shortcode( $final_res[ $key ] );
+				}
+				$final_res[ $key ] = powerform_replace_quiz_form_data( $final_res[ $key ], $model, $post_data, $entry );
+			}
+		}
+
 		wp_send_json_success(
 			array(
-				'result'     => $this->_render_nowrong_result( $model, $final_res ),
+				'result'     => $this->_render_nowrong_result( $model, $final_res, $post_data, $entry ),
 				'result_url' => $result_url,
 				'type'       => 'nowrong',
 			)
@@ -161,19 +180,30 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 	 *
 	 * @since 1.0
 	 *
-	 * @param Powerform_Quiz_Form_Model $model
-	 * @param    array                   $result
+	 * @param Powerform_Quiz_Form_Model      $model
+	 * @param    array                        $result
+	 * @param    array                        $data
+	 * @param    Powerform_Form_Entry_Model  $entry
 	 *
 	 * @return string
 	 */
-	private function _render_nowrong_result( $model, $result ) {
+	private function _render_nowrong_result( $model, $result, $data, Powerform_Form_Entry_Model $entry ) {
 		ob_start();
+		$description = '';
 
-		$theme = $model->settings['powerform-quiz-theme'];
+		if ( ! is_array( $data ) ) {
+			$data = array();
+		}
+
+		$theme       = isset( $model->settings['powerform-quiz-theme'] ) ? $model->settings['powerform-quiz-theme'] : '';
 
 		if ( ! $theme ) {
 			$theme = 'default';
 		}
+		//replace tags if any
+        if ( isset( $result['description'] ) && ! empty( $result['description'] ) ) {
+            $description = powerform_replace_quiz_form_data( $result['description'], $model, $data, $entry );
+        }
 		?>
 
 		<?php if ( 'clean' === $theme ) { ?>
@@ -182,15 +212,17 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 
 				<p><strong><?php echo esc_html( $result['title'] ); ?></strong></p>
 
-				<?php if ( isset( $result['description'] ) && ! empty( $result['description'] ) ) : ?>
-					<p><?php echo( $result['description'] ); // wpcs xss ok. ?></p>
+				<?php if ( ! empty( $description ) ) : ?>
+					<p><?php echo $description; // wpcs xss ok. ?></p>
 				<?php endif; ?>
 
 				<?php if ( isset( $result['image'] ) && ! empty( $result['image'] ) ) : ?>
-					<img src="<?php echo esc_html( $result['image'] ); ?>" aria-hidden="true" class="powerform-result--image"/>
+					<img src="<?php echo esc_html( $result['image'] ); ?>" aria-hidden="true" class="powerform-result--image" />
 				<?php endif; ?>
 
-				<button class="powerform-result--retake" type="button"><i class="wpdui-icon wpdui-icon-refresh" aria-hidden="true"></i> <?php esc_html_e( "Test wiederholen", Powerform::DOMAIN ); ?>
+				<button class="powerform-result--retake" type="button">
+					<span class="powerform-icon-refresh" aria-hidden="true"></span>
+					<span><?php esc_html_e( "Wiederhole Quiz", Powerform::DOMAIN ); ?></span>
 				</button>
 
 			</div>
@@ -202,20 +234,20 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 				<?php if ( 'material' === $theme ) { ?>
 
 					<?php if ( isset( $result['image'] ) && ! empty( $result['image'] ) ) { ?>
-						<img src="<?php echo esc_html( $result['image'] ); ?>" aria-hidden="true" class="powerform-result--image"/>
+						<img src="<?php echo esc_html( $result['image'] ); ?>" class="powerform-result--image" aria-hidden="true" />
 					<?php } ?>
 
 					<div class="powerform-result--content">
 
 						<p class="powerform-result--title"><?php echo esc_html( $result['title'] ); ?></p>
 
-						<?php if ( isset( $result['description'] ) && ! empty( $result['description'] ) ) : ?>
-							<div class="powerform-result--description"><?php echo( $result['description'] ); // wpcs xss ok. ?></div>
+						<?php if ( ! empty( $description ) ) : ?>
+							<div class="powerform-result--description"><?php echo $description; // wpcs xss ok. ?></div>
 						<?php endif; ?>
 
-						<hr>
+						<hr />
 
-						<button class="powerform-result--retake" type="button"><?php esc_html_e( "Test wiederholen", Powerform::DOMAIN ); ?></button>
+						<button class="powerform-result--retake" type="button"><?php esc_html_e( 'Wiederhole Quiz', Powerform::DOMAIN ); ?></button>
 
 					</div>
 
@@ -223,11 +255,11 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 
 					<div class="powerform-result--info">
 
-						<span class="powerform-result--quiz-name"><?php echo powerform_get_form_name( $model->id, 'quiz' ); // WPCS: XSS ok. ?></span>
+						<span class="powerform-result--quiz-name"><?php echo powerform_get_quiz_name( $model->id ); // WPCS: XSS ok. ?></span>
 
 						<button class="powerform-result--retake" type="button">
-							<i class="wpdui-icon wpdui-icon-refresh" aria-hidden="true"></i>
-							<?php esc_html_e( "Test wiederholen", Powerform::DOMAIN ); ?>
+							<span class="powerform-icon-refresh" aria-hidden="true"></span>
+							<span><?php esc_html_e( "Wiederhole Quiz", Powerform::DOMAIN ); ?></span>
 						</button>
 
 					</div>
@@ -238,14 +270,16 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 
 							<p class="powerform-result--title"><?php echo esc_html( $result['title'] ); ?></p>
 
-							<?php if ( isset( $result['description'] ) && ! empty( $result['description'] ) ): ?>
-								<div class="powerform-result--description"><?php echo( $result['description'] ); // wpcs xss ok. ?></div>
+							<?php if ( ! empty( $description ) ): ?>
+								<div class="powerform-result--description"><?php echo $description; // wpcs xss ok. ?></div>
 							<?php endif; ?>
 
 						</div>
 
 						<?php if ( isset( $result['image'] ) && ! empty( $result['image'] ) ) { ?>
-							<img src="<?php echo esc_html( $result['image'] ); ?>" aria-hidden="true" class="powerform-result--image"/>
+							<div class="powerform-result--image" style="background-image: url('<?php echo esc_html( $result['image'] ); ?>');" aria-hidden="true">
+								<img src="<?php echo esc_html( $result['image'] ); ?>" />
+							</div>
 						<?php } ?>
 
 					</div>
@@ -262,27 +296,37 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 		$is_tw = isset( $model->settings['twitter'] ) && filter_var( $model->settings['twitter'], FILTER_VALIDATE_BOOLEAN );
 		$is_li = isset( $model->settings['linkedin'] ) && filter_var( $model->settings['linkedin'], FILTER_VALIDATE_BOOLEAN );
 
-		if( $is_enabled ) {
+		if ( $is_enabled ) {
 			if ( $is_fb || $is_tw || $is_li ):
-				$result_message = sprintf( __( 'Ich habe %1$s beim %2$s-Test erhalten!', Powerform::DOMAIN ), $result['title'], $model->settings['formName'] );
+                $result_message = powerform_get_social_message( $model->settings, $model->settings['formName'], $result['title'], $data );
 				?>
-				<div class="powerform-social--share">
-					<p class="powerform-social--text"><?php esc_html_e( "Teile deine Ergebnisse", Powerform::DOMAIN ); ?></p>
+				<div class="powerform-quiz--social">
+					<p class="powerform-social--text"><?php esc_html_e( "Share your results", Powerform::DOMAIN ); ?></p>
 					<ul class="powerform-social--icons"
-						data-message="<?php echo esc_html( $result_message ); ?>">
+						data-message="<?php echo esc_html( $result_message ); ?>"
+                        data-url="<?php echo isset( $data['current_url'] ) ? esc_url( $data['current_url'] ) : powerform_get_current_url(); ?>">
 						<?php if ( $is_fb ): ?>
 							<li class="powerform-social--icon">
-								<a href="#" data-social="facebook" class="wpdui-icon wpdui-icon-social-facebook" aria-label="<?php esc_html_e( 'Auf Facebook teilen', Powerform::DOMAIN ); ?>"></a>
+								<a href="#" data-social="facebook" aria-label="<?php esc_html_e( 'Auf Facebook teilen', Powerform::DOMAIN ); ?>">
+									<i class="powerform-icon-social-facebook" aria-hidden="true"></i>
+									<span class="powerform-screen-reader-only"><?php esc_html_e( 'Auf Facebook teilen', Powerform::DOMAIN ); ?></span>
+								</a>
 							</li>
 						<?php endif; ?>
 						<?php if ( $is_tw ): ?>
 							<li class="powerform-social--icon">
-								<a href="#" data-social="twitter" class="wpdui-icon wpdui-icon-social-twitter" aria-label="<?php esc_html_e( 'Auf Twitter teilen', Powerform::DOMAIN ); ?>"></a>
+								<a href="#" data-social="twitter" aria-label="<?php esc_html_e( 'Auf Twitter teilen', Powerform::DOMAIN ); ?>">
+									<i class="powerform-icon-social-twitter" aria-hidden="true"></i>
+									<span class="powerform-screen-reader-only"><?php esc_html_e( 'Auf Twitter teilen', Powerform::DOMAIN ); ?></span>
+								</a>
 							</li>
 						<?php endif; ?>
 						<?php if ( $is_li ): ?>
 							<li class="powerform-social--icon">
-								<a href="#" data-social="linkedin" class="wpdui-icon wpdui-icon-social-linkedin" aria-label="<?php esc_html_e( 'Auf LinkedIn teilen', Powerform::DOMAIN ); ?>"></a>
+								<a href="#" data-social="linkedin" aria-label="<?php esc_html_e( 'Auf LinkedIn teilen', Powerform::DOMAIN ); ?>">
+									<i class="powerform-icon-social-linkedin" aria-hidden="true"></i>
+									<span class="powerform-screen-reader-only"><?php esc_html_e( 'Auf LinkedIn teilen', Powerform::DOMAIN ); ?></span>
+								</a>
 							</li>
 						<?php endif; ?>
 					</ul>
@@ -310,6 +354,15 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 	}
 
 	/**
+	 * Update payment amount
+	 *
+	 * @since 1.7.3
+	 */
+	public function update_payment_amount() {
+		// Update payment amount
+	}
+
+	/**
 	 * Process knowledge quiz
 	 *
 	 * @since 1.0
@@ -324,7 +377,7 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 		if ( Powerform_Quiz_Form_Model::STATUS_PUBLISH !== $model->status ) {
 			wp_send_json_error(
 				array(
-					'error' => __( "Test-Einreichungen deaktiviert.", Powerform::DOMAIN ),
+					'error' => __( "Quizübermittlungen deaktiviert.", Powerform::DOMAIN ),
 				)
 			);
 		}
@@ -438,10 +491,12 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 		}
 
 		$entry    = null;
+		$entries  = null;
 		$entry_id = 0;
 
 		if ( $is_finish ) {
-			$entry    = $this->_save_entry( $model, $result_data, $is_preview );
+			$entry    = $this->_save_entry( $model, $result_data, $is_preview, $post_data );
+			$entries  = new Powerform_Form_Entry_Model( $entry->entry_id );
 			$entry_id = $entry->entry_id;
 		}
 
@@ -449,15 +504,18 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 		$result->set_entry( $entry_id );
 		$result->set_postdata( $post_data );
 
+		$post_data['final_result'] = $right_counter;
+
 		if ( $is_finish && ! is_null( $entry ) ) {
 			// Email
 			$powerform_mail_sender = new Powerform_Quiz_Front_Mail();
-			$powerform_mail_sender->process_mail( $model, $post_data, $entry );
+			$powerform_mail_sender->process_mail( $model, $post_data, $entries );
+			// replace quiz form data
+			$final_text = powerform_replace_quiz_form_data( $final_text, $model, $post_data, $entry );
 		}
 
 		// dont push history on preview
 		$result_url = ! $is_preview ? $result->build_permalink() : '';
-
 		//store the
 		wp_send_json_success(
 			array(
@@ -473,7 +531,8 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 					),
 					$model,
 					$right_counter,
-					count( $results )
+					count( $results ),
+					$post_data
 				) : '',
 			)
 		);
@@ -486,47 +545,71 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 	 *
 	 * @param $text
 	 * @param $model
+	 * @param $data
 	 *
 	 * @return string
 	 */
-	private function _render_knowledge_result( $text, $model, $right_answers, $total_answers ) {
+	private function _render_knowledge_result( $text, $model, $right_answers, $total_answers, $data = array() ) {
 		ob_start();
 		?>
 
-		<div class="powerform-quiz--summary"><?php echo wpautop( $text, true ); // WPCS: XSS ok. ?></div>
+		<div role="alert" class="powerform-quiz--summary"><?php echo wpautop( $text, true ); // WPCS: XSS ok. ?></div>
+
 		<?php
-		$is_enabled = isset( $model->settings['enable-share'] ) && "on" === $model->settings['enable-share'];
+		$is_enabled = true;
 		$is_fb = isset( $model->settings['facebook'] ) && filter_var( $model->settings['facebook'], FILTER_VALIDATE_BOOLEAN );
 		$is_tw = isset( $model->settings['twitter'] ) && filter_var( $model->settings['twitter'], FILTER_VALIDATE_BOOLEAN );
 		$is_li = isset( $model->settings['linkedin'] ) && filter_var( $model->settings['linkedin'], FILTER_VALIDATE_BOOLEAN );
 
-		if( $is_enabled ) {
-			if ( $is_fb || $is_tw || $is_li ):
-				$result_message = sprintf( __( 'Ich habe %1$s/%2$s beim %3$s-Test erhalten!', Powerform::DOMAIN ), $right_answers, $total_answers, $model->settings['formName'] );
+		if ( isset( $model->settings['enable-share'] ) && "off" === $model->settings['enable-share'] ) {
+			$is_enabled = false;
+		}
+
+		if ( true === $is_enabled ) {
+
+			if ( $is_fb || $is_tw || $is_li ) :
+
+                $result = $right_answers . '/' . $total_answers;
+                $result_message = powerform_get_social_message( $model->settings, $model->settings['formName'], $result, $data );
 				?>
-				<p class="powerform-social--text"><?php esc_html_e( "Teile deine Ergebnisse", Powerform::DOMAIN ); ?></p>
-				<ul class="powerform-social--icons"
-					data-message="<?php echo esc_html( $result_message ); ?>">
-					<?php if ( $is_fb ): ?>
-						<li class="powerform-social--icon">
-							<a href="#" data-social="facebook" class="wpdui-icon wpdui-icon-social-facebook" aria-label="<?php esc_html_e( 'Auf Facebook teilen', Powerform::DOMAIN ); ?>"></a>
-						</li>
-					<?php endif; ?>
-					<?php if ( $is_tw ): ?>
-						<li class="powerform-social--icon">
-							<a href="#" data-social="twitter" class="wpdui-icon wpdui-icon-social-twitter" aria-label="<?php esc_html_e( 'Auf Twitter teilen', Powerform::DOMAIN ); ?>"></a>
-						</li>
-					<?php endif; ?>
-					<?php if ( $is_li ): ?>
-						<li class="powerform-social--icon">
-							<a href="#" data-social="linkedin" class="wpdui-icon wpdui-icon-social-linkedin" aria-label="<?php esc_html_e( 'Auf LinkedIn teilen', Powerform::DOMAIN ); ?>"></a>
-						</li>
-					<?php endif; ?>
-				</ul>
+                <div class="powerform-quiz--social">
+                    <p class="powerform-social--text"><?php esc_html_e( "Teile Deine Ergebnisse", Powerform::DOMAIN ); ?></p>
+                    <ul class="powerform-social--icons"
+                        data-message="<?php echo esc_textarea( $result_message ); ?>"
+                        data-url="<?php echo isset( $data['current_url'] ) ? esc_url( $data['current_url'] ) : powerform_get_current_url(); ?>">
+                        <?php if ( $is_fb ): ?>
+                            <li class="powerform-social--icon">
+                                <a href="#" data-social="facebook" aria-label="<?php esc_html_e( 'Auf Facebook teilen', Powerform::DOMAIN ); ?>">
+                                    <i class="powerform-icon-social-facebook" aria-hidden="true"></i>
+                                    <span class="powerform-screen-reader-only"><?php esc_html_e( 'Auf Facebook teilen', Powerform::DOMAIN ); ?></span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ( $is_tw ): ?>
+                            <li class="powerform-social--icon">
+                                <a href="#" data-social="twitter" aria-label="<?php esc_html_e( 'Auf Twitter teilen', Powerform::DOMAIN ); ?>">
+                                    <i class="powerform-icon-social-twitter" aria-hidden="true"></i>
+                                    <span class="powerform-screen-reader-only"><?php esc_html_e( 'Auf Twitter teilen', Powerform::DOMAIN ); ?></span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ( $is_li ): ?>
+                            <li class="powerform-social--icon">
+                                <a href="#" data-social="linkedin" aria-label="<?php esc_html_e( 'Auf LinkedIn teilen', Powerform::DOMAIN ); ?>">
+                                    <i class="powerform-icon-social-linkedin" aria-hidden="true"></i>
+                                    <span class="powerform-screen-reader-only"><?php esc_html_e( 'Auf LinkedIn teilen', Powerform::DOMAIN ); ?></span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
 			<?php endif; ?>
+
 		<?php } ?>
+
 		<?php
 		$knowledge_result_html = ob_get_clean();
+		$knowledge_result_html = do_shortcode( $knowledge_result_html );
 
 		/**
 		 * Filter to modify knowledge results
@@ -571,22 +654,42 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 	 * @param Powerform_Quiz_Form_Model $quiz
 	 * @param                            $field_data
 	 * @param bool                       $is_preview
+	 * @param array                      $data
 	 *
 	 * @return Powerform_Form_Entry_Model
 	 */
-	private function _save_entry( $quiz, $field_data, $is_preview = false ) {
+	private function _save_entry( $quiz, $field_data, $is_preview = false, $data = array() ) {
 		$quiz_id           = $quiz->id;
 		$entry             = new Powerform_Form_Entry_Model();
 		$entry->entry_type = $this->entry_type;
 		$entry->form_id    = $quiz_id;
 
-		$is_prevent_store = $quiz->is_prevent_store();
-		if ( $is_preview || $is_prevent_store || $entry->save() ) {
+		$data_entry = isset( $data['entry_id'] ) ? $data['entry_id'] : null;
+		$skip_form  = false;
 
+        if ( $this->has_skip_form() && empty( $data_entry ) ) {
+	        $skip_form = true;
+        }
+
+		$is_prevent_store = $quiz->is_prevent_store();
+		if ( $is_preview || $is_prevent_store || $entry->save( null, $data_entry ) ) {
+			$current_url = powerform_get_current_url();
+
+			if ( ! empty( $data['current_url'] ) ) {
+				$current_url = $data['current_url'];
+			}
 			$field_data_array = array(
 				array(
 					'name'  => 'entry',
 					'value' => $field_data,
+				),
+				array(
+					'name'  => 'quiz_url',
+					'value' => $current_url,
+				),
+                array(
+					'name'  => 'skip_form',
+					'value' => $skip_form,
 				),
 			);
 
@@ -714,5 +817,21 @@ class Powerform_Quizz_Front_Action extends Powerform_Front_Action {
 			}
 
 		}
+	}
+
+	/**
+	 * Check has lead skip
+	 *
+	 * @return bool
+	 */
+	public function has_skip_form() {
+		$form_settings = isset( $this->model->settings ) ? $this->model->settings : array();
+
+		if ( isset( $form_settings['skip-form'] ) && $form_settings['skip-form'] ) {
+
+			return true;
+		}
+
+		return false;
 	}
 }

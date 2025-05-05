@@ -3,10 +3,10 @@
 /**
  * Addon Name: Gutenberg
  * Version: 1.0
- * Plugin URI:  https://premium.wpmudev.org/
+ * Plugin URI:  https://n3rds.work/
  * Description: Gutenberg blocks for Powerform
- * Author: WMS N@W
- * Author URI: http://premium.wpmudev.org
+ * Author: WPMU DEV
+ * Author URI: http://premium.psource.org
  */
 
 define( 'POWERFORM_ADDON_GUTENBERG_VERSION', '1.0' );
@@ -41,7 +41,7 @@ class Powerform_Gutenberg {
 	 */
 	public static function init() {
 		// Load abstracts
-		require_once dirname( __FILE__ ) . '/library/abstract-class-block.php';
+		require_once dirname( __FILE__ ) . '/library/class-powerform-gfblock-abstract.php';
 
 		// Load blocks
 		self::load_blocks();
@@ -54,7 +54,7 @@ class Powerform_Gutenberg {
 	 */
 	public static function load_blocks() {
 		// Load blocks automatically
-		foreach ( glob( plugin_dir_path( __FILE__ ) . 'library/blocks/class-block-*.php' ) as $file ) {
+		foreach ( glob( plugin_dir_path( __FILE__ ) . 'library/blocks/class-powerform-gfblock-*.php' ) as $file ) {
 			require_once $file;
 		}
 	}

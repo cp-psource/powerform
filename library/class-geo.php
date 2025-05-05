@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Class Powerform_Geo
- *
+ * 
  * Handle geo-location data
  *
  * @since 1.0

@@ -32,6 +32,15 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 	protected $fields = array();
 
 	/**
+	 * Fields
+	 *
+	 * @var array
+	 */
+	protected $lead_fields = array();
+
+
+
+	/**
 	 * Visible Fields
 	 *
 	 * @var array
@@ -60,6 +69,13 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 	protected $per_page = 10;
 
 	/**
+	 * Page number
+	 *
+	 * @var int
+	 */
+	protected $page_number = 1;
+
+	/**
 	 * Error message if avail
 	 *
 	 * @var string
@@ -73,17 +89,74 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 	private static $registered_addons = null;
 
 	/**
+	 * @since 1.6.2
+	 * @var Powerform_Addon_Abstract[]
+	 */
+	protected $lead_cform = null;
+
+	/**
+	 * Filters to be used
+	 *
+	 * [key=>value]
+	 * ['search'=>'search term']
+	 *
+	 * @since 1.5.4
+	 * @var array
+	 */
+	public $filters = array();
+
+	/**
+	 * Order to be used
+	 *
+	 * [key=>order]
+	 * ['entry_date' => 'ASC']
+	 *
+	 * @since 1.5.4
+	 * @var array
+	 */
+	public $order = array();
+
+	/**
+	 * Entries
+	 *
+	 * @var array
+	 */
+	protected $entries = array();
+
+	/**
+	 * Total filtered Entries
+	 *
+	 * @since 1.5.4
+	 * @var int
+	 */
+	protected $filtered_total_entries = 0;
+
+	/**
+	 * Flag fields is currently filtered
+	 *
+	 * @since 1.5.4
+	 * @var bool
+	 */
+	public $fields_is_filtered = false;
+
+	/**
+	 * Total Entries
+	 *
+	 * @var int
+	 */
+	protected $total_entries = 0;
+
+	/**
 	 * Initialise variables
 	 *
 	 * @since 1.0
 	 */
 	public function before_render() {
-
 		// This view is unused from 1.5.4 on, using "powerform-entries" instead.
 		if ( 'powerform-quiz-view' === $this->page_slug ) {
 			$url = '?page=powerform-entries&form_type=powerform_quizzes';
 			if ( isset( $_REQUEST['form_id'] ) ) { // WPCS: CSRF OK
-				$url .= '&form_id=' . $_REQUEST['form_id']; // WPCS: CSRF OK
+				$url .= '&form_id=' . intval( $_REQUEST['form_id'] ); // WPCS: CSRF OK
 			}
 			if ( wp_safe_redirect( $url ) ) {
 				exit;
@@ -91,7 +164,7 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 		}
 
 		if ( isset( $_REQUEST['form_id'] ) ) { // WPCS: CSRF OK
-			$this->form_id = sanitize_text_field( $_REQUEST['form_id'] );
+			$this->form_id = intval( $_REQUEST['form_id'] );
 			$this->model   = Powerform_Quiz_Form_Model::model()->load( $this->form_id );
 			if ( is_object( $this->model ) ) {
 				$this->fields = $this->model->get_fields();
@@ -101,11 +174,25 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 			} else {
 				$this->model = false;
 			}
+
+			$pagenum = isset( $_REQUEST['paged'] ) ? absint( $_REQUEST['paged'] ) : 0; // WPCS: CSRF OK
+
+			$this->parse_filters();
+			$this->parse_order();
+
 			$this->per_page       = powerform_form_view_per_page( 'entries' );
+			$this->page_number    = max( 1, $pagenum );
 			$this->total_fields   = count( $this->fields ) + 1;
 			$this->checked_fields = $this->total_fields;
 			$this->process_request();
+			$this->prepare_results();
 		}
+
+		if ( $this->has_leads() ) {
+			$this->lead_cform = new Powerform_CForm_View_Page( 'powerform-quiz-view', 'custom-form/entries', __( 'Einsendungen:', Powerform::DOMAIN ), __( 'Benutzerdefiniertes Formular anzeigen', Powerform::DOMAIN ), 'powerform' );
+			$this->lead_cform->before_render( $this->lead_id() );
+			$this->lead_fields = $this->lead_cform->get_fields();
+        }
 	}
 
 	/**
@@ -116,45 +203,59 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 	public function process_request() {
 
 		if ( isset( $_GET['err_msg'] ) ) {
-			$this->error_message = $_GET['err_msg']; // WPCS: CSRF OK
+			$this->error_message = wp_kses_post( $_GET['err_msg'] );
 		}
 
-		if ( ! isset( $_POST['powerformEntryNonce'] ) ) {
+		if ( isset( $_REQUEST['field'] ) ) {
+			$this->visible_fields     = $_REQUEST['field']; // wpcs XSRF ok, via GET
+			$this->checked_fields     = count( $this->visible_fields );
+			$this->fields_is_filtered = true;
+		}
+
+		if ( ! isset( $_REQUEST['powerformEntryNonce'] ) ) {
 			return;
 		}
 
-		$nonce = $_POST['powerformEntryNonce']; // WPCS: CSRF OK
-		if ( wp_verify_nonce( $nonce, 'powerformQuizEntries' ) ) {
-			if ( isset( $_POST['field'] ) ) {
-				$this->visible_fields = $_POST['field'];
-				$this->checked_fields = count( $this->visible_fields );
-			}
-
+		$nonce = $_REQUEST['powerformEntryNonce']; // WPCS: CSRF OK
+		if ( ! wp_verify_nonce( $nonce, 'powerformQuizEntries' ) ) {
 			return;
 		}
 
 		$action = '';
-		if ( wp_verify_nonce( $nonce, 'powerform_quiz_bulk_action' ) ) {
-			if ( isset( $_POST['entries-action'] ) || isset( $_POST['entries-action-bottom'] ) ) {
-				if ( isset( $_POST['entries-action'] ) && ! empty( $_POST['entries-action'] ) ) {
-					$action = $_POST['entries-action'];
-				} elseif ( isset( $_POST['entries-action-bottom'] ) ) {
-					$action = $_POST['entries-action-bottom'];
-				}
+        if ( isset( $_REQUEST['entries-action'] ) || isset( $_REQUEST['entries-action-bottom'] ) ) {
+            if ( isset( $_REQUEST['entries-action'] ) && ! empty( $_REQUEST['entries-action'] ) ) {
+                $action = $_REQUEST['entries-action'];
+            } elseif ( isset( $_REQUEST['entries-action-bottom'] ) ) {
+                $action = $_REQUEST['entries-action-bottom'];
+            }
 
-				switch ( $action ) {
-					case 'delete-all' :
-						if ( isset( $_POST['ids'] ) && is_array( $_POST['ids'] ) ) {
-							$entries = implode( ",", $_POST['ids'] );
-							Powerform_Form_Entry_Model::delete_by_entrys( $this->model->id, $entries );
-							$url = add_query_arg( '', '' );
-							wp_safe_redirect( $url );
-							exit;
-						}
-						break;
-					default:
-						break;
-				}
+            switch ( $action ) {
+                case 'delete-all' :
+                    if ( isset( $_REQUEST['ids'] ) && is_array( $_REQUEST['ids'] ) ) {
+                        $entries = implode( ",", $_REQUEST['ids'] );
+                        Powerform_Form_Entry_Model::delete_by_entrys( $this->model->id, $entries );
+                        $this->maybe_redirect_to_referer();
+                        exit;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+		if ( isset( $_POST['powerform_action'] ) ) {
+			switch ( $_POST['powerform_action'] ) {
+				case 'delete':
+					if ( isset( $_POST['id'] ) ) {
+						$id = $_POST['id'];
+
+						Powerform_Form_Entry_Model::delete_by_entrys( $this->model->id, $id );
+						$this->maybe_redirect_to_referer();
+						exit;
+					}
+					break;
+				default:
+					break;
 			}
 		}
 	}
@@ -176,7 +277,7 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 
 		$this->add_box(
 			'custom-form/entries/popup/schedule-export',
-			__( 'Zeitplan-Export bearbeiten', Powerform::DOMAIN ),
+			__( 'Geplanten Export bearbeiten', Powerform::DOMAIN ),
 			'entries-popup-schedule-export',
 			null,
 			null,
@@ -192,6 +293,16 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 	 */
 	public function get_fields() {
 		return $this->fields;
+	}
+
+	/**
+	 * Get fields
+	 *
+	 * @since 1.0
+	 * @return array
+	 */
+	public function get_lead_fields() {
+		return $this->lead_fields;
 	}
 
 	/**
@@ -243,10 +354,39 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 	 * Fields header
 	 *
 	 * @since 1.0
-	 * @return string
 	 */
 	public function fields_header() {
-		echo esc_html( sprintf( __( 'Showing %$1s of %$2s fields', Powerform::DOMAIN ), $this->checked_fields, $this->total_fields ) );
+		echo esc_html( sprintf( __( 'Zeige %$1s von %$2s Feldern', Powerform::DOMAIN ), $this->checked_fields, $this->total_fields ) );
+	}
+
+	/**
+	 * Check if quiz has leads
+	 *
+	 * @since 1.14
+	 *
+	 * @return bool
+	 */
+	public function has_leads() {
+		if ( isset( $this->model->settings['hasLeads'] ) && "true" === $this->model->settings['hasLeads'] ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check if quiz lead id
+	 *
+	 * @since 1.14
+	 *
+	 * @return int
+	 */
+	public function lead_id() {
+		if ( isset( $this->model->settings['leadsId'] ) ) {
+			return $this->model->settings['leadsId'];
+		}
+
+		return 0;
 	}
 
 	/**
@@ -269,9 +409,9 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 	 * @return int
 	 */
 	public function get_paged() {
-		$paged = isset( $_GET['paged'] ) ? $_GET['paged'] : 1; // WPCS: CSRF OK
+		$paged = isset( $_GET['paged'] ) ? intval( $_GET['paged'] ) : 1;
 
-		return intval( $paged );
+		return $paged;
 	}
 
 	/**
@@ -303,6 +443,16 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 	 */
 	public function get_form_type() {
 		return $this->model->quiz_type;
+	}
+
+	/**
+	 * Get form type param
+	 *
+	 * @since 1.5.4
+	 * @return string
+	 */
+	protected function powerform_get_form_type() {
+		return ( isset( $_GET['form_type'] ) ? sanitize_text_field( $_GET['form_type'] ) : '' );
 	}
 
 	/**
@@ -469,5 +619,235 @@ class Powerform_Quizz_View_Page extends Powerform_Admin_Page {
 		}
 
 		return $formatted_additional_items;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function entries_iterator() {
+		$entries_data = array();
+		$entries      = $this->entries;
+		if ( $this->lead_cform ) {
+			$entries_data = $this->lead_cform->entries_iterator( $entries, 'quiz' );
+		} else {
+			foreach ( $entries as $entry ) {
+				$entries_data = array(
+					'entry_id'   => $entry->entry_id,
+					'entry_date' => $entry->time_created,
+					'summary'    => array(),
+					'detail'     => array(),
+				);
+
+				$entries_data['summary']['num_fields_left'] = 0;
+				$entries_data['summary']['items']           = array();
+
+				$entries_data['detail']['colspan'] = 0;
+				$entries_data['detail']['items']   = array();
+
+				$entries_data['detail']['quiz_entry']   = isset( $entry->meta_data['entry'] ) ? $entry->meta_data['entry'] : array();
+				$entries_data['detail']['quiz_url']     = isset( $entry->meta_data['quiz_url'] ) ? $entry->meta_data['quiz_url'] : array();
+            }
+        }
+
+		return $entries_data;
+
+	}
+
+	/**
+	 * Build Html Entries Header
+	 */
+	public function entries_header() {
+		if ( $this->lead_cform ) {
+			$this->lead_cform->entries_header();
+		} else { ?>
+            <thead>
+                <tr>
+                    <th>
+                        <label class="sui-checkbox">
+                            <input id="wpf-cform-check_all" type="checkbox">
+                            <span></span>
+                            <div class="sui-description"><?php esc_html_e( 'ID', Powerform::DOMAIN ); ?></div>
+                        </label>
+                    </th>
+                    <th colspan="5"><?php esc_html_e( 'Datum der Übermittlung', Powerform::DOMAIN ); ?></th>
+                </tr>
+            </thead>
+        <?php }
+	}
+
+	/**
+	 * Return admin edit url
+	 *
+	 * @since 1.0
+	 *
+	 * @param $type
+	 * @param $id
+	 *
+	 * @return mixed
+	 */
+	public function getAdminEditUrl( $type, $id ) {
+		if ( 'nowrong' === $type ) {
+			return admin_url( 'admin.php?page=powerform-nowrong-wizard&id=' . $id );
+		} else {
+			return admin_url( 'admin.php?page=powerform-knowledge-wizard&id=' . $id );
+		}
+	}
+
+	/**
+	 * Prepare results
+	 *
+	 * @since 1.0
+	 */
+	public function prepare_results() {
+		if ( is_object( $this->model ) ) {
+			$paged    = $this->page_number;
+			$per_page = $this->per_page;
+			$offset   = ( $paged - 1 ) * $per_page;
+
+			$this->total_entries = Powerform_Form_Entry_Model::count_entries( $this->model->id );
+
+			$args = array(
+				'form_id'  => $this->model->id,
+				'is_spam'  => 0,
+				'per_page' => $per_page,
+				'offset'   => $offset,
+				'order_by' => 'entries.date_created',
+				'order'    => 'DESC',
+			);
+
+			$args = wp_parse_args( $this->filters, $args );
+			$args = wp_parse_args( $this->order, $args );
+
+			$count = 0;
+
+			$this->entries                = Powerform_Form_Entry_Model::query_entries( $args, $count );
+			$this->filtered_total_entries = $count;
+		}
+	}
+
+	/**
+	 * Parsing filters from $_REQUEST
+	 *
+	 * @since 1.5.4
+	 */
+	protected function parse_filters() {
+		$request_data = $_REQUEST;// WPCS CSRF ok.
+		$data_range   = isset( $request_data['date_range'] ) ? sanitize_text_field( $request_data['date_range'] ) : '';
+		$search       = isset( $request_data['search'] ) ? sanitize_text_field( $request_data['search'] ) : '';
+		$min_id       = isset( $request_data['min_id'] ) ? sanitize_text_field( $request_data['min_id'] ) : '';
+		$max_id       = isset( $request_data['max_id'] ) ? sanitize_text_field( $request_data['max_id'] ) : '';
+
+		$filters = array();
+		if ( ! empty( $data_range ) ) {
+			$date_ranges = explode( ' - ', $data_range );
+			if ( is_array( $date_ranges ) && isset( $date_ranges[0] ) && isset( $date_ranges[1] ) ) {
+				$date_ranges[0] = date( 'Y-m-d', strtotime( $date_ranges[0] ) );
+				$date_ranges[1] = date( 'Y-m-d', strtotime( $date_ranges[1] ) );
+
+				powerform_maybe_log( __METHOD__, $date_ranges );
+				$filters['date_created'] = array( $date_ranges[0], $date_ranges[1] );
+			}
+		}
+		if ( ! empty( $search ) ) {
+			$filters['search'] = $search;
+		}
+
+		if ( ! empty( $min_id ) ) {
+			$min_id = intval( $min_id );
+			if ( $min_id > 0 ) {
+				$filters['min_id'] = $min_id;
+			}
+		}
+
+		if ( ! empty( $max_id ) ) {
+			$max_id = intval( $max_id );
+			if ( $max_id > 0 ) {
+				$filters['max_id'] = $max_id;
+			}
+		}
+
+		$this->filters = $filters;
+	}
+
+	/**
+	 * Parsing order from $_REQUEST
+	 *
+	 * @since 1.5.4
+	 */
+	protected function parse_order() {
+		$valid_order_bys = array(
+			'entries.date_created',
+			'entries.entry_id',
+		);
+
+		$valid_orders = array(
+			'DESC',
+			'ASC',
+		);
+		$request_data = $_REQUEST;// WPCS CSRF ok.
+		$order_by     = 'entries.date_created';
+		if ( isset( $request_data['order_by' ] ) ) {
+			switch ( $request_data['order_by' ] ) {
+				case 'entries.entry_id':
+					$order_by = 'entries.entry_id';
+					break;
+				case 'entries.date_created':
+					$order_by = 'entries.date_created';
+					break;
+				default:
+					break;
+			}
+		}
+
+		$order = 'DESC';
+		if ( isset( $request_data['order'] ) ) {
+			switch ( $request_data['order' ] ) {
+				case 'DESC':
+					$order = 'DESC';
+					break;
+				case 'ASC':
+					$order = 'ASC';
+					break;
+				default:
+					break;
+			}
+		}
+
+		if ( ! empty( $order_by ) ) {
+			if ( ! in_array( $order, $valid_order_bys, true ) ) {
+				$order_by = 'entries.date_created';
+			}
+
+			$this->order['order_by'] = $order_by;
+		}
+
+		if ( ! empty( $order ) ) {
+			$order = strtoupper( $order );
+			if ( ! in_array( $order, $valid_orders, true ) ) {
+				$order = 'DESC';
+			}
+
+			$this->order['order'] = $order;
+		}
+	}
+
+	/**
+	 * Flag whether box filter opened or nope
+	 *
+	 * @since 1.5.4
+	 * @return bool
+	 */
+	protected function is_filter_box_enabled() {
+		return ( ! empty( $this->filters ) && ! empty( $this->order ) );
+	}
+
+	/**
+	 * The total filtered entries
+	 *
+	 * @since 1.5.4
+	 * @return int
+	 */
+	public function filtered_total_entries() {
+		return $this->filtered_total_entries;
 	}
 }

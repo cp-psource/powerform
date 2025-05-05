@@ -25,6 +25,13 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	protected $form_id = 0;
 
 	/**
+	 * Current model id
+	 *
+	 * @var int
+	 */
+	protected $model_id = 0;
+
+	/**
 	 * Entries
 	 *
 	 * @var array
@@ -141,13 +148,13 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	 *
 	 * @since 1.0
 	 */
-	public function before_render() {
+	public function before_render( $form_id = null ) {
 
 		// This view is unused from 1.5.4 on, using "powerform-entries" instead.
 		if ( 'powerform-cform-view' === $this->page_slug ) {
 			$url = '?page=powerform-entries&form_type=powerform_forms';
 			if ( isset( $_REQUEST['form_id'] ) ) { // WPCS: CSRF OK
-				$url .= '&form_id=' . $_REQUEST['form_id']; // WPCS: CSRF OK
+				$url .= '&form_id=' . intval( $_REQUEST['form_id'] ); // WPCS: CSRF OK
 			}
 			if ( wp_safe_redirect( $url ) ) {
 				exit;
@@ -155,7 +162,8 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 		}
 
 		if ( isset( $_REQUEST['form_id'] ) ) { // WPCS: CSRF OK
-			$this->form_id = sanitize_text_field( $_REQUEST['form_id'] );
+			$this->model_id = intval( $_REQUEST['form_id'] );
+			$this->form_id = ! empty( $form_id ) ? $form_id : intval( $_REQUEST['form_id'] );
 			$this->model   = Powerform_Custom_Form_Model::model()->load( $this->form_id );
 			if ( is_object( $this->model ) ) {
 				$this->fields = $this->model->get_fields();
@@ -211,7 +219,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	public function process_request() {
 
 		if ( isset( $_GET['err_msg'] ) ) {
-			$this->error_message = $_GET['err_msg']; // WPCS: CSRF OK
+			$this->error_message = wp_kses_post( $_GET['err_msg'] );
 		}
 
 		if ( isset( $_REQUEST['field'] ) ) {
@@ -235,9 +243,9 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 		$action = '';
 		if ( isset( $_REQUEST['entries-action'] ) || isset( $_REQUEST['entries-action-bottom'] ) ) {
 			if ( isset( $_REQUEST['entries-action'] ) && ! empty( $_REQUEST['entries-action'] ) ) {
-				$action = $_REQUEST['entries-action'];
+				$action = sanitize_text_field( $_REQUEST['entries-action'] );
 			} elseif ( isset( $_REQUEST['entries-action-bottom'] ) ) {
-				$action = $_REQUEST['entries-action-bottom'];
+				$action = sanitize_text_field( $_REQUEST['entries-action-bottom'] );
 			}
 
 			switch ( $action ) {
@@ -279,7 +287,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	public function register_content_boxes() {
 		$this->add_box(
 			'custom-form/entries/popup/exports-list',
-			__( 'Your Exports', Powerform::DOMAIN ),
+			__( 'Deine Exporte', Powerform::DOMAIN ),
 			'entries-popup-exports-list',
 			null,
 			null,
@@ -288,7 +296,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 
 		$this->add_box(
 			'custom-form/entries/popup/schedule-export',
-			__( 'Edit Schedule Export', Powerform::DOMAIN ),
+			__( 'Zeitplan-Export bearbeiten', Powerform::DOMAIN ),
 			'entries-popup-schedule-export',
 			null,
 			null,
@@ -389,7 +397,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	 * @return string
 	 */
 	public function fields_header() {
-		printf( esc_html__( "Showing %s of %s fields", Powerform::DOMAIN ), $this->checked_fields, $this->total_fields ); // phpcs:ignore
+		printf( esc_html__( "%s von %s Feldern anzeigen", Powerform::DOMAIN ), $this->checked_fields, $this->total_fields ); // phpcs:ignore
 	}
 
 	/**
@@ -573,8 +581,8 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	public function bulk_actions( $position = 'top' ) { ?>
 
 		<select name="<?php echo ( 'top' === $position ) ? 'entries-action' : 'entries-action-bottom'; ?>"
-		        class="sui-select-sm sui-select-inline"
-		        style="min-width: 200px;">
+				class="sui-select-sm sui-select-inline"
+				style="min-width: 200px;">
 			<option value=""><?php esc_html_e( "Massenaktionen", Powerform::DOMAIN ); ?></option>
 			<option value="delete-all"><?php esc_html_e( "Einträge löschen", Powerform::DOMAIN ); ?></option>
 		</select>
@@ -605,7 +613,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	private function build_fields_mappers() {
 		/** @var  Powerform_Custom_Form_Model $model */
 		$model               = $this->model;
-		$fields              = $model->get_fields();
+		$fields              = apply_filters( 'powerform_custom_form_build_fields_mappers', $model->get_fields() );
 		$visible_fields      = $this->get_visible_fields();
 		$ignored_field_types = Powerform_Form_Entry_Model::ignored_fields();
 
@@ -620,7 +628,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 			array(
 				// read form model's property
 				'property' => 'time_created', // must be on entries
-				'label'    => __( 'Übermittelt', Powerform::DOMAIN ),
+				'label'    => __( 'Datum der Übermittlung', Powerform::DOMAIN ),
 				'type'     => 'entry_time_created',
 			),
 		);
@@ -638,16 +646,17 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 				}
 			}
 
-
 			// base mapper for every field
 			$mapper             = array();
 			$mapper['meta_key'] = $field->slug;
 			$mapper['label']    = $field->get_label_for_entry();
 			$mapper['type']     = $field_type;
 
-
-			// fields that should be displayed as multi column (sub_metas)
-			if ( 'name' === $field_type ) {
+			if ( 'textarea' === $field_type ) {
+				$field_array = $field->to_array();
+				$mapper['rich'] = isset( $field_array['editor-type'] ) ? $field_array['editor-type'] : false;
+			} else if ( 'name' === $field_type ) {
+				// fields that should be displayed as multi column (sub_metas)
 				$is_multiple_name = filter_var( $field->__get( 'multiple_name' ), FILTER_VALIDATE_BOOLEAN );
 				if ( $is_multiple_name ) {
 					$prefix_enabled      = filter_var( $field->__get( 'prefix' ), FILTER_VALIDATE_BOOLEAN );
@@ -758,6 +767,68 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 					// if no subfield enabled when multiple name remove mapper (means dont show it on export)
 					$mapper = array();
 				}
+			} elseif ( 'stripe' === $field_type ) {
+				$mapper['label']       = __( 'Stripe Zahlung', Powerform::DOMAIN );
+				$mapper['sub_metas']   = array();
+				$mapper['sub_metas'][] = array(
+					'key'                => 'mode',
+					'label'              => __( 'Modus', Powerform::DOMAIN ),
+					'transform_callback' => 'strtoupper',
+				);
+				$mapper['sub_metas'][] = array(
+					'key'                => 'status',
+					'label'              => __( 'Status', Powerform::DOMAIN ),
+					'transform_callback' => 'ucfirst',
+				);
+				$mapper['sub_metas'][] = array(
+					'key'                => 'amount',
+					'label'              => __( 'Betrag', Powerform::DOMAIN ),
+				);
+				$mapper['sub_metas'][] = array(
+					'key'                => 'currency',
+					'label'              => __( 'Währung', Powerform::DOMAIN ),
+					'transform_callback' => 'strtoupper',
+				);
+				$transaction_link_mapper = array(
+					'key'                => 'transaction_id',
+					'label'              => __( 'Transaktions-ID', Powerform::DOMAIN ),
+				);
+				if ( class_exists( 'Powerform_Stripe' ) ) {
+					$transaction_link_mapper['transform_callback'] = array( 'Powerform_Stripe', 'linkify_transaction_id' );
+					$transaction_link_mapper['num_transform_arg'] = 2;
+				}
+				$mapper['sub_metas'][] = $transaction_link_mapper;
+			} elseif ( 'paypal' === $field_type ) {
+				$mapper['label']       = __( 'PayPal Checkout', Powerform::DOMAIN );
+				$mapper['sub_metas']   = array();
+				$mapper['sub_metas'][] = array(
+					'key'                => 'mode',
+					'label'              => __( 'Modus', Powerform::DOMAIN ),
+					'transform_callback' => 'strtoupper',
+				);
+				$mapper['sub_metas'][] = array(
+					'key'                => 'status',
+					'label'              => __( 'Status', Powerform::DOMAIN ),
+					'transform_callback' => 'ucfirst',
+				);
+				$mapper['sub_metas'][] = array(
+					'key'                => 'amount',
+					'label'              => __( 'Betrag', Powerform::DOMAIN ),
+				);
+				$mapper['sub_metas'][] = array(
+					'key'                => 'currency',
+					'label'              => __( 'Währung', Powerform::DOMAIN ),
+					'transform_callback' => 'strtoupper',
+				);
+				$transaction_link_mapper = array(
+					'key'                => 'transaction_id',
+					'label'              => __( 'Transaktions-ID', Powerform::DOMAIN ),
+				);
+				if ( class_exists( 'Powerform_PayPal' ) ) {
+					$transaction_link_mapper['transform_callback'] = array( 'Powerform_PayPal', 'linkify_transaction_id' );
+					$transaction_link_mapper['num_transform_arg'] = 2;
+				}
+				$mapper['sub_metas'][] = $transaction_link_mapper;
 			}
 
 			if ( ! empty( $mapper ) ) {
@@ -825,11 +896,13 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	 * Build Html Entries Header
 	 */
 	public function entries_header() {
+
 		$flatten_fields_mappers = $this->get_flatten_fields_mappers();
 
 		//start from 2, since first two is ID and Date
 		//length is 2 because we only display first two fields only
 		$fields_headers = array_slice( $flatten_fields_mappers, 2, 2 );
+
 		//minus by header fields
 		$actual_num_fields = count( $flatten_fields_mappers ) - 2;
 		$fields_left       = $actual_num_fields - count( $fields_headers );
@@ -845,7 +918,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 				<?php esc_html_e( 'ID', Powerform::DOMAIN ); ?>
 			</th>
 
-			<th><?php esc_html_e( 'Übermittelt', Powerform::DOMAIN ); ?></th>
+			<th><?php esc_html_e( 'Datum der Übermittlung', Powerform::DOMAIN ); ?></th>
 
 			<?php
 			foreach ( $fields_headers as $header ) { ?>
@@ -864,10 +937,16 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 
 	<?php }
 
+
 	/**
+     * Entries iterator
+     *
+	 * @param null $entries
+	 * @param string $form_type
+	 *
 	 * @return array
 	 */
-	public function entries_iterator() {
+	public function entries_iterator( $entries = null, $form_type = '' ) {
 		/**
 		 * @example
 		 * {
@@ -931,15 +1010,20 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 			$numerator_id = $this->total_entries - ( ( $this->page_number - 1 ) * $this->per_page );
 		}
 
+		if ( ! empty( $entries ) ) {
+			$this->entries = $entries;
+        }
+
 		foreach ( $this->entries as $entry ) {
 			/**@var Powerform_Form_Entry_Model $entry */
 
 			//create placeholder
 			$iterator = array(
-				'id'       => $numerator_id,
-				'entry_id' => $entry->entry_id,
-				'summary'  => array(),
-				'detail'   => array(),
+				'id'         => $numerator_id,
+				'entry_id'   => $entry->entry_id,
+				'entry_date' => $entry->time_created,
+				'summary'    => array(),
+				'detail'     => array(),
 			);
 
 			$iterator['summary']['num_fields_left'] = $fields_left;
@@ -963,9 +1047,9 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 				}
 
 				if ( isset( $header['parent'] ) ) {
-					$value = $this->get_entry_field_value( $entry, $header['parent'], $header['key'], false, 100 );
+					$value = powerform_get_entry_field_value( $entry, $header['parent'], $header['key'], false, 100 );
 				} else {
-					$value = $this->get_entry_field_value( $entry, $header, '', false, 100 );
+					$value = powerform_get_entry_field_value( $entry, $header, '', false, 100 );
 				}
 				$summary_items[] = array(
 					'colspan' => $colspan,
@@ -975,42 +1059,75 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 
 			// Build array for -content row
 			$detail_items = array();
+
 			foreach ( $fields_mappers as $mapper ) {
 				//skip entry id
 				if ( isset( $mapper['type'] ) && 'entry_entry_id' === $mapper['type'] ) {
 					continue;
 				}
 
-				$label       = $mapper['label'];
+				if ( 'quiz' === $form_type && isset( $mapper['type'] ) && 'entry_time_created' === $mapper['type'] ) {
+					continue;
+				}
+
+				$type  = $mapper['type'];
+				$label = $mapper['label'];
 				$value       = '';
 				$sub_entries = array();
 
 				if ( ! isset( $mapper['sub_metas'] ) ) {
-					$value = $this->get_entry_field_value( $entry, $mapper, '', true );
+					$value = powerform_get_entry_field_value( $entry, $mapper, '', true );
 				} else {
 					if ( ! empty( $mapper['sub_metas'] ) ) {
 						foreach ( $mapper['sub_metas'] as $sub_meta ) {
+							$sub_entry_value = powerform_get_entry_field_value( $entry, $mapper, $sub_meta['key'], true );
+							if ( ! empty( $sub_entry_value ) && isset( $sub_meta['transform_callback'] ) && is_callable( $sub_meta['transform_callback'] ) ) {
+								$transform_args = array( $sub_entry_value );
+								if ( isset( $sub_meta['num_transform_arg'] ) && 2 === $sub_meta['num_transform_arg'] ) {
+									$meta_value       = $entry->get_meta( $mapper['meta_key'], '' );
+									$transform_args[] = $meta_value;
+								}
+
+								$sub_entry_value = call_user_func_array( $sub_meta['transform_callback'], $transform_args );
+							}
 							$sub_entries[] = array(
 								'label' => $sub_meta['label'],
-								'value' => $this->get_entry_field_value( $entry, $mapper, $sub_meta['key'], true ),
+								'value' => $sub_entry_value,
 							);
 						}
 					}
 				}
 				$detail_items[] = array(
+					'type'        => $type,
 					'label'       => $label,
 					'value'       => $value,
+					'rich'		  => isset( $mapper['rich'] ) ? $mapper['rich'] : false,
 					'sub_entries' => $sub_entries,
 				);
 
 			}
 
-			//Additional render for addons
-			$addons_detail_items = $this->attach_addon_on_render_entry( $entry );
-			$detail_items        = array_merge( $detail_items, $addons_detail_items );
+			if ( 'quiz' === $form_type ) {
+				$addons_detail_items = $this->attach_addon_on_quiz_render_entry( $entry );
+				if ( isset( $entry->meta_data['skip_form']['value'] ) && $entry->meta_data['skip_form']['value'] ) {
+					$detail_items = array();
+				}
+				$iterator['detail']['items']        = $detail_items;
+				$iterator['detail']['integrations'] = $addons_detail_items;
+				$iterator['detail']['quiz_entry']   = isset( $entry->meta_data['entry'] ) ? $entry->meta_data['entry'] : array();
+				$iterator['detail']['quiz_url']     = isset( $entry->meta_data['quiz_url'] ) ? $entry->meta_data['quiz_url'] : array();
+            } else {
+				//Additional render for addons
+				$addons_detail_items = $this->attach_addon_on_render_entry( $entry );
+				$merge_detail_items  = array_merge( $detail_items, $addons_detail_items );
+
+				$iterator['summary']['items'] = $summary_items;
+				$iterator['detail']['items']  = $merge_detail_items;
+            }
 
 			$iterator['summary']['items'] = $summary_items;
-			$iterator['detail']['items']  = $detail_items;
+
+			$iterator = apply_filters( 'powerform_custom_form_entries_iterator', $iterator, $entry );
 
 			$entries_iterator[] = $iterator;
 			$numerator_id --;
@@ -1018,50 +1135,6 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 
 
 		return $entries_iterator;
-	}
-
-	/**
-	 * Get entry field value helper
-	 *
-	 * @param Powerform_Form_Entry_Model $entry
-	 * @param                             $mapper
-	 * @param string                      $sub_meta_key
-	 * @param bool                        $allow_html
-	 * @param int                         $truncate
-	 *
-	 * @return string
-	 */
-	private function get_entry_field_value( $entry, $mapper, $sub_meta_key = '', $allow_html = false, $truncate = PHP_INT_MAX ) {
-		/** @var Powerform_Form_Entry_Model $entry */
-		if ( isset( $mapper['property'] ) ) {
-			if ( property_exists( $entry, $mapper['property'] ) ) {
-				$property = $mapper['property'];
-				// casting property to string
-				$value = (string) $entry->$property;
-			} else {
-				$value = '';
-			}
-		} else {
-			$meta_value = $entry->get_meta( $mapper['meta_key'], '' );
-			// meta_key based
-			if ( ! isset( $mapper['sub_metas'] ) ) {
-				$value = Powerform_Form_Entry_Model::meta_value_to_string( $mapper['type'], $meta_value, $allow_html, $truncate );
-			} else {
-				if ( empty( $sub_meta_key ) ) {
-					$value = '';
-				} else {
-					if ( isset( $meta_value[ $sub_meta_key ] ) && ! empty( $meta_value[ $sub_meta_key ] ) ) {
-						$value      = $meta_value[ $sub_meta_key ];
-						$field_type = $mapper['type'] . '.' . $sub_meta_key;
-						$value      = Powerform_Form_Entry_Model::meta_value_to_string( $field_type, $value, $allow_html, $truncate );
-					} else {
-						$value = '';
-					}
-				}
-			}
-		}
-
-		return $value;
 	}
 
 	/**
@@ -1085,6 +1158,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 				$meta_data  = powerform_find_addon_meta_data_from_entry_model( $registered_addon, $entry_model );
 
 				$addon_additional_items = $form_hooks->on_render_entry( $entry_model, $meta_data );// run and forget
+
 				$addon_additional_items = self::format_addon_additional_items( $addon_additional_items );
 				$additonal_items        = array_merge( $additonal_items, $addon_additional_items );
 			} catch ( Exception $e ) {
@@ -1107,17 +1181,18 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	 * @since 1.1
 	 *
 	 * @param  array $addon_additional_items
+	 * @param  array $meta_data
 	 *
 	 * @return mixed
 	 */
-	private static function format_addon_additional_items( $addon_additional_items ) {
+	private static function format_addon_additional_items( $addon_additional_items, $meta_data = array() ) {
 		//to `name` and `value` basis
 		$formatted_additional_items = array();
 		if ( ! is_array( $addon_additional_items ) ) {
 			return array();
 		}
 
-		foreach ( $addon_additional_items as $additional_item ) {
+		foreach ( $addon_additional_items as $key => $additional_item ) {
 			// make sure label and value exist, without it, it will display empty row, so leave it
 			if ( ! isset( $additional_item['label'] ) || ! isset( $additional_item['value'] ) ) {
 				continue;
@@ -1139,8 +1214,11 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 			}
 
 			$formatted_additional_items[] = array(
+				'title'       => isset( $meta_data[ $key ]['title'] ) ? $meta_data[ $key ]['title'] : '',
 				'label'       => $additional_item['label'],
 				'value'       => $additional_item['value'],
+				'banner'      => isset( $meta_data[ $key ]['banner'] ) ? $meta_data[ $key ]['banner'] : '',
+				'banner_x2'   => isset( $meta_data[ $key ]['banner_x2'] ) ? $meta_data[ $key ]['banner_x2'] : '',
 				'sub_entries' => $sub_entries,
 			);
 		}
@@ -1274,7 +1352,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 		);
 		$request_data = $_REQUEST;// WPCS CSRF ok.
 		$order_by     = 'entries.date_created';
-		if( isset( $request_data['order_by' ] ) ) {
+		if ( isset( $request_data['order_by' ] ) ) {
 			switch ( $request_data['order_by' ] ) {
 				case 'entries.entry_id':
 					$order_by = 'entries.entry_id';
@@ -1288,13 +1366,13 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 		}
 
 		$order = 'DESC';
-		if( isset( $request_data['order'] ) ) {
-			switch ( $request_data['order_by' ] ) {
+		if ( isset( $request_data['order'] ) ) {
+			switch ( $request_data['order' ] ) {
 				case 'DESC':
-					$order_by = 'DESC';
+					$order = 'DESC';
 					break;
 				case 'ASC':
-					$order_by = 'ASC';
+					$order = 'ASC';
 					break;
 				default:
 					break;
@@ -1336,7 +1414,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	 * @return string
 	 */
 	protected function get_form_type() {
-		return ( isset( $_GET['form_type'] ) ? $_GET['form_type'] : '' );
+		return ( isset( $_GET['form_type'] ) ? sanitize_text_field( $_GET['form_type'] ) : '' );
 	}
 
 	/**
@@ -1346,7 +1424,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	 * @return string
 	 */
 	protected function get_form_id() {
-		return ( isset( $_GET['form_id'] ) ? $_GET['form_id'] : '' );
+		return ( isset( $_GET['form_id'] ) ? intval( $_GET['form_id'] ) : '' );
 	}
 
 	/**
@@ -1354,7 +1432,7 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 	 *
 	 * @param string $fallback_redirect
 	 */
-	protected function maybe_redirect_to_referer( $fallback_redirect = '' ) {
+	protected function maybe_redirect_to_referer( $fallback_redirect = '', $to_referer = true ) {
 
 		$fallback_redirect = admin_url( 'admin.php' );
 		$fallback_redirect = add_query_arg(
@@ -1368,5 +1446,67 @@ class Powerform_CForm_View_Page extends Powerform_Admin_Page {
 		parent::maybe_redirect_to_referer( $fallback_redirect );
 
 		exit();
+	}
+
+	/**
+	 * Check payment
+	 *
+	 * @return bool
+	 */
+	public function has_payments() {
+		$model = Powerform_Custom_Form_Model::model()->load( $this->form_id );
+		if ( is_object( $model ) ) {
+			if ( $model->has_stripe_field() || $model->has_paypal_field() ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check payment
+     *
+     * @param $form_id
+	 *
+	 * @return bool
+	 */
+	public function has_live_payments( $form_id ) {
+		$model = Powerform_Form_Entry_Model::has_live_payment( $form_id);
+
+		return $model;
+	}
+
+	/**
+	 * Executor of adding additional items on entry page
+	 *
+	 * @see   Powerform_Addon_Form_Hooks_Abstract::on_render_entry()
+	 * @since 1.1
+	 *
+	 * @param Powerform_Form_Entry_Model $entry_model
+	 * @param $quiz_id
+	 *
+	 * @return array
+	 */
+	private function attach_addon_on_quiz_render_entry( Powerform_Form_Entry_Model $entry_model ) {
+		$additonal_items = array();
+		//find all registered addons, so history can be shown even for deactivated addons
+		$registered_addons = $this->get_registered_addons();
+
+		foreach ( $registered_addons as $registered_addon ) {
+			try {
+				$quiz_hooks = $registered_addon->get_addon_quiz_hooks( $this->model_id );
+				$meta_data  = powerform_find_addon_meta_data_from_entry_model( $registered_addon, $entry_model );
+
+				$addon_additional_items = $quiz_hooks->on_render_entry( $entry_model, $meta_data );// run and forget
+
+				$addon_additional_items = self::format_addon_additional_items( $addon_additional_items, $meta_data );
+				$additonal_items        = array_merge( $additonal_items, $addon_additional_items );
+			} catch ( Exception $e ) {
+				powerform_addon_maybe_log( $registered_addon->get_slug(), 'failed to on_render_entry', $e->getMessage() );
+			}
+		}
+
+		return $additonal_items;
 	}
 }

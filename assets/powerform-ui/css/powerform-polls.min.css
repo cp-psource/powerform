@@ -1,10 +1,10 @@
 /*!
- * WMS N@W Powerform UI
- * Copyright 2019-2021 WMS N@W (https://n3rds.work)
+ * WPMU DEV Powerform UI
+ * Copyright 2019 Incsub (https://incsub.com)
  * Licensed under GPL v3 (http://www.gnu.org/licenses/gpl-3.0.html)
  */
 
-*/.et-db #et-boc .et_pb_module .powerform-ui.powerform-poll[data-design=bold],
+.et-db #et-boc .et_pb_module .powerform-ui.powerform-poll[data-design=bold],
 .et-db #et-boc .et_pb_module .powerform-ui.powerform-poll[data-design=default],
 .et-db #et-boc .et_pb_module .powerform-ui.powerform-poll[data-design=flat],
 .et-db #et-boc .et_pb_module .powerform-ui.powerform-poll[data-design=material],

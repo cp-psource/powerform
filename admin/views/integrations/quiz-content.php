@@ -1,57 +1,80 @@
 <?php
+$integrations_page = admin_url( 'admin.php?page=powerform-integrations' );
+
 if ( empty( $quiz_id ) ) {
 	$quiz_id = 0;
 }
-?>
 
-<?php
+if ( empty( $addons['quiz_connected'] ) && empty( $addons['not_quiz_connected'] ) ) { ?>
 
-if ( ! empty( $addons['quiz_connected'] ) ) {
-	?>
+	<div class="sui-notice sui-notice-info">
+		<p><?php printf( /* translators: ... */ esc_html__( 'You are not connected to any third party apps. You can connect to the available apps via their API on the %1$sIntegrations%2$s page and come back to activate them for collecting data of this quiz.', Powerform::DOMAIN ), '<a href="' . esc_url( $integrations_page ) . '">', '</a>' ); ?></p>
+	</div>
 
-	<h3 class="sui-table-title"><?php esc_html_e( "Aktiv", Powerform::DOMAIN ); ?></h3>
+<?php } else { ?>
 
-	<table class="sui-table fui-table--apps">
+	<div class="fui-integrations-block">
 
-		<tbody>
+		<span class="sui-table-title"><?php esc_html_e( 'Active Apps', Powerform::DOMAIN ); ?></span>
 
-		<?php foreach ( $addons['quiz_connected'] as $key => $provider ) : ?>
+		<?php if ( empty( $addons['quiz_connected'] ) ) { ?>
 
-			<?php echo powerform_addon_quiz_row_html_markup( $provider, $quiz_id, true, true );// wpcs xss ok. ?>
+			<div class="sui-notice sui-notice-info">
+				<p><?php esc_html_e( "You are not sending this quiz's data to any third party apps. You can activate any of the connected apps below and start sending this quiz's data to them.", Powerform::DOMAIN ); ?></p>
+			</div>
 
-		<?php endforeach; ?>
+		<?php } else { ?>
 
-		</tbody>
+			<table class="sui-table fui-table--apps fui-connected">
 
-	</table>
+				<tbody>
 
-	<?php
-}
+					<?php foreach ( $addons['quiz_connected'] as $key => $provider ) : ?>
 
-if ( ! empty( $addons['not_quiz_connected'] ) ) {
-	?>
+						<?php echo powerform_addon_quiz_row_html_markup( $provider, $quiz_id, true, true ); // phpcs:ignore ?>
 
-	<h3 class="sui-table-title"><?php esc_html_e( "Verfügbare Integrationen", Powerform::DOMAIN ); ?></h3>
+					<?php endforeach; ?>
 
-	<table class="sui-table fui-table--apps">
+				</tbody>
 
-		<tbody>
+			</table>
 
-		<?php foreach ( $addons['not_quiz_connected'] as $key => $provider ) : ?>
+			<span class="sui-description"><?php esc_html_e( 'These apps are collecting data of your quiz.', Powerform::DOMAIN ); ?></span>
 
-			<?php if ( ! $provider['is_quiz_settings_available'] ) {
-				continue;
-			}
-			?>
+		<?php } ?>
 
-			<?php echo powerform_addon_quiz_row_html_markup( $provider, $quiz_id, true );// wpcs xss ok. ?>
+	</div>
 
-		<?php endforeach; ?>
+	<div class="fui-integrations-block">
 
-		</tbody>
+		<span class="sui-table-title"><?php esc_html_e( 'Connected Apps', Powerform::DOMAIN ); ?></span>
 
-	</table>
+		<?php if ( empty( $addons['not_quiz_connected'] ) ) { ?>
 
-	<?php
-}
-?>
+			<div class="sui-notice">
+				<p><?php printf( /* translators: ... */ esc_html__( 'Connect to more third party apps on the %1$sIntegrations%2$s page and activate them to collect the data of this quiz here.', Powerform::DOMAIN ), '<a href="' . esc_url( $integrations_page ) . '">', '</a>' ); ?></p>
+			</div>
+
+		<?php } else { ?>
+
+			<table class="sui-table fui-table--apps">
+
+				<tbody>
+
+					<?php foreach ( $addons['not_quiz_connected'] as $key => $provider ) : ?>
+
+						<?php echo powerform_addon_quiz_row_html_markup( $provider, $quiz_id, true, true ); // phpcs:ignore ?>
+
+					<?php endforeach; ?>
+
+				</tbody>
+
+			</table>
+
+			<span class="sui-description"><?php printf( /* translators: ... */ esc_html__( 'You are connected to these apps via their API. Connect to more apps on the %1$sIntegrations%2$s page.', Powerform::DOMAIN ), '<a href="' . esc_url( $integrations_page ) . '">', '</a>' ); ?></span>
+
+		<?php } ?>
+
+	</div>
+
+<?php } ?>

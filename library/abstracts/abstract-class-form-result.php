@@ -24,6 +24,8 @@ abstract class Powerform_Result {
 	public function __construct() {
 		add_action( 'init', array( $this, 'add_rewrite_rules' ) );
 		add_action( 'wp_head', array( $this, 'load_results_page' ), 99 );
+		add_action( 'wp_print_scripts', array( $this, 'print_scripts' ) );
+		add_action( 'wp_print_styles', array( $this, 'print_styles' ) );
 	}
 
 	public function set_entry( $id = false ) {
@@ -44,14 +46,41 @@ abstract class Powerform_Result {
 		$this->set_entry();
 
 		if ( empty( $this->entry_id ) ) {
-			echo '';
+			return;
 		} else {
 			$this->print_result_header();
 		}
 	}
 
+	public function print_scripts() {
+		$this->set_entry();
+
+		if ( empty( $this->entry_id ) ) {
+			return;
+		}
+	}
+
+	public function print_styles() {
+		$this->set_entry();
+		if ( empty( $this->entry_id ) ) {
+			return;
+		}
+	}
+
 	public function print_result_header() {
-		echo '';
+	}
+
+	/**
+	 * Check if entry is shareable
+	 *
+	 * @since 1.7
+	 *
+	 * @param Powerform_Form_Entry_Model $entry
+	 *
+	 * @return bool
+	 */
+	public function is_public_allowed( $entry ) {
+		return false;
 	}
 
 	public function build_permalink( $id = false ) {
@@ -77,12 +106,53 @@ abstract class Powerform_Result {
 		$http_referer = $this->post_data['_wp_http_referer'];
 		$http_referer = preg_replace( '/entries((.*))?/', '', $http_referer );
 
-		return $http_referer . "entries/" . $this->entry_id . "/";
+		return $http_referer . 'entries/' . $this->entry_id . '/';
 	}
 
 	public function add_rewrite_rules() {
 		add_rewrite_tag( '%entries%', '([^&]+)' );
 		add_rewrite_rule( '^entries/([^/]+)/?', 'index.php?entries=$matches[1]', 'top' );
+		/**
+		 * Permalink Settings: Numeric http://wordpress/archives/123
+		 */
+		add_rewrite_rule(
+			'archives/(\d+)(?:/(\d+))?/entries/(\d+)/?$',
+			'index.php?p=$matches[1]&page=$matches[2]&entries=$matches[3]',
+			'top'
+		);
+		/**
+		 * Permalink Settings: Post name http://wordpress/sample-post/
+		 */
+		add_rewrite_rule(
+			'(.?.+?)(?:/([0-9]+))?/entries/(\d+)/?$',
+			'index.php?pagename=$matches[1]&page=$matches[2]&entries=$matches[3]',
+			'top'
+		);
+		/**
+		 * Permalink Settings: Month and name http://wordpress/2019/05/sample-post/
+		 */
+		add_rewrite_rule(
+			'([0-9]{4})/([0-9]{1,2})/([^/]+)(?:/([0-9]+))?/entries/(\d+)/?$',
+			'index.php?year=$matches[1]&monthnum=$matches[2]&name=$matches[3]&page=$matches[4]&entries=$matches[5]',
+			'top'
+		);
+		/**
+		 * Permalink Settings: Day and name http://wordpress/2019/05/sample-post/
+		 */
+		add_rewrite_rule(
+			'([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/([^/]+)(?:/([0-9]+))?/entries/(\d+)/?$',
+			'index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&name=$matches[4]&page=$matches[5]&entries=$matches[6]',
+			'top'
+		);
+		/**
+		 * Common rule at the end!
+		 */
 		add_rewrite_rule( '(.?.+?)/entries(/(.*))?/?$', 'index.php?pagename=$matches[1]&entries=$matches[3]', 'top' );
+		/**
+		 * Fires after adding rewrite rules for result page
+		 *
+		 * @since 1.7
+		 */
+		do_action( 'powerform_result_add_rewrite_rules' );
 	}
 }

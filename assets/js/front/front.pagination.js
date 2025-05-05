@@ -32,7 +32,11 @@
         this.hashStep = false;
         this.next_button = window.PowerformFront.cform.pagination_next;
         this.prev_button = window.PowerformFront.cform.pagination_prev;
+        this.next_button_txt = '';
+        this.prev_button_txt = '';
+        this.custom_label = [];
         this.form_id = 0;
+        this.element = '';
 
         // jQuery has an extend method which merges the contents of two or
         // more objects, storing the result in the first object. The first object
@@ -52,16 +56,12 @@
                 this.form_id = this.$el.find('input[name=form_id]').val();
             }
 
-            if (this.form_id && typeof window.Powerform_Cform_Paginations === 'object' && typeof window.Powerform_Cform_Paginations[this.form_id] === 'object') {
-                if (window.Powerform_Cform_Paginations[this.form_id]['pagination-labels'] === "custom") {
-                    this.prev_button = window.Powerform_Cform_Paginations[this.form_id]['pagination-footer-button-text'];
-                    this.next_button = window.Powerform_Cform_Paginations[this.form_id]['pagination-right-button-text'];
-                }
-            }
-
             this.totalSteps = this.settings.totalSteps;
             this.step = this.settings.step;
-
+            this.element = this.$el.find('[data-step=' + this.step + ']').data('name');
+            if (this.form_id && typeof window.Powerform_Cform_Paginations === 'object' && typeof window.Powerform_Cform_Paginations[this.form_id] === 'object') {
+                this.custom_label = window.Powerform_Cform_Paginations[this.form_id];
+            }
             if (this.settings.hashStep && this.step > 0) {
                 this.go_to(this.step, true);
             } else {
@@ -70,7 +70,7 @@
 
             this.render_navigation();
             this.render_bar_navigation();
-            this.render_footer_navigation();
+            this.render_footer_navigation(this.form_id);
             this.init_events();
             this.update_buttons();
             this.update_navigation();
@@ -79,13 +79,19 @@
         init_events: function() {
             var self = this;
 
-            this.$el.find('.powerform-pagination-prev').click(function(e) {
+            this.$el.find('.powerform-button-back').click(function(e) {
                 e.preventDefault();
                 self.handle_click('prev');
             });
-            this.$el.find('.powerform-pagination-next').click(function(e) {
+            this.$el.find('.powerform-button-next').click(function(e) {
                 e.preventDefault();
                 self.handle_click('next');
+            });
+
+            this.$el.find('.powerform-step').click(function(e) {
+                e.preventDefault();
+                var step = $(this).data('nav');
+                self.handle_step(step);
             });
 
             this.$el.on('reset', function(e) {
@@ -123,40 +129,60 @@
             this.go_to(step, true);
             this.update_buttons();
         },
+        render_footer_navigation: function(form_id) {
+            var footer_html = '',
+                paypal_field = '';
+            if (this.custom_label[this.element] && this.custom_label['pagination-labels'] === 'custom') {
+                this.prev_button_txt = this.custom_label[this.element]['prev-text'] !== '' ? this.custom_label[this.element]['prev-text'] : this.prev_button;
+                this.next_button_txt = this.custom_label[this.element]['next-text'] !== '' ? this.custom_label[this.element]['next-text'] : this.next_button;
+            } else {
+                this.prev_button_txt = this.prev_button;
+                this.next_button_txt = this.next_button;
+            }
 
-        render_footer_navigation: function() {
             if (this.$el.hasClass('powerform-design--material')) {
-
-                this.$el.append('<div class="powerform-pagination--footer">' +
-                    '<button class="powerform-button powerform-pagination-prev"><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">' + this.prev_button + '</span></button>' +
-                    '<button class="powerform-button powerform-pagination-next"><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">' + this.next_button + '</span></button>' +
-                    '</div>');
+                footer_html = '<div class="powerform-pagination-footer">' +
+                    '<button class="powerform-button powerform-button-back"><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">' + this.prev_button_txt + '</span></button>' +
+                    '<button class="powerform-button powerform-button-next"><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">' + this.next_button_txt + '</span></button>';
+                if (this.custom_label['has-paypal'] === true) {
+                    paypal_field = (this.custom_label['paypal-id']) ? this.custom_label['paypal-id'] : '';
+                    footer_html += '<div class="powerform-payment powerform-button-paypal powerform-hidden ' + paypal_field + '-payment" id="paypal-button-container-' + form_id + '">';
+                }
+                footer_html += '</div>';
+                this.$el.append(footer_html);
 
             } else {
-
-                this.$el.append('<div class="powerform-pagination--footer">' +
-                    '<button class="powerform-button powerform-pagination-prev">' + this.prev_button + '</button>' +
-                    '<button class="powerform-button powerform-pagination-next">' + this.next_button + '</button>' +
-                    '</div>');
+                footer_html = '<div class="powerform-pagination-footer">' +
+                    '<button class="powerform-button powerform-button-back">' + this.prev_button_txt + '</button>' +
+                    '<button class="powerform-button powerform-button-next">' + this.next_button_txt + '</button>';
+                if (this.custom_label['has-paypal'] === true) {
+                    paypal_field = (this.custom_label['paypal-id']) ? this.custom_label['paypal-id'] : '';
+                    footer_html += '<div class="powerform-payment powerform-button-paypal powerform-hidden ' + paypal_field + '-payment" id="paypal-button-container-' + form_id + '">';
+                }
+                footer_html += '</div>';
+                this.$el.append(footer_html);
 
             }
 
         },
 
         render_bar_navigation: function() {
-            var $navigation = this.$el.find('.powerform-pagination--bar');
+
+            var $navigation = this.$el.find('.powerform-pagination-progress');
+
+            var $progressLabel = '<div class="powerform-progress-label">0%</div>',
+                $progressBar = '<div class="powerform-progress-bar"><span style="width: 0%"></span></div>';
 
             if (!$navigation.length) return;
 
-            $navigation.html('<div class="powerform-bar--text powerform-current">0%</div>' +
-                '<div class="powerform-bar--progress">' +
-                '<span style="width: 0%"></span>' +
-                '</div>');
+            $navigation.html($progressLabel + $progressBar);
 
             this.calculate_bar_percentage();
+
         },
 
         calculate_bar_percentage: function() {
+
             var total = this.totalSteps,
                 current = this.step + 1,
                 $progress = this.$el;
@@ -165,97 +191,129 @@
 
             var percentage = Math.round((current / total) * 100);
 
-            $progress.find('.powerform-current').html(percentage + '%');
-            $progress.find('.powerform-bar--progress span').css('width', percentage + '%');
+            $progress.find('.powerform-progress-label').html(percentage + '%');
+            $progress.find('.powerform-progress-bar span').css('width', percentage + '%');
+
         },
 
         render_navigation: function() {
-            var $navigation = this.$el.find('.powerform-pagination--nav');
+            var $navigation = this.$el.find('.powerform-pagination-steps');
+
+            var finalSteps = this.$el.find('.powerform-pagination-start');
 
             if (!$navigation.length) return;
 
             var steps = this.$el.find('.powerform-pagination').not('.powerform-pagination-start');
 
-            var finalSteps = this.$el.find('.powerform-pagination-start');
+            $navigation.append('<div class="powerform-break"></div>');
 
-            if (this.$el.hasClass('powerform-design--material')) {
+            var self = this;
 
-                steps.each(function() {
-                    var $step = $(this),
-                        label = $step.data('label'),
-                        step = $step.data('step') - 1;
+            steps.each(function() {
 
-                    $navigation.append('<li class="powerform-nav-step powerform-nav-step-' + step + '">' +
-                        '<span class="powerform-step-text">' + label + '</span>' +
-                        '</li>'
-                    );
-                });
+                var $step = $(this),
+                    $stepLabel = $step.data('label'),
+                    $stepNumb = $step.data('step') - 1,
+                    $stepControl = 'powerform-custom-form-' + self.form_id + '--page-' + $stepNumb,
+                    $stepId = $stepControl + '-label';
 
-                finalSteps.each(function() {
-                    var $step = $(this),
-                        label = $step.data('label'),
-                        step = steps.length;
+                var $stepMarkup = '<button role="tab" id="' + $stepId + '" class="powerform-step powerform-step-' + $stepNumb + '" aria-selected="false" aria-controls="' + $stepControl + '" data-nav="' + $stepNumb + '">' +
+                    '<span class="powerform-step-label">' + $stepLabel + '</span>' +
+                    '<span class="powerform-step-dot" aria-hidden="true"></span>' +
+                    '</button>';
 
-                    $navigation.append('<li class="powerform-nav-step powerform-nav-step-' + step + '">' +
-                        '<span class="powerform-step-text">' + label + '</span>' +
-                        '</li>'
-                    );
-                });
+                var $stepBreak = '<div class="powerform-break" aria-hidden="true"></div>';
 
-            } else {
+                $navigation.append($stepMarkup + $stepBreak);
 
-                steps.each(function() {
-                    var $step = $(this),
-                        label = $step.data('label'),
-                        step = $step.data('step') - 1;
+            });
 
-                    $navigation.append('<li class="powerform-nav-step powerform-nav-step-' + step + '">' +
-                        '<span class="powerform-step-text">' + label + '</span>' +
-                        '<span class="powerform-step-dot" aria-label="hidden"></span>' +
-                        '</li>'
-                    );
-                });
+            finalSteps.each(function() {
+                var $step = $(this),
+                    label = $step.data('label'),
+                    numb = steps.length,
+                    control = 'powerform-custom-form-' + self.form_id + '--page-' + numb,
+                    stepid = control + '-label';
 
-                finalSteps.each(function() {
-                    var $step = $(this),
-                        label = $step.data('label'),
-                        step = steps.length;
+                var $stepMarkup = '<button role="tab" id="' + stepid + '" class="powerform-step powerform-step-' + numb + '" data-nav="' + numb + '" aria-selected="false" aria-controls="' + control + '">' +
+                    '<span class="powerform-step-label">' + label + '</span>' +
+                    '<span class="powerform-step-dot" aria-hidden="true"></span>' +
+                    '</button>';
 
-                    $navigation.append('<li class="powerform-nav-step powerform-nav-step-' + step + '">' +
-                        '<span class="powerform-step-text">' + label + '</span>' +
-                        '<span class="powerform-step-dot" aria-label="hidden"></span>' +
-                        '</li>'
-                    );
-                });
+                var $stepBreak = '<div class="powerform-break" aria-hidden="true"></div>';
 
+                $navigation.append($stepMarkup + $stepBreak);
+            });
+        },
+
+        /**
+         * Handle step click
+         *
+         * @param step
+         */
+        handle_step: function(step) {
+            if (this.settings.inline_validation) {
+                for (var i = 0; i < step; i++) {
+                    if (this.step <= i) {
+                        if (!this.is_step_inputs_valid(i)) {
+                            this.go_to(i, true);
+                            return;
+                        }
+                    }
+                }
             }
+            this.go_to(step, true);
+            this.update_buttons();
         },
 
         handle_click: function(type) {
+            var self = this;
             if (type === "prev" && this.step !== 0) {
                 this.go_to(this.step - 1, true);
+                this.update_buttons();
             } else if (type === "next") {
                 //do validation before next if inline validation enabled
                 if (this.settings.inline_validation) {
-                    if (!this.is_step_inputs_valid()) {
+                    if (!this.is_step_inputs_valid(this.step)) {
                         return;
                     }
                 }
 
-                this.go_to(this.step + 1, true);
-            }
+                if (typeof this.$el.data().powerformFrontPayment !== "undefined") {
+                    var payment = this.$el.data().powerformFrontPayment,
+                        page = this.$el.find('[data-step=' + this.step + ']'),
+                        hasStripe = page.find(".powerform-stripe-element").not(".powerform-hidden .powerform-stripe-element");
 
-            this.update_buttons();
+                    // Check if Stripe exists on current step
+                    if (hasStripe.length > 0) {
+                        payment._stripe.createToken(payment._cardElement).then(function(result) {
+                            if (result.error) {
+                                payment.showCardError(result.error.message, true);
+                            } else {
+                                payment.hideCardError();
+                                self.go_to(self.step + 1, true);
+                                self.update_buttons();
+                            }
+                        });
+                    } else {
+                        this.go_to(this.step + 1, true);
+                        this.update_buttons();
+                    }
+                } else {
+                    this.go_to(this.step + 1, true);
+                    this.update_buttons();
+                }
+            }
         },
 
         /**
          * Check current inputs on step is in valid state
          */
-        is_step_inputs_valid: function() {
+        is_step_inputs_valid: function(step) {
             var valid = true,
                 errors = 0,
                 validator = this.$el.data('validator'),
-                page = this.$el.find('[data-step=' + this.step + ']');
+                page = this.$el.find('[data-step=' + step + ']');
 
             //inline validation disabled
             if (typeof validator === 'undefined') {
@@ -263,12 +321,13 @@
             }
 
             //get fields on current page
-            page.find("input, select, textarea, [contenteditable]")
+            page.find("input, select, textarea")
                 .not(":submit, :reset, :image, :disabled")
-                .not(':hidden:not(.powerform-wp-editor-required, .powerform-input-file-required)')
+                .not(':hidden:not(.powerform-wp-editor-required, .powerform-input-file-required, input[name$="_data"])')
                 .not('[gramm="true"]')
                 .each(function(key, element) {
                     valid = validator.element(element);
+
                     if (!valid) {
                         if (errors === 0) {
                             // focus on first error
@@ -304,9 +363,15 @@
 
         update_buttons: function() {
             if (this.step === 0) {
-                this.$el.find('.powerform-pagination-prev').attr('disabled', true);
+                this.$el.find('.powerform-button-back').closest('.powerform-pagination-footer').css({
+                    'justify-content': 'flex-end'
+                });
+                this.$el.find('.powerform-button-back').addClass('powerform-hidden');
             } else {
-                this.$el.find('.powerform-pagination-prev').removeAttr('disabled');
+                this.$el.find('.powerform-button-back').closest('.powerform-pagination-footer').css({
+                    'justify-content': ''
+                });
+                this.$el.find('.powerform-button-back').removeClass('powerform-hidden');
             }
 
             if (this.step === this.totalSteps) {
@@ -316,18 +381,80 @@
             }
 
             if (this.step === (this.totalSteps - 1)) {
-                var submit_button_text = this.$el.find('.powerform-pagination-submit').html();
+
+                var submit_button_text = this.$el.find('.powerform-pagination-submit').html(),
+                    last_button_txt = (this.custom_label['pagination-labels'] === 'custom' &&
+                        this.custom_label['last-previous'] !== '') ? this.custom_label['last-previous'] : this.prev_button;
+
                 if (this.$el.hasClass('powerform-design--material')) {
-                    this.$el.find('.powerform-pagination-next').removeClass('powerform-pagination-next').attr('id', 'powerform-submit').find('.powerform-button--text').html(submit_button_text);
+
+                    this.$el.find('.powerform-button-back .powerform-button--text').html(last_button_txt);
+                    this.$el.find('.powerform-button-next')
+                        .removeClass('powerform-button-next')
+                        .attr('id', 'powerform-submit')
+                        .addClass('powerform-button-submit')
+                        .find('.powerform-button--text')
+                        .html('')
+                        .html(submit_button_text);
+                    if (this.custom_label['has-paypal'] === true) {
+                        this.$el.find('.powerform-button-submit').addClass('powerform-hidden');
+                        this.$el.find('.powerform-payment')
+                            .attr('id', 'powerform-paypal-submit')
+                            .removeClass('powerform-hidden');
+                    }
                 } else {
-                    this.$el.find('.powerform-pagination-next').removeClass('powerform-pagination-next').attr('id', 'powerform-submit').html(submit_button_text);
+                    this.$el.find('.powerform-button-back').html(last_button_txt);
+                    this.$el.find('.powerform-button-next')
+                        .removeClass('powerform-button-next')
+                        .attr('id', 'powerform-submit')
+                        .addClass('powerform-button-submit')
+                        .html(submit_button_text);
+                    if (this.custom_label['has-paypal'] === true) {
+                        this.$el.find('.powerform-button-submit').addClass('powerform-hidden');
+                        this.$el.find('.powerform-payment')
+                            .attr('id', 'powerform-paypal-submit')
+                            .removeClass('powerform-hidden');
+                    }
+                }
+
+                if (this.$el.find('.powerform-payment iframe').length > 0) {
+                    this.$el.find('.powerform-payment iframe').width('100%');
                 }
 
             } else {
-                if (this.$el.hasClass('powerform-design--material')) {
-                    this.$el.find('.powerform-pagination-next .powerform-button--text').html(this.next_button);
+                this.element = this.$el.find('[data-step=' + this.step + ']').data('name');
+                if (this.custom_label[this.element] && this.custom_label['pagination-labels'] === 'custom') {
+                    this.prev_button_txt = this.custom_label[this.element]['prev-text'] !== '' ? this.custom_label[this.element]['prev-text'] : this.prev_button;
+                    this.next_button_txt = this.custom_label[this.element]['next-text'] !== '' ? this.custom_label[this.element]['next-text'] : this.next_button;
                 } else {
-                    this.$el.find('.powerform-pagination-next').html(this.next_button);
+                    this.prev_button_txt = this.prev_button;
+                    this.next_button_txt = this.next_button;
+                }
+                if (this.$el.hasClass('powerform-design--material')) {
+                    this.$el.find('#powerform-submit')
+                        .removeAttr('id')
+                        .removeClass('powerform-button-submit')
+                        .addClass('powerform-button-next');
+                    if (this.custom_label['has-paypal'] === true) {
+                        this.$el.find('#powerform-paypal-submit').removeAttr('id').addClass('powerform-hidden');
+                        this.$el.find('.powerform-button-next').removeClass('powerform-button-submit powerform-hidden');
+                    }
+
+                    this.$el.find('.powerform-button-back .powerform-button--text').html(this.prev_button_txt);
+                    this.$el.find('.powerform-button-next .powerform-button--text').html(this.next_button_txt);
+
+                } else {
+                    this.$el.find('#powerform-submit')
+                        .removeAttr('id')
+                        .removeClass('powerform-button-submit')
+                        .addClass('powerform-button-next');
+                    if (this.custom_label['has-paypal'] === true) {
+                        this.$el.find('#powerform-paypal-submit').removeAttr('id').addClass('powerform-hidden');
+                        this.$el.find('.powerform-button-next').removeClass('powerform-button-submit powerform-hidden');
+                    }
+                    this.$el.find('.powerform-button-back').html(this.prev_button_txt);
+                    this.$el.find('.powerform-button-next').html(this.next_button_txt);
+
                 }
             }
         },
@@ -338,10 +465,23 @@
             if (step === this.totalSteps) return false;
 
             // Hide all parts
-            this.$el.find('.powerform-pagination').hide();
+            this.$el.find('.powerform-pagination').css({
+                'height': '0',
+                'opacity': '0',
+                'visibility': 'hidden',
+                'overflow': 'hidden'
+            }).attr('aria-hidden', 'true').attr('hidden', true);
+
+            this.$el.find('.powerform-pagination .powerform-pagination--content').hide();
 
             // Show desired page
-            this.$el.find('[data-step=' + step + ']').show();
+            this.$el.find('[data-step=' + step + ']').css({
+                'height': 'auto',
+                'opacity': '1',
+                'visibility': 'visible'
+            }).removeAttr('aria-hidden').removeAttr('hidden');
+
+            this.$el.find('[data-step=' + step + '] .powerform-pagination--content').show();
 
             //exec responsive captcha
             var powerformFront = this.$el.data('powerformFront');
@@ -357,9 +497,12 @@
         },
 
         update_navigation: function() {
+
             // Update navigation
-            this.$el.find('.powerform-step-current').removeClass('powerform-step-current');
-            this.$el.find('.powerform-nav-step-' + this.step).addClass('powerform-step-current');
+            this.$el.find('.powerform-current').attr('aria-selected', 'false');
+            this.$el.find('.powerform-current').removeClass('powerform-current');
+            this.$el.find('.powerform-step-' + this.step).attr('aria-selected', 'true');
+            this.$el.find('.powerform-step-' + this.step).addClass('powerform-current');
 
             this.calculate_bar_percentage();
         },

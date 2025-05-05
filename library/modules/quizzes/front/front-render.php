@@ -72,13 +72,37 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 
 		$is_preview = isset( $atts['is_preview'] ) ? $atts['is_preview'] : false;
 		$is_preview = filter_var( $is_preview, FILTER_VALIDATE_BOOLEAN );
+		$is_preview = apply_filters( 'powerform_render_shortcode_is_preview', $is_preview );
 
 		$preview_data = isset( $atts['preview_data'] ) ? $atts['preview_data'] : array();
 
+		$lead_data = array();
+
 		ob_start();
 
+		$custom_form_view = Powerform_CForm_Front::get_instance();
+
+		$this->model = Powerform_Quiz_Form_Model::model()->load( $atts['id'] );
+
+		if ( ! $this->model instanceof Powerform_Quiz_Form_Model ) {
+			return '';
+		}
+
+		if ( $this->has_lead() ) {
+			$lead_data['has_lead'] = $this->has_lead();
+		    $lead_data['leads_id']  = $this->get_leads_id();
+        }
+
+		echo $this->lead_wrapper_start();
+
 		$view->display( $atts['id'], $is_preview, $preview_data );
-		$view->ajax_loader( $is_preview, $preview_data );
+
+		if ( $this->has_lead() && ! $is_preview ) {
+			$custom_form_view->display( $this->get_leads_id(), $is_preview, $preview_data, true, $this->model );
+			echo $this->lead_wrapper_end();
+		}
+
+		$view->ajax_loader( $is_preview, $preview_data, $lead_data );
 
 		return ob_get_clean();
 	}
@@ -94,6 +118,10 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 * @param bool $hide If true, display: none will be added on the form markup and later removed with JS
 	 */
 	public function display( $id, $is_preview = false, $data = false, $hide = true ) {
+
+		$version       = POWERFORM_VERSION;
+		$module_type   = 'quiz';
+
 		if ( $data && ! empty( $data ) ) {
 			// New form, we have to update the form id
 			$has_id = filter_var( $id, FILTER_VALIDATE_BOOLEAN );
@@ -107,11 +135,11 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 			$this->model->id = $id;
 
 			// If this module haven't been saved, the preview will be of the wrong module
-//			if ( ! isset( $data['settings']['quiz_title'] ) || $data['settings']['quiz_title'] !== $this->model->settings['quiz_title'] ) {
-//				echo $this->message_save_to_preview(); // WPCS: XSS ok.
-//
-//				return;
-//			}
+			// if ( ! isset( $data['settings']['quiz_title'] ) || $data['settings']['quiz_title'] !== $this->model->settings['quiz_title'] ) {
+			// 	echo $this->message_save_to_preview(); // WPCS: XSS ok.
+
+			// 	return;
+			// }
 		} else {
 			$this->model = Powerform_Quiz_Form_Model::model()->load( $id );
 
@@ -125,11 +153,13 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 		// TODO: make preview and ajax load working similar
 		$is_ajax_load = $this->is_ajax_load( $is_preview );
 
+		// Load assets conditionally
+		$assets = new Powerform_Assets_Enqueue_Quiz( $this->model, $is_ajax_load );
+		$assets->load_assets();
+
 		if ( $is_ajax_load ) {
 			$this->generate_render_id( $id );
-			$this->get_form_placeholder( $id, true );
-			powerform_print_front_styles( POWERFORM_VERSION );
-			powerform_print_front_scripts( POWERFORM_VERSION );
+			$this->get_form_placeholder( esc_attr( $id ), true );
 
 			return;
 		}
@@ -147,9 +177,6 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 			} else {
 				add_action( 'wp_footer', array( $this, 'print_styles' ), 9999 );
 			}
-
-			powerform_print_front_styles( POWERFORM_VERSION );
-			powerform_print_front_scripts( POWERFORM_VERSION );
 
 			$google_fonts = $this->get_google_fonts();
 
@@ -190,11 +217,22 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 		$html = '';
 
 		$fields = $this->get_fields();
+		$num_fields = count( $fields );
+
+		$i = 0;
+
 		foreach ( $fields as $key => $field ) {
+
+			$last_field = false;
+
+			if ( ++$i === $num_fields ) {
+				$last_field = true;
+			}
+
 			do_action( 'powerform_before_field_render', $field );
 
-			// Render field
-			$html .= $this->render_field( $field );
+				// Render field
+				$html .= $this->render_field( $field, $last_field );
 
 			do_action( 'powerform_after_field_render', $field );
 		}
@@ -216,14 +254,16 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 *
 	 * @return mixed
 	 */
-	public function render_field( $field ) {
+	public function render_field( $field, $last_field = false ) {
+
 		if ( isset( $field['type'] ) && 'knowledge' === $field['type'] ) {
-			$html = $this->_render_knowledge( $field );
+			$html = $this->_render_knowledge( $field, $last_field );
 		} else {
-			$html = $this->_render_nowrong( $field );
+			$html = $this->_render_nowrong( $field, $last_field );
 		}
 
 		return apply_filters( 'powerform_field_markup', $html, $field, $this );
+
 	}
 
 	/**
@@ -235,133 +275,133 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 *
 	 * @return string
 	 */
-	private function _render_nowrong( $field ) {
+	private function _render_nowrong( $field, $last_field ) {
+
 		ob_start();
-		$uniq_id    = '-' . uniqid();
-		$field_slug = uniqid();
+
+		$class         = '';
+		$uniq_id       = '-' . uniqid();
+		$field_slug    = uniqid();
+		$form_settings = $this->get_form_settings();
+		$form_design   = $this->get_quiz_theme();
 
 		// Make sure slug key exist
 		if ( isset( $field['slug'] ) ) {
 			$field_slug = $field['slug'];
 		}
 
-		$form_settings = $this->get_form_settings();
-
-		$visual_style = 'list';
-		if ( isset( $form_settings['visual_style'] ) ) {
-			$visual_style = $form_settings['visual_style'];
-		}
-
-		$has_image           = ( isset( $field['image'] ) && ! empty( $field['image'] ) );
-		$has_image_css_class = $has_image ? 'powerform-question-has-image' : '';
-
+		$question      = isset( $field['title'] ) ? $field['title'] : '';
+		$image         = isset( $field['image'] ) ? $field['image'] : '';
+		$image_alt     = '';
+		$answers       = isset( $field['answers'] ) ? $field['answers'] : '';
+		$has_question  = ( isset( $question ) && ! empty( $question ) );
+		$has_image     = ( isset( $image ) && ! empty( $image ) );
+		$has_image_alt = ( isset( $image_alt ) && ! empty( $image_alt ) );
+		$has_answers   = ( isset( $answers ) && ! empty( $answers ) );
 		?>
 
-		<?php if ( 'list' === $visual_style ) { ?>
-			<fieldset class="powerform-question">
-		<?php } else { ?>
-			<div class="powerform-question" role="group" aria-labelledby="<?php echo esc_html( $field_slug ); ?>">
-		<?php } ?>
+		<div
+			tabindex="0"
+			role="radiogroup"
+			id="<?php echo esc_html( $field_slug ); ?>"
+			class="powerform-question<?php echo ( true === $last_field ) ? ' powerform-last' : ''; ?>"
+			data-question-type="<?php echo ( isset( $field['type'] ) && 'knowledge' === $field['type'] ) ? 'knowledge' : 'personality'; ?>"
+			aria-labelledby="<?php echo esc_html( $field_slug ) . '-label'; ?>"
+			aria-describedby="<?php echo esc_html( $field_slug ) . '-description'; ?>"
+			aria-required="true"
+		>
 
-		<legend id="<?php echo esc_html( $field_slug ); ?>" class="<?php echo esc_attr( $has_image_css_class ); ?>">
-			<?php if ( $has_image ) : ?>
-				<img src="<?php echo esc_attr( $field['image'] ); ?>" alt="<?php printf( esc_html( 'Bild für %s' ), esc_html( $field['title'] ) ); ?>">
-			<?php endif; ?>
+			<span id="<?php echo esc_html( $field_slug ) . '-label'; ?>" class="powerform-legend"><?php echo esc_html( $question ); ?></span>
 
-			<span class="powerform-question--title"><?php echo esc_html( $field['title'] ); ?></span>
-		</legend>
+			<?php if ( $has_image ) { ?>
+				<div class="powerform-image"<?php echo ( $has_image_alt ) ? '' : ' aria-hidden="true"'; ?>>
+					<img
+						src="<?php echo esc_attr( $field['image'] ); ?>"
+						<?php echo ( $has_image_alt ) ? 'alt="' . esc_html( $image_alt ) . '"' : ''; ?>
+					/>
+				</div>
+			<?php } ?>
 
 
-		<?php if ( isset ( $field['answers'] ) ) : ?>
+			<?php
+			if ( $has_answers ) {
 
-			<?php foreach ( $field['answers'] as $key => $answer ) : ?>
+				foreach ( $answers as $k => $answer ) {
+
+					$answer_id     = $field_slug . '-' . $k . $uniq_id;
+					$label         = isset( $answer['title'] ) ? $answer['title'] : '';
+					$image         = isset( $answer['image'] ) ? $answer['image'] : '';
+					$image_alt     = '';
+					$has_label     = ( isset( $label ) && ! empty( $label ) );
+					$has_image     = ( isset( $image ) && ! empty( $image ) );
+					$has_image_alt = ( isset( $image_alt ) && ! empty( $image_alt ) );
+
+					if ( $has_label && $has_image ) {
+						$empty_class = '';
+					} else {
+						if ( $has_image ) {
+							$empty_class = ' powerform-only--image';
+						} else if ( $has_label ) {
+							$empty_class = ' powerform-only--text';
+						} else {
+							$empty_class = ' powerform-empty';
+						}
+					}
+					?>
+
+					<label for="<?php echo esc_attr( $answer_id ); ?>" class="powerform-answer<?php echo $empty_class; // WPCS: XSS ok. ?>">
+
+						<input
+							type="radio"
+							name="answers[<?php echo esc_attr( $field_slug ); ?>]"
+							value="<?php echo esc_attr( $k ); ?>"
+							id="<?php echo esc_attr( $answer_id ); ?>"
+							class="<?php echo esc_attr( $class ); ?>"
+						/>
+
+						<?php if ( 'clean' !== $form_design ) {
+							echo '<span class="powerform-answer--design" for="' . esc_attr( $answer_id ) . '">';
+						} ?>
+
+						<?php if ( $has_image ) : ?>
+
+							<?php if ( $has_image_alt ) { ?>
+								<span
+									class="powerform-answer--image"
+									style="background-image: url('<?php echo esc_attr( $image ); ?>');"
+								>
+									<span><?php echo esc_html( $image_alt ); ?></span>
+								</span>
+							<?php } else { ?>
+								<span
+									class="powerform-answer--image"
+									style="background-image: url('<?php echo esc_attr( $image ); ?>');"
+									aria-hidden="true"
+								></span>
+							<?php } ?>
+
+						<?php endif; ?>
+
+						<span class="powerform-answer--status" aria-hidden="true">
+							<i class="powerform-icon-check"></i>
+						</span>
+
+						<?php if ( $has_label ) : ?>
+							<span class="powerform-answer--name"><?php echo esc_html( $label ); ?></span>
+						<?php endif; ?>
+
+						<?php if ( 'clean' !== $form_design ) {
+							echo '</span>';
+						} ?>
+
+					</label>
 
 				<?php
-				if (
-					( isset( $answer['image'] ) && ! empty( $answer['image'] ) )
-					&& ( isset( $answer['title'] ) && ! empty( $answer['title'] ) )
-				) :
-					$empty_class = '';
-				else :
-					if ( isset( $answer['image'] ) && ! empty( $answer['image'] ) ) {
-						$empty_class = ' powerform-only--image';
-					} elseif ( isset( $answer['title'] ) && ! empty( $answer['title'] ) ) {
-						$empty_class = ' powerform-only--text';
-					} else {
-						$empty_class = ' powerform-empty';
-					}
-				endif;
-				?>
+				}
+			}
+			?>
 
-				<?php if ( 'clean' === $this->get_quiz_theme() ) { ?>
-
-					<label for="<?php echo $field_slug . '-' . $key . $uniq_id; // WPCS: XSS ok. ?>" class="powerform-answer<?php echo $empty_class; // WPCS: XSS ok. ?>">
-
-						<input type="radio"
-						       name="answers[<?php echo esc_attr( $field_slug ); ?>]"
-						       value="<?php echo esc_attr( $key ); ?>"
-						       id="<?php echo $field_slug . '-' . $key . $uniq_id; // WPCS: XSS ok. ?>">
-
-						<?php if ( isset( $answer['image'] ) && ! empty( $answer['image'] ) ) : ?>
-							<?php if ( isset( $answer['title'] ) && ! empty( $answer['title'] ) ) { ?>
-								<img src="<?php echo esc_attr( $answer['image'] ); ?>" alt="<?php printf( esc_html( 'Bild für %s' ), esc_html( $answer['title'] ) ); ?>">
-							<?php } else { ?>
-								<img src="<?php echo esc_attr( $answer['image'] ); ?>" alt="<?php printf( esc_html( 'Bild für Antwort #%s' ), esc_html( $key ) ); ?>">
-							<?php } ?>
-						<?php endif; ?>
-
-						<?php if ( isset( $answer['title'] ) && ! empty( $answer['title'] ) ) : ?>
-							<span class="powerform-answer--name"><?php echo esc_html( $answer['title'] ); ?></span>
-						<?php endif; ?>
-
-					</label>
-
-				<?php } else { ?>
-
-					<label class="powerform-answer<?php echo $empty_class; // WPCS: XSS ok. ?>"
-					       for="<?php echo $field_slug . '-' . $key . $uniq_id; // WPCS: XSS ok. ?>">
-
-						<input type="radio"
-						       name="answers[<?php echo esc_attr( $field_slug ); ?>]"
-						       value="<?php echo esc_attr( $key ); ?>"
-						       id="<?php echo $field_slug . '-' . $key . $uniq_id; // WPCS: XSS ok. ?>">
-
-						<span class="powerform-answer--design"
-						      for="<?php echo $field_slug . '-' . $key . $uniq_id; // WPCS: XSS ok. ?>">
-
-								<?php if ( isset( $answer['image'] ) && ! empty( $answer['image'] ) ) : ?>
-									<?php if ( isset( $answer['title'] ) && ! empty( $answer['title'] ) ) { ?>
-										<span class="powerform-answer--image"
-										      style="background-image: url('<?php echo esc_attr( $answer['image'] ); ?>');"
-										      aria-hidden="true"></span>
-									<?php } else { ?>
-										<span class="powerform-answer--image"
-										      style="background-image: url('<?php echo esc_attr( $answer['image'] ); ?>');"
-										      aria-label="<?php printf( esc_html( 'Bild für Antwort #%s' ), esc_html( $key ) ); ?>"></span>
-									<?php } ?>
-								<?php endif; ?>
-
-							<span class="powerform-answer--check" aria-hidden="true"></span>
-
-							<?php if ( isset( $answer['title'] ) && ! empty( $answer['title'] ) ) : ?>
-								<span class="powerform-answer--name"><?php echo esc_html( $answer['title'] ); ?></span>
-							<?php endif; ?>
-
-							</span>
-
-					</label>
-
-				<?php } ?>
-
-			<?php endforeach; ?>
-
-		<?php endif; ?>
-
-		<?php if ( 'list' === $visual_style ) { ?>
-			</fieldset>
-		<?php } else { ?>
-			</div>
-		<?php } ?>
+		</div>
 
 		<?php
 		return ob_get_clean();
@@ -376,132 +416,131 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 *
 	 * @return string
 	 */
-	private function _render_knowledge( $field ) {
+	private function _render_knowledge( $field, $last_field ) {
+
 		ob_start();
-		$class   = ( isset( $this->model->settings['results_behav'] ) && 'end' === $this->model->settings['results_behav'] ) ? '' : 'powerform-submit-rightaway';
-		$uniq_id = '-' . uniqid();
 
+		$class         = ( isset( $this->model->settings['results_behav'] ) && 'end' === $this->model->settings['results_behav'] ) ? '' : 'powerform-submit-rightaway';
+		$uniq_id       = '-' . uniqid();
+		$field_slug    = uniqid();
 		$form_settings = $this->get_form_settings();
+		$form_design   = $this->get_quiz_theme();
 
-		$visual_style = 'list';
-		if ( isset( $form_settings['visual_style'] ) ) {
-			$visual_style = $form_settings['visual_style'];
+		// Make sure slug key exist
+		if ( isset( $field['slug'] ) ) {
+			$field_slug = $field['slug'];
 		}
 
-		$has_image           = ( isset( $field['image'] ) && ! empty( $field['image'] ) );
-		$has_image_css_class = $has_image ? 'powerform-question-has-image' : '';
-
+		$question      = $field['title'];
+		$image         = isset( $field['image'] ) ? $field['image'] : '';
+		$image_alt     = '';
+		$answers       = $field['answers'];
+		$has_question  = ( isset( $question ) && ! empty( $question ) );
+		$has_image     = ( ! empty( $image ) );
+		$has_image_alt = ( isset( $image_alt ) && ! empty( $image_alt ) );
+		$has_answers   = ( isset( $answers ) && ! empty( $answers ) );
 		?>
 
-		<?php if ( 'list' === $visual_style ) { ?>
-			<fieldset id="<?php echo esc_html( $field['slug'] ); ?>" class="powerform-question">
-		<?php } else { ?>
-			<div id="<?php echo esc_html( $field['slug'] ); ?>" class="powerform-question" role="group" aria-labelledby="<?php echo esc_html( $field['slug'] ); ?>">
-		<?php } ?>
+		<div
+			tabindex="0"
+			role="radiogroup"
+			id="<?php echo esc_html( $field_slug ); ?>"
+			class="powerform-question<?php echo ( true === $last_field ) ? ' powerform-last' : ''; ?>"
+			aria-labelledby="<?php echo esc_html( $field_slug ) . '-label'; ?>"
+			aria-describedby="<?php echo esc_html( $field_slug ) . '-description'; ?>"
+			aria-required="true"
+		>
 
-		<legend id="<?php echo esc_html( $field['slug'] ); ?>" class="<?php echo esc_attr( $has_image_css_class ); ?>">
-			<?php if ( $has_image ) : ?>
-				<img src="<?php echo esc_attr( $field['image'] ); ?>" alt="<?php printf( esc_html( 'Bild für %s' ), esc_html( $field['title'] ) ); ?>">
-			<?php endif; ?>
-			<span class="powerform-question--title"><?php echo esc_html( $field['title'] ); ?></span>
-		</legend>
+			<span id="<?php echo esc_html( $field_slug ) . '-label'; ?>" class="powerform-legend"><?php echo esc_html( $question ); ?></span>
 
-		<?php if ( isset( $field['answers'] ) ) : ?>
+			<?php if ( $has_image ) { ?>
+				<div class="powerform-image"<?php echo ( $has_image_alt ) ? '' : ' aria-hidden="true"'; ?>>
+					<img
+						src="<?php echo esc_attr( $field['image'] ); ?>"
+						<?php echo ( $has_image_alt ) ? 'alt="' . esc_html( $image_alt ) . '"' : ''; ?>
+					/>
+				</div>
+			<?php } ?>
 
-			<?php foreach ( $field['answers'] as $k => $answer ) : ?>
+			<?php
+			if ( $has_answers ) {
+
+				foreach ( $answers as $k => $answer ) {
+
+					$answer_id     = $field_slug . '-' . $k . $uniq_id;
+					$label         = $answer['title'];
+					$image         = isset( $answer['image'] ) ? $answer['image'] : '';
+					$image_alt     = '';
+					$has_label     = ( isset( $label ) && ! empty( $label ) );
+					$has_image     = ( ! empty( $image ) );
+					$has_image_alt = ( isset( $image_alt ) && ! empty( $image_alt ) );
+
+					if ( $has_label && $has_image ) {
+						$empty_class = '';
+					} else {
+						if ( $has_image ) {
+							$empty_class = ' powerform-only--image';
+						} else if ( $has_label ) {
+							$empty_class = ' powerform-only--text';
+						} else {
+							$empty_class = ' powerform-empty';
+						}
+					}
+					?>
+
+					<label for="<?php echo esc_attr( $answer_id ); ?>" class="powerform-answer<?php echo $empty_class; // WPCS: XSS ok. ?>">
+
+						<input
+							type="radio"
+							name="answers[<?php echo esc_attr( $field_slug ); ?>]"
+							value="<?php echo esc_attr( $k ); ?>"
+							id="<?php echo esc_attr( $answer_id ); ?>"
+							class="<?php echo esc_attr( $class ); ?>"
+						/>
+
+						<?php if ( 'clean' !== $form_design ) {
+							echo '<span class="powerform-answer--design" for="' . esc_attr( $answer_id ) . '">';
+						} ?>
+
+						<?php if ( $has_image ) : ?>
+
+							<?php if ( $has_image_alt ) { ?>
+								<span
+									class="powerform-answer--image"
+									style="background-image: url('<?php echo esc_attr( $image ); ?>');"
+								>
+									<span><?php echo esc_html( $image_alt ); ?></span>
+								</span>
+							<?php } else { ?>
+								<span
+									class="powerform-answer--image"
+									style="background-image: url('<?php echo esc_attr( $image ); ?>');"
+									aria-hidden="true"
+								></span>
+							<?php } ?>
+
+						<?php endif; ?>
+
+						<span class="powerform-answer--status" aria-hidden="true"></span>
+
+						<?php if ( $has_label ) : ?>
+							<span class="powerform-answer--name"><?php echo esc_html( $label ); ?></span>
+						<?php endif; ?>
+
+						<?php if ( 'clean' !== $form_design ) {
+							echo '</span>';
+						} ?>
+
+					</label>
 
 				<?php
-				if (
-					( isset( $answer['image'] ) && ! empty( $answer['image'] ) )
-					&& ( isset( $answer['title'] ) && ! empty( $answer['title'] ) )
-				) :
-					$empty_class = '';
-				else :
-					if ( isset( $answer['image'] ) && ! empty( $answer['image'] ) ) {
-						$empty_class = ' powerform-only--image';
-					} elseif ( isset( $answer['title'] ) && ! empty( $answer['title'] ) ) {
-						$empty_class = ' powerform-only--text';
-					} else {
-						$empty_class = ' powerform-empty';
-					}
-				endif;
-				?>
+				}
+			}
+			?>
 
-				<?php $e_id = $field['slug'] . '-' . $k . $uniq_id; ?>
+			<span id="<?php echo esc_html( $field_slug ) . '-description'; ?>" class="powerform-question--result"></span>
 
-				<?php if ( 'clean' === $this->get_quiz_theme() ) { ?>
-
-					<label for="<?php echo esc_attr( $e_id ); ?>" class="powerform-answer<?php echo $empty_class; // WPCS: XSS ok. ?>">
-
-						<input type="radio"
-						       name="answers[<?php echo esc_attr( $field['slug'] ); ?>]"
-						       value="<?php echo esc_attr( $k ); ?>"
-						       id="<?php echo esc_attr( $e_id ); ?>"
-						       class="<?php echo esc_attr( $class ); ?>">
-
-						<?php if ( isset( $answer['image'] ) && ! empty( $answer['image'] ) ) : ?>
-							<?php if ( isset( $answer['title'] ) && ! empty( $answer['title'] ) ) { ?>
-								<img src="<?php echo esc_attr( $answer['image'] ); ?>" alt="<?php printf( esc_html( 'Bild für %s' ), esc_html( $answer['title'] ) ); ?>">
-							<?php } else { ?>
-								<img src="<?php echo esc_attr( $answer['image'] ); ?>" alt="<?php printf( esc_html( 'Bild für Antwort #%s' ), esc_html( $e_id ) ); ?>">
-							<?php } ?>
-						<?php endif; ?>
-
-						<?php if ( isset( $answer['title'] ) && ! empty( $answer['title'] ) ) : ?>
-							<span class="powerform-answer--name"><?php echo esc_html( $answer['title'] ); ?></span>
-						<?php endif; ?>
-
-					</label>
-
-				<?php } else { ?>
-
-					<label class="powerform-answer<?php echo $empty_class; // WPCS: XSS ok. ?>"
-					       for="<?php echo esc_attr( $e_id ); ?>">
-
-						<input type="radio"
-						       name="answers[<?php echo esc_attr( $field['slug'] ); ?>]"
-						       value="<?php echo esc_attr( $k ); ?>"
-						       id="<?php echo esc_attr( $e_id ); ?>"
-						       class="<?php echo esc_attr( $class ); ?>">
-
-						<span class="powerform-answer--design"
-						      for="<?php echo esc_attr( $e_id ); ?>">
-
-								<?php if ( isset( $answer['image'] ) && ! empty( $answer['image'] ) ) : ?>
-									<?php if ( isset( $answer['title'] ) && ! empty( $answer['title'] ) ) { ?>
-										<span class="powerform-answer--image"
-										      style="background-image: url('<?php echo esc_attr( $answer['image'] ); ?>');"
-										      aria-hidden="true"></span>
-									<?php } else { ?>
-										<span class="powerform-answer--image"
-										      style="background-image: url('<?php echo esc_attr( $answer['image'] ); ?>');"
-										      aria-label="<?php printf( esc_html( 'Bild für Antwort #%s' ), esc_html( $e_id ) ); ?>"></span>
-									<?php } ?>
-								<?php endif; ?>
-
-							<span class="powerform-answer--status" aria-hidden="true"></span>
-
-							<?php if ( isset( $answer['title'] ) && ! empty( $answer['title'] ) ) : ?>
-								<span class="powerform-answer--name"><?php echo esc_html( $answer['title'] ); ?></span>
-							<?php endif; ?>
-
-							</span>
-
-					</label>
-
-				<?php } ?>
-
-			<?php endforeach ?>
-
-		<?php endif; ?>
-
-		<div class="powerform-question--result"></div>
-
-		<?php if ( 'list' === $visual_style ) { ?>
-			</fieldset>
-		<?php } else { ?>
-			</div>
-		<?php } ?>
+		</div><?php // END .powerform-question ?>
 
 		<?php
 		$html = ob_get_clean();
@@ -526,7 +565,7 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 * @return mixed
 	 */
 	public function message_save_to_preview() {
-		return esc_html__( "Bitte speichere den Test, um ihn in der Vorschau anzuzeigen.", Powerform::DOMAIN );
+		return esc_html__( "Bitte speichere das Quiz, um eine Vorschau anzuzeigen.", Powerform::DOMAIN );
 	}
 
 	/**
@@ -536,7 +575,7 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 * @return mixed
 	 */
 	public function message_not_found() {
-		return esc_html__( "Formular-ID nicht gefunden!", Powerform::DOMAIN );
+		return esc_html__( "Formular ID nicht gefunden!", Powerform::DOMAIN );
 	}
 
 	/**
@@ -556,7 +595,11 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 * @return array
 	 */
 	public function get_form_settings() {
-		return $this->model->settings;
+		if ( is_object( $this->model ) ) {
+			return $this->model->settings;
+		}
+
+		return $this->model['settings'];
 	}
 
 	/**
@@ -594,20 +637,32 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 */
 	public function render_form_header() {
 		ob_start();
+
+		// TO-DO: Get featured image alt text.
+		$feat_image_alt = '';
 		?>
 
 		<?php if ( isset( $this->model->settings['quiz_name'] ) && ! empty( $this->model->settings['quiz_name'] ) ): ?>
-			<h1 class="powerform-quiz--title"><?php echo esc_html( $this->model->settings['quiz_name'] ); ?></h1>
+			<h3 class="powerform-quiz--title"><?php echo esc_html( $this->model->settings['quiz_name'] ); ?></h3>
 		<?php endif; ?>
 
 		<?php if ( isset( $this->model->settings['quiz_feat_image'] ) && ! empty( $this->model->settings['quiz_feat_image'] ) ): ?>
-			<figure class="powerform-quiz--image">
-				<img src="<?php echo esc_html( $this->model->settings['quiz_feat_image'] ); ?>" alt="<?php echo esc_html( powerform_get_form_name( $this->model->id, $this->get_form_type() ) ); ?>">
-			</figure>
+			<img
+				src="<?php echo esc_html( $this->model->settings['quiz_feat_image'] ); ?>"
+				class="powerform-quiz--image"
+				<?php echo ( '' !== $feat_image_alt ) ? 'alt="' . esc_html( $feat_image_alt ) . '"' : 'aria-hidden="true"'; ?>
+			/>
 		<?php endif; ?>
 
-		<?php if ( isset( $this->model->settings['quiz_description'] ) && ! empty( $this->model->settings['quiz_description'] ) ): ?>
-			<p class="powerform-quiz--description"><?php echo wp_kses_post( $this->model->settings['quiz_description'] ); ?></p>
+		<?php if ( isset( $this->model->settings['quiz_description'] ) && ! empty( $this->model->settings['quiz_description'] ) ):
+
+			$content = powerform_replace_variables( $this->model->settings['quiz_description'], $this->model->id );
+
+			if ( stripos( $content, '{quiz_name}' ) !== false ) :
+				$quiz_name = powerform_get_name_from_model( $this->model );
+				$content   = str_ireplace( '{quiz_name}', $quiz_name, $content );
+			endif; ?>
+			<div class="powerform-quiz--description"><?php echo wp_kses_post( $content ); ?></div>
 		<?php endif; ?>
 
 		<?php
@@ -620,7 +675,7 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 		$data = array(
 			'class' => '',
 			'label' => esc_html__( "Bereit zum Senden", Powerform::DOMAIN ),
-			'loading' => esc_html__( "Wird geladen...", Powerform::DOMAIN )
+			'loading' => esc_html__( "Ergebnis berechnen", Powerform::DOMAIN )
 		);
 
 		// Submit data is missing
@@ -628,15 +683,15 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 			return $data;
 		}
 
-		if( isset( $settings['submitData']['button-text'] ) && ! empty( $settings['submitData']['button-text'] ) ) {
+		if ( isset( $settings['submitData']['button-text'] ) && ! empty( $settings['submitData']['button-text'] ) ) {
 			$data['label'] = $settings['submitData']['button-text'];
 		}
 
-		if( isset( $settings['submitData']['button-processing-text'] ) && ! empty( $settings['submitData']['button-processing-text'] ) ) {
+		if ( isset( $settings['submitData']['button-processing-text'] ) && ! empty( $settings['submitData']['button-processing-text'] ) ) {
 			$data['loading'] = $settings['submitData']['button-processing-text'];
 		}
 
-		if( isset( $settings['submitData']['custom-class'] ) ) {
+		if ( isset( $settings['submitData']['custom-class'] ) ) {
 			$data['class'] = $settings['submitData']['custom-class'];
 		}
 
@@ -654,43 +709,83 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 * @return mixed
 	 */
 	public function get_submit( $form_id, $render = true ) {
+
+		// FIX:
 		// https://app.asana.com/0/385581670491499/789649735369091/f
 		$disabled = '';
+
 		if ( $this->is_preview ) {
-			$disabled = 'disabled="disabled"';
+			$disabled = 'aria-disabled="true" disabled="disabled"';
 		}
+
 		$nonce   = $this->nonce_field( 'powerform_submit_form', 'powerform_nonce' );
 		$post_id = $this->get_post_id();
 
-		$submit_data = $this->get_submit_data();
+		$submit_data  = $this->get_submit_data();
+		$result_behav = isset( $this->model->settings['results_behav'] ) ? $this->model->settings['results_behav'] : '';
+		$lead_result  = 'beginning' === $this->get_form_placement() ? $result_behav : 'end';
 
 		$html = '<div class="powerform-quiz--result">';
-		if ( 'nowrong' === $this->model->quiz_type || ( isset( $this->model->settings['results_behav'] ) && 'end' === $this->model->settings['results_behav'] ) ) {
+		if ( 'knowledge' === $this->model->quiz_type && $this->has_lead() && 'end' === $lead_result ) {
+
 			if ( 'material' === $this->get_quiz_theme() ) {
+
 				$html .= sprintf(
-					'<button class="powerform-button %s" %s data-loading="%s"><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">%s</span></button>',
+					'<button class="powerform-button powerform-button-submit %s" %s data-loading="%s" aria-live="polite"><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">%s</span></button>',
 					$submit_data['class'],
 					$disabled,
 					$submit_data['loading'],
-					$submit_data['label'] );
+					esc_html__( 'Ergebnisse anzeigen', Powerform::DOMAIN )
+				);
 			} else {
+
 				$html .= sprintf(
-					'<button class="powerform-button %s" %s data-loading="%s">%s</button>',
+					'<button class="powerform-button powerform-button-submit %s" data-loading="%s" %s>%s</button>',
 					$submit_data['class'],
-					$disabled,
 					$submit_data['loading'],
-					$submit_data['label'] );
+					$disabled,
+					esc_html__( 'Ergebnisse anzeigen', Powerform::DOMAIN )
+				);
 			}
-		}
+		} elseif ( 'nowrong' === $this->model->quiz_type || 'end' === $result_behav ) {
+
+				if ( 'material' === $this->get_quiz_theme() ) {
+
+					$html .= sprintf(
+						'<button class="powerform-button powerform-button-submit %s" %s data-loading="%s" aria-live="polite"><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">%s</span></button>',
+						$submit_data['class'],
+						$disabled,
+						$submit_data['loading'],
+						$submit_data['label']
+					);
+				} else {
+
+					$html .= sprintf(
+						'<button class="powerform-button powerform-button-submit %s" data-loading="%s" %s>%s</button>',
+						$submit_data['class'],
+						$submit_data['loading'],
+						$disabled,
+						$submit_data['label']
+					);
+				}
+			}
 
 		$html .= '</div>';
+
 		$html .= $nonce;
+		$html .= sprintf( '<input type="hidden" name="has_lead" value="%s">', $this->has_lead() );
 		$html .= sprintf( '<input type="hidden" name="form_id" value="%s">', $form_id );
 		$html .= sprintf( '<input type="hidden" name="page_id" value="%s">', $post_id );
+		$html .= sprintf( '<input type="hidden" name="current_url" value="%s">', powerform_get_current_url() );
+
+		if ( $this->has_lead() ) {
+			$html .= sprintf( '<input type="hidden" name="entry_id" value="">' );
+        }
+
 		if ( $this->is_preview ) {
-			$html .= '<input type="hidden" name="action" value="powerform_submit_preview_form_quizzes">';
+			$html .= '<input type="hidden" name="action" value="powerform_submit_preview_form_quizzes" />';
 		} else {
-			$html .= '<input type="hidden" name="action" value="powerform_submit_form_quizzes">';
+			$html .= '<input type="hidden" name="action" value="powerform_submit_form_quizzes" />';
 		}
 
 		if ( $render ) {
@@ -710,44 +805,18 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 		$theme = $this->get_quiz_theme();
 
 		if ( isset( $this->model->quiz_type ) && 'knowledge' === $this->model->quiz_type ) {
-			if ( 'bold' === $theme ) {
-				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/knowledge/bold.html' );
-			}
 
-			if ( 'flat' === $theme ) {
-				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/knowledge/flat.html' );
-			}
-
-			if ( 'default' === $theme ) {
-				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/knowledge/default.html' );
-			}
-
-			if ( 'material' === $theme ) {
-				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/knowledge/material.html' );
-			}
-
-			if ( 'empty' !== $theme && ( empty( $theme ) || '' !== $theme ) ) {
-				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/knowledge/default.html' );
+			if ( 'none' !== $theme ) {
+				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/knowledge/global.html' );
+			} else {
+				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/knowledge/grid.html' );
 			}
 		} else {
-			if ( 'bold' === $theme ) {
-				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/nowrong/bold.html' );
-			}
 
-			if ( 'flat' === $theme ) {
-				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/nowrong/flat.html' );
-			}
-
-			if ( 'default' === $theme ) {
-				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/nowrong/default.html' );
-			}
-
-			if ( 'material' === $theme ) {
-				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/nowrong/material.html' );
-			}
-
-			if ( 'empty' !== $theme && ( empty( $theme ) || '' !== $theme ) ) {
-				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/nowrong/default.html' );
+			if ( 'none' !== $theme ) {
+				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/nowrong/global.html' );
+			} else {
+				return realpath( powerform_plugin_dir() . '/assets/js/front/templates/quiz/nowrong/grid.html' );
 			}
 		}
 	}
@@ -799,7 +868,7 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 				// If we don't have a form_id use $model->id
 				/** @var array $properties */
 				if ( ! isset( $properties['form_id'] ) ) {
-					if ( ! isset( $style_property ['id'] ) ) {
+					if ( ! isset( $style_property['id'] ) ) {
 						continue;
 					}
 					$properties['form_id'] = $style_property['id'];
@@ -808,7 +877,7 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 				ob_start();
 
 				if ( isset( $properties['custom_css'] ) && isset( $properties['form_id'] ) ) {
-					$properties['custom_css'] = powerform_prepare_css( $properties['custom_css'], '.powerform-quiz-' . $properties['form_id'] . '', false, true, 'powerform-quiz' );
+					$properties['custom_css'] = powerform_prepare_css( $properties['custom_css'], '.powerform-ui.powerform-quiz-' . $properties['form_id'] . ' ', false, true, 'powerform-quiz' );
 				}
 
 				/** @noinspection PhpIncludeInspection */
@@ -817,7 +886,7 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 				$trimmed_styles = trim( $styles );
 
 				if ( isset( $properties['form_id'] ) && strlen( trim( $trimmed_styles ) ) > 0 ) {
-					echo '<style type="text/css" id="powerform-quiz-styles-' . esc_attr( $properties['form_id'] ) . '">' . esc_html( $trimmed_styles ) . '</style>';
+					echo '<style type="text/css" id="powerform-quiz-styles-' . esc_attr( $properties['form_id'] ) . '">' . strip_tags( $trimmed_styles ) . '</style>';
 				}
 			}
 		}
@@ -861,7 +930,7 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 			$quiz_theme = $settings['powerform-quiz-theme'];
 		}
 
-		$quiz_id = $this->model->id;
+		$quiz_id = $this->get_module_id();
 
 		/**
 		 * Filter Quiz Theme to be used
@@ -878,6 +947,21 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	}
 
 	/**
+	 * Get module ID
+	 *
+	 * @since 1.11
+	 *
+	 * @return string
+	 */
+	public function get_module_id() {
+		if ( is_object( $this->model ) ) {
+			return $this->model->id;
+		}
+
+		return $this->model['id'];
+	}
+
+	/**
 	 * Get Google Fonts setup on a quiz
 	 *
 	 * @since 1.2
@@ -886,7 +970,7 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	public function get_google_fonts() {
 		$fonts     = array();
 		$settings  = $this->get_form_settings();
-		$quiz_id   = $this->model->id;
+		$quiz_id   = $this->get_module_id();
 		$quiz_type = $this->model->quiz_type;
 
 		$custom_typography_enabled = false;
@@ -977,11 +1061,13 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	public function get_html( $hide = true, $is_preview = false ) {
 		ob_start();
 
-		$this->render( $this->model->id, $hide, $is_preview );
+		$id = $this->get_module_id();
+
+		$this->render( $id, $hide, $is_preview );
 
 		$this->forms_properties[] = array(
-			'id'             => $this->model->id,
-			'render_id'      => self::$render_ids[ $this->model->id ],
+			'id'             => $id,
+			'render_id'      => self::$render_ids[ $id ],
 			'settings'       => $this->get_form_settings(),
 			'fonts_settings' => $this->get_google_fonts(),
 		);
@@ -1001,9 +1087,10 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 * @return bool
 	 */
 	public function is_displayable( $is_preview ) {
+		$id = $this->get_module_id();
 
 		if ( $this->model instanceof Powerform_Quiz_Form_Model && ( $is_preview || Powerform_Quiz_Form_Model::STATUS_PUBLISH === $this->model->status ) ) {
-			$this->generate_render_id( $this->model->id );
+			$this->generate_render_id( $id );
 
 			return true;
 		} else {
@@ -1027,10 +1114,99 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 	 * @return array
 	 */
 	public function ajax_display( $id, $is_preview = false, $data = false, $hide = true, $last_submit_data = array(), $extra = array() ) {
-		if ( $data && ! empty( $data ) ) {
-			$this->model = Powerform_Quiz_Form_Model::model()->load_preview( $id, $data );
-			// its preview!
+		//The first module and preview for it
+		$id = isset( $id ) ? intval( $id ) : null;
+
+		if ( ( is_null( $id ) || $id <= 0 ) && $is_preview && $data ) {
+			$questions  = $results = $settings = [];
+			$msg_count = false;
+
+			$title = isset( $data['settings']['quiz_name'] ) ? sanitize_text_field( $data['settings']['quiz_name'] ) : sanitize_text_field( $data['settings']['formName'] );
+
+			$form_model = new Powerform_Quiz_Form_Model();
+			$status = Powerform_Poll_Form_Model::STATUS_PUBLISH;
+
+			// Detect action
+			$action = isset( $data['type'] ) ? sanitize_text_field( $data['type'] ) : '';
+			if ( 'knowledge' === $action ) {
+				$form_model->quiz_type = 'knowledge';
+			} elseif ( 'nowrong' === $action ) {
+				$form_model->quiz_type = 'nowrong';
+			} else {
+				return [];
+			}
+
+			// Check if results exist
+			if ( isset( $data['results'] ) && is_array( $data['results'] ) ) {
+				$results = powerform_sanitize_field( $data['results'] );
+				foreach ( $data['results'] as $key => $result ) {
+					$description = '';
+					if ( isset( $result['description'] ) ) {
+						$description = $result['description'];
+					}
+					$results[ $key ]['description'] = $description;
+				}
+
+				$form_model->results = $results;
+			}
+
+			// Check if answers exist
+			if ( isset( $data['questions'] ) ) {
+				$questions = powerform_sanitize_field( $data['questions'] );
+
+				// Check if questions exist
+				if ( isset( $questions ) ) {
+					foreach ( $questions as &$question ) {
+						$question['type'] = $form_model->quiz_type;
+						if ( ! isset( $question['slug'] ) || empty( $question['slug'] ) ) {
+							$question['slug'] = uniqid();
+						}
+					}
+				}
+			}
+
+			// Handle quiz questions
+			$form_model->questions = $questions;
+
+			if ( isset( $data['settings'] ) ) {
+				// Sanitize settings
+				$settings = powerform_sanitize_field( $data['settings'] );
+				$form_model->set_var_in_array( 'name', 'formName', $settings );
+			} else {
+				$form_model->set_var_in_array( 'name', 'formName', $data, 'powerform_sanitize_field' );
+			}
+
+			if ( isset( $data['msg_count'] ) ) {
+				$msg_count = powerform_sanitize_field( $data['msg_count'] ); //Backup, we allow html here
+			}
+
+			// Sanitize admin email message
+			if ( isset( $data['settings']['admin-email-editor'] ) ) {
+				$settings['admin-email-editor'] = $data['settings']['admin-email-editor'];
+			}
+
+			// Sanitize quiz description
+			if ( isset( $data['settings']['quiz_description'] ) ) {
+				$settings['quiz_description'] = $data['settings']['quiz_description'];
+			}
+
+			// Update with backuped version
+			if ( $msg_count ) {
+				$settings['msg_count'] = $msg_count;
+			}
+
+			$settings['formName'] = $title;
+			$settings['version'] = '1.0';
+
+			$form_model->settings = $settings;
+
+			$form_model->status = $status;
+
+			$this->model = $form_model;
 			$this->model->id = $id;
+		} elseif ( $data && ! empty( $data ) ) {
+			$this->model = Powerform_Quiz_Form_Model::model()->load_preview( $id, $data );
+			$this->model->id = $id; // its preview!
 		} else {
 			$this->model = Powerform_Quiz_Form_Model::model()->load( $id );
 		}
@@ -1117,9 +1293,183 @@ class Powerform_QForm_Front extends Powerform_Render_Form {
 		}
 
 		$options = array(
-			'form_type' => $this->get_form_type(),
+			'quiz_id'         => $this->model->id,
+			'form_type'       => $this->get_form_type(),
+			'has_quiz_loader' => $this->form_has_loader( $form_properties ),
+			'hasLeads'        => $this->has_lead()
 		);
+
+		if ( $this->has_lead() ) {
+			$options['form_placement'] = $this->get_form_placement();
+			$options['leads_id']       = $this->get_leads_id();
+			$options['skip_form']      = $this->has_skip_form();
+		}
 
 		return $options;
 	}
+
+	/**
+	 * Return if form has submission loader enabled
+	 *
+	 * @param $properties
+	 *
+	 * @since 1.7.1
+	 *
+	 * @return bool
+	 */
+	public function form_has_loader( $properties ) {
+		if( isset( $properties['settings' ]['quiz-ajax-loader'] ) && "show" === $properties['settings' ]['quiz-ajax-loader'] ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Ajax handler to reload module
+	 *
+	 * @since 1.11
+	 *
+	 * @return void
+	 */
+	public static function ajax_reload_module() {
+		if ( isset( $_REQUEST['nonce'] ) && ! wp_verify_nonce( $_REQUEST['nonce'], 'powerform_submit_form' ) ) {
+			wp_send_json_error( new WP_Error( 'invalid_code' ) );
+		}
+
+		$page_id = isset( $_POST['pageId'] ) ? sanitize_text_field( $_POST['pageId'] ) : false; // WPCS: CSRF OK
+
+		if ( $page_id ) {
+			$link = get_permalink( $page_id );
+
+			if ( $link ) {
+				$response = array( 'success' => true, 'html' => $link );
+				wp_send_json( $response );
+			} else {
+				wp_send_json_error( new WP_Error( 'invalid_post' ) );
+			}
+		} else {
+			wp_send_json_error( new WP_Error( 'invalid_id' ) );
+		}
+	}
+
+	/**
+	 * Check has lead
+	 *
+	 * @return bool
+	 */
+	public function has_lead() {
+		$form_settings = $this->get_form_settings();
+
+		if ( isset( $form_settings['hasLeads'] ) && $form_settings['hasLeads'] ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check has lead
+	 *
+	 * @return bool
+	 */
+	public function get_leads_id() {
+		$form_settings = $this->get_form_settings();
+		$leadsId       = 0;
+
+		if ( $this->has_lead() && isset( $form_settings['leadsId'] ) ) {
+			$leadsId = $form_settings['leadsId'];
+		}
+
+		return $leadsId;
+	}
+	/**
+	 * Check has lead
+	 *
+	 * @return bool
+	 */
+	public function get_form_placement() {
+		$placement     = '';
+		$form_settings = $this->get_form_settings();
+
+		if ( $this->has_lead() && ! isset( $form_settings['form-placement'] ) ) {
+			$placement = 'beginning';
+		}
+
+		if ( $this->has_lead() && isset( $form_settings['form-placement'] ) ) {
+			$placement = $form_settings['form-placement'];
+		}
+
+		return $placement;
+	}
+
+	/**
+	 * Check has lead skip
+	 *
+	 * @return bool
+	 */
+	public function has_skip_form() {
+		$form_settings = $this->get_form_settings();
+
+		if ( isset( $form_settings['skip-form'] ) && $form_settings['skip-form'] ) {
+
+		    return true;
+		}
+
+		return false;
+	}
+
+	/**
+     * Lead wrapper start
+     *
+	 * @return string
+	 */
+	public function lead_wrapper_start() {
+		$wrapper = '';
+	    if ( $this->has_lead() ) {
+		    $form_settings = $this->get_form_settings();
+		    $form_design   = $this->get_form_design();
+
+		    $quiz_spacing   = 'data-spacing="default"';
+		    $quiz_alignment = 'data-alignment="left"';
+
+		    if ( isset( $form_settings['quiz-spacing'] ) && ! empty( $form_settings['quiz-spacing'] ) ) {
+			    $quiz_spacing = 'data-spacing="' . $form_settings['quiz-spacing'] . '"';
+		    }
+
+		    if ( isset( $form_settings['quiz-alignment'] ) && ! empty( $form_settings['quiz-alignment'] ) ) {
+			    $quiz_alignment = 'data-alignment="' . $form_settings['quiz-alignment'] . '"';
+		    } else {
+
+			    if ( false !== strpos( $form_design, 'grid' ) ) {
+				    $quiz_alignment = 'data-alignment="center"';
+			    }
+		    }
+
+		    $visual_style = isset( $form_settings['visual_style'] ) ? $form_settings['visual_style'] : 'list';
+
+			$wrapper = sprintf(
+				'<div id="powerform-quiz-leads-%s" class="powerform-ui powerform-quiz-leads powerform-quiz--%s" data-design="%s" %s %s>',
+				$form_settings['form_id'],
+				$visual_style,
+			    $this->get_quiz_theme(),
+			    $quiz_spacing,
+			    $quiz_alignment
+		    );
+	    }
+
+		return $wrapper;
+
+    }
+
+	/**
+     * Lead wrapper end
+     *
+	 * @return string
+	 */
+    public function lead_wrapper_end() {
+
+	    return '</div>';
+    }
+
 }

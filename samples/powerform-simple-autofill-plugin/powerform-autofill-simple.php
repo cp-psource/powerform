@@ -34,7 +34,7 @@ class Powerform_Autofill_Simple extends Powerform_Autofill_Provider_Abstract {
 				'value_getter' => array( $this, 'get_value_simple_text' ),
 			),
 			'simple_attribute_number' => array(
-				'name'         => __( 'Number', Powerform::DOMAIN ),
+				'name'         => __( 'Nummer', Powerform::DOMAIN ),
 				'value_getter' => array( $this, 'get_value_simple_number' ),
 			),
 		);

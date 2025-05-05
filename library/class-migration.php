@@ -12,12 +12,13 @@ class Powerform_Migration {
 	 * Static method to combine all settings migrations
 	 *
 	 * @param $settings
+	 * @param $fields
 	 *
 	 * @since 1.6
 	 *
 	 * @return mixed
 	 */
-	public static function migrate_custom_form_settings( $settings ) {
+	public static function migrate_custom_form_settings( $settings, $fields ) {
 		$version = self::get_version( $settings );
 
 		if ( ! is_array( $settings ) ) {
@@ -64,6 +65,13 @@ class Powerform_Migration {
 			$settings = self::migrate_padding_border_settings_1_6_1( $settings );
 		}
 
+		/**
+		 * Migrate Page break settings
+		 *
+		 * @since 1.7.4
+		 */
+		$settings = self::migrate_pagination_form_settings( $settings, $fields );
+
 		return $settings;
 	}
 
@@ -71,7 +79,7 @@ class Powerform_Migration {
 	 * Static method to combine all field migrations
 	 *
 	 * @param        $field
-	 * @param string $version
+	 * @param string $settings
 	 *
 	 * @since 1.6
 	 *
@@ -153,6 +161,28 @@ class Powerform_Migration {
 		if ( version_compare( $version, '1.7.alpha-1', 'lt' ) ) {
 			return $field;
 		}
+
+		/**
+		 * Migrate Phone validation
+		 *
+		 * @since 1.14
+		 */
+		$field = self::migrate_phone_validation_field( $field );
+
+		/**
+		 * Migrate Page_break field border
+		 *
+		 * @since 1.7.4
+		 */
+		$field = self::migrate_page_break_pagination_field( $field );
+
+		/**
+		 * Migrate text_limit on `text` field
+		 *
+		 * @since 1.6
+		 */
+		$field = self::migrate_date_limit_1_13( $field );
+
 
 
 		return $field;
@@ -244,7 +274,7 @@ class Powerform_Migration {
 		}
 
 		// Migrate multi select to select
-		if ( "checkbox" === $field['type'] && "multiselect" === $field['value_type'] ) {
+		if ( "checkbox" === $field['type'] && ( isset( $field['value_type'] ) && "multiselect" === $field['value_type'] ) ) {
 			$field['type'] = "select";
 		}
 
@@ -433,14 +463,14 @@ class Powerform_Migration {
 	}
 
 	/**
- * Migrate new padding settings
- *
- * @param $settings
- *
- * @since 1.6.1
- *
- * @return mixed
- */
+	 * Migrate new padding settings
+	 *
+	 * @param $settings
+	 *
+	 * @since 1.6.1
+	 *
+	 * @return mixed
+	 */
 	public static function migrate_padding_border_settings_1_6_1( $settings ) {
 		if ( ! isset( $settings['poll-padding'] ) ) {
 			$settings['poll-padding'] = 'custom';
@@ -580,7 +610,6 @@ class Powerform_Migration {
 		return '1.0';
 	}
 
-
 	/**
 	 * Migrate conditions struct
 	 *
@@ -644,4 +673,277 @@ class Powerform_Migration {
 
 		return $settings;
 	}
+
+	/**
+	 * Migrate Pagination settings
+	 *
+	 * @param $field
+	 *
+	 * @since 1.7.4
+	 *
+	 * @return mixed
+	 */
+	public static function migrate_page_break_pagination_field( $field ) {
+
+		// Migrate page break
+		if ( 'pagination' === $field[ 'type' ] ) {
+			$field[ 'type' ] = 'page-break';
+			$element_id = $field[ 'element_id' ];
+			$element_num = explode( '-', $element_id );
+			if ( isset( $element_num[ 1 ] ) ) {
+				$element_id = $field[ 'type' ] . '-' . $element_num[ 1 ];
+			}
+
+			$field[ 'element_id' ] = $element_id;
+		}
+
+		return $field;
+	}
+
+	/**
+	 * Migrate Date limit
+	 *
+	 * @param $field
+	 *
+	 * @since 1.13
+	 *
+	 * @return mixed
+	 */
+	public static function migrate_date_limit_1_13( $field ) {
+
+		// Migrate page break
+		if ( 'date' === $field['type'] ) {
+			if ( isset( $field['howto-restrict'] ) && 'custom' === $field['howto-restrict'] ) {
+				$field['howto-restrict'] = 'all';
+				$disable_date            = array();
+				if ( isset( $field['date_multiple'] ) && ! empty( $field['date_multiple'] ) ) {
+					foreach ( $field['date_multiple'] as $key => $date ) {
+						$disable_date[] = date( 'm/d/Y', strtotime( $date['value'] ) );
+					}
+					$field['disabled-dates'] = $disable_date;
+				}
+			}
+			if ( isset( $field['min_year'] ) && ! empty( $field['min_year'] ) && ! isset( $field['start-date'] ) ) {
+				$field['start-date']          = 'specific';
+				$field['start-specific-date'] = date_i18n( 'm/d/Y', strtotime( '1/1/' . $field['min_year'] ) );
+			}
+			if ( isset( $field['max_year'] ) && ! empty( $field['max_year'] ) && ! isset( $field['end-date'] ) ) {
+				$field['end-date']          = 'specific';
+				$field['end-specific-date'] = date_i18n( 'm/d/Y', strtotime( '12/31/' . $field['max_year'] ) );
+			}
+		}
+
+		return $field;
+	}
+
+	/**
+	 *  pagination settings migrations
+	 *
+	 * @param $fields
+	 * @param $settings
+	 *
+	 * @since 1.7.4
+	 *
+	 * @return mixed
+	 */
+	public static function migrate_pagination_form_settings( $settings, $fields ) {
+
+		if ( empty( $settings ) || ! is_array( $settings ) ) {
+			return $settings;
+		}
+
+		if ( empty( $fields ) ) {
+			return $settings;
+		}
+
+		foreach ( $fields as $field ) {
+			if ( isset( $field['type'] ) && 'pagination' === $field['type'] ) {
+				$element_id    = $field['element_id'];
+				$element_num   = explode( '-', $element_id );
+				if ( isset( $element_num[1] ) ) {
+					$element_id =  'page-break-' . $element_num[1];
+				}
+				if ( isset( $field['pagination-label'] ) ) {
+					$settings['paginationData'][ $element_id . '-steps' ] = $field['pagination-label'];
+				}
+
+				if ( isset( $field['pagination-labels'] ) && 'custom' === $field['pagination-labels'] ) {
+					$settings['paginationData']['pagination-labels'] = $field['pagination-labels'];
+				}
+
+				if ( isset( $field['pagination-footer-button-text'] ) ) {
+					$settings['paginationData'][ $element_id . '-previous' ] = $field['pagination-footer-button-text'];
+				}
+
+				if ( ! isset( $settings['paginationData'][ $element_id . '-next' ] ) && isset( $field['pagination-right-button-text'] ) ) {
+					$settings['paginationData'][ $element_id . '-next' ] = $field['pagination-right-button-text'];
+				}
+			}
+		}
+
+		if ( ! isset( $settings['paginationData']['pagination-header-design']  ) && isset( $settings['pagination-header-design'] ) ) {
+			$settings['paginationData']['pagination-header-design'] = $settings['pagination-header-design'];
+		}
+
+		if ( ! isset( $settings['paginationData']['pagination-header'] ) && isset( $settings['pagination-header'] ) ) {
+			$settings['paginationData']['pagination-header'] = $settings['pagination-header'];
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * Static method to combine all notification migrations
+	 *
+	 * @param $notifications
+	 * @param $settings
+	 * @param $forms
+	 *
+	 * @since 1.6
+	 *
+	 * @return mixed
+	 */
+	public static function migrate_custom_form_notifications( $notifications, $settings, $forms ) {
+		if ( ! isset( $forms['notifications'] ) ) {
+			if ( isset( $settings['use-admin-email'] ) && ! empty( $settings['use-admin-email'] ) ) {
+				$admin_args = array(
+					'slug'             => 'notification-1111-2222',
+					'label'            => 'Admin Email',
+					'email-recipients' => 'default',
+					'email-attachment' => 'false',
+				);
+				if ( ! empty( $settings['admin-email-recipients'] ) ) {
+					$admin_args['recipients'] = implode( ',', $settings['admin-email-recipients'] );
+				}
+				if ( ! empty( $settings['admin-email-cc-address'] ) ) {
+					$admin_args['cc-email'] = implode( ',', $settings['admin-email-cc-address'] );
+				}
+				if ( ! empty( $settings['admin-email-bcc-address'] ) ) {
+					$admin_args['bcc-email'] = implode( ',', $settings['admin-email-bcc-address'] );
+				}
+				if ( ! empty( $settings['admin-email-from-name'] ) ) {
+					$admin_args['from-name'] = $settings['admin-email-from-name'];
+				}
+				if ( ! empty( $settings['admin-email-from-address'] ) ) {
+					$admin_args['form-email'] = $settings['admin-email-from-address'];
+				}
+				if ( ! empty( $settings['admin-email-reply-to-address'] ) ) {
+					$admin_args['replyto-email'] = $settings['admin-email-reply-to-address'];
+				}
+				if ( ! empty( $settings['admin-email-title'] ) ) {
+					$admin_args['email-subject'] = $settings['admin-email-title'];
+				}
+				if ( ! empty( $settings['admin-email-editor'] ) ) {
+					$admin_args['email-editor'] = nl2br( $settings['admin-email-editor'] );
+				}
+				$notifications[] = $admin_args;
+			}
+			if ( isset( $settings['use-user-email'] ) && ! empty( $settings['use-user-email'] ) ) {
+				$user_args = array(
+					'slug'             => 'notification-3333-4444',
+					'label'            => 'Confirmation Email',
+					'email-recipients' => 'default',
+				);
+				if ( ! empty( $settings['user-email-recipients'] ) ) {
+					$user_args['recipients'] = implode( ',', $settings['user-email-recipients'] );
+				}
+				if ( ! empty( $settings['user-email-cc-address'] ) ) {
+					$user_args['cc-email'] = implode( ',', $settings['user-email-cc-address'] );
+				}
+				if ( ! empty( $settings['user-email-bcc-address'] ) ) {
+					$user_args['bcc-email'] = implode( ',', $settings['user-email-bcc-address'] );
+				}
+				if ( ! empty( $settings['user-email-from-name'] ) ) {
+					$user_args['from-name'] = $settings['user-email-from-name'];
+				}
+				if ( ! empty( $settings['user-email-from-address'] ) ) {
+					$user_args['form-email'] = $settings['user-email-from-address'];
+				}
+				if ( ! empty( $settings['user-email-reply-to-address'] ) ) {
+					$user_args['replyto-email'] = $settings['user-email-reply-to-address'];
+				}
+				if ( ! empty( $settings['user-email-title'] ) ) {
+					$user_args['email-subject'] = $settings['user-email-title'];
+				}
+				if ( ! empty( $settings['user-email-editor'] ) ) {
+					$user_args['email-editor'] = nl2br( $settings['user-email-editor'] );
+				}
+				$notifications[] = $user_args;
+			}
+		}
+
+		return $notifications;
+	}
+
+	/**
+	 * Static method to combine all quizzes notification migrations
+	 *
+	 * @param $notifications
+	 * @param $settings
+	 * @param $forms
+	 *
+	 * @since 1.6
+	 *
+	 * @return mixed
+	 */
+	public static function migrate_quizzes_notifications( $notifications, $settings, $forms ) {
+		if ( ! isset( $forms['notifications'] ) || empty( $forms['notifications'] ) ) {
+			if ( isset( $settings['use-admin-email'] ) && ! empty( $settings['use-admin-email'] ) ) {
+				$admin_args = array(
+					'slug'             => 'notification-1111-2222',
+					'label'            => 'Admin Email',
+				);
+				if ( ! empty( $settings['admin-email-recipients'] ) ) {
+					$admin_args['recipients'] = implode( ',', $settings['admin-email-recipients'] );
+				}
+				if ( ! empty( $settings['admin-email-cc-address'] ) ) {
+					$admin_args['cc-email'] = implode( ',', $settings['admin-email-cc-address'] );
+				}
+				if ( ! empty( $settings['admin-email-bcc-address'] ) ) {
+					$admin_args['bcc-email'] = implode( ',', $settings['admin-email-bcc-address'] );
+				}
+				if ( ! empty( $settings['admin-email-from-name'] ) ) {
+					$admin_args['from-name'] = $settings['admin-email-from-name'];
+				}
+				if ( ! empty( $settings['admin-email-from-address'] ) ) {
+					$admin_args['form-email'] = $settings['admin-email-from-address'];
+				}
+				if ( ! empty( $settings['admin-email-reply-to-address'] ) ) {
+					$admin_args['replyto-email'] = $settings['admin-email-reply-to-address'];
+				}
+				if ( ! empty( $settings['admin-email-title'] ) ) {
+					$admin_args['email-subject'] = $settings['admin-email-title'];
+				}
+				if ( ! empty( $settings['admin-email-editor'] ) ) {
+					$admin_args['email-editor'] = nl2br( $settings['admin-email-editor'] );
+				}
+				$notifications[] = $admin_args;
+			}
+		}
+
+		return $notifications;
+	}
+
+	/**
+	 * Migrate phone validation
+	 *
+	 * @param $field
+	 *
+	 * @return mixed
+	 */
+	public static function migrate_phone_validation_field( $field ) {
+		if ( 'phone' === $field['type'] ) {
+			if ( isset( $field['validation'] ) ) {
+				if ( 'true' === $field['validation'] && ! empty( $field['phone_validation_type'] ) ) {
+					$field['validation'] = $field['phone_validation_type'];
+				}
+				if ( 'false' === $field['validation'] ) {
+					$field['validation'] = 'none';
+				}
+			}
+		}
+
+		return $field;
+	}
 }
+

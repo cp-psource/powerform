@@ -55,7 +55,7 @@ class Powerform_Poll_New_Page extends Powerform_Admin_Page {
 		);
 
 		// Load front scripts for preview_form
-		powerform_print_front_styles( POWERFORM_VERSION );
+		powerform_print_polls_admin_styles( POWERFORM_VERSION );
 		powerform_print_front_scripts( POWERFORM_VERSION );
 	}
 

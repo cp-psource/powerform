@@ -18,6 +18,7 @@ $vars = array(
 	'desc_fields'            => array(),
 	'error_message'          => '',
 	'list_name'              => '',
+	'lead_fields'            => array(),
 );
 /** @var array $template_vars */
 foreach ( $template_vars as $key => $val ) {
@@ -50,14 +51,20 @@ foreach ( $template_vars as $key => $val ) {
 				<div class="sui-insert-variables">
 
 					<input id="card_name"
-					       class="sui-form-control"
-					       name="card_name"
-					       placeholder="<?php echo esc_attr( __( 'Card Name', Powerform::DOMAIN ) ); ?>"
-					       value="<?php echo esc_attr( $vars['card_name'] ); ?>">
+						class="sui-form-control"
+						name="card_name"
+						placeholder="<?php echo esc_attr( __( 'Card Name', Powerform::DOMAIN ) ); ?>"
+						value="<?php echo esc_attr( $vars['card_name'] ); ?>">
 
 					<select data-textarea-id="card_name"><?php foreach ( $vars['name_fields'] as $key => $field ) : ?>
 							<option value="{<?php echo esc_attr( $key ); ?>}" data-content="{<?php echo esc_attr( $key ); ?>}"><?php echo esc_html( $field ); ?></option>
-						<?php endforeach; ?></select>
+						<?php endforeach; ?>
+						<?php if ( ! empty( $vars['lead_fields'] ) ) :
+							foreach ( $vars['lead_fields'] as $field ) : ?>
+                                <option value="{<?php echo esc_attr( $field['element_id'] ); ?>}" data-content="{<?php echo esc_attr( $field['element_id'] ); ?>}"><?php echo esc_html( $field['field_label'] ); ?></option>
+							<?php endforeach;
+						endif; ?>
+                    </select>
 
 				</div>
 
@@ -85,7 +92,13 @@ foreach ( $template_vars as $key => $val ) {
 
 					<select data-textarea-id="card_description"><?php foreach ( $vars['desc_fields'] as $key => $field ) : ?>
 							<option value="{<?php echo esc_attr( $key ); ?>}" data-content="{<?php echo esc_attr( $key ); ?>}"><?php echo esc_html( $field ); ?></option>
-						<?php endforeach; ?></select>
+						<?php endforeach; ?>
+						<?php if ( ! empty( $vars['lead_fields'] ) ) :
+							foreach ( $vars['lead_fields'] as $field ) : ?>
+                                <option value="{<?php echo esc_attr( $field['element_id'] ); ?>}" data-content="{<?php echo esc_attr( $field['element_id'] ); ?>}"><?php echo esc_html( $field['field_label'] ); ?></option>
+							<?php endforeach;
+						endif; ?>
+                    </select>
 
 				</div>
 
@@ -105,7 +118,22 @@ foreach ( $template_vars as $key => $val ) {
 	</div>
 
 	<div class="sui-row">
-		<div class="sui-col-md-4">
+        <div class="sui-col-md-6">
+            <div class="sui-form-field <?php echo esc_attr( ! empty( $vars['due_date_error'] ) ? 'sui-form-field-error' : '' ); ?>">
+                <label class="sui-label" for="due_date"><?php esc_html_e( 'Due Date', Powerform::DOMAIN ); ?></label>
+                <input id="due_date"
+                       class="sui-form-control"
+                       name="due_date"
+                       placeholder="<?php echo esc_attr( __( 'Select a due date', Powerform::DOMAIN ) ); ?>"
+                       value="<?php echo esc_attr( $vars['due_date'] ); ?>">
+
+				<?php if ( ! empty( $vars['due_date_error'] ) ) : ?>
+                    <span class="sui-error-message"><?php echo esc_html( $vars['due_date_error'] ); ?></span>
+				<?php endif; ?>
+
+            </div>
+        </div>
+		<div class="sui-col-md-6">
 			<div class="sui-form-field <?php echo esc_attr( ! empty( $vars['position_error'] ) ? 'sui-form-field-error' : '' ); ?>">
 				<label class="sui-label" for="position"><?php esc_html_e( 'Position', Powerform::DOMAIN ); ?></label>
 				<select name="position" id="position">
@@ -120,57 +148,58 @@ foreach ( $template_vars as $key => $val ) {
 			</div>
 		</div>
 
-		<div class="sui-col-md-8">
-			<div class="sui-form-field <?php echo esc_attr( ! empty( $vars['label_ids_error'] ) ? 'sui-form-field-error' : '' ); ?>">
-				<label class="sui-label" for="label_ids"><?php esc_html_e( 'Labels', Powerform::DOMAIN ); ?></label>
-				<select class="sui-select fui-multi-select" name="label_ids[]" id="label_ids"
-				        multiple="multiple"
-				        data-reorder="1"
-				        data-tags="false"
-				        data-token-separators="[',']"
-				        data-placeholder="<?php esc_html_e( 'Enter label name', Powerform::DOMAIN ); ?>"
-				        data-allow-clear="false">
-					<?php foreach ( $vars['label_ids'] as $label_id ) : ?>
-						<?php if ( isset( $vars['labels'][ $label_id ] ) ): ?>
-							<option
-									value="<?php echo esc_attr( $label_id ); ?>"
-									selected="selected"
-									data-color="<?php echo esc_attr( $vars['labels'][ $label_id ]['color'] ); ?>"
-									style="background-color: <?php echo esc_attr( $vars['labels'][ $label_id ]['color'] ); ?>;"
-							><?php echo esc_html( $vars['labels'][ $label_id ]['name'] ); ?></option>
-						<?php endif; ?>
-					<?php endforeach; ?>
-
-					<?php foreach ( $vars['labels'] as $label_id => $label ) : ?>
-						<?php if ( ! in_array( $label_id, $vars['label_ids'], true ) ): ?>
-							<option
-									value="<?php echo esc_attr( $label_id ); ?>"
-									data-color="<?php echo esc_attr( $label['color'] ); ?>"
-									style="background-color: <?php echo esc_attr( $vars['labels'][ $label_id ]['color'] ); ?>;"
-							><?php echo esc_html( $label['name'] ); ?></option>
-						<?php endif; ?>
-					<?php endforeach; ?>
-				</select>
-				<?php if ( ! empty( $vars['label_ids_error'] ) ) : ?>
-					<span class="sui-error-message"><?php echo esc_html( $vars['label_ids_error'] ); ?></span>
-				<?php endif; ?>
-			</div>
-		</div>
 	</div>
+    <div class="sui-row">
+        <div class="sui-col-md-12">
+            <div class="sui-form-field <?php echo esc_attr( ! empty( $vars['label_ids_error'] ) ? 'sui-form-field-error' : '' ); ?>">
+                <label class="sui-label" for="label_ids"><?php esc_html_e( 'Labels', Powerform::DOMAIN ); ?></label>
+                <select class="sui-select fui-multi-select" name="label_ids[]" id="label_ids"
+                        multiple="multiple"
+                        data-reorder="1"
+                        data-tags="false"
+                        data-token-separators="[',']"
+                        data-placeholder="<?php esc_html_e( 'Enter label name', Powerform::DOMAIN ); ?>"
+                        data-allow-clear="false">
+				    <?php foreach ( $vars['label_ids'] as $label_id ) : ?>
+					    <?php if ( isset( $vars['labels'][ $label_id ] ) ) : ?>
+                            <option
+                                    value="<?php echo esc_attr( $label_id ); ?>"
+                                    selected="selected"
+                                    data-color="<?php echo esc_attr( $vars['labels'][ $label_id ]['color'] ); ?>"
+                                    style="background-color: <?php echo esc_attr( $vars['labels'][ $label_id ]['color'] ); ?>;"
+                            ><?php echo esc_html( $vars['labels'][ $label_id ]['name'] ); ?></option>
+					    <?php endif; ?>
+				    <?php endforeach; ?>
 
+				    <?php foreach ( $vars['labels'] as $label_id => $label ) : ?>
+					    <?php if ( ! in_array( $label_id, $vars['label_ids'], true ) ) : ?>
+                            <option
+                                    value="<?php echo esc_attr( $label_id ); ?>"
+                                    data-color="<?php echo esc_attr( $label['color'] ); ?>"
+                                    style="background-color: <?php echo esc_attr( $vars['labels'][ $label_id ]['color'] ); ?>;"
+                            ><?php echo esc_html( $label['name'] ); ?></option>
+					    <?php endif; ?>
+				    <?php endforeach; ?>
+                </select>
+			    <?php if ( ! empty( $vars['label_ids_error'] ) ) : ?>
+                    <span class="sui-error-message"><?php echo esc_html( $vars['label_ids_error'] ); ?></span>
+			    <?php endif; ?>
+            </div>
+        </div>
+    </div>
 	<div class="sui-row">
 		<div class="sui-col-md-12">
 			<div class="sui-form-field <?php echo esc_attr( ! empty( $vars['member_ids_error'] ) ? 'sui-form-field-error' : '' ); ?>">
 				<label class="sui-label" for="member_ids"><?php esc_html_e( 'Members', Powerform::DOMAIN ); ?></label>
 				<select class="sui-select fui-multi-select" name="member_ids[]" id="member_ids"
-				        multiple="multiple"
-				        data-reorder="1"
-				        data-tags="false"
-				        data-token-separators="[',']"
-				        data-placeholder="<?php esc_html_e( 'Enter member name', Powerform::DOMAIN ); ?>"
-				        data-allow-clear="false">
+						multiple="multiple"
+						data-reorder="1"
+						data-tags="false"
+						data-token-separators="[',']"
+						data-placeholder="<?php esc_html_e( 'Enter member name', Powerform::DOMAIN ); ?>"
+						data-allow-clear="false">
 					<?php foreach ( $vars['member_ids'] as $member_id ) : ?>
-						<?php if ( isset( $vars['members'][ $member_id ] ) ): ?>
+						<?php if ( isset( $vars['members'][ $member_id ] ) ) : ?>
 							<option
 									value="<?php echo esc_attr( $member_id ); ?>"
 									selected="selected"
@@ -179,7 +208,7 @@ foreach ( $template_vars as $key => $val ) {
 					<?php endforeach; ?>
 
 					<?php foreach ( $vars['members'] as $member_id => $name ) : ?>
-						<?php if ( ! in_array( $member_id, $vars['member_ids'], true ) ): ?>
+						<?php if ( ! in_array( $member_id, $vars['member_ids'], true ) ) : ?>
 							<option
 									value="<?php echo esc_attr( $member_id ); ?>"
 							><?php echo esc_html( $name ); ?></option>
@@ -197,3 +226,15 @@ foreach ( $template_vars as $key => $val ) {
 
 	<input type="hidden" name="multi_id" value="<?php echo esc_attr( $vars['multi_id'] ); ?>">
 </form>
+<script type="text/javascript">
+    ( function ($) {
+        $( document ).ready(function (e) {
+            $( '#due_date' ).datepicker({
+                beforeShow: function( input, inst ) {
+                    $( '#ui-datepicker-div' ).addClass( 'sui-calendar' );
+                },
+                'dateFormat': 'd MM yy'
+            });
+        });
+    })(jQuery);
+</script>

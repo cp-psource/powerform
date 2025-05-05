@@ -25,10 +25,10 @@ function powerform_get_pro_addon_list() {
 		'mailchimp' => array(
 			'_image'                  => 'https://via.placeholder.com/350x150?',
 			'_icon'                   => 'mailchimp',
-			'_title'                  => 'MailChimp',
-			'_short_title'            => 'MailChimp',
+			'_title'                  => 'Mailchimp',
+			'_short_title'            => 'Mailchimp',
 			'_version'                => '1.0',
-			'_description'            => __( 'Unlock this as part of a WMS N@W Membership', Powerform::DOMAIN ),
+			'_description'            => __( 'Unlock this as part of a WPMU DEV Membership', Powerform::DOMAIN ),
 			'_min_powerform_version' => POWERFORM_VERSION,
 		),
 		'zapier'    => array(
@@ -37,7 +37,7 @@ function powerform_get_pro_addon_list() {
 			'_title'                  => 'Zapier',
 			'_short_title'            => 'Zapier',
 			'_version'                => '1.0',
-			'_description'            => __( 'Unlock this as part of a WMS N@W Membership', Powerform::DOMAIN ),
+			'_description'            => __( 'Unlock this as part of a WPMU DEV Membership', Powerform::DOMAIN ),
 			'_min_powerform_version' => POWERFORM_VERSION,
 		),
 	);
@@ -54,6 +54,7 @@ function powerform_get_pro_addon_list() {
  */
 function powerform_get_registered_addons_list() {
 	$addon_list = Powerform_Addon_Loader::get_instance()->get_addons()->to_array();
+	usort( $addon_list, 'sort_addons' );
 
 	// late init properties
 	foreach ( $addon_list as $key => $addon ) {
@@ -61,6 +62,18 @@ function powerform_get_registered_addons_list() {
 	}
 
 	return $addon_list;
+}
+
+/**
+ * Sort addons
+ *
+ * @param $a
+ * @param $b
+ *
+ * @return mixed
+ */
+function sort_addons( $a, $b ) {
+	return $a['position'] - $b['position'];
 }
 
 /**
@@ -135,23 +148,25 @@ function powerform_get_registered_addons_grouped_by_form_connected( $form_id ) {
 	$addons = Powerform_Addon_Loader::get_instance()->get_addons();
 	foreach ( $addons as $slug => $addon ) {
 		/** @var Powerform_Addon_Abstract $addon */
-		if ( $addon->is_allow_multi_on_form() ) {
-			$addon_array = $addon->to_array_with_form( $form_id );
-			if ( $addon->is_connected() && isset( $addon_array['multi_ids'] ) && is_array( $addon_array['multi_ids'] ) ) {
-				foreach ( $addon_array['multi_ids'] as $multi_id ) {
-					$addon_array['multi_id']   = $multi_id['id'];
-					$addon_array['multi_name'] = ! empty( $multi_id['label'] ) ? $multi_id['label'] : $multi_id['id'];
-					$connected_addons[]        = $addon_array;
+		if ( $addon->is_connected() ) {
+			if ( $addon->is_allow_multi_on_form() ) {
+				$addon_array = $addon->to_array_with_form( $form_id );
+				if ( $addon->is_form_connected( $form_id ) && isset( $addon_array['multi_ids'] ) && is_array( $addon_array['multi_ids'] ) ) {
+					foreach ( $addon_array['multi_ids'] as $multi_id ) {
+						$addon_array['multi_id']   = $multi_id['id'];
+						$addon_array['multi_name'] = ! empty( $multi_id['label'] ) ? $multi_id['label'] : $multi_id['id'];
+						$connected_addons[]        = $addon_array;
+					}
+				} else {
+					$not_connected_addons[] = $addon->to_array_with_form( $form_id );
+				}
+			} else {
+				if ( $addon->is_form_connected( $form_id ) ) {
+					$connected_addons[] = $addon->to_array_with_form( $form_id );
+				} else {
+					$not_connected_addons[] = $addon->to_array_with_form( $form_id );
 				}
 			}
-			$not_connected_addons[] = $addon->to_array_with_form( $form_id );
-		} else {
-			if ( $addon->is_connected() && $addon->is_form_connected( $form_id ) ) {
-				$connected_addons[] = $addon->to_array_with_form( $form_id );
-			} else {
-				$not_connected_addons[] = $addon->to_array_with_form( $form_id );
-			}
-
 		}
 	}
 
@@ -223,20 +238,28 @@ function powerform_get_allowed_field_types_for_addon() {
 		'postdata-post-content',
 		'postdata-post-excerpt',
 		'postdata-post-category',
+		'postdata-category',
 		'postdata-post-tags',
+		'postdata-post_tag',
 		'postdata-post-image',
 		'select',
 		'text',
 		'time',
+		//phpcs:ignore
 		//			'time.hours', // force into one
-		//			'time.minutes',
-		//			'time.ampm',
+		// 'time.minutes',
+		// 'time.ampm',
 		'upload',
 		'url',
 		// 1.6 fields
 		'textarea',
 		'radio',
 		'checkbox',
+		// 1.7 fields
+		'calculation',
+		'stripe',
+		'paypal',
+		'signature'
 	);
 
 	/**
@@ -285,12 +308,14 @@ function powerform_addon_format_form_fields( Powerform_Base_Form_Model $custom_f
 			if ( ! in_array( $field_as_array['type'], $allowed_field_types, true ) ) {
 				continue;
 			}
+			$field_as_array['field_type'] = $field_as_array['type'];
 			$formatted_fields[] = $field_as_array;
 		} else {
 			foreach ( $multi_fields as $multi_field ) {
 				if ( ! in_array( $multi_field['type'], $allowed_field_types, true ) ) {
 					continue;
 				}
+				$multi_field['field_type'] = $field_as_array['type'];
 				$formatted_fields[] = $multi_field;
 			}
 		}
@@ -400,13 +425,13 @@ function powerform_addon_flatten_mutiple_field( $field_array ) {
 		}
 	} elseif ( 'postdata' === $field_array['type'] ) {
 		// flatten POSTDATA
-		$title_enabled    = isset( $field_array['post_title'] ) && ! empty( $field_array['post_title'] ) ? true : false;
-		$content_enabled  = isset( $field_array['post_content'] ) && ! empty( $field_array['post_content'] ) ? true : false;
-		$excerpt_enabled  = isset( $field_array['post_excerpt'] ) && ! empty( $field_array['post_excerpt'] ) ? true : false;
-		$category_enabled = isset( $field_array['post_category'] ) && ! empty( $field_array['post_category'] ) ? true : false;
-		$tags_enabled     = isset( $field_array['post_tags'] ) && ! empty( $field_array['post_tags'] ) ? true : false;
-		$image_enabled    = isset( $field_array['post_image'] ) && ! empty( $field_array['post_image'] ) ? true : false;
-		if ( $title_enabled || $content_enabled || $excerpt_enabled || $category_enabled || $tags_enabled || $image_enabled ) {
+		$title_enabled   = isset( $field_array['post_title'] ) && ! empty( $field_array['post_title'] ) ? true : false;
+		$content_enabled = isset( $field_array['post_content'] ) && ! empty( $field_array['post_content'] ) ? true : false;
+		$excerpt_enabled = isset( $field_array['post_excerpt'] ) && ! empty( $field_array['post_excerpt'] ) ? true : false;
+		$image_enabled   = isset( $field_array['post_image'] ) && ! empty( $field_array['post_image'] ) ? true : false;
+		$post_type       = isset( $field_array['post_type'] ) && ! empty( $field_array['post_type'] ) ? $field_array['post_type'] : 'post';
+		$category_list   = powerform_post_categories( $post_type );
+		if ( $title_enabled || $content_enabled || $excerpt_enabled || $image_enabled || $category_list ) {
 			$multi_fields = array();
 
 			if ( $title_enabled ) {
@@ -448,30 +473,22 @@ function powerform_addon_flatten_mutiple_field( $field_array ) {
 				$multi_fields [] = $multi_field;
 			}
 
-			if ( $category_enabled ) {
-				$multi_field = $field_array;
+			if ( ! empty( $category_list ) ) {
+				foreach ( $category_list as $category ) {
+					$category_enabled = isset( $field_array[ $category['value'] ] ) && ! empty( $field_array[ $category['value'] ] ) ? true : false;
+					if ( $category_enabled ) {
+						$multi_field = $field_array;
 
-				$default_label = Powerform_Form_Entry_Model::translate_suffix( 'post-category' );
-				$label         = isset( $multi_field['post_category_label'] ) ? $multi_field['post_category_label'] : '';
+						$default_label = $category['label'];
+						$label         = isset( $multi_field[ $category['value'] . '_label' ] ) ? $multi_field[ $category['value'] . '_label' ] : '';
 
-				$multi_field['type']        = $multi_field['type'] . '-post-category';
-				$multi_field['element_id']  = $multi_field['element_id'] . '-post-category';
-				$multi_field['field_label'] = ( $label ? $label : $default_label );
+						$multi_field['type']        = $multi_field['type'] . '-' . $category['value'];
+						$multi_field['element_id']  = $multi_field['element_id'] . '-' . $category['value'];
+						$multi_field['field_label'] = ( $label ? $label : $default_label );
 
-				$multi_fields [] = $multi_field;
-			}
-
-			if ( $tags_enabled ) {
-				$multi_field = $field_array;
-
-				$default_label = Powerform_Form_Entry_Model::translate_suffix( 'post-tags' );
-				$label         = isset( $multi_field['post_tags_label'] ) ? $multi_field['post_tags_label'] : '';
-
-				$multi_field['type']        = $multi_field['type'] . '-post-tags';
-				$multi_field['element_id']  = $multi_field['element_id'] . '-post-tags';
-				$multi_field['field_label'] = ( $label ? $label : $default_label );
-
-				$multi_fields [] = $multi_field;
+						$multi_fields [] = $multi_field;
+					}
+				}
 			}
 
 			if ( $image_enabled ) {
@@ -489,7 +506,6 @@ function powerform_addon_flatten_mutiple_field( $field_array ) {
 
 			return $multi_fields;
 		}
-
 	} elseif ( 'address' === $field_array['type'] ) {
 		// flatten ADDRESS
 		$street_enabled  = isset( $field_array['street_address'] ) && filter_var( $field_array['street_address'], FILTER_VALIDATE_BOOLEAN ) ? true : false;
@@ -625,11 +641,23 @@ function powerform_format_submitted_data_for_addon( $post_data, $files_data, $fo
 	// loop on form fields
 	foreach ( $form_fields as $form_field ) {
 		if ( isset( $post_data[ $form_field['element_id'] ] ) ) {
-			$formatted_post_data [ $form_field['element_id'] ] = $post_data[ $form_field['element_id'] ];
+			if ( strpos( $form_field['type'], 'category' ) !== false || strpos( $form_field['type'], 'tag' ) !== false ) {
+				$form_value     = '';
+				$form_post_data = is_array( $post_data[ $form_field['element_id'] ] ) ? $post_data[ $form_field['element_id'] ] : array( $post_data[ $form_field['element_id'] ] );
+				if ( ! empty( $form_post_data ) ) {
+					foreach ( $form_post_data as $form_post ) {
+						$form_value .= get_term_by( 'term_taxonomy_id', $form_post )->name . ' (ID=' . $form_post . '), ';
+					}
+				}
+				$value = substr( $form_value, 0, -2 );
+			} else {
+				$value = $post_data[ $form_field['element_id'] ];
+			}
+			$formatted_post_data[ $form_field['element_id'] ] = $value;
 		} else {
 			if ( 'time' === $form_field['type'] ) {
 
-				//need to be concatenated
+				// need to be concatenated
 				$element_id         = $form_field['element_id'];
 				$hours_element_id   = $element_id . '-hours';
 				$minutes_element_id = $element_id . '-minutes';
@@ -679,6 +707,8 @@ function powerform_format_submitted_data_for_addon( $post_data, $files_data, $fo
 				$formatted_post_data[ $form_field['element_id'] ] = $files_data[ $form_field['element_id'] ];
 
 				foreach ( $current_entry_fields as $current_entry_field ) {
+					
+					
 					if ( isset( $current_entry_field['name'] ) && $form_field['element_id'] === $current_entry_field['name'] ) {
 						if ( isset( $current_entry_field['value'] ) && isset( $current_entry_field['value']['file'] ) ) {
 							$file_props                                       = $current_entry_field['value']['file'];
@@ -686,6 +716,19 @@ function powerform_format_submitted_data_for_addon( $post_data, $files_data, $fo
 							break;
 						}
 					}
+
+					if ( isset($current_entry_field['value']['value']) ) {						
+						foreach ( $current_entry_field['value']['value'] as $key => $item ) {
+							if ( isset( $current_entry_field['name'] ) && $form_field['element_id'] === $current_entry_field['name'] . '-' . $key ) {
+								if ( isset( $item['uploaded_file'][0] ) ) {
+									$file_direct_link                                 = $item['uploaded_file'][0];
+									$formatted_post_data[ $form_field['element_id'] ] = $file_direct_link;
+									break;
+								}
+							}
+						}
+					}
+
 				}
 			}
 		}
@@ -763,8 +806,11 @@ function powerform_find_addon_meta_data_from_entry_model( Powerform_Addon_Abstra
 	foreach ( $entry_model->meta_data as $key => $meta_datum ) {
 		if ( false !== stripos( $key, $addon_meta_data_prefix ) ) {
 			$addon_meta_data[] = array(
-				'name'  => str_ireplace( $addon_meta_data_prefix, '', $key ),
-				'value' => $meta_datum['value'],
+				'title'     => $connected_addon->get_title(),
+				'name'      => str_ireplace( $addon_meta_data_prefix, '', $key ),
+				'value'     => $meta_datum['value'],
+				'banner'    => $connected_addon->get_image(),
+				'banner_x2' => $connected_addon->get_image_x2(),
 			);
 		}
 	}
@@ -825,7 +871,6 @@ function powerform_addon_row_html_markup( $addon, $form_id, $show_pro_info = fal
 	 * @param array  $addon         addon instance that already formatted to_array
 	 * @param int    $form_id
 	 * @param bool   $show_pro_info whether to show pro info
-	 *
 	 */
 	$html = apply_filters( 'powerform_addon_row_html', $html, $addon, $form_id, $show_pro_info, $is_active );
 
@@ -866,7 +911,6 @@ function powerform_addon_maybe_log() {
 			$args  = array_merge( $args, $fargs );
 			call_user_func_array( 'powerform_maybe_log', $args );
 		}
-
 	}
 }
 
@@ -886,10 +930,12 @@ function powerform_addon_maybe_log() {
 function powerform_addon_replace_custom_vars( $content, $submitted_data, Powerform_Custom_Form_Model $custom_form, $entry_meta, $allow_html = false ) {
 	$entry_model = new Powerform_Form_Entry_Model( null );
 	foreach ( $entry_meta as $meta ) {
-		$entry_model->meta_data[ $meta['name'] ] = array(
-			'id'    => $meta['name'],
-			'value' => $meta['value'],
-		);
+		if ( isset( $meta['name'] ) ) {
+			$entry_model->meta_data[ $meta['name'] ] = array(
+				'id'    => $meta['name'],
+				'value' => wp_unslash( $meta['value'] ),
+			);
+		}
 	}
 
 	$content = powerform_replace_variables( $content, $custom_form->id );
@@ -906,7 +952,6 @@ function powerform_addon_replace_custom_vars( $content, $submitted_data, Powerfo
 	$randomed_field_pattern  = 'field-\d+-\d+';
 	$increment_field_pattern = sprintf( '(%s)-\d+', implode( '|', $field_types ) );
 	$pattern                 = '/\{((' . $randomed_field_pattern . ')|(' . $increment_field_pattern . '))(\-[A-Za-z-_]+)?\}/';
-
 
 	// Find all field ID's
 	if ( preg_match_all( $pattern, $content, $matches ) ) {
@@ -949,7 +994,7 @@ function powerform_addon_replace_custom_vars( $content, $submitted_data, Powerfo
  * @param      $slug
  * @param      $section
  *
- * @param bool $with_nonce
+ * @param bool    $with_nonce
  *
  * @return string
  */
@@ -1112,23 +1157,25 @@ function powerform_get_registered_addons_grouped_by_poll_connected( $poll_id ) {
 	$addons = Powerform_Addon_Loader::get_instance()->get_addons();
 	foreach ( $addons as $slug => $addon ) {
 		/** @var Powerform_Addon_Abstract $addon */
-		if ( $addon->is_allow_multi_on_poll() ) {
-			$addon_array = $addon->to_array_with_poll( $poll_id );
-			if ( $addon->is_connected() && isset( $addon_array['multi_ids'] ) && is_array( $addon_array['multi_ids'] ) ) {
-				foreach ( $addon_array['multi_ids'] as $multi_id ) {
-					$addon_array['multi_id']   = $multi_id['id'];
-					$addon_array['multi_name'] = ! empty( $multi_id['label'] ) ? $multi_id['label'] : $multi_id['id'];
-					$connected_addons[]        = $addon_array;
+		if ( $addon->is_connected() ) {
+			if ( $addon->is_allow_multi_on_poll() ) {
+				$addon_array = $addon->to_array_with_poll( $poll_id );
+				if ( $addon->is_poll_connected( $poll_id ) && isset( $addon_array['multi_ids'] ) && is_array( $addon_array['multi_ids'] ) ) {
+					foreach ( $addon_array['multi_ids'] as $multi_id ) {
+						$addon_array['multi_id']   = $multi_id['id'];
+						$addon_array['multi_name'] = ! empty( $multi_id['label'] ) ? $multi_id['label'] : $multi_id['id'];
+						$connected_addons[]        = $addon_array;
+					}
+				} else {
+					$not_connected_addons[] = $addon->to_array_with_poll( $poll_id );
+				}
+			} else {
+				if ( $addon->is_poll_connected( $poll_id ) ) {
+					$connected_addons[] = $addon->to_array_with_poll( $poll_id );
+				} else {
+					$not_connected_addons[] = $addon->to_array_with_poll( $poll_id );
 				}
 			}
-			$not_connected_addons[] = $addon->to_array_with_poll( $poll_id );
-		} else {
-			if ( $addon->is_connected() && $addon->is_poll_connected( $poll_id ) ) {
-				$connected_addons[] = $addon->to_array_with_poll( $poll_id );
-			} else {
-				$not_connected_addons[] = $addon->to_array_with_poll( $poll_id );
-			}
-
 		}
 	}
 
@@ -1180,7 +1227,6 @@ function powerform_addon_poll_row_html_markup( $addon, $poll_id, $show_pro_info 
 	 * @param array  $addon         addon instance that already formatted to_array
 	 * @param int    $poll_id
 	 * @param bool   $show_pro_info whether to show pro info
-	 *
 	 */
 	$html = apply_filters( 'powerform_addon_poll_row_html', $html, $addon, $poll_id, $show_pro_info, $is_active );
 
@@ -1323,23 +1369,25 @@ function powerform_get_registered_addons_grouped_by_quiz_connected( $quiz_id ) {
 	$addons = Powerform_Addon_Loader::get_instance()->get_addons();
 	foreach ( $addons as $slug => $addon ) {
 		/** @var Powerform_Addon_Abstract $addon */
-		if ( $addon->is_allow_multi_on_quiz() ) {
-			$addon_array = $addon->to_array_with_quiz( $quiz_id );
-			if ( $addon->is_connected() && isset( $addon_array['multi_ids'] ) && is_array( $addon_array['multi_ids'] ) ) {
-				foreach ( $addon_array['multi_ids'] as $multi_id ) {
-					$addon_array['multi_id']   = $multi_id['id'];
-					$addon_array['multi_name'] = ! empty( $multi_id['label'] ) ? $multi_id['label'] : $multi_id['id'];
-					$connected_addons[]        = $addon_array;
+		if ( $addon->is_connected() && $addon->is_quiz_lead_connected( $quiz_id ) ) {
+			if ( $addon->is_allow_multi_on_quiz() ) {
+				$addon_array = $addon->to_array_with_quiz( $quiz_id );
+				if ( $addon->is_quiz_connected( $quiz_id ) && isset( $addon_array['multi_ids'] ) && is_array( $addon_array['multi_ids'] ) ) {
+					foreach ( $addon_array['multi_ids'] as $multi_id ) {
+						$addon_array['multi_id']   = $multi_id['id'];
+						$addon_array['multi_name'] = ! empty( $multi_id['label'] ) ? $multi_id['label'] : $multi_id['id'];
+						$connected_addons[]        = $addon_array;
+					}
+				} else {
+					$not_connected_addons[] = $addon->to_array_with_quiz( $quiz_id );
+				}
+			} else {
+				if ( $addon->is_quiz_connected( $quiz_id ) ) {
+					$connected_addons[] = $addon->to_array_with_quiz( $quiz_id );
+				} else {
+					$not_connected_addons[] = $addon->to_array_with_quiz( $quiz_id );
 				}
 			}
-			$not_connected_addons[] = $addon->to_array_with_quiz( $quiz_id );
-		} else {
-			if ( $addon->is_connected() && $addon->is_quiz_connected( $quiz_id ) ) {
-				$connected_addons[] = $addon->to_array_with_quiz( $quiz_id );
-			} else {
-				$not_connected_addons[] = $addon->to_array_with_quiz( $quiz_id );
-			}
-
 		}
 	}
 
@@ -1391,7 +1439,6 @@ function powerform_addon_quiz_row_html_markup( $addon, $quiz_id, $show_pro_info 
 	 * @param array  $addon         addon instance that already formatted to_array
 	 * @param int    $quiz_id
 	 * @param bool   $show_pro_info whether to show pro info
-	 *
 	 */
 	$html = apply_filters( 'powerform_addon_quiz_row_html', $html, $addon, $quiz_id, $show_pro_info, $is_active );
 
@@ -1487,3 +1534,160 @@ function powerform_get_addons_instance_connected_with_quiz( $quiz_id ) {
 
 	return $addons;
 }
+
+/**
+ * lead form data
+ *
+ * @param $submitted_data
+ *
+ * @return Powerform_Form_Entry_Model|null
+ */
+function powerform_lead_form_data( $submitted_data ) {
+	$entry_data = null;
+	$data_entry = isset( $submitted_data['entry_id'] ) ? $submitted_data['entry_id'] : 0;
+	$entries    = new Powerform_Form_Entry_Model( $data_entry );
+	if ( ! empty( $entries ) ) {
+		$entry_data = $entries;
+	}
+
+	return $entry_data;
+}
+
+/**
+ * addons lead submitted data
+ *
+ * @param $form_fields
+ * @param $entries
+ *
+ * @return array
+ */
+function powerform_addons_lead_submitted_data( $form_fields, $entries ) {
+	$submitted_data = array();
+	if ( ! empty( $form_fields ) && ! empty( $entries->meta_data ) ) {
+		foreach ( $form_fields as $form_field ) {
+			foreach ( $entries->meta_data as $meta_key => $entry ) {
+				if ( is_array( $entry['value'] ) &&
+				     ( strpos( $meta_key, 'postdata-' ) !== false
+				       || strpos( $meta_key, 'name-' ) !== false
+				       || strpos( $meta_key, 'address-' ) !== false
+				     ) ) {
+					if ( strpos( $meta_key, 'postdata-' ) !== false && isset( $entry['value']['value'] ) ) {
+						$meta_entry_value = $entry['value']['value'];
+					} else {
+						$meta_entry_value = $entry['value'];
+					}
+					foreach ( $meta_entry_value as $entry_key => $entry_value ) {
+						$entry_name = $meta_key . '-' . $entry_key;
+						if ( $form_field['element_id'] === $entry_name ) {
+							$submitted_data[ $entry_name ] = $entry_value;
+						}
+					}
+				} else {
+					$submitted_data[ $meta_key ] = $entry['value'];
+				}
+			}
+		}
+	}
+
+	return $submitted_data;
+}
+
+/**
+ * Get lead data
+ *
+ * @param $quiz_settings
+ * @param $submitted_data
+ * @param $addons_fields
+ *
+ * @return array
+ */
+function get_addons_lead_form_entry_data( $quiz_settings, $submitted_data, $addons_fields ) {
+	if ( isset( $quiz_settings['hasLeads'] ) && $quiz_settings['hasLeads'] ) {
+		$entries        = powerform_lead_form_data( $submitted_data );
+		$submitted_data = powerform_addons_lead_submitted_data( $addons_fields, $entries );
+		if ( ! empty( $addons_fields ) ) {
+			foreach ( $addons_fields as $form_field ) {
+				if ( array_key_exists( $form_field['element_id'], $submitted_data ) ) {
+					$form_value                                  = Powerform_Form_Entry_Model::meta_value_to_string( $form_field['field_type'], $submitted_data[ $form_field['element_id'] ], false );
+					$submitted_data[ $form_field['element_id'] ] = $form_value;
+				}
+			}
+		}
+	}
+
+	return $submitted_data;
+}
+
+/**
+ * Get quiz data
+ *
+ * @param $quiz
+ * @param $data
+ * @param $quiz_entry_fields
+ *
+ * @return mixed
+ */
+function get_quiz_submitted_data( $quiz, $data, $quiz_entry_fields ) {
+	if ( is_array( $quiz_entry_fields ) && isset( $quiz_entry_fields[0] ) ) {
+		$quiz_entry = $quiz_entry_fields[0];
+		if ( isset( $quiz_entry['name'] ) && isset( $quiz_entry['value'] ) && 'entry' === $quiz_entry['name'] ) {
+			if ( is_array( $quiz_entry['value'] ) && ! empty( $quiz_entry['value'] ) ) {
+				if ( 'knowledge' === $quiz->quiz_type ) {
+					$answers              = $quiz_entry['value'];
+					$correct_answer_count = 0;
+					$total_answer         = 0;
+					foreach ( $answers as $answer ) {
+						$is_correct = isset( $answer['isCorrect'] ) ? $answer['isCorrect'] : false;
+						$is_correct = filter_var( $is_correct, FILTER_VALIDATE_BOOLEAN );
+						if ( $is_correct ) {
+							$correct_answer_count ++;
+						}
+
+						$total_answer ++;
+					}
+
+					$data['correct-answers'] = $correct_answer_count;
+					$data['total-answers']   = $total_answer;
+				} elseif ( 'nowrong' === $quiz->quiz_type ) {
+					$result_content = '';
+					$meta           = $quiz_entry['value'];
+
+					// i know its complicated as eff, but this is how it saved since day 1
+					// and migrating this might pita and affect performance
+					if ( isset( $meta[0] ) && isset( $meta[0]['value'] ) && isset( $meta[0]['value']['result'] ) ) {
+						$result         = $meta[0]['value']['result'];
+						$result_content = isset( $result['title'] ) ? esc_html( (string) $result['title'] ) : '';
+					}
+					$data['result-answers'] = $result_content;
+				}
+			}
+		}
+	}
+	$answers = isset( $data['answers'] ) ? $data['answers'] : array();
+	if ( is_array( $answers ) && ! empty( $answers ) ) {
+		foreach ( $answers as $question_id => $answer_id ) {
+			$answer   = $quiz->getAnswer( $question_id, $answer_id );
+			$answer_text   = isset( $answer['title'] ) ? $answer['title'] : '';
+			$data[ $question_id ] = $answer_text;
+		}
+	}
+	$data['quiz-name'] = powerform_get_name_from_model( $quiz );
+
+
+	return $data;
+}
+
+/**
+ * Flag whether doc link should shown or not for addons
+ *
+ * @since 1.14.2
+ * @return bool
+ */
+function powerform_is_show_addons_documentation_link() {
+	if ( Powerform::is_psource_member() ) {
+		return ! apply_filters( 'psource_branding_hide_doc_link', false );
+	}
+
+	return true;
+}
+

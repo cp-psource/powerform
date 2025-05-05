@@ -23,11 +23,17 @@ abstract class Powerform_Front_Action {
 		//Save entries
 		if ( ! empty( $this->entry_type ) ) {
 			add_action( 'wp', array( $this, 'maybe_handle_submit' ), 9 );
-			add_action( "wp_ajax_powerform_submit_form_" . $this->entry_type, array( $this, "save_entry" ) );
-			add_action( "wp_ajax_nopriv_powerform_submit_form_" . $this->entry_type, array( $this, "save_entry" ) );
+			add_action( 'wp_ajax_powerform_submit_form_' . $this->entry_type, array( $this, 'save_entry' ) );
+			add_action( 'wp_ajax_nopriv_powerform_submit_form_' . $this->entry_type, array( $this, 'save_entry' ) );
 
-			add_action( "wp_ajax_powerform_submit_preview_form_" . $this->entry_type, array( $this, "save_entry_preview" ) );
-			add_action( "wp_ajax_nopriv_powerform_submit_preview_form_" . $this->entry_type, array( $this, "save_entry_preview" ) );
+			add_action( 'wp_ajax_powerform_submit_preview_form_' . $this->entry_type, array( $this, 'save_entry_preview' ) );
+			add_action( 'wp_ajax_nopriv_powerform_submit_preview_form_' . $this->entry_type, array( $this, 'save_entry_preview' ) );
+
+			add_action( 'wp_ajax_powerform_update_payment_amount', array( $this, 'update_payment_amount' ) );
+			add_action( 'wp_ajax_nopriv_powerform_update_payment_amount', array( $this, 'update_payment_amount' ) );
+
+			add_action( 'wp_ajax_powerform_multiple_file_upload', array( $this, 'multiple_file_upload' ) );
+			add_action( 'wp_ajax_nopriv_powerform_multiple_file_upload', array( $this, 'multiple_file_upload' ) );
 		}
 	}
 
@@ -89,7 +95,7 @@ abstract class Powerform_Front_Action {
 	 */
 	public function validate_ajax( $action = null, $request_method = 'POST', $nonce_field = '_wpnonce' ) {
 		if ( ! $this->is_force_validate_submissions_nonce() ) {
-			if ( isset( $_REQUEST['action'] ) && $action === $_REQUEST['action'] ) { // wpcs csrf ok.
+			if ( isset( $_REQUEST['action'] ) && $action === $_REQUEST['action'] ) { // phpcs:ignore
 				return true;
 			}
 		}
@@ -119,7 +125,7 @@ abstract class Powerform_Front_Action {
 			}
 
 			if ( ! empty( $request_fields[ $nonce_field ] )
-			     && wp_verify_nonce( $request_fields[ $nonce_field ], $action )
+				&& wp_verify_nonce( $request_fields[ $nonce_field ], $action )
 			) {
 				return true;
 			}
@@ -144,7 +150,14 @@ abstract class Powerform_Front_Action {
 	abstract public function save_entry_preview();
 
 	/**
-	 * Handle file uplload
+	 * Update payment amount
+	 *
+	 * @since 1.7.3
+	 */
+	abstract public function update_payment_amount();
+
+	/**
+	 * Handle file upload
 	 *
 	 * @since 1.0
 	 * @since 1.1 Bugfix filter `powerform_file_upload_allow` `$file_name` passed arg
@@ -156,13 +169,13 @@ abstract class Powerform_Front_Action {
 	public function handle_file_upload( $field_name ) {
 		if ( isset( $_FILES[ $field_name ] ) ) {
 			if ( isset( $_FILES[ $field_name ]['name'] ) && ! empty( $_FILES[ $field_name ]['name'] ) ) {
-				$file_name = $_FILES[ $field_name ]['name'];
+				$file_name = sanitize_file_name( $_FILES[ $field_name ]['name'] );
 				$valid     = wp_check_filetype( $file_name );
 
-				if ( false === $valid["ext"] ) {
+				if ( false === $valid['ext'] ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Fehler beim Speichern des Formulars. Eine hochgeladene Dateierweiterung ist nicht zulässig.', Powerform::DOMAIN ),
+						'message' => __( 'Error saving form. Uploaded file extension is not allowed.', Powerform::DOMAIN ),
 					);
 				}
 
@@ -170,7 +183,7 @@ abstract class Powerform_Front_Action {
 				if ( false === $allow ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Fehler beim Speichern des Formulars. Eine hochgeladene Dateierweiterung ist nicht zulässig.', Powerform::DOMAIN ),
+						'message' => __( 'Error saving form. Uploaded file extension is not allowed.', Powerform::DOMAIN ),
 					);
 				}
 
@@ -181,14 +194,13 @@ abstract class Powerform_Front_Action {
 				if ( ! is_uploaded_file( $_FILES[ $field_name ]['tmp_name'] ) ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Fehler beim Speichern des Formulars. Hochgeladene Datei konnte nicht gelesen werden.', Powerform::DOMAIN ),
+						'message' => __( 'Error saving form. Failed to read uploaded file.', Powerform::DOMAIN ),
 					);
 				}
 
 				$upload_dir       = wp_upload_dir(); // Set upload folder
 				$unique_file_name = wp_unique_filename( $upload_dir['path'], $file_name );
 				$filename         = basename( $unique_file_name ); // Create base file name
-
 
 				if ( 0 === $_FILES[ $field_name ]['size'] || $_FILES[ $field_name ]['size'] > wp_max_upload_size() ) {
 
@@ -197,14 +209,14 @@ abstract class Powerform_Front_Action {
 
 					return array(
 						'success' => false,
-						'message' => sprintf( __( 'Fehler beim Speichern des Formulars. Die Größe der hochgeladenen Datei überschreitet das Upload-Limit von %1$. ', Powerform::DOMAIN ), $max_size ),
+						'message' => sprintf( /* translators: ... */ __( 'Error saving form. Uploaded file size exceeds %1$s upload limit. ', Powerform::DOMAIN ), $max_size ),
 					);
 				}
 
 				if ( UPLOAD_ERR_OK !== $_FILES[ $field_name ]['error'] ) {
 					return array(
 						'success' => false,
-						'message' => __( 'Fehler beim Speichern des Formulars. Upload-Fehler. ', Powerform::DOMAIN ),
+						'message' => __( 'Error saving form. Upload error. ', Powerform::DOMAIN ),
 					);
 				}
 
@@ -231,10 +243,9 @@ abstract class Powerform_Front_Action {
 				} else {
 					return array(
 						'success' => false,
-						'message' => __( 'Fehler beim Speichern des Formulars. Upload-Fehler. ', Powerform::DOMAIN ),
+						'message' => __( 'Error saving form. Upload error. ', Powerform::DOMAIN ),
 					);
 				}
-
 			}
 		}
 
@@ -278,7 +289,7 @@ abstract class Powerform_Front_Action {
 			}
 		}
 
-		$post_data = $_POST; // WPCS: CSRF ok
+		$post_data = $_POST; // phpcs:ignore -- validate_ajax
 
 		// do some sanitize
 		foreach ( $sanitize_callbacks as $field => $sanitize_func ) {

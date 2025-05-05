@@ -17,75 +17,95 @@ class Powerform_Admin_AJAX {
 	 */
 	public function __construct() {
 		// Handle close welcome box
-		add_action( "wp_ajax_powerform_dismiss_welcome", array( $this, "dismiss_welcome" ) );
-		add_action( "wp_ajax_nopriv_powerform_dismiss_welcome", array( $this, "dismiss_welcome" ) );
+		add_action( 'wp_ajax_powerform_dismiss_welcome', array( $this, 'dismiss_welcome' ) );
+		add_action( 'wp_ajax_nopriv_powerform_dismiss_welcome', array( $this, 'dismiss_welcome' ) );
 
 		// Handle load google fonts
-		add_action( "wp_ajax_powerform_load_google_fonts", array( $this, "load_google_fonts" ) );
+		add_action( 'wp_ajax_powerform_load_google_fonts', array( $this, 'load_google_fonts' ) );
 
 		// Handle load reCaptcha preview
-		add_action( "wp_ajax_powerform_load_recaptcha_preview", array( $this, "load_recaptcha_preview" ) );
+		add_action( 'wp_ajax_powerform_load_recaptcha_preview', array( $this, 'load_recaptcha_preview' ) );
 
 		// Handle save settings
-		add_action( "wp_ajax_powerform_save_builder", array( $this, "save_builder" ) );
-		add_action( "wp_ajax_powerform_save_poll", array( $this, "save_poll_form" ) );
-		add_action( "wp_ajax_powerform_save_quiz_nowrong", array( $this, "save_quiz" ) );
-		add_action( "wp_ajax_powerform_save_quiz_knowledge", array( $this, "save_quiz" ) );
-		add_action( "wp_ajax_powerform_save_login", array( $this, "save_login" ) );
-		add_action( "wp_ajax_powerform_save_register", array( $this, "save_register" ) );
+		add_action( 'wp_ajax_powerform_save_builder', array( $this, 'save_builder' ) );
+		add_action( 'wp_ajax_powerform_save_poll', array( $this, 'save_poll_form' ) );
+		add_action( 'wp_ajax_powerform_save_quiz_nowrong', array( $this, 'save_quiz' ) );
+		add_action( 'wp_ajax_powerform_save_quiz_knowledge', array( $this, 'save_quiz' ) );
+		add_action( 'wp_ajax_powerform_save_login', array( $this, 'save_login' ) );
+		add_action( 'wp_ajax_powerform_save_register', array( $this, 'save_register' ) );
 
 		// Handle settings popups
-		add_action( "wp_ajax_powerform_load_paypal_popup", array( $this, "load_paypal" ) );
-		add_action( "wp_ajax_powerform_save_paypal_popup", array( $this, "save_paypal" ) );
+		add_action( 'wp_ajax_powerform_load_captcha_popup', array( $this, 'load_captcha' ) );
+		add_action( 'wp_ajax_powerform_save_captcha_popup', array( $this, 'save_captcha' ) );
 
-		add_action( "wp_ajax_powerform_load_captcha_popup", array( $this, "load_captcha" ) );
-		add_action( "wp_ajax_powerform_save_captcha_popup", array( $this, "save_captcha" ) );
+		add_action( 'wp_ajax_powerform_load_currency_popup', array( $this, 'load_currency' ) );
+		add_action( 'wp_ajax_powerform_save_currency_popup', array( $this, 'save_currency' ) );
 
-		add_action( "wp_ajax_powerform_load_currency_popup", array( $this, "load_currency" ) );
-		add_action( "wp_ajax_powerform_save_currency_popup", array( $this, "save_currency" ) );
+		add_action( 'wp_ajax_powerform_load_pagination_entries_popup', array( $this, 'load_pagination_entries' ) );
+		add_action( 'wp_ajax_powerform_save_pagination_entries_popup', array( $this, 'save_pagination_entries' ) );
 
-		add_action( "wp_ajax_powerform_load_pagination_entries_popup", array( $this, "load_pagination_entries" ) );
-		add_action( "wp_ajax_powerform_save_pagination_entries_popup", array( $this, "save_pagination_entries" ) );
+		add_action( 'wp_ajax_powerform_load_pagination_listings_popup', array( $this, 'load_pagination_listings' ) );
+		add_action( 'wp_ajax_powerform_save_pagination_listings_popup', array( $this, 'save_pagination_listings' ) );
 
-		add_action( "wp_ajax_powerform_load_pagination_listings_popup", array( $this, "load_pagination_listings" ) );
-		add_action( "wp_ajax_powerform_save_pagination_listings_popup", array( $this, "save_pagination_listings" ) );
+		add_action( 'wp_ajax_powerform_load_email_settings_popup', array( $this, 'load_email_form' ) );
 
-		add_action( "wp_ajax_powerform_load_email_settings_popup", array( $this, "load_email_form" ) );
-		add_action( "wp_ajax_powerform_save_email_settings_popup", array( $this, "save_email_form" ) );
+		add_action( 'wp_ajax_powerform_load_uninstall_settings_popup', array( $this, 'load_uninstall_form' ) );
+		add_action( 'wp_ajax_powerform_save_uninstall_settings_popup', array( $this, 'save_uninstall_form' ) );
 
-		add_action( "wp_ajax_powerform_load_uninstall_settings_popup", array( $this, "load_uninstall_form" ) );
-		add_action( "wp_ajax_powerform_save_uninstall_settings_popup", array( $this, "save_uninstall_form" ) );
-
-		add_action( "wp_ajax_powerform_load_preview_cforms_popup", array( $this, "preview_custom_forms" ) );
-		add_action( "wp_ajax_powerform_load_preview_polls_popup", array( $this, "preview_polls" ) );
-		add_action( "wp_ajax_powerform_load_preview_quizzes_popup", array( $this, "preview_quizzes" ) );
+		add_action( 'wp_ajax_powerform_load_preview_cforms_popup', array( $this, 'preview_custom_forms' ) );
+		add_action( 'wp_ajax_powerform_load_preview_polls_popup', array( $this, 'preview_polls' ) );
+		add_action( 'wp_ajax_powerform_load_preview_quizzes_popup', array( $this, 'preview_quizzes' ) );
 
 		// Handle exports popup
-		add_action( "wp_ajax_powerform_load_exports_popup", array( $this, "load_exports" ) );
-		add_action( "wp_ajax_powerform_clear_exports_popup", array( $this, "clear_exports" ) );
+		add_action( 'wp_ajax_powerform_load_exports_popup', array( $this, 'load_exports' ) );
+		add_action( 'wp_ajax_powerform_clear_exports_popup', array( $this, 'clear_exports' ) );
 
 		// Handle search user email
-		add_action( "wp_ajax_powerform_builder_search_emails", array( $this, "search_emails" ) );
+		add_action( 'wp_ajax_powerform_builder_search_emails', array( $this, 'search_emails' ) );
 
-		add_action( "wp_ajax_powerform_load_privacy_settings_popup", array( $this, "load_privacy_settings" ) );
-		add_action( "wp_ajax_powerform_save_privacy_settings_popup", array( $this, "save_privacy_settings" ) );
+		add_action( 'wp_ajax_powerform_load_privacy_settings_popup', array( $this, 'load_privacy_settings' ) );
+		add_action( 'wp_ajax_powerform_save_privacy_settings_popup', array( $this, 'save_privacy_settings' ) );
 
-		add_action( "wp_ajax_powerform_load_export_custom_form_popup", array( $this, "load_export_custom_form" ) );
-		add_action( "wp_ajax_powerform_load_import_custom_form_popup", array( $this, "load_import_custom_form" ) );
-		add_action( "wp_ajax_powerform_save_import_custom_form_popup", array( $this, "save_import_custom_form" ) );
+		add_action( 'wp_ajax_powerform_load_export_custom_form_popup', array( $this, 'load_export_custom_form' ) );
+		add_action( 'wp_ajax_powerform_load_import_custom_form_popup', array( $this, 'load_import_custom_form' ) );
+		add_action( 'wp_ajax_powerform_save_import_custom_form_popup', array( $this, 'save_import_custom_form' ) );
+
+		add_action( "wp_ajax_powerform_load_import_custom_form_cf7_popup", array( $this, "load_import_custom_form_cf7" ) );
+		add_action( "wp_ajax_powerform_save_import_custom_form_cf7_popup", array( $this, "save_import_custom_form_cf7" ) );
+
+		add_action( "wp_ajax_powerform_load_import_custom_form_ninja_popup", array( $this, "load_import_custom_form_ninja" ) );
+		add_action( "wp_ajax_powerform_save_import_custom_form_ninja_popup", array( $this, "save_import_custom_form_ninja" ) );
+
+		add_action( "wp_ajax_powerform_load_import_custom_form_gravity_popup", array( $this, "load_import_custom_form_gravity" ) );
+		add_action( "wp_ajax_powerform_save_import_custom_form_gravity_popup", array( $this, "save_import_custom_form_gravity" ) );
 
 		add_action( "wp_ajax_powerform_load_export_poll_popup", array( $this, "load_export_poll" ) );
 		add_action( "wp_ajax_powerform_load_import_poll_popup", array( $this, "load_import_poll" ) );
 		add_action( "wp_ajax_powerform_save_import_poll_popup", array( $this, "save_import_poll" ) );
 
-		add_action( "wp_ajax_powerform_load_export_quiz_popup", array( $this, "load_export_quiz" ) );
-		add_action( "wp_ajax_powerform_load_import_quiz_popup", array( $this, "load_import_quiz" ) );
-		add_action( "wp_ajax_powerform_save_import_quiz_popup", array( $this, "save_import_quiz" ) );
+		add_action( 'wp_ajax_powerform_delete_poll_submissions', array( $this, 'delete_poll_submissions' ) );
 
-		add_action( "wp_ajax_powerform_save_pagination_popup", array( $this, "save_pagination" ) );
+		add_action( 'wp_ajax_powerform_load_export_quiz_popup', array( $this, 'load_export_quiz' ) );
+		add_action( 'wp_ajax_powerform_load_import_quiz_popup', array( $this, 'load_import_quiz' ) );
+		add_action( 'wp_ajax_powerform_save_import_quiz_popup', array( $this, 'save_import_quiz' ) );
 
-		add_action( "wp_ajax_powerform_save_accessibility_settings_popup", array( $this, "save_accessibility_settings" ) );
-		add_action( "wp_ajax_powerform_save_dashboard_settings_popup", array( $this, "save_dashboard_settings" ) );
+		add_action( 'wp_ajax_powerform_save_accessibility_settings_popup', array( $this, 'save_accessibility_settings' ) );
+
+		add_action( 'wp_ajax_powerform_validate_calculation_formula', array( $this, 'validate_calculation_formula' ) );
+		add_action( 'wp_ajax_powerform_save_dashboard_settings_popup', array( $this, 'save_dashboard_settings' ) );
+
+		add_action( 'wp_ajax_powerform_stripe_settings_modal', array( $this, 'stripe_settings_modal' ) );
+		add_action( 'wp_ajax_powerform_stripe_update_page', array( $this, 'stripe_update_page' ) );
+		add_action( 'wp_ajax_powerform_disconnect_stripe', array( $this, 'stripe_disconnect' ) );
+
+		add_action( 'wp_ajax_powerform_paypal_settings_modal', array( $this, 'paypal_settings_modal' ) );
+		add_action( 'wp_ajax_powerform_paypal_update_page', array( $this, 'paypal_update_page' ) );
+		add_action( 'wp_ajax_powerform_disconnect_paypal', array( $this, 'paypal_disconnect' ) );
+
+		add_action( 'wp_ajax_powerform_save_payments_settings_popup', array( $this, 'save_payments' ) );
+		add_action( 'wp_ajax_powerform_dismiss_notification', array( $this, 'dismiss_notice' ) );
+
+		add_action( 'wp_ajax_powerform_later_notification', array( $this, 'later_notice' ) );
 	}
 
 	/**
@@ -95,48 +115,56 @@ class Powerform_Admin_AJAX {
 	 * @since 1.1 change $_POST to `get_post_data`
 	 */
 	public function save_quiz() {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
+		if ( ! powerform_is_user_allowed() ) {
+			wp_send_json_error( __( 'Invalid request, you are not allowed to do that action.', Powerform::DOMAIN ) );
 		}
 
-		powerform_validate_ajax( "powerform_save_quiz" );
+		powerform_validate_ajax( 'powerform_save_quiz' );
 
 		$submitted_data = $this->get_post_data();
 
-		$quiz_data      = array();
+		$quiz_data = array();
 		if ( isset( $submitted_data['data'] ) ) {
 			$quiz_data = $submitted_data['data'];
 			$quiz_data = json_decode( stripslashes( $quiz_data ), true );
 		}
 
-		$questions  = array();
-		$results = array();
-		$settings = array();
-		$msg_count = false;
-		$id      = isset( $submitted_data['form_id'] ) ? $submitted_data['form_id'] : null;
-		$id      = intval( $id );
-		$title   = isset( $submitted_data['quiz_title'] ) ? sanitize_text_field( $submitted_data['quiz_title'] ) : sanitize_text_field( $submitted_data['formName'] );
-		$status  = isset( $submitted_data['status'] ) ? sanitize_text_field( $submitted_data['status'] ) : '';
-		$version = isset( $submitted_data['version'] ) ? sanitize_text_field( $submitted_data['version'] ) : '1.0';
+		$questions     = array();
+		$results       = array();
+		$settings      = array();
+		$msg_count     = false;
+		$id            = isset( $submitted_data['form_id'] ) ? $submitted_data['form_id'] : null;
+		$id            = intval( $id );
+		$title         = isset( $submitted_data['quiz_title'] ) ? sanitize_text_field( $submitted_data['quiz_title'] ) : sanitize_text_field( $submitted_data['formName'] );
+		$status        = isset( $submitted_data['status'] ) ? sanitize_text_field( $submitted_data['status'] ) : '';
+		$version       = isset( $submitted_data['version'] ) ? sanitize_text_field( $submitted_data['version'] ) : '1.0';
+		$action        = false;
+		$notifications = array();
 
 		if ( is_null( $id ) || $id <= 0 ) {
 			$form_model = new Powerform_Quiz_Form_Model();
+			$action     = 'create';
+
 			if ( empty( $status ) ) {
 				$status = Powerform_Poll_Form_Model::STATUS_PUBLISH;
 			}
 		} else {
 			$form_model = Powerform_Quiz_Form_Model::model()->load( $id );
+			$action     = 'update';
+
 			if ( ! is_object( $form_model ) ) {
-				wp_send_json_error( __( "Testmodell existiert nicht", Powerform::DOMAIN ) );
+				wp_send_json_error( __( "Quiz model doesn't exist", Powerform::DOMAIN ) );
 			}
+
 			if ( empty( $status ) ) {
 				$status = $form_model->status;
 			}
+
 			//we need to empty fields cause we will send new data
 			$form_model->clear_fields();
 		}
 
-		$action    = isset( $submitted_data['action'] ) ? $submitted_data['action'] : '';
+		$action  = isset( $submitted_data['action'] ) ? $submitted_data['action'] : '';
 
 		// Detect action
 		$form_model->quiz_type = 'knowledge';
@@ -178,8 +206,8 @@ class Powerform_Admin_AJAX {
 		// Handle quiz questions
 		$form_model->questions = $questions;
 
-		if( isset( $quiz_data['msg_count'] ) ) {
-			$msg_count = $quiz_data['msg_count']; //Backup, we allow html here
+		if ( isset( $quiz_data['settings']['msg_count'] ) ) {
+			$msg_count = $quiz_data['settings']['msg_count']; //Backup, we allow html here
 		}
 
 		if ( isset( $quiz_data['settings'] ) ) {
@@ -197,8 +225,25 @@ class Powerform_Admin_AJAX {
 			$settings['quiz_description'] = $quiz_data['settings']['quiz_description'];
 		}
 
+		if ( isset( $quiz_data['settings']['social-share-message'] ) ) {
+			$settings['social-share-message'] = powerform_sanitize_textarea( $quiz_data['settings']['social-share-message'] );
+		}
+
+		if ( isset( $quiz_data['notifications'] ) ) {
+			$notifications = powerform_sanitize_field( $quiz_data['notifications'] );
+
+			$count = 0;
+			foreach( $notifications as $notification ) {
+				if ( isset( $notification['email-editor'] ) ) {
+					$notifications[ $count ]['email-editor'] = $quiz_data['notifications'][ $count ]['email-editor'];
+				}
+
+				$count++;
+			}
+		}
+
 		// Update with backuped version
-		if( $msg_count ) {
+		if ( $msg_count ) {
 			$settings['msg_count'] = $msg_count;
 		}
 
@@ -206,6 +251,7 @@ class Powerform_Admin_AJAX {
 		$settings['version'] = $version;
 
 		$form_model->settings = $settings;
+		$form_model->notifications = $notifications;
 
 		$quiz_data['formName'] = $title;
 
@@ -214,6 +260,23 @@ class Powerform_Admin_AJAX {
 
 		// Save data
 		$id = $form_model->save();
+
+		$type = $form_model->quiz_type;
+
+		/**
+		 * Action called after quiz saved to database
+		 *
+		 * @since 1.11
+		 *
+		 * @param int    $id - quiz id
+		 * @param string $type - quiz type
+		 * @param string $status - quiz status
+		 * @param array  $questions - quiz questions
+		 * @param array  $results - quiz results
+		 *
+		 */
+		do_action( 'powerform_quiz_action_' . $action, $id, $type, $status, $questions, $results );
+
 
 		wp_send_json_success( $id );
 	}
@@ -225,11 +288,11 @@ class Powerform_Admin_AJAX {
 	 * @since 1.1 change $_POST to `get_post_data`
 	 */
 	public function save_poll_form() {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
+		if ( ! powerform_is_user_allowed() ) {
+			wp_send_json_error( __( 'Invalid request, you are not allowed to do that action.', Powerform::DOMAIN ) );
 		}
 
-		powerform_validate_ajax( "powerform_save_poll" );
+		powerform_validate_ajax( 'powerform_save_poll' );
 
 		$submitted_data = $this->get_post_data();
 		$poll_data      = array();
@@ -244,17 +307,23 @@ class Powerform_Admin_AJAX {
 		$id       = intval( $id );
 		$status   = isset( $submitted_data['status'] ) ? sanitize_text_field( $submitted_data['status'] ) : '';
 		$version  = isset( $submitted_data['version'] ) ? sanitize_text_field( $submitted_data['version'] ) : '1.0';
+		$action   = false;
 
 		if ( is_null( $id ) || $id <= 0 ) {
 			$form_model = new Powerform_Poll_Form_Model();
+			$action     = 'create';
+
 			if ( empty( $status ) ) {
 				$status = Powerform_Poll_Form_Model::STATUS_PUBLISH;
 			}
 		} else {
 			$form_model = Powerform_Poll_Form_Model::model()->load( $id );
+			$action     = 'update';
+
 			if ( ! is_object( $form_model ) ) {
-				wp_send_json_error( __( "Umfragemodell existiert nicht", Powerform::DOMAIN ) );
+				wp_send_json_error( __( "Poll model doesn't exist", Powerform::DOMAIN ) );
 			}
+
 			if ( empty( $status ) ) {
 				$status = $form_model->status;
 			}
@@ -268,6 +337,7 @@ class Powerform_Admin_AJAX {
 		// Check if answers exist
 		if ( isset( $poll_data['answers'] ) ) {
 			$answers = powerform_sanitize_field( $poll_data['answers'] );
+			$answers = wp_slash( $answers );
 		}
 
 		if ( isset( $poll_data['settings'] ) ) {
@@ -299,6 +369,19 @@ class Powerform_Admin_AJAX {
 		// Save data
 		$id = $form_model->save();
 
+		/**
+		* Action called after poll saved to database
+		*
+		* @since 1.11
+		*
+		* @param int    $id - poll id
+		* @param string $status - poll status
+		* @param array  $answers - poll answers
+		* @param array  $settings - poll settings
+		*
+		*/
+		do_action( 'powerform_poll_action_' . $action, $id, $status, $answers, $settings );
+
 		// add privacy settings to global option
 		$override_privacy = false;
 		if ( isset( $settings['enable-ip-address-retention'] ) ) {
@@ -328,33 +411,39 @@ class Powerform_Admin_AJAX {
 	 * @since 1.2
 	 */
 	public function save_builder() {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
+		if ( ! powerform_is_user_allowed() ) {
+			wp_send_json_error( __( 'Invalid request, you are not allowed to do that action.', Powerform::DOMAIN ) );
 		}
 
-		powerform_validate_ajax( "powerform_save_builder_fields" );
+		powerform_validate_ajax( 'powerform_save_builder_fields' );
 
 		$submitted_data = $this->get_post_data();
 		$form_data      = $submitted_data['data'];
 		$form_data      = json_decode( stripslashes( $form_data ), true );
-
-		$fields  = array();
+		$fields         = array();
+		$notifications  = array();
 		$id      = isset( $submitted_data['form_id'] ) ? $submitted_data['form_id'] : null;
 		$id      = intval( $id );
 		$title   = sanitize_text_field( $submitted_data['formName'] );
 		$status  = isset( $submitted_data['status'] ) ? sanitize_text_field( $submitted_data['status'] ) : '';
 		$version = isset( $submitted_data['version'] ) ? sanitize_text_field( $submitted_data['version'] ) : '1.0';
+		$action  = false;
 
 		if ( is_null( $id ) || $id <= 0 ) {
 			$form_model = new Powerform_Custom_Form_Model();
+			$action     = 'create';
+
 			if ( empty( $status ) ) {
 				$status = Powerform_Custom_Form_Model::STATUS_PUBLISH;
 			}
 		} else {
 			$form_model = Powerform_Custom_Form_Model::model()->load( $id );
+			$action     = 'update';
+
 			if ( ! is_object( $form_model ) ) {
-				wp_send_json_error( __( "Formularmodell existiert nicht", Powerform::DOMAIN ) );
+				wp_send_json_error( __( "Form model doesn't exist", Powerform::DOMAIN ) );
 			}
+
 			if ( empty( $status ) ) {
 				$status = $form_model->status;
 			}
@@ -384,26 +473,36 @@ class Powerform_Admin_AJAX {
 
 		// Sanitize settings
 		$settings = powerform_sanitize_field( $form_data['settings'] );
+		$settings = apply_filters( 'powerform_builder_data_settings_before_saving', $settings, $form_data['settings'] );
 
 		// Sanitize custom css
 		if ( isset( $form_data['settings']['custom_css'] ) ) {
 			$settings['custom_css'] = sanitize_textarea_field( $form_data['settings']['custom_css'] );
 		}
 
-		// Sanitize thank you message
-		if ( isset( $form_data['settings']['thankyou-message'] ) ) {
-			$settings['thankyou-message'] = $form_data['settings']['thankyou-message'];
+		if ( isset( $form_data['notifications'] ) ) {
+			$notifications = powerform_sanitize_field( $form_data['notifications'] );
+
+			$count = 0;
+			foreach( $notifications as $notification ) {
+				if ( isset( $notification['email-editor'] ) ) {
+					$notifications[ $count ]['email-editor'] = $form_data['notifications'][ $count ]['email-editor'];
+				}
+				if ( isset( $notification['email-editor-method-email'] ) ) {
+					$notifications[ $count ]['email-editor-method-email'] = $form_data['notifications'][ $count ]['email-editor-method-email'];
+				}
+				if ( isset( $notification['email-editor-method-manual'] ) ) {
+					$notifications[ $count ]['email-editor-method-manual'] = $form_data['notifications'][ $count ]['email-editor-method-manual'];
+				}
+
+				$count++;
+			}
 		}
 
-		// Sanitize user email message
-		if ( isset( $form_data['settings']['user-email-editor'] ) ) {
-			$settings['user-email-editor'] = $form_data['settings']['user-email-editor'];
-		}
+		$form_model->set_var_in_array( 'name', 'formName', $submitted_data );
 
-		// Sanitize admin email message
-		if ( isset( $form_data['settings']['admin-email-editor'] ) ) {
-			$settings['admin-email-editor'] = $form_data['settings']['admin-email-editor'];
-		}
+		// Handle quiz questions
+		$form_model->notifications = $notifications;
 
 		$settings['formName'] = $title;
 
@@ -415,6 +514,20 @@ class Powerform_Admin_AJAX {
 
 		// Save data
 		$id = $form_model->save();
+
+		/**
+		 * Action called after form saved to database
+		 *
+		 * @since 1.11
+		 *
+		 * @param int    $id - form id
+		 * @param string $title - form title
+		 * @param string $status - form status
+		 * @param array  $fields - form fields
+		 * @param array  $settings - form settings
+		 *
+		 */
+		do_action( 'powerform_custom_form_action_' . $action, $id, $title, $status, $fields, $settings );
 
 		// add privacy settings to global option
 		$override_privacy = false;
@@ -436,6 +549,11 @@ class Powerform_Admin_AJAX {
 
 		powerform_update_form_submissions_retention( $id, $retention_number, $retention_unit );
 
+		// Purge count forms cache
+		wp_cache_delete( 'powerform_form_total_entries', 'powerform_form_total_entries' );
+		wp_cache_delete( 'powerform_form_total_entries_publish', 'powerform_form_total_entries_publish' );
+		wp_cache_delete( 'powerform_form_total_entries_draft', 'powerform_form_total_entries_draft' );
+
 		wp_send_json_success( $id );
 	}
 
@@ -446,11 +564,11 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_builder_settings() {
 		_deprecated_function( 'save_builder_settings', '1.6', 'save_builder' );
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'manage_powerform' ) ) {
 			return;
 		}
 
-		powerform_validate_ajax( "powerform_save_builder_fields" );
+		powerform_validate_ajax( 'powerform_save_builder_fields' );
 
 		$submitted_data = $this->get_post_data();
 		$fields         = array();
@@ -462,13 +580,16 @@ class Powerform_Admin_AJAX {
 
 		if ( is_null( $id ) || $id <= 0 ) {
 			$form_model = new Powerform_Custom_Form_Model();
+
 			if ( empty( $status ) ) {
 				$status = Powerform_Custom_Form_Model::STATUS_PUBLISH;
 			}
+
 		} else {
 			$form_model = Powerform_Custom_Form_Model::model()->load( $id );
+
 			if ( ! is_object( $form_model ) ) {
-				wp_send_json_error( __( "Formularmodell existiert nicht", Powerform::DOMAIN ) );
+				wp_send_json_error( __( "Form model doesn't exist", Powerform::DOMAIN ) );
 			}
 			if ( empty( $status ) ) {
 				$status = $form_model->status;
@@ -540,7 +661,7 @@ class Powerform_Admin_AJAX {
 	 */
 	public function load_existing_cfields() {
 
-		powerform_validate_ajax( "powerform_load_existing_cfields" );
+		powerform_validate_ajax( 'powerform_load_existing_cfields' );
 
 		$keys = array();
 		$html = '';
@@ -558,8 +679,8 @@ class Powerform_Admin_AJAX {
 	 * @since 1.0
 	 */
 	public function dismiss_welcome() {
-		powerform_validate_ajax( "powerform_dismiss_welcome" );
-		update_option( "powerform_welcome_dismissed", true );
+		powerform_validate_ajax( 'powerform_dismiss_welcome' );
+		update_option( 'powerform_welcome_dismissed', true );
 		wp_send_json_success();
 	}
 
@@ -569,7 +690,7 @@ class Powerform_Admin_AJAX {
 	 * @since 1.0
 	 */
 	public function load_fonts() {
-		powerform_validate_ajax( "powerform_load_fonts" );
+		powerform_validate_ajax( 'powerform_load_fonts' );
 		_deprecated_function( 'load_fonts', '1.0.5', 'load_google_fonts' );
 		wp_send_json_error( array() );
 	}
@@ -581,45 +702,12 @@ class Powerform_Admin_AJAX {
 	 * @since 1.0.5
 	 */
 	public function load_google_fonts() {
-		powerform_validate_ajax( "powerform_load_google_fonts" );
+		powerform_validate_ajax( 'powerform_load_google_fonts' );
 
-		$is_object = false;
+		$is_object = isset( $_POST['data']['isObject'] ) ? sanitize_text_field( $_POST['data']['isObject'] ) : false;// phpcs:ignore -- by powerform_validate_ajax
 
-		if ( isset( $_POST['data']['isObject'] ) ) {
-			$is_object = sanitize_text_field( $_POST['data']['isObject'] );
-		}
 		$fonts = powerform_get_font_families( $is_object );
 		wp_send_json_success( $fonts );
-	}
-
-	/**
-	 * Load paypal settings
-	 *
-	 * @since 1.0
-	 */
-	public function load_paypal() {
-		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_paypal" );
-
-		$html = powerform_template( 'settings/popup/edit-paypal-content' );
-
-		wp_send_json_success( $html );
-	}
-
-	/**
-	 * Save paypal popup data
-	 *
-	 * @since 1.0
-	 */
-	public function save_paypal() {
-		// Validate nonce
-		powerform_validate_ajax( "powerform_save_popup_paypal" );
-
-		update_option( "powerform_paypal_api_mode", sanitize_text_field( $_POST['api_mode'] ) ); // WPCS: CSRF ok by powerform_validate_ajax.
-		update_option( "powerform_paypal_client_id", sanitize_text_field( $_POST['client_id'] ) ); // WPCS: CSRF ok by powerform_validate_ajax.
-		update_option( "powerform_paypal_secret", sanitize_text_field( $_POST['secret'] ) ); // WPCS: CSRF ok by powerform_validate_ajax.
-
-		wp_send_json_success();
 	}
 
 	/**
@@ -629,7 +717,7 @@ class Powerform_Admin_AJAX {
 	 */
 	public function load_captcha() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_captcha" );
+		powerform_validate_ajax( 'powerform_popup_captcha' );
 
 		$html = powerform_template( 'settings/popup/edit-captcha-content' );
 
@@ -643,12 +731,19 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_captcha() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_popup_captcha" );
+		powerform_validate_ajax( 'powerform_save_popup_captcha' );
 
-		update_option( "powerform_captcha_key", sanitize_text_field( $_POST['captcha_key'] ) );// WPCS: CSRF ok by powerform_validate_ajax.
-		update_option( "powerform_captcha_secret", sanitize_text_field( $_POST['captcha_secret'] ) );// WPCS: CSRF ok by powerform_validate_ajax.
-		update_option( "powerform_captcha_language", sanitize_text_field( $_POST['captcha_language'] ) );// WPCS: CSRF ok by powerform_validate_ajax.
-		update_option( "powerform_captcha_theme", sanitize_text_field( $_POST['captcha_theme'] ) );// WPCS: CSRF ok by powerform_validate_ajax.
+		update_option( "powerform_captcha_key", sanitize_text_field( $_POST['v2_captcha_key'] ) );
+		update_option( "powerform_captcha_secret", sanitize_text_field( $_POST['v2_captcha_secret'] ) );
+
+		update_option( "powerform_v2_invisible_captcha_key", sanitize_text_field( $_POST['v2_invisible_captcha_key'] ) );
+		update_option( "powerform_v2_invisible_captcha_secret", sanitize_text_field( $_POST['v2_invisible_captcha_secret'] ) );
+
+		update_option( "powerform_v3_captcha_key", sanitize_text_field( $_POST['v3_captcha_key'] ) );
+		update_option( "powerform_v3_captcha_secret", sanitize_text_field( $_POST['v3_captcha_secret'] ) );
+
+		update_option( "powerform_captcha_language", sanitize_text_field( $_POST['captcha_language'] ) );
+
 		wp_send_json_success();
 	}
 
@@ -658,7 +753,7 @@ class Powerform_Admin_AJAX {
 	 * @since 1.0
 	 */
 	public function load_currency() {
-		powerform_validate_ajax( "powerform_popup_currency" );
+		powerform_validate_ajax( 'powerform_popup_currency' );
 
 		$html = powerform_template( 'settings/popup/edit-currency-content' );
 
@@ -672,9 +767,10 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_currency() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_popup_currency" );
+		powerform_validate_ajax( 'powerform_save_popup_currency' );
 
-		update_option( "powerform_currency", sanitize_text_field( $_POST['currency'] ) );// WPCS: CSRF ok by powerform_validate_ajax.
+		update_option( "powerform_currency", sanitize_text_field( $_POST['currency'] ) );
+
 		wp_send_json_success();
 	}
 
@@ -685,35 +781,11 @@ class Powerform_Admin_AJAX {
 	 */
 	public function load_pagination_entries() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_pagination_entries" );
+		powerform_validate_ajax( 'powerform_popup_pagination_entries' );
 
 		$html = powerform_template( 'settings/popup/edit-pagination-entries-content' );
 
 		wp_send_json_success( $html );
-	}
-
-	/**
-	 * Save entries pagination popup data
-	 *
-	 * @since 1.0.2
-	 */
-	public function save_pagination_entries() {
-		// Validate nonce
-		powerform_validate_ajax( "powerform_save_popup_pagination_entries" );
-
-		$pagination = intval( sanitize_text_field( $_POST['pagination_entries'] ) );// WPCS: CSRF ok by powerform_validate_ajax.
-
-		if ( 0 < $pagination ) {
-
-			update_option( "powerform_pagination_entries", $pagination );
-			wp_send_json_success();
-
-		} else {
-
-			wp_send_json_error( __( "Das Limit pro Seite darf nicht kleiner als eins sein.", Powerform::DOMAIN ) );
-
-		}
-
 	}
 
 	/*
@@ -722,22 +794,35 @@ class Powerform_Admin_AJAX {
 	 * @since 1.5.4
 	 */
 	public function load_recaptcha_preview() {
-		$language = get_option( "powerform_captcha_language", "en" );
+		$site_language = get_locale();
+		$language      = get_option( 'powerform_captcha_language', '' );
+		$language      = ! empty( $language ) ? $language : $site_language;
 
-		$captcha_key   = get_option( "powerform_captcha_key", "" );
-		$captcha_theme = get_option( "powerform_captcha_theme", "light" );
+		$captcha = sanitize_text_field( $_POST['captcha'] );// phpcs:ignore -- data without nonce verification
+
+		if ( 'v2-invisible' === $captcha ) {
+			$captcha_key  = get_option( 'powerform_v2_invisible_captcha_key', '' );
+			$captcha_size = 'invisible';
+			$onload       = 'powerform_render_admin_captcha_v2_invisible';
+		} elseif ( 'v3' === $captcha ) {
+			$captcha_key  = get_option( 'powerform_v3_captcha_key', '' );
+			$captcha_size = 'invisible';
+			$onload       = 'powerform_render_admin_captcha_v3';
+		} else {
+			$captcha_key  = get_option( 'powerform_captcha_key', '' );
+			$captcha_size = 'normal';
+			$onload       = 'powerform_render_admin_captcha_v2';
+		}
 		$html = '';
 
-		$html = '';
-
-		if ( ! empty( $captcha_key ) && ! empty( $captcha_theme ) ) {
+		if ( ! empty( $captcha_key ) ) {
 			// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript
-			$html .= '<script src="https://www.google.com/recaptcha/api.js?hl=' . $language . '&render=explicit&onload=powerform_render_admin_captcha" async defer></script>';
+			$html .= '<script src="https://www.google.com/recaptcha/api.js?hl=' . $language . '&render=explicit&onload=' . $onload . '" async defer></script>';
+			$html .= '<div class="powerform-g-recaptcha-' . $captcha . '" data-sitekey="' . $captcha_key . '" data-theme="light" data-size="' . $captcha_size . '"></div>';
 
-			$html .= '<div class="powerform-g-recaptcha" data-sitekey="' . $captcha_key . '" data-theme="' . $captcha_theme . '" data-size="normal"></div>';
 		} else {
 			$html .= '<div class="sui-notice">';
-			$html .= '<p>' . esc_html__( 'Du musst zuerst Deine Anmeldeinformationen speichern, um das reCAPTCHA zu laden. ', Powerform::DOMAIN ) . '</p>';
+			$html .= '<p>' . esc_html__( 'You have to first save your credentials to load the reCAPTCHA . ', Powerform::DOMAIN ) . '</p>';
 			$html .= '</div>';
 		}
 
@@ -751,7 +836,7 @@ class Powerform_Admin_AJAX {
 	 */
 	public function load_pagination_listings() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_pagination_listings" );
+		powerform_validate_ajax( 'powerform_popup_pagination_listings' );
 
 		$html = powerform_template( 'settings/popup/edit-pagination-listings-content' );
 
@@ -765,18 +850,18 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_pagination_listings() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_popup_pagination_listings" );
+		powerform_validate_ajax( 'powerform_save_popup_pagination_listings' );
 
-		$pagination = intval( sanitize_text_field( $_POST['pagination_listings'] ) ); // WPCS: CSRF ok by powerform_validate_ajax.
+		$pagination = intval( sanitize_text_field( $_POST['pagination_listings'] ) );
 
 		if ( 0 < $pagination ) {
 
-			update_option( "powerform_pagination_listings", $pagination );
+			update_option( 'powerform_pagination_listings', $pagination );
 			wp_send_json_success();
 
 		} else {
 
-			wp_send_json_error( __( "Das Limit pro Seite darf nicht kleiner als eins sein.", Powerform::DOMAIN ) );
+			wp_send_json_error( __( 'Limit per page can not be less than one.', Powerform::DOMAIN ) );
 
 		}
 
@@ -789,25 +874,11 @@ class Powerform_Admin_AJAX {
 	 */
 	public function load_email_form() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_load_popup_email_settings" );
+		powerform_validate_ajax( 'powerform_load_popup_email_settings' );
 
 		$html = powerform_template( 'settings/popup/edit-email-content' );
 
 		wp_send_json_success( $html );
-	}
-
-	/**
-	 * Save email settings data
-	 *
-	 * @since 1.1
-	 */
-	public function save_email_form() {
-		// Validate nonce
-		powerform_validate_ajax( "powerform_save_popup_email_settings" );
-
-		update_option( "powerform_sender_email_address", sanitize_text_field( $_POST['sender_email'] ) ); // WPCS: CSRF ok by powerform_validate_ajax.
-		update_option( "powerform_sender_name", sanitize_text_field( $_POST['sender_name'] ) ); // WPCS: CSRF ok by powerform_validate_ajax.
-		wp_send_json_success();
 	}
 
 	/**
@@ -817,7 +888,7 @@ class Powerform_Admin_AJAX {
 	 */
 	public function load_uninstall_form() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_uninstall_form" );
+		powerform_validate_ajax( 'powerform_popup_uninstall_form' );
 
 		$html = powerform_template( 'settings/popup/edit-uninstall-content' );
 
@@ -832,12 +903,12 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_uninstall_form() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_popup_uninstall_settings" );
+		powerform_validate_ajax( 'powerform_save_popup_uninstall_settings' );
 
-		$delete_uninstall = isset( $_POST['delete_uninstall'] ) ? $_POST['delete_uninstall'] : false;// WPCS: CSRF ok by powerform_validate_ajax.
+		$delete_uninstall = isset( $_POST['delete_uninstall'] ) ? sanitize_text_field( $_POST['delete_uninstall'] ) : false;
 		$delete_uninstall = filter_var( $delete_uninstall, FILTER_VALIDATE_BOOLEAN );
 
-		update_option( "powerform_uninstall_clear_data", $delete_uninstall );
+		update_option( 'powerform_uninstall_clear_data', $delete_uninstall );
 		wp_send_json_success();
 
 	}
@@ -849,22 +920,23 @@ class Powerform_Admin_AJAX {
 	 */
 	public function preview_custom_forms() {
 		// Validate nonce
-		//powerform_validate_ajax( "powerform_popup_preview_cforms" );
+		powerform_validate_ajax( 'powerform_popup_preview_cforms' );
 
 		$preview_data = false;
 		$form_id      = false;
 
-		if ( isset( $_POST['id'] ) ) { // WPCS: CSRF ok by powerform_validate_ajax.
+		if ( isset( $_POST['id'] ) ) {
 			$form_id = intval( $_POST['id'] );
 		}
 
 		// Check if preview data set
-		if ( isset( $_POST['data'] ) && ! empty( $_POST['data'] ) ) {// WPCS: CSRF ok by powerform_validate_ajax.
+		if ( isset( $_POST['data'] ) && ! empty( $_POST['data'] ) ) {
 			$data = $_POST['data']; // WPCS: CSRF ok by powerform_validate_ajax.
+
 			if ( ! is_array( $data ) ) {
 				$data = json_decode( stripslashes( $data ), true );
 			}
-			$preview_data = powerform_data_to_model_form( $data );// WPCS: CSRF ok by powerform_validate_ajax.
+			$preview_data = powerform_data_to_model_form( $data );// phpcs:ignore -- by powerform_validate_ajax
 		}
 
 		$html = powerform_form_preview( $form_id, true, $preview_data );
@@ -879,24 +951,25 @@ class Powerform_Admin_AJAX {
 	 */
 	public function preview_polls() {
 		// Validate nonce
-		//powerform_validate_ajax( "powerform_popup_preview_polls" );
+		powerform_validate_ajax( 'powerform_popup_preview_polls' );
 
 		$preview_data = false;
 		// force -1 for preview
-		$form_id = - 1;
+		$form_id = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : -1;// phpcs:ignore -- by powerform_validate_ajax
 
-		if ( isset( $_POST['id'] ) ) { // WPCS: CSRF ok by powerform_validate_ajax.
+		if ( isset( $_POST['id'] ) ) {
 			$form_id = intval( $_POST['id'] );
 		}
 
 		// Check if preview data set
 		// Check if preview data set
-		if ( isset( $_POST['data'] ) && ! empty( $_POST['data'] ) ) {// WPCS: CSRF ok by powerform_validate_ajax.
-			$data = $_POST['data']; // WPCS: CSRF ok by powerform_validate_ajax.
+		if ( isset( $_POST['data'] ) && ! empty( $_POST['data'] ) ) {
+			$data = $_POST['data'];
+
 			if ( ! is_array( $data ) ) {
 				$data = json_decode( stripslashes( $data ), true );
 			}
-			$preview_data = powerform_data_to_model_poll( $data );// WPCS: CSRF ok by powerform_validate_ajax.
+			$preview_data = powerform_data_to_model_poll( $data );// phpcs:ignore -- by powerform_validate_ajax
 		}
 
 		$html = powerform_poll_preview( $form_id, true, $preview_data );
@@ -911,19 +984,18 @@ class Powerform_Admin_AJAX {
 	 */
 	public function preview_quizzes() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_preview_quizzes" );
+		powerform_validate_ajax( 'powerform_popup_preview_quizzes' );
 
-		$preview_data = false;
 		// force -1 for preview
 		$form_id = - 1;
 
-		if ( isset( $_POST['id'] ) ) { // WPCS: CSRF ok by powerform_validate_ajax.
+		if ( isset( $_POST['id'] ) ) {
 			$form_id = intval( $_POST['id'] );
 		}
 
 		// Check if preview data set
-		if ( isset( $_POST['data'] ) && ! empty( $_POST['data'] ) ) {// WPCS: CSRF ok by powerform_validate_ajax.
-			$preview_data = powerform_data_to_model_quiz( $_POST['data'] );// WPCS: CSRF ok by powerform_validate_ajax.
+		if ( isset( $_POST['data'] ) && ! empty( $_POST['data'] ) ) {
+			$preview_data = powerform_data_to_model_quiz( $_POST['data'] );
 		}
 
 		$html = powerform_quiz_preview( $form_id, true, $preview_data );
@@ -938,9 +1010,10 @@ class Powerform_Admin_AJAX {
 	 */
 	public function load_exports() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_load_exports" );
+		powerform_validate_ajax( 'powerform_load_exports' );
 
-		$form_id = isset( $_POST['id'] ) && $_POST['id'] >= 0 ? $_POST['id'] : false;// WPCS: CSRF ok by powerform_validate_ajax.
+		$form_id = isset( $_POST['id'] ) && $_POST['id'] >= 0 ? intval( $_POST['id'] ) : false;
+
 		if ( $form_id ) {
 			$args = array(
 				'form_id' => $form_id,
@@ -948,7 +1021,7 @@ class Powerform_Admin_AJAX {
 			$html = powerform_template( 'settings/popup/exports-content', $args );
 			wp_send_json_success( $html );
 		} else {
-			wp_send_json_error( __( "Keine gültige Modul-ID angegeben.", Powerform::DOMAIN ) );
+			wp_send_json_error( __( 'Not valid module ID provided.', Powerform::DOMAIN ) );
 		}
 	}
 
@@ -961,18 +1034,18 @@ class Powerform_Admin_AJAX {
 		// Validate nonce
 		powerform_validate_ajax( "powerform_clear_exports" );
 
-		$form_id = isset( $_POST['id'] ) && $_POST['id'] >= 0 ? $_POST['id'] : false;// WPCS: CSRF ok by powerform_validate_ajax.
+		$form_id = isset( $_POST['id'] ) && $_POST['id'] >= 0 ? intval( $_POST['id'] ) : false;
 
 		if ( ! $form_id ) {
-			wp_send_json_error( __( "Es wurde keine ID angegeben.", Powerform::DOMAIN ) );
+			wp_send_json_error( __( 'No ID was provided.', Powerform::DOMAIN ) );
 		}
 
 		$was_cleared = delete_export_logs( $form_id );
 
 		if ( $was_cleared ) {
-			wp_send_json_success( __( "Exporte gelöscht.", Powerform::DOMAIN ) );
+			wp_send_json_success( __( 'Exports cleared.', Powerform::DOMAIN ) );
 		} else {
-			wp_send_json_error( __( "Exporte konnten nicht gelöscht werden.", Powerform::DOMAIN ) );
+			wp_send_json_error( __( "Exports couldn't be cleared.", Powerform::DOMAIN ) );
 		}
 	}
 
@@ -983,8 +1056,8 @@ class Powerform_Admin_AJAX {
 	 * @since 1.1 change $_POST to `get_post_data`
 	 */
 	public function search_emails() {
-		powerform_validate_ajax( "powerform_search_emails" );
-		if ( ! current_user_can( 'manage_options' ) ) {
+		powerform_validate_ajax( 'powerform_search_emails' );
+		if ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'manage_powerform' ) ) {
 			wp_send_json_error( array() );
 		}
 
@@ -1071,7 +1144,7 @@ class Powerform_Admin_AJAX {
 		}
 
 		// TODO : mark this as phpcs comply after checking usages of this function
-		$post_data = $_POST; // WPCS: CSRF OK
+		$post_data = $_POST;// phpcs:ignore -- by powerform_validate_ajax
 
 		// do some sanitize
 		foreach ( $sanitize_callbacks as $field => $sanitize_func ) {
@@ -1094,7 +1167,7 @@ class Powerform_Admin_AJAX {
 	 */
 	public function load_privacy_settings() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_privacy_settings" );
+		powerform_validate_ajax( 'powerform_popup_privacy_settings' );
 
 		$html = powerform_template( 'settings/popup/edit-privacy-settings' );
 
@@ -1108,8 +1181,8 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_privacy_settings() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_privacy_settings" );
-		$post_data = $_POST; // WPCS: CSRF OK by powerform_validate_ajax
+		powerform_validate_ajax( 'powerform_save_privacy_settings' );
+		$post_data = $_POST;// phpcs:ignore -- by powerform_validate_ajax
 
 		/**
 		 * CUSTOM FORMS
@@ -1124,6 +1197,7 @@ class Powerform_Admin_AJAX {
 
 		// Submissions Retention
 		$cform_retain_forever = filter_var( $post_data['retain_submission_forever'], FILTER_VALIDATE_BOOLEAN );
+		update_option( 'retain_submission_forever', $cform_retain_forever );
 		if ( $cform_retain_forever ) {
 			$post_data['submissions_retention_number'] = 0;
 		}
@@ -1141,6 +1215,7 @@ class Powerform_Admin_AJAX {
 
 		// IP Retention
 		$cform_retain_ip_forever = filter_var( $post_data['retain_ip_forever'], FILTER_VALIDATE_BOOLEAN );
+		update_option( 'retain_ip_forever', $cform_retain_ip_forever );
 		if ( $cform_retain_ip_forever ) {
 			$post_data['cform_retention_ip_number'] = 0;
 		}
@@ -1156,12 +1231,12 @@ class Powerform_Admin_AJAX {
 		update_option( 'powerform_retain_ip_interval_unit', $post_data['cform_retention_ip_unit'] );
 		// IP Retention
 
-
 		/**
 		 * POLLS
 		 */
 		// Submissions Retention
 		$poll_retain_submissions_forever = filter_var( $post_data['poll_retain_submission_forever'], FILTER_VALIDATE_BOOLEAN );
+		update_option( 'poll_retain_submission_forever', $poll_retain_submissions_forever );
 		if ( $poll_retain_submissions_forever ) {
 			$post_data['poll_submissions_retention_number'] = 0;
 		}
@@ -1180,6 +1255,7 @@ class Powerform_Admin_AJAX {
 
 		// IP Retention
 		$poll_retain_ip_forever = filter_var( $post_data['retain_poll_forever'], FILTER_VALIDATE_BOOLEAN );
+		update_option( 'retain_poll_forever', $poll_retain_ip_forever );
 		if ( $poll_retain_ip_forever ) {
 			$post_data['votes_retention_number'] = 0;
 		}
@@ -1200,6 +1276,7 @@ class Powerform_Admin_AJAX {
 		 */
 		// Submissions Retention
 		$quiz_retain_submissions_forever = filter_var( $post_data['quiz_retain_submission_forever'], FILTER_VALIDATE_BOOLEAN );
+		update_option( 'quiz_retain_submission_forever', $quiz_retain_submissions_forever );
 		if ( $quiz_retain_submissions_forever ) {
 			$post_data['quiz_submissions_retention_number'] = 0;
 		}
@@ -1228,7 +1305,7 @@ class Powerform_Admin_AJAX {
 			wp_send_json_success( '' );
 		}
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_export_cform" );
+		powerform_validate_ajax( 'powerform_popup_export_cform' );
 
 		$html = powerform_template( 'custom-form/popup/export' );
 
@@ -1245,7 +1322,7 @@ class Powerform_Admin_AJAX {
 			wp_send_json_success( '' );
 		}
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_import_cform" );
+		powerform_validate_ajax( 'powerform_popup_import_cform' );
 
 		$html = powerform_template( 'custom-form/popup/import' );
 
@@ -1259,30 +1336,32 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_import_custom_form() {
 		if ( ! Powerform::is_import_export_feature_enabled() ) {
-			wp_send_json_error( __( 'Import Export Funktion deaktiviert.', Powerform::DOMAIN ) );
+			wp_send_json_error( __( 'Import Export Feature disabled.', Powerform::DOMAIN ) );
 		}
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_import_custom_form" );
+		powerform_validate_ajax( 'powerform_save_import_custom_form' );
 
 		$post_data  = $this->get_post_data();
 		$importable = isset( $post_data['importable'] ) ? $post_data['importable'] : '';// wpcs: CSRF ok
 		$importable = trim( $importable );
-		$importable = sanitize_text_field( $importable );
 		$importable = wp_unslash( $importable );
+
+		$import_data = json_decode( $importable, true );
+
+		//hook custom data here
+		$import_data = apply_filters( 'powerform_form_import_data', $import_data );
 
 		try {
 			if ( empty( $importable ) ) {
-				throw new Exception( __( 'Importtext darf nicht leer sein.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Import text can not be empty.', Powerform::DOMAIN ) );
 			}
 
-			$import_data = json_decode( $importable, true );
-
 			if ( empty( $import_data ) || ! is_array( $import_data ) ) {
-				throw new Exception( __( 'Hoppla, es sieht so aus, als hätten wir ein Problem gefunden. Importtext darf keine Leerzeichen oder Sonderzeichen enthalten.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Oops, looks like we found an issue. Import text can not include whitespace or special characters.', Powerform::DOMAIN ) );
 			}
 
 			if ( ! isset( $import_data['type'] ) || 'form' !== $import_data['type'] ) {
-				throw new Exception( __( 'Hoppla, es sieht so aus, als hätten wir ein Problem gefunden. Importtext darf keine Leerzeichen oder Sonderzeichen enthalten.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Oops, looks like we found an issue. Import text can not include whitespace or special characters.', Powerform::DOMAIN ) );
 			}
 
 			$model = Powerform_Custom_Form_Model::create_from_import_data( $import_data, 'Powerform_Custom_Form_Model' );
@@ -1292,7 +1371,7 @@ class Powerform_Admin_AJAX {
 			}
 
 			if ( ! $model instanceof Powerform_Custom_Form_Model ) {
-				throw new Exception( __( 'Fehler beim Importieren des Formulars. Stelle sicher, dass der Importtext gültig ist, und versuche es erneut.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Failed to import form, please make sure import text is valid, and try again.', Powerform::DOMAIN ) );
 			}
 
 			$return_url = admin_url( 'admin.php?page=powerform-cform' );
@@ -1309,6 +1388,240 @@ class Powerform_Admin_AJAX {
 		}
 	}
 
+
+	/**
+	 * Get instance of thirdparty importer class
+	 *
+	 * @since 1.5
+	 */
+	public function importers( $type ) {
+
+		$class = '';
+
+		switch ( $type ) {
+			case 'cf7':
+				if ( class_exists( 'Powerform_Admin_Import_CF7' ) )
+					$class = new Powerform_Admin_Import_CF7();
+				break;
+			case 'ninja':
+				if ( class_exists( 'Powerform_Admin_Import_Ninja' ) )
+	    			$class = new Powerform_Admin_Import_Ninja();
+				break;
+			case 'gravity':
+				if ( class_exists( 'Powerform_Admin_Import_Gravity' ) )
+	    			return new Powerform_Admin_Import_Gravity();
+				break;
+			default:
+				break;
+		}
+
+		return $class;
+	}
+
+
+	/**
+	 * Load Import Custom Form Popup
+	 *
+	 * @since 1.5
+	 */
+	public function load_import_custom_form_cf7() {
+		if ( ! Powerform::is_import_export_feature_enabled() || ! powerform_is_import_plugin_enabled('cf7') ) {
+			wp_send_json_success( '' );
+		}
+		// Validate nonce
+		powerform_validate_ajax( "powerform_popup_import_cform_cf7" );
+
+		$html = powerform_template( 'custom-form/popup/import-cf7' );
+
+		wp_send_json_success( $html );
+	}
+
+
+	/**
+	 * Execute Contact Form 7 Import Form
+	 *
+	 * @since 1.5
+	 */
+	public function save_import_custom_form_cf7() {
+		global $wpdb, $wpcf7_shortcode_manager;
+
+		if ( ! Powerform::is_import_export_feature_enabled() || ! powerform_is_import_plugin_enabled( 'cf7' ) ) {
+			wp_send_json_error( __( 'Import Export Feature disabled.', Powerform::DOMAIN ) );
+		}
+		// Validate nonce
+		powerform_validate_ajax( "powerform_save_import_custom_form_cf7" );
+
+		$post_data  = $this->get_post_data();
+		$importable = ( isset( $post_data['cf7_forms'] ) ? $post_data['cf7_forms'] : '' );// wpcs: CSRF ok
+		$importer   = $this->importers( 'cf7' );
+		if ( ! empty( $importer ) ) :
+			if ( ! empty( $importable ) ) {
+				if ( 'specific' === $importable ) {
+					$forms = isset( $post_data['cf7-form-id'] ) ? $post_data['cf7-form-id'] : array();
+				} else {
+					$forms = powerform_list_thirdparty_contact_forms( 'cf7' );
+				}
+				if ( ! empty( $forms ) ) {
+					foreach ( $forms as $key => $value ) {
+						$values   = 'specific' === $importable ? $value : $value->ID;
+						$imported = $importer->import_form( $values, $post_data );
+
+						if ( 'fail' === $imported['type'] ) {
+
+							$error = $imported['message'];
+						}
+					}
+					if ( ! empty( $error ) ) {
+						wp_send_json_error( $error );
+					}
+
+					wp_send_json_success( $imported );
+				}
+			} else {
+				wp_send_json_error( __( 'Can\'t find form to import', Powerform::DOMAIN ) );
+			}
+		endif;
+
+		wp_send_json_error( __( 'Could not import the forms. Check if the selected form plugin is active', Powerform::DOMAIN ) );
+
+	}
+
+
+	/**
+	 * Load Import Custom Form Popup
+	 *
+	 * @since 1.5
+	 */
+	public function load_import_custom_form_ninja() {
+		if ( ! Powerform::is_import_export_feature_enabled() || ! powerform_is_import_plugin_enabled('ninjaforms') ) {
+			wp_send_json_success( '' );
+		}
+		// Validate nonce
+		powerform_validate_ajax( "powerform_popup_import_cform_ninjaforms" );
+
+		$html = powerform_template( 'custom-form/popup/import-ninjaforms' );
+
+		wp_send_json_success( $html );
+	}
+
+	/**
+	 * Execute Ninjaforms Import Form Save
+	 *
+	 * @since 1.5
+	 */
+	public function save_import_custom_form_ninja() {
+
+		if ( ! Powerform::is_import_export_feature_enabled() || ! powerform_is_import_plugin_enabled('ninjaforms') ) {
+			wp_send_json_error( __( 'Import Export Feature disabled.', Powerform::DOMAIN ) );
+		}
+		// Validate nonce
+		powerform_validate_ajax( "powerform_save_import_custom_form_ninja" );
+
+		$post_data  = $this->get_post_data();
+		$importable = isset( $post_data['ninjaforms'] ) ? $post_data['ninjaforms'] : '';// wpcs: CSRF ok
+		$importer 	= ( ! empty ( $this->importers( 'ninja' ) ) ? $this->importers( 'ninja' ) : '' );
+
+		if ( ! empty( $importer ) ):
+			if ( 'all' !== $importable && '' !== $importable ) {
+
+				$importable  = absint( $importable );
+				$imported = $importer->import_form( $importable );
+
+				if ( 'fail' === $imported['type'] ) {
+					wp_send_json_error( $imported['message'] );
+				}
+
+				wp_send_json_success( $imported );
+
+			} elseif ( '' !== $importable ) {
+				$forms = powerform_list_thirdparty_contact_forms( 'ninjaforms' );
+
+				foreach ($forms as $key => $value) {
+					$imported = $importer->import_form( $value->get_id() );
+
+					if ( 'fail' === $imported['type'] ) {
+						$error = $imported['message'];
+					}
+				}
+
+				if ( !empty( $error ) ) {
+					wp_send_json_error( $error );
+				}
+
+				wp_send_json_success( $imported );
+			}
+		endif;
+
+		wp_send_json_error( __( 'Could not import the forms. Check if the selected form plugin is active', Powerform::DOMAIN ) );
+	}
+
+	/**
+	 * Load Import Custom Form Popup
+	 *
+	 * @since 1.5
+	 */
+	public function load_import_custom_form_gravity() {
+		if ( ! Powerform::is_import_export_feature_enabled() || ! powerform_is_import_plugin_enabled('gravityforms') ) {
+			wp_send_json_success( '' );
+		}
+		// Validate nonce
+		powerform_validate_ajax( "powerform_popup_import_cform_gravityforms" );
+
+		$html = powerform_template( 'custom-form/popup/import-gravityforms' );
+
+		wp_send_json_success( $html );
+	}
+
+	/**
+	 * Execute Ninjaforms Import Form Save
+	 *
+	 * @since 1.5
+	 */
+	public function save_import_custom_form_gravity() {
+
+		if ( ! Powerform::is_import_export_feature_enabled() || ! powerform_is_import_plugin_enabled('gravityforms') ) {
+			wp_send_json_error( __( 'Import Export Feature disabled.', Powerform::DOMAIN ) );
+		}
+		// Validate nonce
+		powerform_validate_ajax( "powerform_save_import_custom_form_gravity" );
+
+			$post_data  = $this->get_post_data();
+		$importable = isset( $post_data['gravityforms'] ) ? $post_data['gravityforms'] : '';// wpcs: CSRF ok
+		$importer 	= ( ! empty ( $this->importers( 'gravity' ) ) ? $this->importers( 'gravity' ) : '' );
+
+		if ( ! empty( $importer ) ):
+			if ( 'all' !== $importable && '' !== $importable ) {
+
+				$importable  = absint( $importable );
+				$imported = $importer->import_form( $importable );
+
+				if ( 'fail' === $imported['type'] ) {
+					wp_send_json_error( $imported['message'] );
+				}
+
+				wp_send_json_success( $imported );
+
+			} elseif ( '' !== $importable ) {
+				$forms = powerform_list_thirdparty_contact_forms( 'gravityforms' );
+
+				foreach ($forms as $key => $value) {
+					$imported = $importer->import_form( $value['id'] );
+
+					if ( 'fail' === $imported['type'] ) {
+						$error = $imported['message'];
+					}
+				}
+
+				if ( !empty( $error ) ) {
+					wp_send_json_error( $error );
+				}
+
+				wp_send_json_success( $imported );
+			}
+		endif;
+
+	}
+
 	/**
 	 * Load Export Poll Popup
 	 *
@@ -1319,7 +1632,7 @@ class Powerform_Admin_AJAX {
 			wp_send_json_success( '' );
 		}
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_export_poll" );
+		powerform_validate_ajax( 'powerform_popup_export_poll' );
 
 		$html = powerform_template( 'poll/popup/export' );
 
@@ -1336,7 +1649,7 @@ class Powerform_Admin_AJAX {
 			wp_send_json_success( '' );
 		}
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_import_poll" );
+		powerform_validate_ajax( 'powerform_popup_import_poll' );
 
 		$html = powerform_template( 'poll/popup/import' );
 
@@ -1350,30 +1663,29 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_import_poll() {
 		if ( ! Powerform::is_import_export_feature_enabled() ) {
-			wp_send_json_error( __( 'Import Export Funktion deaktiviert.', Powerform::DOMAIN ) );
+			wp_send_json_error( __( 'Import Export Feature disabled.', Powerform::DOMAIN ) );
 		}
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_import_poll" );
+		powerform_validate_ajax( 'powerform_save_import_poll' );
 
 		$post_data  = $this->get_post_data();
 		$importable = isset( $post_data['importable'] ) ? $post_data['importable'] : '';// wpcs: CSRF ok
 		$importable = trim( $importable );
-		$importable = sanitize_text_field( $importable );
 		$importable = wp_unslash( $importable );
 
 		try {
 			if ( empty( $importable ) ) {
-				throw new Exception( __( 'Importtext darf nicht leer sein.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Import text can not be empty.', Powerform::DOMAIN ) );
 			}
 
 			$import_data = json_decode( $importable, true );
 
 			if ( empty( $import_data ) || ! is_array( $import_data ) ) {
-				throw new Exception( __( 'Hoppla, es sieht so aus, als hätten wir ein Problem gefunden. Importtext darf keine Leerzeichen oder Sonderzeichen enthalten.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Oops, looks like we found an issue. Import text can not include whitespace or special characters.', Powerform::DOMAIN ) );
 			}
 
 			if ( ! isset( $import_data['type'] ) || 'poll' !== $import_data['type'] ) {
-				throw new Exception( __( 'Hoppla, es sieht so aus, als hätten wir ein Problem gefunden. Importtext darf keine Leerzeichen oder Sonderzeichen enthalten.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Oops, looks like we found an issue. Import text can not include whitespace or special characters.', Powerform::DOMAIN ) );
 			}
 
 			$model = Powerform_Poll_Form_Model::create_from_import_data( $import_data, 'Powerform_Poll_Form_Model' );
@@ -1383,7 +1695,7 @@ class Powerform_Admin_AJAX {
 			}
 
 			if ( ! $model instanceof Powerform_Poll_Form_Model ) {
-				throw new Exception( __( 'Fehler beim Importieren der Umfrage. Stelle sicher, dass der Importtext gültig ist, und versuche es erneut.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Failed to import poll, please make sure import text is valid, and try again.', Powerform::DOMAIN ) );
 			}
 
 			$return_url = admin_url( 'admin.php?page=powerform-poll' );
@@ -1410,7 +1722,7 @@ class Powerform_Admin_AJAX {
 			wp_send_json_success( '' );
 		}
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_export_quiz" );
+		powerform_validate_ajax( 'powerform_popup_export_quiz' );
 
 		$html = powerform_template( 'quiz/popup/export' );
 
@@ -1427,7 +1739,7 @@ class Powerform_Admin_AJAX {
 			wp_send_json_success( '' );
 		}
 		// Validate nonce
-		powerform_validate_ajax( "powerform_popup_import_quiz" );
+		powerform_validate_ajax( 'powerform_popup_import_quiz' );
 
 		$html = powerform_template( 'quiz/popup/import' );
 
@@ -1441,30 +1753,29 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_import_quiz() {
 		if ( ! Powerform::is_import_export_feature_enabled() ) {
-			wp_send_json_error( __( 'Import Export Funktion deaktiviert.', Powerform::DOMAIN ) );
+			wp_send_json_error( __( 'Import Export Feature disabled.', Powerform::DOMAIN ) );
 		}
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_import_quiz" );
+		powerform_validate_ajax( 'powerform_save_import_quiz' );
 
 		$post_data  = $this->get_post_data();
 		$importable = isset( $post_data['importable'] ) ? $post_data['importable'] : '';// wpcs: CSRF ok
 		$importable = trim( $importable );
-		$importable = sanitize_text_field( $importable );
 		$importable = wp_unslash( $importable );
 
 		try {
 			if ( empty( $importable ) ) {
-				throw new Exception( __( 'Importtext darf nicht leer sein.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Import text can not be empty.', Powerform::DOMAIN ) );
 			}
 
 			$import_data = json_decode( $importable, true );
 
 			if ( empty( $import_data ) || ! is_array( $import_data ) ) {
-				throw new Exception( __( 'Hoppla, es sieht so aus, als hätten wir ein Problem gefunden. Importtext darf keine Leerzeichen oder Sonderzeichen enthalten.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Oops, looks like we found an issue. Import text can not include whitespace or special characters.', Powerform::DOMAIN ) );
 			}
 
 			if ( ! isset( $import_data['type'] ) || 'quiz' !== $import_data['type'] ) {
-				throw new Exception( __( 'Hoppla, es sieht so aus, als hätten wir ein Problem gefunden. Importtext darf keine Leerzeichen oder Sonderzeichen enthalten.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Oops, looks like we found an issue. Import text can not include whitespace or special characters.', Powerform::DOMAIN ) );
 			}
 
 			/** @var Powerform_Quiz_Form_Model|WP_Error $model */
@@ -1475,7 +1786,7 @@ class Powerform_Admin_AJAX {
 			}
 
 			if ( ! $model instanceof Powerform_Quiz_Form_Model ) {
-				throw new Exception( __( 'Fehler beim Importieren des Quiz. Stelle sicher, dass der Importtext gültig ist, und versuche es erneut.', Powerform::DOMAIN ) );
+				throw new Exception( __( 'Failed to import quiz, please make sure import text is valid, and try again.', Powerform::DOMAIN ) );
 			}
 
 			$return_url = admin_url( 'admin.php?page=powerform-quiz' );
@@ -1499,17 +1810,17 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_pagination() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_popup_pagination" );
+		powerform_validate_ajax( 'powerform_save_popup_pagination' );
 
-		$pagination         = intval( sanitize_text_field( $_POST['pagination_entries'] ) );// WPCS: CSRF ok by powerform_validate_ajax.
-		$pagination_listing = intval( sanitize_text_field( $_POST['pagination_listings'] ) ); // WPCS: CSRF ok by powerform_validate_ajax.
+		$pagination         = intval( sanitize_text_field( $_POST['pagination_entries'] ) );
+		$pagination_listing = intval( sanitize_text_field( $_POST['pagination_listings'] ) );
 
 		if ( 1 > $pagination || 1 > $pagination_listing ) {
-			wp_send_json_error( __( "Das Limit pro Seite darf nicht kleiner als eins sein.", Powerform::DOMAIN ) );
+			wp_send_json_error( __( 'Limit per page can not be less than one.', Powerform::DOMAIN ) );
 		}
 
-		update_option( "powerform_pagination_entries", $pagination );
-		update_option( "powerform_pagination_listings", $pagination_listing );
+		update_option( 'powerform_pagination_entries', $pagination );
+		update_option( 'powerform_pagination_listings', $pagination_listing );
 		wp_send_json_success();
 
 	}
@@ -1521,12 +1832,12 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_accessibility_settings() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_accessibility_settings" );
+		powerform_validate_ajax( 'powerform_save_accessibility_settings' );
 
-		$enable_accessibility = isset( $_POST['enable_accessibility'] ) ? $_POST['enable_accessibility'] : false;// WPCS: CSRF ok by powerform_validate_ajax.
+		$enable_accessibility = isset( $_POST['enable_accessibility'] ) ? $_POST['enable_accessibility'] : false;
 		$enable_accessibility = filter_var( $enable_accessibility, FILTER_VALIDATE_BOOLEAN );
 
-		update_option( "powerform_enable_accessibility", $enable_accessibility );
+		update_option( 'powerform_enable_accessibility', $enable_accessibility );
 		wp_send_json_success();
 	}
 
@@ -1537,14 +1848,15 @@ class Powerform_Admin_AJAX {
 	 */
 	public function save_dashboard_settings() {
 		// Validate nonce
-		powerform_validate_ajax( "powerform_save_dashboard_settings" );
+		powerform_validate_ajax( 'powerform_save_dashboard_settings' );
 
 		$dashboard_settings = powerform_get_dashboard_settings();
+
 		$widgets            = array( 'forms', 'polls', 'quizzes' );
 
-		$num_recents = isset( $_POST['num_recent'] ) ? $_POST['num_recent'] : array();// WPCS: CSRF ok by powerform_validate_ajax.
-		$publisheds  = isset( $_POST['published'] ) ? $_POST['published'] : array();// WPCS: CSRF ok by powerform_validate_ajax.
-		$drafts      = isset( $_POST['draft'] ) ? $_POST['draft'] : array();// WPCS: CSRF ok by powerform_validate_ajax.
+		$num_recents = isset( $_POST['num_recent'] ) ? $_POST['num_recent'] : array();// phpcs:ignore -- by powerform_validate_ajax
+		$publisheds  = isset( $_POST['published'] ) ? $_POST['published'] : array();// phpcs:ignore -- by powerform_validate_ajax
+		$drafts      = isset( $_POST['draft'] ) ? $_POST['draft'] : array();// phpcs:ignore -- by powerform_validate_ajax
 
 		// value based settings
 		foreach ( $num_recents as $widget => $value ) {
@@ -1574,8 +1886,539 @@ class Powerform_Admin_AJAX {
 		}
 
 		update_option( 'powerform_dashboard_settings', $dashboard_settings );
+		update_option( "powerform_sender_email_address", sanitize_text_field( $_POST['sender_email'] ) );
+		update_option( "powerform_sender_name", sanitize_text_field( stripcslashes( $_POST['sender_name'] ) ) );
+
+		$pagination         = intval( sanitize_text_field( $_POST['pagination_entries'] ) );
+		$pagination_listing = intval( sanitize_text_field( $_POST['pagination_listings'] ) );
+
+
+		if ( 1 > $pagination || 1 > $pagination_listing ) {
+			wp_send_json_error( __( 'Limit per page can not be less than one.', Powerform::DOMAIN ) );
+		}
+
+		update_option( 'powerform_pagination_entries', $pagination );
+		update_option( 'powerform_pagination_listings', $pagination_listing );
+
+		if ( isset( $_POST['editor_settings'] ) ) {
+			update_option( "powerform_editor_settings", sanitize_text_field( $_POST['editor_settings'] ) );
+		} else {
+			update_option( "powerform_editor_settings", false );
+		}
 
 		wp_send_json_success();
 	}
 
+	/**
+	 * Validate Calculation Formula
+	 *
+	 * @since 1.7
+	 */
+	public function validate_calculation_formula() {
+
+		// Validate nonce
+		powerform_validate_ajax( 'powerform_validate_calculation_formula' );
+
+		try {
+			$formula = isset( $_POST['formula'] ) ? $_POST['formula'] : '';// phpcs:ignore -- by powerform_validate_ajax
+
+			$formula    = powerform_calculator_maybe_dummify_fields_on_formula( $formula );
+			$calculator = new Powerform_Calculator( $formula );
+			// handle throw
+			$calculator->set_is_throwable( true );
+			$calculator->parse();
+
+			wp_send_json_success( __( 'Calculation formula validated successfully.', Powerform::DOMAIN ) );
+
+		} catch ( Powerform_Calculator_Exception $e ) {
+			wp_send_json_error( __( 'Invalid calculation formula. Please check again.', Powerform::DOMAIN ) );
+		}
+	}
+
+	/**
+	 * Disconnect stripe
+	 *
+	 * @since 1.7
+	 */
+	public function stripe_disconnect() {
+		// Validate nonce
+		powerform_validate_ajax( 'powerformSettingsRequest' );
+
+		if ( class_exists( 'Powerform_Gateway_Stripe' ) ) {
+			Powerform_Gateway_Stripe::store_settings( array() );
+		}
+		$data['notification'] = array(
+			'type'     => 'success',
+			'text'     => __( 'Stripe account disconnected successfully.', Powerform::DOMAIN ),
+			'duration' => '4000',
+		);
+		$file                 = powerform_plugin_dir() . 'admin/views/settings/payments/section-stripe.php';
+
+		ob_start();
+		/** @noinspection PhpIncludeInspection */
+		include $file;
+		$data['html'] = ob_get_clean();
+
+		wp_send_json_success( $data );
+	}
+
+	/**
+	 * Disconnect PayPal
+	 *
+	 * @since 1.7
+	 */
+	public function paypal_disconnect() {
+		// Validate nonce
+		powerform_validate_ajax( 'powerformSettingsRequest' );
+
+		if ( class_exists( 'Powerform_PayPal_Express' ) ) {
+			Powerform_PayPal_Express::store_settings( array() );
+		}
+		$data['notification'] = array(
+			'type'     => 'success',
+			'text'     => __( 'PayPal account disconnected successfully.', Powerform::DOMAIN ),
+			'duration' => '4000',
+		);
+		$file                 = powerform_plugin_dir() . 'admin/views/settings/payments/section-paypal.php';
+
+		ob_start();
+		/** @noinspection PhpIncludeInspection */
+		include $file;
+		$data['html'] = ob_get_clean();
+
+		wp_send_json_success( $data );
+	}
+
+	/**
+	 * Handle stripe settings
+	 *
+	 * @since 1.7
+	 */
+	public function stripe_update_page() {
+		// Validate nonce
+		powerform_validate_ajax( 'powerform_stripe_settings_modal' );
+
+		$file = powerform_plugin_dir() . 'admin/views/settings/payments/section-stripe.php';
+
+		ob_start();
+		/** @noinspection PhpIncludeInspection */
+		include $file;
+		$html = ob_get_clean();
+
+		wp_send_json_success( $html );
+	}
+
+	/**
+	 * Handle PayPal settings
+	 *
+	 * @since 1.7
+	 */
+	public function paypal_update_page() {
+		// Validate nonce
+		powerform_validate_ajax( 'powerform_paypal_settings_modal' );
+
+		$file = powerform_plugin_dir() . 'admin/views/settings/payments/section-paypal.php';
+
+		ob_start();
+		/** @noinspection PhpIncludeInspection */
+		include $file;
+		$html = ob_get_clean();
+
+		wp_send_json_success( $html );
+	}
+
+	/**
+	 * Handle stripe settings
+	 *
+	 * @since 1.7
+	 */
+	public function stripe_settings_modal() {
+		if ( ! class_exists( 'Powerform_Gateway_Stripe' ) ) {
+			return false;
+		}
+
+		// Validate nonce
+		powerform_validate_ajax( 'powerform_stripe_settings_modal' );
+
+		$data = array();
+
+		$post_data          = $_POST;// phpcs:ignore -- by powerform_validate_ajax
+		$is_connect_request = isset( $post_data['connect'] ) ? filter_var( $post_data['connect'] ) : false;
+		$template_vars      = array();
+		try {
+			$stripe = new Powerform_Gateway_Stripe();
+
+			$test_key         = isset( $post_data['test_key'] ) ? $post_data['test_key'] : $stripe->get_test_key();// WPCS: CSRF ok by powerform_validate_ajax.
+			$test_secret      = isset( $post_data['test_secret'] ) ? $post_data['test_secret'] : $stripe->get_test_secret();// WPCS: CSRF ok by powerform_validate_ajax.
+			$live_key         = isset( $post_data['live_key'] ) ? $post_data['live_key'] : $stripe->get_live_key();// WPCS: CSRF ok by powerform_validate_ajax.
+			$live_secret      = isset( $post_data['live_secret'] ) ? $post_data['live_secret'] : $stripe->get_live_secret();// WPCS: CSRF ok by powerform_validate_ajax.
+			$default_currency = $stripe->get_default_currency();
+
+			$template_vars['test_key']    = $test_key;
+			$template_vars['test_secret'] = $test_secret;
+			$template_vars['live_key']    = $live_key;
+			$template_vars['live_secret'] = $live_secret;
+
+			if ( ! empty( $is_connect_request ) ) {
+				if ( empty( $test_key ) ) {
+					throw new Powerform_Gateway_Exception(
+						'',
+						Powerform_Gateway_Stripe::EMPTY_TEST_KEY_EXCEPTION
+					);
+				}
+				if ( empty( $test_secret ) ) {
+					throw new Powerform_Gateway_Exception(
+						'',
+						Powerform_Gateway_Stripe::EMPTY_TEST_SECRET_EXCEPTION
+					);
+				}
+
+				Powerform_Gateway_Stripe::validate_keys( $test_key, $test_secret, Powerform_Gateway_Stripe::INVALID_TEST_SECRET_EXCEPTION );
+
+				if ( empty( $live_key ) ) {
+					throw new Powerform_Gateway_Exception(
+						'',
+						Powerform_Gateway_Stripe::EMPTY_LIVE_KEY_EXCEPTION
+					);
+				}
+				if ( empty( $live_secret ) ) {
+					throw new Powerform_Gateway_Exception(
+						'',
+						Powerform_Gateway_Stripe::EMPTY_LIVE_SECRET_EXCEPTION
+					);
+				}
+
+				Powerform_Gateway_Stripe::validate_keys( $live_key, $live_secret, Powerform_Gateway_Stripe::INVALID_LIVE_SECRET_EXCEPTION );
+
+				Powerform_Gateway_Stripe::store_settings(
+					array(
+						'test_key'         => $test_key,
+						'test_secret'      => $test_secret,
+						'live_key'         => $live_key,
+						'live_secret'      => $live_secret,
+						'default_currency' => $default_currency,
+					)
+				);
+
+				$data['notification'] = array(
+					'type'     => 'success',
+					'text'     => __( 'Stripe account connected successfully. You can now add the Stripe field to your forms and start collecting payments.', Powerform::DOMAIN ),
+					'duration' => '4000',
+				);
+
+			}
+		} catch ( Powerform_Gateway_Exception $e ) {
+			powerform_maybe_log( __METHOD__, $e->getMessage(), $e->getTrace() );
+			$template_vars['error_message'] = $e->getMessage();
+
+			if ( Powerform_Gateway_Stripe::EMPTY_TEST_KEY_EXCEPTION === $e->getCode() ) {
+				$template_vars['test_key_error'] = __( 'Please input test publishable key' );
+			}
+			if ( Powerform_Gateway_Stripe::EMPTY_TEST_SECRET_EXCEPTION === $e->getCode() ) {
+				$template_vars['test_secret_error'] = __( 'Please input test secret key' );
+			}
+			if ( Powerform_Gateway_Stripe::EMPTY_LIVE_KEY_EXCEPTION === $e->getCode() ) {
+				$template_vars['live_key_error'] = __( 'Please input live publishable key' );
+			}
+			if ( Powerform_Gateway_Stripe::EMPTY_LIVE_SECRET_EXCEPTION === $e->getCode() ) {
+				$template_vars['live_secret_error'] = __( 'Please input live secret key' );
+			}
+			if ( Powerform_Gateway_Stripe::INVALID_TEST_SECRET_EXCEPTION === $e->getCode() ) {
+				$template_vars['test_secret_error'] = __( 'You\'ve entered an invalid test secret key' );
+			}
+			if ( Powerform_Gateway_Stripe::INVALID_LIVE_SECRET_EXCEPTION === $e->getCode() ) {
+				$template_vars['live_secret_error'] = __( 'You\'ve entered an invalid live secret key' );
+			}
+			if ( Powerform_Gateway_Stripe::INVALID_TEST_KEY_EXCEPTION === $e->getCode() ) {
+				$template_vars['test_key_error'] = __( 'You\'ve entered an invalid test publishable key' );
+			}
+			if ( Powerform_Gateway_Stripe::INVALID_LIVE_KEY_EXCEPTION === $e->getCode() ) {
+				$template_vars['live_key_error'] = __( 'You\'ve entered an invalid live publishable key' );
+			}
+		}
+
+		ob_start();
+		/** @noinspection PhpIncludeInspection */
+		include powerform_plugin_dir() . 'admin/views/settings/payments/stripe.php';
+		$html = ob_get_clean();
+
+		$data['html'] = $html;
+
+		$data['buttons'] = array();
+
+		$data['buttons']['connect']['markup'] = '<div class="sui-actions-right">' .
+													'<button class="sui-button powerform-stripe-connect" type="button" data-nonce="' . wp_create_nonce( 'powerform_stripe_settings_modal' ) . '">' .
+														'<span class="sui-loading-text">' . esc_html__( 'Connect', Powerform::DOMAIN ) . '</span>' .
+														'<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>' .
+													'</button>' .
+												'</div>';
+
+		wp_send_json_success( $data );
+	}
+
+	/**
+	 * Handle PayPal settings
+	 *
+	 * @since 1.7.1
+	 */
+	public function paypal_settings_modal() {
+		// Validate nonce
+		powerform_validate_ajax( 'powerform_paypal_settings_modal' );
+
+		$data = array();
+
+		$post_data          = $_POST;// phpcs:ignore -- by powerform_validate_ajax
+		$is_connect_request = isset( $post_data['connect'] ) ? filter_var( $post_data['connect'] ) : false;
+		$template_vars      = array();
+
+		try {
+			$paypal = new Powerform_PayPal_Express();
+
+			$sandbox_id       = isset( $post_data['sandbox_id'] ) ? $post_data['sandbox_id'] : $paypal->get_sandbox_id();// WPCS: CSRF ok by powerform_validate_ajax.
+			$sandbox_secret   = isset( $post_data['sandbox_secret'] ) ? $post_data['sandbox_secret'] : $paypal->get_sandbox_secret();// WPCS: CSRF ok by powerform_validate_ajax.
+			$live_id          = isset( $post_data['live_id'] ) ? $post_data['live_id'] : $paypal->get_live_id();// WPCS: CSRF ok by powerform_validate_ajax.
+			$live_secret      = isset( $post_data['live_secret'] ) ? $post_data['live_secret'] : $paypal->get_live_secret();// WPCS: CSRF ok by powerform_validate_ajax.
+			$default_currency = $paypal->get_default_currency();
+
+			$template_vars['sandbox_id']     = $sandbox_id;
+			$template_vars['sandbox_secret'] = $sandbox_secret;
+			$template_vars['live_id']        = $live_id;
+			$template_vars['live_secret']    = $live_secret;
+
+			if ( ! empty( $is_connect_request ) ) {
+				if ( empty( $sandbox_id ) ) {
+					throw new Powerform_Gateway_Exception(
+						'',
+						Powerform_PayPal_Express::EMPTY_SANDBOX_ID_EXCEPTION
+					);
+				}
+				if ( empty( $sandbox_secret ) ) {
+					throw new Powerform_Gateway_Exception(
+						'',
+						Powerform_PayPal_Express::EMPTY_SANDBOX_SECRET_EXCEPTION
+					);
+				}
+
+				$paypal->validate_id( 'sandbox', $sandbox_id, $sandbox_secret, Powerform_PayPal_Express::INVALID_SANDBOX_SECRET_EXCEPTION );
+
+				if ( empty( $live_id ) ) {
+					throw new Powerform_Gateway_Exception(
+						'',
+						Powerform_PayPal_Express::EMPTY_LIVE_ID_EXCEPTION
+					);
+				}
+				if ( empty( $live_secret ) ) {
+					throw new Powerform_Gateway_Exception(
+						'',
+						Powerform_PayPal_Express::EMPTY_LIVE_SECRET_EXCEPTION
+					);
+				}
+
+				$paypal->validate_id( 'live', $live_id, $live_secret, Powerform_PayPal_Express::INVALID_LIVE_SECRET_EXCEPTION );
+
+				Powerform_PayPal_Express::store_settings(
+					array(
+						'sandbox_id'     => $sandbox_id,
+						'sandbox_secret' => $sandbox_secret,
+						'live_id'        => $live_id,
+						'live_secret'    => $live_secret,
+						'currency'       => $default_currency,
+					)
+				);
+
+				$data['notification'] = array(
+					'type'     => 'success',
+					'text'     => __( 'PayPal account connected successfully. You can now add the PayPal field to your forms and start collecting payments.', Powerform::DOMAIN ),
+					'duration' => '4000',
+				);
+
+			}
+		} catch ( Powerform_Gateway_Exception $e ) {
+			powerform_maybe_log( __METHOD__, $e->getMessage(), $e->getTrace() );
+			$template_vars['error_message'] = $e->getMessage();
+
+			if ( Powerform_PayPal_Express::EMPTY_SANDBOX_ID_EXCEPTION === $e->getCode() ) {
+				$template_vars['sandbox_id_error'] = __( 'Please input sandbox client id' );
+			}
+			if ( Powerform_PayPal_Express::EMPTY_SANDBOX_SECRET_EXCEPTION === $e->getCode() ) {
+				$template_vars['sandbox_secret_error'] = __( 'Please input sandbox secret key' );
+			}
+			if ( Powerform_PayPal_Express::EMPTY_LIVE_ID_EXCEPTION === $e->getCode() ) {
+				$template_vars['live_id_error'] = __( 'Please input live client id' );
+			}
+			if ( Powerform_PayPal_Express::EMPTY_LIVE_SECRET_EXCEPTION === $e->getCode() ) {
+				$template_vars['live_secret_error'] = __( 'Please input live secret key' );
+			}
+			if ( Powerform_PayPal_Express::INVALID_SANDBOX_SECRET_EXCEPTION === $e->getCode() ) {
+				$template_vars['sandbox_secret_error'] = __( 'You\'ve entered an invalid sandbox secret key' );
+			}
+			if ( Powerform_PayPal_Express::INVALID_LIVE_SECRET_EXCEPTION === $e->getCode() ) {
+				$template_vars['live_secret_error'] = __( 'You\'ve entered an invalid live secret key' );
+			}
+			if ( Powerform_PayPal_Express::INVALID_SANDBOX_ID_EXCEPTION === $e->getCode() ) {
+				$template_vars['sandbox_id_error'] = __( 'You\'ve entered an invalid sandbox client id' );
+			}
+			if ( Powerform_PayPal_Express::INVALID_LIVE_ID_EXCEPTION === $e->getCode() ) {
+				$template_vars['live_id_error'] = __( 'You\'ve entered an invalid live client id' );
+			}
+		}
+
+		ob_start();
+		/** @noinspection PhpIncludeInspection */
+		include powerform_plugin_dir() . 'admin/views/settings/payments/paypal.php';
+		$html = ob_get_clean();
+
+		$data['html'] = $html;
+
+		$data['buttons'] = array();
+
+		$data['buttons']['connect']['markup'] = '<div class="sui-actions-right">' .
+												'<button class="sui-button powerform-paypal-connect" type="button" data-nonce="' . wp_create_nonce( 'powerform_paypal_settings_modal' ) . '">' .
+												'<span class="sui-loading-text">' . esc_html__( 'Connect', Powerform::DOMAIN ) . '</span>' .
+												'<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>' .
+												'</button>' .
+												'</div>';
+
+		wp_send_json_success( $data );
+	}
+
+	/**
+	 * Dismiss notice
+	 *
+	 * @since 1.9
+	 */
+	public function dismiss_notice() {
+		powerform_validate_ajax( 'powerform_dismiss_notification' );
+
+		$notification_name = filter_input( INPUT_POST, 'prop', FILTER_SANITIZE_STRING );
+
+		update_option( $notification_name, true );
+
+		$version_upgraded = get_option( 'powerform_version_upgraded', false );
+
+		if ( $version_upgraded ) {
+			update_option( 'powerform_version_upgraded', false );
+		}
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Dismiss notice
+	 *
+	 * @since 1.9
+	 */
+	public function later_notice() {
+		powerform_validate_ajax( "powerform_dismiss_notification" );
+
+		$notification_name = filter_input( INPUT_POST, 'prop', FILTER_SANITIZE_STRING );
+		$form_id = filter_input( INPUT_POST, 'form_id', FILTER_SANITIZE_NUMBER_INT );
+
+		update_post_meta( $form_id, $notification_name, true );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Save general payments settings
+	 *
+	 * @since 1.7
+	 */
+	public function save_payments() {
+		powerform_validate_ajax( 'powerform_save_payments_settings' );
+
+		// stripe
+		if ( isset( $_POST['stripe-default-currency'] ) && ! empty( $_POST['stripe-default-currency'] ) ) {
+			$default_currency = sanitize_text_field( $_POST['stripe-default-currency'] );
+
+			try {
+				$stripe = new Powerform_Gateway_Stripe();
+
+				$test_key    = $stripe->get_test_key();
+				$test_secret = $stripe->get_test_secret();
+				$live_key    = $stripe->get_live_key();
+				$live_secret = $stripe->get_live_secret();
+
+				Powerform_Gateway_Stripe::store_settings(
+					array(
+						'test_key'         => $test_key,
+						'test_secret'      => $test_secret,
+						'live_key'         => $live_key,
+						'live_secret'      => $live_secret,
+						'default_currency' => $default_currency,
+					)
+				);
+
+			} catch ( Powerform_Gateway_Exception $e ) {
+				wp_send_json_error( $e->getMessage() );
+			}
+		}
+
+		// paypal
+		if ( isset( $_POST['paypal-default-currency'] ) && ! empty( $_POST['paypal-default-currency'] ) ) {
+			$default_currency = sanitize_text_field( $_POST['paypal-default-currency'] );
+
+			try {
+				$paypal = new Powerform_PayPal_Express();
+
+				$sandbox_id     = $paypal->get_sandbox_id();
+				$sandbox_secret = $paypal->get_sandbox_secret();
+				$live_id        = $paypal->get_live_id();
+				$live_secret    = $paypal->get_live_secret();
+
+				Powerform_PayPal_Express::store_settings(
+					array(
+						'sandbox_id'     => $sandbox_id,
+						'sandbox_secret' => $sandbox_secret,
+						'live_id'        => $live_id,
+						'live_secret'    => $live_secret,
+						'currency'       => $default_currency,
+					)
+				);
+
+			} catch ( Powerform_Gateway_Exception $e ) {
+				wp_send_json_error( $e->getMessage() );
+			}
+		}
+
+		wp_send_json_success();
+
+	}
+
+	/**
+	 * Delete all poll submission
+	 *
+	 * @since 1.7.2
+	 */
+	public function delete_poll_submissions() {
+		powerform_validate_ajax( 'powerformPollEntries' );
+
+		if ( ! empty( $_POST['id'] ) ) {
+			$form_id = intval( $_POST['id'] );
+
+			Powerform_Form_Entry_Model::delete_by_form( $form_id );
+
+			$file = powerform_plugin_dir() . 'admin/views/poll/entries/content-none.php';
+
+			ob_start();
+			/** @noinspection PhpIncludeInspection */
+			include $file;
+			$html = ob_get_clean();
+
+			$data['html']         = $html;
+			$data['notification'] = array(
+				'type'     => 'success',
+				'text'     => __( 'All the submissions deleted successfully.', Powerform::DOMAIN ),
+				'duration' => '4000',
+			);
+			wp_send_json_success( $data );
+		} else {
+			$data['notification'] = array(
+				'type'     => 'error',
+				'text'     => __( 'Submission delete failed.', Powerform::DOMAIN ),
+				'duration' => '4000',
+			);
+			wp_send_json_error( $data );
+		}
+	}
 }

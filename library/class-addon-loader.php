@@ -141,10 +141,10 @@ class Powerform_Addon_Loader {
 		 * Initiate standard default error messages
 		 */
 		$this->default_addon_error_messages = array(
-			'activate'             => __( 'Failed to activate addon', Powerform::DOMAIN ),
-			'deactivate'           => __( 'Failed to deactivate addon', Powerform::DOMAIN ),
-			'update_settings'      => __( 'Failed to update settings', Powerform::DOMAIN ),
-			'update_form_settings' => __( 'Failed to update form settings', Powerform::DOMAIN ),
+			'activate'             => __( 'Addon konnte nicht aktiviert werden', Powerform::DOMAIN ),
+			'deactivate'           => __( 'Addon konnte nicht deaktiviert werden', Powerform::DOMAIN ),
+			'update_settings'      => __( 'Einstellungen konnten nicht aktualisiert werden', Powerform::DOMAIN ),
+			'update_form_settings' => __( 'Fehler beim Aktualisieren der Formulareinstellungen', Powerform::DOMAIN ),
 		);
 
 		// Only enable wp_ajax hooks
@@ -358,13 +358,13 @@ class Powerform_Addon_Loader {
 	public function deactivate_addon( $slug ) {
 		$addon = $this->get_addon( $slug );
 		if ( is_null( $addon ) ) {
-			$this->last_error_message = __( 'Addon not found', Powerform::DOMAIN );
+			$this->last_error_message = __( 'Addon nicht gefunden', Powerform::DOMAIN );
 
 			return false;
 		}
 
 		if ( ! $this->addon_is_active( $slug ) ) {
-			$this->last_error_message = __( 'Addon is not activated before', Powerform::DOMAIN );
+			$this->last_error_message = __( 'Addon ist vorher nicht aktiviert', Powerform::DOMAIN );
 
 			return false;
 		}
@@ -439,11 +439,14 @@ class Powerform_Addon_Loader {
 			$version_options_name  = 'powerform_addon_' . $slug . '_version';
 			$settions_options_name = 'powerform_addon_' . $slug . '_settings';
 		}
+		$setting_form_meta_name =  'powerform_addon_' . $slug . '_form_settings';
 
 		//delete version
 		delete_option( $version_options_name );
 		//delete general settings
 		delete_option( $settions_options_name );
+		//delete post meta
+		delete_post_meta_by_key( $setting_form_meta_name );
 
 		/**
 		 * Fires when activated addons removed from wp options
@@ -481,19 +484,19 @@ class Powerform_Addon_Loader {
 
 
 		if ( is_null( $addon ) ) {
-			$this->last_error_message = __( 'Addon not found', Powerform::DOMAIN );
+			$this->last_error_message = __( 'Addon nicht gefunden', Powerform::DOMAIN );
 
 			return false;
 		}
 
 		if ( $this->addon_is_active( $slug ) ) {
-			$this->last_error_message = __( 'Addon already activated before', Powerform::DOMAIN );
+			$this->last_error_message = __( 'Addon bereits zuvor aktiviert', Powerform::DOMAIN );
 
 			return false;
 		}
 
 		if ( ! $addon->is_activable() ) {
-			$this->last_error_message = __( 'Addon is not activable', Powerform::DOMAIN );
+			$this->last_error_message = __( 'Addon ist nicht aktivierbar', Powerform::DOMAIN );
 
 			return false;
 		}

@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Script extends Google_Service
+class Powerform_Google_Service_Script extends Powerform_Google_Service
 {
   /** View and manage your mail. */
   const MAIL_GOOGLE_COM =
@@ -60,14 +60,14 @@ class Google_Service_Script extends Google_Service
       "https://www.googleapis.com/auth/userinfo.email";
 
   public $scripts;
-
+  
 
   /**
    * Constructs the internal representation of the Script service.
    *
-   * @param Google_Client $client
+   * @param Powerform_Google_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Powerform_Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://script.googleapis.com/';
@@ -75,7 +75,7 @@ class Google_Service_Script extends Google_Service
     $this->version = 'v1';
     $this->serviceName = 'script';
 
-    $this->scripts = new Google_Service_Script_Scripts_Resource(
+    $this->scripts = new Powerform_Google_Service_Script_Scripts_Resource(
         $this,
         $this->serviceName,
         'scripts',
@@ -103,11 +103,11 @@ class Google_Service_Script extends Google_Service
  * The "scripts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $scriptService = new Google_Service_Script(...);
+ *   $scriptService = new Powerform_Google_Service_Script(...);
  *   $scripts = $scriptService->scripts;
  *  </code>
  */
-class Google_Service_Script_Scripts_Resource extends Google_Service_Resource
+class Powerform_Google_Service_Script_Scripts_Resource extends Powerform_Google_Service_Resource
 {
 
   /**
@@ -123,29 +123,29 @@ class Google_Service_Script_Scripts_Resource extends Google_Service_Resource
    * @param string $scriptId The project key of the script to be executed. To find
    * the project key, open the project in the script editor, then select **File >
    * Project properties**.
-   * @param Google_ExecutionRequest $postBody
+   * @param Powerform_Google_ExecutionRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Script_Operation
+   * @return Powerform_Google_Service_Script_Operation
    */
-  public function run($scriptId, Google_Service_Script_ExecutionRequest $postBody, $optParams = array())
+  public function run($scriptId, Powerform_Google_Service_Script_ExecutionRequest $postBody, $optParams = array())
   {
     $params = array('scriptId' => $scriptId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('run', array($params), "Google_Service_Script_Operation");
+    return $this->call('run', array($params), "Powerform_Google_Service_Script_Operation");
   }
 }
 
 
 
 
-class Google_Service_Script_ExecutionError extends Google_Collection
+class Powerform_Google_Service_Script_ExecutionError extends Powerform_Google_Collection
 {
   protected $collection_key = 'scriptStackTraceElements';
   protected $internal_gapi_mappings = array(
   );
   public $errorMessage;
   public $errorType;
-  protected $scriptStackTraceElementsType = 'Google_Service_Script_ScriptStackTraceElement';
+  protected $scriptStackTraceElementsType = 'Powerform_Google_Service_Script_ScriptStackTraceElement';
   protected $scriptStackTraceElementsDataType = 'array';
 
 
@@ -175,7 +175,7 @@ class Google_Service_Script_ExecutionError extends Google_Collection
   }
 }
 
-class Google_Service_Script_ExecutionRequest extends Google_Collection
+class Powerform_Google_Service_Script_ExecutionRequest extends Powerform_Google_Collection
 {
   protected $collection_key = 'parameters';
   protected $internal_gapi_mappings = array(
@@ -220,7 +220,7 @@ class Google_Service_Script_ExecutionRequest extends Google_Collection
   }
 }
 
-class Google_Service_Script_ExecutionResponse extends Google_Model
+class Powerform_Google_Service_Script_ExecutionResponse extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -237,12 +237,12 @@ class Google_Service_Script_ExecutionResponse extends Google_Model
   }
 }
 
-class Google_Service_Script_Operation extends Google_Model
+class Powerform_Google_Service_Script_Operation extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $done;
-  protected $errorType = 'Google_Service_Script_Status';
+  protected $errorType = 'Powerform_Google_Service_Script_Status';
   protected $errorDataType = '';
   public $metadata;
   public $name;
@@ -257,7 +257,7 @@ class Google_Service_Script_Operation extends Google_Model
   {
     return $this->done;
   }
-  public function setError(Google_Service_Script_Status $error)
+  public function setError(Powerform_Google_Service_Script_Status $error)
   {
     $this->error = $error;
   }
@@ -291,7 +291,7 @@ class Google_Service_Script_Operation extends Google_Model
   }
 }
 
-class Google_Service_Script_ScriptStackTraceElement extends Google_Model
+class Powerform_Google_Service_Script_ScriptStackTraceElement extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -317,7 +317,7 @@ class Google_Service_Script_ScriptStackTraceElement extends Google_Model
   }
 }
 
-class Google_Service_Script_Status extends Google_Collection
+class Powerform_Google_Service_Script_Status extends Powerform_Google_Collection
 {
   protected $collection_key = 'details';
   protected $internal_gapi_mappings = array(

@@ -116,7 +116,6 @@ class Powerform_Form_Entry_Model {
 				if ( ! empty( $this->entry_type ) && in_array( $this->entry_type, $entry_types, true ) ) {
 					self::get_connected_addons( $this->form_id );
 				}
-
 			}
 		}
 
@@ -150,9 +149,9 @@ class Powerform_Form_Entry_Model {
 
 			return $entry_object_cache;
 		} else {
-			$table_name      = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
-			$sql   = "SELECT `entry_type`, `form_id`, `is_spam`, `date_created` FROM {$table_name} WHERE `entry_id` = %d";
-			$entry = $wpdb->get_row( $wpdb->prepare( $sql, $entry_id ) ); // WPCS: unprepared SQL ok. false positive
+			$table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
+			$sql        = "SELECT `entry_type`, `form_id`, `is_spam`, `date_created` FROM {$table_name} WHERE `entry_id` = %d";
+			$entry      = $wpdb->get_row( $wpdb->prepare( $sql, $entry_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			if ( $entry ) {
 				$this->entry_id         = $entry_id;
 				$this->entry_type       = $entry->entry_type;
@@ -176,6 +175,7 @@ class Powerform_Form_Entry_Model {
 	 *
 	 * @param array $meta_array {
 	 *                          Array of data to be saved
+	 * @param string $entry_date
 	 *
 	 * @type key - string the meta key
 	 * @type value - string the meta value
@@ -183,7 +183,7 @@ class Powerform_Form_Entry_Model {
 	 *
 	 * @return bool - true or false
 	 */
-	public function set_fields( $meta_array ) {
+	public function set_fields( $meta_array, $entry_date = '' ) {
 		global $wpdb;
 
 		if ( $meta_array && ! is_array( $meta_array ) && ! empty( $meta_array ) ) {
@@ -227,7 +227,7 @@ class Powerform_Form_Entry_Model {
 						'entry_id'     => $this->entry_id,
 						'meta_key'     => $key,
 						'meta_value'   => $value,
-						'date_created' => date_i18n( 'Y-m-d H:i:s' ),
+						'date_created' => ! empty( $entry_date ) ? $entry_date : date_i18n( 'Y-m-d H:i:s' ),
 					)
 				);
 
@@ -313,7 +313,6 @@ class Powerform_Form_Entry_Model {
 			if ( ! empty( $response ) ) {
 				return substr( trim( $response ), 0, - 1 );
 			}
-
 		}
 
 		return $default_value;
@@ -326,11 +325,18 @@ class Powerform_Form_Entry_Model {
 	 * @since 1.6.1 add $data_created arg
 	 *
 	 * @param string|null $data_created optional custom date created
+	 * @param int|null $entry_id
 	 *
 	 * @return bool
 	 */
-	public function save( $data_created = null ) {
+	public function save( $data_created = null, $entry_id = null ) {
 		global $wpdb;
+
+		if ( ! empty( $entry_id ) ) {
+			$this->entry_id = $entry_id;
+
+			return true;
+		}
 
 		if ( empty( $data_created ) ) {
 			$data_created = date_i18n( 'Y-m-d H:i:s' );
@@ -374,7 +380,7 @@ class Powerform_Form_Entry_Model {
 	 */
 	public static function field_suffix() {
 		return apply_filters(
-			"powerform_field_suffix",
+			'powerform_field_suffix',
 			array(
 				'hours',
 				'minutes',
@@ -415,30 +421,30 @@ class Powerform_Form_Entry_Model {
 		$translated_suffix = $suffix;
 		$field_suffixes    = self::field_suffix();
 		$default_label_map = array(
-			'hours'            => esc_html__( 'Stunde', Powerform::DOMAIN ),
+			'hours'            => esc_html__( 'Hour', Powerform::DOMAIN ),
 			'minutes'          => esc_html__( 'Minute', Powerform::DOMAIN ),
 			'ampm'             => esc_html__( 'AM/PM', Powerform::DOMAIN ),
-			'country'          => esc_html__( 'Land', Powerform::DOMAIN ),
-			'city'             => esc_html__( 'Stadt', Powerform::DOMAIN ),
-			'state'            => esc_html__( 'Staat', Powerform::DOMAIN ),
-			'zip'              => esc_html__( 'Postleitzahl', Powerform::DOMAIN ),
-			'street_address'   => esc_html__( 'Adresse', Powerform::DOMAIN ),
-			'address_line'     => esc_html__( 'Adresszeile 2', Powerform::DOMAIN ),
-			'year'             => esc_html__( 'Jahr', Powerform::DOMAIN ),
-			'day'              => esc_html__( 'Tag', Powerform::DOMAIN ),
-			'month'            => esc_html__( 'Monat', Powerform::DOMAIN ),
-			'prefix'           => esc_html__( 'Präfix', Powerform::DOMAIN ),
-			'first-name'       => esc_html__( 'Vorname', Powerform::DOMAIN ),
-			'middle-name'      => esc_html__( 'Zweiter Vorname', Powerform::DOMAIN ),
-			'last-name'        => esc_html__( 'Nachname', Powerform::DOMAIN ),
-			'post-title'       => esc_html__( 'Post-Titel', Powerform::DOMAIN ),
-			'post-content'     => esc_html__( 'Post-Content', Powerform::DOMAIN ),
-			'post-excerpt'     => esc_html__( 'Post-Auszug', Powerform::DOMAIN ),
-			'post-image'       => esc_html__( 'Post-Bild', Powerform::DOMAIN ),
-			'post-category'    => esc_html__( 'Post-Kategorie', Powerform::DOMAIN ),
-			'post-tags'        => esc_html__( 'Post-Tags', Powerform::DOMAIN ),
-			'product-id'       => esc_html__( 'Produkt-ID', Powerform::DOMAIN ),
-			'product-quantity' => esc_html__( 'Produkt-Menge', Powerform::DOMAIN ),
+			'country'          => esc_html__( 'Country', Powerform::DOMAIN ),
+			'city'             => esc_html__( 'City', Powerform::DOMAIN ),
+			'state'            => esc_html__( 'State', Powerform::DOMAIN ),
+			'zip'              => esc_html__( 'Zip', Powerform::DOMAIN ),
+			'street_address'   => esc_html__( 'Street Address', Powerform::DOMAIN ),
+			'address_line'     => esc_html__( 'Address Line 2', Powerform::DOMAIN ),
+			'year'             => esc_html__( 'Year', Powerform::DOMAIN ),
+			'day'              => esc_html__( 'Day', Powerform::DOMAIN ),
+			'month'            => esc_html__( 'Month', Powerform::DOMAIN ),
+			'prefix'           => esc_html__( 'Prefix', Powerform::DOMAIN ),
+			'first-name'       => esc_html__( 'First Name', Powerform::DOMAIN ),
+			'middle-name'      => esc_html__( 'Middle Name', Powerform::DOMAIN ),
+			'last-name'        => esc_html__( 'Last Name', Powerform::DOMAIN ),
+			'post-title'       => esc_html__( 'Post Title', Powerform::DOMAIN ),
+			'post-content'     => esc_html__( 'Post Content', Powerform::DOMAIN ),
+			'post-excerpt'     => esc_html__( 'Post Excerpt', Powerform::DOMAIN ),
+			'post-image'       => esc_html__( 'Post Image', Powerform::DOMAIN ),
+			'post-category'    => esc_html__( 'Post Category', Powerform::DOMAIN ),
+			'post-tags'        => esc_html__( 'Post Tags', Powerform::DOMAIN ),
+			'product-id'       => esc_html__( 'Product ID', Powerform::DOMAIN ),
+			'product-quantity' => esc_html__( 'Product Quantity', Powerform::DOMAIN ),
 		);
 
 		// could be filtered out field_suffix
@@ -455,7 +461,7 @@ class Powerform_Form_Entry_Model {
 		 *
 		 * @since 1.0.5
 		 */
-		return apply_filters( "powerform_translate_suffix", $translated_suffix, $suffix, $default_label_map );
+		return apply_filters( 'powerform_translate_suffix', $translated_suffix, $suffix, $default_label_map );
 	}
 
 	/**
@@ -467,7 +473,7 @@ class Powerform_Form_Entry_Model {
 	 * @return array
 	 */
 	public static function ignored_fields() {
-		return apply_filters( 'powerform_entry_ignored_fields', array( 'html', 'pagination', 'captcha', 'section' ) );
+		return apply_filters( 'powerform_entry_ignored_fields', array( 'html', 'page-break', 'captcha', 'section' ) );
 	}
 
 	/**
@@ -486,7 +492,7 @@ class Powerform_Form_Entry_Model {
 		$entries    = array();
 		$table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
 		$sql        = "SELECT `entry_id` FROM {$table_name} WHERE `form_id` = %d AND `is_spam` = 0 ORDER BY `entry_id` DESC LIMIT %d, %d ";
-		$results    = $wpdb->get_results( $wpdb->prepare( $sql, $form_id, $page, $per_page ) ); // WPCS: unprepared SQL ok. false positive
+		$results    = $wpdb->get_results( $wpdb->prepare( $sql, $form_id, $page, $per_page ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( ! empty( $results ) ) {
 			foreach ( $results as $result ) {
@@ -497,6 +503,34 @@ class Powerform_Form_Entry_Model {
 		return $entries;
 	}
 
+	/**
+	 * Return if form has live payment entry
+	 *
+	 * @since 1.10
+	 *
+	 * @param $form_id - the form id
+	 *
+	 * @return mixed
+	 */
+	public static function has_live_payment( $form_id ) {
+		global $wpdb;
+
+		$table_name       = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY_META );
+		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
+
+		$sql = "SELECT count(1) > 0
+			FROM {$table_name} m
+			LEFT JOIN {$entry_table_name} e
+			ON (m.entry_id = e.entry_id)
+			WHERE e.form_id = %d
+			AND ( m.meta_key = 'stripe-1' || m.meta_key = 'paypal-1' )
+			AND m.meta_value LIKE '%4:\"mode\";s:4:\"live\"%'
+			LIMIT 1";
+
+		$count = $wpdb->get_var( $wpdb->prepare( $sql, $form_id ) ); // WPCS: unprepared SQL ok. false positive
+
+		return $count;
+	}
 
 	/**
 	 * Get all entries
@@ -504,6 +538,7 @@ class Powerform_Form_Entry_Model {
 	 * @since 1.0
 	 *
 	 * @param int $form_id - the form id
+	 * @param int $filters
 	 *
 	 * @return Powerform_Form_Entry_Model[]
 	 */
@@ -512,7 +547,69 @@ class Powerform_Form_Entry_Model {
 		$entries    = array();
 		$table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
 		$sql        = "SELECT `entry_id` FROM {$table_name} WHERE `form_id` = %d AND `is_spam` = 0 ORDER BY `entry_id` DESC";
-		$results    = $wpdb->get_results( $wpdb->prepare( $sql, $form_id ) ); // WPCS: unprepared SQL ok. false positive
+		$results    = $wpdb->get_results( $wpdb->prepare( $sql, $form_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+
+		if ( ! empty( $results ) ) {
+			foreach ( $results as $result ) {
+				$entries[] = new Powerform_Form_Entry_Model( $result->entry_id );
+			}
+		}
+
+		return $entries;
+	}
+
+	/**
+	 * Get entries with filters
+	 *
+	 * @since 1.10
+	 *
+	 * @param int $form_id - the form id
+	 * @param array $filters
+	 *
+	 * @return Powerform_Form_Entry_Model[]
+	 */
+	public static function get_filter_entries( $form_id, $filters ) {
+		global $wpdb;
+		$entries                 = array();
+		$where                   = 'entries.`form_id` = %d AND entries.`is_spam` = 0';
+		$table_name              = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
+		$entries_meta_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY_META );
+		if ( isset( $filters['date_created'] ) ) {
+			$date_created = $filters['date_created'];
+			if ( is_array( $date_created ) && isset( $date_created[0] ) && isset( $date_created[1] ) ) {
+				$date_created[1] = $date_created[1] . ' 23:59:00';
+				$where          .= $wpdb->prepare( ' AND ( entries.date_created >= %s AND entries.date_created <= %s )', $date_created[0], $date_created[1] );
+			}
+		}
+
+		if ( isset( $filters['search'] ) ) {
+			$where .= $wpdb->prepare( ' AND metas.meta_value LIKE %s', '%' . $wpdb->esc_like( $filters['search'] ) . '%' );
+		}
+
+		if ( isset( $filters['min_id'] ) ) {
+			$where .= $wpdb->prepare( ' AND entries.entry_id >= %d', $filters['min_id'] );
+		}
+
+		if ( isset( $filters['max_id'] ) ) {
+			$where .= $wpdb->prepare( ' AND entries.entry_id <= %d', $filters['max_id'] );
+		}
+		$order_by = 'ORDER BY entries.entry_id';
+		if ( isset( $filters['order_by'] ) ) {
+			$order_by = 'ORDER BY ' . $filters['order_by']; // unesacaped
+		}
+		$order = 'DESC';
+		if ( isset( $filters['order'] ) ) {
+			$order = $filters['order'];
+		}
+
+		// group
+		$group_by = 'GROUP BY entries.entry_id';
+
+		$sql     = "SELECT entries.`entry_id` FROM {$table_name} entries
+						INNER JOIN {$entries_meta_table_name} AS metas
+    					ON (entries.entry_id = metas.entry_id)
+ 						WHERE {$where} {$group_by} {$order_by} {$order}";
+		$results = $wpdb->get_results( $wpdb->prepare( $sql, $form_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( ! empty( $results ) ) {
 			foreach ( $results as $result ) {
@@ -553,29 +650,27 @@ class Powerform_Form_Entry_Model {
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
 
 		foreach ( $fields_element_id_with_extra as $field_element_id_with_extra ) {
-			$sql
-				       = "SELECT m.entry_id AS entry_id
+			$sql       = "SELECT m.entry_id AS entry_id
 							FROM {$table_name} m
 							LEFT JOIN {$entry_table_name} e
 							ON (m.entry_id = e.entry_id)
 							WHERE e.form_id = %d
 							AND m.meta_key = %s
 							GROUP BY m.entry_id";
-			$sql       = $wpdb->prepare( $sql, $form_id, $field_element_id_with_extra ); // WPCS: unprepared SQL ok. false positive
-			$entry_ids = $wpdb->get_col( $sql ); // WPCS: unprepared SQL ok. false positive
+			$sql       = $wpdb->prepare( $sql, $form_id, $field_element_id_with_extra ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$entry_ids = $wpdb->get_col( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 			if ( ! empty( $entry_ids ) ) {
 				$entry_id_placeholders = implode( ', ', array_fill( 0, count( $entry_ids ), '%d' ) );
 
-				$sql
-					 = "SELECT m.meta_value AS meta_value, COUNT(1) votes
+				$sql = "SELECT m.meta_value AS meta_value, COUNT(1) votes
 							FROM {$table_name} m
 							WHERE m.entry_id IN ({$entry_id_placeholders})
 							AND m.meta_key = 'extra'
 							GROUP BY m.meta_value ORDER BY votes DESC";
-				$sql = $wpdb->prepare( $sql, $entry_ids ); // WPCS: unprepared SQL ok. false positive
+				$sql = $wpdb->prepare( $sql, $entry_ids ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
-				$votes = $wpdb->get_results( $sql, ARRAY_A ); // WPCS: unprepared SQL ok. false positive
+				$votes = $wpdb->get_results( $sql, ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 				$polls_with_extras[ $field_element_id_with_extra ] = array();
 				foreach ( $votes as $vote ) {
@@ -620,6 +715,31 @@ class Powerform_Form_Entry_Model {
 		return 0;
 	}
 
+	/**
+	 * Count lead entries by form
+	 *
+	 * @since 1.14
+	 *
+	 * @param int $form_id - the form id
+	 *
+	 * @return int - total entries
+	 */
+	public static function count_leads( $form_id ) {
+		global $wpdb;
+		$table_name       = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY_META );
+		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
+		$sql              =
+			"SELECT count(DISTINCT e.`entry_id`) FROM {$table_name} m LEFT JOIN {$entry_table_name} e ON(e.`entry_id` = m.`entry_id`) WHERE e.`form_id` = %d AND m.meta_key = 'skip_form' AND m.meta_value = '' AND e.`is_spam` = 0";
+
+		$entries          = $wpdb->get_var( $wpdb->prepare( $sql, $form_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+
+		if ( $entries ) {
+			return $entries;
+		}
+
+		return 0;
+	}
+
 
 	/**
 	 * Count entries by form
@@ -631,15 +751,15 @@ class Powerform_Form_Entry_Model {
 	 *
 	 * @return int - total entries
 	 */
-	public static function count_entries_by_form_and_field( $form_id, $field ) {
+	public static function count_entries_by_form_and_field( $form_id ) {
 		_deprecated_function( 'count_entries_by_form_and_field', '1.0.5' );
 		global $wpdb;
+		$field            = '';
 		$table_name       = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY_META );
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
-		$sql
-		                  =
+		$sql              =
 			"SELECT count(m.`meta_id`) FROM {$table_name} m LEFT JOIN {$entry_table_name} e ON(e.`entry_id` = m.`entry_id`) WHERE e.`form_id` = %d AND m.`meta_key` = %s AND e.`is_spam` = 0";
-		$entries          = $wpdb->get_var( $wpdb->prepare( $sql, $form_id, $field ) ); // WPCS: unprepared SQL ok. false positive
+		$entries          = $wpdb->get_var( $wpdb->prepare( $sql, $form_id, $field ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( $entries ) {
 			return $entries;
@@ -670,7 +790,7 @@ class Powerform_Form_Entry_Model {
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
 
 		// Make sure $form_id is always number
-		if( ! is_numeric( $form_id ) ) {
+		if ( ! is_numeric( $form_id ) ) {
 			$form_id = 0;
 		}
 
@@ -692,7 +812,7 @@ class Powerform_Form_Entry_Model {
 					WHERE e.form_id = {$form_id} AND m.meta_key NOT LIKE '{$new_element_id_format}' AND m.meta_value = '1' AND m.meta_key = '{$title}' LIMIT 1";
 
 			// todo : it can not be prepared by $wpdb->prepare since element_id because of `LIKE` query
-			$old_format_entries = $wpdb->get_var( $sql ); // WPCS: unprepared SQL OK
+			$old_format_entries = $wpdb->get_var( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 			// old format exist
 			if ( $old_format_entries ) {
@@ -710,13 +830,12 @@ class Powerform_Form_Entry_Model {
 					ON (e.`entry_id` = m.`entry_id`)
 					WHERE e.form_id = {$form_id} AND m.meta_key IN ({$element_ids_placeholders}) GROUP BY m.meta_key";
 
-			$sql = $wpdb->prepare( $sql, $element_ids ); // WPCS: unprepared SQL ok. false positive
+			$sql = $wpdb->prepare( $sql, $element_ids ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
-			$results = $wpdb->get_results( $sql, ARRAY_A ); // WPCS: unprepared SQL ok. false positive
+			$results = $wpdb->get_results( $sql, ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			foreach ( $results as $result ) {
 				$map_entries[ $result['element_id'] ] = $result['votes'];
 			}
-
 		}
 
 		return $map_entries;
@@ -749,7 +868,7 @@ class Powerform_Form_Entry_Model {
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
 
 		// Make sure $form_id is always number
-		if( ! is_numeric( $form_id ) ) {
+		if ( ! is_numeric( $form_id ) ) {
 			$form_id = 0;
 		}
 
@@ -771,7 +890,7 @@ class Powerform_Form_Entry_Model {
 					WHERE e.form_id = {$form_id} AND m.meta_key NOT LIKE '{$new_element_id_format}' AND m.meta_value = '1' AND m.meta_key = '{$title}' LIMIT 1";
 
 			// todo : it can not be prepared by $wpdb->prepare since element_id because of `LIKE` query
-			$old_format_entries = $wpdb->get_var( $sql ); // WPCS: unprepared SQL OK
+			$old_format_entries = $wpdb->get_var( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 			// old format exist
 			if ( $old_format_entries ) {
@@ -789,18 +908,17 @@ class Powerform_Form_Entry_Model {
 					ON (e.`entry_id` = m.`entry_id`)
 					WHERE e.form_id = {$form_id} AND m.meta_key IN ({$element_ids_placeholders})";
 
-			$sql = $wpdb->prepare( $sql, $element_ids ); // WPCS: unprepared SQL ok. false positive
+			$sql = $wpdb->prepare( $sql, $element_ids ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
-			$results = $wpdb->get_results( $sql, ARRAY_A ); // WPCS: unprepared SQL ok. false positive
+			$results = $wpdb->get_results( $sql, ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 			foreach ( $results as $result ) {
-				$map_entries[ $result['meta_id'] ][ 'entry_id' ] = $result['entry_id'];
-				$map_entries[ $result['meta_id'] ][ 'is_spam' ] = $result['is_spam'];
-				$map_entries[ $result['meta_id'] ][ 'date_created' ] = $result['date_created'];
-				$map_entries[ $result['meta_id'] ][ 'meta_key' ] = $result['meta_key'];
-				$map_entries[ $result['meta_id'] ][ 'meta_value' ] = $result['meta_value'];
+				$map_entries[ $result['meta_id'] ]['entry_id']     = $result['entry_id'];
+				$map_entries[ $result['meta_id'] ]['is_spam']      = $result['is_spam'];
+				$map_entries[ $result['meta_id'] ]['date_created'] = $result['date_created'];
+				$map_entries[ $result['meta_id'] ]['meta_key']     = $result['meta_key'];
+				$map_entries[ $result['meta_id'] ]['meta_value']   = $result['meta_value'];
 			}
-
 		}
 
 		return $map_entries;
@@ -822,8 +940,8 @@ class Powerform_Form_Entry_Model {
 		// find entries that using old format
 		$sql = "SELECT entry_id FROM {$entry_table_name} where form_id = %d";
 
-		$sql       = $wpdb->prepare( $sql, $form_id ); // WPCS: unprepared SQL ok. false positive
-		$entry_ids = $wpdb->get_col( $sql ); // WPCS: unprepared SQL ok. false positive
+		$sql       = $wpdb->prepare( $sql, $form_id ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$entry_ids = $wpdb->get_col( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		if ( ! empty( $entry_ids ) && count( $entry_ids ) > 0 ) {
 			$entry_ids = implode( ', ', $entry_ids );
 			$wpdb->query(
@@ -853,10 +971,9 @@ class Powerform_Form_Entry_Model {
 		global $wpdb;
 		$table_name       = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY_META );
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
-		$sql
-		                  =
+		$sql              =
 			"SELECT m.`date_created` FROM {$table_name} m LEFT JOIN {$entry_table_name} e ON(e.`entry_id` = m.`entry_id`) WHERE e.`form_id` = %d AND m.`meta_key` = %s AND m.`meta_value` = %s order by m.`meta_id` desc limit 0,1";
-		$entry_date       = $wpdb->get_var( $wpdb->prepare( $sql, $form_id, '_powerform_user_ip', $ip ) ); // WPCS: unprepared SQL ok. false postive
+		$entry_date       = $wpdb->get_var( $wpdb->prepare( $sql, $form_id, '_powerform_user_ip', $ip ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( $entry_date ) {
 			return $entry_date;
@@ -879,10 +996,9 @@ class Powerform_Form_Entry_Model {
 		global $wpdb;
 		$table_name       = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY_META );
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
-		$sql
-		                  =
+		$sql              =
 			"SELECT m.`entry_id` FROM {$table_name} m LEFT JOIN {$entry_table_name} e ON(e.`entry_id` = m.`entry_id`) WHERE e.`form_id` = %d AND m.`meta_key` = %s AND m.`meta_value` = %s order by m.`meta_id` desc limit 0,1";
-		$entry_id         = $wpdb->get_var( $wpdb->prepare( $sql, $form_id, '_powerform_user_ip', $ip ) ); // WPCS: unprepared SQL ok. false positive
+		$entry_id         = $wpdb->get_var( $wpdb->prepare( $sql, $form_id, '_powerform_user_ip', $ip ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( $entry_id ) {
 			return $entry_id;
@@ -909,10 +1025,9 @@ class Powerform_Form_Entry_Model {
 		$table_name       = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY_META );
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
 		$interval         = esc_sql( $interval );
-		$sql
-		                  =
+		$sql              =
 			"SELECT m.`meta_id` FROM {$table_name} m LEFT JOIN {$entry_table_name} e ON(e.`entry_id` = m.`entry_id`) WHERE e.`form_id` = %d AND m.`meta_key` = %s AND m.`meta_value` = %s AND m.`entry_id` = %d AND DATE_ADD(m.`date_created`, {$interval}) < %s order by m.`meta_id` desc limit 0,1";
-		$entry            = $wpdb->get_var( $wpdb->prepare( $sql, $form_id, '_powerform_user_ip', $ip, $entry_id, $current_date ) ); // WPCS: unprepared SQL ok. false positive
+		$entry            = $wpdb->get_var( $wpdb->prepare( $sql, $form_id, '_powerform_user_ip', $ip, $entry_id, $current_date ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( $entry ) {
 			return $entry;
@@ -968,7 +1083,6 @@ class Powerform_Form_Entry_Model {
 		$form_id = (int) $form_id;
 		// get connected addons since
 		self::get_connected_addons( $form_id );
-
 		if ( ! $entries || empty( $entries ) ) {
 			return false;
 		}
@@ -985,11 +1099,11 @@ class Powerform_Form_Entry_Model {
 			foreach ( $entries_to_array as $entry_id ) {
 				$entry_id    = (int) $entry_id;
 				$entry_model = new Powerform_Form_Entry_Model( $entry_id );
-
 				// validate : entry must be exist on requested $form_id
 				if ( $form_id === (int) $entry_model->form_id ) {
 					$valid_entries_to_delete[] = $entry_id;
 					self::attach_addons_on_before_delete_entry( $form_id, $entry_model );
+					self::entry_delete_upload_files( $form_id, $entry_model );
 				}
 			}
 		}
@@ -1064,6 +1178,7 @@ class Powerform_Form_Entry_Model {
 		do_action_ref_array( 'powerform_before_delete_entry', array( $form_id, $entry_id ) );
 		$entry_model = new Powerform_Form_Entry_Model( $entry_id );
 		self::attach_addons_on_before_delete_entry( $form_id, $entry_model );
+		self::entry_delete_upload_files( $form_id, $entry_model );
 
 		$sql = "DELETE FROM {$table_meta_name} WHERE `entry_id` = %d";
 		$db->query( $db->prepare( $sql, $entry_id ) );
@@ -1077,6 +1192,37 @@ class Powerform_Form_Entry_Model {
 		wp_cache_delete( $entry_model->entry_type . '_form_type', 'powerform_total_entries' );
 	}
 
+	/**
+	 *  delete files from upload folder
+	 *
+	 * @since 1.7
+	 *
+	 * @param                             $form_id
+	 * @param Powerform_Form_Entry_Model $entry_model
+	 */
+	public static function entry_delete_upload_files( $form_id, $entry_model ) {
+		$custom_form     = Powerform_Custom_Form_Model::model()->load( $form_id );
+		$submission_file = 'delete';
+		if ( is_object( $custom_form ) ) {
+			$settings        = $custom_form->settings;
+			$submission_file = isset( $settings['submission-file'] ) ? $settings['submission-file'] : 'delete';
+		}
+		if ( 'delete' === $submission_file ) {
+			foreach ( $entry_model->meta_data as $meta_data ) {
+				$meta_value = $meta_data['value'];
+				if ( is_array( $meta_value ) && isset( $meta_value['file'] ) ) {
+					$file_path = is_array( $meta_value['file']['file_path'] ) ? $meta_value['file']['file_path'] : array( $meta_value['file']['file_path'] );
+					if ( ! empty( $file_path ) ) {
+						foreach ( $file_path as $path ) {
+							if ( ! empty( $path ) && file_exists( $path ) ) {
+								wp_delete_file( $path );
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	/**
 	 * Convert meta value to string
 	 * Useful on displaying metadata without PHP warning on conversion
@@ -1093,7 +1239,9 @@ class Powerform_Form_Entry_Model {
 	public static function meta_value_to_string( $field_type, $meta_value, $allow_html = false, $truncate = PHP_INT_MAX ) {
 		switch ( $field_type ) {
 			case 'postdata':
-				if ( ! isset( $meta_value['postdata'] ) || empty( $meta_value['postdata'] ) ) {
+				if ( is_string( $meta_value ) ) {
+					$string_value = $meta_value;
+				} else if ( ! isset( $meta_value['postdata'] ) || empty( $meta_value['postdata'] ) ) {
 					$string_value = '';
 				} else {
 					$post_id = $meta_value['postdata'];
@@ -1110,12 +1258,12 @@ class Powerform_Form_Entry_Model {
 						if ( $allow_html ) {
 							// make link
 							$title = get_the_title( $post_id );
-							$title = ! empty( $title ) ? $title : __( '(kein Titel)', Powerform::DOMAIN );
+							$title = ! empty( $title ) ? $title : __( '(no title)', Powerform::DOMAIN );
 							//truncate
 							if ( strlen( $title ) > $truncate ) {
 								$title = substr( $title, 0, $truncate ) . '...';
 							}
-							$string_value = '<a href="' . $url . '" target="_blank" rel="noopener noreferrer" title="' . __( 'Beitrag bearbeiten', Powerform::DOMAIN ) . '">' . $title . '</a>';
+							$string_value = '<a href="' . $url . '" target="_blank" rel="noopener noreferrer" title="' . __( 'Edit Post', Powerform::DOMAIN ) . '">' . $title . '</a>';
 						} else {
 							//truncate url
 							if ( strlen( $string_value ) > $truncate ) {
@@ -1125,14 +1273,13 @@ class Powerform_Form_Entry_Model {
 					} else {
 						$string_value = '';
 					}
-
 				}
 				break;
 			case 'time':
 				if ( ! isset( $meta_value['hours'] ) || ! isset( $meta_value['minutes'] ) ) {
 					$string_value = '';
 				} else {
-					$string_value = sprintf( "%02d", $meta_value['hours'] ) . ':' . sprintf( "%02d", $meta_value['minutes'] ) . ' ' . ( isset( $meta_value ['ampm'] ) ? $meta_value['ampm'] : '' );
+					$string_value = sprintf( '%02d', $meta_value['hours'] ) . ':' . sprintf( '%02d', $meta_value['minutes'] ) . ' ' . ( isset( $meta_value ['ampm'] ) ? $meta_value['ampm'] : '' );
 				}
 				//truncate
 				if ( strlen( $string_value ) > $truncate ) {
@@ -1151,7 +1298,12 @@ class Powerform_Form_Entry_Model {
 					if ( empty( $meta_value['year'] ) || empty( $meta_value['month'] ) || empty( $meta_value['day'] ) ) {
 						$string_value = '';
 					} else {
-						$string_value = $meta_value['year'] . '/' . sprintf( "%02d", $meta_value['month'] ) . '/' . sprintf( "%02d", $meta_value['day'] );
+						$date_value = $meta_value['year'] . '/' . sprintf( '%02d', $meta_value['month'] ) . '/' . sprintf( '%02d', $meta_value['day'] );
+						if ( isset( $meta_value['format'] ) && ! empty( $meta_value['format'] ) ) {
+							$string_value = date_i18n( $meta_value['format'], strtotime( $date_value ) );
+						} else {
+							$string_value = date_i18n( get_option( 'date_format' ), strtotime( $date_value ) );
+						}
 					}
 				}
 				//truncate
@@ -1170,7 +1322,7 @@ class Powerform_Form_Entry_Model {
 						if ( strlen( $email ) > $truncate ) {
 							$email = substr( $email, 0, $truncate ) . '...';
 						}
-						$string_value = '<a href="mailto:' . $email . '" target="_blank" rel="noopener noreferrer" title="' . __( 'E-Mail senden', Powerform::DOMAIN ) . '">' . $email . '</a>';
+						$string_value = '<a href="mailto:' . $email . '" target="_blank" rel="noopener noreferrer" title="' . __( 'Send Email', Powerform::DOMAIN ) . '">' . $email . '</a>';
 					} else {
 						//truncate url
 						if ( strlen( $string_value ) > $truncate ) {
@@ -1193,7 +1345,7 @@ class Powerform_Form_Entry_Model {
 						if ( strlen( $website ) > $truncate ) {
 							$website = substr( $website, 0, $truncate ) . '...';
 						}
-						$string_value = '<a href="' . $website . '" target="_blank" rel="noopener noreferrer" title="' . __( 'Website anzeigen', Powerform::DOMAIN ) . '">' . $website . '</a>';
+						$string_value = '<a href="' . $website . '" target="_blank" rel="noopener noreferrer" title="' . __( 'View Website', Powerform::DOMAIN ) . '">' . $website . '</a>';
 					} else {
 						//truncate url
 						if ( strlen( $string_value ) > $truncate ) {
@@ -1210,25 +1362,28 @@ class Powerform_Form_Entry_Model {
 				if ( isset( $meta_value['file'] ) ) {
 					$file = $meta_value['file'];
 				}
-				if ( ! empty( $file ) && is_array( $file ) && isset( $file['file_url'] ) ) {
-					$string_value = $file['file_url'];
+				if ( ! empty( $file ) && is_array( $file ) && isset( $file['file_url'] ) && ! empty( $file['file_url'] ) ) {
 					if ( $allow_html ) {
 						// make link
-						$url       = $string_value;
-						$file_name = basename( $url );
-						$file_name = ! empty( $file_name ) ? $file_name : __( '(kein Dateiname)', Powerform::DOMAIN );
-						//truncate
-						if ( strlen( $file_name ) > $truncate ) {
-							$file_name = substr( $file_name, 0, $truncate ) . '...';
+						$string_value = '';
+						$file_values  = is_array( $file['file_url'] ) ? $file['file_url'] : array( $file['file_url'] );
+						foreach ( $file_values as $file_value ) {
+							$url       = $file_value;
+							$file_name = basename( $url );
+							$file_name = ! empty( $file_name ) ? $file_name : __( '(no filename)', Powerform::DOMAIN );
+							//truncate
+							if ( strlen( $file_name ) > $truncate ) {
+								$file_name = substr( $file_name, 0, $truncate ) . '...';
+							}
+							$string_value .= '<a href="' . $url . '" rel="noopener noreferrer" target="_blank" title="' . __( 'View File', Powerform::DOMAIN ) . '">' . $file_name . '</a>';
 						}
-						$string_value = '<a href="' . $url . '" rel="noopener noreferrer" target="_blank" title="' . __( 'Datei ansehen', Powerform::DOMAIN ) . '">' . $file_name . '</a>';
 					} else {
 						//truncate url
+						$string_value = is_array( $file['file_url'] ) ? implode( ', ', $file['file_url'] ) : $file['file_url'];
 						if ( strlen( $string_value ) > $truncate ) {
 							$string_value = substr( $string_value, 0, $truncate ) . '...';
 						}
 					}
-
 				} else {
 					$string_value = '';
 				}
@@ -1244,11 +1399,65 @@ class Powerform_Form_Entry_Model {
 					$string_value = substr( $string_value, 0, $truncate ) . '...';
 				}
 				break;
+			case 'calculation':
+				if ( ! is_array( $meta_value ) ) {
+					$string_value = '0.0';
+				} else {
+					if ( ! empty( $meta_value['error'] ) ) {
+						$string_value = $meta_value['error'];
+					} else {
+						if ( ! isset( $meta_value['result'] ) ) {
+							$string_value = '0.0';
+						} else {
+							if ( is_infinite( floatval( $meta_value['result'] ) ) ) {
+								$string_value = 'INF';
+							} else {
+								$string_value = (string) $meta_value['result'];
+							}
+						}
+					}
+				}
+				//truncate
+				if ( strlen( $string_value ) > $truncate ) {
+					$string_value = substr( $string_value, 0, $truncate ) . '...';
+				}
+				break;
+			case 'stripe':
+				// In case stripe requested without mapper, we return transaction_id
+				$string_value = '';
+				if ( is_array( $meta_value ) && isset( $meta_value['transaction_id'] ) ) {
+					if ( ! empty( $meta_value['transaction_id'] ) ) {
+						$string_value = $meta_value['transaction_id'];
+					}
+				}
+				//truncate
+				if ( strlen( $string_value ) > $truncate ) {
+					$string_value = substr( $string_value, 0, $truncate ) . '...';
+				}
+
+				/**
+				 * Filter string value of Stripe meta entry
+				 *
+				 * @since 1.7
+				 *
+				 * @param string  $string_value
+				 * @param array   $meta_value
+				 * @param boolean $allow_html
+				 * @param int     $truncate
+				 *
+				 * @return string
+				 */
+				$string_value = apply_filters( 'powerform_entry_stripe_meta_value_to_string', $string_value, $meta_value, $allow_html, $truncate );
+				break;
+            case 'password':
+                //Hide value for login/template forms
+                $string_value = '*****';
+                break;
 			default:
 				// base flattener
 				// implode on array
 				if ( is_array( $meta_value ) ) {
-					$string_value = implode( ', ', $meta_value );
+					$string_value = json_encode( $meta_value );
 				} else {
 					// or juggling to string
 					$string_value = (string) $meta_value;
@@ -1259,6 +1468,21 @@ class Powerform_Form_Entry_Model {
 				}
 				break;
 		}
+
+		/**
+		 * Filter string value of meta entry
+		 *
+		 * @since 1.7
+		 *
+		 * @param string  $string_value
+		 * @param string  $field_type
+		 * @param array   $meta_value
+		 * @param boolean $allow_html
+		 * @param int     $truncate
+		 *
+		 * @return string
+		 */
+		$string_value = apply_filters( 'powerform_entry_meta_value_to_string', $string_value, $field_type, $meta_value, $allow_html, $truncate );
 
 		return $string_value;
 	}
@@ -1276,7 +1500,7 @@ class Powerform_Form_Entry_Model {
 		} else {
 			$table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
 			$sql        = "SELECT count(`entry_id`) FROM {$table_name} WHERE `is_spam` = %d";
-			$entries    = $wpdb->get_var( $wpdb->prepare( $sql, 0 ) ); // WPCS: unprepared SQL ok. false positive
+			$entries    = $wpdb->get_var( $wpdb->prepare( $sql, 0 ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			if ( $entries ) {
 				wp_cache_set( 'all_form_types', $entries, $cache_key );
 
@@ -1317,7 +1541,7 @@ class Powerform_Form_Entry_Model {
 		} else {
 			$table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
 			$sql        = "SELECT count(`entry_id`) FROM {$table_name} WHERE `entry_type` = %s AND `is_spam` = %d";
-			$entries    = $wpdb->get_var( $wpdb->prepare( $sql, $entry_type, 0 ) ); // WPCS: unprepared SQL ok. false positive
+			$entries    = $wpdb->get_var( $wpdb->prepare( $sql, $entry_type, 0 ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			if ( $entries ) {
 				wp_cache_set( $entry_type . '_form_type', $entries, $cache_key );
 
@@ -1353,11 +1577,11 @@ class Powerform_Form_Entry_Model {
 		$table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
 		if ( 'all' !== $entry_type ) {
 			$sql = "SELECT `entry_id` FROM {$table_name} WHERE `entry_type` = %s AND `is_spam` = 0 ORDER BY `date_created` DESC";
-			$sql = $wpdb->prepare( $sql, $entry_type ); // WPCS: unprepared SQL ok. false positive
+			$sql = $wpdb->prepare( $sql, $entry_type ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		} else {
 			$sql = "SELECT `entry_id` FROM {$table_name} WHERE `is_spam` = 0 ORDER BY `date_created` DESC";
 		}
-		$entry_id = $wpdb->get_var( $sql ); // WPCS: unprepared SQL ok. false positive
+		$entry_id = $wpdb->get_var( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( ! empty( $entry_id ) ) {
 			$entry = new Powerform_Form_Entry_Model( $entry_id );
@@ -1379,7 +1603,7 @@ class Powerform_Form_Entry_Model {
 		$entry      = null;
 		$table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
 		$sql        = "SELECT `entry_id` FROM {$table_name} WHERE `form_id` = %d AND `is_spam` = 0 ORDER BY `date_created` DESC";
-		$entry_id   = $wpdb->get_var( $wpdb->prepare( $sql, $form_id ) ); // WPCS: unprepared SQL ok. false positive
+		$entry_id   = $wpdb->get_var( $wpdb->prepare( $sql, $form_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( ! empty( $entry_id ) ) {
 			$entry = new Powerform_Form_Entry_Model( $entry_id );
@@ -1438,7 +1662,6 @@ class Powerform_Form_Entry_Model {
 			} catch ( Exception $e ) {
 				powerform_addon_maybe_log( $connected_addon->get_slug(), 'failed to on_before_delete_entry', $e->getMessage() );
 			}
-
 		}
 	}
 
@@ -1454,17 +1677,18 @@ class Powerform_Form_Entry_Model {
 	public static function get_custom_form_entry_ids_by_email( $email ) {
 		global $wpdb;
 		$meta_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY_META );
-		$sql
-		                 = "SELECT m.entry_id AS entry_id
+		$sql             = "SELECT m.entry_id AS entry_id
 							FROM {$meta_table_name} m
 							WHERE (m.meta_key LIKE %s OR m.meta_key LIKE %s)
 							AND m.meta_value = %s
 							GROUP BY m.entry_id";
 
-		$sql       = $wpdb->prepare( $sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-		                             $wpdb->esc_like( 'email-' ) . '%',
-		                             $wpdb->esc_like( 'text-' ) . '%',
-		                             $email );
+		$sql       = $wpdb->prepare(
+			$sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$wpdb->esc_like( 'email-' ) . '%',
+			$wpdb->esc_like( 'text-' ) . '%',
+			$email
+		);
 		$entry_ids = $wpdb->get_col( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		return $entry_ids;
@@ -1483,15 +1707,16 @@ class Powerform_Form_Entry_Model {
 	public static function get_older_entry_ids( $entry_type, $date_created ) {
 		global $wpdb;
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
-		$sql
-		                  = "SELECT e.entry_id AS entry_id
+		$sql              = "SELECT e.entry_id AS entry_id
 							FROM {$entry_table_name} e
 							WHERE e.entry_type = %s
 							AND e.date_created < %s";
 
-		$sql = $wpdb->prepare( $sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-		                       $entry_type,
-		                       $date_created );
+		$sql = $wpdb->prepare(
+			$sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$entry_type,
+			$date_created
+		);
 
 		$entry_ids = $wpdb->get_col( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
@@ -1511,19 +1736,45 @@ class Powerform_Form_Entry_Model {
 	public static function get_newer_entry_ids( $entry_type, $date_created ) {
 		global $wpdb;
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
-		$sql
-		                  = "SELECT e.entry_id AS entry_id
+		$sql              = "SELECT e.entry_id AS entry_id
 							FROM {$entry_table_name} e
 							WHERE e.entry_type = %s
 							AND e.date_created > %s";
 
-		$sql = $wpdb->prepare( $sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-		                       $entry_type,
-		                       $date_created );
+		$sql = $wpdb->prepare(
+			$sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$entry_type,
+			$date_created
+		);
 
 		$entry_ids = $wpdb->get_col( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		return $entry_ids;
+	}
+
+	/**
+	 * Get entries newer than $date_created
+	 *
+	 * @since 1.5.3
+	 *
+	 * @param $entry_type
+	 *
+	 * @return array|object
+	 */
+	public static function get_most_entry( $entry_type ) {
+		global $wpdb;
+		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
+		$sql              = "SELECT form_id, count(*) entry_count
+							FROM {$entry_table_name}
+							WHERE entry_type = %s
+							GROUP BY form_id ORDER BY entry_count DESC LIMIT 1";
+		$sql = $wpdb->prepare(
+			$sql,
+			$entry_type
+		);
+		$most_entry = $wpdb->get_row( $sql );
+
+		return $most_entry;
 	}
 
 	/**
@@ -1539,15 +1790,16 @@ class Powerform_Form_Entry_Model {
 	public static function get_older_entry_ids_of_form_id( $form_id, $date_created ) {
 		global $wpdb;
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
-		$sql
-		                  = "SELECT e.entry_id AS entry_id
+		$sql              = "SELECT e.entry_id AS entry_id
 							FROM {$entry_table_name} e
 							WHERE e.form_id = %d
 							AND e.date_created < %s";
 
-		$sql = $wpdb->prepare( $sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-		                       $form_id,
-		                       $date_created );
+		$sql = $wpdb->prepare(
+			$sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$form_id,
+			$date_created
+		);
 
 		$entry_ids = $wpdb->get_col( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
@@ -1567,15 +1819,16 @@ class Powerform_Form_Entry_Model {
 	public static function get_newer_entry_ids_of_form_id( $form_id, $date_created ) {
 		global $wpdb;
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
-		$sql
-		                  = "SELECT e.entry_id AS entry_id
+		$sql              = "SELECT e.entry_id AS entry_id
 							FROM {$entry_table_name} e
 							WHERE e.form_id = %d
 							AND e.date_created > %s";
 
-		$sql = $wpdb->prepare( $sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-		                       $form_id,
-		                       $date_created );
+		$sql = $wpdb->prepare(
+			$sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$form_id,
+			$date_created
+		);
 
 		$entry_ids = $wpdb->get_col( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
@@ -1595,8 +1848,7 @@ class Powerform_Form_Entry_Model {
 	public static function get_form_latest_entries_count_grouped_by_day( $form_id, $date_created ) {
 		global $wpdb;
 		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
-		$sql
-		                  = "SELECT COUNT(e.entry_id) AS entries_amount,
+		$sql              = "SELECT COUNT(e.entry_id) AS entries_amount,
 						  	DATE(e.date_created) AS date_created
 							FROM {$entry_table_name} e
 							WHERE e.form_id = %d
@@ -1604,9 +1856,48 @@ class Powerform_Form_Entry_Model {
 							GROUP BY DATE(e.date_created)
 							ORDER BY e.date_created DESC";
 
-		$sql = $wpdb->prepare( $sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-		                       $form_id,
-		                       $date_created );
+		$sql = $wpdb->prepare(
+			$sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$form_id,
+			$date_created
+		);
+
+		$entry_ids = $wpdb->get_results( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+
+		return $entry_ids;
+	}
+
+	/**
+	 * Get entries newer than $date_created of form_id grouped by date_created Day
+	 *
+	 * @since 1.14
+	 *
+	 * @param $form_id
+	 * @param $date_created
+	 *
+	 * @return array
+	 */
+	public static function get_form_latest_lead_entries_count_grouped_by_day( $form_id, $date_created ) {
+		global $wpdb;
+		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
+		$entry_meta_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY_META );
+		$sql              = "SELECT COUNT(e.entry_id) AS entries_amount,
+						  	DATE(e.date_created) AS date_created
+							FROM {$entry_table_name} e
+							LEFT JOIN {$entry_meta_table_name} m
+							ON(e.`entry_id` = m.`entry_id`)
+							WHERE e.form_id = %d
+							AND e.date_created > %s
+							AND m.meta_key = 'skip_form'
+							AND m.meta_value = ''
+							GROUP BY DATE(e.date_created)
+							ORDER BY e.date_created DESC";
+
+		$sql = $wpdb->prepare(
+			$sql, // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$form_id,
+			$date_created
+		);
 
 		$entry_ids = $wpdb->get_results( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
@@ -1704,14 +1995,14 @@ class Powerform_Form_Entry_Model {
 		// Building where
 		$where = 'WHERE 1=1';
 		// exclude Addon meta
-		$where .= $wpdb->prepare( " AND metas.meta_key NOT LIKE %s", $wpdb->esc_like( 'powerform_addon_' ) . '%' );
+		$where .= $wpdb->prepare( ' AND metas.meta_key NOT LIKE %s', $wpdb->esc_like( 'powerform_addon_' ) . '%' );
 
 		if ( isset( $args['form_id'] ) ) {
-			$where .= $wpdb->prepare( " AND entries.form_id = %d", $args['form_id'] );
+			$where .= $wpdb->prepare( ' AND entries.form_id = %d', $args['form_id'] );
 		}
 
 		if ( isset( $args['is_spam'] ) ) {
-			$where .= $wpdb->prepare( " AND entries.is_spam = %s", $args['is_spam'] );
+			$where .= $wpdb->prepare( ' AND entries.is_spam = %s', $args['is_spam'] );
 		}
 
 		if ( isset( $args['date_created'] ) ) {
@@ -1720,20 +2011,20 @@ class Powerform_Form_Entry_Model {
 				// hack to before nextday
 				// https://app.asana.com/0/385581670491499/864371485201331/f
 				$date_created[1] = $date_created[1] . ' 23:59:00';
-				$where           .= $wpdb->prepare( " AND ( entries.date_created >= %s AND entries.date_created <= %s )", $date_created[0], $date_created[1] );
+				$where          .= $wpdb->prepare( ' AND ( entries.date_created >= %s AND entries.date_created <= %s )', $date_created[0], $date_created[1] );
 			}
 		}
 
 		if ( isset( $args['search'] ) ) {
-			$where .= $wpdb->prepare( " AND metas.meta_value LIKE %s", '%' . $wpdb->esc_like( $args['search'] ) . '%' );
+			$where .= $wpdb->prepare( ' AND metas.meta_value LIKE %s', '%' . $wpdb->esc_like( $args['search'] ) . '%' );
 		}
 
 		if ( isset( $args['min_id'] ) ) {
-			$where .= $wpdb->prepare( " AND entries.entry_id >= %d", $args['min_id'] );
+			$where .= $wpdb->prepare( ' AND entries.entry_id >= %d', $args['min_id'] );
 		}
 
 		if ( isset( $args['max_id'] ) ) {
-			$where .= $wpdb->prepare( " AND entries.entry_id <= %d", $args['max_id'] );
+			$where .= $wpdb->prepare( ' AND entries.entry_id <= %d', $args['max_id'] );
 		}
 
 		/**
@@ -1788,7 +2079,7 @@ class Powerform_Form_Entry_Model {
 		$order = apply_filters( 'powerform_query_entries_order', $order, $args );
 
 		// limit
-		$limit = $wpdb->prepare( "LIMIT %d, %d", $args['offset'], $args['per_page'] );
+		$limit = $wpdb->prepare( 'LIMIT %d, %d', $args['offset'], $args['per_page'] );
 
 		/**
 		 * Filter LIMIT query to be used on query-ing entries
@@ -1811,7 +2102,7 @@ class Powerform_Form_Entry_Model {
     			";
 
 		$sql_count = apply_filters( 'powerform_query_entries_sql_count', $sql_count, $args );
-		$count     = intval( $wpdb->get_var( $sql_count ) ); // WPCS: unprepared SQL ok. false positive
+		$count     = intval( $wpdb->get_var( $sql_count ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( $count > 0 ) {
 			// sql
@@ -1828,7 +2119,7 @@ class Powerform_Form_Entry_Model {
     			";
 
 			$sql     = apply_filters( 'powerform_query_entries_sql', $sql, $args );
-			$results = $wpdb->get_results( $sql ); // WPCS: unprepared SQL ok. false positive
+			$results = $wpdb->get_results( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 			foreach ( $results as $result ) {
 				$entries[] = new Powerform_Form_Entry_Model( $result->entry_id );
@@ -1836,5 +2127,37 @@ class Powerform_Form_Entry_Model {
 		}
 
 		return $entries;
+	}
+
+	/**
+	 * Count entries of form select key and value
+	 *
+	 * @since 1.7
+	 *
+	 * @param int $form_id - the form id
+	 * @param string $field_name - the field name
+	 * @param string $field_value - the field value
+	 * @param string $type - type
+	 *
+	 * @return int - total entries
+	 */
+	public static function select_count_entries_by_meta_field( $form_id, $field_name, $field_value, $type = 'select' ) {
+		global $wpdb;
+		$table_name       = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY_META );
+		$entry_table_name = Powerform_Database_Tables::get_table_name( Powerform_Database_Tables::FORM_ENTRY );
+		$type_value       = 'multiselect' === $type ? '%:"' . $field_value . '";%' : $field_value;
+		$sql              = "SELECT count(m.`meta_id`) FROM {$table_name} m
+								LEFT JOIN {$entry_table_name} e ON(e.`entry_id` = m.`entry_id`)
+								WHERE e.`form_id` = %d
+								AND m.`meta_key` = '%s'
+								AND m.`meta_value` LIKE '%s'
+								AND e.`is_spam` = 0";
+		$entries          = $wpdb->get_var( $wpdb->prepare( $sql, $form_id, $field_name, $type_value ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+
+		if ( $entries ) {
+			return $entries;
+		}
+
+		return 0;
 	}
 }

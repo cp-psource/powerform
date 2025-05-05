@@ -75,7 +75,7 @@ class Powerform_Entries_Page extends Powerform_Admin_Page {
 			'form_id'   => 0,
 		);
 
-		$this->screen_params = array_merge( $screen_params, $_REQUEST );//WPCS CSRF ok.
+		$this->screen_params = array_merge( $screen_params, $_REQUEST );//phpcs:ignore -- data without nonce verification
 	}
 
 	/**
@@ -148,7 +148,6 @@ class Powerform_Entries_Page extends Powerform_Admin_Page {
 				$entries_renderer->render();
 				$this->entries_page = ob_get_clean();
 			}
-
 		}
 	}
 
@@ -193,27 +192,31 @@ class Powerform_Entries_Page extends Powerform_Admin_Page {
 	 *
 	 * @return string
 	 */
-	public function render_form_switcher() {
+	public function render_form_switcher( $form_type = 'powerform_forms', $form_id = 0 ) {
 		$html = '<select name="form_id" data-allow-search="1" data-minimum-results-for-search="0" class="sui-select sui-select-sm sui-select-inline">';
 
 		$empty_option = '';
 
-		if ( $this->get_current_form_type() === Powerform_Custom_Form_Model::model()->get_post_type() ) {
+		if ( $form_type === Powerform_Custom_Form_Model::model()->get_post_type() ) {
 			$empty_option = __( 'Wähle Formular', Powerform::DOMAIN );
-		} elseif ( $this->get_current_form_type() === Powerform_Poll_Form_Model::model()->get_post_type() ) {
+		} elseif ( $form_type === Powerform_Poll_Form_Model::model()->get_post_type() ) {
 			$empty_option = __( 'Wähle Umfrage', Powerform::DOMAIN );
-		} elseif ( $this->get_current_form_type() === Powerform_Quiz_Form_Model::model()->get_post_type() ) {
+		} elseif ( $form_type === Powerform_Quiz_Form_Model::model()->get_post_type() ) {
 			$empty_option = __( 'Wähle Test', Powerform::DOMAIN );
 		}
 
-		$html .= '<option value="" ' . selected( 0, $this->get_current_form_id(), false ) . '>' . $empty_option . '</option>';
+		$html .= '<option value="" ' . selected( 0, $form_id, false ) . '>' . $empty_option . '</option>';
 
-		$forms = $this->get_forms();
+		$forms = $this->get_forms( $form_type );
 
 		foreach ( $forms as $form ) {
+			if ( isset( $form->settings['form-type'] ) && 'leads' === $form->settings['form-type'] ) {
+				continue;
+			}
+
 			/**@var Powerform_Base_Form_Model $form */
 			$title = ! empty( $form->settings['formName'] ) ? $form->settings['formName'] : $form->raw->post_title;
-			$html  .= '<option value="' . $form->id . '" ' . selected( $form->id, $this->get_current_form_id(), false ) . '>' . $title . '</option>';
+			$html .= '<option value="' . $form->id . '" ' . selected( $form->id, $form_id, false ) . '>' . $title . '</option>';
 		}
 
 		$html .= '</select>';
@@ -228,8 +231,8 @@ class Powerform_Entries_Page extends Powerform_Admin_Page {
 	 *
 	 * @return mixed
 	 */
-	public function get_forms() {
-		$form_type = $this->get_current_form_type();
+	public function get_forms( $form_type = 'powerform_forms' ) {
+		//$form_type = $this->get_current_form_type();
 		switch ( $form_type ) {
 			case 'powerform_forms':
 				//TODO: lazy load this
@@ -277,25 +280,25 @@ class Powerform_Entries_Page extends Powerform_Admin_Page {
 	 * @since 1.5.4
 	 */
 	public function enqueue_entries_scripts() {
-		wp_enqueue_script( 'powerform-entries-moment',
-		                   powerform_plugin_url() . 'assets/js/library/moment.min.js',
-		                   array( 'jquery' ),
-		                   '2.22.2',
-		                   true );
-		wp_enqueue_script( 'powerform-entries-datepicker-range',
-		                   powerform_plugin_url() . 'assets/js/library/daterangepicker.min.js',
-		                   array( 'powerform-entries-moment' ),
-		                   '3.0.3',
-		                   true );
-		wp_enqueue_style( 'powerform-entries-datepicker-range',
-		                  powerform_plugin_url() . 'assets/css/daterangepicker.min.css',
-		                  array(),
-		                  '3.0.3' );
+		wp_enqueue_script(
+			'powerform-entries-moment',
+			powerform_plugin_url() . 'assets/js/library/moment.min.js',
+			array( 'jquery' ),
+			'2.22.2',
+			true
+		);
+		wp_enqueue_script(
+			'powerform-entries-datepicker-range',
+			powerform_plugin_url() . 'assets/js/library/daterangepicker.min.js',
+			array( 'powerform-entries-moment' ),
+			'3.0.3',
+			true
+		);
 
 		// use inline script to allow hooking into this
 		$daterangepicker_ranges
 			= sprintf(
-			"
+				"
 			var powerform_entries_datepicker_ranges = {
 				'%s': [moment(), moment()],
 		        '%s': [moment().subtract(1,'days'), moment().subtract(1,'days')],
@@ -304,13 +307,13 @@ class Powerform_Entries_Page extends Powerform_Admin_Page {
 		        '%s': [moment().startOf('month'), moment().endOf('month')],
 		        '%s': [moment().subtract(1,'month').startOf('month'), moment().subtract(1,'month').endOf('month')]
 			};",
-			__( 'Heute', Powerform::DOMAIN ),
-			__( 'Gestern', Powerform::DOMAIN ),
-			__( 'Letzten 7 Tage', Powerform::DOMAIN ),
-			__( 'Letzten 30 Tage', Powerform::DOMAIN ),
-			__( 'Diesen Monat', Powerform::DOMAIN ),
-			__( 'Letzten Monat', Powerform::DOMAIN )
-		);
+				__( 'Heute', Powerform::DOMAIN ),
+				__( 'Gestern', Powerform::DOMAIN ),
+				__( 'Letzten 7 Tage', Powerform::DOMAIN ),
+				__( 'Letzten 30 Tage', Powerform::DOMAIN ),
+				__( 'Diesen Monat', Powerform::DOMAIN ),
+				__( 'Letzten Monat', Powerform::DOMAIN )
+			);
 
 		/**
 		 * Filter ranges to be used on submissions date range
@@ -352,7 +355,23 @@ class Powerform_Entries_Page extends Powerform_Admin_Page {
 		$daterangepicker_lang    = apply_filters( 'powerform_l10n_daterangepicker', $daterangepicker_lang );
 		$l10n['daterangepicker'] = $daterangepicker_lang;
 
-
 		return $l10n;
+	}
+
+	/**
+	 * Override scripts to be loaded
+	 *
+	 * @since 1.11
+	 *
+	 * @param $hook
+	 */
+	public function enqueue_scripts( $hook ) {
+		parent::enqueue_scripts( $hook );
+
+		powerform_print_forms_admin_styles( POWERFORM_VERSION );
+		powerform_print_polls_admin_styles( POWERFORM_VERSION );
+		powerform_print_front_styles( POWERFORM_VERSION );
+
+		powerform_print_front_scripts( POWERFORM_VERSION );
 	}
 }

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Addon Name: Googlesheet
+ * Addon Name: Google Sheets
  * Version: 1.1
- * Plugin URI:  https://premium.wpmudev.org/
- * Description: Integrate Powerform Custom Forms and Polls with Googlesheet to get notified in real time.
- * Author: WMS N@W
- * Author URI: http://premium.wpmudev.org
+ * Plugin URI:  https://n3rds.work/
+ * Description: Integrate Powerform Custom Forms and Polls with Google Sheets to get notified in real time.
+ * Author: WPMU DEV
+ * Author URI: http://premium.psource.org
  */
 
 define( 'POWERFORM_ADDON_GOOGLESHEET_VERSION', '1.1' );
@@ -42,17 +42,17 @@ function powerform_addon_googlesheet_google_api_client_autoload( $class_name ) {
 // only enable autoload when needed to avoid further conflicts
 //spl_autoload_register( 'powerform_addon_googlesheet_google_api_client_autoload' );
 
-require_once dirname( __FILE__ ) . '/powerform-addon-googlesheet.php';
+require_once dirname( __FILE__ ) . '/class-powerform-addon-googlesheet.php';
 
-require_once dirname( __FILE__ ) . '/powerform-addon-googlesheet-form-settings.php';
-require_once dirname( __FILE__ ) . '/powerform-addon-googlesheet-form-hooks.php';
+require_once dirname( __FILE__ ) . '/class-powerform-addon-googlesheet-form-settings.php';
+require_once dirname( __FILE__ ) . '/class-powerform-addon-googlesheet-form-hooks.php';
 
-require_once dirname( __FILE__ ) . '/powerform-addon-googlesheet-poll-settings.php';
-require_once dirname( __FILE__ ) . '/powerform-addon-googlesheet-poll-hooks.php';
+require_once dirname( __FILE__ ) . '/class-powerform-addon-googlesheet-poll-settings.php';
+require_once dirname( __FILE__ ) . '/class-powerform-addon-googlesheet-poll-hooks.php';
 
-require_once dirname( __FILE__ ) . '/powerform-addon-googlesheet-quiz-settings.php';
-require_once dirname( __FILE__ ) . '/powerform-addon-googlesheet-quiz-hooks.php';
+require_once dirname( __FILE__ ) . '/class-powerform-addon-googlesheet-quiz-settings.php';
+require_once dirname( __FILE__ ) . '/class-powerform-addon-googlesheet-quiz-hooks.php';
 
-require_once dirname( __FILE__ ) . '/lib/class-wp-googlesheet-client-logger.php';
+require_once dirname( __FILE__ ) . '/lib/class-powerform-addon-wp-googlesheet-client-logger.php';
 //Direct Load
 Powerform_Addon_Loader::get_instance()->register( 'Powerform_Addon_Googlesheet' );

@@ -19,7 +19,7 @@ abstract class Powerform_Spam_Protection {
 	 */
 	public function __construct() {
 		if ( $this->is_enabled() ) {
-			add_filter( 'powerform_spam_protection', array( $this, '_handle_spam_protection'), 10, 4 );
+			add_filter( 'powerform_spam_protection', array( $this, '_handle_spam_protection' ), 10, 4 );
 		}
 	}
 

@@ -76,7 +76,7 @@ class Powerform_Modules {
 		$module_class = 'Powerform_' . $data[ 'class' ];
 		$module_slug = $data[ 'slug' ];
 		$module_label = $data[ 'label' ];
-
+		
 		// Include module
 		$path = powerform_plugin_dir() . 'library/modules/' . $module_slug . '/loader.php';
 		if ( file_exists( $path ) ) {

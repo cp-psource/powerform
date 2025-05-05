@@ -12,6 +12,10 @@ function powerform_get_admin_cap() {
 		$cap = 'manage_network';
 	}
 
+	if ( current_user_can( 'manage_powerform' ) ) {
+		$cap = 'manage_powerform';
+	}
+
 	return apply_filters( 'powerform_admin_cap', $cap );
 }
 
@@ -22,7 +26,9 @@ function powerform_get_admin_cap() {
  * @return bool
  */
 function powerform_is_user_allowed() {
-	return current_user_can( 'manage_options' );
+	return current_user_can(
+		powerform_get_admin_cap()
+	);
 }
 
 /**
@@ -37,6 +43,30 @@ function powerform_is_user_allowed() {
  */
 function powerform_array_value_exists( $array, $key ) {
 	return ( isset( $array[ $key ] ) && ! empty( $array[ $key ] ) );
+}
+
+/**
+ * Check if array value exists
+ *
+ * @since 1.14.7
+ *
+ * @param array  $properties All properties.
+ * @param string $key Key.
+ */
+function powerform_echo_font_weight( $properties, $key ) {
+	$styles = array( 'italic', 'oblique' );
+	$weight = str_replace( 'None', 'inherit', $properties[ $key ] );
+	$weight = str_replace( 'regular', 'normal', $weight );
+	// if 400italic.
+	$style = str_replace( (int) $weight, '', $weight );
+	if ( in_array( $style, $styles, true ) ) {
+		// if just italic.
+		$weight = intval( $weight ) ? intval( $weight ) : 'normal';
+		echo 'font-weight: ' . esc_attr( $weight ) . ';';
+		echo 'font-style: ' . esc_attr( $style ) . ';';
+	} else {
+		echo 'font-weight: ' . esc_attr( $weight ) . ';';
+	}
 }
 
 /**
@@ -69,7 +99,7 @@ function powerform_object_to_array( $object ) {
  * @return mixed
  */
 function powerform_ajax_url() {
-	return admin_url( "admin-ajax.php", is_ssl() ? 'https' : 'http' );
+	return admin_url( 'admin-ajax.php', is_ssl() ? 'https' : 'http' );
 }
 
 /**
@@ -81,7 +111,7 @@ function powerform_ajax_url() {
  */
 function powerform_validate_ajax( $action ) {
 	if ( ! powerform_is_user_allowed() || ! check_ajax_referer( $action ) ) {
-		wp_send_json_error( __( "Ungültige Anfrage, Du darfst diese Aktion nicht ausführen.", Powerform::DOMAIN ) );
+		wp_send_json_error( __( 'Invalid request, you are not allowed to do that action.', Powerform::DOMAIN ) );
 	}
 }
 
@@ -94,18 +124,24 @@ function powerform_validate_ajax( $action ) {
  * @param $version
  */
 function powerform_admin_enqueue_fonts( $version ) {
-	wp_enqueue_style( 'powerform-roboto',
-	                  'https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i',
-	                  array(),
-	                  '1.0' ); // cache as long as you can
-	wp_enqueue_style( 'powerform-opensans',
-	                  'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
-	                  array(),
-	                  '1.0' ); // cache as long as you can
-	wp_enqueue_style( 'powerform-source',
-	                  'https://fonts.googleapis.com/css?family=Source+Code+Pro',
-	                  array(),
-	                  '1.0' ); // cache as long as you can
+	wp_enqueue_style(
+		'powerform-roboto',
+		'https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i',
+		array(),
+		'1.0'
+	); // cache as long as you can
+	wp_enqueue_style(
+		'powerform-opensans',
+		'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i',
+		array(),
+		'1.0'
+	); // cache as long as you can
+	wp_enqueue_style(
+		'powerform-source',
+		'https://fonts.googleapis.com/css?family=Source+Code+Pro',
+		array(),
+		'1.0'
+	); // cache as long as you can
 
 	// if plugin internal font need to enqueued, please use $version as its subject to cache
 }
@@ -119,18 +155,18 @@ function powerform_admin_enqueue_fonts( $version ) {
  * @param $version
  */
 function powerform_admin_enqueue_styles( $version ) {
-	wp_enqueue_style( 'select2-powerform-css', powerform_plugin_url() . 'assets/css/select2.min.css', array(), "4.0.3", false ); // Select2
+	wp_enqueue_style( 'select2-powerform-css', powerform_plugin_url() . 'assets/css/select2.min.css', array(), '4.0.3', false ); // Select2
 	wp_enqueue_style( 'shared-ui', powerform_plugin_url() . 'assets/css/shared-ui.min.css', array(), $version, false );
-	wp_enqueue_style( 'powerform-form-styles', powerform_plugin_url() . 'assets/css/front.min.css', array(), $version, false );
 }
 
 /**
  * Enqueue jQuery UI scripts on admin
  *
+ * @since 1.13 Loaded locally
  * @since 1.0
  */
 function powerform_admin_jquery_ui() {
-	wp_enqueue_script( 'jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array(), '1.12.1', false );
+	wp_enqueue_script( 'jquery-ui-powerform', powerform_plugin_url() . 'assets/js/library/jquery-ui.min.js', array( 'jquery' ), '1.12.1', false );
 }
 
 /**
@@ -158,7 +194,7 @@ function powerform_admin_jquery_ui_init() {
  */
 function powerform_sui_scripts() {
 
-	$chartjs_version = "2.7.2";
+	$chartjs_version = '2.7.2';
 
 	$sanitize_version = str_replace( '.', '-', POWERFORM_SUI_VERSION );
 	$sui_body_class   = "sui-$sanitize_version";
@@ -177,7 +213,7 @@ function powerform_sui_scripts() {
  * @param array $l10n
  */
 function powerform_admin_enqueue_scripts( $version, $data = array(), $l10n = array() ) {
-	$language = get_option( "powerform_captcha_language", "en" );
+	$language = get_option( 'powerform_captcha_language', 'en' );
 
 	wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version, false );
 	wp_enqueue_script( 'ace-editor', powerform_plugin_url() . 'assets/js/library/ace/ace.js', array( 'jquery' ), $version, false );
@@ -216,9 +252,9 @@ function powerform_admin_enqueue_scripts( $version, $data = array(), $l10n = arr
  * @param $version
  */
 function powerform_admin_enqueue_scripts_forms( $version, $data = array(), $l10n = array() ) {
-	wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version );
-	wp_enqueue_script( 'ace-editor', powerform_plugin_url() . 'assets/js/library/ace/ace.js', array( 'jquery' ), $version );
-	wp_enqueue_script( 'google-charts', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ), $version );
+	wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version, false );
+	wp_enqueue_script( 'ace-editor', powerform_plugin_url() . 'assets/js/library/ace/ace.js', array( 'jquery' ), $version, false );
+	wp_enqueue_script( 'google-charts', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ), $version, false );
 
 	if ( function_exists( 'wp_enqueue_editor' ) ) {
 		wp_enqueue_editor();
@@ -227,21 +263,45 @@ function powerform_admin_enqueue_scripts_forms( $version, $data = array(), $l10n
 		wp_enqueue_media();
 	}
 
-	wp_enqueue_script( 'powerform-admin-layout', powerform_plugin_url() . 'build/admin/layout.js', array( 'jquery' ), $version );
+	wp_enqueue_script( 'powerform-admin-layout', powerform_plugin_url() . 'build/admin/layout.js', array( 'jquery' ), $version, false );
 	wp_register_script(
 		'powerform-admin',
 		powerform_plugin_url() . 'assets/js/form-scripts.js',
 		array(
 			'jquery',
 			'wp-color-picker',
+			'react',
+			'react-dom',
 		),
 		$version,
 		true
 	);
-	wp_enqueue_script( 'wp-color-picker-alpha', powerform_plugin_url() . 'assets/js/library/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), $version, true );
+	powerform_enqueue_color_picker_alpha( $version );
+
 	wp_localize_script( 'powerform-admin', 'powerformData', $data );
 	wp_localize_script( 'powerform-admin', 'powerforml10n', $l10n );
+
 	wp_enqueue_script( 'powerform-admin' );
+}
+
+/**
+ * Enqueue color picker alpha scripts
+ *
+ * @since 1.14
+ *
+ * @param $version
+ */
+function powerform_enqueue_color_picker_alpha( $version ) {
+	wp_enqueue_script( 'wp-color-picker-alpha', powerform_plugin_url() . 'assets/js/library/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), $version, true );
+
+	wp_localize_script( 'wp-color-picker-alpha', 'wpColorPickerL10n', array(
+		'clear'            => __( 'Clear', Powerform::DOMAIN ),
+		'clearAriaLabel'   => __( 'Clear color', Powerform::DOMAIN ),
+		'defaultString'    => __( 'Default', Powerform::DOMAIN ),
+		'defaultAriaLabel' => __( 'Select default color', Powerform::DOMAIN ),
+		'pick'             => __( 'Select Color', Powerform::DOMAIN ),
+		'defaultLabel'     => __( 'Color value', Powerform::DOMAIN ),
+	) );
 }
 
 /**
@@ -252,9 +312,9 @@ function powerform_admin_enqueue_scripts_forms( $version, $data = array(), $l10n
  * @param $version
  */
 function powerform_admin_enqueue_scripts_polls( $version, $data = array(), $l10n = array() ) {
-	wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version );
-	wp_enqueue_script( 'ace-editor', powerform_plugin_url() . 'assets/js/library/ace/ace.js', array( 'jquery' ), $version );
-	wp_enqueue_script( 'google-charts', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ), $version );
+	wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version, false );
+	wp_enqueue_script( 'ace-editor', powerform_plugin_url() . 'assets/js/library/ace/ace.js', array( 'jquery' ), $version, false );
+	wp_enqueue_script( 'google-charts', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ), $version, false );
 
 	if ( function_exists( 'wp_enqueue_editor' ) ) {
 		wp_enqueue_editor();
@@ -263,18 +323,22 @@ function powerform_admin_enqueue_scripts_polls( $version, $data = array(), $l10n
 		wp_enqueue_media();
 	}
 
-	wp_enqueue_script( 'powerform-admin-layout', powerform_plugin_url() . 'build/admin/layout.js', array( 'jquery' ), $version );
+	wp_enqueue_script( 'powerform-admin-layout', powerform_plugin_url() . 'build/admin/layout.js', array( 'jquery' ), $version, false );
 	wp_register_script(
 		'powerform-admin',
 		powerform_plugin_url() . 'assets/js/poll-scripts.js',
 		array(
 			'jquery',
 			'wp-color-picker',
+			'react',
+			'react-dom',
 		),
 		$version,
 		true
 	);
-	wp_enqueue_script( 'wp-color-picker-alpha', powerform_plugin_url() . 'assets/js/library/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), $version, true );
+
+	powerform_enqueue_color_picker_alpha( $version );
+
 	wp_localize_script( 'powerform-admin', 'powerformData', $data );
 	wp_localize_script( 'powerform-admin', 'powerforml10n', $l10n );
 	wp_enqueue_script( 'powerform-admin' );
@@ -288,9 +352,9 @@ function powerform_admin_enqueue_scripts_polls( $version, $data = array(), $l10n
  * @param $version
  */
 function powerform_admin_enqueue_scripts_knowledge( $version, $data = array(), $l10n = array() ) {
-	wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version );
-	wp_enqueue_script( 'ace-editor', powerform_plugin_url() . 'assets/js/library/ace/ace.js', array( 'jquery' ), $version );
-	wp_enqueue_script( 'google-charts', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ), $version );
+	wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version, false );
+	wp_enqueue_script( 'ace-editor', powerform_plugin_url() . 'assets/js/library/ace/ace.js', array( 'jquery' ), $version, false );
+	wp_enqueue_script( 'google-charts', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ), $version, false );
 
 	if ( function_exists( 'wp_enqueue_editor' ) ) {
 		wp_enqueue_editor();
@@ -299,18 +363,24 @@ function powerform_admin_enqueue_scripts_knowledge( $version, $data = array(), $
 		wp_enqueue_media();
 	}
 
-	wp_enqueue_script( 'powerform-admin-layout', powerform_plugin_url() . 'build/admin/layout.js', array( 'jquery' ), $version );
+	wp_enqueue_script( 'powerform-admin-layout', powerform_plugin_url() . 'build/admin/layout.js', array( 'jquery' ), $version, false );
 	wp_register_script(
 		'powerform-admin',
 		powerform_plugin_url() . 'assets/js/knowledge-scripts.js',
 		array(
 			'jquery',
 			'wp-color-picker',
+			'react',
+			'react-dom',
 		),
 		$version,
 		true
 	);
-	wp_enqueue_script( 'wp-color-picker-alpha', powerform_plugin_url() . 'assets/js/library/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), $version, true );
+
+	wp_enqueue_script( 'powerform-jquery-ui-touch', powerform_plugin_url() . 'assets/js/library/jquery.ui.touch-punch.min.js', array( 'jquery' ), $version, true );
+
+	powerform_enqueue_color_picker_alpha( $version );
+
 	wp_localize_script( 'powerform-admin', 'powerformData', $data );
 	wp_localize_script( 'powerform-admin', 'powerforml10n', $l10n );
 	wp_enqueue_script( 'powerform-admin' );
@@ -325,9 +395,9 @@ function powerform_admin_enqueue_scripts_knowledge( $version, $data = array(), $
  * @param $version
  */
 function powerform_admin_enqueue_scripts_personality( $version, $data = array(), $l10n = array() ) {
-	wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version );
-	wp_enqueue_script( 'ace-editor', powerform_plugin_url() . 'assets/js/library/ace/ace.js', array( 'jquery' ), $version );
-	wp_enqueue_script( 'google-charts', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ), $version );
+	wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version, false );
+	wp_enqueue_script( 'ace-editor', powerform_plugin_url() . 'assets/js/library/ace/ace.js', array( 'jquery' ), $version, false );
+	wp_enqueue_script( 'google-charts', 'https://www.gstatic.com/charts/loader.js', array( 'jquery' ), $version, false );
 
 	if ( function_exists( 'wp_enqueue_editor' ) ) {
 		wp_enqueue_editor();
@@ -336,21 +406,59 @@ function powerform_admin_enqueue_scripts_personality( $version, $data = array(),
 		wp_enqueue_media();
 	}
 
-	wp_enqueue_script( 'powerform-admin-layout', powerform_plugin_url() . 'build/admin/layout.js', array( 'jquery' ), $version );
+	wp_enqueue_script( 'powerform-admin-layout', powerform_plugin_url() . 'build/admin/layout.js', array( 'jquery' ), $version, false );
 	wp_register_script(
 		'powerform-admin',
 		powerform_plugin_url() . 'assets/js/personality-scripts.js',
 		array(
 			'jquery',
 			'wp-color-picker',
+			'react',
+			'react-dom',
 		),
 		$version,
 		true
 	);
-	wp_enqueue_script( 'wp-color-picker-alpha', powerform_plugin_url() . 'assets/js/library/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), $version, true );
+
+	powerform_enqueue_color_picker_alpha( $version );
+
+	wp_enqueue_script( 'powerform-jquery-ui-touch', powerform_plugin_url() . 'assets/js/library/jquery.ui.touch-punch.min.js', array( 'jquery' ), $version, true );
+
 	wp_localize_script( 'powerform-admin', 'powerformData', $data );
 	wp_localize_script( 'powerform-admin', 'powerforml10n', $l10n );
 	wp_enqueue_script( 'powerform-admin' );
+}
+
+/**
+ * Enqueue custom form admin styles
+ *
+ * @since 1.11
+ *
+ * @param $version
+ * @param $grid
+ * @param $module_type
+ * @param $module_design
+ */
+function powerform_print_forms_admin_styles( $version = '1.0' ) {
+	wp_enqueue_style( 'powerform-ui-icons', powerform_plugin_url() . 'assets/powerform-ui/css/powerform-icons.min.css', array(), $version );
+	wp_enqueue_style( 'powerform-ui', powerform_plugin_url() . 'assets/powerform-ui/css/src/powerform-ui.min.css', array(), $version );
+	wp_enqueue_style( 'powerform-grid-open', powerform_plugin_url() . 'assets/powerform-ui/css/src/grid/powerform-grid.open.min.css', array(), $version );
+	wp_enqueue_style( 'powerform-grid-enclosed', powerform_plugin_url() . 'assets/powerform-ui/css/src/grid/powerform-grid.enclosed.min.css', array(), $version );
+}
+
+/**
+ * Enqueue poll admin styles
+ *
+ * @since 1.11
+ *
+ * @param $version
+ * @param $grid
+ * @param $module_type
+ * @param $module_design
+ */
+function powerform_print_polls_admin_styles( $version = '1.0' ) {
+	wp_enqueue_style( 'powerform-ui-icons', powerform_plugin_url() . 'assets/powerform-ui/css/powerform-icons.min.css', array(), $version );
+	wp_enqueue_style( 'powerform-ui', powerform_plugin_url() . 'assets/powerform-ui/css/src/powerform-ui.min.css', array(), $version );
 }
 
 /**
@@ -361,11 +469,16 @@ function powerform_admin_enqueue_scripts_personality( $version, $data = array(),
  * @since 1.0
  *
  * @param $version
+ * @param $grid
+ * @param $module_type
+ * @param $module_design
  */
 function powerform_print_front_styles( $version = '1.0' ) {
-	wp_enqueue_style( 'powerform-form-styles', powerform_plugin_url() . 'assets/css/front.min.css', array(), $version );
-	// TODO : check if its always needed
-	wp_enqueue_style( 'select2-powerform-css', powerform_plugin_url() . 'assets/css/select2.min.css', array(), "4.0.3" ); // Select2
+	// Load old styles.
+	// Remove on v1.12.0 quizzes migrate to Powerform UI.
+	wp_enqueue_style( 'powerform-ui', powerform_plugin_url() . 'assets/powerform-ui/css/src/powerform-ui.min.css', array(), $version );
+	wp_enqueue_style( 'powerform-grid-open', powerform_plugin_url() . 'assets/powerform-ui/css/src/grid/powerform-grid.open.min.css', array(), $version );
+	wp_enqueue_style( 'powerform-grid-enclosed', powerform_plugin_url() . 'assets/powerform-ui/css/src/grid/powerform-grid.enclosed.min.css', array(), $version );
 }
 
 /**
@@ -378,19 +491,98 @@ function powerform_print_front_styles( $version = '1.0' ) {
  * @param $version
  */
 function powerform_print_front_scripts( $version = '1.0' ) {
+
+	global $wp_locale;
+
+	// LOAD: ChartJS
+	wp_enqueue_script(
+		'chartjs',
+		powerform_plugin_url() . 'assets/js/front/Chart.min.js',
+		array( 'jquery' ),
+		'2.8.0',
+		false
+	);
+	$save_global_color = "if (typeof window !== 'undefined' && typeof window.Color !== 'undefined') {window.notChartColor = window.Color;}";
+	$restore_global_color = "if (typeof window !== 'undefined' && typeof window.notChartColor !== 'undefined') {window.Color = window.notChartColor;}";
+	wp_add_inline_script( 'chartjs', $save_global_color, 'before' );
+	wp_add_inline_script( 'powerform-chart', $save_global_color, 'before' );
+	wp_add_inline_script( 'chartjs', $restore_global_color );
+	wp_add_inline_script( 'powerform-chart', $restore_global_color );
+
+	// LOAD: Datalabels plugin for ChartJS
+	wp_enqueue_script(
+		'chartjs-plugin-datalabels',
+		powerform_plugin_url() . 'assets/js/front/chartjs-plugin-datalabels.min.js',
+		array( 'jquery' ),
+		'0.6.0',
+		false
+	);
+
+	// LOAD: Powerform UI JS
+	wp_enqueue_script(
+		'powerform-ui',
+		powerform_plugin_url() . 'assets/powerform-ui/js/powerform-ui.min.js',
+		array( 'jquery' ),
+		'1.7.1',
+		false
+	);
+
 	// TODO : check if its always needed
-	wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version, false );
+	// wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), $version, false );
+
 	// TODO : check if its always needed
 	wp_enqueue_script( 'powerform-jquery-validate', powerform_plugin_url() . 'assets/js/library/jquery.validate.min.js', array( 'jquery' ), POWERFORM_VERSION, false );
+
+
 	wp_enqueue_script(
 		'powerform-front-scripts',
 		powerform_plugin_url() . 'build/front/front.multi.min.js',
-		array( 'jquery', 'select2-powerform', 'powerform-jquery-validate' ),
+		array( 'jquery', 'powerform-ui', 'powerform-jquery-validate' ),
 		$version,
 		false
 	);
 
 	wp_localize_script( 'powerform-front-scripts', 'PowerformFront', powerform_localize_data() );
+
+	//localize Datepicker js
+	$datepicker_date_format = str_replace(
+		array(
+			'd',
+			'j',
+			'l',
+			'z', // Day.
+			'F',
+			'M',
+			'n',
+			'm', // Month.
+			'Y',
+			'y', // Year.
+		),
+		array(
+			'dd',
+			'd',
+			'DD',
+			'o',
+			'MM',
+			'M',
+			'm',
+			'mm',
+			'yy',
+			'y',
+		),
+		get_option( 'date_format' )
+	);
+	$datepicker_data        = array(
+		'monthNames'      => array_values( $wp_locale->month ),
+		'monthNamesShort' => array_values( $wp_locale->month_abbrev ),
+		'dayNames'        => array_values( $wp_locale->weekday ),
+		'dayNamesShort'   => array_values( $wp_locale->weekday_abbrev ),
+		'dayNamesMin'     => array_values( $wp_locale->weekday_initial ),
+		'dateFormat'      => $datepicker_date_format,
+		'firstDay'        => absint( get_option( 'start_of_week' ) ),
+		'isRTL'           => $wp_locale->is_rtl(),
+	);
+	wp_localize_script( 'powerform-front-scripts', 'datepickerLang', $datepicker_data );
 }
 
 /**
@@ -402,25 +594,32 @@ function powerform_localize_data() {
 	return array(
 		'ajaxUrl' => powerform_ajax_url(),
 		'cform'   => array(
-			'processing'                => __( 'Senden des Formulars, bitte warten', Powerform::DOMAIN ),
-			'error'                     => __( 'Beim Verarbeiten des Formulars ist ein Fehler aufgetreten. Bitte versuche es erneut', Powerform::DOMAIN ),
-			'upload_error'              => __( 'Beim Verarbeiten des Formulars ist ein Upload-Fehler aufgetreten. Bitte versuche es erneut', Powerform::DOMAIN ),
-			'pagination_prev'           => __( 'Zurück', Powerform::DOMAIN ),
-			'pagination_next'           => __( 'Weiter', Powerform::DOMAIN ),
-			'pagination_go'             => __( 'Einreichen', Powerform::DOMAIN ),
+			'processing'                => __( 'Submitting form, please wait', Powerform::DOMAIN ),
+			'error'                     => __( 'An error occurred processing the form. Please try again', Powerform::DOMAIN ),
+			'upload_error'              => __( 'An upload error occurred processing the form. Please try again', Powerform::DOMAIN ),
+			'pagination_prev'           => __( 'Previous', Powerform::DOMAIN ),
+			'pagination_next'           => __( 'Next', Powerform::DOMAIN ),
+			'pagination_go'             => __( 'Submit', Powerform::DOMAIN ),
 			'gateway'                   => array(
-				'processing' => __( 'Zahlungsabwicklung, bitte warten', Powerform::DOMAIN ),
-				'paid'       => __( 'Erfolg! Bezahlung bestätigt. Senden des Formulars, bitte warten', Powerform::DOMAIN ),
-				'error'      => __( 'Fehler! Beim Verifizieren der Zahlung ist ein Fehler aufgetreten', Powerform::DOMAIN ),
+				'processing' => __( 'Processing payment, please wait', Powerform::DOMAIN ),
+				'paid'       => __( 'Success! Payment confirmed. Submitting form, please wait', Powerform::DOMAIN ),
+				'error'      => __( 'Error! Something went wrong when verifying the payment', Powerform::DOMAIN ),
 			),
-			'captcha_error'             => __( 'Ungültiges Captcha', Powerform::DOMAIN ),
-			'no_file_chosen'            => __( 'Keine Datei ausgewählt', Powerform::DOMAIN ),
+			'captcha_error'             => __( 'Invalid CAPTCHA', Powerform::DOMAIN ),
+			'no_file_chosen'            => __( 'No file chosen', Powerform::DOMAIN ),
 			// This is the file "/build/js/utils.js" found into intlTelInput plugin. Renamed so it makes sense within the "js/library" directory context.
 			'intlTelInput_utils_script' => powerform_plugin_url() . 'assets/js/library/intlTelInputUtils.js',
+			'process_error'             => __( 'Please try again', Powerform::DOMAIN ),
 		),
 		'poll'    => array(
-			'processing' => __( 'Stimme abgeben, bitte warten', Powerform::DOMAIN ),
-			'error'      => __( 'Beim Speichern der Stimme ist ein Fehler aufgetreten. Bitte versuche es erneut', Powerform::DOMAIN ),
+			'processing' => __( 'Submitting vote, please wait', Powerform::DOMAIN ),
+			'error'      => __( 'An error occurred saving the vote. Please try again', Powerform::DOMAIN ),
+		),
+		'select2' => array(
+			'load_more'       => __( 'Loading more results…', Powerform::DOMAIN ),
+			'no_result_found' => __( 'No results found', Powerform::DOMAIN ),
+			'searching'       => __( 'Searching…', Powerform::DOMAIN ),
+			'loaded_error'    => __( 'The results could not be loaded.', Powerform::DOMAIN ),
 		),
 	);
 }
@@ -482,10 +681,9 @@ function powerform_template_exist( $path ) {
  * @return bool
  */
 function powerform_has_paypal_settings() {
-	$client_id = get_option( "powerform_paypal_client_id", false );
-	$secret    = get_option( "powerform_paypal_secret", false );
+	$config = get_option( 'powerform_paypal_configuration', array() );
 
-	if ( empty( $client_id ) || empty( $secret ) ) {
+	if ( empty( $config ) ) {
 		return false;
 	}
 
@@ -499,8 +697,8 @@ function powerform_has_paypal_settings() {
  * @return bool
  */
 function powerform_has_captcha_settings() {
-	$key    = get_option( "powerform_captcha_key", false );
-	$secret = get_option( "powerform_captcha_secret", false );
+	$key    = get_option( 'powerform_captcha_key', false );
+	$secret = get_option( 'powerform_captcha_secret', false );
 
 	if ( empty( $key ) || empty( $secret ) ) {
 		return false;
@@ -509,6 +707,77 @@ function powerform_has_captcha_settings() {
 	return true;
 }
 
+/**
+ * Return if captcha v2 settings are filled
+ *
+ * @since 1.0
+ * @return bool
+ */
+function powerform_has_v2_captcha_settings() {
+	$key    = get_option( 'powerform_captcha_key', false );
+	$secret = get_option( 'powerform_captcha_secret', false );
+
+	if ( empty( $key ) || empty( $secret ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Return if captcha v2 invisible settings are filled
+ *
+ * @since 1.0
+ * @return bool
+ */
+function powerform_has_v2_invisible_captcha_settings() {
+	$key    = get_option( 'powerform_v2_invisible_captcha_key', false );
+	$secret = get_option( 'powerform_v2_invisible_captcha_secret', false );
+
+	if ( empty( $key ) || empty( $secret ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Return if captcha v3 settings are filled
+ *
+ * @since 1.0
+ * @return bool
+ */
+function powerform_has_v3_captcha_settings() {
+	$key    = get_option( 'powerform_v3_captcha_key', false );
+	$secret = get_option( 'powerform_v3_captcha_secret', false );
+
+	if ( empty( $key ) || empty( $secret ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Return if Stripe is is_connected
+ *
+ * @since 1.7
+ * @return bool
+ */
+function powerform_has_stripe_connected() {
+	if ( class_exists( 'Powerform_Gateway_Stripe' ) ) {
+		try {
+			$stripe = new Powerform_Gateway_Stripe();
+			if ( $stripe->is_test_ready() && $stripe->is_live_ready() ) {
+				return true;
+			}
+		} catch ( Powerform_Gateway_Exception $e ) {
+			return false;
+		}
+	}
+
+	return false;
+}
 /**
  * Return form ID
  *
@@ -523,7 +792,7 @@ function powerform_get_form_id_helper() {
 		return 0;
 	}
 
-	return isset( $_GET['form_id'] ) ? intval( $_GET['form_id'] ) : 0; // WPCS: CSRF OK
+	return isset( $_GET['form_id'] ) ? intval( $_GET['form_id'] ) : 0;
 }
 
 /**
@@ -533,20 +802,24 @@ function powerform_get_form_id_helper() {
  * @return array
  */
 function powerform_get_page_ids_helper() {
+	// Sanitize is requied when user uses space inside the translation.
+	$name = sanitize_title( __( 'powerform', POWERFORM::DOMAIN ) );
 	if ( POWERFORM_PRO ) {
+        $title = sanitize_title( __( 'Powerform', Powerform::DOMAIN ) );
 		return array(
-			'powerform-pro_page_powerform-quiz-view',
-			'powerform-pro_page_powerform-cform-view',
-			'powerform-pro_page_powerform-poll-view',
-			'powerform-pro_page_powerform-entries',
+			$title . '_page_powerform-quiz-view',
+			$title . '_page_powerform-cform-view',
+			$title . '_page_powerform-poll-view',
+			$title . '_page_powerform-entries',
 		);
 	} else {
 		// Free version
+        $title = sanitize_title( __( 'Powerform', Powerform::DOMAIN ) );
 		return array(
-			'powerform_page_powerform-quiz-view',
-			'powerform_page_powerform-cform-view',
-			'powerform_page_powerform-poll-view',
-			'powerform_page_powerform-entries',
+			$title . '_page_powerform-quiz-view',
+			$title . '_page_powerform-cform-view',
+			$title . '_page_powerform-poll-view',
+			$title . '_page_powerform-entries',
 		);
 	}
 }
@@ -565,32 +838,33 @@ function powerform_get_form_type_helper() {
 	}
 
 	$form_type = "";
-	$page      = isset( $_GET['page'] ) ? $_GET['page'] : null; // WPCS: CSRF OK
+	$page      = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : null;
+
 	if ( is_null( $page ) ) {
 		return null;
 	}
 
 	switch ( $page ) {
 		case 'powerform-quiz-view':
-			$form_type = "quiz";
+			$form_type = 'quiz';
 			break;
 		case 'powerform-poll-view':
-			$form_type = "poll";
+			$form_type = 'poll';
 			break;
 		case 'powerform-cform-view':
-			$form_type = "cform";
+			$form_type = 'cform';
 			break;
 		case 'powerform-entries':
-			if ( isset( $_GET['form_type'] ) && $_GET['form_type'] ) { // WPCS: CSRF OK
-				switch ( $_GET['form_type'] ) { // WPCS: CSRF OK
+			if ( isset( $_GET['form_type'] ) && $_GET['form_type'] ) { // phpcs:ignore
+				switch ( $_GET['form_type'] ) { // phpcs:ignore
 					case 'powerform_forms':
-						$form_type = "cform";
+						$form_type = 'cform';
 						break;
 					case 'powerform_polls':
-						$form_type = "poll";
+						$form_type = 'poll';
 						break;
 					case 'powerform_quizzes':
-						$form_type = "quiz";
+						$form_type = 'quiz';
 						break;
 					default:
 						break;
@@ -614,6 +888,9 @@ function powerform_get_form_type_helper() {
  */
 function powerform_get_exporter_info( $info, $key ) {
 	$data = get_option( 'powerform_entries_export_schedule', array() );
+	if ( 'email' === $info && ! empty( $data[ $key ][ $info ] ) && ! is_array( $data[ $key ][ $info ] ) ) {
+		return array( $data[ $key ][ $info ] );
+	}
 
 	return isset( $data[ $key ][ $info ] ) ? $data[ $key ][ $info ] : null;
 }
@@ -672,7 +949,7 @@ function powerform_get_export_logs( $form_id ) {
 	$row  = isset( $data[ $form_id ] ) ? $data[ $form_id ] : array();
 
 	foreach ( $row as &$item ) {
-		$item['time'] = date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $item['time'] );
+		$item['time'] = date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $item['time'] );// phpcs:ignore
 	}
 
 	return $row;
@@ -688,7 +965,49 @@ function powerform_get_export_logs( $form_id ) {
 function powerform_get_current_url() {
 	global $wp;
 
-	return add_query_arg( $_SERVER['QUERY_STRING'], '', trailingslashit( home_url( $wp->request ) ) );
+	return add_query_arg( esc_attr( $_SERVER['QUERY_STRING'] ), '', trailingslashit( home_url( $wp->request ) ) );
+}
+
+/**
+ * Detect whether current request comes from any page builder preveiw page
+ *
+ * @since 1.13
+ *
+ * @return bool
+ */
+function powerform_is_page_builder_preview() {
+	static $decision;
+	if ( isset( $decision ) ) {
+		return $decision;
+	}
+
+	$decision = false;
+	global $wp;
+
+	//Check Pro theme by Themeco https://theme.co/
+	if ( defined( 'X_TEMPLATE_PATH' ) && $wp->request === 'cornerstone-endpoint' ) {
+		$decision = true;
+		return $decision;
+	}
+
+	// Check DIVI theme page builder
+	// Note : following lines of codes are perfect to detect DIVI builder.
+	// But DIVI builder is not showing Powerform forms in preview mood.
+	// So commenting out these code for now.
+	/*
+	if( defined( 'ET_CORE_VERSION' ) && isset( $_REQUEST['et_pb_preview'] ) && $_REQUEST['et_pb_preview'] ) {
+		$decision = true;
+		return $decision;
+	}
+	*/
+
+	//Check Elementor plugin
+	if ( defined( 'ELEMENTOR_VERSION' ) && isset( $_REQUEST['action'] ) && 'elementor_ajax' === $_REQUEST['action']  && isset( $_REQUEST['editor_post_id'] ) && intval( $_REQUEST['editor_post_id'] ) ) {
+		$decision = true;
+		return $decision;
+	}
+
+	return $decision;
 }
 
 /**
@@ -702,13 +1021,13 @@ function powerform_get_current_url() {
  */
 function powerform_get_day_translated( $day ) {
 	$days = array(
-		"mon" => __( "Montag", Powerform::DOMAIN ),
-		"tue" => __( "Dienstag", Powerform::DOMAIN ),
-		"wed" => __( "Mittwoch", Powerform::DOMAIN ),
-		"thu" => __( "Donnerstag", Powerform::DOMAIN ),
-		"fri" => __( "Freitag", Powerform::DOMAIN ),
-		"sat" => __( "Samstag", Powerform::DOMAIN ),
-		"sun" => __( "Sonntag", Powerform::DOMAIN ),
+		'mon' => __( 'Monday', Powerform::DOMAIN ),
+		'tue' => __( 'Tuesday', Powerform::DOMAIN ),
+		'wed' => __( 'Wednesday', Powerform::DOMAIN ),
+		'thu' => __( 'Thursday', Powerform::DOMAIN ),
+		'fri' => __( 'Friday', Powerform::DOMAIN ),
+		'sat' => __( 'Saturday', Powerform::DOMAIN ),
+		'sun' => __( 'Sunday', Powerform::DOMAIN ),
 	);
 
 	return isset( $days[ $day ] ) ? $days[ $day ] : $day;
@@ -747,7 +1066,6 @@ function powerform_maybe_log() {
 		if ( false !== $message ) {
 			error_log( '[Powerform] ' . $message );// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 		}
-
 	}
 }
 
@@ -768,7 +1086,7 @@ function powerform_var_type_cast( $var, $type ) {
 				$var = filter_var( $var, FILTER_VALIDATE_BOOLEAN );
 			}
 			break;
-		case 'str' :
+		case 'str':
 			if ( ! is_string( $var ) ) {
 				if ( is_array( $var ) ) {
 					$var = implode( ', ', $var );
@@ -810,20 +1128,20 @@ function powerform_var_type_cast( $var, $type ) {
 function powerform_get_poll_chart_colors( $poll_id = null ) {
 
 	$chart_colors = array(
-		'#17A8E3', // Blue
-		'#FF6D6D', // Red
-		'#FECF2F', // Yellow
-		'#1ABC9C', // Green
-		'#FF7E41', // Orange
-		'#8D00B1', // Purple
-		'#6689A1', // Blue Alt
-		'#EA5676', // Red Alt
-		'#D8DC6A', // Yellow Alt
-		'#6BC192', // Green Alt
-		'#EB8258', // Orange Alt
-		'#995D81', // Purple Alt
-		'#000000', // Black
-		'#888888', // Black Alt
+		'rgba(54, 162, 235, 0.2)', // Blue
+		'rgba(255, 99, 132, 0.2)', // Red
+		'rgba(255, 206, 86, 0.2)', // Yellow
+		'rgba(75, 192, 192, 0.2)', // Green
+		'rgba(255, 159, 64, 0.2)', // Orange
+		'rgba(153, 102, 255, 0.2)', // Purple
+		'rgba(102, 137, 161, 0.2)', // Blue Alt
+		'rgba(234, 86, 118, 0.2)', // Red Alt
+		'rgba(216, 220, 106, 0.2)', // Yellow Alt
+		'rgba(107, 193, 146, 0.2)', // Green Alt
+		'rgba(235, 130, 88, 0.2)', // Orange Alt
+		'rgba(153, 93, 129, 0.2)', // Purple Alt
+		'rgba(0, 0, 0, 0.2)', // Black
+		'rgba(136, 136, 136, 0.2)', // Black Alt
 	);
 
 	$chart_colors = apply_filters_deprecated( 'powerform_poll_chart_color', array( $chart_colors ), '1.5.3', 'powerform_poll_chart_colors' );
@@ -905,7 +1223,7 @@ function powerform_get_captcha_languages() {
 			'pt-PT'  => esc_html__( 'Portuguese (Portugal)', Powerform::DOMAIN ),
 			'ro'     => esc_html__( 'Romanian', Powerform::DOMAIN ),
 			'ru'     => esc_html__( 'Russian', Powerform::DOMAIN ),
-			'sr'     => esc_html__( 'Serbian', Powerform::DOMAIN ),
+			'rs'     => esc_html__( 'Serbian', Powerform::DOMAIN ),
 			'si'     => esc_html__( 'Sinhalese', Powerform::DOMAIN ),
 			'sk'     => esc_html__( 'Slovak', Powerform::DOMAIN ),
 			'sl'     => esc_html__( 'Slovenian', Powerform::DOMAIN ),
@@ -932,8 +1250,8 @@ function powerform_get_captcha_languages() {
  * @return bool
  */
 function powerform_is_show_documentation_link() {
-	if ( Powerform::is_wpmudev_member() ) {
-		return ! apply_filters( 'wpmudev_branding_hide_doc_link', false );
+	if ( Powerform::is_psource_member() ) {
+		return ! apply_filters( 'psource_branding_hide_doc_link', false );
 	}
 
 	return true;
@@ -946,8 +1264,8 @@ function powerform_is_show_documentation_link() {
  * @return bool
  */
 function powerform_is_show_branding() {
-	if ( Powerform::is_wpmudev_member() ) {
-		return ! apply_filters( 'wpmudev_branding_hide_branding', false );
+	if ( Powerform::is_psource_member() ) {
+		return ! apply_filters( 'psource_branding_hide_branding', false );
 	}
 
 	return true;
@@ -1013,10 +1331,15 @@ function powerform_reset_settings() {
 	/**
 	 * @see powerform_delete_custom_options()
 	 */
+
 	delete_option( "powerform_pagination_listings" );
 	delete_option( "powerform_pagination_entries" );
 	delete_option( "powerform_captcha_key" );
 	delete_option( "powerform_captcha_secret" );
+	delete_option( "powerform_v2_invisible_captcha_key" );
+	delete_option( "powerform_v2_invisible_captcha_secret" );
+	delete_option( "powerform_v3_captcha_key" );
+	delete_option( "powerform_v3_captcha_secret" );
 	delete_option( "powerform_captcha_language" );
 	delete_option( "powerform_captcha_theme" );
 	delete_option( "powerform_welcome_dismissed" );
@@ -1047,7 +1370,8 @@ function powerform_reset_settings() {
 	delete_option( "powerform_currency" );
 	delete_option( "powerform_exporter_log" );
 	delete_option( "powerform_uninstall_clear_data" );
-
+	delete_option( "powerform_stripe_configuration" );
+	delete_option( "powerform_paypal_configuration" );
 
 	/**
 	 * @see powerform_delete_addon_options()
@@ -1073,7 +1397,7 @@ function powerform_reset_settings() {
 		'powerform_quizzes',
 	);
 	foreach ( $form_types as $type ) {
-		$ids = $wpdb->get_var( $wpdb->prepare( $forms_sql, $type ) ); // WPCS: unprepared SQL ok. false positive
+		$ids = $wpdb->get_var( $wpdb->prepare( $forms_sql, $type ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		if ( $ids ) {
 			$array_ids = explode( ',', $ids );
 			foreach ( $array_ids as $array_id ) {
@@ -1081,18 +1405,18 @@ function powerform_reset_settings() {
 			}
 
 			$delete_form_meta_sql = "DELETE FROM {$wpdb->postmeta} WHERE `post_id` in($ids)";
-			$wpdb->query( $delete_form_meta_sql ); // WPCS: unprepared SQL ok. false positive. no need to prepared since all param are not user defined
+			$wpdb->query( $delete_form_meta_sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
-			$entry_sql        = "SELECT GROUP_CONCAT(`entry_id`) FROM {$entry_table} WHERE `form_id` IN ($ids)";
-			$entries = $wpdb->get_var( $entry_sql); // WPCS: unprepared SQL ok. false positive. no need to prepared since all param are not user defined
+			$entry_sql = "SELECT GROUP_CONCAT(`entry_id`) FROM {$entry_table} WHERE `form_id` IN ($ids)";
+			$entries   = $wpdb->get_var( $entry_sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 			$delete_entry_meta_sql = "DELETE FROM {$entry_meta_table} WHERE `entry_id` in($entries)";
-			$wpdb->query( $delete_entry_meta_sql ); // WPCS: unprepared SQL ok. false positive. no need to prepared since all param are not user defined
+			$wpdb->query( $delete_entry_meta_sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 			$delete_entry_sql = "DELETE FROM {$entry_table} WHERE `form_id` in($ids)";
-			$wpdb->query( $delete_entry_sql ); // WPCS: unprepared SQL ok. false positive. no need to prepared since all param are not user defined
+			$wpdb->query( $delete_entry_sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		}
-		$wpdb->query( $wpdb->prepare( $delete_forms_sql, $type ) ); // WPCS: unprepared SQL ok. false positive
+		$wpdb->query( $wpdb->prepare( $delete_forms_sql, $type ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	}
 
 	/**
@@ -1120,7 +1444,6 @@ function powerform_reset_plugin() {
 
 	powerform_reset_settings();
 
-
 	/**
 	 * @see powerform_clear_module_views()
 	 */
@@ -1142,9 +1465,9 @@ function powerform_reset_plugin() {
 	$wpdb->query( "TRUNCATE {$wpdb->prefix}frmt_form_entry_meta" );
 
 	wp_cache_delete( 'all_form_types', 'powerform_total_entries' );
-	wp_cache_delete( 'custom-forms' . '_form_type', 'powerform_total_entries' );
-	wp_cache_delete( 'poll' . '_form_type', 'powerform_total_entries' );
-	wp_cache_delete( 'quizzes' . '_form_type', 'powerform_total_entries' );
+	wp_cache_delete( 'custom-forms_form_type', 'powerform_total_entries' );
+	wp_cache_delete( 'poll_form_type', 'powerform_total_entries' );
+	wp_cache_delete( 'quizzes_form_type', 'powerform_total_entries' );
 
 	/**
 	 * Fires after Plugin reset
@@ -1152,4 +1475,127 @@ function powerform_reset_plugin() {
 	 * @since 1.6.3
 	 */
 	do_action( 'powerform_after_reset_plugin' );
+}
+
+/**
+ * Add Slash in string
+ *
+ * @since 1.8
+ *
+ * @param $value
+ * @param string $char
+ *
+ * @return string
+ */
+
+function powerform_addcslashes( $value, $char = '"\\/' ) {
+
+	return addcslashes( $value, $char );
+}
+
+/**
+ * Return URL link.
+ *
+ * @since 1.13
+ *
+ * @param string $link_for Accepts: 'docs', 'plugin', 'rate', 'support', 'roadmap'.
+ * @param string $campaign  Utm campaign tag to be used in link. Default: ''.
+ * @param string $adv_path  Advanced path. Default: ''.
+ *
+ * @return string
+ */
+function powerform_get_link( $link_for, $campaign = '', $adv_path = '' ) {
+	$domain   = 'https://n3rds.work';
+	$wp_org   = 'https://wordpress.org';
+	$utm_tags = "?utm_source=powerform&utm_medium=plugin&utm_campaign={$campaign}";
+
+	switch ( $link_for ) {
+		case 'docs':
+			$link = "{$domain}/docs/wpmu-dev-plugins/powerform/{$utm_tags}";
+			break;
+		case 'plugin':
+			$link = "{$domain}/project/powerform-pro/{$utm_tags}";
+			break;
+		case 'rate':
+			$link = "{$wp_org}/support/plugin/powerform/reviews/#new-post";
+			break;
+		case 'support':
+			$link = POWERFORM_PRO ? "{$domain}/get-support/" : "{$wp_org}/support/plugin/powerform/";
+			break;
+		case 'roadmap':
+			$link = "{$domain}/roadmap/";
+			break;
+		case 'pro_link':
+			$link = "{$domain}/$adv_path";
+			break;
+		default:
+			$link = '';
+			break;
+	}
+
+	return $link;
+}
+
+/**
+ * Check if the plugin is active network wide.
+ *
+ * @since 1.13
+ *
+ * @return bool
+ */
+function powerform_membership_status() {
+	static $status = null;
+
+	// Get the status.
+	if ( is_null( $status ) ) {
+		// Dashboard is active.
+		if ( class_exists( 'PSOURCE_Dashboard' ) ) {
+			// Get membership type.
+			$status = PSOURCE_Dashboard::$api->get_membership_type();
+			// Get available projects.
+			$projects = PSOURCE_Dashboard::$api->get_membership_projects();
+
+			// Beehive single plan.
+			if ( ( 'unit' === $status && ! in_array( 2097296, $projects, true ) ) || ( 'single' === $status && 2097296 !== $projects ) ) {
+				$status = 'upgrade';
+			} elseif ( 'free' === $status && PSOURCE_Dashboard::$api->has_key() ) {
+				// Check if API key is available but status is free, then it's expired.
+				$status = 'expired';
+			}
+		} else {
+			$status = 'free';
+		}
+	}
+
+	/**
+	 * Filter to modify PSOURCE membership status.
+	 *
+	 * @since 1.13
+	 *
+	 * @param string $status Status.
+	 *
+	 */
+	return apply_filters( 'powerform_psource_membership_status', $status );
+}
+
+/**
+ * Check if the plugin is active network wide.
+ *
+ * @since 1.13
+ *
+ * @return bool
+ */
+function powerform_is_networkwide() {
+	if ( is_multisite() ) {
+		// Makes sure the plugin is defined before trying to use it.
+		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/plugin.php';
+		}
+
+		$active = is_plugin_active_for_network( plugin_basename( POWERFORM_PLUGIN_BASENAME ) );
+	} else {
+		$active = false;
+	}
+
+	return $active;
 }

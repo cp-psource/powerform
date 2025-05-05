@@ -26,13 +26,13 @@ class Powerform_CForm_General_Data_Protection extends Powerform_General_Data_Pro
 
 		$this->add_exporter(
 			'powerform-form-submissions',
-			__( 'Übermittlung von Powerform-Formularen', Powerform::DOMAIN ),
+			__( 'Powerform-Formularübermittlungen', Powerform::DOMAIN ),
 			array( 'Powerform_CForm_General_Data_Protection', 'form_submissions_exporter' )
 		);
 
 		$this->add_eraser(
 			'powerform-form-submissions',
-			__( 'Übermittlung von Powerform-Formularen', Powerform::DOMAIN ),
+			__( 'Powerform Formularübermittlung', Powerform::DOMAIN ),
 			array( 'Powerform_CForm_General_Data_Protection', 'form_submissions_eraser' )
 		);
 
@@ -177,7 +177,7 @@ class Powerform_CForm_General_Data_Protection extends Powerform_General_Data_Pro
 
 				$data_to_export[] = array(
 					'group_id'    => 'powerform_form_submissions',
-					'group_label' => __( 'Übermittlung von Powerform-Formularen', Powerform::DOMAIN ),
+					'group_label' => __( 'Powerform-Formularübermittlungen', Powerform::DOMAIN ),
 					'item_id'     => 'entry-' . $entry_id,
 					'data'        => $data,
 				);
@@ -246,7 +246,7 @@ class Powerform_CForm_General_Data_Protection extends Powerform_General_Data_Pro
 			array(
 				// read form model's meta property
 				'meta_property' => '_powerform_user_ip', // must be on export
-				'label'         => __( 'IP Adresse', Powerform::DOMAIN ),
+				'label'         => __( 'IP Addresse', Powerform::DOMAIN ),
 				'type'          => '_powerform_user_ip',
 			),
 		);
@@ -436,11 +436,11 @@ class Powerform_CForm_General_Data_Protection extends Powerform_General_Data_Pro
 			if ( $remove_form_submission ) {
 				if ( ! empty( $entry_model->form_id ) ) {
 					Powerform_Form_Entry_Model::delete_by_entry( $entry_model->form_id, $entry_id );
-					$response['messages'][]    = sprintf( __( 'Formular #%1$s Einreichung #%2$s entfernt.', Powerform::DOMAIN ), $entry_model->form_id, $entry_id );
+					$response['messages'][]    = sprintf( __( 'Formular #%1$s Einsendung #%2$s entfernt.', Powerform::DOMAIN ), $entry_model->form_id, $entry_id );
 					$response['items_removed'] = true;
 				}
 			} else {
-				$response['messages'][]     = sprintf( __( 'Formular #%1$s Einreichung #%2$s wurde beibehalten.', Powerform::DOMAIN ), $entry_model->form_id, $entry_id );
+				$response['messages'][]     = sprintf( __( 'Formular #%1$s Einsendung #%2$s wurde beibehalten.', Powerform::DOMAIN ), $entry_model->form_id, $entry_id );
 				$response['items_retained'] = true;
 			}
 

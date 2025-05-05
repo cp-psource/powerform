@@ -61,9 +61,9 @@ class Powerform_Custom extends Powerform_Field {
 				'hide_label' => true,
 				'values'     => array(
 					array(
-						'value'      => "true",
+						'value'      => 'true',
 						'label'      => __( 'Erforderlich', Powerform::DOMAIN ),
-						'labelSmall' => "true",
+						'labelSmall' => 'true',
 					),
 				),
 			),
@@ -92,35 +92,35 @@ class Powerform_Custom extends Powerform_Field {
 				'label'        => __( 'Feldtyp', Powerform::DOMAIN ),
 				'values'       => array(
 					array(
-						'value' => "text",
+						'value' => 'text',
 						'label' => __( 'Einzeiliger Text', Powerform::DOMAIN ),
 					),
 					array(
-						'value' => "textarea",
+						'value' => 'textarea',
 						'label' => __( 'Mehrzeiliger Text', Powerform::DOMAIN ),
 					),
 					array(
-						'value' => "dropdown",
+						'value' => 'dropdown',
 						'label' => __( 'Dropdown', Powerform::DOMAIN ),
 					),
 					array(
-						'value' => "multiselect",
+						'value' => 'multiselect',
 						'label' => __( 'Mehrfachauswahl', Powerform::DOMAIN ),
 					),
 					array(
-						'value' => "number",
+						'value' => 'number',
 						'label' => __( 'Nummer', Powerform::DOMAIN ),
 					),
 					array(
-						'value' => "checkbox",
+						'value' => 'checkbox',
 						'label' => __( 'Kontrollkästchen', Powerform::DOMAIN ),
 					),
 					array(
-						'value' => "radio",
-						'label' => __( 'Radio Knöpfe', Powerform::DOMAIN ),
+						'value' => 'radio',
+						'label' => __( 'Auswahl Schaltflächen', Powerform::DOMAIN ),
 					),
 					array(
-						'value' => "hidden",
+						'value' => 'hidden',
 						'label' => __( 'Versteckt', Powerform::DOMAIN ),
 					),
 				),
@@ -131,15 +131,15 @@ class Powerform_Custom extends Powerform_Field {
 				'type'           => 'RadioContainer',
 				'name'           => 'custom_field_name',
 				'className'      => 'custom-field-name-field',
-				'containerClass' => 'wpmudev-is_gray',
-				'label'          => __( "Benutzerdefinierter Feldname", Powerform::DOMAIN ),
+				'containerClass' => 'psource-is_gray',
+				'label'          => __( 'Benutzerdefinierter Feldname', Powerform::DOMAIN ),
 				'values'         => array(
 					array(
-						'value' => "existing",
+						'value' => 'existing',
 						'label' => __( 'Vorhandenes Feld', Powerform::DOMAIN ),
 					),
 					array(
-						'value' => "new",
+						'value' => 'new',
 						'label' => __( 'Neues Feld', Powerform::DOMAIN ),
 					),
 				),
@@ -149,7 +149,7 @@ class Powerform_Custom extends Powerform_Field {
 						'type'      => 'Select',
 						'name'      => 'existing_field',
 						'className' => 'existing-field',
-						'label'     => __( 'Wähle das vorhandene Feld aus', Powerform::DOMAIN ),
+						'label'     => __( 'Wähle vorhandenes Feld', Powerform::DOMAIN ),
 						'tab'       => 'existing',
 						'values'    => array(),
 					),
@@ -185,16 +185,16 @@ class Powerform_Custom extends Powerform_Field {
 		$id            = self::get_property( 'element_id', $field );
 		$name          = $id;
 		$field_type    = self::get_property( 'field_type', $field );
-		$placeholder   = self::get_property( 'placeholder', $field );
-		$description   = self::get_property( 'description', $field );
-		$label         = self::get_property( 'field_label', $field );
+		$placeholder   = esc_html( self::get_property( 'placeholder', $field ) );
+		$description   = esc_html( self::get_property( 'description', $field ) );
+		$label         = esc_html( self::get_property( 'field_label', $field ) );
 		$id            = $id . '-field';
 		$html          = '';
-		$default_value = self::get_property( 'default_value', $field );
+		$default_value = esc_html( self::get_property( 'default_value', $field ) );
 		$post_value    = self::get_post_data( $name, false );
 
 		switch ( $field_type ) {
-			case "text":
+			case 'text':
 				$html .= sprintf(
 					'<input class="powerform-name--field powerform-input" type="text" data-required="%s" name="%s" placeholder="%s" id="%s" %s/>',
 					$required,
@@ -204,7 +204,7 @@ class Powerform_Custom extends Powerform_Field {
 					( $post_value ? 'value= "' . $post_value . '"' : '' )
 				);
 				break;
-			case "textarea":
+			case 'textarea':
 				$field_markup = array(
 					'type'        => 'textarea',
 					'class'       => 'powerform-textarea',
@@ -213,13 +213,13 @@ class Powerform_Custom extends Powerform_Field {
 					'placeholder' => $placeholder,
 					'required'    => $required,
 				);
-				$html         .= self::create_textarea( $field_markup, $label, $description );
+				$html        .= self::create_textarea( $field_markup, $label, $description );
 				break;
-			case "dropdown":
+			case 'dropdown':
 				break;
-			case "multiselect":
+			case 'multiselect':
 				break;
-			case "number":
+			case 'number':
 				$html .= sprintf(
 					'<input class="powerform-number--field powerform-input" type="number" data-required="%s" name="%s" placeholder="%s" value="%s" id="%s" />',
 					$required,
@@ -229,11 +229,11 @@ class Powerform_Custom extends Powerform_Field {
 					$id
 				);
 				break;
-			case "checkbox":
+			case 'checkbox':
 				break;
-			case "radio":
+			case 'radio':
 				break;
-			case "hidden":
+			case 'hidden':
 				$html .= sprintf( '<input class="powerform-hidden--field" type="hidden" id="%s" name="%s" value="%s" />', $id, $name, $default_value );
 				break;
 			default:
@@ -247,15 +247,17 @@ class Powerform_Custom extends Powerform_Field {
 	 * Field back-end validation
 	 *
 	 * @since 1.0
-	 * @param array $field
+	 * @param array        $field
 	 * @param array|string $data
+	 * @param array        $post_data
 	 */
-	public function validate( $field, $data ) {
+	public function validate( $field, $data, $post_data = array() ) {
 		if ( $this->is_required( $field ) ) {
-			$id 	= self::get_property( 'element_id', $field );
-			$name 	= self::get_property( 'custom_field_name', $field, __( 'Feldname', Powerform::DOMAIN ) );
+			$id   = self::get_property( 'element_id', $field );
+			$name = self::get_property( 'custom_field_name', $field, __( 'field name', Powerform::DOMAIN ) );
 			if ( empty( $data ) ) {
-				$this->validation_message[ $id ] = sprintf( __( 'Dieses Feld wird benötigt. Bitte gib den %s ein', Powerform::DOMAIN ), $name );
+				/* translators: ... */
+				$this->validation_message[ $id ] = sprintf( __( 'Dieses Feld wird benötigt. Bitte gib die %s ein.', Powerform::DOMAIN ), $name );
 			}
 		}
 	}

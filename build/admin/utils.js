@@ -152,6 +152,30 @@
                 },
                 close: function(t, e) {
                     var o = i("#powerform-integration-popup");
+                    o.find(".sui-dialog-overlay").removeClass("sui-fade-in").addClass("sui-fade-out"), o.find(".sui-dialog-content").removeClass("sui-bounce-in").addClass("sui-bounce-out"), i("body").css("overflow", "auto"), Powerform.Events.trigger("powerform:addons:reload"), setTimeout(function() { o.attr("aria-hidden", "true"), e && e.apply() }, 300), this._deferred.resolve(this.$popup, t)
+                }
+            },
+            Stripe_Popup: {
+                $popup: {},
+                _deferred: {},
+                initialize: function() {
+                    var e = Powerform.Utils.template(i(t).find("#popup-stripe-tpl").html());
+                    i("#powerform-stripe-popup").length ? (i("#powerform-stripe-popup").remove(), this.initialize()) : i("main.sui-wrap").append(e({ provider_image: "", provider_image2: "", provider_title: "" })), this.$popup = i("#powerform-stripe-popup")
+                },
+                open: function(e, o, s) {
+                    this.data = o, this.title = "", this.image = "", this.image_x2 = "", this.action_text = "", this.action_callback = !1, this.action_css_class = "", this.has_custom_box = !1, this.has_footer = !0, _.isUndefined(this.data) || (_.isUndefined(this.data.title) || (this.title = this.data.title), _.isUndefined(this.data.image) || (this.image = this.data.image), _.isUndefined(this.data.image_x2) || (this.image_x2 = this.data.image_x2)), this.initialize();
+                    var n = Powerform.Utils.template(i(t).find("#popup-stripe-content-tpl").html());
+                    this.$popup.find(".sui-box").html(n({ image: this.image, image_x2: this.image_x2, title: this.title })), this.$popup.find(".sui-box-footer").css({ "padding-top": "0" });
+                    var a = this,
+                        r = function() { return a.close(), !1 };
+                    if (s && this.$popup.addClass(s), e.apply(this.$popup.get(), o), this.action_text && this.action_callback) {
+                        var p = this.action_callback;
+                        this.$popup.find(".sui-box-footer").append('<div class="sui-actions-right"><button class="powerform-popup-action sui-button ' + this.action_css_class + '">' + this.action_text + "</button></div>"), this.$popup.find(".powerform-popup-action").on("click", function() { p && p.apply(), a.close() })
+                    } else this.$popup.find(".powerform-popup-action").remove();
+                    return this.$popup.find(".sui-dialog-close").on("click", r), this.$popup.find(".sui-dialog-overlay").on("click", r), this.$popup.on("click", ".powerform-popup-cancel", r), this.$popup.find(".sui-dialog-overlay").removeClass("sui-fade-out").addClass("sui-fade-in"), this.$popup.find(".sui-dialog-content").removeClass("sui-bounce-out").addClass("sui-bounce-in"), this.$popup.removeAttr("aria-hidden"), i("body").css("overflow", "hidden"), Powerform.Utils.sui_delegate_events(), this._deferred = new i.Deferred, this._deferred.promise()
+                },
+                close: function(t, e) {
+                    var o = i("#powerform-stripe-popup");
                     o.find(".sui-dialog-overlay").removeClass("sui-fade-in").addClass("sui-fade-out"), o.find(".sui-dialog-content").removeClass("sui-bounce-in").addClass("sui-bounce-out"), i("body").css("overflow", "auto"), setTimeout(function() { o.attr("aria-hidden", "true"), e && e.apply() }, 300), this._deferred.resolve(this.$popup, t)
                 }
             },

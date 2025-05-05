@@ -18,7 +18,7 @@ class Powerform_CForm_New_Page extends Powerform_Admin_Page {
 	 */
 	public function getWizardTitle() {
 		if ( isset( $_REQUEST['id'] ) ) { // WPCS: CSRF OK
-			return __( "Formular bearbeiten", Powerform::DOMAIN );
+			return __( "Edit Form", Powerform::DOMAIN );
 		} else {
 			return __( "New Form", Powerform::DOMAIN );
 		}
@@ -54,7 +54,7 @@ class Powerform_CForm_New_Page extends Powerform_Admin_Page {
 		);
 
 		// Load front scripts for preview_form
-		powerform_print_front_styles( POWERFORM_VERSION );
+		powerform_print_forms_admin_styles( POWERFORM_VERSION );
 		powerform_print_front_scripts( POWERFORM_VERSION );
 
 		// for preview
@@ -65,6 +65,18 @@ class Powerform_CForm_New_Page extends Powerform_Admin_Page {
 		$script_version = POWERFORM_VERSION;
 		wp_enqueue_style( 'intlTelInput-powerform-css', $style_src, array(), $style_version ); // intlTelInput
 		wp_enqueue_script( 'powerform-intlTelInput', $script_src, array( 'jquery' ), $script_version, false ); // intlTelInput
+
+		wp_enqueue_script( 'powerform-field-moment',
+			powerform_plugin_url() . 'assets/js/library/moment.min.js',
+			array( 'jquery' ),
+			'2.22.2',
+			true );
+
+        wp_enqueue_script( 'powerform-field-datepicker-range',
+			powerform_plugin_url() . 'assets/js/library/daterangepicker.min.js',
+			array('powerform-field-moment'),
+			'3.0.3',
+			true );
 	}
 
 	/**

@@ -14,7 +14,7 @@ class Powerform_Shortcode_Generator {
 	 * @since 1.0
 	 */
 	public function __construct() {
-		add_filter( 'media_buttons', array( $this, 'attach_button' ) );
+		add_action( 'media_buttons', array( $this, 'attach_button' ) );
 		add_action( 'admin_footer', array( $this, 'enqueue_js_scripts' ) );
 		if ( function_exists( 'hustle_activated' ) ) {
 			add_action( 'admin_footer', array( $this, 'enqueue_preview_scripts_for_hustle' ) );
@@ -52,24 +52,22 @@ class Powerform_Shortcode_Generator {
 	 * Attach button
 	 *
 	 * @since 1.0
-	 * @param $content
-	 *
-	 * @return string
 	 */
-	public function attach_button( $content ) {
+	public function attach_button() {
 		global $pagenow;
-		$html = '';
 
 		// If page different than Post or Page, abort
 		if ( 'post.php' !== $pagenow && 'post-new.php' !== $pagenow && ! $this->is_hustle_wizard() ) {
-			return $content;
+			return;
 		}
 
 		// Button markup
-		$html .= '<a id="powerform-generate-shortcode" class="button" data-editor="content"><span class="dashicons dashicons-welcome-add-page"></span>' . __( 'Formular hinzufügen', Powerform::DOMAIN ) . '</a>';
-
-		$content .= $html;
-		return $content;
+		printf(
+			'<button type="button" id="%s" class="button" data-editor="content" data-a11y-dialog-show="powerform-popup">%s<span>%s</span></button>',
+			'powerform-generate-shortcode',
+			'<i class="powerform-scgen-icon" aria-hidden="true"></i>',
+			esc_html__( 'Formular hinzufügen', Powerform::DOMAIN )
+		);
 	}
 
 	/**
@@ -79,7 +77,11 @@ class Powerform_Shortcode_Generator {
 	 * @return mixed
 	 */
 	public function enqueue_js_scripts( $content ) {
+
 		global $pagenow;
+
+		$sanitize_version = str_replace( '.', '-', POWERFORM_SUI_VERSION );
+		$sui_body_class   = "sui-$sanitize_version";
 
 		// If page different than Post or Page, abort
 		if ( 'post.php' !== $pagenow && 'post-new.php' !== $pagenow && ! $this->is_hustle_wizard() ) {
@@ -90,10 +92,36 @@ class Powerform_Shortcode_Generator {
 		wp_enqueue_script( 'jquery-ui-widget' );
 		wp_enqueue_script( 'jquery-ui-mouse' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
-		wp_enqueue_script( 'select2-powerform', powerform_plugin_url() . 'assets/js/library/select2.full.min.js', array( 'jquery' ), POWERFORM_VERSION, false );
-		wp_enqueue_style( 'select2-powerform-css', powerform_plugin_url() . 'assets/css/select2.min.css', array(), "4.0.3" ); // Select2
-		wp_enqueue_style( 'powerform-shortcode-generator-styles', powerform_plugin_url() . 'assets/css/scgen.min.css', array(), POWERFORM_VERSION );
-		wp_enqueue_script( 'powerform-shortcode-generator', powerform_plugin_url() . 'build/admin/scgen.min.js', array( 'jquery' ), POWERFORM_VERSION, false );
+
+		// Get shortcode generator styles
+		wp_enqueue_style(
+			'powerform-shortcode-generator-styles',
+			powerform_plugin_url() . 'assets/css/powerform-scgen.min.css',
+			array(),
+			POWERFORM_VERSION
+		);
+
+		// Get SUI JS
+		wp_enqueue_script(
+			'shared-ui',
+			powerform_plugin_url() . 'assets/js/shared-ui.min.js',
+			array( 'jquery' ),
+			$sui_body_class,
+			true
+		);
+
+		// Get shortcode generator scripts
+		wp_enqueue_script(
+			'powerform-shortcode-generator',
+			powerform_plugin_url() . 'build/admin/scgen.min.js',
+			array( 'jquery' ),
+			POWERFORM_VERSION,
+			false
+		);
+
+		wp_localize_script( 'powerform-shortcode-generator', 'powerformScgenData', array(
+				'suiVersion' => $sui_body_class,
+		) );
 
 		$this->print_markup();
 		?>
@@ -114,12 +142,22 @@ class Powerform_Shortcode_Generator {
 	 * @return mixed
 	 */
 	public function enqueue_preview_scripts_for_hustle( $content ) {
+
 		// If page is not Hustle module settings page, abort
 		if ( ! $this->is_hustle_wizard() ) {
 			return $content;
 		}
 
-		wp_enqueue_style( 'powerform-shortcode-generator-front-styles', powerform_plugin_url() . 'assets/css/front.min.css', array(), POWERFORM_VERSION );
+		/**
+		 * Powerform UI
+		 * These stylesheets currently works with "forms" only.
+		 *
+		 * @since 1.7.0
+		 */
+		wp_enqueue_style( 'powerform-scgen-global', powerform_plugin_url() . 'assets/powerform-ui/css/powerform-global.min.css', array(), POWERFORM_VERSION );
+		wp_enqueue_style( 'powerform-scgen-icons', powerform_plugin_url() . 'assets/powerform-ui/css/powerform-icons.min.css', array(), POWERFORM_VERSION );
+		wp_enqueue_style( 'powerform-scgen-forms', powerform_plugin_url() . 'assets/powerform-ui/css/powerform-forms.min.css', array(), POWERFORM_VERSION );
+
 	}
 
 	/**
@@ -129,74 +167,127 @@ class Powerform_Shortcode_Generator {
 	 */
 	public function print_markup() {
 		?>
-		<div id="powerform-popup" class="wpmudev-modal" style="display: none;">
+		<div id="powerform-scgen-modal" class="sui-wrap" style="display: none;">
 
-			<div class="wpmudev-modal-mask" aria-hidden="true"></div>
+			<div
+				id="powerform-popup"
+				class="sui-dialog sui-dialog-alt sui-dialog-reduced"
+				tabindex="-1"
+				aria-hidden="true"
+			>
 
-			<div class="wpmudev-box wpmudev-show">
+				<div class="sui-dialog-overlay"></div>
 
-				<div class="wpmudev-box-header">
+				<div
+					class="sui-dialog-content"
+					role="dialog"
+					aria-labelledby="scgenDialogTitle"
+					aria-describedby="scgenDialogDescription"
+				>
 
-					<div class="wpmudev-header--text">
-						<h2 class="wpmudev-subtitle"><?php echo esc_html__( "Formular-Shortcode generieren", Powerform::DOMAIN ); ?></h2>
-					</div>
+					<div class="sui-box" role="document">
 
-					<div class="wpmudev-header--action">
-						<button id="powerform-popup-close" class="wpmudev-box--action">
-							<span class="wpmudev-icon--close"></span>
-						</button>
+						<div class="sui-box-header sui-block-content-center">
 
-					</div>
+							<h3 id="scgenDialogTitle" class="sui-box-title"><?php esc_html_e( 'Powerform Shortcodes', Powerform::DOMAIN ); ?></h3>
 
-				</div>
+							<p id="scgenDialogDescription" class="sui-description"><?php esc_html_e( 'Wähle eine Option aus dem Dropdown-Menü und generiere einen Shortcode, der in Deinen Beitrag oder Deine Seite eingefügt werden soll.', Powerform::DOMAIN ); ?></p>
 
-				<div class="wpmudev-box-section">
+							<div class="sui-actions-right">
 
-					<div class="wpmudev-section--text">
-
-						<div class="wpmudev-tabs">
-
-							<ul class="wpmudev-tabs--nav">
-
-								<li class="wpmudev-tab"><a class="wpmudev-tab--link" href="#powerform-custom-forms"><?php esc_html_e( 'Benutzerdefinierte Formulare', Powerform::DOMAIN ); ?></a></li>
-
-								<li class="wpmudev-tab"><a class="wpmudev-tab--link" href="#powerform-polls"><?php esc_html_e( 'Umfragen', Powerform::DOMAIN ); ?></a></li>
-
-								<li class="wpmudev-tab"><a class="wpmudev-tab--link" href="#powerform-quizzes"><?php esc_html_e( 'Tests', Powerform::DOMAIN ); ?></a></li>
-
-							</ul>
-
-							<div id="powerform-custom-forms" class="wpmudev-tabs--content">
-
-								<?php echo $this->get_forms(); // WPCS: XSS ok. ?>
-
-								<div class="wpmudev-tabs--action">
-
-									<button class="wpmudev-button wpmudev-button-blue wpmudev-insert-cform"><?php esc_html_e( 'Formular einfügen', Powerform::DOMAIN ); ?></button>
-
-								</div>
+								<button class="sui-dialog-close">
+									<span class="sui-screen-reader-text"><?php esc_html_e( 'Schließe dieses Dialogfenster.', Powerform::DOMAIN ); ?></span>
+								</button>
 
 							</div>
 
-							<div id="powerform-polls" class="wpmudev-tabs--content">
+						</div>
 
-								<?php echo $this->get_polls(); // WPCS: XSS ok. ?>
+						<div class="sui-box-body sui-box-body-slim">
 
-								<div class="wpmudev-tabs--action">
+							<div class="sui-tabs sui-tabs-flushed">
 
-									<button class="wpmudev-button wpmudev-button-blue wpmudev-insert-poll"><?php esc_html_e( 'Formular einfügen', Powerform::DOMAIN ); ?></button>
+								<div data-tabs>
+
+									<div id="powerform-shortcode-type--forms" class="active"><?php esc_html_e( 'Formulare', Powerform::DOMAIN ); ?></div>
+									<div id="powerform-shortcode-type--polls"><?php esc_html_e( 'Umfragen', Powerform::DOMAIN ); ?></div>
+									<div id="powerform-shortcode-type--quizzes"><?php esc_html_e( 'Tests', Powerform::DOMAIN ); ?></div>
 
 								</div>
 
-							</div>
+								<div data-panes>
 
-							<div id="powerform-quizzes" class="wpmudev-tabs--content">
+									<!-- Forms -->
+									<div id="powerform-custom-forms" class="active">
 
-								<?php echo $this->get_quizzes(); // WPCS: XSS ok. ?>
+										<div class="sui-form-field">
 
-								<div class="wpmudev-tabs--action">
+											<label for="powerform-select-forms" class="sui-label"><?php esc_html_e( 'Wähle eine Option', Powerform::DOMAIN ); ?></label>
 
-									<button class="wpmudev-button wpmudev-button-blue wpmudev-insert-quiz"><?php esc_html_e( 'Formular einfügen', Powerform::DOMAIN ); ?></button>
+											<?php echo $this->get_forms(); // WPCS: XSS ok. ?>
+
+											<span class="sui-error-message" style="display: none;"><?php esc_html_e( 'Bitte wähle eine Option, bevor Du fortfährst.', Powerform::DOMAIN ); ?></span>
+
+										</div>
+
+										<div class="fui-simulate-footer">
+
+											<button class="sui-button sui-button-blue psource-insert-cform">
+												<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>
+												<span class="sui-loading-text"><?php esc_html_e( 'Shortcode generieren', Powerform::DOMAIN ); ?></span>
+											</button>
+
+										</div>
+
+									</div>
+
+									<!-- Polls -->
+									<div id="powerform-polls">
+
+										<div class="sui-form-field">
+
+											<label for="powerform-select-forms" class="sui-label"><?php esc_html_e( 'Wähle eine Option', Powerform::DOMAIN ); ?></label>
+
+											<?php echo $this->get_polls(); // WPCS: XSS ok. ?>
+
+											<span class="sui-error-message" style="display: none;"><?php esc_html_e( 'Bitte wähle eine Option, bevor Du fortfährst.', Powerform::DOMAIN ); ?></span>
+
+										</div>
+
+										<div class="fui-simulate-footer">
+
+											<button class="sui-button sui-button-blue psource-insert-poll">
+												<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>
+												<span class="sui-loading-text"><?php esc_html_e( 'Shortcode generieren', Powerform::DOMAIN ); ?></span>
+											</button>
+
+										</div>
+
+									</div>
+
+									<!-- Quizzes -->
+									<div id="powerform-quizzes">
+
+										<div class="sui-form-field">
+
+											<label for="powerform-select-forms" class="sui-label"><?php esc_html_e( 'Wähle eine Option', Powerform::DOMAIN ); ?></label>
+
+											<?php echo $this->get_quizzes(); // WPCS: XSS ok. ?>
+
+											<span class="sui-error-message" style="display: none;"><?php esc_html_e( 'Bitte wähle eine Option, bevor Du fortfährst.', Powerform::DOMAIN ); ?></span>
+
+										</div>
+
+										<div class="fui-simulate-footer">
+
+											<button class="sui-button sui-button-blue psource-insert-quiz">
+												<i class="sui-icon-loader sui-loading" aria-hidden="true"></i>
+												<span class="sui-loading-text"><?php esc_html_e( 'Shortcode generieren', Powerform::DOMAIN ); ?></span>
+											</button>
+
+										</div>
+
+									</div>
 
 								</div>
 
@@ -221,19 +312,30 @@ class Powerform_Shortcode_Generator {
 	 * @return string
 	 */
 	public function get_forms() {
-		$html = '<select name="forms" class="wpmudev-select powerform-custom-form-list">';
-		$html .= '<option value="">' . __( "Wähle Formular", Powerform::DOMAIN ) . '</option>';
-		$modules = powerform_cform_modules( 999 );
-		foreach( $modules as $module ) {
-			$title = powerform_get_form_name( $module['id'], 'custom_form' );
-			if ( mb_strlen( $title ) > 25 ) {
-				$title = mb_substr( $title, 0, 25 ) . '...';
+
+		$html = '';
+
+		$html .= '<select id="powerform-select-forms" name="forms" class="sui-select powerform-custom-form-list">';
+
+			$html .= '<option value="">' . __( 'Wähle Benutzerdefiniertes Formular', Powerform::DOMAIN ) . '</option>';
+
+			$modules = powerform_cform_modules( 999 );
+
+			foreach( $modules as $module ) {
+
+				$title = powerform_get_form_name( $module['id'], 'custom_form' );
+
+				if ( mb_strlen( $title ) > 25 ) {
+					$title = mb_substr( $title, 0, 25 ) . '...';
+				}
+
+				$html .= '<option value="' . $module['id'] . '">' . $title. ' - ID: ' . $module['id'] . '</option>';
+
 			}
-			$html .= '<option value="' . $module['id'] . '">' . $title. ' - ID: ' . $module['id'] . '</option>';
-		}
 		$html .= '</select>';
 
 		return $html;
+
 	}
 
 	/**
@@ -243,16 +345,27 @@ class Powerform_Shortcode_Generator {
 	 * @return string
 	 */
 	public function get_polls() {
-		$html = '<select name="forms" class="wpmudev-select powerform-insert-poll">';
-		$html .= '<option value="">' . __( "Wähle Umfrage", Powerform::DOMAIN ) . '</option>';
-		$modules = powerform_polls_modules( 999 );
-		foreach( $modules as $module ) {
-			$title = powerform_get_form_name( $module['id'], 'poll');
-			if ( mb_strlen( $title ) > 25 ) {
-				$title = mb_substr( $title, 0, 25 ) . '...';
+
+		$html = '';
+
+		$html .= '<select id="powerform-select-polls" name="forms" class="sui-select powerform-insert-poll">';
+
+			$html .= '<option value="">' . __( "Wähle Umfrage", Powerform::DOMAIN ) . '</option>';
+
+			$modules = powerform_polls_modules( 999 );
+
+			foreach( $modules as $module ) {
+
+				$title = powerform_get_form_name( $module['id'], 'poll');
+
+				if ( mb_strlen( $title ) > 25 ) {
+					$title = mb_substr( $title, 0, 25 ) . '...';
+				}
+
+				$html .= '<option value="' . $module['id'] . '">' . $title . ' - ID: ' . $module['id'] . '</option>';
+
 			}
-			$html .= '<option value="' . $module['id'] . '">' . $title . ' - ID: ' . $module['id'] . '</option>';
-		}
+
 		$html .= '</select>';
 
 		return $html;
@@ -265,18 +378,30 @@ class Powerform_Shortcode_Generator {
 	 * @return string
 	 */
 	public function get_quizzes() {
-		$html = '<select name="forms" class="wpmudev-select powerform-quiz-list">';
-		$html .= '<option value="">' . __( "Wähle Test", Powerform::DOMAIN ) . '</option>';
-		$modules = powerform_quizzes_modules( 999 );
-		foreach( $modules as $module ) {
-			$title = powerform_get_form_name( $module['id'], 'quiz');
-			if ( mb_strlen( $title ) > 25 ) {
-				$title = mb_substr( $title, 0, 25 ) . '...';
+
+		$html = '';
+
+		$html .= '<select id="powerform-select-quizzes" name="forms" class="sui-select powerform-quiz-list">';
+
+			$html .= '<option value="">' . __( "Wähle Quiz", Powerform::DOMAIN ) . '</option>';
+
+			$modules = powerform_quizzes_modules( 999 );
+
+			foreach( $modules as $module ) {
+
+				$title = powerform_get_form_name( $module['id'], 'quiz');
+
+				if ( mb_strlen( $title ) > 25 ) {
+					$title = mb_substr( $title, 0, 25 ) . '...';
+				}
+
+				$html .= '<option value="' . $module['id'] . '">' . $title . ' - ID: ' . $module['id'] . '</option>';
+
 			}
-			$html .= '<option value="' . $module['id'] . '">' . $title . ' - ID: ' . $module['id'] . '</option>';
-		}
+
 		$html .= '</select>';
 
 		return $html;
+
 	}
 }

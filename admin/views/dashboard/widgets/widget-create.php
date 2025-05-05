@@ -1,55 +1,55 @@
 <?php
-$icon_minus = powerform_plugin_dir() . "assets/icons/admin-icons/minus.php";
-$hero_sample = powerform_plugin_dir() . "assets/icons/powerform-icons/hero-sample.php";
+$icon_minus  = powerform_plugin_dir() . 'assets/icons/admin-icons/minus.php';
+$hero_sample = powerform_plugin_dir() . 'assets/icons/powerform-icons/hero-sample.php';
 ?>
 
-<div class="wpmudev-row">
+<div class="psource-row">
 
-	<div class="wpmudev-col col-12">
+	<div class="psource-col col-12">
 
-		<div id="powerform-dashboard-box--create" class="wpmudev-box wpmudev-box--split wpmudev-can--hide">
+		<div id="powerform-dashboard-box--create" class="psource-box psource-box--split psource-can--hide">
 
-			<div class="wpmudev-box-header">
+			<div class="psource-box-header">
 
-				<div class="wpmudev-header--text">
+				<div class="psource-header--text">
 
-					<h2 class="wpmudev-title"><?php esc_html_e( "Module erstellen", Powerform::DOMAIN ); ?></h2>
+					<h2 class="psource-title"><?php esc_html_e( 'Module erstellen', Powerform::DOMAIN ); ?></h2>
 
 				</div>
 
-				<div class="wpmudev-header--action">
+				<div class="psource-header--action">
 
-					<button class="wpmudev-box--action" aria-hidden="true"><span class="wpmudev-icon--plus"></span></button>
+					<button class="psource-box--action" aria-hidden="true"><span class="psource-icon--plus"></span></button>
 
-					<button class="wpmudev-sr-only"><?php esc_html_e( "Box verstecken", Powerform::DOMAIN ); ?></button>
+					<button class="psource-sr-only"><?php esc_html_e( 'Box verstecken', Powerform::DOMAIN ); ?></button>
 
 				</div>
 
 			</div>
 
-			<div class="wpmudev-box-section">
+			<div class="psource-box-section">
 
 				<?php foreach ( $args ['modules'] as $key => $module ) : ?>
 
-					<div class="wpmudev-split--item">
+					<div class="psource-split--item">
 
-						<div class="wpmudev-sitem--header">
+						<div class="psource-sitem--header">
 
-							<div class="wpmudev-sitem--icon" aria-hidden="true"><?php echo $module->get_icon(); // WPCS: XSS ok. ?></div>
+							<div class="psource-sitem--icon" aria-hidden="true"><?php echo $module->get_icon(); // phpcs:ignore ?></div>
 
-							<h3 class="wpmudev-sitem--title"><?php echo $module->get_name(); // WPCS: XSS ok. ?></h3>
-
-						</div>
-
-						<div class="wpmudev-sitem--section">
-
-							<p><?php echo $module->get_description(); // WPCS: XSS ok. ?></p>
+							<h3 class="psource-sitem--title"><?php echo $module->get_name(); // phpcs:ignore ?></h3>
 
 						</div>
 
-						<div class="wpmudev-sitem--footer">
+						<div class="psource-sitem--section">
 
-							<button href="/" class="wpmudev-button wpmudev-button-sm wpmudev-button-ghost wpmudev-open-modal" data-modal="<?php echo esc_attr( $module->get_id() ); ?>"><?php echo $module->get_label(); // WPCS: XSS ok. ?></button>
+							<p><?php echo $module->get_description(); // phpcs:ignore ?></p>
+
+						</div>
+
+						<div class="psource-sitem--footer">
+
+							<button href="/" class="psource-button psource-button-sm psource-button-ghost psource-open-modal" data-modal="<?php echo esc_attr( $module->get_id() ); ?>"><?php echo $module->get_label(); // phpcs:ignore ?></button>
 
 						</div>
 
@@ -59,8 +59,8 @@ $hero_sample = powerform_plugin_dir() . "assets/icons/powerform-icons/hero-sampl
 
 			</div>
 
-		</div><?php // .wpmudev-box ?>
+		</div><?php // .psource-box ?>
 
-	</div><?php // .wpmudev-col ?>
+	</div><?php // .psource-col ?>
 
-</div><?php // .wpmudev-row ?>
+</div><?php // .psource-row ?>

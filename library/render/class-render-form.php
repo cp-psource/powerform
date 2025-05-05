@@ -158,27 +158,46 @@ abstract class Powerform_Render_Form {
 	 * @return mixed|void
 	 */
 	public function get_form( $id, $render = true, $hide = true ) {
+
 		$html          = '';
-		$form_type     = $this->get_form_type();
-		$form_fields   = $this->get_fields();
-		$form_settings = $this->get_form_settings();
-		$form_design   = $this->get_form_design();
-		$form_enctype  = $this->form_enctype();
-		$extra_classes = $this->form_extra_classes();
-		$track_views   = $this->can_track_views();
-		//if rendered on Preview, the array is empty and sometimes PHP notices show up
+		$powerform_ui = '';
+
+		$data_design   = '';
+		$data_grid     = '';
+
+		$form_type         = $this->get_form_type();
+		$form_fields       = $this->get_fields();
+		$form_settings     = $this->get_form_settings();
+		$form_design       = $this->get_form_design();
+		$form_enctype      = $this->form_enctype();
+		$extra_classes     = $this->form_extra_classes();
+		$track_views       = $this->can_track_views();
+		$fields_type_class = $this->get_fields_type_class();
+		$design_class      = $this->get_form_design_class();
+
+		// If rendered on Preview, the array is empty and sometimes PHP notices show up
 		if ( $this->is_admin && ( empty( self::$render_ids ) || ! $id ) ) {
 			self::$render_ids[ $id ] = 0;
 		}
 
 		$render_id = self::$render_ids[ $id ];
 
-		$fields_type_class = $this->get_fields_type_class();
-		$design_class      = $this->get_form_design_class();
+		$powerform_ui = 'powerform-ui ';
+
+		if ( 'quiz' === $form_type ) {
+			$data_design = 'data-design="' . $this->get_quiz_theme() . '"';
+		} else {
+			$data_design = 'data-design="' . $this->get_form_design() . '"';
+		}
+
+		if ( 'custom-form' === $form_type ) {
+			$data_grid = 'data-grid="' . $this->get_fields_style() . '"';
+		}
 
 		// Markup Loader.
 		$loader = sprintf(
-			'<div class="powerform-%s powerform-%s-%s %s %s %s" data-powerform-render="%s" data-form="powerform-module-%s"><br/></div>',
+			'<div class="%spowerform-%s powerform-%s-%s %s %s %s" data-powerform-render="%s" data-form="powerform-module-%s"><br/></div>',
+			$powerform_ui,
 			$form_type,
 			$form_type,
 			$id,
@@ -190,9 +209,45 @@ abstract class Powerform_Render_Form {
 		);
 
 		// To-Do: Remove when live preview for Poll & Quiz implemented
-		if( "poll" === $form_type || "quiz" === $form_type ) {
+		if( "custom-form" !== $form_type ) {
 			$loader = '';
 		}
+
+		$quiz_type      = '';
+		$quiz_spacing   = '';
+		$quiz_columns   = '';
+		$quiz_alignment = '';
+		$aria_live      = '';
+
+		if ( 'quiz' === $form_type ) {
+			$quiz_type      = 'data-quiz="knowledge"'; // TODO: Get correct quiz type: knowledge or nowrong.
+			$aria_live      = 'aria-live="polite"'; // Listen to live changes on form.
+			$quiz_spacing   = 'data-spacing="default"';
+			$quiz_alignment = 'data-alignment="left"';
+
+			if ( isset( $form_settings['quiz-spacing'] ) && ! empty( $form_settings['quiz-spacing'] ) ) {
+				$quiz_spacing = 'data-spacing="' . $form_settings['quiz-spacing'] . '"';
+			}
+
+			if ( isset( $form_settings['quiz-alignment'] ) && ! empty( $form_settings['quiz-alignment'] ) ) {
+				$quiz_alignment = 'data-alignment="' . $form_settings['quiz-alignment'] . '"';
+			} else {
+
+				if ( false !== strpos( $form_design, 'grid' ) ) {
+					$quiz_alignment = 'data-alignment="center"';
+				}
+			}
+
+			if ( isset( $form_settings['visual_style'] ) && 'grid' === $form_settings['visual_style'] ) {
+				if ( isset( $form_settings['quiz-grid-cols'] ) ) {
+					$quiz_columns = 'data-columns="' . $form_settings['quiz-grid-cols'] . '"';
+				} else {
+					$quiz_columns = 'data-columns="3"';
+				}
+			}
+		}
+
+		$has_lead = isset( $form_settings['hasLeads'] ) ? $form_settings['hasLeads'] : false;
 
 		$html .= $loader;
 
@@ -202,10 +257,30 @@ abstract class Powerform_Render_Form {
 			$hidden = '';
 		}
 
+		if ( 'quiz' === $form_type && $has_lead ) {
+			$html .= $this->render_form_header();
+		}
 
 		$html .= sprintf(
-			'<form id="powerform-module-%s" class="powerform-%s powerform-%s-%s %s %s %s" action="" method="post" data-powerform-render="%s" %s %s>',
+			'<form
+				id="powerform-module-%s"
+				class="%spowerform-%s powerform-%s-%s %s %s %s"
+				action=""
+				method="post"
+				data-powerform-render="%s"
+				data-form-id="%s"
+				%s
+				%s
+				%s
+				%s
+				%s
+				%s
+				%s
+				%s
+				%s
+			>',
 			$id,
+			$powerform_ui,
 			$form_type,
 			$form_type,
 			$id,
@@ -213,15 +288,38 @@ abstract class Powerform_Render_Form {
 			$fields_type_class,
 			$extra_classes,
 			$render_id,
+			$id,
+			$quiz_type,
+			$data_design,
+			$quiz_spacing,
+			$quiz_columns,
+			$quiz_alignment,
+			$data_grid,
 			$form_enctype,
+			$aria_live,
 			$hidden
 		);
 
-		$html .= $this->render_form_header();
+		if ( ! $has_lead ) {
+		    $html .= $this->render_form_header();
+		}
+
 		$html .= $this->render_fields( false );
+
+		$html .= $this->referer_url_field( false );
+
+		$defender_data = powerform_defender_compatibility();
+		if ( $defender_data['is_activated'] ) {
+			$html .= $this->render_form_authentication();
+		}
+
 		$html .= $this->get_submit( $id, false );
 
 		$html .= sprintf( '</form>' );
+
+		if ( 'custom-form' === $form_type ) {
+			$html .= $this->render_skip_form_content();
+		}
 
 		if ( $track_views ) {
 			$form_view = Powerform_Form_Views_Model::get_instance();
@@ -268,7 +366,8 @@ abstract class Powerform_Render_Form {
 			$render_id
 		);
 
-		$html .= $this->render_form_header();
+			$html .= $this->render_form_header();
+
 		$html .= '</form>';
 
 		if ( $render ) {
@@ -289,8 +388,8 @@ abstract class Powerform_Render_Form {
 		$form_type    = $this->get_form_type();
 		$fields_style = $this->get_fields_style();
 		if ( 'custom-form' === $form_type ) {
-			if ( 'enclosed' === $fields_style ) {
-				$fields_type = 'powerform-enclosed';
+			if ( 'open' !== $fields_style ) {
+				$fields_type = 'powerform-' . $fields_style;
 			} else {
 				$fields_type = '';
 			}
@@ -317,11 +416,19 @@ abstract class Powerform_Render_Form {
 	 * @return string
 	 */
 	public function get_form_design_class() {
+
+		$form_type   = $this->get_form_type();
 		$form_design = $this->get_form_design();
-		if ( 'clean' === $form_design ) {
-			$design_class = '';
+
+		if ( 'quiz' === $form_type ) {
+			$design_class = 'powerform-quiz--' . $form_design;
 		} else {
-			$design_class = 'powerform-design--' . $form_design;
+
+			if ( 'clean' === $form_design ) {
+				$design_class = '';
+			} else {
+				$design_class = 'powerform-design--' . $form_design;
+			}
 		}
 
 		/**
@@ -333,6 +440,7 @@ abstract class Powerform_Render_Form {
 		 * @param string $form_design  (clean/material, etc)
 		 */
 		return apply_filters( 'powerform_render_form_design_class', $design_class, $form_design );
+
 	}
 
 	/**
@@ -377,21 +485,36 @@ abstract class Powerform_Render_Form {
 	 * @return mixed
 	 */
 	public function get_button_markup() {
-		// https://app.asana.com/0/385581670491499/789649735369091/f
 
+		$html   = '';
 		$button = $this->get_submit_button_text();
-		$html   = '<div class="powerform-row">';
-		$html   .= '<div class="powerform-col powerform-col-12">';
-		$html   .= '<div id="submit" class="powerform-field">';
 
-		if ( $this->get_form_design() !== 'material' ) {
-			$html .= sprintf( '<button id="powerform-submit" class="powerform-button">%s</button>', $button );
-		} else {
-			$html .= sprintf( '<button id="powerform-submit" class="powerform-button"><span class="powerform-button--mask" aria-label="hidden"></span><span class="powerform-button--text">%s</span></button>',
-			                  $button );
-		}
-		$html .= '</div>';
-		$html .= '</div>';
+		$html   = '<div class="powerform-row">';
+
+			$html   .= '<div class="powerform-col">';
+
+				$html   .= '<div id="submit" class="powerform-field">';
+
+					$html .= '<button class="powerform-button powerform-button-submit">';
+
+						if ( 'material' === $this->get_form_design() ) {
+
+							$html .= sprintf( '<span>%s</span>', $button );
+
+							$html .= '<span aria-hidden="true"></span>';
+
+						} else {
+
+							$html .= $button;
+
+						}
+
+					$html .= '</button>';
+
+				$html .= '</div>';
+
+			$html .= '</div>';
+
 		$html .= '</div>';
 
 		return apply_filters( 'powerform_render_button_markup', $html, $button );
@@ -452,6 +575,32 @@ abstract class Powerform_Render_Form {
 		} else {
 			/** @noinspection PhpInconsistentReturnPointsInspection */
 			return apply_filters( 'powerform_render_fields_markup', $html, $fields );
+		}
+	}
+
+	/**
+	 * Return referer url field markup
+	 *
+	 * @since ?
+	 *
+	 * @param bool $render
+	 *
+	 * @return string|void
+	 */
+	public function referer_url_field( $render = true ) {
+		$referer_url = "";
+		if( isset( $_REQUEST['extra'] ) && is_array( $_REQUEST['extra'] ) && isset( $_REQUEST['extra']['referer_url'] ) ) {
+			$referer_url = sanitize_text_field($_REQUEST['extra']['referer_url']);
+		} elseif ( isset ( $_SERVER['HTTP_REFERER'] ) ) {
+			$referer_url = $_SERVER['HTTP_REFERER'];
+		}
+
+		$html = sprintf( '<input type="hidden" name="referer_url" value="%s" />', esc_attr( $referer_url ) );
+
+		if ( $render ) {
+			echo wp_kses_post( $html ); // WPCS: XSS ok.
+		} else {
+			return $html;
 		}
 	}
 
@@ -605,6 +754,15 @@ abstract class Powerform_Render_Form {
 	}
 
 	/**
+	 * Render form header
+	 *
+	 * @since 1.0
+	 */
+	public function render_form_authentication() {
+		return '';
+	}
+
+	/**
 	 * Form enctype
 	 *
 	 * @since 1.0
@@ -676,10 +834,15 @@ abstract class Powerform_Render_Form {
 	 *
 	 * @param       $is_preview
 	 * @param array $preview_data
+	 * @param array $lead_data
 	 */
-	public function ajax_loader( $is_preview, $preview_data = array() ) {
+	public function ajax_loader( $is_preview, $preview_data = array(), $lead_data = array() ) {
 
 		if ( ! $this->model instanceof Powerform_Base_Form_Model ) {
+			return;
+		}
+		// Load module only via ajax
+		if ( ! $this->is_ajax_load( $is_preview ) ) {
 			return;
 		}
 
@@ -693,20 +856,33 @@ abstract class Powerform_Render_Form {
 		$this->_wp_http_referer = esc_attr( wp_unslash( $_SERVER['REQUEST_URI'] ) );
 		$this->_page_id         = $this->get_post_id();
 
+		if ( ! isset( self::$render_ids[ $id ] ) ) {
+			return;
+		}
+
+		$ajax_options = array(
+			'action'           => $this->ajax_load_action,
+			'type'             => $this->model->get_post_type(),
+			'id'               => $id,
+			'render_id'        => self::$render_ids[ $id ],
+			'is_preview'       => $is_preview,
+			'preview_data'     => $preview_data,
+			'last_submit_data' => $this->last_submitted_data,
+			'nonce'				 => wp_create_nonce( 'powerform_load_module' ),
+			'extra'            => array(
+				'_wp_http_referer' => wp_unslash( $_SERVER['REQUEST_URI'] ),
+				'page_id'          => $this->get_post_id(),
+				'referer_url'	=> '',//Original referer url where the user come from. This field will be set via JS
+			),
+		);
+
+		if ( ! empty( $lead_data ) ) {
+			$ajax_options['has_lead']  = $lead_data['has_lead'];
+			$ajax_options['leads_id']  = $lead_data['leads_id'];
+      }
+
 		$front_loader_config = wp_json_encode(
-			array(
-				'action'           => $this->ajax_load_action,
-				'type'             => $this->model->get_post_type(),
-				'id'               => $id,
-				'render_id'        => self::$render_ids[ $id ],
-				'is_preview'       => $is_preview,
-				'preview_data'     => $preview_data,
-				'last_submit_data' => $this->last_submitted_data,
-				'extra'            => array(
-					'_wp_http_referer' => wp_unslash( $_SERVER['REQUEST_URI'] ),
-					'page_id'          => $this->get_post_id(),
-				),
-			)
+			$ajax_options
 		);
 
 		$powerform_loader_script = '
@@ -714,11 +890,28 @@ abstract class Powerform_Render_Form {
 				"use strict";
 				(function () {
 					$(document).ready(function () {
+						if (window.elementorFrontend) {
+							if (typeof elementorFrontend.hooks !== "undefined") {
+								elementorFrontend.hooks.addAction("frontend/element_ready/global", function ( $scope ) {
+									if ( $scope.find( "#powerform-module-' . $id . '" ).length > 0 ) {
+										if (typeof ($.fn.powerformLoader) !== \'undefined\') {
+											var front_loader_config = ' . $front_loader_config . ';
+											front_loader_config.extra.referer_url = document.referrer;
+											$(\'#powerform-module-' . $id . '[data-powerform-render="' . self::$render_ids[ $id ] . '"]\')
+												.powerformLoader(front_loader_config);
+										}
+									}
+								});
+							}
+						}
+
 						if (typeof ($.fn.powerformLoader) === \'undefined\') {
 							console.log(\'powerform scripts not loaded\');
 						} else {
+							var front_loader_config = ' . $front_loader_config . ';
+							front_loader_config.extra.referer_url = document.referrer;
 							$(\'#powerform-module-' . $id . '[data-powerform-render="' . self::$render_ids[ $id ] . '"]\')
-								.powerformLoader(' . $front_loader_config . ');
+								.powerformLoader(front_loader_config);
 						}
 					});
 				})();
@@ -743,20 +936,21 @@ abstract class Powerform_Render_Form {
 	 * @since 1.6.1
 	 */
 	public static function ajax_load_module() {
-		if ( isset( $_REQUEST['nonce'] ) ) {
-			if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'powerform_load_module' ) ) {
-				wp_send_json_error( new WP_Error( 'invalid_code' ) );
-			}
+		if ( ! $_REQUEST['is_preview'] && ( ! isset( $_REQUEST['nonce'] ) || ! wp_verify_nonce( $_REQUEST['nonce'], 'powerform_load_module' ) ) ) {
+			wp_send_json_error( new WP_Error( 'invalid_code' ) );
 		}
 
-		$response         = array();
-		$data             = $_REQUEST;
-		$id               = isset( $data['id'] ) ? $data['id'] : 0;
-		$type             = isset( $data['type'] ) ? $data['type'] : 0;
-		$is_preview       = isset( $data['is_preview'] ) ? $data['is_preview'] : 0;
-		$preview_data     = isset( $data['preview_data'] ) ? $data['preview_data'] : 0;
-		$last_submit_data = isset( $data['last_submit_data'] ) ? $data['last_submit_data'] : array();
-		$extra            = isset( $data['extra'] ) ? $data['extra'] : array();
+		$response          = array();
+		$data              = $_REQUEST;
+		$id                = isset( $data['id'] ) ? $data['id'] : 0;
+		$type              = isset( $data['type'] ) ? $data['type'] : 0;
+		$is_preview        = isset( $data['is_preview'] ) ? $data['is_preview'] : 0;
+		$preview_data      = isset( $data['preview_data'] ) ? $data['preview_data'] : 0;
+		$last_submit_data  = isset( $data['last_submit_data'] ) ? $data['last_submit_data'] : array();
+		$extra             = isset( $data['extra'] ) ? $data['extra'] : array();
+		$has_lead          = isset( $data['has_lead'] ) ? $data['has_lead'] : false;
+		$leads_id          = isset( $data['leads_id'] ) ? $data['leads_id'] : 0;
+		$lead_preview_data = isset( $data['lead_preview_data'] ) ? $data['lead_preview_data'] : 0;
 
 		$is_preview = filter_var( $is_preview, FILTER_VALIDATE_BOOLEAN );
 
@@ -799,6 +993,20 @@ abstract class Powerform_Render_Form {
 		}
 
 		$response = $view->ajax_display( $id, $is_preview, $preview_data, true, $last_submit_data, $extra );
+
+		if ( $has_lead ) {
+			$lead_view = Powerform_CForm_Front::get_instance();
+			$lead_wrapper_start = $is_preview ? $view->lead_wrapper_start() : '';
+			$lead_wrapper_end   = $is_preview ? $view->lead_wrapper_end() : '';
+			$lead_response = $lead_view->ajax_display( $leads_id, $is_preview, $lead_preview_data, true, $last_submit_data, $extra, $id );
+			$response['html'] = $lead_wrapper_start . $response['html'] . $lead_response['html'] . $lead_wrapper_end;
+			$response['styles']  = array_merge( $response['styles'], $lead_response['styles'] );
+			$response['scripts'] = array_merge( $response['scripts'], $lead_response['scripts'] );
+			$response['script']  = $response['script'] . $lead_response['script'];
+			$response['style']  = $response['style'] . $lead_response['style'];
+			$response['lead_options'] = $lead_response['options'];
+        }
+
 		wp_send_json_success( $response );
 	}
 

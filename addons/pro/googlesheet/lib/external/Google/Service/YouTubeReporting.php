@@ -27,7 +27,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_YouTubeReporting extends Google_Service
+class Powerform_Google_Service_YouTubeReporting extends Powerform_Google_Service
 {
   /** View monetary and non-monetary YouTube Analytics reports for your YouTube content. */
   const YT_ANALYTICS_MONETARY_READONLY =
@@ -40,14 +40,14 @@ class Google_Service_YouTubeReporting extends Google_Service
   public $jobs_reports;
   public $media;
   public $reportTypes;
-
+  
 
   /**
    * Constructs the internal representation of the YouTubeReporting service.
    *
-   * @param Google_Client $client
+   * @param Powerform_Google_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Powerform_Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://youtubereporting.googleapis.com/';
@@ -55,7 +55,7 @@ class Google_Service_YouTubeReporting extends Google_Service
     $this->version = 'v1';
     $this->serviceName = 'youtubereporting';
 
-    $this->jobs = new Google_Service_YouTubeReporting_Jobs_Resource(
+    $this->jobs = new Powerform_Google_Service_YouTubeReporting_Jobs_Resource(
         $this,
         $this->serviceName,
         'jobs',
@@ -119,7 +119,7 @@ class Google_Service_YouTubeReporting extends Google_Service
           )
         )
     );
-    $this->jobs_reports = new Google_Service_YouTubeReporting_JobsReports_Resource(
+    $this->jobs_reports = new Powerform_Google_Service_YouTubeReporting_JobsReports_Resource(
         $this,
         $this->serviceName,
         'reports',
@@ -174,7 +174,7 @@ class Google_Service_YouTubeReporting extends Google_Service
           )
         )
     );
-    $this->media = new Google_Service_YouTubeReporting_Media_Resource(
+    $this->media = new Powerform_Google_Service_YouTubeReporting_Media_Resource(
         $this,
         $this->serviceName,
         'media',
@@ -194,7 +194,7 @@ class Google_Service_YouTubeReporting extends Google_Service
           )
         )
     );
-    $this->reportTypes = new Google_Service_YouTubeReporting_ReportTypes_Resource(
+    $this->reportTypes = new Powerform_Google_Service_YouTubeReporting_ReportTypes_Resource(
         $this,
         $this->serviceName,
         'reportTypes',
@@ -229,29 +229,29 @@ class Google_Service_YouTubeReporting extends Google_Service
  * The "jobs" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubereportingService = new Google_Service_YouTubeReporting(...);
+ *   $youtubereportingService = new Powerform_Google_Service_YouTubeReporting(...);
  *   $jobs = $youtubereportingService->jobs;
  *  </code>
  */
-class Google_Service_YouTubeReporting_Jobs_Resource extends Google_Service_Resource
+class Powerform_Google_Service_YouTubeReporting_Jobs_Resource extends Powerform_Google_Service_Resource
 {
 
   /**
    * Creates a job and returns it. (jobs.create)
    *
-   * @param Google_Job $postBody
+   * @param Powerform_Google_Job $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string onBehalfOfContentOwner The content owner's external ID on
    * which behalf the user is acting on. If not set, the user is acting for
    * himself (his own channel).
-   * @return Google_Service_YouTubeReporting_Job
+   * @return Powerform_Google_Service_YouTubeReporting_Job
    */
-  public function create(Google_Service_YouTubeReporting_Job $postBody, $optParams = array())
+  public function create(Powerform_Google_Service_YouTubeReporting_Job $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Google_Service_YouTubeReporting_Job");
+    return $this->call('create', array($params), "Powerform_Google_Service_YouTubeReporting_Job");
   }
 
   /**
@@ -263,13 +263,13 @@ class Google_Service_YouTubeReporting_Jobs_Resource extends Google_Service_Resou
    * @opt_param string onBehalfOfContentOwner The content owner's external ID on
    * which behalf the user is acting on. If not set, the user is acting for
    * himself (his own channel).
-   * @return Google_Service_YouTubeReporting_Empty
+   * @return Powerform_Google_Service_YouTubeReporting_Empty
    */
   public function delete($jobId, $optParams = array())
   {
     $params = array('jobId' => $jobId);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_YouTubeReporting_Empty");
+    return $this->call('delete', array($params), "Powerform_Google_Service_YouTubeReporting_Empty");
   }
 
   /**
@@ -281,13 +281,13 @@ class Google_Service_YouTubeReporting_Jobs_Resource extends Google_Service_Resou
    * @opt_param string onBehalfOfContentOwner The content owner's external ID on
    * which behalf the user is acting on. If not set, the user is acting for
    * himself (his own channel).
-   * @return Google_Service_YouTubeReporting_Job
+   * @return Powerform_Google_Service_YouTubeReporting_Job
    */
   public function get($jobId, $optParams = array())
   {
     $params = array('jobId' => $jobId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_YouTubeReporting_Job");
+    return $this->call('get', array($params), "Powerform_Google_Service_YouTubeReporting_Job");
   }
 
   /**
@@ -304,13 +304,13 @@ class Google_Service_YouTubeReporting_Jobs_Resource extends Google_Service_Resou
    * should return. Typically, this is the value of
    * ListReportTypesResponse.next_page_token returned in response to the previous
    * call to the `ListJobs` method.
-   * @return Google_Service_YouTubeReporting_ListJobsResponse
+   * @return Powerform_Google_Service_YouTubeReporting_ListJobsResponse
    */
   public function listJobs($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_YouTubeReporting_ListJobsResponse");
+    return $this->call('list', array($params), "Powerform_Google_Service_YouTubeReporting_ListJobsResponse");
   }
 }
 
@@ -318,11 +318,11 @@ class Google_Service_YouTubeReporting_Jobs_Resource extends Google_Service_Resou
  * The "reports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubereportingService = new Google_Service_YouTubeReporting(...);
+ *   $youtubereportingService = new Powerform_Google_Service_YouTubeReporting(...);
  *   $reports = $youtubereportingService->reports;
  *  </code>
  */
-class Google_Service_YouTubeReporting_JobsReports_Resource extends Google_Service_Resource
+class Powerform_Google_Service_YouTubeReporting_JobsReports_Resource extends Powerform_Google_Service_Resource
 {
 
   /**
@@ -335,13 +335,13 @@ class Google_Service_YouTubeReporting_JobsReports_Resource extends Google_Servic
    * @opt_param string onBehalfOfContentOwner The content owner's external ID on
    * which behalf the user is acting on. If not set, the user is acting for
    * himself (his own channel).
-   * @return Google_Service_YouTubeReporting_Report
+   * @return Powerform_Google_Service_YouTubeReporting_Report
    */
   public function get($jobId, $reportId, $optParams = array())
   {
     $params = array('jobId' => $jobId, 'reportId' => $reportId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_YouTubeReporting_Report");
+    return $this->call('get', array($params), "Powerform_Google_Service_YouTubeReporting_Report");
   }
 
   /**
@@ -363,13 +363,13 @@ class Google_Service_YouTubeReporting_JobsReports_Resource extends Google_Servic
    * to the `ListReports` method.
    * @opt_param string createdAfter If set, only reports created after the
    * specified date/time are returned.
-   * @return Google_Service_YouTubeReporting_ListReportsResponse
+   * @return Powerform_Google_Service_YouTubeReporting_ListReportsResponse
    */
   public function listJobsReports($jobId, $optParams = array())
   {
     $params = array('jobId' => $jobId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_YouTubeReporting_ListReportsResponse");
+    return $this->call('list', array($params), "Powerform_Google_Service_YouTubeReporting_ListReportsResponse");
   }
 }
 
@@ -377,11 +377,11 @@ class Google_Service_YouTubeReporting_JobsReports_Resource extends Google_Servic
  * The "media" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubereportingService = new Google_Service_YouTubeReporting(...);
+ *   $youtubereportingService = new Powerform_Google_Service_YouTubeReporting(...);
  *   $media = $youtubereportingService->media;
  *  </code>
  */
-class Google_Service_YouTubeReporting_Media_Resource extends Google_Service_Resource
+class Powerform_Google_Service_YouTubeReporting_Media_Resource extends Powerform_Google_Service_Resource
 {
 
   /**
@@ -391,13 +391,13 @@ class Google_Service_YouTubeReporting_Media_Resource extends Google_Service_Reso
    * @param string $resourceName Name of the media that is being downloaded. See
    * [][ByteStream.ReadRequest.resource_name].
    * @param array $optParams Optional parameters.
-   * @return Google_Service_YouTubeReporting_Media
+   * @return Powerform_Google_Service_YouTubeReporting_Media
    */
   public function download($resourceName, $optParams = array())
   {
     $params = array('resourceName' => $resourceName);
     $params = array_merge($params, $optParams);
-    return $this->call('download', array($params), "Google_Service_YouTubeReporting_Media");
+    return $this->call('download', array($params), "Powerform_Google_Service_YouTubeReporting_Media");
   }
 }
 
@@ -405,11 +405,11 @@ class Google_Service_YouTubeReporting_Media_Resource extends Google_Service_Reso
  * The "reportTypes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubereportingService = new Google_Service_YouTubeReporting(...);
+ *   $youtubereportingService = new Powerform_Google_Service_YouTubeReporting(...);
  *   $reportTypes = $youtubereportingService->reportTypes;
  *  </code>
  */
-class Google_Service_YouTubeReporting_ReportTypes_Resource extends Google_Service_Resource
+class Powerform_Google_Service_YouTubeReporting_ReportTypes_Resource extends Powerform_Google_Service_Resource
 {
 
   /**
@@ -427,24 +427,24 @@ class Google_Service_YouTubeReporting_ReportTypes_Resource extends Google_Servic
    * should return. Typically, this is the value of
    * ListReportTypesResponse.next_page_token returned in response to the previous
    * call to the `ListReportTypes` method.
-   * @return Google_Service_YouTubeReporting_ListReportTypesResponse
+   * @return Powerform_Google_Service_YouTubeReporting_ListReportTypesResponse
    */
   public function listReportTypes($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_YouTubeReporting_ListReportTypesResponse");
+    return $this->call('list', array($params), "Powerform_Google_Service_YouTubeReporting_ListReportTypesResponse");
   }
 }
 
 
 
 
-class Google_Service_YouTubeReporting_Empty extends Google_Model
+class Powerform_Google_Service_YouTubeReporting_Empty extends Powerform_Google_Model
 {
 }
 
-class Google_Service_YouTubeReporting_Job extends Google_Model
+class Powerform_Google_Service_YouTubeReporting_Job extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -488,12 +488,12 @@ class Google_Service_YouTubeReporting_Job extends Google_Model
   }
 }
 
-class Google_Service_YouTubeReporting_ListJobsResponse extends Google_Collection
+class Powerform_Google_Service_YouTubeReporting_ListJobsResponse extends Powerform_Google_Collection
 {
   protected $collection_key = 'jobs';
   protected $internal_gapi_mappings = array(
   );
-  protected $jobsType = 'Google_Service_YouTubeReporting_Job';
+  protected $jobsType = 'Powerform_Google_Service_YouTubeReporting_Job';
   protected $jobsDataType = 'array';
   public $nextPageToken;
 
@@ -516,13 +516,13 @@ class Google_Service_YouTubeReporting_ListJobsResponse extends Google_Collection
   }
 }
 
-class Google_Service_YouTubeReporting_ListReportTypesResponse extends Google_Collection
+class Powerform_Google_Service_YouTubeReporting_ListReportTypesResponse extends Powerform_Google_Collection
 {
   protected $collection_key = 'reportTypes';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $reportTypesType = 'Google_Service_YouTubeReporting_ReportType';
+  protected $reportTypesType = 'Powerform_Google_Service_YouTubeReporting_ReportType';
   protected $reportTypesDataType = 'array';
 
 
@@ -544,13 +544,13 @@ class Google_Service_YouTubeReporting_ListReportTypesResponse extends Google_Col
   }
 }
 
-class Google_Service_YouTubeReporting_ListReportsResponse extends Google_Collection
+class Powerform_Google_Service_YouTubeReporting_ListReportsResponse extends Powerform_Google_Collection
 {
   protected $collection_key = 'reports';
   protected $internal_gapi_mappings = array(
   );
   public $nextPageToken;
-  protected $reportsType = 'Google_Service_YouTubeReporting_Report';
+  protected $reportsType = 'Powerform_Google_Service_YouTubeReporting_Report';
   protected $reportsDataType = 'array';
 
 
@@ -572,7 +572,7 @@ class Google_Service_YouTubeReporting_ListReportsResponse extends Google_Collect
   }
 }
 
-class Google_Service_YouTubeReporting_Media extends Google_Model
+class Powerform_Google_Service_YouTubeReporting_Media extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -589,7 +589,7 @@ class Google_Service_YouTubeReporting_Media extends Google_Model
   }
 }
 
-class Google_Service_YouTubeReporting_Report extends Google_Model
+class Powerform_Google_Service_YouTubeReporting_Report extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -651,7 +651,7 @@ class Google_Service_YouTubeReporting_Report extends Google_Model
   }
 }
 
-class Google_Service_YouTubeReporting_ReportType extends Google_Model
+class Powerform_Google_Service_YouTubeReporting_ReportType extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );

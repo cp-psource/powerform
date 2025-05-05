@@ -89,59 +89,126 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 		 * @since 1.0.5
 		 */
 		if ( $this->check_access ) {
-			$settings = $this->settings;
-			$user_ip  = Powerform_Geo::get_user_ip();
-
-			if ( $this->is_allow_multiple_votes() ) {
-				if ( isset( $settings['vote_limit_input'] ) ) {
-					$duration           = is_numeric( $settings['vote_limit_input'] ) ? esc_sql( $settings['vote_limit_input'] ) : 0;
-					$vote_limit_options = 'm';
-					if ( isset( $settings['vote_limit_options'] ) ) {
-						$vote_limit_options = $settings['vote_limit_options'];
-					}
-
-					switch ( $vote_limit_options ) {
-						case 'h':
-							$interval = "INTERVAL $duration HOUR";
-							break;
-						case 'd':
-							$interval = "INTERVAL $duration DAY";
-							break;
-						case 'W':
-							$interval = "INTERVAL $duration WEEK";
-							break;
-						case 'M':
-							$interval = "INTERVAL $duration MONTH";
-							break;
-						case 'Y':
-							$interval = "INTERVAL $duration YEAR";
-							break;
-						default:
-							$interval = "INTERVAL $duration MINUTE";
-							break;
-					}
-					$last_entry = Powerform_Form_Entry_Model::get_last_entry_by_ip_and_form( $this->id, $user_ip );
-					if ( $last_entry ) {
-						$can_vote = Powerform_Form_Entry_Model::check_entry_date_by_ip_and_form( $this->id, $user_ip, $last_entry, $interval );
-						if ( $can_vote ) {
-							return true;
-						} else {
-							return false;
-						}
-					} else {
-						return true;
-					}
-				}
+			if ( $this->is_method_browser_cookie() ) {
+				return $this->poll_votes_method_browser_cookie();
 			} else {
-				$last_entry = Powerform_Form_Entry_Model::get_last_entry_by_ip_and_form( $this->id, $user_ip );
-				if ( $last_entry ) {
-					return false;
-				}
+				return $this->poll_votes_method_user_ip();
 			}
 		}
 
 		return true;
 	}
+
+	/**
+	 * Check user can vote by browser cookie
+	 *
+	 * @return bool
+	 */
+	public function poll_votes_method_browser_cookie() {
+		$settings    = $this->settings;
+		$poll_cookie = 'poll-cookie-' . md5( $this->id );
+		if ( ! isset( $_COOKIE[ $poll_cookie ] ) ) {
+			return true;
+		}
+		if ( $this->is_allow_multiple_votes() ) {
+			if ( isset( $settings['vote_limit_input'] ) && ! empty( $settings['vote_limit_input'] ) ) {
+				$duration           = is_numeric( $settings['vote_limit_input'] ) ? $settings['vote_limit_input'] : '1';
+				$vote_limit_options = isset( $settings['vote_limit_options'] ) ? $settings['vote_limit_options'] : 'm';
+				switch ( $vote_limit_options ) {
+					case 'h':
+						$interval = 'hour';
+						break;
+					case 'd':
+						$interval = 'day';
+						break;
+					case 'W':
+						$interval = 'week';
+						break;
+					case 'M':
+						$interval = 'month';
+						break;
+					case 'm':
+						$interval = 'minute';
+						break;
+					case 'Y':
+						$interval = 'year';
+						break;
+					default:
+						$interval = 'year';
+						break;
+				}
+				$cookie_value  = date_i18n( 'Y-m-d H:i:s', strtotime( $_COOKIE[ $poll_cookie ] ) );
+				$cookie_expire = $cookie_value . ' +' . $duration . ' ' . $interval;
+				if ( time() < strtotime( $cookie_expire ) ) {
+					return false;
+				} else {
+					return true;
+				}
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+
+
+	/**
+	 * Check user can vote by user IP
+	 *
+	 * @return bool
+	 */
+	public function poll_votes_method_user_ip() {
+		$settings = $this->settings;
+		$user_ip  = Powerform_Geo::get_user_ip();
+		if ( $this->is_allow_multiple_votes() ) {
+
+			if ( isset( $settings['vote_limit_input'] ) ) {
+				$duration           = is_numeric( $settings['vote_limit_input'] ) ? $settings['vote_limit_input'] : 0;
+				$vote_limit_options = isset( $settings['vote_limit_options'] ) ? $settings['vote_limit_options'] : 'm';
+				switch ( $vote_limit_options ) {
+					case 'h':
+						$interval = "INTERVAL $duration HOUR";
+						break;
+					case 'd':
+						$interval = "INTERVAL $duration DAY";
+						break;
+					case 'W':
+						$interval = "INTERVAL $duration WEEK";
+						break;
+					case 'M':
+						$interval = "INTERVAL $duration MONTH";
+						break;
+					case 'Y':
+						$interval = "INTERVAL $duration YEAR";
+						break;
+					default:
+						$interval = "INTERVAL $duration MINUTE";
+						break;
+				}
+				$last_entry = Powerform_Form_Entry_Model::get_last_entry_by_ip_and_form( $this->id, $user_ip );
+				if ( $last_entry ) {
+					$can_vote = Powerform_Form_Entry_Model::check_entry_date_by_ip_and_form( $this->id, $user_ip, $last_entry, $interval );
+					if ( $can_vote ) {
+						return true;
+					} else {
+						return false;
+					}
+				} else {
+					return true;
+				}
+			} else {
+				return true;
+			}
+		} else {
+			$last_entry = Powerform_Form_Entry_Model::get_last_entry_by_ip_and_form( $this->id, $user_ip );
+			if ( $last_entry ) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 
 	/**
 	 * Overridden load function to check element_id of answers for older poll
@@ -247,9 +314,9 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 	 *
 	 * @since 1.0.5
 	 *
-	 * @param  string      $pluck_key
+	 * @param  string $pluck_key
 	 * @param  string|null $key
-	 * @param null         $default
+	 * @param null $default
 	 *
 	 * @return array
 	 */
@@ -298,12 +365,11 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 		 *
 		 * @since 1.6.1
 		 *
-		 * @param bool  $allow_multiple_votes
-		 * @param int   $poll_id
+		 * @param bool $allow_multiple_votes
+		 * @param int $poll_id
 		 * @param array $settings
 		 */
 		$allow_multiple_votes = apply_filters( 'powerform_poll_allow_multiple_votes', $allow_multiple_votes, $poll_id, $settings );
-
 
 		return $allow_multiple_votes;
 	}
@@ -330,8 +396,8 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 		 *
 		 * @since 1.6.1
 		 *
-		 * @param bool  $is_prevent_store
-		 * @param int   $poll_id
+		 * @param bool $is_prevent_store
+		 * @param int $poll_id
 		 * @param array $poll_settings
 		 */
 		$is_prevent_store = apply_filters( 'powerform_poll_is_prevent_store', $is_prevent_store, $poll_id, $poll_settings );
@@ -389,7 +455,6 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 			} catch ( Exception $e ) {
 				powerform_addon_maybe_log( $connected_addon->get_slug(), 'failed to get to_exportable_data', $e->getMessage() );
 			}
-
 		}
 
 		/**
@@ -420,13 +485,28 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 	 */
 	public static function create_from_import_data( $import_data, $module = __CLASS__ ) {
 		if ( Powerform::is_import_integrations_feature_enabled() ) {
-			add_filter( 'powerform_import_model', array( 'Powerform_Poll_Form_Model', 'import_integrations_data' ), 1, 3 );
+			add_filter(
+				'powerform_import_model',
+				array(
+					'Powerform_Poll_Form_Model',
+					'import_integrations_data',
+				),
+				1,
+				3
+			);
 		}
 
 		$model = parent::create_from_import_data( $import_data, $module );
 
 		// avoid filter executed on next cycle
-		remove_filter( 'powerform_import_model', array( 'Powerform_Poll_Form_Model', 'import_integrations_data' ), 1 );
+		remove_filter(
+			'powerform_import_model',
+			array(
+				'Powerform_Poll_Form_Model',
+				'import_integrations_data',
+			),
+			1
+		);
 
 		return $model;
 	}
@@ -470,9 +550,8 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 					}
 				}
 			} catch ( Exception $e ) {
-				powerform_addon_maybe_log( $slug, 'Importformulareinstellungen konnten nicht abgerufen werden', $e->getMessage() );
+				powerform_addon_maybe_log( $slug, 'failed to get import form settings', $e->getMessage() );
 			}
-
 		}
 
 		return $model;
@@ -488,7 +567,7 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 	 *
 	 * @return bool
 	 */
-	public function is_ajax_load( $force = false) {
+	public function is_ajax_load( $force = false ) {
 		$poll_id        = (int) $this->id;
 		$form_settings  = $this->settings;
 		$global_enabled = parent::is_ajax_load( $force );
@@ -503,9 +582,9 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 		 *
 		 * @since 1.6.1
 		 *
-		 * @param bool  $enabled
-		 * @param bool  $global_enabled
-		 * @param int   $poll_id
+		 * @param bool $enabled
+		 * @param bool $global_enabled
+		 * @param int $poll_id
 		 * @param array $form_settings
 		 *
 		 * @return bool
@@ -536,9 +615,9 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 		 *
 		 * @since 1.6.1
 		 *
-		 * @param bool  $enabled
-		 * @param bool  $global_enabled
-		 * @param int   $poll_id
+		 * @param bool $enabled
+		 * @param bool $global_enabled
+		 * @param int $poll_id
 		 * @param array $form_settings
 		 *
 		 * @return bool
@@ -546,5 +625,135 @@ class Powerform_Poll_Form_Model extends Powerform_Base_Form_Model {
 		$enabled = apply_filters( 'powerform_poll_is_use_donotcachepage_constant', $enabled, $global_enabled, $poll_id, $form_settings );
 
 		return $enabled;
+	}
+
+	/**
+	 * Get Browser votes method enable status flag
+	 *
+	 * @since 1.7
+	 *
+	 * @return bool
+	 */
+	public function is_method_browser_cookie() {
+		$settings       = $this->settings;
+		$poll_id        = $this->id;
+		$browser_method = isset( $settings['enable-votes-method'] ) && 'browser_cookie' === $settings['enable-votes-method'] ? true : false;
+
+		/**
+		 * Filter browser_method flag of a poll
+		 *
+		 * @since 1.7
+		 *
+		 * @param bool $browser_method
+		 * @param int $poll_id
+		 * @param array $settings
+		 */
+		$browser_method = apply_filters( 'powerform_poll_method_browser_cookie', $browser_method, $poll_id, $settings );
+
+		return $browser_method;
+	}
+
+	/**
+	 * Check vote opening status
+	 *
+	 *
+	 * @return array
+	 */
+	public function opening_status() {
+		static $info;
+		if ( isset( $info ) ) {
+			return $info;
+		}
+
+		$settings = $this->settings;
+		$info = array(
+			'status' => 'open',
+			'msg'	 => ''
+		);
+
+		$close_msg = ( isset( $settings['opening_close_msg'] ) ) ? trim( $settings['opening_close_msg'] ) : '';
+		if ( '' === $close_msg ) {
+			$close_msg = __( 'Voting is closed', Powerform::DOMAIN );
+		}
+
+		$pause_msg = ( isset( $settings['opening_pause_msg'] ) ) ? trim( $settings['opening_pause_msg'] ) : '';
+		if ( '' === $pause_msg ) {
+			$pause_msg = __( 'Voting is paused, check again later', Powerform::DOMAIN );
+		}
+
+		$before_open_from_msg = ( isset( $settings['opening_before_open_from_msg'] ) ) ? trim( $settings['opening_before_open_from_msg'] ) : '';
+		if ( '' === $before_open_from_msg ) {
+			$before_open_from_msg = __( 'Voting has not been started yet, check again later', Powerform::DOMAIN );
+		}
+
+
+		$status = ( isset( $settings['opening_status'] )  ) ? $settings['opening_status'] : 'open';
+		if ( ! in_array( $status, array('open', 'pause', 'close' ) ) ) {
+			$status = 'open';
+		}
+
+		$info['status'] = $status;
+
+		switch ( $status ) {
+			case 'close': {
+				$info['msg'] = $close_msg;
+				return $info;
+				break;
+			}
+
+			case 'pause': {
+				$info['msg'] = $pause_msg;
+				return $info;
+				break;
+			}
+
+			case 'open': {
+				$current_time = current_time( 'timestamp' );
+				
+				//check open from and open until time
+				$open_from = ( isset( $settings['opening_open_from'] ) ) ? trim( $settings['opening_open_from'] ) : 'now';
+				if ( '' === $open_from ) {
+					$open_from = 'now';
+				}
+
+				$open_until = ( isset( $settings['opening_open_until'] ) ) ? trim( $settings['opening_open_until'] ) : 'forever';
+				if ( '' === $open_until ) {
+					$open_until = 'forever';
+				}
+
+				if ( 'now' !== $open_from ) {
+					$open_from_time = ( isset( $settings['opening_open_from_date_time'] ) ) ? trim( $settings['opening_open_from_date_time'] ) : '';
+					if ( '' !== $open_from_time ) {
+						$open_from_timestamp = strtotime( $open_from_time );
+						if ( $current_time < $open_from_timestamp ) {
+							$info['status'] = 'before_open_from';
+							$info['msg']    = $before_open_from_msg;
+							return $info;
+						}
+					}
+				}
+
+				if ( 'forever' !== $open_until ) {
+					$open_until_time = ( isset( $settings['opening_open_until_date_time'] ) ) ? trim( $settings['opening_open_until_date_time'] ) : '';
+					if ( '' !== $open_until_time ) {
+						$open_until_timestamp = strtotime( $open_until_time );
+						if ( $current_time > $open_until_timestamp ) {
+							$info['status'] = 'close';
+							$info['msg']    = $close_msg;
+							return $info;
+						}
+					}
+				}
+
+				return $info;
+				break;
+			}
+
+			default:
+				break;
+				
+		}
+
+		return $info;
 	}
 }

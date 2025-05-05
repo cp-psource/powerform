@@ -30,8 +30,8 @@ function powerform_set_message_vars( $embed_id, $embed_title, $embed_url, $user_
 	$message_vars['embed_title'] 	= $embed_title;
 	$message_vars['embed_url']  	= $embed_url;
 	$message_vars['user_agent']  	= isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : 'none';
-	$message_vars['refer_url']   	= isset ( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : $embed_url;
-	$message_vars['http_refer']   	= isset ( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : $embed_url;
+	$message_vars['refer_url']   	= powerform_get_referer_url( $embed_url );
+	$message_vars['http_refer']   	= $message_vars['refer_url'];
 	$message_vars['user_name']   	= $user_name;
 	$message_vars['user_email']  	= $user_email;
 	$message_vars['user_login']		= $user_login;
@@ -47,7 +47,7 @@ function powerform_set_message_vars( $embed_id, $embed_title, $embed_url, $user_
  * @return string
  */
 function get_global_sender_email_address() {
-	$global_sender_email = get_option( "powerform_sender_email_address", "noreply@" . wp_parse_url( get_site_url(), PHP_URL_HOST ) );
+	$global_sender_email = get_option( 'powerform_sender_email_address', 'noreply@' . wp_parse_url( get_site_url(), PHP_URL_HOST ) );
 
 	return apply_filters( 'powerform_sender_email_address', $global_sender_email );
 }
@@ -59,7 +59,7 @@ function get_global_sender_email_address() {
  * @return string
  */
 function get_global_sender_name() {
-	$global_sender_email = get_option( "powerform_sender_name", get_option( 'blogname' ) );
+	$global_sender_email = get_option( 'powerform_sender_name', get_option( 'blogname' ) );
 
 	return apply_filters( 'powerform_sender_name', $global_sender_email );
 }

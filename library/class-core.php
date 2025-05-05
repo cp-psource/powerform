@@ -37,6 +37,13 @@ class Powerform_Core {
 	public $fields = array();
 
 	/**
+	 * Store PRO fields
+	 *
+	 * @var array
+	 */
+	public $pro_fields = array();
+
+	/**
 	 * Plugin instance
 	 *
 	 * @var null
@@ -86,6 +93,14 @@ class Powerform_Core {
 		$fields       = new Powerform_Fields();
 		$this->fields = $fields->get_fields();
 
+		/**
+		 * Filter Pro fields for promotion PRO version
+		 *
+		 * @since 1.13
+		 * @param array $pro_fields Array of PRO fields e.g. [ 'field_type' => 'test', 'name' => 'test, 'icon' => 'sui-icon-pencil' ]
+		 */
+		$this->pro_fields = apply_filters( 'powerform_pro_fields', [] );
+
 		// HACK: Add settings and entries page at the end of the list
 		if ( is_admin() ) {
 			$this->admin->add_entries_page();
@@ -93,6 +108,10 @@ class Powerform_Core {
 				$this->admin->add_integrations_page();
 			}
 			$this->admin->add_settings_page();
+
+			/*if ( ! POWERFORM_PRO ) {
+				$this->admin->add_upgrade_page();
+			}*/
 		}
 
 		//Protection management
@@ -126,6 +145,8 @@ class Powerform_Core {
 		include_once powerform_plugin_dir() . 'library/abstracts/abstract-class-payment-gateway.php';
 		/* @noinspection PhpIncludeInspection */
 		include_once powerform_plugin_dir() . 'library/abstracts/abstract-class-spam-protection.php';
+		/* @noinspection PhpIncludeInspection */
+		include_once powerform_plugin_dir() . 'library/abstracts/abstract-class-user.php';
 
 		// Classes
 		/* @noinspection PhpIncludeInspection */
@@ -151,7 +172,18 @@ class Powerform_Core {
 		/* @noinspection PhpIncludeInspection */
 		include_once powerform_plugin_dir() . 'library/render/class-render-form.php';
 		/* @noinspection PhpIncludeInspection */
-		include_once powerform_plugin_dir() . 'library/gateways/class-paypal-express.php';
+		include_once powerform_plugin_dir() . 'library/render/class-assets-enqueue.php';
+		/* @noinspection PhpIncludeInspection */
+
+		if ( version_compare( PHP_VERSION, '5.3.0', 'ge' ) && file_exists( powerform_plugin_dir() . 'library/gateways/class-paypal-express.php' ) ) {
+			include_once powerform_plugin_dir() . 'library/gateways/class-paypal-express.php';
+		}
+
+		if ( version_compare( PHP_VERSION, '5.6.0', 'ge' ) && file_exists( powerform_plugin_dir() . 'library/gateways/class-stripe.php' ) ) {
+			/* @noinspection PhpIncludeInspection */
+			include_once powerform_plugin_dir() . 'library/gateways/class-stripe.php';
+		}
+
 		/* @noinspection PhpIncludeInspection */
 		include_once powerform_plugin_dir() . 'library/render/class-widget.php';
 		/* @noinspection PhpIncludeInspection */
@@ -167,6 +199,8 @@ class Powerform_Core {
 		/* @noinspection PhpIncludeInspection */
 		include_once powerform_plugin_dir() . 'library/helpers/helper-core.php';
 		/* @noinspection PhpIncludeInspection */
+		include_once powerform_plugin_dir() . 'library/helpers/helper-importer.php';
+		/* @noinspection PhpIncludeInspection */
 		include_once powerform_plugin_dir() . 'library/helpers/helper-modules.php';
 		/* @noinspection PhpIncludeInspection */
 		include_once powerform_plugin_dir() . 'library/helpers/helper-forms.php';
@@ -180,6 +214,13 @@ class Powerform_Core {
 		include_once powerform_plugin_dir() . 'library/helpers/helper-currency.php';
 		/* @noinspection PhpIncludeInspection */
 		include_once powerform_plugin_dir() . 'library/helpers/helper-autofill.php';
+		/* @noinspection PhpIncludeInspection */
+		include_once powerform_plugin_dir() . 'library/helpers/helper-calculator.php';
+
+		if ( version_compare( PHP_VERSION, '5.6.0', 'ge' ) ) {
+			/* @noinspection PhpIncludeInspection */
+			include_once powerform_plugin_dir() . 'library/helpers/helper-payment.php';
+		}
 
 		//Model
 		/* @noinspection PhpIncludeInspection */
@@ -199,6 +240,8 @@ class Powerform_Core {
 			include_once powerform_plugin_dir() . 'admin/abstracts/class-admin-page.php';
 			/* @noinspection PhpIncludeInspection */
 			include_once powerform_plugin_dir() . 'admin/abstracts/class-admin-module.php';
+			/* @noinspection PhpIncludeInspection */
+			include_once powerform_plugin_dir() . 'admin/abstracts/class-admin-import-mediator.php';
 			/* @noinspection PhpIncludeInspection */
 			include_once powerform_plugin_dir() . 'admin/classes/class-admin.php';
 			/* @noinspection PhpIncludeInspection */
@@ -228,7 +271,7 @@ class Powerform_Core {
 	 * @since 1.0
 	 */
 	public function post_field_meta_box() {
-		add_action( 'add_meta_boxes_post', array( $this, 'setup_post_meta_box' ) );
+		add_action( 'add_meta_boxes', array( $this, 'setup_post_meta_box' ) );
 	}
 
 	/**
@@ -236,15 +279,16 @@ class Powerform_Core {
 	 *
 	 * @since 1.0
 	 */
-	public function setup_post_meta_box( $post ) {
+	public function setup_post_meta_box() {
+		global $post;
 		if ( is_object( $post ) ) {
 			$is_powerform_meta = get_post_meta( $post->ID, '_has_powerform_meta' );
 			if ( $is_powerform_meta ) {
 				add_meta_box(
 					'powerform-post-meta-box',
-					__( 'Beitrag Benutzerdefinierte Daten', Powerform::DOMAIN ),
+					__( 'Benutzerdefinierte Daten veröffentlichen', Powerform::DOMAIN ),
 					array( $this, 'render_post_meta_box' ),
-					'post',
+					$post->post_type,
 					'normal',
 					'default'
 				);
@@ -254,9 +298,9 @@ class Powerform_Core {
 
 	public function localize_pointers() {
 		?>
-		<script type="text/javascript">
-			var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' );  // WPCS: XSS ok. ?>';
-		</script>
+        <script type="text/javascript">
+            var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' );  // WPCS: XSS ok. ?>';
+        </script>
 		<?php
 	}
 
@@ -275,11 +319,11 @@ class Powerform_Core {
 				if ( '_' === $key[0] ) {
 					continue;
 				}
-				$value = maybe_unserialize( $value[0] );
+				$value = $value[0];
 				?>
                 <tr>
-                    <th><?php echo esc_html( $value['label'] ); ?></th>
-                    <td><?php echo esc_html( $value['value'] ); ?></td>
+                    <th><?php echo esc_html( $key ); ?></th>
+                    <td><?php echo esc_html( $value ); ?></td>
                 </tr>
 				<?php
 			}

@@ -91,7 +91,7 @@ class Powerform_Addon_Admin_Ajax {
 	 */
 	private function validate_ajax() {
 		if ( ! powerform_is_user_allowed() || ! check_ajax_referer( self::$_nonce_action, false, false ) ) {
-			$this->send_json_errors( __( 'Ungültige Anfrage, Du darfst diese Aktion nicht ausführen.', Powerform::DOMAIN ) );
+			$this->send_json_errors( __( 'Invalid request, you are not allowed to do that action.', Powerform::DOMAIN ) );
 		}
 	}
 
@@ -124,11 +124,11 @@ class Powerform_Addon_Admin_Ajax {
 		}
 
 		$this->send_json_success(
-			__( 'Addon deaktiviert', Powerform::DOMAIN ),
+			__( 'Addon Deactivated', Powerform::DOMAIN ),
 			array(
 				'notification' => array(
 					'type' => 'success',
-					'text' => '<strong>' . $addon->get_title() . '</strong> ' . __( 'Erfolgreich getrennt' ),
+					'text' => '<strong>' . $addon->get_title() . '</strong> ' . __( 'has been disconnected successfully.' ),
 				),
 			)
 		);
@@ -153,7 +153,7 @@ class Powerform_Addon_Admin_Ajax {
 		$addon = $this->validate_addon_from_slug( $slug );
 
 		if ( ! $addon->is_settings_available() ) {
-			$this->send_json_errors( __( 'Für dieses Addon sind keine Einstellungen verfügbar', Powerform::DOMAIN ) );
+			$this->send_json_errors( __( 'This Addon does not have settings available', Powerform::DOMAIN ) );
 		}
 
 		powerform_maybe_attach_addon_hook( $addon );
@@ -187,7 +187,7 @@ class Powerform_Addon_Admin_Ajax {
 		$addon = $this->validate_addon_from_slug( $slug );
 
 		if ( ! $addon->is_form_settings_available( $form_id ) ) {
-			$this->send_json_errors( __( 'Für dieses Addon sind keine Formulareinstellungen verfügbar', Powerform::DOMAIN ) );
+			$this->send_json_errors( __( 'This Addon does not have form settings available', Powerform::DOMAIN ) );
 		}
 
 		powerform_maybe_attach_addon_hook( $addon );
@@ -249,22 +249,24 @@ class Powerform_Addon_Admin_Ajax {
 			$form_settings->disconnect_form( $sanitized_post_data );
 
 			$this->send_json_success(
-				sprintf( __( '%1$s wurde erfolgreich von diesem Formular getrennt', Powerform::DOMAIN ), $addon->get_title() ),
+				/* translators: ... */
+				sprintf( __( 'Successfully disconnected %1$s from this form', Powerform::DOMAIN ), $addon->get_title() ),
 				array(
 					'notification' => array(
 						'type' => 'success',
-						'text' => '<strong>' . $addon_title . '</strong> ' . __( 'Erfolgreich von diesem Formular getrennt' ),
+						'text' => '<strong>' . $addon_title . '</strong> ' . __( 'has been deactivated successfully.' ),
 					),
 				)
 			);
 		} else {
 			$this->send_json_errors(
-				sprintf( __( '%1$s konnte nicht von diesem Formular getrennt werden', Powerform::DOMAIN ), $addon->get_title() ),
+				/* translators: ... */
+				sprintf( __( 'Failed to disconnect %1$s from this form', Powerform::DOMAIN ), $addon->get_title() ),
 				array(),
 				array(
 					'notification' => array(
 						'type' => 'error',
-						'text' => '<strong>' . $addon->get_title() . '</strong> ' . __( 'Verbindung zu diesem Formular konnte nicht getrennt werden' ),
+						'text' => '<strong>' . $addon->get_title() . '</strong> ' . __( 'has been failed to deactivate.' ),
 					),
 				)
 			);
@@ -388,7 +390,7 @@ class Powerform_Addon_Admin_Ajax {
 	 * @return mixed
 	 */
 	private function validate_and_sanitize_fields( $required_fields = array() ) {
-		$post_data = $_REQUEST['data']; // wpcs csrf ok. already validated
+		$post_data = $_REQUEST['data']; // phpcs:ignore -- already validated
 
 		//for serialized data or form
 		if ( ! is_array( $post_data ) && is_string( $post_data ) ) {
@@ -401,13 +403,13 @@ class Powerform_Addon_Admin_Ajax {
 		foreach ( $required_fields as $key => $required_field ) {
 			if ( ! isset( $post_data[ $required_field ] ) ) {
 				/* translators: ... */
-				$errors[] = sprintf( __( 'Feld %s ist erforderlich', Powerform::DOMAIN ), $required_field );
+				$errors[] = sprintf( __( 'Field %s is required', Powerform::DOMAIN ), $required_field );
 				continue;
 			}
 		}
 
 		if ( ! empty( $errors ) ) {
-			$this->send_json_errors( __( 'Bitte überprüfe Dein Formular.', Powerform::DOMAIN ), $errors );
+			$this->send_json_errors( __( 'Please check your form.', Powerform::DOMAIN ), $errors );
 		}
 
 		// TODO: sanitize
@@ -435,12 +437,12 @@ class Powerform_Addon_Admin_Ajax {
 
 		if ( ! $addon || ! $addon instanceof Powerform_Addon_Abstract ) {
 			$this->send_json_errors(
-				__( 'Addon nicht gefunden', Powerform::DOMAIN ),
+				__( 'Addon not found', Powerform::DOMAIN ),
 				array(),
 				array(
 					'notification' => array(
 						'type' => 'error',
-						'text' => '<strong>' . $slug . '</strong> ' . __( 'Integration nicht gefunden' ),
+						'text' => '<strong>' . $slug . '</strong> ' . __( 'Integration Not Found' ),
 					),
 				)
 			);
@@ -460,7 +462,6 @@ class Powerform_Addon_Admin_Ajax {
 			remove_action( 'wp_ajax_powerform_addon_get_addons', array( self::$_instance, 'get_addons' ) );
 			remove_action( 'wp_ajax_powerform_addon_settings', array( self::$_instance, 'settings' ) );
 			remove_action( 'wp_ajax_powerform_addon_deactivate', array( self::$_instance, 'deactivate' ) );
-
 
 			remove_action( 'wp_ajax_powerform_addon_get_form_addons', array( self::$_instance, 'get_form_addons' ) );
 			remove_action( 'wp_ajax_powerform_addon_form_settings', array( self::$_instance, 'form_settings' ) );
@@ -519,7 +520,7 @@ class Powerform_Addon_Admin_Ajax {
 		$addon = $this->validate_addon_from_slug( $slug );
 
 		if ( ! $addon->is_poll_settings_available( $poll_id ) ) {
-			$this->send_json_errors( __( 'Für dieses Addon sind keine Umfrageeinstellungen verfügbar', Powerform::DOMAIN ) );
+			$this->send_json_errors( __( 'This Addon does not have poll settings available', Powerform::DOMAIN ) );
 		}
 
 		powerform_maybe_attach_addon_hook( $addon );
@@ -581,22 +582,24 @@ class Powerform_Addon_Admin_Ajax {
 			$poll_settings->disconnect_poll( $sanitized_post_data );
 
 			$this->send_json_success(
-				sprintf( __( '%1$s wurde erfolgreich von dieser Umfrage getrennt', Powerform::DOMAIN ), $addon->get_title() ),
+				/* translators: ... */
+				sprintf( __( 'Successfully disconnected %1$s from this poll', Powerform::DOMAIN ), $addon->get_title() ),
 				array(
 					'notification' => array(
 						'type' => 'success',
-						'text' => '<strong>' . $addon_title . '</strong> ' . __( 'Von dieser Umfrage erfolgreich getrennt' ),
+						'text' => '<strong>' . $addon_title . '</strong> ' . __( 'Successfully disconnected from this poll' ),
 					),
 				)
 			);
 		} else {
 			$this->send_json_errors(
-				sprintf( __( '%1$s konnte nicht von dieser Umfrage getrennt werden', Powerform::DOMAIN ), $addon->get_title() ),
+				/* translators: ... */
+				sprintf( __( 'Failed to disconnect %1$s from this poll', Powerform::DOMAIN ), $addon->get_title() ),
 				array(),
 				array(
 					'notification' => array(
 						'type' => 'error',
-						'text' => '<strong>' . $addon->get_title() . '</strong> ' . __( 'Verbindung zu dieser Umfrage konnte nicht getrennt werden' ),
+						'text' => '<strong>' . $addon->get_title() . '</strong> ' . __( 'Failed to disconnected from this poll' ),
 					),
 				)
 			);
@@ -644,7 +647,7 @@ class Powerform_Addon_Admin_Ajax {
 		$addon = $this->validate_addon_from_slug( $slug );
 
 		if ( ! $addon->is_quiz_settings_available( $quiz_id ) ) {
-			$this->send_json_errors( __( 'Für dieses Addon sind keine Testeinstellungen verfügbar', Powerform::DOMAIN ) );
+			$this->send_json_errors( __( 'This Addon does not have quiz settings available', Powerform::DOMAIN ) );
 		}
 
 		powerform_maybe_attach_addon_hook( $addon );
@@ -706,22 +709,24 @@ class Powerform_Addon_Admin_Ajax {
 			$quiz_settings->disconnect_quiz( $sanitized_post_data );
 
 			$this->send_json_success(
-				sprintf( __( '%1$s wurde erfolgreich von diesem Test getrennt', Powerform::DOMAIN ), $addon->get_title() ),
+				/* translators: ... */
+				sprintf( __( 'Successfully disconnected %1$s from this quiz', Powerform::DOMAIN ), $addon->get_title() ),
 				array(
 					'notification' => array(
 						'type' => 'success',
-						'text' => '<strong>' . $addon_title . '</strong> ' . __( 'Erfolgreich von diesem Test getrennt' ),
+						'text' => '<strong>' . $addon_title . '</strong> ' . __( 'Successfully disconnected from this quiz' ),
 					),
 				)
 			);
 		} else {
 			$this->send_json_errors(
-				sprintf( __( '%1$s konnte nicht von diesem Quiz getrennt werden', Powerform::DOMAIN ), $addon->get_title() ),
+				/* translators: ... */
+				sprintf( __( 'Failed to disconnect %1$s from this quiz', Powerform::DOMAIN ), $addon->get_title() ),
 				array(),
 				array(
 					'notification' => array(
 						'type' => 'error',
-						'text' => '<strong>' . $addon->get_title() . '</strong> ' . __( 'Fehler beim Trennen der Verbindung zu diesem Test' ),
+						'text' => '<strong>' . $addon->get_title() . '</strong> ' . __( 'Failed to disconnected from this quiz' ),
 					),
 				)
 			);

@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: Powerform Autofill Simple
- * Version: 1
+ * Version: 1.0
  * Description: Simple Addon Autofill Provider.
- * Author: WPMU DEV
- * Author URI: http://premium.wpmudev.org
+ * Author: WMS N@W
+ * Author URI: https://n3rds.work
  * Text Domain: powerform
  * Domain Path: /languages/
  */

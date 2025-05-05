@@ -67,7 +67,7 @@ class Powerform_Export {
 		add_action( 'wp_loaded', array( &$this, 'listen_for_csv_export' ) );
 		add_action( 'wp_loaded', array( &$this, 'listen_for_saving_export_schedule' ) );
 		//schedule for check and send export
-		add_action( 'init', array( &$this, 'schedule_entries_exporter' ) );
+		add_action( 'wp_footer', array( &$this, 'schedule_entries_exporter' ) );
 
 		add_action( 'powerform_send_export', array( &$this, 'maybe_send_export' ) );
 	}
@@ -79,7 +79,7 @@ class Powerform_Export {
 	 */
 	public function schedule_entries_exporter() {
 		if ( ! wp_next_scheduled( 'powerform_send_export' ) ) {
-			wp_schedule_single_event( time(), 'powerform_send_export' );
+			wp_schedule_single_event( time() + WP_CRON_LOCK_TIMEOUT, 'powerform_send_export' );
 		}
 	}
 
@@ -93,7 +93,7 @@ class Powerform_Export {
 			return;
 		}
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'manage_powerform' ) ) {
 			return;
 		}
 
@@ -103,8 +103,9 @@ class Powerform_Export {
 
 		$form_id     = isset( $_POST['form_id'] ) ? $_POST['form_id'] : 0;
 		$type        = isset( $_POST['form_type'] ) ? $_POST['form_type'] : null;
+		$filter      = isset( $_POST['submission-filter'] ) ? $_POST['submission-filter'] : '';
 		$form_id     = intval( $form_id );
-		$export_data = $this->_prepare_export_data( $form_id, $type );
+		$export_data = $this->_prepare_export_data( $form_id, $type, 0, $filter );
 		if ( ! $export_data instanceof Powerform_Export_Result ) {
 			return;
 		}
@@ -123,13 +124,15 @@ class Powerform_Export {
 		);
 		update_option( 'powerform_exporter_log', $logs );
 
-		$fp = fopen( 'php://memory', 'w' ); // phpcs:disable WordPress.WP.AlternativeFunctions.file_system_read_fopen -- disable phpcs because it writes memory
+		$fp = fopen( 'php://output', 'w' ); // phpcs:disable WordPress.WP.AlternativeFunctions.file_system_read_fopen -- disable phpcs because it writes memory
+		ob_start();
 		foreach ( $data as $fields ) {
 			$fields = self::get_formatted_csv_fields( $fields );
 			fputcsv( $fp, $fields );
 		}
-		$filename = 'powerform-' . sanitize_title( $model->name ) . '-' . date( 'ymdHis' ) . '.csv';
-		fseek( $fp, 0 );
+		$filename = sanitize_title( __( 'powerform', POWERFORM::DOMAIN ) ) . '-' . sanitize_title( $model->name ) . '-' . date( 'ymdHis' ) . '.csv';
+
+		$output = ob_get_clean();
 
 		header( 'Content-Encoding: UTF-8' );
 		header( 'Content-type: text/csv; charset=UTF-8' );
@@ -139,8 +142,7 @@ class Powerform_Export {
 		echo chr( 239 ) . chr( 187 ) . chr( 191 );// wpcs xss ok. excel generated content
 
 		// make php send the generated csv lines to the browser
-		fpassthru( $fp );
-		exit();
+		exit( $output );
 	}
 
 	/**
@@ -153,7 +155,8 @@ class Powerform_Export {
 
 		if ( isset( $post_data['action'] ) && 'powerform_export_entries' === $post_data['action'] ) {
 
-			if ( isset( $_POST['_powerform_nonce'] ) && ! wp_verify_nonce( $_POST['_powerform_nonce'], 'powerform_export' ) ) {
+			if ( ! isset( $_POST['_powerform_nonce'] ) || ! wp_verify_nonce( $_POST['_powerform_nonce'], 'powerform_export' ) ) {
+
 				$redirect = add_query_arg(
 					array(
 						'err_msg' => rawurlencode( __( 'Ungültige Anfrage, Du darfst diese Aktion nicht ausführen.', Powerform::DOMAIN ) ),
@@ -192,7 +195,7 @@ class Powerform_Export {
 				exit;
 			}
 
-			if ( $enabled && ( ! isset( $post_data['email'] ) || empty( $post_data['email'] ) || ! is_email( $post_data['email'] ) ) ) {
+			if ( $enabled && ( ! isset( $post_data['email'] ) || empty( $post_data['email'] ) ) ) {
 				$redirect = add_query_arg(
 					array(
 						'err_msg' => rawurlencode( __( 'Ungültige E-Mail.', Powerform::DOMAIN ) ),
@@ -215,7 +218,7 @@ class Powerform_Export {
 				'enabled'          => $enabled,
 				'form_id'          => $post_data['form_id'],
 				'form_type'        => $post_data['form_type'],
-				'email'            => $post_data['email'],
+				'email'            => ! empty( $post_data['email'] ) ? $post_data['email'] : '',
 				'interval'         => $post_data['interval'],
 				'month_day'        => $post_data['month_day'],
 				'day'              => $post_data['day'],
@@ -308,21 +311,27 @@ class Powerform_Export {
 					continue;
 				}
 
-				if ( ! isset( $receipts[ $row['email'] ] ) ) {
-					$receipts[ $row['email'] ] = array();
+				if ( ! empty( $row['email'] ) ) {
+					$export_email = is_array( $row['email'] ) ? $row['email'] : array( $row['email'] );
+					foreach ( $export_email as $email ) {
+						if ( ! isset( $receipts[ $email ] ) ) {
+							$receipts[ $email ] = array();
+						}
+						$receipts[ $email ][] = $info;
+					}
 				}
-				$receipts[ $row['email'] ][] = $info;
 			}
 		}
 
+		$files = [];
 		//now start to send
 		foreach ( $receipts as $email => $info ) {
-			$files          = array();
+			$current_files  = array();
 			$export_results = array();
 			foreach ( $info as $export_result ) {
 
 				// files reference needed for future deletion
-				$files[] = $export_result->file_path;
+				$current_files[] = $export_result->file_path;
 
 				/** @var Powerform_Export_Result $export_result */
 				$schedule_key    = $export_result->model->id . $export_result->form_type;
@@ -355,17 +364,20 @@ class Powerform_Export {
 
 				$export_results[] = $export_result;
 			}
+			$files += $current_files;
 
 			if ( ! empty( $export_results ) ) {
 				$subject      = $this->get_mail_subject( $export_results );
 				$mail_content = $this->get_mail_content( $export_results );
 				$mail_headers = $this->get_mail_headers( $email, $export_results );
-				wp_mail( $email, $subject, $mail_content, $mail_headers, $files );
+				wp_mail( $email, $subject, $mail_content, $mail_headers, $current_files );
 			}
 
-			foreach ( $files as $file ) {
-				@unlink( $file ); // phpcs:ignore
-			}
+		}
+
+		$files = array_unique( $files );
+		foreach ( $files as $file ) {
+			@unlink( $file ); // phpcs:ignore
 		}
 		update_option( 'powerform_entries_export_schedule', $export_schedules );
 	}
@@ -377,14 +389,15 @@ class Powerform_Export {
 	 * @since 1.5
 	 * @since 1.5.4 add `$latest_exported_entry_id` param to get new entries count
 	 *
-	 * @param int    $form_id
+	 * @param int $form_id
 	 * @param string $type
-	 * @param int    $latest_exported_entry_id
+	 * @param int $latest_exported_entry_id
+	 * @param string $filter
 	 *
 	 * @return Powerform_Export_Result
 	 *
 	 */
-	private function _prepare_export_data( $form_id, $type, $latest_exported_entry_id = 0 ) {
+	private function _prepare_export_data( $form_id, $type, $latest_exported_entry_id = 0, $filter = '' ) {
 		$model                    = null;
 		$data                     = array();
 		$entries                  = array();
@@ -398,9 +411,17 @@ class Powerform_Export {
 					return null;
 				}
 
+				$mappers      = array();
+				$lead_headers = array();
+
 				$export_result->model = $model;
 
 				$entries = Powerform_Form_Entry_Model::get_entries( $form_id );
+
+				if ( ! empty( $filter ) ) {
+					$filters = $export_result->request_filters();
+					$entries = Powerform_Form_Entry_Model::get_filter_entries( $form_id, $filters );
+				}
 
 				$headers = array(
 					__( 'Datum', Powerform::DOMAIN ),
@@ -409,6 +430,29 @@ class Powerform_Export {
 					__( 'Ergebnis', Powerform::DOMAIN ),
 				);
 
+				$has_leads = isset( $model->settings['hasLeads'] ) ? $model->settings['hasLeads'] : false;
+				$leads_id  = isset( $model->settings['leadsId'] ) ? $model->settings['leadsId'] : 0;
+
+				if ( $has_leads && $leads_id ) {
+					$form_model = Powerform_Custom_Form_Model::model()->load( $leads_id );
+					if ( is_object( $model ) ) {
+						$mappers = $this->get_custom_form_export_mappers( $form_model );
+						foreach ( $mappers as $mapper ) {
+							if ( 'entry_time_created' === $mapper['type'] ) {
+								continue;
+							}
+							if ( ! isset( $mapper['sub_metas'] ) ) {
+								$lead_headers[ $mapper['meta_key'] ] = $mapper['label'];
+							} else {
+								foreach ( $mapper['sub_metas'] as $sub_meta ) {
+									$lead_headers[ $sub_meta['key'] ] = $sub_meta['label'];
+								}
+							}
+						}
+						$headers = array_merge( $headers, $lead_headers );
+					}
+				}
+
 				$addon_header = $this->attach_quiz_addons_on_export_render_title_row( $form_id, $entries );
 				$headers      = array_merge( $headers, $addon_header );
 
@@ -416,44 +460,90 @@ class Powerform_Export {
 					if ( $entry->entry_id > $latest_exported_entry_id ) {
 						$export_result->new_entries_count ++;
 					}
+					$lead_data = $this->get_mapper_export_data( $mappers, $entry );
 					if ( 'nowrong' === $model->quiz_type ) {
-						$meta = $entry->meta_data['entry']['value'][0]['value'];
-
+						$meta = isset( $entry->meta_data['entry']['value'][0]['value'] ) ? $entry->meta_data['entry']['value'][0]['value'] : array();
+						if ( empty( $meta['answers'] ) && ! empty( $lead_data ) ) {
+							$meta['answers'] = array(
+								array(
+									'question' => '',
+									'answer'   => '',
+									'result'   => array(
+										'title' => ''
+									)
+								)
+							);
+						}
 						if ( isset( $meta['answers'] ) ) {
+							$i = 1;
 							foreach ( $meta['answers'] as $answer ) {
 								$row   = array();
-								$row[] = $entry->time_created;
-								$row[] = $answer['question'];
+								$row[] = 1 === $i ? $entry->time_created : '';
+								$row[] = ! empty( $answer['question'] ) ? sprintf( '"%s"', $answer['question'] ) : '';
 								$row[] = $answer['answer'];
 								$row[] = $meta['result']['title'];
+
+								if ( ! empty( $lead_data ) ) {
+									foreach ( $lead_headers as $headers_id => $lead_header ) {
+										if ( isset( $lead_data[ $headers_id ] ) ) {
+											$row[] = 1 === $i ? $lead_data[ $headers_id ] : '';
+										}
+									}
+								}
 
 								$addon_data = $this->attach_quiz_addons_on_export_render_entry_row( $form_id, $entry );
 								foreach ( $addon_header as $header_id => $item ) {
 									if ( isset( $addon_data[ $header_id ] ) ) {
-										$row[] = $addon_data[ $header_id ];
+										$row[] = 1 === $i ? $addon_data[ $header_id ] : '';
 									}
 								}
 
 								$data[] = $row;
+								$i ++;
 							}
 						}
 					} elseif ( 'knowledge' === $model->quiz_type ) {
-						$meta = $entry->meta_data['entry']['value'];
-						foreach ( $meta as $answer ) {
-							$row   = array();
-							$row[] = $entry->time_created;
-							$row[] = $answer['question'];
-							$row[] = $answer['answer'];
-							$row[] = ( ( $answer['isCorrect'] ) ? __( 'Richtig', Powerform::DOMAIN ) : __( 'Falsch', Powerform::DOMAIN ) );
-
-							$addon_data = $this->attach_quiz_addons_on_export_render_entry_row( $form_id, $entry );
-							foreach ( $addon_header as $header_id => $item ) {
-								if ( isset( $addon_data[ $header_id ] ) ) {
-									$row[] = $addon_data[ $header_id ];
+						$meta = isset( $entry->meta_data['entry']['value'] ) ? $entry->meta_data['entry']['value'] : array();
+						if ( empty( $meta ) && ! empty( $lead_data ) ) {
+							$meta = array(
+								array(
+									'question'  => '',
+									'answer'    => '',
+									'isCorrect' => ''
+								)
+							);
+						}
+						if ( ! empty( $meta ) ) {
+							$i = 1;
+							foreach ( $meta as $answer ) {
+								$row   = array();
+								$row[] = 1 === $i ? $entry->time_created : '';
+								$row[] = ! empty( $answer['question'] ) ? sprintf( '"%s"', $answer['question'] ) : '';
+								$row[] = $answer['answer'];
+								if ( ! empty( $answer['answer'] ) ) {
+									$row[] = ( ( $answer['isCorrect'] ) ? __( 'Richtig', Powerform::DOMAIN ) : __( 'Falsch', Powerform::DOMAIN ) );
+								} else {
+									$row[] = '';
 								}
-							}
 
-							$data[] = $row;
+								if ( ! empty( $lead_data ) ) {
+									foreach ( $lead_headers as $headers_id => $lead_header ) {
+										if ( isset( $lead_data[ $headers_id ] ) ) {
+											$row[] = 1 === $i ? $lead_data[ $headers_id ] : '';
+										}
+									}
+								}
+
+								$addon_data = $this->attach_quiz_addons_on_export_render_entry_row( $form_id, $entry );
+								foreach ( $addon_header as $header_id => $item ) {
+									if ( isset( $addon_data[ $header_id ] ) ) {
+										$row[] = 1 === $i ? $addon_data[ $header_id ] : '';
+									}
+								}
+
+								$data[] = $row;
+								$i ++;
+							}
 						}
 					}
 				}
@@ -518,7 +608,12 @@ class Powerform_Export {
 				if ( ! is_object( $model ) ) {
 					return null;
 				}
-				$entries              = Powerform_Form_Entry_Model::get_entries( $form_id );
+				if ( ! empty( $filter ) ) {
+					$filters = $export_result->request_filters();
+					$entries = Powerform_Form_Entry_Model::get_filter_entries( $form_id, $filters );
+				} else {
+					$entries = Powerform_Form_Entry_Model::get_entries( $form_id );
+				}
 				$mappers              = $this->get_custom_form_export_mappers( $model );
 				$addon_mappers        = $this->attach_form_addons_on_export_render_title_row( $form_id, $entries );
 				$export_result->model = $model;
@@ -591,7 +686,7 @@ class Powerform_Export {
 					$headers[] = $mapper;
 				}
 
-				$data                = array_merge( array( 'headers' => $headers ), $result );
+				$data = array_merge( array( 'headers' => $headers ), $result );
 				$export_result->data = $data;
 				break;
 			default:
@@ -615,10 +710,10 @@ class Powerform_Export {
 	 * @since 1.0
 	 * @since 1.5.4 add `$last_entry_id` to calculate new entries count
 	 *
-	 * @param int    $form_id
+	 * @param int $form_id
 	 * @param string $type
 	 * @param string $email
-	 * @param int    $last_entry_id
+	 * @param int $last_entry_id
 	 *
 	 * @return Powerform_Export_Result|boolean
 	 */
@@ -695,8 +790,8 @@ class Powerform_Export {
 		$last_sent_array = explode( '-', date( 'Y-m-d', $last_sent ) );
 
 		$next_sent_array    = array();
-		$next_sent_array[0] = 12 === $last_sent_array[1] ? $last_sent_array[0] + 1 : $last_sent_array[0];
-		$next_sent_array[1] = 12 === $last_sent_array[1] ? 1 : $last_sent_array[1] + 1;
+		$next_sent_array[0] = ( 12 == $last_sent_array[1] ) ? $last_sent_array[0] + 1 : $last_sent_array[0];
+		$next_sent_array[1] = ( 12 == $last_sent_array[1] ) ? 1 : $last_sent_array[1] + 1;
 		$next_sent_array[2] = $month_day;
 
 		$is_valid_date = checkdate( $next_sent_array[1], $next_sent_array[2], $next_sent_array[0] );
@@ -739,6 +834,10 @@ class Powerform_Export {
 		/** @var  Powerform_Custom_Form_Model $model */
 		$fields              = $model->get_fields();
 		$ignored_field_types = Powerform_Form_Entry_Model::ignored_fields();
+		$visible_fields      = array();
+		if ( isset( $_REQUEST['field'] ) ) {
+			$visible_fields = $_REQUEST['field']; // wpcs XSRF ok, via GET
+		}
 
 		/** @var  Powerform_Form_Field_Model $fields */
 		$mappers = array(
@@ -755,6 +854,12 @@ class Powerform_Export {
 
 			if ( in_array( $field_type, $ignored_field_types, true ) ) {
 				continue;
+			}
+
+			if ( ! empty( $visible_fields ) ) {
+				if ( ! in_array( $field->slug, $visible_fields, true ) ) {
+					continue;
+				}
 			}
 
 			// base mapper for every field
@@ -878,6 +983,28 @@ class Powerform_Export {
 					// if no subfield enabled when multiple name remove mapper (means dont show it on export)
 					$mapper = array();
 				}
+			} elseif ( 'stripe' === $field_type || 'paypal' === $field_type ) {
+				$mapper['sub_metas']   = array();
+				$mapper['sub_metas'][] = array(
+					'key'   => 'mode',
+					'label' => $mapper['label'] . ' - ' . __( 'Modus', Powerform::DOMAIN ),
+				);
+				$mapper['sub_metas'][] = array(
+					'key'   => 'status',
+					'label' => $mapper['label'] . ' - ' . __( 'Status', Powerform::DOMAIN ),
+				);
+				$mapper['sub_metas'][] = array(
+					'key'   => 'amount',
+					'label' => $mapper['label'] . ' - ' . __( 'Summe', Powerform::DOMAIN ),
+				);
+				$mapper['sub_metas'][] = array(
+					'key'   => 'currency',
+					'label' => $mapper['label'] . ' - ' . __( 'Währung', Powerform::DOMAIN ),
+				);
+				$mapper['sub_metas'][] = array(
+					'key'   => 'transaction_id',
+					'label' => $mapper['label'] . ' - ' . __( 'Transaktions-ID', Powerform::DOMAIN ),
+				);
 			}
 
 			if ( ! empty( $mapper ) ) {
@@ -890,8 +1017,8 @@ class Powerform_Export {
 		 *
 		 * @since 1.6.3
 		 *
-		 * @param array                        $mappers
-		 * @param int                          $form_id
+		 * @param array $mappers
+		 * @param int $form_id
 		 * @param Powerform_Custom_Form_Model $model
 		 *
 		 * @return array
@@ -1119,7 +1246,7 @@ class Powerform_Export {
 	 *
 	 * @since 1.5.4
 	 *
-	 * @param string                     $email
+	 * @param string $email
 	 * @param Powerform_Export_Result[] $export_results
 	 *
 	 * @return array
@@ -1137,8 +1264,8 @@ class Powerform_Export {
 		 *
 		 * @since 1.5.4
 		 *
-		 * @param array                      $mail_headers
-		 * @param string                     $email          email address which export mail will be sent
+		 * @param array $mail_headers
+		 * @param string $email email address which export mail will be sent
 		 * @param Powerform_Export_Result[] $export_results export results @see Powerform_Export_Result
 		 */
 		$mail_headers = apply_filters( 'powerform_export_email_headers', $mail_headers, $email, $export_results );
@@ -1173,8 +1300,8 @@ class Powerform_Export {
 		 *
 		 * @since 1.5.4
 		 *
-		 * @param string                     $subject
-		 * @param array                      $form_names     form names
+		 * @param string $subject
+		 * @param array $form_names form names
 		 * @param Powerform_Export_Result[] $export_results Export results @see Powerform_Export_Result
 		 *
 		 * @return string
@@ -1230,11 +1357,11 @@ class Powerform_Export {
 		$total_new_entries = array_sum( $new_entries_counts );
 
 
-		$mail_content = '<p>' . sprintf( __( 'Hallo %s,', Powerform::DOMAIN ), $blog_name ) . '</p>' . PHP_EOL;
+		$mail_content = '<p>' . sprintf( __( 'Hi %s,', Powerform::DOMAIN ), $blog_name ) . '</p>' . PHP_EOL;
 
 		$mail_content .= '<p>' . sprintf(
 				__(
-					'Deine geplanten Exporte sind angekommen! Powerformulare hat %1$s neue Übermittlung(en) erfasst und %2$s Gesamtübermittlung von %3$s seit dem letzten geplanten Export gepackt.',
+					'Deine geplanten Exporte sind angekommen! Powerform hat %1$s neue Übermittlung(en) erfasst und %2$s Gesamtübermittlung von %3$s seit dem letzten geplanten Export gepackt.',
 					Powerform::DOMAIN
 				),
 				'<strong>' . (int) $total_new_entries . '</strong>',
@@ -1254,27 +1381,27 @@ class Powerform_Export {
 						</ul>
 					</li>',
 					   $form_names[ $key ],
-					   __( 'Neue Einreichungen', Powerform::DOMAIN ),
+					   __( 'Neue Einsendungen', Powerform::DOMAIN ),
 					   (int) $new_entries_counts[ $key ],
-					   __( 'Gesamtzahl der Einreichungen', Powerform::DOMAIN ),
+					   __( 'Gesamtzahl Einsendungen', Powerform::DOMAIN ),
 					   (int) $entries_counts[ $key ],
 					   $submission_links[ $key ],
-					   __( 'Einreichungen anzeigen', Powerform::DOMAIN )
+					   __( 'Einsendungen', Powerform::DOMAIN )
 				   ) . PHP_EOL;
 		}
 		$mail_content .= '</ul>' . PHP_EOL;
 
 
-		$mail_content .= '<p>' . __( 'Gratulation,', Powerform::DOMAIN ) . '</p>' . PHP_EOL;
-		$mail_content .= '<p>' . __( 'Powerformulare', Powerform::DOMAIN ) . '</p>';
+		$mail_content .= '<p>' . __( 'Grüße Dich,', Powerform::DOMAIN ) . '</p>' . PHP_EOL;
+		$mail_content .= '<p>' . __( 'Powerform', Powerform::DOMAIN ) . '</p>';
 
 		/**
 		 * Filter mail content used for scheduled export email
 		 *
 		 * @since 1.5.4
 		 *
-		 * @param string                     $mail_content   html formatted mail content
-		 * @param array                      $form_names     form names
+		 * @param string $mail_content html formatted mail content
+		 * @param array $form_names form names
 		 * @param Powerform_Export_Result[] $export_results Export results @see Powerform_Export_Result
 		 *
 		 * @return string
@@ -1567,5 +1694,56 @@ class Powerform_Export {
 		}
 
 		return $additional_data;
+	}
+
+	/**
+	 * Get mapper data
+	 *
+	 * @param $mappers
+	 * @param $entry
+	 *
+	 * @return array
+	 */
+	function get_mapper_export_data( $mappers, $entry ) {
+		$data = array();
+		if ( ! empty( $mappers ) ) {
+			// traverse from fields to be correctly mapped with updated form fields.
+			foreach ( $mappers as $mapper ) {
+				if ( 'entry_time_created' === $mapper['type'] ) {
+					continue;
+				}
+				//its from model's property
+				if ( isset( $mapper['property'] ) ) {
+					if ( property_exists( $entry, $mapper['property'] ) ) {
+						$property = $mapper['property'];
+						// casting property to string
+						$data[] = (string) $entry->$property;
+					} else {
+						$data[] = '';
+					}
+				} else {
+					// meta_key based
+					$meta_value = $entry->get_meta( $mapper['meta_key'], '' );
+					if ( ! isset( $mapper['sub_metas'] ) ) {
+						$data[ $mapper['meta_key'] ] = Powerform_Form_Entry_Model::meta_value_to_string( $mapper['type'], $meta_value );
+					} else {
+						// sub_metas available
+						foreach ( $mapper['sub_metas'] as $sub_meta ) {
+							$sub_key = $sub_meta['key'];
+							if ( isset( $meta_value[ $sub_key ] ) && ! empty( $meta_value[ $sub_key ] ) ) {
+								$value            = $meta_value[ $sub_key ];
+								$field_type       = $mapper['type'] . '.' . $sub_key;
+								$data[ $sub_key ] = Powerform_Form_Entry_Model::meta_value_to_string( $field_type, $value );
+							} else {
+								$data[ $sub_key ] = '';
+							}
+						}
+					}
+				}
+
+			}
+		}
+
+		return $data;
 	}
 }

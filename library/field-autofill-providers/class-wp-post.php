@@ -27,7 +27,7 @@ class Powerform_WP_Post_Autofill_Provider extends Powerform_Autofill_Provider_Ab
 				'value_getter' => array( $this, 'get_value_id' ),
 			),
 			'title'     => array(
-				'name'         => __( 'Titel', Powerform::DOMAIN ),
+				'name'         => __( 'Title', Powerform::DOMAIN ),
 				'value_getter' => array( $this, 'get_value_title' ),
 			),
 			'permalink' => array(

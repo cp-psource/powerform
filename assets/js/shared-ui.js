@@ -1,1 +1,1 @@
-import '@wpmudev/shared-ui';
+import '@psource/shared-ui';

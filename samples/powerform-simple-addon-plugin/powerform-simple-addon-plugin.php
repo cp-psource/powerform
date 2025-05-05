@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Powerform Simple Addon
- * Version: 1
+ * Version: 1.0
  * Description: Simple Addon powerform.
- * Author: WPMU DEV
+ * Author: WMS N@W
  * Author URI: https://n3rds.work
  * Text Domain: external_powerform
  * Domain Path: /languages/
@@ -27,4 +27,5 @@ function load_powerform_addon_simple() {
 		Powerform_Addon_Loader::get_instance()->register( 'Powerform_Addon_Simple' );
 	}
 }
+
 

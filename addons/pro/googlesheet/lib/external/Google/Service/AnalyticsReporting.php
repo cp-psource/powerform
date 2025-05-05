@@ -26,7 +26,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_AnalyticsReporting extends Google_Service
+class Powerform_Google_Service_AnalyticsReporting extends Powerform_Google_Service
 {
   /** View and manage your Google Analytics data. */
   const ANALYTICS =
@@ -36,14 +36,14 @@ class Google_Service_AnalyticsReporting extends Google_Service
       "https://www.googleapis.com/auth/analytics.readonly";
 
   public $reports;
-
+  
 
   /**
    * Constructs the internal representation of the AnalyticsReporting service.
    *
-   * @param Google_Client $client
+   * @param Powerform_Google_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Powerform_Google_Client $client)
   {
     parent::__construct($client);
     $this->rootUrl = 'https://analyticsreporting.googleapis.com/';
@@ -51,7 +51,7 @@ class Google_Service_AnalyticsReporting extends Google_Service
     $this->version = 'v4';
     $this->serviceName = 'analyticsreporting';
 
-    $this->reports = new Google_Service_AnalyticsReporting_Reports_Resource(
+    $this->reports = new Powerform_Google_Service_AnalyticsReporting_Reports_Resource(
         $this,
         $this->serviceName,
         'reports',
@@ -73,42 +73,42 @@ class Google_Service_AnalyticsReporting extends Google_Service
  * The "reports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $analyticsreportingService = new Google_Service_AnalyticsReporting(...);
+ *   $analyticsreportingService = new Powerform_Google_Service_AnalyticsReporting(...);
  *   $reports = $analyticsreportingService->reports;
  *  </code>
  */
-class Google_Service_AnalyticsReporting_Reports_Resource extends Google_Service_Resource
+class Powerform_Google_Service_AnalyticsReporting_Reports_Resource extends Powerform_Google_Service_Resource
 {
 
   /**
    * Returns the Analytics data. (reports.batchGet)
    *
-   * @param Google_GetReportsRequest $postBody
+   * @param Powerform_Google_GetReportsRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AnalyticsReporting_GetReportsResponse
+   * @return Powerform_Google_Service_AnalyticsReporting_GetReportsResponse
    */
-  public function batchGet(Google_Service_AnalyticsReporting_GetReportsRequest $postBody, $optParams = array())
+  public function batchGet(Powerform_Google_Service_AnalyticsReporting_GetReportsRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('batchGet', array($params), "Google_Service_AnalyticsReporting_GetReportsResponse");
+    return $this->call('batchGet', array($params), "Powerform_Google_Service_AnalyticsReporting_GetReportsResponse");
   }
 }
 
 
 
 
-class Google_Service_AnalyticsReporting_Cohort extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_Cohort extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $dateRangeType = 'Google_Service_AnalyticsReporting_DateRange';
+  protected $dateRangeType = 'Powerform_Google_Service_AnalyticsReporting_DateRange';
   protected $dateRangeDataType = '';
   public $name;
   public $type;
 
 
-  public function setDateRange(Google_Service_AnalyticsReporting_DateRange $dateRange)
+  public function setDateRange(Powerform_Google_Service_AnalyticsReporting_DateRange $dateRange)
   {
     $this->dateRange = $dateRange;
   }
@@ -134,12 +134,12 @@ class Google_Service_AnalyticsReporting_Cohort extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_CohortGroup extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_CohortGroup extends Powerform_Google_Collection
 {
   protected $collection_key = 'cohorts';
   protected $internal_gapi_mappings = array(
   );
-  protected $cohortsType = 'Google_Service_AnalyticsReporting_Cohort';
+  protected $cohortsType = 'Powerform_Google_Service_AnalyticsReporting_Cohort';
   protected $cohortsDataType = 'array';
   public $lifetimeValue;
 
@@ -162,13 +162,13 @@ class Google_Service_AnalyticsReporting_CohortGroup extends Google_Collection
   }
 }
 
-class Google_Service_AnalyticsReporting_ColumnHeader extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_ColumnHeader extends Powerform_Google_Collection
 {
   protected $collection_key = 'dimensions';
   protected $internal_gapi_mappings = array(
   );
   public $dimensions;
-  protected $metricHeaderType = 'Google_Service_AnalyticsReporting_MetricHeader';
+  protected $metricHeaderType = 'Powerform_Google_Service_AnalyticsReporting_MetricHeader';
   protected $metricHeaderDataType = '';
 
 
@@ -180,7 +180,7 @@ class Google_Service_AnalyticsReporting_ColumnHeader extends Google_Collection
   {
     return $this->dimensions;
   }
-  public function setMetricHeader(Google_Service_AnalyticsReporting_MetricHeader $metricHeader)
+  public function setMetricHeader(Powerform_Google_Service_AnalyticsReporting_MetricHeader $metricHeader)
   {
     $this->metricHeader = $metricHeader;
   }
@@ -190,7 +190,7 @@ class Google_Service_AnalyticsReporting_ColumnHeader extends Google_Collection
   }
 }
 
-class Google_Service_AnalyticsReporting_DateRange extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_DateRange extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -216,12 +216,12 @@ class Google_Service_AnalyticsReporting_DateRange extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_DateRangeValues extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_DateRangeValues extends Powerform_Google_Collection
 {
   protected $collection_key = 'values';
   protected $internal_gapi_mappings = array(
   );
-  protected $pivotValueRegionsType = 'Google_Service_AnalyticsReporting_PivotValueRegion';
+  protected $pivotValueRegionsType = 'Powerform_Google_Service_AnalyticsReporting_PivotValueRegion';
   protected $pivotValueRegionsDataType = 'array';
   public $values;
 
@@ -244,7 +244,7 @@ class Google_Service_AnalyticsReporting_DateRangeValues extends Google_Collectio
   }
 }
 
-class Google_Service_AnalyticsReporting_Dimension extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_Dimension extends Powerform_Google_Collection
 {
   protected $collection_key = 'histogramBuckets';
   protected $internal_gapi_mappings = array(
@@ -271,7 +271,7 @@ class Google_Service_AnalyticsReporting_Dimension extends Google_Collection
   }
 }
 
-class Google_Service_AnalyticsReporting_DimensionFilter extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_DimensionFilter extends Powerform_Google_Collection
 {
   protected $collection_key = 'expressions';
   protected $internal_gapi_mappings = array(
@@ -325,12 +325,12 @@ class Google_Service_AnalyticsReporting_DimensionFilter extends Google_Collectio
   }
 }
 
-class Google_Service_AnalyticsReporting_DimensionFilterClause extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_DimensionFilterClause extends Powerform_Google_Collection
 {
   protected $collection_key = 'filters';
   protected $internal_gapi_mappings = array(
   );
-  protected $filtersType = 'Google_Service_AnalyticsReporting_DimensionFilter';
+  protected $filtersType = 'Powerform_Google_Service_AnalyticsReporting_DimensionFilter';
   protected $filtersDataType = 'array';
   public $operator;
 
@@ -353,14 +353,14 @@ class Google_Service_AnalyticsReporting_DimensionFilterClause extends Google_Col
   }
 }
 
-class Google_Service_AnalyticsReporting_DynamicSegment extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_DynamicSegment extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $name;
-  protected $sessionSegmentType = 'Google_Service_AnalyticsReporting_SegmentDefinition';
+  protected $sessionSegmentType = 'Powerform_Google_Service_AnalyticsReporting_SegmentDefinition';
   protected $sessionSegmentDataType = '';
-  protected $userSegmentType = 'Google_Service_AnalyticsReporting_SegmentDefinition';
+  protected $userSegmentType = 'Powerform_Google_Service_AnalyticsReporting_SegmentDefinition';
   protected $userSegmentDataType = '';
 
 
@@ -372,7 +372,7 @@ class Google_Service_AnalyticsReporting_DynamicSegment extends Google_Model
   {
     return $this->name;
   }
-  public function setSessionSegment(Google_Service_AnalyticsReporting_SegmentDefinition $sessionSegment)
+  public function setSessionSegment(Powerform_Google_Service_AnalyticsReporting_SegmentDefinition $sessionSegment)
   {
     $this->sessionSegment = $sessionSegment;
   }
@@ -380,7 +380,7 @@ class Google_Service_AnalyticsReporting_DynamicSegment extends Google_Model
   {
     return $this->sessionSegment;
   }
-  public function setUserSegment(Google_Service_AnalyticsReporting_SegmentDefinition $userSegment)
+  public function setUserSegment(Powerform_Google_Service_AnalyticsReporting_SegmentDefinition $userSegment)
   {
     $this->userSegment = $userSegment;
   }
@@ -390,12 +390,12 @@ class Google_Service_AnalyticsReporting_DynamicSegment extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_GetReportsRequest extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_GetReportsRequest extends Powerform_Google_Collection
 {
   protected $collection_key = 'reportRequests';
   protected $internal_gapi_mappings = array(
   );
-  protected $reportRequestsType = 'Google_Service_AnalyticsReporting_ReportRequest';
+  protected $reportRequestsType = 'Powerform_Google_Service_AnalyticsReporting_ReportRequest';
   protected $reportRequestsDataType = 'array';
 
 
@@ -409,12 +409,12 @@ class Google_Service_AnalyticsReporting_GetReportsRequest extends Google_Collect
   }
 }
 
-class Google_Service_AnalyticsReporting_GetReportsResponse extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_GetReportsResponse extends Powerform_Google_Collection
 {
   protected $collection_key = 'reports';
   protected $internal_gapi_mappings = array(
   );
-  protected $reportsType = 'Google_Service_AnalyticsReporting_Report';
+  protected $reportsType = 'Powerform_Google_Service_AnalyticsReporting_Report';
   protected $reportsDataType = 'array';
 
 
@@ -428,7 +428,7 @@ class Google_Service_AnalyticsReporting_GetReportsResponse extends Google_Collec
   }
 }
 
-class Google_Service_AnalyticsReporting_Metric extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_Metric extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -463,7 +463,7 @@ class Google_Service_AnalyticsReporting_Metric extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_MetricFilter extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_MetricFilter extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -507,12 +507,12 @@ class Google_Service_AnalyticsReporting_MetricFilter extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_MetricFilterClause extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_MetricFilterClause extends Powerform_Google_Collection
 {
   protected $collection_key = 'filters';
   protected $internal_gapi_mappings = array(
   );
-  protected $filtersType = 'Google_Service_AnalyticsReporting_MetricFilter';
+  protected $filtersType = 'Powerform_Google_Service_AnalyticsReporting_MetricFilter';
   protected $filtersDataType = 'array';
   public $operator;
 
@@ -535,14 +535,14 @@ class Google_Service_AnalyticsReporting_MetricFilterClause extends Google_Collec
   }
 }
 
-class Google_Service_AnalyticsReporting_MetricHeader extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_MetricHeader extends Powerform_Google_Collection
 {
   protected $collection_key = 'pivotHeaders';
   protected $internal_gapi_mappings = array(
   );
-  protected $metricHeaderEntriesType = 'Google_Service_AnalyticsReporting_MetricHeaderEntry';
+  protected $metricHeaderEntriesType = 'Powerform_Google_Service_AnalyticsReporting_MetricHeaderEntry';
   protected $metricHeaderEntriesDataType = 'array';
-  protected $pivotHeadersType = 'Google_Service_AnalyticsReporting_PivotHeader';
+  protected $pivotHeadersType = 'Powerform_Google_Service_AnalyticsReporting_PivotHeader';
   protected $pivotHeadersDataType = 'array';
 
 
@@ -564,7 +564,7 @@ class Google_Service_AnalyticsReporting_MetricHeader extends Google_Collection
   }
 }
 
-class Google_Service_AnalyticsReporting_MetricHeaderEntry extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_MetricHeaderEntry extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -590,12 +590,12 @@ class Google_Service_AnalyticsReporting_MetricHeaderEntry extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_OrFiltersForSegment extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_OrFiltersForSegment extends Powerform_Google_Collection
 {
   protected $collection_key = 'segmentFilterClauses';
   protected $internal_gapi_mappings = array(
   );
-  protected $segmentFilterClausesType = 'Google_Service_AnalyticsReporting_SegmentFilterClause';
+  protected $segmentFilterClausesType = 'Powerform_Google_Service_AnalyticsReporting_SegmentFilterClause';
   protected $segmentFilterClausesDataType = 'array';
 
 
@@ -609,7 +609,7 @@ class Google_Service_AnalyticsReporting_OrFiltersForSegment extends Google_Colle
   }
 }
 
-class Google_Service_AnalyticsReporting_OrderBy extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_OrderBy extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -644,17 +644,17 @@ class Google_Service_AnalyticsReporting_OrderBy extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_Pivot extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_Pivot extends Powerform_Google_Collection
 {
   protected $collection_key = 'metrics';
   protected $internal_gapi_mappings = array(
   );
-  protected $dimensionFilterClausesType = 'Google_Service_AnalyticsReporting_DimensionFilterClause';
+  protected $dimensionFilterClausesType = 'Powerform_Google_Service_AnalyticsReporting_DimensionFilterClause';
   protected $dimensionFilterClausesDataType = 'array';
-  protected $dimensionsType = 'Google_Service_AnalyticsReporting_Dimension';
+  protected $dimensionsType = 'Powerform_Google_Service_AnalyticsReporting_Dimension';
   protected $dimensionsDataType = 'array';
   public $maxGroupCount;
-  protected $metricsType = 'Google_Service_AnalyticsReporting_Metric';
+  protected $metricsType = 'Powerform_Google_Service_AnalyticsReporting_Metric';
   protected $metricsDataType = 'array';
   public $startGroup;
 
@@ -701,12 +701,12 @@ class Google_Service_AnalyticsReporting_Pivot extends Google_Collection
   }
 }
 
-class Google_Service_AnalyticsReporting_PivotHeader extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_PivotHeader extends Powerform_Google_Collection
 {
   protected $collection_key = 'pivotHeaderEntries';
   protected $internal_gapi_mappings = array(
   );
-  protected $pivotHeaderEntriesType = 'Google_Service_AnalyticsReporting_PivotHeaderEntry';
+  protected $pivotHeaderEntriesType = 'Powerform_Google_Service_AnalyticsReporting_PivotHeaderEntry';
   protected $pivotHeaderEntriesDataType = 'array';
   public $totalPivotGroupsCount;
 
@@ -729,14 +729,14 @@ class Google_Service_AnalyticsReporting_PivotHeader extends Google_Collection
   }
 }
 
-class Google_Service_AnalyticsReporting_PivotHeaderEntry extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_PivotHeaderEntry extends Powerform_Google_Collection
 {
   protected $collection_key = 'dimensionValues';
   protected $internal_gapi_mappings = array(
   );
   public $dimensionNames;
   public $dimensionValues;
-  protected $metricType = 'Google_Service_AnalyticsReporting_MetricHeaderEntry';
+  protected $metricType = 'Powerform_Google_Service_AnalyticsReporting_MetricHeaderEntry';
   protected $metricDataType = '';
 
 
@@ -756,7 +756,7 @@ class Google_Service_AnalyticsReporting_PivotHeaderEntry extends Google_Collecti
   {
     return $this->dimensionValues;
   }
-  public function setMetric(Google_Service_AnalyticsReporting_MetricHeaderEntry $metric)
+  public function setMetric(Powerform_Google_Service_AnalyticsReporting_MetricHeaderEntry $metric)
   {
     $this->metric = $metric;
   }
@@ -766,7 +766,7 @@ class Google_Service_AnalyticsReporting_PivotHeaderEntry extends Google_Collecti
   }
 }
 
-class Google_Service_AnalyticsReporting_PivotValueRegion extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_PivotValueRegion extends Powerform_Google_Collection
 {
   protected $collection_key = 'values';
   protected $internal_gapi_mappings = array(
@@ -784,18 +784,18 @@ class Google_Service_AnalyticsReporting_PivotValueRegion extends Google_Collecti
   }
 }
 
-class Google_Service_AnalyticsReporting_Report extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_Report extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $columnHeaderType = 'Google_Service_AnalyticsReporting_ColumnHeader';
+  protected $columnHeaderType = 'Powerform_Google_Service_AnalyticsReporting_ColumnHeader';
   protected $columnHeaderDataType = '';
-  protected $dataType = 'Google_Service_AnalyticsReporting_ReportData';
+  protected $dataType = 'Powerform_Google_Service_AnalyticsReporting_ReportData';
   protected $dataDataType = '';
   public $nextPageToken;
 
 
-  public function setColumnHeader(Google_Service_AnalyticsReporting_ColumnHeader $columnHeader)
+  public function setColumnHeader(Powerform_Google_Service_AnalyticsReporting_ColumnHeader $columnHeader)
   {
     $this->columnHeader = $columnHeader;
   }
@@ -803,7 +803,7 @@ class Google_Service_AnalyticsReporting_Report extends Google_Model
   {
     return $this->columnHeader;
   }
-  public function setData(Google_Service_AnalyticsReporting_ReportData $data)
+  public function setData(Powerform_Google_Service_AnalyticsReporting_ReportData $data)
   {
     $this->data = $data;
   }
@@ -821,22 +821,22 @@ class Google_Service_AnalyticsReporting_Report extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_ReportData extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_ReportData extends Powerform_Google_Collection
 {
   protected $collection_key = 'totals';
   protected $internal_gapi_mappings = array(
   );
   public $isDataGolden;
-  protected $maximumsType = 'Google_Service_AnalyticsReporting_DateRangeValues';
+  protected $maximumsType = 'Powerform_Google_Service_AnalyticsReporting_DateRangeValues';
   protected $maximumsDataType = 'array';
-  protected $minimumsType = 'Google_Service_AnalyticsReporting_DateRangeValues';
+  protected $minimumsType = 'Powerform_Google_Service_AnalyticsReporting_DateRangeValues';
   protected $minimumsDataType = 'array';
   public $rowCount;
-  protected $rowsType = 'Google_Service_AnalyticsReporting_ReportRow';
+  protected $rowsType = 'Powerform_Google_Service_AnalyticsReporting_ReportRow';
   protected $rowsDataType = 'array';
   public $samplesReadCounts;
   public $samplingSpaceSizes;
-  protected $totalsType = 'Google_Service_AnalyticsReporting_DateRangeValues';
+  protected $totalsType = 'Powerform_Google_Service_AnalyticsReporting_DateRangeValues';
   protected $totalsDataType = 'array';
 
 
@@ -906,40 +906,40 @@ class Google_Service_AnalyticsReporting_ReportData extends Google_Collection
   }
 }
 
-class Google_Service_AnalyticsReporting_ReportRequest extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_ReportRequest extends Powerform_Google_Collection
 {
   protected $collection_key = 'segments';
   protected $internal_gapi_mappings = array(
   );
-  protected $cohortGroupType = 'Google_Service_AnalyticsReporting_CohortGroup';
+  protected $cohortGroupType = 'Powerform_Google_Service_AnalyticsReporting_CohortGroup';
   protected $cohortGroupDataType = '';
-  protected $dateRangesType = 'Google_Service_AnalyticsReporting_DateRange';
+  protected $dateRangesType = 'Powerform_Google_Service_AnalyticsReporting_DateRange';
   protected $dateRangesDataType = 'array';
-  protected $dimensionFilterClausesType = 'Google_Service_AnalyticsReporting_DimensionFilterClause';
+  protected $dimensionFilterClausesType = 'Powerform_Google_Service_AnalyticsReporting_DimensionFilterClause';
   protected $dimensionFilterClausesDataType = 'array';
-  protected $dimensionsType = 'Google_Service_AnalyticsReporting_Dimension';
+  protected $dimensionsType = 'Powerform_Google_Service_AnalyticsReporting_Dimension';
   protected $dimensionsDataType = 'array';
   public $filtersExpression;
   public $hideTotals;
   public $hideValueRanges;
   public $includeEmptyRows;
-  protected $metricFilterClausesType = 'Google_Service_AnalyticsReporting_MetricFilterClause';
+  protected $metricFilterClausesType = 'Powerform_Google_Service_AnalyticsReporting_MetricFilterClause';
   protected $metricFilterClausesDataType = 'array';
-  protected $metricsType = 'Google_Service_AnalyticsReporting_Metric';
+  protected $metricsType = 'Powerform_Google_Service_AnalyticsReporting_Metric';
   protected $metricsDataType = 'array';
-  protected $orderBysType = 'Google_Service_AnalyticsReporting_OrderBy';
+  protected $orderBysType = 'Powerform_Google_Service_AnalyticsReporting_OrderBy';
   protected $orderBysDataType = 'array';
   public $pageSize;
   public $pageToken;
-  protected $pivotsType = 'Google_Service_AnalyticsReporting_Pivot';
+  protected $pivotsType = 'Powerform_Google_Service_AnalyticsReporting_Pivot';
   protected $pivotsDataType = 'array';
   public $samplingLevel;
-  protected $segmentsType = 'Google_Service_AnalyticsReporting_Segment';
+  protected $segmentsType = 'Powerform_Google_Service_AnalyticsReporting_Segment';
   protected $segmentsDataType = 'array';
   public $viewId;
 
 
-  public function setCohortGroup(Google_Service_AnalyticsReporting_CohortGroup $cohortGroup)
+  public function setCohortGroup(Powerform_Google_Service_AnalyticsReporting_CohortGroup $cohortGroup)
   {
     $this->cohortGroup = $cohortGroup;
   }
@@ -1077,13 +1077,13 @@ class Google_Service_AnalyticsReporting_ReportRequest extends Google_Collection
   }
 }
 
-class Google_Service_AnalyticsReporting_ReportRow extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_ReportRow extends Powerform_Google_Collection
 {
   protected $collection_key = 'metrics';
   protected $internal_gapi_mappings = array(
   );
   public $dimensions;
-  protected $metricsType = 'Google_Service_AnalyticsReporting_DateRangeValues';
+  protected $metricsType = 'Powerform_Google_Service_AnalyticsReporting_DateRangeValues';
   protected $metricsDataType = 'array';
 
 
@@ -1105,16 +1105,16 @@ class Google_Service_AnalyticsReporting_ReportRow extends Google_Collection
   }
 }
 
-class Google_Service_AnalyticsReporting_Segment extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_Segment extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $dynamicSegmentType = 'Google_Service_AnalyticsReporting_DynamicSegment';
+  protected $dynamicSegmentType = 'Powerform_Google_Service_AnalyticsReporting_DynamicSegment';
   protected $dynamicSegmentDataType = '';
   public $segmentId;
 
 
-  public function setDynamicSegment(Google_Service_AnalyticsReporting_DynamicSegment $dynamicSegment)
+  public function setDynamicSegment(Powerform_Google_Service_AnalyticsReporting_DynamicSegment $dynamicSegment)
   {
     $this->dynamicSegment = $dynamicSegment;
   }
@@ -1132,12 +1132,12 @@ class Google_Service_AnalyticsReporting_Segment extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_SegmentDefinition extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_SegmentDefinition extends Powerform_Google_Collection
 {
   protected $collection_key = 'segmentFilters';
   protected $internal_gapi_mappings = array(
   );
-  protected $segmentFiltersType = 'Google_Service_AnalyticsReporting_SegmentFilter';
+  protected $segmentFiltersType = 'Powerform_Google_Service_AnalyticsReporting_SegmentFilter';
   protected $segmentFiltersDataType = 'array';
 
 
@@ -1151,7 +1151,7 @@ class Google_Service_AnalyticsReporting_SegmentDefinition extends Google_Collect
   }
 }
 
-class Google_Service_AnalyticsReporting_SegmentDimensionFilter extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_SegmentDimensionFilter extends Powerform_Google_Collection
 {
   protected $collection_key = 'expressions';
   protected $internal_gapi_mappings = array(
@@ -1214,14 +1214,14 @@ class Google_Service_AnalyticsReporting_SegmentDimensionFilter extends Google_Co
   }
 }
 
-class Google_Service_AnalyticsReporting_SegmentFilter extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_SegmentFilter extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $not;
-  protected $sequenceSegmentType = 'Google_Service_AnalyticsReporting_SequenceSegment';
+  protected $sequenceSegmentType = 'Powerform_Google_Service_AnalyticsReporting_SequenceSegment';
   protected $sequenceSegmentDataType = '';
-  protected $simpleSegmentType = 'Google_Service_AnalyticsReporting_SimpleSegment';
+  protected $simpleSegmentType = 'Powerform_Google_Service_AnalyticsReporting_SimpleSegment';
   protected $simpleSegmentDataType = '';
 
 
@@ -1233,7 +1233,7 @@ class Google_Service_AnalyticsReporting_SegmentFilter extends Google_Model
   {
     return $this->not;
   }
-  public function setSequenceSegment(Google_Service_AnalyticsReporting_SequenceSegment $sequenceSegment)
+  public function setSequenceSegment(Powerform_Google_Service_AnalyticsReporting_SequenceSegment $sequenceSegment)
   {
     $this->sequenceSegment = $sequenceSegment;
   }
@@ -1241,7 +1241,7 @@ class Google_Service_AnalyticsReporting_SegmentFilter extends Google_Model
   {
     return $this->sequenceSegment;
   }
-  public function setSimpleSegment(Google_Service_AnalyticsReporting_SimpleSegment $simpleSegment)
+  public function setSimpleSegment(Powerform_Google_Service_AnalyticsReporting_SimpleSegment $simpleSegment)
   {
     $this->simpleSegment = $simpleSegment;
   }
@@ -1251,18 +1251,18 @@ class Google_Service_AnalyticsReporting_SegmentFilter extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_SegmentFilterClause extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_SegmentFilterClause extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
-  protected $dimensionFilterType = 'Google_Service_AnalyticsReporting_SegmentDimensionFilter';
+  protected $dimensionFilterType = 'Powerform_Google_Service_AnalyticsReporting_SegmentDimensionFilter';
   protected $dimensionFilterDataType = '';
-  protected $metricFilterType = 'Google_Service_AnalyticsReporting_SegmentMetricFilter';
+  protected $metricFilterType = 'Powerform_Google_Service_AnalyticsReporting_SegmentMetricFilter';
   protected $metricFilterDataType = '';
   public $not;
 
 
-  public function setDimensionFilter(Google_Service_AnalyticsReporting_SegmentDimensionFilter $dimensionFilter)
+  public function setDimensionFilter(Powerform_Google_Service_AnalyticsReporting_SegmentDimensionFilter $dimensionFilter)
   {
     $this->dimensionFilter = $dimensionFilter;
   }
@@ -1270,7 +1270,7 @@ class Google_Service_AnalyticsReporting_SegmentFilterClause extends Google_Model
   {
     return $this->dimensionFilter;
   }
-  public function setMetricFilter(Google_Service_AnalyticsReporting_SegmentMetricFilter $metricFilter)
+  public function setMetricFilter(Powerform_Google_Service_AnalyticsReporting_SegmentMetricFilter $metricFilter)
   {
     $this->metricFilter = $metricFilter;
   }
@@ -1288,7 +1288,7 @@ class Google_Service_AnalyticsReporting_SegmentFilterClause extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_SegmentMetricFilter extends Google_Model
+class Powerform_Google_Service_AnalyticsReporting_SegmentMetricFilter extends Powerform_Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1341,13 +1341,13 @@ class Google_Service_AnalyticsReporting_SegmentMetricFilter extends Google_Model
   }
 }
 
-class Google_Service_AnalyticsReporting_SegmentSequenceStep extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_SegmentSequenceStep extends Powerform_Google_Collection
 {
   protected $collection_key = 'orFiltersForSegment';
   protected $internal_gapi_mappings = array(
   );
   public $matchType;
-  protected $orFiltersForSegmentType = 'Google_Service_AnalyticsReporting_OrFiltersForSegment';
+  protected $orFiltersForSegmentType = 'Powerform_Google_Service_AnalyticsReporting_OrFiltersForSegment';
   protected $orFiltersForSegmentDataType = 'array';
 
 
@@ -1369,13 +1369,13 @@ class Google_Service_AnalyticsReporting_SegmentSequenceStep extends Google_Colle
   }
 }
 
-class Google_Service_AnalyticsReporting_SequenceSegment extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_SequenceSegment extends Powerform_Google_Collection
 {
   protected $collection_key = 'segmentSequenceSteps';
   protected $internal_gapi_mappings = array(
   );
   public $firstStepShouldMatchFirstHit;
-  protected $segmentSequenceStepsType = 'Google_Service_AnalyticsReporting_SegmentSequenceStep';
+  protected $segmentSequenceStepsType = 'Powerform_Google_Service_AnalyticsReporting_SegmentSequenceStep';
   protected $segmentSequenceStepsDataType = 'array';
 
 
@@ -1397,12 +1397,12 @@ class Google_Service_AnalyticsReporting_SequenceSegment extends Google_Collectio
   }
 }
 
-class Google_Service_AnalyticsReporting_SimpleSegment extends Google_Collection
+class Powerform_Google_Service_AnalyticsReporting_SimpleSegment extends Powerform_Google_Collection
 {
   protected $collection_key = 'orFiltersForSegment';
   protected $internal_gapi_mappings = array(
   );
-  protected $orFiltersForSegmentType = 'Google_Service_AnalyticsReporting_OrFiltersForSegment';
+  protected $orFiltersForSegmentType = 'Powerform_Google_Service_AnalyticsReporting_OrFiltersForSegment';
   protected $orFiltersForSegmentDataType = 'array';
 
 

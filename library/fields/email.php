@@ -69,8 +69,8 @@ class Powerform_Email extends Powerform_Field {
 	public function defaults() {
 		return array(
 			'validation'  => false,
-			'placeholder' => __( 'Z.B. john@doe.com', Powerform::DOMAIN ),
-			'field_label' => __( 'Email Addresse', Powerform::DOMAIN ),
+			'placeholder' => __( 'E.g. john@doe.com', Powerform::DOMAIN ),
+			'field_label' => __( 'Email Address', Powerform::DOMAIN ),
 		);
 	}
 
@@ -106,39 +106,61 @@ class Powerform_Email extends Powerform_Field {
 	 * @return mixed
 	 */
 	public function markup( $field, $settings = array() ) {
+
 		$this->field         = $field;
 		$this->form_settings = $settings;
 
 		$this->init_autofill( $settings );
 
+		$html        = '';
 		$id          = self::get_property( 'element_id', $field );
 		$name        = $id;
 		$design      = $this->get_form_style( $settings );
 		$ariaid      = $id;
-		$id          = $id . '-field';
+		$id          = 'powerform-field-' . $id;
 		$required    = self::get_property( 'required', $field, false );
+		$ariareq     = 'false';
 		$placeholder = $this->sanitize_value( self::get_property( 'placeholder', $field ) );
-		$value       = self::get_property( 'value', $field );
-		$label       = self::get_property( 'field_label', $field );
-		$description = self::get_property( 'description', $field );
+		$value       = esc_html( self::get_property( 'value', $field ) );
+		$label       = esc_html( self::get_property( 'field_label', $field ) );
+		$description = esc_html( self::get_property( 'description', $field ) );
 
-		$html = '';
+		if ( (bool) $required ) {
+			$ariareq = 'true';
+		}
+
+		// Check if Pre-fill parameter used
+		if ( $this->has_prefill( $field ) ) {
+			// We have pre-fill parameter, use its value or $value
+			$value = $this->get_prefill( $field, $value );
+		}
 
 		$email_attr = array(
-			'id'              => $id,
-			'name'            => $name,
-			'placeholder'     => $placeholder,
-			'data-required'   => $required,
-			'class'           => 'powerform-email--field powerform-input',
-			'type'            => 'email',
-			'aria-labelledby' => 'powerform-label-' . $ariaid,
+			'type'          => 'email',
+			'name'          => $name,
+			'value'         => $value,
+			'placeholder'   => $placeholder,
+			'id'            => $id,
+			'class'         => 'powerform-input powerform-email--field',
+			'data-required' => $required,
+			'aria-required' => $ariareq,
 		);
 
 		$autofill_markup = $this->get_element_autofill_markup_attr( self::get_property( 'element_id', $field ), $this->form_settings );
 
 		$email_attr = array_merge( $email_attr, $autofill_markup );
 
-		$html .= self::create_input( $email_attr, $label, $description, $required, $design );
+		$html .= '<div class="powerform-field">';
+
+			$html .= self::create_input(
+				$email_attr,
+				$label,
+				$description,
+				$required,
+				$design
+			);
+
+		$html .= '</div>';
 
 		return apply_filters( 'powerform_field_email_markup', $html, $id, $required, $placeholder, $value );
 	}
@@ -151,6 +173,7 @@ class Powerform_Email extends Powerform_Field {
 	 */
 	public function get_validation_rules() {
 		$field       = $this->field;
+		$id          = self::get_property( 'element_id', $field );
 		$rules       = '"' . $this->get_id( $field ) . '": {' . "\n";
 		$is_validate = self::get_property( 'validation', $field, false );
 		if ( $this->is_required( $field ) ) {
@@ -163,7 +186,7 @@ class Powerform_Email extends Powerform_Field {
 
 		$rules .= '},' . "\n";
 
-		return $rules;
+		return apply_filters( 'powerform_field_email_validation_rules', $rules, $id, $field );
 	}
 
 	/**
@@ -176,7 +199,7 @@ class Powerform_Email extends Powerform_Field {
 		$field              = $this->field;
 		$id                 = $this->get_id( $field );
 		$is_validate        = self::get_property( 'validation', $field );
-		$validation_message = self::get_property( 'validation_message', $field, __( 'Dies ist keine gültige E-Mail', Powerform::DOMAIN ) );
+		$validation_message = self::get_property( 'validation_message', $field, __( 'This is not a valid email.', Powerform::DOMAIN ) );
 
 		$validation_message = htmlentities( $validation_message );
 
@@ -189,8 +212,9 @@ class Powerform_Email extends Powerform_Field {
 					$field,
 					'required_message',
 					'',
-					__( 'Dieses Feld wird benötigt. Bitte gib eine gültige E-Mail-Adresse ein', Powerform::DOMAIN ) );
-			$messages                       .= '"required": "' . $default_required_error_message . '",' . "\n";
+					__( 'This field is required. Please input a valid email.', Powerform::DOMAIN )
+				);
+			$messages                      .= '"required": "' . powerform_addcslashes( $default_required_error_message ) . '",' . "\n";
 		}
 
 		$validation_message = apply_filters_deprecated(
@@ -205,8 +229,8 @@ class Powerform_Email extends Powerform_Field {
 		);
 
 		if ( $is_validate ) {
-			$messages .= '"emailWP": "' . $validation_message . '",' . "\n";
-			$messages .= '"email": "' . $validation_message . '",' . "\n";
+			$messages .= '"emailWP": "' . powerform_addcslashes( $validation_message ) . '",' . "\n";
+			$messages .= '"email": "' . powerform_addcslashes( $validation_message ) . '",' . "\n";
 		}
 
 		$messages .= '},' . "\n";
@@ -229,13 +253,14 @@ class Powerform_Email extends Powerform_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
+	 * @param array        $post_data
 	 *
 	 * @return bool
 	 */
-	public function validate( $field, $data ) {
+	public function validate( $field, $data, $post_data = array() ) {
 		$id                 = self::get_property( 'element_id', $field );
 		$is_validate        = self::get_property( 'validation', $field );
-		$validation_message = self::get_property( 'validation_message', $field, __( 'Dies ist keine gültige E-Mail', Powerform::DOMAIN ) );
+		$validation_message = self::get_property( 'validation_message', $field, __( 'This is not a valid email.', Powerform::DOMAIN ) );
 		if ( $this->is_required( $field ) ) {
 			$required_error_message =
 				$this->get_field_multiple_required_message(
@@ -243,8 +268,8 @@ class Powerform_Email extends Powerform_Field {
 					$field,
 					'required_message',
 					'',
-					__( 'Dieses Feld wird benötigt. Bitte gib eine gültige E-Mail-Adresse ein', Powerform::DOMAIN ) );
-
+					__( 'This field is required. Please input a valid email.', Powerform::DOMAIN )
+				);
 
 			if ( empty( $data ) ) {
 				$this->validation_message[ $id ] = $required_error_message;
@@ -252,9 +277,9 @@ class Powerform_Email extends Powerform_Field {
 			}
 		}
 
-		if ( $is_validate ) {
+		if ( $is_validate && ! empty( $data ) ) {
 			$validation_message = htmlentities( $validation_message );
-			if ( ! is_email( $data ) ) {
+			if ( 320 < strlen( $data ) || ! is_email( $data ) ) {
 				$this->validation_message[ $id ] = $validation_message;
 			}
 		}

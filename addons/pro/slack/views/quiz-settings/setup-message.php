@@ -6,6 +6,7 @@ $vars = array(
 	'error_message' => '',
 	'multi_id'      => '',
 	'tags'          => array(),
+	'lead_fields'   => array(),
 );
 /** @var array $template_vars */
 foreach ( $template_vars as $key => $val ) {
@@ -29,15 +30,21 @@ foreach ( $template_vars as $key => $val ) {
 		<div class="sui-insert-variables">
 
 			<textarea id="slack_message"
-			          class="sui-form-control"
-			          name="message"
-			          placeholder="<?php echo esc_attr( __( 'Message', Powerform::DOMAIN ) ); ?>"><?php echo esc_html( $vars['message'] ); ?></textarea>
+					class="sui-form-control"
+					name="message"
+					placeholder="<?php echo esc_attr( __( 'Message', Powerform::DOMAIN ) ); ?>"><?php echo esc_html( $vars['message'] ); ?></textarea>
 
 			<select data-textarea-id="slack_message">
 				<?php foreach ( $vars['tags'] as $short_tag => $label ) : ?>
 					<option value="{<?php echo esc_attr( $short_tag ); ?>}"
-					        data-content="{<?php echo esc_attr( $short_tag ); ?>}"><?php echo esc_html( $label ); ?></option>
-				<?php endforeach; ?></select>
+							data-content="{<?php echo esc_attr( $short_tag ); ?>}"><?php echo esc_html( $label ); ?></option>
+				<?php endforeach; ?>
+				<?php if ( ! empty( $vars['lead_fields'] ) ) :
+                    foreach ( $vars['lead_fields'] as $field ) : ?>
+                    <option value="{<?php echo esc_attr( $field['element_id'] ); ?>}" data-content="{<?php echo esc_attr( $field['element_id'] ); ?>}"><?php echo esc_html( $field['field_label'] ); ?></option>
+				<?php endforeach;
+				    endif; ?>
+            </select>
 
 		</div>
 
@@ -49,10 +56,12 @@ foreach ( $template_vars as $key => $val ) {
 			<a href="https://get.slack.help/hc/en-us/articles/202288908-how-can-i-add-formatting-to-my-messages" target="_blank"><?php esc_html_e( 'here.', Powerform::DOMAIN ); ?></a>.
 		</span>
 		<span class="sui-description">
-			<?php esc_html_e(
+			<?php
+			esc_html_e(
 				'By default sent message will include Quiz Answer and Quiz Result as attachment using Powerform Format to ease you up, more information about attachment can be found ',
 				Powerform::DOMAIN
-			); ?>
+			);
+			?>
 			<a href="https://api.slack.com/docs/message-attachments" target="_blank"><?php esc_html_e( 'here', Powerform::DOMAIN ); ?></a>
 		</span>
 

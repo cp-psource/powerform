@@ -35,8 +35,8 @@
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-label, .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-label--limit, .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-label--helper, .powerform-custom-form-
-<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-label--validation { font-weight:
-<?php echo $properties['cform-label-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-label--validation {
+<?php powerform_echo_font_weight( $properties, 'cform-label-font-weight' ); ?> }
 <?php } else { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-label, .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-label--limit, .powerform-custom-form-
@@ -57,7 +57,8 @@
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-break .powerform-title { font-size: calc(
 <?php echo $properties['cform-title-font-size'] ?>px - 10px); }
 <?php if ( $properties['cform-title-font-size'] == '45' ) { ?> @media (min-width: 783px) { .powerform-custom-form-
-<?php echo $properties['form_id'] ?>.powerform-design--flat:not(.powerform-size--small) .powerform-break .powerform-title { font-size: $properties['cform-title-font-size'] ?>px; } }
+<?php echo $properties['form_id'] ?>.powerform-design--flat:not(.powerform-size--small) .powerform-break .powerform-title { font-size:
+<?php echo $properties['cform-title-font-size'] ?>px; } }
 <?php } ?>
 <?php } else { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-break .powerform-title { font-size: 35px; } @media (min-width: 783px) { .powerform-custom-form-
@@ -77,8 +78,8 @@
 <?php } ?>
 
 <?php if ( powerform_array_value_exists( $properties, 'cform-title-font-weight' ) ) { ?> .powerform-custom-form-
-<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-break .powerform-title { font-weight:
-<?php echo $properties['cform-title-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-break .powerform-title {
+<?php powerform_echo_font_weight( $properties, 'cform-title-font-weight' ); ?> }
 <?php } else { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-break .powerform-title { font-weight: normal; }
 <?php } ?>
@@ -119,8 +120,8 @@
 <?php } ?>
 
 <?php if ( powerform_array_value_exists( $properties, 'cform-subtitle-font-weight' ) ) { ?> .powerform-custom-form-
-<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-break .powerform-subtitle { font-weight:
-<?php echo $properties['cform-subtitle-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-break .powerform-subtitle {
+<?php powerform_echo_font_weight( $properties, 'cform-subtitle-font-weight' ); ?> }
 <?php } else { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-break .powerform-subtitle { font-weight: normal; }
 <?php } ?>
@@ -205,8 +206,8 @@
 
 <?php if ( powerform_array_value_exists( $properties, 'cform-input-font-weight' ) ) { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-input, .powerform-custom-form-
-<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-textarea { font-weight:
-<?php echo $properties['cform-input-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-textarea {
+<?php powerform_echo_font_weight( $properties, 'cform-input-font-weight' ); ?> }
 <?php } else { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-input, .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-textarea { font-weight: normal; }
@@ -258,8 +259,8 @@
 
 <?php if ( powerform_array_value_exists( $properties, 'cform-radio-font-weight' ) ) { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-radio .powerform-radio--design + .powerform-radio--label, .powerform-custom-form-
-<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-checkbox .powerform-checkbox--design + .powerform-checkbox--label { font-weight:
-<?php echo $properties['cform-radio-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-checkbox .powerform-checkbox--design + .powerform-checkbox--label {
+<?php powerform_echo_font_weight( $properties, 'cform-radio-font-weight' ); ?> }
 <?php } else { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-radio .powerform-radio--design + .powerform-radio--label, .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-checkbox .powerform-checkbox--design + .powerform-checkbox--label { font-weight: normal; }
@@ -297,8 +298,8 @@
 
 <?php if ( powerform_array_value_exists( $properties, 'cform-select-font-weight' ) ) { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-select + .select2 .selection .select2-selection--single .select2-selection__rendered, .powerform-custom-form-
-<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-time + .select2 .selection .select2-selection--single .select2-selection__rendered { font-weight:
-<?php echo $properties['cform-select-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-time + .select2 .selection .select2-selection--single .select2-selection__rendered {
+<?php powerform_echo_font_weight( $properties, 'cform-select-font-weight' ); ?> }
 <?php } else { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-select + .select2 .selection .select2-selection--single .select2-selection__rendered, .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-time + .select2 .selection .select2-selection--single .select2-selection__rendered { font-weight: normal; }
@@ -346,8 +347,8 @@
 
 <?php if ( powerform_array_value_exists( $properties, 'cform-dropdown-font-weight' ) ) { ?> .select2-container .powerform-ddfor--powerform-module-
 <?php echo $properties['form_id'] ?>.powerform-dropdown--flat .select2-results .select2-results__option, .select2-container .powerform-ddfor--powerform-module-
-<?php echo $properties['form_id'] ?>.powerform-droptime--flat .select2-results .select2-results__option { font-weight:
-<?php echo $properties['cform-dropdown-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-droptime--flat .select2-results .select2-results__option {
+<?php powerform_echo_font_weight( $properties, 'cform-dropdown-font-weight' ); ?> }
 <?php } else { ?> .select2-container .powerform-ddfor--powerform-module-
 <?php echo $properties['form_id'] ?>.powerform-dropdown--flat .select2-results .select2-results__option, .select2-container .powerform-ddfor--powerform-module-
 <?php echo $properties['form_id'] ?>.powerform-droptime--flat .select2-results .select2-results__option { font-weight: normal; }
@@ -385,8 +386,8 @@
 <?php } ?>
 
 <?php if ( powerform_array_value_exists( $properties, 'cform-multiselect-font-weight' ) ) { ?> .powerform-custom-form-
-<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-multiselect .powerform-multiselect--item label { font-weight:
-<?php echo $properties['cform-multiselect-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-multiselect .powerform-multiselect--item label {
+<?php powerform_echo_font_weight( $properties, 'cform-multiselect-font-weight' ); ?> }
 <?php } else { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-multiselect .powerform-multiselect--item label { font-weight: normal; }
 <?php } ?>
@@ -423,8 +424,8 @@
 <?php } ?>
 
 <?php if ( powerform_array_value_exists( $properties, 'cform-calendar-font-weight' ) ) { ?> .powerform-calfor--powerform-module-
-<?php echo $properties['form_id'] ?>.powerform-calendar--flat .ui-datepicker-calendar tbody tr td { font-weight:
-<?php echo $properties['cform-calendar-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-calendar--flat .ui-datepicker-calendar tbody tr td {
+<?php powerform_echo_font_weight( $properties, 'cform-calendar-font-weight' ); ?> }
 <?php } else { ?> .powerform-calfor--powerform-module-
 <?php echo $properties['form_id'] ?>.powerform-calendar--flat .ui-datepicker-calendar tbody tr td { font-weight: normal; }
 <?php } ?>
@@ -466,8 +467,8 @@
 
 <?php if ( powerform_array_value_exists( $properties, 'cform-button-font-weight' ) ) { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat a.powerform-button, .powerform-custom-form-
-<?php echo $properties['form_id'] ?>.powerform-design--flat button.powerform-button { font-weight:
-<?php echo $properties['cform-button-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-design--flat button.powerform-button {
+<?php powerform_echo_font_weight( $properties, 'cform-button-font-weight' ); ?> }
 <?php } else { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat a.powerform-button, .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat button.powerform-button { font-weight: 500; }
@@ -507,8 +508,8 @@
 
 <?php if ( powerform_array_value_exists( $properties, 'cform-timeline-font-weight' ) ) { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-pagination--bar .powerform-bar--text, .powerform-custom-form-
-<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-pagination--nav li { font-weight:
-<?php echo $properties['cform-timeline-font-weight'] ?>; }
+<?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-pagination--nav li {
+<?php powerform_echo_font_weight( $properties, 'cform-timeline-font-weight' ); ?> }
 <?php } else { ?> .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-pagination--bar .powerform-bar--text, .powerform-custom-form-
 <?php echo $properties['form_id'] ?>.powerform-design--flat .powerform-pagination--nav li { font-weight: normal; }

@@ -19,9 +19,13 @@ class Powerform_Upgrade {
 		/**
 		 * Initialize the plugin data
 		 */
-		$old_version = get_option( 'powerform_version' );
+		$old_version = get_option( 'powerform_version', false );
 		if ( $old_version ) {
 			$version_changed = version_compare( $old_version, POWERFORM_VERSION, 'lt' );
+
+			if ( $version_changed ) {
+				update_option( 'powerform_version_upgraded', true );
+			}
 		} else {
 			$version_changed = true;
 		}

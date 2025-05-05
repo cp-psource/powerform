@@ -28,7 +28,6 @@ foreach ( $powerform_autofills as $powerform_autofill ) {
 			$files_is_complete = false;
 			break;
 		}
-
 	}
 	if ( ! $files_is_complete ) {
 		continue;
@@ -43,4 +42,5 @@ foreach ( $powerform_autofills as $powerform_autofill ) {
 	Powerform_Autofill_Loader::get_instance()->register( $powerform_autofill['class_name'] );
 
 }
+
 

@@ -33,9 +33,12 @@ class Powerform_Dashboard_Page extends Powerform_Admin_Page {
 	 */
 	public function dashboard_create_screen() {
 		$modules = powerform_get_modules();
-		$this->template('dashboard/create-content', array(
-			'modules' => $modules
-		) );
+		$this->template(
+			'dashboard/create-content',
+			array(
+				'modules' => $modules,
+			)
+		);
 	}
 
 	/**
@@ -63,5 +66,33 @@ class Powerform_Dashboard_Page extends Powerform_Admin_Page {
 	 */
 	public function countModules( $status = '' ) {
 		return Powerform_Custom_Form_Model::model()->count_all( $status );
+	}
+
+	/**
+	 * Return all forms containing Stripe field
+	 *
+	 * @since 1.9
+	 *
+	 * @return array
+	 */
+	public function stripeModules() {
+		return Powerform_Custom_Form_Model::model()->get_models_by_field_and_version( 'stripe-1', '1.9-alpha.1' );
+	}
+
+	/**
+	 * Override scripts to be loaded
+	 *
+	 * @since 1.11
+	 *
+	 * @param $hook
+	 */
+	public function enqueue_scripts( $hook ) {
+		parent::enqueue_scripts( $hook );
+
+		powerform_print_forms_admin_styles( POWERFORM_VERSION );
+		powerform_print_polls_admin_styles( POWERFORM_VERSION );
+		powerform_print_front_styles( POWERFORM_VERSION );
+
+		powerform_print_front_scripts( POWERFORM_VERSION );
 	}
 }

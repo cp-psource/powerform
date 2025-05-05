@@ -10,20 +10,21 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Powerform_CForm_Renderer_Entries extends Powerform_CForm_View_Page {
 
-    /**
-     * Construct Entries Renderer
-     *
-     * @since 1.0.5
-     *
-     * @param string $folder
-     */
-    public function __construct( $folder ) {
-        $this->folder = $folder;
-        $this->register_content_boxes();
-        $this->before_render();
-        $this->trigger_before_render_action();
-        $this->add_page_hooks();
-    }
+	/** @noinspection PhpMissingParentConstructorInspection
+	 *
+	 * Construct Entries Renderer
+	 *
+	 * @since 1.0.5
+	 *
+	 * @param string $folder
+	 */
+	public function __construct( $folder ) {
+		$this->folder = $folder;
+		$this->register_content_boxes();
+		$this->before_render();
+		$this->trigger_before_render_action();
+		$this->add_page_hooks();
+	}
 
 	/**
 	 * Render Page Content Only for portability

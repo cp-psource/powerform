@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
-    die();
+	die();
 }
 
 /**
@@ -8,71 +8,84 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * Abstract class for modules
  *
+ * @var array $fields
+ * @var array $settings
  * @since 1.0
  */
+
 abstract class Powerform_Template {
 
-    /*
-     * Template fields
-     *
-     * @var array
-     */
-    protected $template_fields = array();
+	/*
+	 * Template fields
+	 *
+	 * @var array
+	 */
+	protected $template_fields = array();
 
-    /*
-     * Template settings
-     *
-     * @var array
-     */
-    protected $template_settings = array();
+	/*
+	 * Template options
+	 *
+	 * @var array
+	 */
+	public $options = array();
 
-    /*
-     * Template options
-     *
-     * @var array
-     */
-    public $options = array();
+	/*
+	 * Fields property
+	 *
+	 * @var array
+	 */
+	protected $fields = array();
 
-    public function __construct() {
-        $this->template_fields = $this->fields();
-        $this->template_settings = $this->settings();
-        $this->options = $this->defaults();
-    }
+	/*
+	 * Settings property
+	 *
+	 * @var array
+	 */
+	protected $settings = array();
 
-    /**
-     * Get fields for the template
-     *
-     * @since 1.0
-     * @return array
-     */
-    abstract protected function fields();
+	public function __construct() {
+		$this->fields   = $this->fields();
+		$this->settings = $this->settings();
+		$this->options  = $this->defaults();
+	}
 
-    /**
-     * Get settings for the template
-     *
-     * @since 1.0
-     * @return array
-     */
-    abstract protected function settings();
+	/**
+	 * @since 1.0
+	 * @return array
+	 */
+	public function fields() {
+		return array();
+	}
 
-    /**
-     * Get default settings for the template
-     *
-     * @since 1.0
-     * @return array
-     */
-    abstract protected function defaults();
+	/**
+	 * @since 1.0
+	 * @return array
+	 */
+	public function settings() {
+		return array();
+	}
 
-    /**
-     * Get specific option from module options
-     *
-     * @since 1.0
-     * @param string $option
-     * @param mixed $default
-     *
-     * @return mixed
-     */
-    public function get_option( $option, $default = '' ) {
-        return isset( $this->options[ $option ] ) ? $this->options[ $option ] : $default;
-    }
+	/**
+	 * @since 1.0
+	 * @return array
+	 */
+	public function defaults() {
+		return array();
+	}
+
+	/**
+	 * Get specific option from module options
+	 *
+	 * @since 1.0
+	 * @param $option
+	 * @param string $default
+	 *
+	 * @return mixed|string
+	 */
+	public function get_option( $option, $default = '' ) {
+		if ( isset( $this->options[ $option ] ) ) {
+			return $this->options[ $option ];
+		}
+		return $default;
+	}
 }

@@ -36,18 +36,22 @@ abstract class Powerform_Admin_Module {
 	 * @since 1.0
 	 */
 	public function __construct() {
+
 		$this->init();
+
 		$this->includes();
 
 		add_action( 'admin_menu', array( $this, 'add_menu_pages' ) );
-		add_action( 'admin_head', array( $this, "hide_menu_pages" ) );
+		add_action( 'admin_head', array( $this, 'hide_menu_pages' ) );
+
+		add_action( 'wp_loaded', array( $this, 'create_module' ) );
 
 		// admin-menu-editor compat
-		add_action( 'admin_menu_editor-menu_replaced', array( $this, "hide_menu_pages" ) );
+		add_action( 'admin_menu_editor-menu_replaced', array( $this, 'hide_menu_pages' ) );
 
-		add_filter( 'powerform_data', array( $this, "add_js_defaults" ) );
-		add_filter( 'powerform_l10n', array( $this, "add_l10n_strings" ) );
-		add_filter( 'submenu_file', array( $this, "admin_submenu_file" ), 10, 2 );
+		add_filter( 'powerform_data', array( $this, 'add_js_defaults' ) );
+		add_filter( 'powerform_l10n', array( $this, 'add_l10n_strings' ) );
+		add_filter( 'submenu_file', array( $this, 'admin_submenu_file' ), 10, 2 );
 	}
 
 	/**
@@ -65,6 +69,8 @@ abstract class Powerform_Admin_Module {
 	 * @since 1.0
 	 */
 	public function add_menu_pages() {}
+
+	public function create_module() {}
 
 	/**
 	 * Hide pages from menu
@@ -109,7 +115,7 @@ abstract class Powerform_Admin_Module {
 	 * @return mixed
 	 */
 	public static function is_edit() {
-		return  (bool) filter_input( INPUT_GET, "id", FILTER_VALIDATE_INT );
+		return (bool) filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT );
 	}
 
 	/**
@@ -132,6 +138,11 @@ abstract class Powerform_Admin_Module {
 	 */
 	public function is_admin_wizard() {
 		global $plugin_page;
+
+		// $plugin_page may not be set if we call the function too early, retrieve the page slug from $_GET
+		if ( ( ! isset( $plugin_page ) || empty( $plugin_page ) ) && isset( $_GET[ 'page' ] ) ) {
+			$plugin_page = sanitize_text_field( $_GET[ 'page' ] );
+		}
 
 		return $this->page_edit === $plugin_page;
 	}

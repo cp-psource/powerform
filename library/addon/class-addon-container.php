@@ -30,13 +30,12 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	 *
 	 * @param mixed $offset
 	 *
-	 * @return mixed
+	 * @return Powerform_Addon_Abstract|mixed|null
 	 */
 	public function offsetGet( $offset ): mixed {
 		if ( isset( $this->addons[ $offset ] ) ) {
 			return $this->addons[ $offset ];
 		}
-
 
 		return null;
 	}
@@ -46,19 +45,13 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	 *
 	 * @param mixed $offset
 	 * @param mixed $value
-	 *
-	 * @return void
 	 */
 	public function offsetSet( $offset, $value ): void {
 		$this->addons[ $offset ] = $value;
 	}
 
 	/**
-	 * @since 1.1
-	 *
 	 * @param mixed $offset
-	 *
-	 * @return void
 	 */
 	public function offsetUnset( $offset ): void {
 		unset( $this->addons[ $offset ] );
@@ -163,10 +156,11 @@ class Powerform_Addon_Container implements ArrayAccess, Countable, Iterator {
 	}
 
 	/**
-	 * Checks if the current position is valid
+	 * Checks if current position is valid
 	 *
 	 * @link  http://php.net/manual/en/iterator.valid.php
-	 * @return bool Returns true if the current position is valid, false otherwise.
+	 * @return boolean The return value will be casted to boolean and then evaluated.
+	 * Returns true on success or false on failure.
 	 * @since 1.1
 	 */
 	public function valid(): bool {
