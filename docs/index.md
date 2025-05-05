@@ -1,15 +1,14 @@
-=== Powerform – Kontaktformular, Zahlungsformular und benutzerdefinierter Formularersteller ===
-Plugin Name: Powerform – Kontaktformular, Zahlungsformular und benutzerdefinierter Formularersteller
-Version: 1.2.2
-Author: PSOURCE
-Author URI: https://github.com/cp-psource
-Contributors: PSOURCE, WebFactory
-Tags: forms, contact form, wordpress form plugin, payment form, custom form, form builder, paypal form wordpress, form maker, quiz, quiz builder, order form, stripe payments, paypal payments, stripe form, paypal form
-Requires at least: 4.6
-Tested up to: 5.7
-Stable tag: 1.2.1
-Requires PHP: 5.2.4
-License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+---
+layout: psource-theme
+title: "Powerform"
+---
+
+<h2 align="center" style="color:#38c2bb;">📚 Powerform</h2>
+
+<div class="menu">
+  <a href="https://github.com/cp-psource/powerform/discussions" style="color:#38c2bb;">💬 Forum</a>
+  <a href="https://github.com/cp-psource/powerform/releases" style="color:#38c2bb;">⬇️ Download</a>
+</div>
 
 Bestes WordPress-Formular-Builder-Plugin. Erstelle Kontaktformulare, Zahlungsformulare und Bestellformulare mit über 1000 Integrationen.
 
