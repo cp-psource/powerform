@@ -532,7 +532,7 @@ class Powerform_Admin {
 						$links[2] = str_replace( 'href=', 'target="_blank" href=', $links[2] );
 					}
 				}
-				$row_meta['rate']    = '<a href="' . esc_url( powerform_get_link( 'rate' ) ) . '" aria-label="' . esc_attr__( 'Bewerte WMS N@W', Powerform::DOMAIN ) . '" target="_blank">' . esc_html__( 'Bewerte WMS N@W', Powerform::DOMAIN ) . '</a>';
+				$row_meta['rate']    = '<a href="' . esc_url( powerform_get_link( 'rate' ) ) . '" aria-label="' . esc_attr__( 'Bewerte PSOURCE', Powerform::DOMAIN ) . '" target="_blank">' . esc_html__( 'Bewerte WMS N@W', Powerform::DOMAIN ) . '</a>';
 				$row_meta['support'] = '<a href="' . esc_url( powerform_get_link( 'support' ) ) . '" aria-label="' . esc_attr__( 'Support', Powerform::DOMAIN ) . '" target="_blank">' . esc_html__( 'Support', Powerform::DOMAIN ) . '</a>';
 			} else {
 				// Change 'Visit plugins' link to 'View details'.
@@ -543,9 +543,9 @@ class Powerform_Admin {
 						__( 'Details anzeigen' )
 					);
 				}
-				//$row_meta['support'] = '<a href="' . esc_url( powerform_get_link( 'support' ) ) . '" aria-label="' . esc_attr__( 'Premium Support', Powerform::DOMAIN ) . '" target="_blank">' . esc_html__( 'Premium Support', Powerform::DOMAIN ) . '</a>';
+				$row_meta['support'] = '<a href="' . esc_url( powerform_get_link( 'support' ) ) . '" aria-label="' . esc_attr__( 'Premium Support', Powerform::DOMAIN ) . '" target="_blank">' . esc_html__( 'Premium Support', Powerform::DOMAIN ) . '</a>';
 			}
-			//$row_meta['roadmap'] = '<a href="' . esc_url( powerform_get_link( 'roadmap' ) ) . '" aria-label="' . esc_attr__( 'Roadmap', Powerform::DOMAIN ) . '" target="_blank">' . esc_html__( 'Roadmap', Powerform::DOMAIN ) . '</a>';
+			$row_meta['roadmap'] = '<a href="' . esc_url( powerform_get_link( 'roadmap' ) ) . '" aria-label="' . esc_attr__( 'Roadmap', Powerform::DOMAIN ) . '" target="_blank">' . esc_html__( 'Roadmap', Powerform::DOMAIN ) . '</a>';
 
 			return array_merge( $links, $row_meta );
 		}
