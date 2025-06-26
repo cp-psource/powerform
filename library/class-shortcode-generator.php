@@ -116,7 +116,7 @@ class Powerform_Shortcode_Generator {
 			powerform_plugin_url() . 'build/admin/scgen.min.js',
 			array( 'jquery' ),
 			POWERFORM_VERSION,
-			false
+			true // Script jetzt im Footer laden!
 		);
 
 		wp_localize_script( 'powerform-shortcode-generator', 'powerformScgenData', array(
@@ -126,9 +126,14 @@ class Powerform_Shortcode_Generator {
 		$this->print_markup();
 		?>
 		<script type="text/javascript">
-			jQuery(document).ready(function () {
-				jQuery("#powerform-generate-shortcode").on( 'click', function(e) {
+			jQuery(document).ready(function ($) {
+				$("#powerform-generate-shortcode").off('click').on('click', function(e){
 					e.preventDefault();
+					if (typeof SUI.dialogs["powerform-popup"] === "undefined") {
+						console.error("SUI.dialogs['powerform-popup'] ist nicht initialisiert!");
+						return;
+					}
+					SUI.dialogs["powerform-popup"].show();
 				});
 			});
 		</script>
@@ -167,7 +172,7 @@ class Powerform_Shortcode_Generator {
 	 */
 	public function print_markup() {
 		?>
-		<div id="powerform-scgen-modal" class="sui-wrap" style="display: none;">
+		<div id="powerform-scgen-modal" class="sui-wrap sui-2-6-0" style="display: none;">
 
 			<div
 				id="powerform-popup"
@@ -302,6 +307,18 @@ class Powerform_Shortcode_Generator {
 			</div>
 
 		</div>
+		<script>
+		// Modal-Container kurz sichtbar machen, damit SUI initialisieren kann
+		(function() {
+			var modal = document.getElementById('powerform-scgen-modal');
+			if (modal) {
+				modal.style.display = 'block';
+				setTimeout(function() {
+					modal.style.display = 'none';
+				}, 100);
+			}
+		})();
+		</script>
 		<?php
 	}
 
